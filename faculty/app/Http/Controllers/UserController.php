@@ -26,7 +26,7 @@ class UserController extends Controller
         $user->save();
         return 'success';
     }
-    public function editUser(Request $request)
+    public function editUser(Request $request, $id)
     {
         //
         $request->validate([
@@ -34,12 +34,10 @@ class UserController extends Controller
             'password' =>'required'
         ]);
 
-        $user = new User([
+        $user = User::find($id);
+        $user->email =  $request->email;
+        $user->password = $request->password;
 
-            'email' => $request->email,
-            'password' => $request->password,
-
-        ]);
         $user->save();
         return 'success';
     }
