@@ -8,7 +8,7 @@ class UserController extends Controller
 {
     public function index(){
         //
-        return User::findAll();
+        return User::all();
     }
     public function createUser(Request $request)
     {
@@ -50,10 +50,17 @@ class UserController extends Controller
     }
     public function deleteUser($id){
         //
-        $contact = Contact::find($id);
+        $contact = User::find($id);
         $contact->delete();
 
         return "Succesfully deleted";
+    
+    }
+    public function getUsers(){
+        //
+        $users = User::all();
+
+        return $users;
     
     }
 }
