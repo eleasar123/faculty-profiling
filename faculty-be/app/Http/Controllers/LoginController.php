@@ -8,7 +8,7 @@ class LoginController extends Controller
 {
     //
      
-    public function userLogin(Request $userInfo){
+    public function index (Request $userInfo){
             // var_dump($userInfo);
             $userId = 0;
             $userDetails = [];
@@ -36,7 +36,10 @@ class LoginController extends Controller
                 }
             }
             $response = collect([['message' => $message]]);
-            $response -> push($userDetails);
+            
+            $token = $userDetails -> createToken('loginAccess');
+            $response -> push([['account' => $userDetails]]);
+            $response-> push([['token' => $token->plainTextToken]]);
             return $response;
         
 
