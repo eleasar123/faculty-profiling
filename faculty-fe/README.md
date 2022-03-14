@@ -1,4 +1,4 @@
-# faculty-fe
+# faculty-fe2
 
 ## Project setup
 ```

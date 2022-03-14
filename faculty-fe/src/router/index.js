@@ -1,23 +1,23 @@
-import Vue from "vue";
-import VueRouter from "vue-router";
+import { createRouter, createWebHistory } from 'vue-router'
+import Home from '../views/Home.vue'
+import LogIn from '../views/Login/Login.vue'
+const routes = [
+  {
+    path: '/',
+    name: 'Home',
+    component: Home
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: LogIn
+  },
+ 
+]
 
-import Login from /* webpackChunkName: "Login" */ "@/views/Login.vue";
+const router = createRouter({
+  history: createWebHistory(process.env.BASE_URL),
+  routes
+})
 
-Vue.use(VueRouter);
-
-const routes = [{
-        path: "/",
-        redirect: "/home",
-    },
-    {
-        path: "/home",
-        component: Index,
-        meta: {
-            auth: true,
-        },
-        children: [{
-                path: "/",
-                redirect: "employee",
-            }]
-        }
-    ]
+export default router
