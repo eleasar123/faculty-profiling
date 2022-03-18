@@ -13,16 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('contacts', function (Blueprint $table) {
+        //
+        Schema::create('years_of_training', function (Blueprint $table){
             $table->increments('id');
-            $table->string('first_name');
-            $table->string('last_name');
-            $table->string('email');
-            $table->string('job_title');
-            $table->string('city');   
-            $table->string('country'); 
+            $table->string('year_range');
             $table->timestamp('created_at') ->useCurrent();
             $table->timestamp('updated_at') -> nullable() -> useCurrentOnUpdate();
+            $table->string('modified_by');
         });
     }
 
@@ -33,6 +30,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('contacts');
+        //
+        Schema::dropIfExists('years_of_training');
     }
 };

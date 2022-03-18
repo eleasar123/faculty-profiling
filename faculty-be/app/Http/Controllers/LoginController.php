@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Laravel\Sanctum\NewAccessToken;
+
 class LoginController extends Controller
 {
     //
@@ -15,18 +17,18 @@ class LoginController extends Controller
             $response = collect();
             $message = '';
             $userIdWithEmail = User::select('id')->where('password', $userInfo->password)->first();
-            $userIdWithPassword = User::select('id')->where('email', $userInfo->username)->first();
+            $userIdWithPassword = User::select('id')->where('email', $userInfo->email)->first();
             
             $userId = $userIdWithEmail == '' ? $userIdWithPassword : $userIdWithEmail;
             if($userId === null) {
-                $message = "Incorrect username and password";
+                $message = "Incorrect email and password";
                 $userDetails =[];
             }else{
                 $userDetails = User::find($userId -> id)->first();
-                if($userDetails -> email != $userInfo -> username AND $userDetails -> password === $userInfo -> password){
+                if($userDetails -> email != $userInfo -> email AND $userDetails -> password === $userInfo -> password){
                     $message = 'Incorrect email!';
 
-                }elseif($userDetails -> email === $userInfo -> username AND $userDetails -> password != $userInfo -> password){
+                }elseif($userDetails -> email === $userInfo -> email AND $userDetails -> password != $userInfo -> password){
                     $message ="Incorrect password!";
 
                 }else{

@@ -14,12 +14,13 @@ class UserController extends Controller
     {
         //
         $request->validate([
+            'name'=>'required',
             'email'=>'required',
             'password' =>'required'
         ]);
 
         $user = new User([
-
+            'name' => $request->name,
             'email' => $request->email,
             'password' => $request->password,
 
@@ -40,9 +41,9 @@ class UserController extends Controller
         $user->email =  $request->email;
         $user->password = $request->password;
 
-        $user->save();
+        
         try{
-            return 'success';    
+            $user->save(); 
         }catch(Throwable $error){
             return $error;
         }

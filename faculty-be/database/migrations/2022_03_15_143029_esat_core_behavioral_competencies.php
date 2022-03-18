@@ -13,14 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('contacts', function (Blueprint $table) {
+        //
+        Schema::create('esat_core_behavioral_competencies', function (Blueprint $table){
             $table->increments('id');
-            $table->string('first_name');
-            $table->string('last_name');
-            $table->string('email');
-            $table->string('job_title');
-            $table->string('city');   
-            $table->string('country'); 
+            $table->string('user');
+            $table->string('objectives_no');
+            $table->string('objectives_details');
+            $table->string('check_status');
             $table->timestamp('created_at') ->useCurrent();
             $table->timestamp('updated_at') -> nullable() -> useCurrentOnUpdate();
         });
@@ -33,6 +32,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('contacts');
+        //
+        Schema::dropIfExists('esat_core_behavioral_competencies');
     }
 };

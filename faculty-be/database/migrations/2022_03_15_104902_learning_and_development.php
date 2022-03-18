@@ -13,14 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('contacts', function (Blueprint $table) {
+        //
+        Schema::create('learning_and_developments', function (Blueprint $table){
             $table->increments('id');
-            $table->string('first_name');
-            $table->string('last_name');
-            $table->string('email');
-            $table->string('job_title');
-            $table->string('city');   
-            $table->string('country'); 
+            $table->string('user');
+            $table->string('learning_and_development_interventions');
+            $table->string('learning_inclusive_dates_from');
+            $table->string('learning_inclusive_dates_to');
+            $table->string('number_of_hours');
+            $table->string('type_of_ld');
+            $table->string('conducted_by');
             $table->timestamp('created_at') ->useCurrent();
             $table->timestamp('updated_at') -> nullable() -> useCurrentOnUpdate();
         });
@@ -33,6 +35,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('contacts');
+        //
+        Schema::dropIfExists('learning_and_development');
     }
 };

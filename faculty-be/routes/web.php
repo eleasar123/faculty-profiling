@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
         return view('welcome');
     });
     Route::apiResource('user', App\Http\Controllers\UserController::class);
+    Route::apiResource('pds', App\Http\Controllers\PersonalInfoController::class);
     Route::post('login', 'App\Http\Controllers\LoginController@index');
 
 

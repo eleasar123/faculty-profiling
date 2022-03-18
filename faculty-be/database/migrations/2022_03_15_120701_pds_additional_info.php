@@ -13,14 +13,19 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('contacts', function (Blueprint $table) {
+        //
+        Schema::create('pds_additional_infos', function (Blueprint $table){
             $table->increments('id');
-            $table->string('first_name');
-            $table->string('last_name');
-            $table->string('email');
-            $table->string('job_title');
-            $table->string('city');   
-            $table->string('country'); 
+            $table->string('user');
+            $table->string('oath');
+            $table->string('government_id');
+            $table->string('id_no');
+            $table->string('date/place_of_issuance');
+            $table->string('signature');
+            $table->string('photo');
+            $table->string('right_thumbmark');
+            $table->string('sworn_date');
+            $table->string('person_administering_oath');
             $table->timestamp('created_at') ->useCurrent();
             $table->timestamp('updated_at') -> nullable() -> useCurrentOnUpdate();
         });
@@ -33,6 +38,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('contacts');
+        //
+        Schema::dropIfExists('pds_additional_info');
     }
 };
