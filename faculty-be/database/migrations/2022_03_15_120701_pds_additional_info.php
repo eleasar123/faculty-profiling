@@ -28,6 +28,7 @@ return new class extends Migration
             $table->string('person_administering_oath');
             $table->timestamp('created_at') ->useCurrent();
             $table->timestamp('updated_at') -> nullable() -> useCurrentOnUpdate();
+            $table->softDeletesTz();
         });
     }
 

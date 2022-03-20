@@ -17,13 +17,24 @@ class EsatController extends Controller
         $esat->push([['esatDemographicProfile' => EsatDemographicProfile :: all() ]]);
         $esat->push([['esatCoreBehavioralCompetencies' => EsatCoreBehavioralCompetencies :: all() ]]);
         $esat->push([['esatFunctionalObjectives' => EsatFunctionalObjectives :: all() ]]);
+        try{  
+            return $esat;
+        }catch(Throwable $error){
+            return $error;
+        }
     }
 
-    public function getEsat(Request $request){
+    public function getEsat($id){
         $esat = collect();
-        $esat->push([['esatDemographicProfile' => EsatDemographicProfile :: all() ]]);
-        $esat->push([['esatCoreBehavioralCompetencies' => EsatCoreBehavioralCompetencies :: all() ]]);
-        $esat->push([['esatFunctionalObjectives' => EsatFunctionalObjectives :: all() ]]);
+        $esat->push([['esatDemographicProfile' => EsatDemographicProfile :: find($id) ]]);
+        $esat->push([['esatCoreBehavioralCompetencies' => EsatCoreBehavioralCompetencies :: find($id) ]]);
+        $esat->push([['esatFunctionalObjectives' => EsatFunctionalObjectives :: find($id) ]]);
+
+        try{  
+            return $esat;
+        }catch(Throwable $error){
+            return $error;
+        }
     }
 
     public function createEsat(Request $request){
@@ -93,6 +104,7 @@ class EsatController extends Controller
             $esatDemographicProfile->save(); 
             $esatCoreBehavioralCompetencies->save();
             $esatFunctionalObjectives->save();
+            return "success";
         }catch(Throwable $error){
             return $error;
         }

@@ -4,11 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Storage;
 class UserController extends Controller
 {
     public function index(){
         //
         return User::all();
+    }
+
+    public function getUser($id){
+        //
+        return User::find($id);
     }
     public function createUser(Request $request)
     {
@@ -16,34 +22,48 @@ class UserController extends Controller
         $request->validate([
             'name'=>'required',
             'email'=>'required',
-            'password' =>'required'
+            'password' =>'required',
+            'role' => 'required'
         ]);
-
+        //Storage::putFile('photos', new File('/path/to/photo'), 'public');
         $user = new User([
             'name' => $request->name,
             'email' => $request->email,
             'password' => $request->password,
+            'role' => $request->role,
+            'profile' => $request->profile,
 
         ]);
-        $user->save();
+
+        try{
+            $user->save();
         
-        return 'success';
+            return 'success';
+        }catch(Throwable $error){
+            return $error;
+        }
+       
     }
     public function editUser(Request $request, $id)
     {
+        
         //
         $request->validate([
             'email'=>'required',
-            'password' =>'required'
+            'password' =>'required',
+            'role' => 'required',
         ]);
 
         $user = User::find($id);
         $user->email =  $request->email;
         $user->password = $request->password;
+        $user->role = $request->role;
+        $user->profile = $request->profile;
 
         
         try{
             $user->save(); 
+            return "success";
         }catch(Throwable $error){
             return $error;
         }

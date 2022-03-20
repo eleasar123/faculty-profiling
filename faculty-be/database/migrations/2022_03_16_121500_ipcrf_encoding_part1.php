@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         //
-        Schema::create('ipcrf_encoding_part1', function (Blueprint $table){
+        Schema::create('ipcrf_encoding_part1s', function (Blueprint $table){
             $table->increments('id');
             $table->string('user');
             $table->string('objective1');
@@ -37,6 +37,7 @@ return new class extends Migration
             $table->string('approver_position');
             $table->timestamp('created_at') ->useCurrent();
             $table->timestamp('updated_at') -> nullable() -> useCurrentOnUpdate();
+            $table->softDeletesTz();
         });
     }
 

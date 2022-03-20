@@ -23,6 +23,7 @@ return new class extends Migration
             $table->timestamp('failed_at')->useCurrent();
             $table->timestamp('created_at') ->useCurrent();
             $table->timestamp('updated_at') -> nullable() -> useCurrentOnUpdate();
+            $table->softDeletesTz();
         });
     }
 

@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('reference_tel_no');
             $table->timestamp('created_at') ->useCurrent();
             $table->timestamp('updated_at') -> nullable() -> useCurrentOnUpdate();
+            $table->softDeletesTz();
         });
     }
 

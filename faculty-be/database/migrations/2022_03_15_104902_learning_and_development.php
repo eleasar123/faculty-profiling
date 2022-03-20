@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string('conducted_by');
             $table->timestamp('created_at') ->useCurrent();
             $table->timestamp('updated_at') -> nullable() -> useCurrentOnUpdate();
+            $table->softDeletesTz();
         });
     }
 
