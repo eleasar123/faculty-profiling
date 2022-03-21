@@ -3,12 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-<<<<<<< HEAD
 use Illuminate\Http\Request;
 
-=======
 use Illuminate\Support\Facades\Storage;
->>>>>>> 9afc7a3e0ffddaddcf09978a8f99c5d46525b91c
 class UserController extends Controller
 {
 
@@ -25,16 +22,10 @@ class UserController extends Controller
     {
         //
         $request->validate([
-<<<<<<< HEAD
-            'name' => 'required',
-            'email' => 'required',
-            'password' => 'required',
-=======
             'name'=>'required',
             'email'=>'required',
             'password' =>'required',
             'role' => 'required'
->>>>>>> 9afc7a3e0ffddaddcf09978a8f99c5d46525b91c
         ]);
         //Storage::putFile('photos', new File('/path/to/photo'), 'public');
         $user = new User([
@@ -45,11 +36,6 @@ class UserController extends Controller
             'profile' => $request->profile,
 
         ]);
-<<<<<<< HEAD
-        $user->save();
-
-        return 'success';
-=======
 
         try{
             $user->save();
@@ -59,21 +45,15 @@ class UserController extends Controller
             return $error;
         }
        
->>>>>>> 9afc7a3e0ffddaddcf09978a8f99c5d46525b91c
     }
     public function editUser(Request $request, $id)
     {
         
         //
         $request->validate([
-<<<<<<< HEAD
-            'email' => 'required',
-            'password' => 'required',
-=======
             'email'=>'required',
             'password' =>'required',
             'role' => 'required',
->>>>>>> 9afc7a3e0ffddaddcf09978a8f99c5d46525b91c
         ]);
 
         $user = User::find($id);
@@ -82,17 +62,11 @@ class UserController extends Controller
         $user->role = $request->role;
         $user->profile = $request->profile;
 
-<<<<<<< HEAD
-        try {
-            $user->save();
-        } catch (Throwable $error) {
-=======
         
         try{
             $user->save(); 
             return "success";
         }catch(Throwable $error){
->>>>>>> 9afc7a3e0ffddaddcf09978a8f99c5d46525b91c
             return $error;
         }
 
