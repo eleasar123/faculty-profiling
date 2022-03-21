@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\MasterfileController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -35,7 +35,7 @@ use Illuminate\Support\Facades\Route;
     Route::get('ipcrf/', 'App\Http\Controllers\EsatController@index');
     Route::get('ipcrf/{id}', 'App\Http\Controllers\EsatController@getIpcrf');
     Route::post('ipcrf/create', 'App\Http\Controllers\EsatController@createIpcrf');
-    Route::apiResource('masterfile', App\Http\Controllers\MasterfileController::class);
+    Route::apiResource('masterfile', MasterfileController::class);
    
 
 
