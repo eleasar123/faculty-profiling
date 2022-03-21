@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('country'); 
             $table->timestamp('created_at') ->useCurrent();
             $table->timestamp('updated_at') -> nullable() -> useCurrentOnUpdate();
+            $table->softDeletesTz();
         });
     }
 

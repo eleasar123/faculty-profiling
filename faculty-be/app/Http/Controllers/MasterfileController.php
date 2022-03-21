@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+<<<<<<< HEAD
 use App\Models\User;
 
 use App\Models\AgeRange;
@@ -134,4 +135,14 @@ class MasterfileController extends Controller
 //     {
 //         return PersonnelPosition::all();
 //     }
+=======
+use Illuminate\Http\Request;
+use App\Models\User;
+class MasterfileController extends Controller
+{
+    //
+    public function index(){
+        return User::all();
+    }
+>>>>>>> 9afc7a3e0ffddaddcf09978a8f99c5d46525b91c
 }

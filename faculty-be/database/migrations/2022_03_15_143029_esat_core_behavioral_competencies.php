@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('check_status');
             $table->timestamp('created_at') ->useCurrent();
             $table->timestamp('updated_at') -> nullable() -> useCurrentOnUpdate();
+            $table->softDeletesTz();
         });
     }
 

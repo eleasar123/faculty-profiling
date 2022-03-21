@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         //
-        Schema::create('esat_demographic_profile', function (Blueprint $table){
+        Schema::create('esat_demographic_profiles', function (Blueprint $table){
             $table->increments('id');
             $table->string('user');
             $table->string('name_of_employee');
@@ -33,6 +33,7 @@ return new class extends Migration
             $table->string('subjects_taught');
             $table->timestamp('created_at') ->useCurrent();
             $table->timestamp('updated_at') -> nullable() -> useCurrentOnUpdate();
+            $table->softDeletesTz();
         });
     }
 

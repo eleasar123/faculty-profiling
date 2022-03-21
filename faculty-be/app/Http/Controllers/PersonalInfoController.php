@@ -33,26 +33,36 @@ class PersonalInfoController extends Controller
         $pds->push([['pdsQuestions' => PdsQuestions :: all() ]]);
         $pds->push([['pdsAdditionalInfo' => PdsAdditionalInfo :: all() ]]);
 
-        return $pds;
+        try{
+            return $pds;
+        }catch(Throwable $error){
+            return $error;
+        }
+        
     }
 
     //get pds of the user/teacher
-    public function getPds(Request $request){
+    public function getPds($id){
         //
         $pds = collect();
-        $pds->push([['personaInfo' => PersonalDataSheetPersonalInformation :: find($request-> user) ]]);
-        $pds->push([['familyBackground' => PersonalDataSheetFamilyBackground :: find($request-> user) ]]);
-        $pds->push([['educationalBackground' => PersonalDataSheetEducationalBackground :: find($request-> user) ]]);
-        $pds->push([['civilServiceEligibility' => CivilServiceEligibility :: find($request-> user) ]]);
-        $pds->push([['workExperience' => WorkExperience :: find($request-> user) ]]);
-        $pds->push([['voluntaryWorkInvolvement' => VoluntaryWorkInvolvement :: find($request-> user) ]]);
-        $pds->push([['learningAndDevelopment' => learningAndDevelopment :: find($request-> user) ]]);
-        $pds->push([['otherInformation' => OtherInformation :: find($request-> user) ]]);
-        $pds->push([['references' => References :: find($request-> user) ]]);
-        $pds->push([['pdsQuestions' => PdsQuestions :: find($request-> user) ]]);
-        $pds->push([['pdsAdditionalInfo' => PdsAdditionalInfo :: find($request-> user) ]]);
+        $pds->push([['personaInfo' => PersonalDataSheetPersonalInformation :: find($id) ]]);
+        $pds->push([['familyBackground' => PersonalDataSheetFamilyBackground :: find($id) ]]);
+        $pds->push([['educationalBackground' => PersonalDataSheetEducationalBackground :: find($id) ]]);
+        $pds->push([['civilServiceEligibility' => CivilServiceEligibility :: find($id) ]]);
+        $pds->push([['workExperience' => WorkExperience :: find($id) ]]);
+        $pds->push([['voluntaryWorkInvolvement' => VoluntaryWorkInvolvement :: find($id) ]]);
+        $pds->push([['learningAndDevelopment' => learningAndDevelopment :: find($id) ]]);
+        $pds->push([['otherInformation' => OtherInformation :: find($id) ]]);
+        $pds->push([['references' => References :: find($id) ]]);
+        $pds->push([['pdsQuestions' => PdsQuestions :: find($id) ]]);
+        $pds->push([['pdsAdditionalInfo' => PdsAdditionalInfo :: find($id) ]]);
 
-        return $pds;
+        try{
+            return $pds;
+        }catch(Throwable $error){
+            return $error;
+        }
+        
     }
     public function createUser(Request $request)
     {
@@ -220,7 +230,7 @@ class PersonalInfoController extends Controller
             'signature' => $request->signature,
             'date_signed' => $request->date_signed,
         ]);
-        $personalInfo->save();
+        
 
         $familyBackground = new FamilyBackground([
             'user' => $request->user,
@@ -253,7 +263,7 @@ class PersonalInfoController extends Controller
             'mother_children'=>$request->mother_children,
         ]);
         
-        $familyBackground->save();
+        
 
         $educationalBackground = new EducationalBackground([
             'user' => $request->user,
@@ -266,7 +276,7 @@ class PersonalInfoController extends Controller
             'year_graduated'=>$request->year_graduated,
             'academic_honors_received'=>$request->academic_honors_received,
         ]);
-        $educationalBackground->save();
+        
 
         $civilServiceEligibility = new CivilServiceEligibility([
             'user' => $request->user,
@@ -278,7 +288,7 @@ class PersonalInfoController extends Controller
             'license_date_of_validity'=>$request->license_date_of_validity,
         ]);
 
-        $civilServiceEligibility->save();
+        
 
         $workExperience = new WorkExperience([
             'user' => $request->user,
@@ -291,7 +301,7 @@ class PersonalInfoController extends Controller
             'government_service'=>$request->government_service,
         ]);
 
-        $workExperience->save();
+        
 
         $voluntaryWorkInvolvement = new VoluntaryWorkInvolvement([
             'user' => $request->user,
@@ -302,7 +312,7 @@ class PersonalInfoController extends Controller
             'position'=>$request->position,
         ]);
 
-        $voluntaryWorkInvolvement->save();
+        
 
         $learningAndDevelopment = new LearningAndDevelopment([
             'user' => $request->user,
@@ -314,7 +324,7 @@ class PersonalInfoController extends Controller
             'conducted_by'=>$request->conducted_by,
         ]);
 
-        $learningAndDevelopment->save();
+        
 
         $otherInformation = new OtherInformation([
             'user' => $request->user,
@@ -323,7 +333,7 @@ class PersonalInfoController extends Controller
             'organization_membership'=>$request->organization_membership,
         ]);
 
-        $otherInformation->save();
+        
 
         $references = new References([
             'user' => $request->user,
@@ -340,7 +350,7 @@ class PersonalInfoController extends Controller
             'answer'=>$request->answer,
         ]);
 
-        $pdsQuestions->save();
+        
 
         $pdsAdditionalInfo = new PdsAdditionalInfo([
             'user' => $request->user,
@@ -355,8 +365,22 @@ class PersonalInfoController extends Controller
             'person_administering_oath'=>$request->person_administering_oath,
         ]);
 
-        $pdsAdditionalInfo->save();
 
-        return 'success';
+        try{
+            $personalInfo->save();
+            $familyBackground->save();
+            $educationalBackground->save();
+            $civilServiceEligibility->save();
+            $workExperience->save();
+            $voluntaryWorkInvolvement->save();
+            $learningAndDevelopment->save();
+            $otherInformation->save();
+            $pdsQuestions->save();
+            $pdsAdditionalInfo->save();
+            return "success";
+        }catch(Throwable $error){
+            return $error;
+        }
+  
     }
 }

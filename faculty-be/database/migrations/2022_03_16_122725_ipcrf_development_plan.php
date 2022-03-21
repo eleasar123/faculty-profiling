@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         //
-        Schema::create('ipcrf_development_plan', function (Blueprint $table){
+        Schema::create('ipcrf_development_plans', function (Blueprint $table){
             $table->increments('id');
             $table->string('user');
             $table->string('ratee');
@@ -28,6 +28,7 @@ return new class extends Migration
             $table->string('approving_authority');
             $table->timestamp('created_at') ->useCurrent();
             $table->timestamp('updated_at') -> nullable() -> useCurrentOnUpdate();
+            $table->softDeletesTz();
         });
     }
 

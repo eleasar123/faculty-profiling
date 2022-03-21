@@ -39,6 +39,7 @@ return new class extends Migration
             $table->rememberToken();
             $table->timestamp('created_at') ->useCurrent();
             $table->timestamp('updated_at') -> nullable() -> useCurrentOnUpdate();
+            $table->softDeletesTz();
         });
     }
 

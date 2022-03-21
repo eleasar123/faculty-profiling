@@ -27,6 +27,7 @@ return new class extends Migration
             $table->string('academic_honors_received');
             $table->timestamp('created_at') ->useCurrent();
             $table->timestamp('updated_at') -> nullable() -> useCurrentOnUpdate();
+            $table->softDeletesTz();
         });
     }
 
