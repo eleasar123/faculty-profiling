@@ -1,6 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PersonalInfoController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\MasterfileController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -16,9 +20,12 @@ use Illuminate\Support\Facades\Route;
     Route::get('/', function () {
         return view('welcome');
     });
-    Route::apiResource('user', App\Http\Controllers\UserController::class);
-    Route::apiResource('pds', App\Http\Controllers\PersonalInfoController::class);
+
+    // Route::apiResourgetce('showAge', MasterfileController::class,'showAgeRange');
+    Route::apiResource('/user', UserController::class);
+    Route::apiResource('pds', PersonalInfoController::class);
     Route::post('login', 'App\Http\Controllers\LoginController@index');
+    Route::get('/age', 'App\Http\Controllers\MasterfileController@age');
 
 
 
