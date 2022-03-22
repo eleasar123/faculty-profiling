@@ -21,11 +21,33 @@ use App\Http\Controllers\MasterfileController;
         return view('welcome');
     });
 
-    // Route::apiResourgetce('showAge', MasterfileController::class,'showAgeRange');
+
+    // MasterfileController
+    Route::get('showSubject', MasterfileController::class,'showSubject');
+    Route::get('showAge', MasterfileController::class,'showAgeRange');
+    Route::get('showEmployment', MasterfileController::class,'showEmploymentStatus');
+    Route::get('showSuffix', MasterfileController::class,'showSuffix');
+    Route::get('showGradeLevelTaught', MasterfileController::class,'showGradeLevelTaught');
+    Route::get('showRaterPosition', MasterfileController::class,'showRaterPosition');
+    Route::get('showApproverPosition', MasterfileController::class,'showApproverPosition');
+    Route::get('showRegion', MasterfileController::class,'showRegion');
+    Route::get('showSex', MasterfileController::class,'showSex');
+    Route::get('showDivision', MasterfileController::class,'showDivision');
+    Route::get('showSchoolSize', MasterfileController::class,'showSchoolSize');
+    Route::get('showCurricularClassification', MasterfileController::class,'showCurricularClassification');
+    Route::get('showAreaOfSpecialization', MasterfileController::class,'showAreaOfSpecialization');
+    Route::get('showSchoolType', MasterfileController::class,'showSchoolType');
+    Route::get('showYearsOfTraining', MasterfileController::class,'showYearsOfTraining');
+    Route::get('showRole', MasterfileController::class,'showRole');
+    Route::get('showLevelTaught', MasterfileController::class,'showLevelTaught');
+    Route::get('showSubjectsTaught', MasterfileController::class,'showSubjectsTaught');
+    Route::get('showHighestDegreeObtained', MasterfileController::class,'showHighestDegreeObtained');
+    Route::get('showPersonnelPosition', MasterfileController::class,'showPersonnelPosition');
+
     Route::apiResource('/user', UserController::class);
     Route::apiResource('pds', PersonalInfoController::class);
     Route::post('login', 'App\Http\Controllers\LoginController@index');
-    Route::get('/age', 'App\Http\Controllers\MasterfileController@age');
+
     Route::post('login', 'App\Http\Controllers\LoginController@verify');
 
     // Route::apiresource('user', App\Http\Controllers\UserController::class);
