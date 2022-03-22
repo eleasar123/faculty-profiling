@@ -4,16 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
 
 class AgeRange extends Model
 {
-    use HasFactory;
+    use HasApiTokens, HasFactory, Notifiable;
     
     protected $fillable = [
-        'id',
-        'age_range',
-        'created_at',
-        'updated_at',
-        'modified_by'
+        'age_range'
     ];
 }
