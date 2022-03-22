@@ -16,7 +16,7 @@ return new class extends Migration
         //
         Schema::create('personal_data_sheet_educational_backgrounds', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('user');
+            $table->string('user_id');
             $table->string('level');
             $table->string('name_of_school');
             $table->string('basic_education/course');

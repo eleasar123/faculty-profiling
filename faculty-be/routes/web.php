@@ -27,25 +27,37 @@ use App\Http\Controllers\MasterfileController;
     Route::post('login', 'App\Http\Controllers\LoginController@index');
     Route::get('/age', 'App\Http\Controllers\MasterfileController@age');
     Route::post('login', 'App\Http\Controllers\LoginController@verify');
+
     // Route::apiresource('user', App\Http\Controllers\UserController::class);
+    //routes for users
     Route::get('user/', 'App\Http\Controllers\UserController@index');
     Route::get('user/{id}', 'App\Http\Controllers\UserController@getUser');
     Route::post('user/create', 'App\Http\Controllers\UserController@createUser');
     Route::patch('user/edit/{id}', 'App\Http\Controllers\UserController@editUser');
     Route::delete('user/delete/{id}', 'App\Http\Controllers\UserController@deleteUser');
+
     // Route::apiResource('pds', App\Http\Controllers\PersonalInfoController::class);
+    //routes for pds
     Route::get('pds/', 'App\Http\Controllers\PersonalInfoController@index');
     Route::get('pds/{id}', 'App\Http\Controllers\PersonalInfoController@getPds');
     Route::post('pds/create', 'App\Http\Controllers\PersonalInfoController@createUser');
+
     // Route::apiResource('esat', App\Http\Controllers\EsatController::class);
+    //routes for esat
     Route::get('esat/', 'App\Http\Controllers\EsatController@index');
     Route::get('esat/{id}', 'App\Http\Controllers\EsatController@getEsat');
     Route::post('esat/create', 'App\Http\Controllers\EsatController@createEsat');
+
     // Route::apiResource('ipcrf', App\Http\Controllers\IpcrfController::class);
+    //routes for ipcrf
     Route::get('ipcrf/', 'App\Http\Controllers\EsatController@index');
     Route::get('ipcrf/{id}', 'App\Http\Controllers\EsatController@getIpcrf');
     Route::post('ipcrf/create', 'App\Http\Controllers\EsatController@createIpcrf');
-    Route::apiResource('masterfile', MasterfileController::class);
+
+    //Route::apiResource('masterfile', App\Http\Controllers\EsatController::class);
+    //routes for masterfile
+    Route::get('masterfile/subjectCot1', 'App\Http\Controllers\MasterfileController@showSubjectCot1');
+    
    
 
 

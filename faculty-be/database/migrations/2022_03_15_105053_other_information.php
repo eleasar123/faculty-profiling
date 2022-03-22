@@ -16,7 +16,7 @@ return new class extends Migration
         //
         Schema::create('other_information', function (Blueprint $table){
             $table->increments('id');
-            $table->string('user');
+            $table->string('user_id');
             $table->string('special_skills_and_hobbies');
             $table->string('non-academic_distinctions');
             $table->string('organization_membership');

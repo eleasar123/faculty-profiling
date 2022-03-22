@@ -16,7 +16,7 @@ return new class extends Migration
         //
         Schema::create('ipcrf_development_plans', function (Blueprint $table){
             $table->increments('id');
-            $table->string('user');
+            $table->string('user_id');
             $table->string('ratee');
             $table->string('competency_type');
             $table->string('rater');

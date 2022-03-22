@@ -8,7 +8,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-
+use App\Models\User;
 class IpcrfEncodingPart2 extends Model
 {
     use HasFactory, HasFactory, Notifiable;
@@ -26,4 +26,11 @@ class IpcrfEncodingPart2 extends Model
         'results_focus',
         'innovation',
     ];
+
+    public function user()
+    {
+        //return $this->belongsTo(User::class, 'foreign_key');
+        //return $this->belongsTo(User::class, 'foreign_key', 'owner_key'); 
+        return $this->belongsTo(User::class);
+    }
 }

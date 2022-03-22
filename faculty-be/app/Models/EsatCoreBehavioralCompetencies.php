@@ -8,7 +8,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-
+use App\Models\User;
 class EsatCoreBehavioralCompetencies extends Model
 {
     use HasFactory, HasFactory, Notifiable;
@@ -24,4 +24,9 @@ class EsatCoreBehavioralCompetencies extends Model
         'objectives_details',
         'check_status',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

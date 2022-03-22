@@ -9,7 +9,10 @@ use Laravel\Sanctum\NewAccessToken;
 class LoginController extends Controller
 {
     //
-     public function index(){}
+     public function index(){
+         return "hello world!";
+    }
+
     public function verify (Request $userInfo){
             // var_dump($userInfo);
             $userId = 0;

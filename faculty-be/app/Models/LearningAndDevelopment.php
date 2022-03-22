@@ -8,7 +8,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-
+use App\Models\User;
 class LearningAndDevelopment extends Model
 {
     use HasFactory, HasFactory, Notifiable;
@@ -27,4 +27,11 @@ class LearningAndDevelopment extends Model
         'type_of_ld',
         'conducted_by',
     ];
+
+    public function user()
+    {
+        //return $this->belongsTo(User::class, 'foreign_key');
+        //return $this->belongsTo(User::class, 'foreign_key', 'owner_key'); 
+        return $this->belongsTo(User::class);
+    }
 }

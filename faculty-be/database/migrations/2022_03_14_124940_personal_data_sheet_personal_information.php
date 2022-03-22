@@ -16,7 +16,7 @@ return new class extends Migration
         //
         Schema::create('personal_data_sheet_personal_information', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('user');
+            $table->string('user_id');
             $table->string('last_name');
             $table->string('first_name');
             $table->string('middle_name');

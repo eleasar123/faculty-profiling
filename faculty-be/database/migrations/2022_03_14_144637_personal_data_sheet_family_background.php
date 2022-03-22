@@ -16,7 +16,7 @@ return new class extends Migration
         //
         Schema::create('personal_data_sheet_family_backgrounds', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('user');
+            $table->string('user_id');
             $table->string('spouse_last_name');
             $table->string('spouse_first_name');
             $table->string('spouse_middle_name');
