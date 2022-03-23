@@ -8,7 +8,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-
+use App\Models\User;
 class PdsAdditionalInfo extends Model
 {
     use HasFactory, HasFactory, Notifiable;
@@ -30,4 +30,12 @@ class PdsAdditionalInfo extends Model
         'sworn_date',
         'person_administering_oath',
     ];
+
+    public function user()
+    {
+        //return $this->belongsTo(User::class, 'foreign_key');
+        //return $this->belongsTo(User::class, 'foreign_key', 'owner_key'); 
+        return $this->belongsTo(User::class);
+    }
+    
 }

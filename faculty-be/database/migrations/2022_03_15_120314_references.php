@@ -16,7 +16,7 @@ return new class extends Migration
         //
         Schema::create('references', function (Blueprint $table){
             $table->increments('id');
-            $table->string('user');
+            $table->string('user_id');
             $table->string('reference_name');
             $table->string('reference_address');
             $table->string('reference_tel_no');

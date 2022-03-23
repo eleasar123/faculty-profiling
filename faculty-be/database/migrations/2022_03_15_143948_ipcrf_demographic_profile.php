@@ -16,7 +16,7 @@ return new class extends Migration
         //
         Schema::create('ipcrf_demographic_profiles', function (Blueprint $table){
             $table->increments('id');
-            $table->string('user');
+            $table->string('user_id');
             $table->string('name_of_employee');
             $table->string('position');
             $table->string('employment_status');

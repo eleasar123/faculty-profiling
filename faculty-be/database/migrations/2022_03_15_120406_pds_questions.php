@@ -16,7 +16,7 @@ return new class extends Migration
         //
         Schema::create('pds_questions', function (Blueprint $table){
             $table->increments('id');
-            $table->string('user');
+            $table->string('user_id');
             $table->string('questions');
             $table->string('answer');
             $table->timestamp('created_at') ->useCurrent();

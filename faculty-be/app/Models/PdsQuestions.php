@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-
+use App\Models\User;
 class PdsQuestions extends Model
 {
     use HasFactory, HasFactory, Notifiable;
@@ -23,4 +23,11 @@ class PdsQuestions extends Model
         'questions',
         'answer',
     ];
+
+    public function user()
+    {
+        //return $this->belongsTo(User::class, 'foreign_key');
+        //return $this->belongsTo(User::class, 'foreign_key', 'owner_key'); 
+        return $this->belongsTo(User::class);
+    }
 }

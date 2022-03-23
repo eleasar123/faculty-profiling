@@ -16,7 +16,7 @@ return new class extends Migration
         //
         Schema::create('civil_service_eligibilities', function (Blueprint $table){
             $table->increments('id');
-            $table->string('user');
+            $table->string('user_id');
             $table->string('career_service');
             $table->string('rating');
             $table->string('date_of_examination');

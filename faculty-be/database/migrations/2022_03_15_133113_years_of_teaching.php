@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         //
-        Schema::create('years_of_training', function (Blueprint $table){
+        Schema::create('years_of_teaching', function (Blueprint $table){
             $table->increments('id');
             $table->string('year_range');
             $table->timestamp('created_at') ->useCurrent();
@@ -32,6 +32,6 @@ return new class extends Migration
     public function down()
     {
         //
-        Schema::dropIfExists('years_of_training');
+        Schema::dropIfExists('years_of_teaching');
     }
 };

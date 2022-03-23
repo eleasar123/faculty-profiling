@@ -16,7 +16,6 @@ class EsatController extends Controller
     {
         //another option is to use a loop
         $esat = collect();
-<<<<<<< HEAD
         $esat->push([['esatDemographicProfile' => EsatDemographicProfile::all()]]);
         $esat->push([['esatCoreBehavioralCompetencies' => EsatCoreBehavioralCompetencies::all()]]);
         $esat->push([['esatFunctionalObjectives' => EsatFunctionalObjectives::all()]]);
@@ -28,29 +27,6 @@ class EsatController extends Controller
         $esat->push([['esatDemographicProfile' => EsatDemographicProfile::all()]]);
         $esat->push([['esatCoreBehavioralCompetencies' => EsatCoreBehavioralCompetencies::all()]]);
         $esat->push([['esatFunctionalObjectives' => EsatFunctionalObjectives::all()]]);
-=======
-        $esat->push([['esatDemographicProfile' => EsatDemographicProfile :: all() ]]);
-        $esat->push([['esatCoreBehavioralCompetencies' => EsatCoreBehavioralCompetencies :: all() ]]);
-        $esat->push([['esatFunctionalObjectives' => EsatFunctionalObjectives :: all() ]]);
-        try{  
-            return $esat;
-        }catch(Throwable $error){
-            return $error;
-        }
-    }
-
-    public function getEsat($id){
-        $esat = collect();
-        $esat->push([['esatDemographicProfile' => EsatDemographicProfile :: find($id) ]]);
-        $esat->push([['esatCoreBehavioralCompetencies' => EsatCoreBehavioralCompetencies :: find($id) ]]);
-        $esat->push([['esatFunctionalObjectives' => EsatFunctionalObjectives :: find($id) ]]);
-
-        try{  
-            return $esat;
-        }catch(Throwable $error){
-            return $error;
-        }
->>>>>>> 9afc7a3e0ffddaddcf09978a8f99c5d46525b91c
     }
 
     public function createEsat(Request $request)
@@ -121,12 +97,7 @@ class EsatController extends Controller
             $esatDemographicProfile->save();
             $esatCoreBehavioralCompetencies->save();
             $esatFunctionalObjectives->save();
-<<<<<<< HEAD
         } catch (Throwable $error) {
-=======
-            return "success";
-        }catch(Throwable $error){
->>>>>>> 9afc7a3e0ffddaddcf09978a8f99c5d46525b91c
             return $error;
         }
     }

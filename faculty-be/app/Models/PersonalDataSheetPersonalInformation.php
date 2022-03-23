@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-
+use App\Models\User;
 class PersonalDataSheetPersonalInformation extends Model
 {
     use HasFactory, HasFactory, Notifiable;
@@ -56,5 +56,12 @@ class PersonalDataSheetPersonalInformation extends Model
         'date_signed',
         
     ];
+
+    public function user()
+    {
+        //return $this->belongsTo(User::class, 'foreign_key');
+        //return $this->belongsTo(User::class, 'foreign_key', 'owner_key'); 
+        return $this->belongsTo(User::class);
+    }
 
 }

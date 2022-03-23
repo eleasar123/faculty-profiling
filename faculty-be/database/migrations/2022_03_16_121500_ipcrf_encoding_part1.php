@@ -16,7 +16,7 @@ return new class extends Migration
         //
         Schema::create('ipcrf_encoding_part1s', function (Blueprint $table){
             $table->increments('id');
-            $table->string('user');
+            $table->string('user_id');
             $table->string('objective1');
             $table->string('objective2');
             $table->string('objective3');

@@ -10,6 +10,7 @@ class AreaOfSpecialization extends Model
     use HasFactory;
 
     protected $fillable = [
+        'user',
         'area_of_specialization',
         'modified_by'
     ];

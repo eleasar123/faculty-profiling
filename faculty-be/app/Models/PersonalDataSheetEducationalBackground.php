@@ -8,6 +8,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\User;
 class PersonalDataSheetEducationalBackground extends Model
 {
     use HasFactory, HasFactory, Notifiable;
@@ -28,4 +29,12 @@ class PersonalDataSheetEducationalBackground extends Model
         'year_graduated',
         'academic_honors_received',
     ];
+
+
+    public function user()
+    {
+        //return $this->belongsTo(User::class, 'foreign_key');
+        //return $this->belongsTo(User::class, 'foreign_key', 'owner_key'); 
+        return $this->belongsTo(User::class);
+    }
 }

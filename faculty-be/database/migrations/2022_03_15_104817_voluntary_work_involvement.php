@@ -16,7 +16,7 @@ return new class extends Migration
         //
         Schema::create('voluntary_work_involvements', function (Blueprint $table){
             $table->increments('id');
-            $table->string('user');
+            $table->string('user_id');
             $table->string('organization_name_and_address');
             $table->string('voluntary_inclusive_dates_from');
             $table->string('voluntary_inclusive_dates_to');

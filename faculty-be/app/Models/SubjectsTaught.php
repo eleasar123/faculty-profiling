@@ -10,6 +10,7 @@ class SubjectsTaught extends Model
     use HasFactory;
 
     protected $fillable = [
+        'user',
         'subjects_taught',
         'modified_by'
     ];

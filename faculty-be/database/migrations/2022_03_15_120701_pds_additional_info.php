@@ -16,7 +16,7 @@ return new class extends Migration
         //
         Schema::create('pds_additional_infos', function (Blueprint $table){
             $table->increments('id');
-            $table->string('user');
+            $table->string('user_id');
             $table->string('oath');
             $table->string('government_id');
             $table->string('id_no');

@@ -16,7 +16,7 @@ return new class extends Migration
         //
         Schema::create('learning_and_developments', function (Blueprint $table){
             $table->increments('id');
-            $table->string('user');
+            $table->string('user_id');
             $table->string('learning_and_development_interventions');
             $table->string('learning_inclusive_dates_from');
             $table->string('learning_inclusive_dates_to');
