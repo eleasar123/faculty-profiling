@@ -10,7 +10,6 @@ use Laravel\Sanctum\HasApiTokens;
 class AgeRange extends Model
 {
     use HasApiTokens, HasFactory, Notifiable;
-    
     protected $fillable = [
         'age_range'
     ];
