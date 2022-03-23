@@ -37,7 +37,7 @@ use App\Http\Controllers\MasterfileController;
     Route::get('showCurricularClassification', MasterfileController::class,'showCurricularClassification');
     Route::get('showAreaOfSpecialization', MasterfileController::class,'showAreaOfSpecialization');
     Route::get('showSchoolType', MasterfileController::class,'showSchoolType');
-    Route::get('showYearsOfTraining', MasterfileController::class,'showYearsOfTraining');
+    Route::get('showYearsOfTeaching', MasterfileController::class,'showYearsOfTeaching');
     Route::get('showRole', MasterfileController::class,'showRole');
     Route::get('showLevelTaught', MasterfileController::class,'showLevelTaught');
     Route::get('showSubjectsTaught', MasterfileController::class,'showSubjectsTaught');
