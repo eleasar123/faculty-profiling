@@ -27,7 +27,6 @@ use App\Models\YearsOfTraining;
 
 class MasterfileController extends Controller
 {
-<<<<<<< HEAD
     public function index()
     {
         // return 'Success';
@@ -36,14 +35,6 @@ class MasterfileController extends Controller
 
     public function showSubjectCot1()
     
-=======
-
-    public function index()
-    {
-        return 'Success';
-    }
-    public function showSubject()
->>>>>>> 6e1972665ad4032c181b8c3f700e36290c8de4b7
     {
         return SubjectCot1::all();
     }
@@ -51,10 +42,7 @@ class MasterfileController extends Controller
     public function showAgeRange()
     {
         return AgeRange::all();
-<<<<<<< HEAD
         // return User::all();
-=======
->>>>>>> 6e1972665ad4032c181b8c3f700e36290c8de4b7
 
     }
 

@@ -23,26 +23,27 @@ use App\Http\Controllers\MasterfileController;
 
 
     // MasterfileController
-    Route::get('showSubject', MasterfileController::class,'showSubject');
-    Route::get('showAge', MasterfileController::class,'showAgeRange');
-    Route::get('showEmployment', MasterfileController::class,'showEmploymentStatus');
-    Route::get('showSuffix', MasterfileController::class,'showSuffix');
-    Route::get('showGradeLevelTaught', MasterfileController::class,'showGradeLevelTaught');
-    Route::get('showRaterPosition', MasterfileController::class,'showRaterPosition');
-    Route::get('showApproverPosition', MasterfileController::class,'showApproverPosition');
-    Route::get('showRegion', MasterfileController::class,'showRegion');
-    Route::get('showSex', MasterfileController::class,'showSex');
-    Route::get('showDivision', MasterfileController::class,'showDivision');
-    Route::get('showSchoolSize', MasterfileController::class,'showSchoolSize');
-    Route::get('showCurricularClassification', MasterfileController::class,'showCurricularClassification');
-    Route::get('showAreaOfSpecialization', MasterfileController::class,'showAreaOfSpecialization');
-    Route::get('showSchoolType', MasterfileController::class,'showSchoolType');
-    Route::get('showYearsOfTraining', MasterfileController::class,'showYearsOfTraining');
-    Route::get('showRole', MasterfileController::class,'showRole');
-    Route::get('showLevelTaught', MasterfileController::class,'showLevelTaught');
-    Route::get('showSubjectsTaught', MasterfileController::class,'showSubjectsTaught');
-    Route::get('showHighestDegreeObtained', MasterfileController::class,'showHighestDegreeObtained');
-    Route::get('showPersonnelPosition', MasterfileController::class,'showPersonnelPosition');
+    //routes for masterfile
+    Route::get('masterfile/showSubject', 'MasterfileController@showSubjectCot1');
+    Route::get('showAge', 'MasterfileController@showAgeRange');
+    Route::get('showEmployment', 'MasterfileController@showEmploymentStatus');
+    Route::get('showSuffix', 'MasterfileController@showSuffix');
+    Route::get('showGradeLevelTaught', 'MasterfileController@showGradeLevelTaught');
+    Route::get('showRaterPosition', 'MasterfileController@showRaterPosition');
+    Route::get('showApproverPosition', 'MasterfileController@showApproverPosition');
+    Route::get('showRegion', 'MasterfileController@showRegion');
+    Route::get('showSex', 'MasterfileController@showSex');
+    Route::get('showDivision', 'MasterfileController@showDivision');
+    Route::get('showSchoolSize', 'MasterfileController@showSchoolSize');
+    Route::get('showCurricularClassification', 'MasterfileController@showCurricularClassification');
+    Route::get('showAreaOfSpecialization', 'MasterfileController@showAreaOfSpecialization');
+    Route::get('showSchoolType', 'MasterfileController@showSchoolType');
+    Route::get('showYearsOfTraining', 'MasterfileController@showYearsOfTraining');
+    Route::get('showRole', 'MasterfileController@showRole');
+    Route::get('showLevelTaught', 'MasterfileController@showLevelTaught');
+    Route::get('showSubjectsTaught', 'MasterfileController@showSubjectsTaught');
+    Route::get('showHighestDegreeObtained', 'MasterfileController@showHighestDegreeObtained');
+    Route::get('showPersonnelPosition', 'MasterfileController@showPersonnelPosition');
 
     Route::apiResource('/user', UserController::class);
     Route::apiResource('pds', PersonalInfoController::class);
@@ -77,8 +78,7 @@ use App\Http\Controllers\MasterfileController;
     Route::post('ipcrf/create', 'App\Http\Controllers\EsatController@createIpcrf');
 
     //Route::apiResource('masterfile', App\Http\Controllers\EsatController::class);
-    //routes for masterfile
-    Route::get('masterfile/subjectCot1', 'App\Http\Controllers\MasterfileController@showSubjectCot1');
+   
     
    
 
