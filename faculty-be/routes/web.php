@@ -47,7 +47,7 @@ use App\Http\Controllers\MasterfileController;
 
     Route::apiResource('/user', UserController::class);
     Route::apiResource('pds', PersonalInfoController::class);
-    Route::post('login', 'App\Http\Controllers\LoginController@index');
+    //Route::post('login', 'App\Http\Controllers\LoginController@index');
 
     Route::post('login', 'App\Http\Controllers\LoginController@verify');
 
