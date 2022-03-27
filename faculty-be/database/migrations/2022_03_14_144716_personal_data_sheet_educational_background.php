@@ -19,10 +19,10 @@ return new class extends Migration
             $table->string('user_id');
             $table->string('level');
             $table->string('name_of_school');
-            $table->string('basic_education/course');
+            $table->string('basic_education_course');
             $table->string('period_of_attendance_from');
             $table->string('period_of_attendance_to');
-            $table->string('highest_level/units_earned');
+            $table->string('highest_level_units_earned');
             $table->string('year_graduated');
             $table->string('academic_honors_received');
             $table->timestamp('created_at') ->useCurrent();
