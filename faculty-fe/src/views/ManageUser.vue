@@ -175,7 +175,8 @@
         </v-dialog>
       </v-toolbar>
     </template>
-    <template v-slot:item.actions="{ item }">
+    <!-- item.actions -->
+    <template v-slot:item="{ item }">
       <v-icon
         small
         class="mr-2"
