@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-container>
-      <v-layout row wrap>
+      <v-layout row wrap class="justify-center" >
         <!-- This is for the faculty count display card -->
         <v-flex sm6 xs12 md6 lg3>
           <v-card class="ma-3">
