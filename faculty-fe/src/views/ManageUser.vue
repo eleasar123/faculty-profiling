@@ -67,7 +67,7 @@
               <v-btn
                 color="primary"
                 dark
-                class="mb-2 mr-5"
+                class="mb-2 mr-5 "
                 v-bind="attrs"
                 v-on="on"
               >
@@ -76,20 +76,20 @@
             </template>
 
             <v-card>
-              <v-card-title>
-                <span class="text-h5">{{ formTitle }}</span>
+              <v-card-title > 
+                <span class="text-h5" align="center">{{ formTitle }}</span>
               </v-card-title>
 
          <!-- This is for the Edit user data field -->
               <v-card-text>
                 <v-container>
-                  <v-row>
-                    <v-col cols="12" sm="6">
+                  <v-row >
+                    <v-col cols="12" sm="6" >
                       <v-text-field
                         v-model="editedItem.name"
                         label="Full Name"
                         variant="outlined"
-                        readonly
+                        
                       ></v-text-field>
                     </v-col>
                     <v-col cols="12" sm="6">
@@ -97,7 +97,7 @@
                         v-model="editedItem.email"
                         label="Email Address"
                         variant="outlined"
-                        readonly
+                        
                       ></v-text-field> </v-col
                     ><br />
 
@@ -106,7 +106,7 @@
                         v-model="editedItem.password"
                         label="Password"
                         variant="outlined"
-                        readonly
+               
                       ></v-text-field>
                     </v-col>
                   </v-row>
