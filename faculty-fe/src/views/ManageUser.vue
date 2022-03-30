@@ -142,7 +142,7 @@
         </v-toolbar> </template
       >. 3
       <!-- item.actions -->
-      <template v-slot:item="{ item }">
+      <template v-slot:item.actions="{ item }">
         <v-icon small class="mr-2" @click="editItem(item)"> mdi-pencil </v-icon>
         <v-icon small @click="deleteItem(item)"> mdi-delete </v-icon>
       </template>
@@ -198,21 +198,25 @@ export default {
       this.desserts = [
         {
           name: "Leslie Marie Reyes",
+
           email: "lesh@gmail.com",
           password: 12345,
         },
         {
           name: "Eleasar Patot",
+
           email: "elsa@gmail.com",
           password: 12345,
         },
         {
           name: "Jolly Borbon",
+
           email: "jolly@gmail.com",
           password: 12345,
         },
         {
           name: "Dexter Tampioc",
+
           email: "dexter@gmail.com",
           password: 12345,
         },
