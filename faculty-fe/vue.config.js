@@ -6,6 +6,7 @@ module.exports = {
       errors: true
     }
   },
+
   "transpileDependencies": [
     "vuetify"
   ]

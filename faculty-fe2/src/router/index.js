@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import PersonalData from '../views/PersonalData.vue'
-import ManageUser from '../views/Login/Login.vue'
+import ManageUser from '../views/ManageUser.vue'
 import ManageIpcrf from '../views/ManageIpcrf.vue'
-
+import Login from '../views/Login/Login.vue'
 Vue.use(VueRouter)
 
 const routes = [{
@@ -24,7 +24,12 @@ const routes = [{
         path: '/manageIpcrf',
         name: 'manageIpcrf',
         component: ManageIpcrf
-    }
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: Login
+  }
 ]
 
 const router = new VueRouter({
