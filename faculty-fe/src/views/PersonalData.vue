@@ -13,12 +13,12 @@
  
             <v-tabs-slider></v-tabs-slider>
 
-            <v-tab href="#subscribe">
+            <v-tab href="#c1">
                 C1
                 <!-- <v-icon>mdi-phone</v-icon> -->
             </v-tab>
 
-            <v-tab href="#contact">
+            <v-tab href="#c2">
                 C2
           
             </v-tab>
@@ -35,12 +35,12 @@
         </v-tabs>
 
         <v-tabs-items v-model="tab">
-            <v-tab-item :key="1" value="subscribe">
+            <v-tab-item :key="1" value="c1">
                 <v-card flat>
                     <v-card-text>c1</v-card-text>
                 </v-card>
             </v-tab-item>
-            <v-tab-item :key="2" value="contact">
+            <v-tab-item :key="2" value="c2">
                 <v-card flat>
                     <v-card-text>c2</v-card-text>
                 </v-card>

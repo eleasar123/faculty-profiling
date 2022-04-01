@@ -251,28 +251,24 @@
         this.desserts = [
           {
             name: 'Leslie Marie Reyes',
-           
             email: 'lesh@gmail.com',
             password: 12345,
             
           },
           {
             name: 'Eleasar Patot',
-         
             email: 'elsa@gmail.com',
             password: 12345,
          
           },
           {
             name: 'Jolly Borbon',
-          
             email: 'jolly@gmail.com',
             password: 12345,
           
           },
           {
             name: 'Dexter Tampioc',
-           
             email: 'dexter@gmail.com',
             password: 12345,
         

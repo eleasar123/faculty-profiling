@@ -8,7 +8,7 @@
         md6
         lg3
       >
-       <v-card class="ma-3">
+       <v-card class="ma-3"  >
           <v-list-item  >
             <v-list-item-avatar
               tile
@@ -34,7 +34,7 @@
         md6
         lg3
       >
-       <v-card class="ma-3">
+       <v-card class="ma-3 justify-center">
           <v-list-item  >
             <v-list-item-avatar
               tile
@@ -251,28 +251,24 @@
         this.desserts = [
           {
             name: 'Leslie Marie Reyes',
-           
             email: 'lesh@gmail.com',
             password: 12345,
             
           },
           {
             name: 'Eleasar Patot',
-         
             email: 'elsa@gmail.com',
             password: 12345,
          
           },
           {
             name: 'Jolly Borbon',
-          
             email: 'jolly@gmail.com',
             password: 12345,
           
           },
           {
             name: 'Dexter Tampioc',
-           
             email: 'dexter@gmail.com',
             password: 12345,
         

@@ -4,6 +4,7 @@ import PersonalData from '../views/PersonalData.vue'
 import ManageUser from '../views/ManageUser.vue'
 import ManageIpcrf from '../views/ManageIpcrf.vue'
 import Login from '../views/Login/Login.vue'
+import PersonalDataSheet from '../views/Profile/PersonalDataSheet.vue'
 Vue.use(VueRouter)
 
 const routes = [{
@@ -29,7 +30,12 @@ const routes = [{
       path: '/login',
       name: 'login',
       component: Login
-  }
+  },
+  {
+    path: '/personalDataSheet',
+    name: 'PersonalDataSheet',
+    component: PersonalDataSheet
+  },
 ]
 
 const router = new VueRouter({

@@ -19,7 +19,7 @@
                   <v-icon dark large>store</v-icon>
             </v-sheet>
             </v-list-item-avatar>
-            <v-list-item-content>
+            <v-list-item-content >
               <div class="overline text-right">Faculty User</div>
               <v-list-item-title class="headline mb-1 text-center" >2</v-list-item-title>
               <div><v-divider></v-divider></div>
