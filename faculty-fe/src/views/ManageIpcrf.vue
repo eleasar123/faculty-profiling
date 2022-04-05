@@ -438,12 +438,12 @@
       <!-- Part 2 Content -->
       <v-tab>Part 2</v-tab>
       <v-tab-item>
-        <v-container style="border">
-          
-        </v-container>
+        <v-card class="pa-2 d-inline-flex pa-2" outlined tile>
+          <div>I'm an inline flexbox container!</div>
+        </v-card>
       </v-tab-item>
       <v-tab>Part 3</v-tab>
-        <v-tab-item>
+      <v-tab-item>
         <v-container>
           <v-row>
             <v-col cols="12" sm="6" md="3">
@@ -465,7 +465,7 @@
             <b> PART IV: DEVELOPMENT PLANS</b>
           </h5>
         </v-card-title>
-        <v-card class="mx-auto" max-width="800">
+        <v-card class="mx-auto" max-width="900">
           <v-card-text>
             <div class="text--primary">
               <b> NOTE:</b><br />
@@ -476,11 +476,61 @@
               agreements on the Performance Monitoring and Coaching Form
               <br />and Mid-year Review Form; and iii) Phase IV: Performance
               Rewarding and Development Planning, based on the actual results of
-              IPCRF.<br />The Ratee can modify the cell (i.e., add rows) to
-              reflect his/her development needs and strengths.
+              IPCRF.<br />
+              <br />The Ratee can modify the cell (i.e., add rows) to reflect
+              his/her development needs and strengths.
             </div>
           </v-card-text>
         </v-card>
+        <br />
+
+        <v-card class="d-flex align-stretch" flat height="100" tile>
+          <v-card class="pa-2" outlined tile width="25vh"> Strengths </v-card>
+          <v-card class="pa-2" outlined tile width="26vh">
+            Development Needs
+          </v-card>
+          <v-card class="pa-2 text-center" outlined tile width="55vh">
+            Action Plan <br />
+            (Recommended Developmental Intervention) <br />
+            <v-card class="d-inline-flex pa-2" outlined tile>
+              Learning Objectives
+            </v-card>
+            <v-card class="d-inline-flex pa-2" outlined tile>
+              Intervention
+            </v-card>
+          </v-card>
+          <v-card class="pa-2" outlined tile width="25vh"> Timeline </v-card>
+          <v-card class="pa-2" outlined tile width="25vh">
+            Resources Needed
+          </v-card>
+          <br /><br /><br />
+        </v-card>
+        <div class="d-flex flex-column mb-6">
+          <v-card class="pa-2" color="grey lighten-2" outlined tile>
+            A. Functional Competencies
+          </v-card>
+
+          <v-card class="d-flex align-stretch" flat height="100" tile>
+            <v-card class="pa-2" outlined tile width="25vh"> </v-card>
+            <v-card class="pa-2" outlined tile width="26vh"> </v-card>
+            <v-card class="pa-2" outlined tile width="55vh"> </v-card>
+            <v-card class="pa-2" outlined tile width="25vh"> </v-card>
+            <v-card class="pa-2" outlined tile width="25vh"> </v-card>
+          </v-card>
+            <v-card class="pa-2" color="grey lighten-2" outlined tile>
+            A. Functional Competencies
+          </v-card>
+
+          <v-card class="d-flex align-stretch mb-6" flat height="100" tile>
+            <v-card class="pa-2" outlined tile width="25vh"> </v-card>
+            <v-card class="pa-2" outlined tile width="26vh"> </v-card>
+            <v-card class="pa-2" outlined tile width="55vh"> </v-card>
+            <v-card class="pa-2" outlined tile width="25vh"> </v-card>
+            <v-card class="pa-2" outlined tile width="25vh"> </v-card>
+          </v-card>
+          
+        </div>
+        
       </v-tab-item>
     </v-tabs>
   </v-card>
