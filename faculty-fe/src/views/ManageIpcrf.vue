@@ -510,27 +510,145 @@
             A. Functional Competencies
           </v-card>
 
-          <v-card class="d-flex align-stretch" flat height="100" tile>
-            <v-card class="pa-2" outlined tile width="25vh"> </v-card>
-            <v-card class="pa-2" outlined tile width="26vh"> </v-card>
-            <v-card class="pa-2" outlined tile width="55vh"> </v-card>
-            <v-card class="pa-2" outlined tile width="25vh"> </v-card>
-            <v-card class="pa-2" outlined tile width="25vh"> </v-card>
+          <v-card class="d-flex align-stretch" flat tile>
+            <v-card class="pa-2" outlined tile width="25vh" height="200">
+              <v-textarea
+                autocomplete="email"
+                solo
+                flat
+                width="25vh"
+                height="200"
+                tile
+              ></v-textarea>
+            </v-card>
+            <v-card class="pa-2" outlined tile width="26vh" height="200">
+              <v-textarea
+                autocomplete="email"
+                solo
+                flat
+                width="26vh"
+                height="200"
+                tile
+              ></v-textarea>
+            </v-card>
+            <v-card class="pa-2" outlined tile width="56vh" height="200">
+              <v-textarea
+                autocomplete="email"
+                solo
+                flat
+                width="25vh"
+                height="200"
+                tile
+              ></v-textarea>
+            </v-card>
+            <v-card class="pa-2" outlined tile width="25vh" height="200">
+              <v-textarea
+                autocomplete="email"
+                solo
+                flat
+                width="25vh"
+                height="200"
+                tile
+              ></v-textarea>
+            </v-card>
+            <v-card class="pa-2" outlined tile width="25vh" height="200">
+              <v-textarea
+                autocomplete="email"
+                solo
+                flat
+                width="25vh"
+                height="205"
+                tile
+              ></v-textarea>
+            </v-card>
           </v-card>
-            <v-card class="pa-2" color="grey lighten-2" outlined tile>
-            A. Functional Competencies
+          <v-card class="pa-2" color="grey lighten-2" outlined tile>
+            B. Core Behavioral Competencies
           </v-card>
 
-          <v-card class="d-flex align-stretch mb-6" flat height="100" tile>
-            <v-card class="pa-2" outlined tile width="25vh"> </v-card>
-            <v-card class="pa-2" outlined tile width="26vh"> </v-card>
-            <v-card class="pa-2" outlined tile width="55vh"> </v-card>
-            <v-card class="pa-2" outlined tile width="25vh"> </v-card>
-            <v-card class="pa-2" outlined tile width="25vh"> </v-card>
+          <v-card class="d-flex align-stretch" flat tile>
+            <v-card class="pa-2" outlined tile width="25vh" height="200">
+              <v-textarea
+                autocomplete="email"
+                solo
+                flat
+                width="25vh"
+                height="200"
+                tile
+              ></v-textarea>
+            </v-card>
+            <v-card class="pa-2" outlined tile width="26vh" height="200">
+              <v-textarea
+                autocomplete="email"
+                solo
+                flat
+                width="26vh"
+                height="200"
+                tile
+              ></v-textarea>
+            </v-card>
+            <v-card class="pa-2" outlined tile width="56vh" height="200">
+              <v-textarea
+                autocomplete="email"
+                solo
+                flat
+                width="25vh"
+                height="200"
+                tile
+              ></v-textarea>
+            </v-card>
+
+            <v-card class="pa-2" outlined tile width="25vh" height="200">
+              <v-textarea
+                autocomplete="email"
+                solo
+                flat
+                width="25vh"
+                height="200"
+                tile
+              ></v-textarea>
+            </v-card>
+            <v-card class="pa-2" outlined tile width="25vh" height="200">
+              <v-textarea
+                autocomplete="email"
+                solo
+                flat
+                width="25vh"
+                height="205"
+                tile
+              ></v-textarea>
+            </v-card>
           </v-card>
-          
+          <v-card class="pa-2" outlined tile>
+            <v-textarea
+              autocomplete="email"
+              value="Feedback:"
+              solo
+              flat
+              height="200"
+              tile
+            ></v-textarea>
+          </v-card>
+          <div class="pa-10 ml-9">
+            ________________________________________
+            ________________________________________
+            ________________________________________
+          </div>
+          <div class=" ml-9 ">       </div>
         </div>
-        
+        <v-card class="mx-auto" max-width="800">
+          <v-card-text>
+            <div class="text--primary">
+              <b> NOTE:</b><br />
+              When all Parts of the IPCRF are accomplished, the Ratee must
+              submit the file copy of his or her IPCRF electronic form to the
+              Department Head or School Head for the school-wide consolidation.
+              He or she must print all the pages of this form and submit to the
+              Personnel Division of the school to be attached to his or her 201
+              personnel file.
+            </div>
+          </v-card-text> </v-card
+        ><br />
       </v-tab-item>
     </v-tabs>
   </v-card>
