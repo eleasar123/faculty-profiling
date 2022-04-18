@@ -437,21 +437,152 @@
       </v-tab-item>
       <!-- Part 2 Content -->
       <v-tab>Part 2</v-tab>
+
       <v-tab-item>
-        <v-card class="pa-2 d-inline-flex pa-2" outlined tile>
-          <div>I'm an inline flexbox container!</div>
-        </v-card>
+        <div id="app">
+          <v-app>
+            <v-container class="grey lighten-5">
+              <v-card
+                class="pa-2 text-center"
+                color="grey lighten-2"
+                outlined
+                tile
+              >
+                PART II: COMPETENCIES
+              </v-card>
+              <v-card class="pa-2" outlined tile>
+               <h5> Instructions: Please indicate the number of competency
+                indicators that you demonstrated during the performance cycle.</h5>
+              </v-card>
+              <v-card class="pa-2" outlined tile>
+               <h5> <b> CORE BEHAVIORAL COMPETENCIES</b></h5>
+              </v-card>
+              <v-row no-gutters>
+                <v-col
+                  v-for="n in 4"
+                  :key="n"
+                  :cols="n === 1 || 3 ? 3 : undefined"
+                  class=""
+                >
+                  <v-card v-if="n === 1" class="pa-2" outlined tile>
+                    <h5>
+                      Self-Management <br />
+                      1. Sets personal goals and directions, needs and
+                      development.<br />
+                      2. Undertakes personal actions and behavior that are clear
+                      and purposive and takes into account personal goals and
+                      values congruent to that of the organization.<br />
+                      3. Displays emotional maturity and enthusiasm for and is
+                      challenged by higher goals.<br />
+                      4. Prioritizes work tasks and schedules (through Gantt
+                      chants, checklists, etc.) to achieve goals.<br />
+                      5. Sets high quality, challenging, realistic goals for
+                      self and others.<br />
+                    </h5>
+                  </v-card>
+                  <v-card v-else-if="n === 2" class="pa-2 text-center" height="200" outlined tile label="0">
+                  0
+                  </v-card>
+                  <v-card
+                    v-else-if="n === 3"
+                    class="pa-2"
+                    outlined
+                    tile
+                   
+                  > <h5>   Teamwork <br>
+1. Willingly does his/her share of responsibility. <br>
+2. Promotes collaboration and removes barrier to teamwork and goal accomplishment across the organization. <br>
+3. Applies negotiation principles in arriving at win-win agreements. <br>
+4. Drives consensus and team ownership of decisions. <br>
+5. Works constructively and collaboratively with others and across organizations to accomplish organization goals and objectives.</h5>
+                
+                  </v-card>
+                  <v-card v-else-if="n === 4" class="pa-2 text-center" height="200" outlined tile label="0">
+                  0
+                  </v-card>
+                </v-col>
+              </v-row>
+            </v-container>
+          </v-app>
+        </div>
       </v-tab-item>
+      <!-- <v-tab-item>
+        <div id="app">
+          <v-app id="inspire">
+            <v-container class="green lighten-2">
+              <v-row class="mb-2" no-gutters>
+                <v-col v-for="n in 7" :key="n">
+                  <v-card v-if="n == 1" class="pa-2" tile outlined>
+                    col
+                  </v-card>
+                  <v-card v-else-if="n == 2" class="pa-2" tile outlined>
+                    hello
+                  </v-card>
+                  <v-card v-if="n == 3" class="pa-2" tile outlined> hi </v-card>
+                  <v-card v-if="n == 4" class="pa-2" tile outlined>
+                    ram
+                  </v-card>
+                  <v-card v-else-if="n == 5" class="pa-2" tile outlined>
+                    hello
+                  </v-card>
+                  <v-card v-if="n == 6" class="pa-2" tile outlined> hi </v-card>
+                  <v-card v-if="n == 7" class="pa-2" tile outlined>
+                    ram
+                  </v-card>
+                </v-col>
+              </v-row>
+            </v-container>
+          </v-app>
+        </div>
+      </v-tab-item> -->
       <v-tab>Part 3</v-tab>
+
       <v-tab-item>
-        <v-container>
-          <v-row>
-            <v-col cols="12" sm="6" md="3">
-              <v-text-field label="Solo" solo></v-text-field>
-            </v-col>
-          </v-row>
-        </v-container>
+        <div id="app">
+          <v-app id="inspire">
+            <v-container class="grey lighten-5">
+              <v-row no-gutters>
+                <v-col
+                  v-for="n in 5"
+                  :key="n"
+                  :cols="n === 3 ? 6 : undefined"
+                  class="text-center"
+                >
+                  <v-card v-if="n === 1" class="pa-8" outlined tile>
+                    Strengths
+                  </v-card>
+                  <v-card v-else-if="n === 2" class="pa-2" outlined tile
+                    ><br />
+                    Development Needs
+                  </v-card>
+                  <v-card
+                    v-else-if="n === 3"
+                    class="pa-2 text-center"
+                    outlined
+                    tile
+                  >
+                    Action Plan <br />
+                    (Recommended Developmental Intervention) <br />
+                    <v-card class="d-inline pa-2" outlined tile>
+                      Learning Objectives
+                    </v-card>
+                    <v-card class="d-inline pa-2" outlined tile>
+                      Intervention
+                    </v-card>
+                  </v-card>
+                  <v-card v-else-if="n === 4" class="pa-8" outlined tile>
+                    Timeline
+                  </v-card>
+                  <v-card v-else-if="n === 5" class="pa-5" outlined tile>
+                    Resources Needed
+                  </v-card>
+                </v-col>
+              </v-row>
+            </v-container>
+          </v-app>
+        </div>
       </v-tab-item>
+      <!-- Part 4 -->
       <v-tab>Part 4</v-tab>
       <v-tab-item>
         <v-card-title
@@ -484,157 +615,257 @@
         </v-card>
         <br />
 
-        <v-card class="d-flex align-stretch" flat height="100" tile>
-          <v-card class="pa-2" outlined tile width="25vh"> Strengths </v-card>
-          <v-card class="pa-2" outlined tile width="26vh">
-            Development Needs
-          </v-card>
-          <v-card class="pa-2 text-center" outlined tile width="55vh">
-            Action Plan <br />
-            (Recommended Developmental Intervention) <br />
-            <v-card class="d-inline-flex pa-2" outlined tile>
-              Learning Objectives
+        <v-row no-gutters>
+          <v-col
+            v-for="n in 5"
+            :key="n"
+            :cols="n === 3 ? 6 : undefined"
+            class="text-center"
+            outlined
+            tile
+          >
+            <v-card v-if="n === 1" class="pa-8" outlined tile>
+              Strengths
             </v-card>
-            <v-card class="d-inline-flex pa-2" outlined tile>
-              Intervention
+            <v-card v-else-if="n === 2" class="pa-2" outlined tile
+              ><br />
+              Development Needs
             </v-card>
-          </v-card>
-          <v-card class="pa-2" outlined tile width="25vh"> Timeline </v-card>
-          <v-card class="pa-2" outlined tile width="25vh">
-            Resources Needed
-          </v-card>
-          <br /><br /><br />
-        </v-card>
+            <v-card v-else-if="n === 3" class="pa-2 text-center" outlined tile>
+              Action Plan <br />
+              (Recommended Developmental Intervention) <br />
+              <v-card class="d-inline pa-2" outlined tile>
+                Learning Objectives
+              </v-card>
+              <v-card class="d-inline pa-2" outlined tile>
+                Intervention
+              </v-card>
+            </v-card>
+            <v-card v-else-if="n === 4" class="pa-8" outlined tile>
+              Timeline
+            </v-card>
+            <v-card v-else-if="n === 5" class="pa-5" outlined tile>
+              Resources Needed
+            </v-card>
+          </v-col>
+        </v-row>
+
         <div class="d-flex flex-column mb-6">
           <v-card class="pa-2" color="grey lighten-2" outlined tile>
             A. Functional Competencies
           </v-card>
+          <v-row no-gutters>
+            <v-col
+              v-for="n in 5"
+              :key="n"
+              :cols="n === 3 ? 6 : undefined"
+              class="text-center"
+              outlined
+              tile
+            >
+              <v-card v-if="n === 1" outlined tile>
+                <v-container>
+                  <v-row>
+                    <v-col>
+                      <v-textarea
+                        auto-grow
+                        flat
+                        solo
+                        class="ma-0 pa-0"
+                        hide-details
+                        row-height="15"
+                      ></v-textarea>
+                    </v-col>
+                  </v-row>
+                </v-container>
+              </v-card>
+              <v-card v-else-if="n === 2" outlined tile
+                ><v-container>
+                  <v-row>
+                    <v-col>
+                      <v-textarea
+                        auto-grow
+                        flat
+                        solo
+                        class="ma-0 pa-0"
+                        hide-details
+                        row-height="15"
+                      ></v-textarea>
+                    </v-col>
+                  </v-row>
+                </v-container>
+              </v-card>
+              <v-card v-else-if="n === 3" class="text-center" outlined tile>
+                <v-container>
+                  <v-row>
+                    <v-col>
+                      <v-textarea
+                        auto-grow
+                        flat
+                        solo
+                        class="ma-0 pa-0"
+                        hide-details
+                        row-height="15"
+                      ></v-textarea>
+                    </v-col>
+                  </v-row>
+                </v-container>
+              </v-card>
+              <v-card v-else-if="n === 4" outlined tile>
+                <v-container>
+                  <v-row>
+                    <v-col>
+                      <v-textarea
+                        auto-grow
+                        flat
+                        solo
+                        class="ma-0 pa-0"
+                        hide-details
+                        row-height="15"
+                      ></v-textarea>
+                    </v-col>
+                  </v-row>
+                </v-container>
+              </v-card>
+              <v-card v-else-if="n === 5" outlined tile>
+                <v-container>
+                  <v-row>
+                    <v-col>
+                      <v-textarea
+                        auto-grow
+                        flat
+                        solo
+                        class="ma-0 pa-0"
+                        hide-details
+                        row-height="15"
+                      ></v-textarea>
+                    </v-col>
+                  </v-row>
+                </v-container>
+              </v-card>
+            </v-col>
+          </v-row>
 
-          <v-card class="d-flex align-stretch" flat tile>
-            <v-card class="pa-2" outlined tile width="25vh" height="200">
-              <v-textarea
-                autocomplete="email"
-                solo
-                flat
-                width="25vh"
-                height="200"
-                tile
-              ></v-textarea>
-            </v-card>
-            <v-card class="pa-2" outlined tile width="26vh" height="200">
-              <v-textarea
-                autocomplete="email"
-                solo
-                flat
-                width="26vh"
-                height="200"
-                tile
-              ></v-textarea>
-            </v-card>
-            <v-card class="pa-2" outlined tile width="56vh" height="200">
-              <v-textarea
-                autocomplete="email"
-                solo
-                flat
-                width="25vh"
-                height="200"
-                tile
-              ></v-textarea>
-            </v-card>
-            <v-card class="pa-2" outlined tile width="25vh" height="200">
-              <v-textarea
-                autocomplete="email"
-                solo
-                flat
-                width="25vh"
-                height="200"
-                tile
-              ></v-textarea>
-            </v-card>
-            <v-card class="pa-2" outlined tile width="25vh" height="200">
-              <v-textarea
-                autocomplete="email"
-                solo
-                flat
-                width="25vh"
-                height="205"
-                tile
-              ></v-textarea>
-            </v-card>
-          </v-card>
+          <!-- Core Behavioral Text Area -->
           <v-card class="pa-2" color="grey lighten-2" outlined tile>
             B. Core Behavioral Competencies
           </v-card>
 
-          <v-card class="d-flex align-stretch" flat tile>
-            <v-card class="pa-2" outlined tile width="25vh" height="200">
-              <v-textarea
-                autocomplete="email"
-                solo
-                flat
-                width="25vh"
-                height="200"
-                tile
-              ></v-textarea>
-            </v-card>
-            <v-card class="pa-2" outlined tile width="26vh" height="200">
-              <v-textarea
-                autocomplete="email"
-                solo
-                flat
-                width="26vh"
-                height="200"
-                tile
-              ></v-textarea>
-            </v-card>
-            <v-card class="pa-2" outlined tile width="56vh" height="200">
-              <v-textarea
-                autocomplete="email"
-                solo
-                flat
-                width="25vh"
-                height="200"
-                tile
-              ></v-textarea>
-            </v-card>
-
-            <v-card class="pa-2" outlined tile width="25vh" height="200">
-              <v-textarea
-                autocomplete="email"
-                solo
-                flat
-                width="25vh"
-                height="200"
-                tile
-              ></v-textarea>
-            </v-card>
-            <v-card class="pa-2" outlined tile width="25vh" height="200">
-              <v-textarea
-                autocomplete="email"
-                solo
-                flat
-                width="25vh"
-                height="205"
-                tile
-              ></v-textarea>
-            </v-card>
-          </v-card>
-          <v-card class="pa-2" outlined tile>
-            <v-textarea
-              autocomplete="email"
-              value="Feedback:"
-              solo
-              flat
-              height="200"
+          <v-row no-gutters>
+            <v-col
+              v-for="n in 5"
+              :key="n"
+              :cols="n === 3 ? 6 : undefined"
+              class="text-center"
+              outlined
               tile
-            ></v-textarea>
+            >
+              <v-card v-if="n === 1" outlined tile>
+                <v-container>
+                  <v-row>
+                    <v-col>
+                      <v-textarea
+                        auto-grow
+                        flat
+                        solo
+                        class="ma-0 pa-0"
+                        hide-details
+                        row-height="15"
+                      ></v-textarea>
+                    </v-col>
+                  </v-row>
+                </v-container>
+              </v-card>
+              <v-card v-else-if="n === 2" outlined tile
+                ><v-container>
+                  <v-row>
+                    <v-col>
+                      <v-textarea
+                        auto-grow
+                        flat
+                        solo
+                        class="ma-0 pa-0"
+                        hide-details
+                        row-height="15"
+                      ></v-textarea>
+                    </v-col>
+                  </v-row>
+                </v-container>
+              </v-card>
+              <v-card v-else-if="n === 3" class="text-center" outlined tile>
+                <v-container>
+                  <v-row>
+                    <v-col>
+                      <v-textarea
+                        auto-grow
+                        flat
+                        solo
+                        class="ma-0 pa-0"
+                        hide-details
+                        row-height="15"
+                      ></v-textarea>
+                    </v-col>
+                  </v-row>
+                </v-container>
+              </v-card>
+              <v-card v-else-if="n === 4" outlined tile>
+                <v-container>
+                  <v-row>
+                    <v-col>
+                      <v-textarea
+                        auto-grow
+                        flat
+                        solo
+                        class="ma-0 pa-0"
+                        hide-details
+                        row-height="15"
+                      ></v-textarea>
+                    </v-col>
+                  </v-row>
+                </v-container>
+              </v-card>
+              <v-card v-else-if="n === 5" outlined tile>
+                <v-container>
+                  <v-row>
+                    <v-col>
+                      <v-textarea
+                        auto-grow
+                        flat
+                        solo
+                        class="ma-0 pa-0"
+                        hide-details
+                        row-height="15"
+                      ></v-textarea>
+                    </v-col>
+                  </v-row>
+                </v-container>
+              </v-card>
+            </v-col>
+          </v-row>
+          <!-- Feedback  -->
+          <v-card class="pa-2" outlined tile>
+            Feedback:
+            <v-container>
+              <v-row>
+                <v-col>
+                  <v-textarea
+                    auto-grow
+                    flat
+                    solo
+                    class="ma-0 pa-0"
+                    hide-details
+                    row-height="15"
+                  ></v-textarea>
+                </v-col>
+              </v-row>
+            </v-container>
           </v-card>
           <div class="pa-10 ml-9">
             ________________________________________
             ________________________________________
             ________________________________________
           </div>
-          <div class=" ml-9 ">       </div>
+          <div class="ml-9"></div>
         </div>
         <v-card class="mx-auto" max-width="800">
           <v-card-text>
