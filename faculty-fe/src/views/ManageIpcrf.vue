@@ -450,12 +450,15 @@
               >
                 PART II: COMPETENCIES
               </v-card>
+
               <v-card class="pa-2" outlined tile>
-               <h5> Instructions: Please indicate the number of competency
-                indicators that you demonstrated during the performance cycle.</h5>
+                <h5>
+                  Instructions: Please indicate the number of competency
+                  indicators that you demonstrated during the performance cycle.
+                </h5>
               </v-card>
               <v-card class="pa-2" outlined tile>
-               <h5> <b> CORE BEHAVIORAL COMPETENCIES</b></h5>
+                <h5><b> CORE BEHAVIORAL COMPETENCIES</b></h5>
               </v-card>
               <v-row no-gutters>
                 <v-col
@@ -464,7 +467,13 @@
                   :cols="n === 1 || 3 ? 3 : undefined"
                   class=""
                 >
-                  <v-card v-if="n === 1" class="pa-2" outlined tile>
+                  <v-card
+                    v-if="n === 1"
+                    class="pa-2 card-1"
+                    outlined
+                    tile
+                    style="overflow-y: auto; height: 360px; "
+                  >
                     <h5>
                       Self-Management <br />
                       1. Sets personal goals and directions, needs and
@@ -480,29 +489,215 @@
                       self and others.<br />
                     </h5>
                   </v-card>
-                  <v-card v-else-if="n === 2" class="pa-2 text-center" height="200" outlined tile label="0">
-                  0
+                  <v-card
+                    v-else-if="n === 2"
+                    class="pa-2 text-center card-2"
+                    style="overflow-y: auto; height: 360px"
+                   
+                    outlined
+                    tile
+                    label="0"
+                  >
+                    0
+                  </v-card>
+                  <v-card
+                    v-else-if="n === 3"
+                    class="pa-2 card-3"
+                    outlined
+                    tile
+                    style="overflow-y: auto; height: 360px"
+                  >
+                    <h5>
+                      Teamwork <br />
+                      1. Willingly does his/her share of responsibility. <br />
+                      2. Promotes collaboration and removes barrier to teamwork
+                      and goal accomplishment across the organization. <br />
+                      3. Applies negotiation principles in arriving at win-win
+                      agreements. <br />
+                      4. Drives consensus and team ownership of decisions.
+                      <br />
+                      5. Works constructively and collaboratively with others
+                      and across organizations to accomplish organization goals
+                      and objectives.
+                    </h5>
+                  </v-card>
+                  <v-card
+                    v-else-if="n === 4"
+                    class="pa-12 text-center card-4"
+                    style="overflow-y: auto; height: 360px"
+                    outlined
+                    tile
+                    label="0"
+                  >
+                    0
+                  </v-card>
+                </v-col>
+              </v-row>
+              <v-row no-gutters>
+                <v-col
+                  v-for="n in 4"
+                  :key="n"
+                  :cols="n === 1 || 3 ? 3 : undefined"
+                  class=""
+                >
+                  <v-card
+                    v-if="n === 1"
+                    class="pa-2"
+                    outlined
+                    tile
+                    style="overflow-y: auto; height: 440px"
+                  >
+                    <h5>
+                      Professionalism and Ethics<br />
+                      1. Demonstrates the values and behavior enshrined in the
+                      Norms and Conduct and Ethical Standards for Public
+                      Officials and Employees (RA 6713).<br />
+                      2. Practices ethical and professional behavior and conduct
+                      taking into account the impact of his/her actions and
+                      decisions.<br />
+                      3. Maintains a professional image: being trustworthy,
+                      regularity of attendance and punctuality, good grooming
+                      and communication.<br />
+                      4. Makes personal sacrifices to meet the organization’s
+                      needs.<br />
+                      5. Acts with a sense of urgency and responsibility to meet
+                      the organization’s needs, improve system and help others
+                      improve their effectiveness.<br />
+                    </h5>
+                  </v-card>
+                  <v-card
+                    v-else-if="n === 2"
+                    class="pa-2 text-center"
+                    style="overflow-y: auto; height: 440px"
+                    outlined
+                    tile
+                    label="0"
+                  >
+                    0
                   </v-card>
                   <v-card
                     v-else-if="n === 3"
                     class="pa-2"
                     outlined
                     tile
-                   
-                  > <h5>   Teamwork <br>
-1. Willingly does his/her share of responsibility. <br>
-2. Promotes collaboration and removes barrier to teamwork and goal accomplishment across the organization. <br>
-3. Applies negotiation principles in arriving at win-win agreements. <br>
-4. Drives consensus and team ownership of decisions. <br>
-5. Works constructively and collaboratively with others and across organizations to accomplish organization goals and objectives.</h5>
-                
+                    style="overflow-y: auto; height: 440px"
+                  >
+                    <h5>
+                      Service Orientation<br />
+                      1. Can explain and articulate organizational directions,
+                      issues and problems.<br />
+                      2. Takes personal responsibility for dealing with and/or
+                      correcting customer service issues and concerns.<br />
+                      3. Initiates activities that promote advocacy for men and
+                      women empowerment.<br />
+                      4. Participates in updating office vision, mission,
+                      mandates and strategies based on DepEd strategies and
+                      directions.<br />
+                      5. Develops and adopts service improvement program through
+                      simplified procedures that will further enhance service
+                      delivery.
+                    </h5>
                   </v-card>
-                  <v-card v-else-if="n === 4" class="pa-2 text-center" height="200" outlined tile label="0">
-                  0
+                  <v-card
+                    v-else-if="n === 4"
+                    class="pa-2 text-center"
+                    height="200"
+                    outlined
+                    tile
+                    label="0"
+                    style="overflow-y: auto; height: 440px"
+                  >
+                    0
                   </v-card>
                 </v-col>
               </v-row>
+              <v-row no-gutters>
+                <v-col
+                  v-for="n in 4"
+                  :key="n"
+                  :cols="n === 1 || 3 ? 3 : undefined"
+                  class=""
+                >
+                  <v-card
+                    v-if="n === 1"
+                    class="pa-2"
+                    outlined
+                    tile
+                    style="overflow-y: auto; height: 570px"
+                  >
+                    <h5>
+                      Results Focus<br/> 
+                      1. Achieves results with optimal use of time
+                      and resources most of the time.<br/>
+                       2. Avoids rework, mistakes
+                      and wastage through effective work methods by placing
+                      organizational needs before personal needs.<br/>
+                       3. Delivers error-free outputs most of the time by conforming to
+                      standard operating procedures correctly and consistently.
+                      Able to produce very satisfactory quality work in terms of
+                      usefulness/acceptability and completeness with no
+                      supervision required.<br/>
+                       4. Expresses a desire to do better
+                      and may express frustration at waste or inefficiency. May
+                      focus on new or more precise ways of meeting goals set. 
+                      5. Makes specific changes in the system or in own work
+                      methods to improve performance. Examples may include doing
+                      something better, faster, at a lower cost, more
+                      efficiently, or improving quality, customer satisfaction,
+                      morale, without setting any specific goal.<br />
+                    </h5>
+                  </v-card>
+                  <v-card
+                    v-else-if="n === 2"
+                    class="pa-2 text-center"
+                    style="overflow-y: auto; height: 570px"
+                    outlined
+                    tile
+                    label="0"
+                  >
+                    0
+                  </v-card>
+                  <v-card
+                    v-else-if="n === 3"
+                    class="pa-2"
+                    outlined
+                    tile
+                    style="overflow-y: auto; height: 570px"
+                  >
+                    <h5>
+                      Service Orientation<br />
+                      1. Can explain and articulate organizational directions,
+                      issues and problems.<br />
+                      2. Takes personal responsibility for dealing with and/or
+                      correcting customer service issues and concerns.<br />
+                      3. Initiates activities that promote advocacy for men and
+                      women empowerment.<br />
+                      4. Participates in updating office vision, mission,
+                      mandates and strategies based on DepEd strategies and
+                      directions.<br />
+                      5. Develops and adopts service improvement program through
+                      simplified procedures that will further enhance service
+                      delivery.
+                    </h5>
+                  </v-card>
+                  <v-card
+                    v-else-if="n === 4"
+                    class="pa-2 text-center"
+                    height="200"
+                    outlined
+                    tile
+                    label="0"
+                    style="overflow-y: auto; height: 570px"
+                  >
+                    0
+                  </v-card>
+                </v-col>
+              </v-row>
+              <v-card class="pa-2" outlined tile>
+                <h6>Note: The assessment in the demonstration of competencies shall not be reflected in the final rating. These competencies are monitored to inform professional development plans (DepEd Order No. 2, s. 2015, p. 9).</h6>
+              </v-card>
             </v-container>
+            
           </v-app>
         </div>
       </v-tab-item>
@@ -884,7 +1079,8 @@
     </v-tabs>
   </v-card>
 </template>
-<style scoped>
+<style >
+
 </style>
 <script>
 export default {
