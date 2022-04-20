@@ -32,7 +32,7 @@ const mutations = {
 const actions = {
     loginLocally({ commit }, data) {
         return axios
-            .post(`login`, data)
+            .post('login', data)
             .then((result) => {
                 console.log(result);
                 commit("setUserToken", result);

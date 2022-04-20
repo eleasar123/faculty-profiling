@@ -31,19 +31,19 @@ export default {
     return {};
   },
   methods: {
-    getDetails() {
+    async getDetails() {
       const email = document.getElementById("email").value;
       const password = document.getElementById("password").value;
       const data = {
         email,
         password,
       };
-      const returnedData = this.$store.dispatch("loginLocally", data);
+      const returnedData = await this.$store.dispatch("loginLocally", data);
       console.log(returnedData);
-      if (returnedData === "success") {
+      if (returnedData.data[0].message === "Credentials matched!") {
         localStorage.setItem("userData", data);
         sessionStorage.setItem("userData", data);
-        this.$router.push("/home");
+        this.$router.push("/personalDataSheet");
       }
     },
 
