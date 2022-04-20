@@ -19,7 +19,7 @@ class WorkExperience extends Model
      */
     protected $fillable = [
      //work experience
-        'user',
+        'user_id',
         'work_inclusive_dates_from',
         'work_inclusive_dates_to',
         'department',

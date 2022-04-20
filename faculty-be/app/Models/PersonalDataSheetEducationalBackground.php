@@ -19,7 +19,7 @@ class PersonalDataSheetEducationalBackground extends Model
      */
     protected $fillable = [
     //educational background
-        'user',
+        'user_id',
         'level',
         'name_of_school',
         'basic_education/course',

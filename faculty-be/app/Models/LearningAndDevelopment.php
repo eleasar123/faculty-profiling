@@ -19,7 +19,7 @@ class LearningAndDevelopment extends Model
      */
     protected $fillable = [
      //learning and development
-        'user',
+        'user_id',
         'learning_and_development_interventions',
         'learning_inclusive_dates_from',
         'learning_inclusive_dates_to',

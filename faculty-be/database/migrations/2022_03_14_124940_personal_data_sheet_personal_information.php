@@ -33,6 +33,7 @@ return new class extends Migration
             $table->string('tin_no');
             $table->string('agency_employee_no');
             $table->string('citizenship');
+            $table->string('dual_citizenship');
             $table->string('residential_address_house_no');
             $table->string('residential_address_street');
             $table->string('residential_address_subdivision');

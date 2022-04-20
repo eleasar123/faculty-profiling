@@ -19,7 +19,7 @@ class OtherInformation extends Model
      */
     protected $fillable = [
     //other information
-        'user',
+        'user_id',
         'special_skills_and_hobbies',
         'non-academic_distinctions',
         'organization_membership',

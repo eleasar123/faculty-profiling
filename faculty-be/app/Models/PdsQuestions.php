@@ -19,7 +19,7 @@ class PdsQuestions extends Model
      */
     protected $fillable = [
     //pds questions
-        'user',
+        'user_id',
         'questions',
         'answer',
     ];

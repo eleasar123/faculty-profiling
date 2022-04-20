@@ -18,7 +18,7 @@ class PersonalDataSheetPersonalInformation extends Model
      */
     protected $fillable = [
         //personal information
-        'user',
+        'user_id',
         'last_name',
         'first_name',
         'middle_name',
@@ -35,6 +35,7 @@ class PersonalDataSheetPersonalInformation extends Model
         'tin_no',
         'agency_employee_no',
         'citizenship',
+        'dual_citizenship',
         'residential_address_house_no',
         'residential_address_street',
         'residential_address_subdivision',

@@ -19,7 +19,7 @@ class PdsAdditionalInfo extends Model
      */
     protected $fillable = [
      //pds additional info
-        'user',
+        'user_id',
         'oath',
         'government_id',
         'id_no',

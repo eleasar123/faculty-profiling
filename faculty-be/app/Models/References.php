@@ -19,7 +19,7 @@ class References extends Model
      */
     protected $fillable = [
     //references
-        'user',
+        'user_id',
         'reference_name',
         'reference_address',
         'reference_tel_no',

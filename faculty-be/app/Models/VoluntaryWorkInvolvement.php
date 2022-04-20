@@ -19,7 +19,7 @@ class VoluntaryWorkInvolvement extends Model
      */
     protected $fillable = [
     //voluntary work involvement
-        'user',
+        'user_id',
         'organization_name_and_address',
         'voluntary_inclusive_dates_from',
         'voluntary_inclusive_dates_to',
