@@ -28,7 +28,7 @@ return new class extends Migration
             $table->string('weight');
             $table->string('blood_type');
             $table->string('gsis_id_no');
-            $table->string('pag-ibig_id_no');
+            $table->string('pag_ibig_id_no');
             $table->string('sss_no');
             $table->string('tin_no');
             $table->string('agency_employee_no');

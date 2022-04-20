@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('oath');
             $table->string('government_id');
             $table->string('id_no');
-            $table->string('date/place_of_issuance');
+            $table->string('date_place_of_issuance');
             $table->string('signature');
             $table->string('photo');
             $table->string('right_thumbmark');

@@ -30,7 +30,7 @@ class PersonalDataSheetPersonalInformation extends Model
         'weight',
         'blood_type',
         'gsis_id_no',
-        'pag-ibig_id_no',
+        'pag_ibig_id_no',
         'sss_no',
         'tin_no',
         'agency_employee_no',
