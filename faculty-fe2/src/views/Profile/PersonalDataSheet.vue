@@ -1,37 +1,35 @@
 <template>
   <v-main class="pa-0 pa-0 ma-12">
-    <v-container class="">
-      <v-container><button class="material-icons">keyboard_arrow_left</button>
-      <span>1</span>
+    <v-container
+      v-if="edit == false"
+      class="pa-2"
+      style="width: 50vw; border: none; height: auto; position: relative"
+    >
+      <button class="material-icons">keyboard_arrow_left</button>
+      Eleasar Y. Patot
       <button class="material-icons">keyboard_arrow_right</button>
-      </v-container>
-      
-       <v-container class="" >Names</v-container> 
+      <v-select
+        label=""
+        dense
+        outlined
+        class="mb-5"
+        style="max-width: 50%; position: absolute; right: 150px; top: 0px"
+      ></v-select>
     </v-container>
-   
-      <v-tabs v-if="edit==false">
-       
-          <v-tab>Part 1</v-tab>
+
+    <v-tabs v-if="edit == false">
+      <v-tab>Part 1</v-tab>
       <v-tab-item>
-        <v-card-title
-          v-model="headerText"
-          label="Search"
-          single-line
-          hide-details
+        <v-card-title label="Search" single-line hide-details
           ><span>CS Form N0.212<br />Revised 2017</span>
           <span>Personal Data Sheet</span>
         </v-card-title>
-        <v-card-subtitle
-          v-model="subtitleText"
-          label="Search"
-          single-line
-          hide-details
-        >
+        <v-card-subtitle label="Search" single-line hide-details>
           WARNING: Any misrepresentation made in the Personal Data Sheet and the
           Work Experience Sheet shall cause the filing of
           administrative/criminal case/s against the person concerned.
         </v-card-subtitle>
-        <v-card-text v-model="cardText" label="Search" single-line hide-details>
+        <v-card-text label="Search" single-line hide-details>
           READ THE ATTACHED GUIDE TO FILLING OUT THE PERSONAL DATA SHEET (PDS)
           BEFORE ACCOMPLISHING THE PDS FORM.
         </v-card-text>
@@ -43,61 +41,30 @@
                 <th colspan="8">I. PERSONAL INFORMATION</th>
               </tr>
             </thead>
-            <tbody class="text-center" color="secondary" >
+            <tbody class="text-center" color="secondary">
               <!-- v-for="info of personalInfo" :key="info.personalSurname" -->
               <tr>
                 <td width="50px" colspan="2" style="text-align: left">
                   2. SURNAME
                 </td>
-                <td colspan="7">
-                  {{personalSurname}}
-                </td>
+                <td colspan="7">{{}}</td>
               </tr>
 
               <tr>
                 <td width="50px" colspan="2" style="text-align: left">
                   FIRST NAME
                 </td>
+                <td colspan="4">{{}}</td>
                 <td colspan="4">
-                  <v-text-field
-                    placeholder="FIRST NAME"
-                    solo
-                    dense
-                    v-model="personalFirstName"
-                    id="personalFirstName"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-                <td colspan="4">
-                  <v-text-field
-                    placeholder="NAME EXTENSION (JR., SR)"
-                    solo
-                    v-model="personalSuffix"
-                    id="suffix"
-                    dense
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
+                  NAME EXTENSION (JR., SR)<br />
+                  {{}}
                 </td>
               </tr>
               <tr>
                 <td width="80px" colspan="2" style="text-align: left">
                   MIDDLE NAME
                 </td>
-                <td colspan="8">
-                  <v-text-field
-                    placeholder="MIDDLE NAME"
-                    solo
-                    v-model="personalMiddleName"
-                    id="personalMiddleName"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
+                <td colspan="8">{{}}</td>
               </tr>
 
               <tr>
@@ -105,464 +72,102 @@
                   DATE OF BIRTH <br />
                   (mm/dd/yyyy)
                 </td>
-                <td colspan="2">
-                  <v-text-field
-                    placeholder=""
-                    solo
-                    v-model="personalDateOfBirth"
-                    dense
-                    id="personalDOB"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
+                <td colspan="2">{{}}</td>
                 <td rowspan="3" colspan="2">
                   16.CITIZENSHIP<br />If holder of dual citizenship,<br />please
                   indicate the details.
                 </td>
-                <td colspan="3">
-                  <v-text-field
-                    placeholder=""
-                    solo
-                    id="personalCitizenship"
-                    v-model="personalCitizenship"
-                    dense
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
+                <td colspan="3">{{}}</td>
               </tr>
               <tr>
                 <td colspan="2" style="text-align: left">PLACE OF BIRTH</td>
-                <td colspan="2">
-                  <v-text-field
-                    placeholder=""
-                    solo
-                    v-model="personalPlaceOfBirth"
-                    id="personalPOB"
-                    dense
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
+                <td colspan="2">{{}}</td>
 
-                <td colspan="3">
-                  <v-text-field
-                    placeholder="Pls. indicate country:"
-                    solo
-                    v-model="personalDualCitizenship"
-                    id="countryOfCitizenship"
-                    dense
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
+                <td colspan="3">{{}}</td>
               </tr>
               <tr>
                 <td colspan="2" style="text-align: left">SEX</td>
-                <td colspan="2">
-                  <v-text-field
-                    placeholder="Hello World"
-                    solo
-                    id="personalSex"
-                    v-model="personalSex"
-                    dense
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-                <td colspan="3">
-                  <v-text-field
-                    placeholder="Hello World"
-                    solo
-                    dense
-                    id="personalDualCitizenship"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
+                <td colspan="2">{{}}</td>
+                <td colspan="3">{{}}</td>
               </tr>
               <tr>
                 <td colspan="2" style="text-align: left" rowspan="2">
                   CIVIL STATUS
                 </td>
-                <td rowspan="2" colspan="2">
-                  <v-text-field
-                    placeholder="Hello World"
-                    solo
-                    dense
-                    v-model="personalCivilStatus"
-                    id="personalCivilStatus"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
+                <td rowspan="2" colspan="2">{{}}</td>
                 <td rowspan="4">
                   RESIDENTIAL<br />
                   ADDRESS<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
                   ZIP CODE
                 </td>
-                <td rowspan="1" colspan="2">
-                  <v-text-field
-                    placeholder="House/Block/Lot No."
-                    solo
-                    id="personalHouseNo"
-                    v-model="personalResAddressHouseNo"
-                    dense
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-                <td rowspan="1" colspan="2">
-                  <v-text-field
-                    placeholder="Street"
-                    v-model="personalResAddressStreet"
-                    solo
-                    id="personalStreet"
-                    dense
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
+                <td rowspan="1" colspan="2">{{}}</td>
+                <td rowspan="1" colspan="2">{{}}</td>
               </tr>
 
               <tr>
-                <td rowspan="1" colspan="2">
-                  <v-text-field
-                    placeholder="Subdivision/Village"
-                    solo
-                    v-model="personalResAddressSubdivision"
-                    id="personalSubdivision"
-                    dense
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-                <td rowspan="1" colspan="2">
-                  <v-text-field
-                    placeholder="Barangay"
-                    solo
-                    v-model="personalResAddressBarangay"
-                    id="personalBarangay"
-                    dense
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
+                <td rowspan="1" colspan="2">{{}}</td>
+                <td rowspan="1" colspan="2">{{}}</td>
               </tr>
 
               <tr>
                 <td colspan="2" style="text-align: left">HEIGHT (m)</td>
-                <td colspan="2">
-                  <v-text-field
-                    placeholder="Height"
-                    solo
-                    v-model="personalHeight"
-                    dense
-                    id="personalHeight"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-                <td colspan="2">
-                  <v-text-field
-                    placeholder="City/Municipality"
-                    solo
-                    v-model="personalResAddressCity"
-                    dense
-                    id="personalCity"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-                <td colspan="2">
-                  <v-text-field
-                    placeholder="Province"
-                    solo
-                    dense
-                    v-model="personalResAddressProvince"
-                    id="personalProvince"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
+                <td colspan="2">{{}}</td>
+                <td colspan="2">{{}}</td>
+                <td colspan="2">{{}}</td>
               </tr>
               <tr>
                 <td colspan="2" style="text-align: left">WEIGHT (kg)</td>
-                <td colspan="2">
-                  <v-text-field
-                    placeholder="Weight"
-                    solo
-                    id="personalWeight"
-                    v-model="personalWeight"
-                    dense
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
+                <td colspan="2">{{}}</td>
 
-                <td colspan="3">
-                  <v-text-field
-                    placeholder="Zip Code"
-                    solo
-                    id="personalZipCode"
-                    dense
-                    v-model="personalZipCode"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
+                <td colspan="3">{{}}</td>
               </tr>
               <tr>
                 <td colspan="2" style="text-align: left">BLOOD TYPE</td>
-                <td colspan="2">
-                  <v-text-field
-                    placeholder="Blood Type"
-                    solo
-                    v-model="personalBloodType"
-                    id="personalBloodType"
-                    dense
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
+                <td colspan="2">{{}}</td>
                 <td rowspan="4">
                   PERMANENT ADDRESS<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
                   ZIP CODE
                 </td>
-                <td colspan="2">
-                  <v-text-field
-                    placeholder="House/Block/Lot No."
-                    solo
-                    id="permanentHouseNo"
-                    v-model="personalPermanentAddHouseNo"
-                    dense
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-                <td colspan="2">
-                  <v-text-field
-                    placeholder="Street"
-                    solo
-                    v-model="personalPermanentAddStreet"
-                    id="permanentStreet"
-                    dense
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
+                <td colspan="2">{{}}</td>
+                <td colspan="2">{{}}</td>
               </tr>
               <tr>
                 <td colspan="2" style="text-align: left">GSIS ID NO.</td>
-                <td colspan="2">
-                  <v-text-field
-                    placeholder="GSIS ID NO."
-                    solo
-                    v-model="personalGSISIDNo"
-                    id="personalGsisId"
-                    dense
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-                <td colspan="2">
-                  <v-text-field
-                    placeholder="Subdivision/Village"
-                    solo
-                    v-model="personalPermanentAddSubdivision"
-                    dense
-                    id="permanentSubdivision"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-                <td colspan="2">
-                  <v-text-field
-                    placeholder="Barangay"
-                    solo
-                    v-model="personalPermanentAddBarangay"
-                    id="permanentBarangay"
-                    dense
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
+                <td colspan="2">{{}}</td>
+                <td colspan="2">{{}}</td>
+                <td colspan="2">{{}}</td>
               </tr>
               <tr>
                 <td colspan="2" style="text-align: left">PAG-IBIG ID NO.</td>
-                <td colspan="2">
-                  <v-text-field
-                    placeholder="PAG-IBIG ID NO."
-                    solo
-                    v-model="personalPAGIBIGIDNo"
-                    dense
-                    id="personalPagibigIdNo"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-                <td colspan="2">
-                  <v-text-field
-                    placeholder="City/Municipality"
-                    solo
-                    v-model="personalPermanentAddCity"
-                    dense
-                    id="permanentCity"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-                <td colspan="2">
-                  <v-text-field
-                    placeholder="Province"
-                    solo
-                    v-model="personalPermanentAddProvince"
-                    id="permanentProvince"
-                    dense
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
+                <td colspan="2">{{}}</td>
+                <td colspan="2">{{}}</td>
+                <td colspan="2">{{}}</td>
               </tr>
               <tr>
                 <td colspan="2" style="text-align: left">PHILHEALTH NO.</td>
-                <td colspan="2">
-                  <v-text-field
-                    placeholder="PHILHEALTH NO."
-                    solo
-                    v-model="personalPHILHEALTHNo"
-                    dense
-                    id="permanentPhilhealthNo"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-                <td colspan="3">
-                  <v-text-field
-                    placeholder="Zip Code"
-                    v-model="personalPermanentAddZipCode"
-                    solo
-                    dense
-                    id="permanentZipCode"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
+                <td colspan="2">{{}}</td>
+                <td colspan="3">{{}}</td>
               </tr>
               <tr>
                 <td colspan="2" style="text-align: left">SSS NO.</td>
-                <td colspan="2">
-                  <v-text-field
-                    placeholder="SSS NO."
-                    solo
-                    v-model="personalSSSNo"
-                    id="personalSssNo"
-                    dense
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
+                <td colspan="2">{{}}</td>
                 <td>19.TELEPHONE NO.</td>
-                <td colspan="3">
-                  <v-text-field
-                    v-model="personalTelephoneNo"
-                    placeholder="TELEPHONE NO."
-                    solo
-                    id="personalTelephoneNo"
-                    dense
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
+                <td colspan="3">{{}}</td>
               </tr>
               <tr>
                 <td colspan="2" style="text-align: left">14.TIN NO.</td>
-                <td colspan="2">
-                  <v-text-field
-                    placeholder="TIN NO."
-                    solo
-                    v-model="personalTinNo"
-                    id="personalTinNo"
-                    dense
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
+                <td colspan="2">{{}}</td>
                 <td>20.MOBILE NO.</td>
-                <td colspan="3">
-                  <v-text-field
-                    v-model="personalMobileNo"
-                    placeholder="MOBILE NO."
-                    solo
-                    id="personalMobileNo"
-                    dense
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
+                <td colspan="3">{{}}</td>
               </tr>
               <tr>
                 <td colspan="2" style="text-align: left">
                   AGENCY EMPLOYEE NO.
                 </td>
-                <td colspan="2">
-                  <v-text-field
-                    placeholder="AGENCY EMPLOYEE NO."
-                    solo
-                    v-model="personalAgencyEmployeeNo"
-                    id="personalAgencyEmpNo"
-                    dense
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
+                <td colspan="2">{{}}</td>
                 <td>21. E-MAIL ADDRESS (if any)</td>
 
-                <td colspan="3">
-                  <v-text-field
-                    placeholder="Email Address"
-                    solo
-                    dense
-                    v-model="personalEmailAddress"
-                    id="personalEmailAddress"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
+                <td colspan="3">{{}}</td>
               </tr>
             </tbody>
           </template>
@@ -577,524 +182,93 @@
             <tbody class="" color="secondary">
               <tr>
                 <td width="50px">SPOUSE'S SURNAME</td>
-                <td colspan="4">
-                  <v-text-field
-                    placeholder="SPOUSE'S SURNAME"
-                    solo
-                    v-model="familySpouseSurname"
-                    id="spouseSurname"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
+                <td colspan="4">{{}}</td>
                 <td>23. NAME of CHILDREN (Write full name and list all)</td>
                 <td>DATE OF BIRTH (mm/dd/yyyy)</td>
               </tr>
 
               <tr>
                 <td width="80px">FIRST NAME</td>
-                <td colspan="3">
-                  <v-text-field
-                    placeholder="First Name"
-                    solo
-                    v-model="familySpouseFirstName"
-                    id="spouseFirstName"
-                    dense
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-                <td colspan="1">
-                  <v-text-field
-                    placeholder="NAME EXTENSION (JR., SR)"
-                    solo
-                    v-model="familySpouseSuffix"
-                    id="spouseSuffix"
-                    dense
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-                <td colspan="1">
-                  <v-text-field
-                    placeholder="N/A"
-                    solo
-                    v-model="nameOfChildrenOne"
-                    id="childrenFullname1"
-                    dense
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-                <td colspan="1">
-                  <v-text-field
-                    placeholder="Child Date of Birth"
-                    solo
-                    v-model="dateOfBirthOne"
-                    id="childDOB1"
-                    dense
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
+                <td colspan="3">{{}}</td>
+                <td colspan="1">{{}}</td>
+                <td colspan="1">{{}}</td>
+                <td colspan="1">{{}}</td>
               </tr>
               <tr>
                 <td width="80px">MIDDLE NAME</td>
-                <td colspan="4">
-                  <v-text-field
-                    placeholder="MIDDLE NAME"
-                    solo
-                    v-model="familySpouseMiddleName"
-                    id="spouseMiddleName"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-                <td colspan="1">
-                  <v-text-field
-                    placeholder=""
-                    solo
-                    v-model="nameOfChildrenTwo"
-                    id="childFullName2"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-                <td colspan="1">
-                  <v-text-field
-                    placeholder="Child Date of Birth"
-                    id="childDOB2"
-                    v-model="dateOfBirthTwo"
-                    solo
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
+                <td colspan="4">{{}}</td>
+                <td colspan="1">{{}}</td>
+                <td colspan="1">{{}}</td>
               </tr>
 
               <tr>
                 <td max-width="100px">OCCUPATION</td>
-                <td colspan="4">
-                  <v-text-field
-                    placeholder="OCCUPATION"
-                    solo
-                    v-model="familySpouseOccupation"
-                    id="spouseOccupation"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-                <td colspan="1">
-                  <v-text-field
-                    placeholder=""
-                    solo
-                    v-model="nameOfChildrenThree"
-                    id="childFullName3"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-                <td colspan="1">
-                  <v-text-field
-                    placeholder="Child Date of Birth"
-                    id="childDOB3"
-                    solo
-                    v-model="dateOfBirthThree"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
+                <td colspan="4">{{}}</td>
+                <td colspan="1">{{}}</td>
+                <td colspan="1">{{}}</td>
               </tr>
               <tr>
                 <td max-width="100px">EMPLOYER/BUSINESS NAME</td>
-                <td colspan="4">
-                  <v-text-field
-                    placeholder="EMPLOYER/BUSINESS NAME"
-                    solo
-                    v-model="familyEmployerName"
-                    id="employerNameFamilyBackground"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-                <td colspan="1">
-                  <v-text-field
-                    placeholder="Child full name"
-                    solo
-                    v-model="nameOfChildrenFour"
-                    id="childFullName4"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-                <td colspan="1">
-                  <v-text-field
-                    placeholder="Date of Birth"
-                    solo
-                    v-model="dateOfBirthFour"
-                    id="childDOB4"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
+                <td colspan="4">{{}}</td>
+                <td colspan="1">{{}}</td>
+                <td colspan="1">{{}}</td>
               </tr>
               <tr>
                 <td max-width="100px">BUSINESS ADDRESS</td>
-                <td colspan="4">
-                  <v-text-field
-                    placeholder="BUSINESS ADDRESS"
-                    solo
-                    v-model="familyBusinessAddress"
-                    id="businessAddressFamilyBackground"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-                <td colspan="1">
-                  <v-text-field
-                    placeholder="Full name of Child"
-                    id="childFullName5"
-                    solo
-                    v-model="nameOfChildrenFive"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-                <td colspan="1">
-                  <v-text-field
-                    placeholder="Date of Birth"
-                    solo
-                    v-model="dateOfBirthFive"
-                    id="childDOB5"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
+                <td colspan="4">{{}}</td>
+                <td colspan="1">{{}}</td>
+                <td colspan="1">{{}}</td>
               </tr>
               <tr>
                 <td max-width="100px">TELEPHONE NO.</td>
-                <td colspan="4">
-                  <v-text-field
-                    placeholder="TELEPHONE NO."
-                    solo
-                    v-model="familyTelephoneNo"
-                    id="telephonNumberFamilyBackground"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-                <td colspan="1">
-                  <v-text-field
-                    placeholder="Full Name of Child"
-                    solo
-                    v-model="nameOfChildrenSix"
-                    id="childFullName6"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-                <td colspan="1">
-                  <v-text-field
-                    placeholder="Date of Birth"
-                    solo
-                    v-model="dateOfBirthSix"
-                    id="childDOB6"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
+                <td colspan="4">{{}}</td>
+                <td colspan="1">{{}}</td>
+                <td colspan="1">{{}}</td>
               </tr>
 
               <tr>
                 <td>25. FATHER'S SURNAME</td>
-                <td colspan="4">
-                  <v-text-field
-                    placeholder="FATHER'S SURNAME"
-                    solo
-                    v-model="familyFatherSurname"
-                    id="fatherSurname"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-                <td colspan="1">
-                  <v-text-field
-                    placeholder="Full Name of Child"
-                    solo
-                    v-model="nameOfChildrenSeven"
-                    id="childFullName7"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-                <td colspan="1">
-                  <v-text-field
-                    placeholder="Date of Birth"
-                    solo
-                    v-model="dateOfBirthSeven"
-                    id="childDOB7"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
+                <td colspan="4">{{}}</td>
+                <td colspan="1">{{}}</td>
+                <td colspan="1">{{}}</td>
               </tr>
               <tr>
                 <td width="80px">FIRST NAME</td>
-                <td colspan="3">
-                  <v-text-field
-                    placeholder="FIRST NAME"
-                    solo
-                    v-model="familyFatherFirstName"
-                    id="fatherFirstName"
-                    dense
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-                <td colspan="1">
-                  <v-text-field
-                    placeholder="NAME EXTENSION (JR., SR)"
-                    solo
-                    id="fatherSuffix"
-                    v-model="familyFatherSuffix"
-                    dense
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-                <td colspan="1">
-                  <v-text-field
-                    placeholder="Full Name of Child"
-                    solo
-                    v-model="nameOfChildrenEight"
-                    id="childFullName8"
-                    dense
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-                <td colspan="1">
-                  <v-text-field
-                    placeholder="Date of Birth"
-                    solo
-                    v-model="dateOfBirthEight"
-                    id="childDOB8"
-                    dense
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
+                <td colspan="3">{{}}</td>
+                <td colspan="1">{{}}</td>
+                <td colspan="1">{{}}</td>
+                <td colspan="1">{{}}</td>
               </tr>
               <tr>
                 <td width="80px">MIDDLE NAME</td>
-                <td colspan="4">
-                  <v-text-field
-                    placeholder="MIDDLE NAME"
-                    solo
-                    v-model="familyFatherMiddleName"
-                    id="fatherMiddleName"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-                <td colspan="1">
-                  <v-text-field
-                    placeholder="Full Name of Child"
-                    solo
-                    v-model="nameOfChildrenNine"
-                    id="childFullName9"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-                <td colspan="1">
-                  <v-text-field
-                    placeholder="Date of Birth"
-                    solo
-                    v-model="dateOfBirthNine"
-                    id="childDOB9"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
+                <td colspan="4">{{}}</td>
+                <td colspan="1">{{}}</td>
+                <td colspan="1">{{}}</td>
               </tr>
               <tr>
                 <td>26. MOTHER'S MAIDEN NAME</td>
-                <td colspan="4">
-                  <v-text-field
-                    placeholder="MAIDEN NAME"
-                    solo
-                    v-model="familyMotherMaidenName"
-                    id="motherMaidenName"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-                <td colspan="1">
-                  <v-text-field
-                    placeholder="Full Name of Child"
-                    solo
-                    v-model="nameOfChildrenTen"
-                    id="childFullName10"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-                <td colspan="1">
-                  <v-text-field
-                    placeholder="Date of Birth"
-                    solo
-                    v-model="dateOfBirthTen"
-                    id="childDOB"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
+                <td colspan="4">{{}}</td>
+                <td colspan="1">{{}}</td>
+                <td colspan="1">{{}}</td>
               </tr>
               <tr>
                 <td>SURNAME</td>
-                <td colspan="4">
-                  <v-text-field
-                    placeholder="SURNAME"
-                    solo
-                    v-model="familyMotherSurname"
-                    id="motherSurname"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-                <td colspan="1">
-                  <v-text-field
-                    placeholder="Full Name of Child"
-                    solo
-                    v-model="nameOfChildrenEleven"
-                    id="childFullName11"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-                <td colspan="1">
-                  <v-text-field
-                    placeholder="Date of Birth"
-                    solo
-                    v-model="dateOfBirthEleven"
-                    id="childDOB11"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
+                <td colspan="4">{{}}</td>
+                <td colspan="1">{{}}</td>
+                <td colspan="1">{{}}</td>
               </tr>
               <tr>
                 <td width="80px">FIRST NAME</td>
-                <td colspan="4">
-                  <v-text-field
-                    placeholder="FIRST NAME"
-                    solo
-                    v-model="familyMotherFirstName"
-                    id="motherFirstName"
-                    dense
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
+                <td colspan="4">{{}}</td>
 
-                <td colspan="1">
-                  <v-text-field
-                    placeholder="Full Name of Child"
-                    solo
-                    v-model="nameOfChildrenTwelve"
-                    id="childFullName12"
-                    dense
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-                <td colspan="1">
-                  <v-text-field
-                    placeholder="Date of Birth"
-                    solo
-                    id="childDOB12"
-                    dense
-                    v-model="dateOfBirthTwelve"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
+                <td colspan="1">{{}}</td>
+                <td colspan="1">{{}}</td>
               </tr>
               <tr>
                 <td width="80px">MIDDLE NAME</td>
-                <td colspan="4">
-                  <v-text-field
-                    placeholder="MIDDLE NAME"
-                    solo
-                    v-model="familyMotherMiddleName"
-                    id="motherMiddleName"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-                <td colspan="1">
-                  <v-text-field
-                    placeholder="Full Name of Child"
-                    solo
-                    v-model="nameOfChildrenThirteen"
-                    id="childFullName13"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-                <td colspan="1">
-                  <v-text-field
-                    placeholder="Date of Birth"
-                    solo
-                    v-model="dateOfBirthThirteen"
-                    id="childDOB13"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
+                <td colspan="4">{{}}</td>
+                <td colspan="1">{{}}</td>
+                <td colspan="1">{{}}</td>
               </tr>
             </tbody>
           </template>
@@ -1120,14 +294,6 @@
                 </td>
                 <td rowspan="2">YEAR GRADUATED</td>
                 <td rowspan="2">SCHOLARSHIP/ ACADEMIC HONORS RECEIVED</td>
-                <td rowspan="2">
-                  <button
-                    class="material-icons"
-                    @click="addRow('educationalBackground')"
-                  >
-                    add_circle
-                  </button>
-                </td>
               </tr>
 
               <tr>
@@ -1139,94 +305,15 @@
                 v-for="row in educationalBackground"
                 :key="row.educBackgroundLevel"
               >
-                <td colspan="1">
-                  <v-text-field
-                    placeholder=""
-                    solo
-                    v-model="row.educBackgroundLevel"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-                <td colspan="1">
-                  <v-text-field
-                    placeholder=""
-                    solo
-                    v-model="row.educBackgroundNameOfSchool"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-                <td colspan="1">
-                  <v-text-field
-                    placeholder=""
-                    v-model="row.educBackgroundBasicEducation"
-                    solo
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-                <td colspan="1">
-                  <v-text-field
-                    placeholder=""
-                    v-model="row.educBackgroundPeriodOfAttendanceFrom"
-                    solo
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-                <td colspan="1">
-                  <v-text-field
-                    placeholder=""
-                    solo
-                    v-model="row.educBackgroundPeriodOfAttendanceTo"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-                <td colspan="1">
-                  <v-text-field
-                    placeholder=""
-                    solo
-                    v-model="row.educBackgroundHighestLevel"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-                <td colspan="1">
-                  <v-text-field
-                    placeholder=""
-                    solo
-                    v-model="row.educBackgroundYearGraduated"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-                <td colspan="1">
-                  <v-text-field
-                    placeholder=""
-                    v-model="row.educBackgroundScholarship"
-                    solo
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-                <td colspan="1">
-                  <button
-                    class="material-icons"
-                    @click="removeRow('educationalBackground', row)"
-                  >
-                    remove_circle
-                  </button>
-                </td>
+                <td colspan="1">{{}}</td>
+                <td colspan="1">{{}}</td>
+                <td colspan="1">{{}}</td>
+                <td colspan="1">{{}}</td>
+
+                <td colspan="1">{{}}</td>
+                <td colspan="1">{{}}</td>
+                <td colspan="1">{{}}</td>
+                <td colspan="1">{{}}</td>
               </tr>
             </tbody>
             <tfoot>
@@ -1287,14 +374,6 @@
               <th colspan="2" style="text-align: left">
                 LICENSE (if applicable)
               </th>
-              <th rowspan="2" colspan="2" style="text-align: left">
-                <button
-                  class="material-icons"
-                  @click="addRow('civilServiceEligibility')"
-                >
-                  add_circle
-                </button>
-              </th>
             </tr>
             <tr>
               <th style="text-align: left">NUMBER</th>
@@ -1303,80 +382,12 @@
           </thead>
           <tbody>
             <tr v-for="row in civilServiceEligibility" :key="row.careerService">
-              <td colspan="2">
-                <v-text-field
-                  placeholder=""
-                  solo
-                  v-model="row.careerService"
-                  value=""
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="2">
-                <v-text-field
-                  placeholder=""
-                  v-model="row.rating"
-                  solo
-                  dense
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="2">
-                <v-text-field
-                  placeholder=""
-                  solo
-                  dense
-                  v-model="row.dateOfExamination"
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="2">
-                <v-text-field
-                  placeholder=""
-                  solo
-                  v-model="row.placeOfExamination"
-                  dense
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="1">
-                <v-text-field
-                  placeholder=""
-                  v-model="row.licenseNumber"
-                  solo
-                  dense
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="1">
-                <v-text-field
-                  placeholder=""
-                  solo
-                  v-model="row.dateOfValidity"
-                  dense
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="2">
-                <button
-                  class="material-icons"
-                  @click="removeRow('civilServiceEligibility', row)"
-                >
-                  remove_circle
-                </button>
-              </td>
+              <td colspan="2">{{}}</td>
+              <td colspan="2">{{}}</td>
+              <td colspan="2">{{}}</td>
+              <td colspan="2">{{}}</td>
+              <td colspan="1">{{}}</td>
+              <td colspan="1">{{}}</td>
             </tr>
           </tbody>
         </v-simple-table>
@@ -1413,11 +424,6 @@
                 STATUS OF APPOINTMENT
               </th>
               <th colspan="2" style="text-align: left">GOV'T SERVICE (Y/ N)</th>
-              <th rowspan="2" colspan="2" style="text-align: left">
-                <button class="material-icons" @click="addRow(workExperience)">
-                  add_circle
-                </button>
-              </th>
             </tr>
             <tr>
               <th style="text-align: left">From</th>
@@ -1429,102 +435,14 @@
               v-for="row in workExperience"
               :key="row.inclusiveDateFromWorkExperience"
             >
-              <td colspan="1">
-                <v-text-field
-                  placeholder=""
-                  solo
-                  v-model="row.inclusiveDateFromWorkExperience"
-                  value=""
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="1">
-                <v-text-field
-                  placeholder=""
-                  solo
-                  v-model="row.inclusiveDatToWorkExperience"
-                  dense
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="2">
-                <v-text-field
-                  placeholder=""
-                  solo
-                  dense
-                  v-model="row.positionTitleWorkExperience"
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="2">
-                <v-text-field
-                  placeholder=""
-                  solo
-                  v-model="row.departmentWorkExperience"
-                  dense
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="2">
-                <v-text-field
-                  placeholder=""
-                  solo
-                  dense
-                  v-model="row.monthlySalaryWorkExperience"
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="2">
-                <v-text-field
-                  placeholder=""
-                  solo
-                  dense
-                  v-model="row.salaryGradeWorkExperience"
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="2">
-                <v-text-field
-                  placeholder=""
-                  solo
-                  dense
-                  v-model="row.statusOfAppointmentWorkExperience"
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="2">
-                <v-text-field
-                  placeholder=""
-                  solo
-                  dense
-                  v-model="row.governmentServiceWorkExperience"
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="2">
-                <button
-                  class="material-icons"
-                  @click="removeRow('workExperience', row)"
-                >
-                  remove_circle
-                </button>
-              </td>
+              <td colspan="1">{{}}</td>
+              <td colspan="1">{{}}</td>
+              <td colspan="2">{{}}</td>
+              <td colspan="2">{{}}</td>
+              <td colspan="2">{{}}</td>
+              <td colspan="2">{{}}</td>
+              <td colspan="2">{{}}</td>
+              <td colspan="2">{{}}></td>
             </tr>
           </tbody>
           <tfoot>
@@ -1579,14 +497,6 @@
               <th rowspan="2" colspan="2" style="text-align: left">
                 POSITION / NATURE OF WORK
               </th>
-              <th rowspan="2" colspan="2" style="text-align: left">
-                <button
-                  class="material-icons"
-                  @click="addRow('voluntaryWorkInvolvement')"
-                >
-                  add_circle
-                </button>
-              </th>
             </tr>
             <tr>
               <th style="text-align: left">From</th>
@@ -1598,70 +508,11 @@
               v-for="row in voluntaryWorkInvolvement"
               :key="row.nameAndAddressOfOrgVolWork"
             >
-              <td colspan="1">
-                <v-text-field
-                  placeholder=""
-                  solo
-                  v-model="row.nameAndAddressOfOrgVolWork"
-                  dense
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="1">
-                <v-text-field
-                  placeholder=""
-                  solo
-                  dense
-                  v-model="row.inclusiveDatesFromVolWork"
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="2">
-                <v-text-field
-                  placeholder=""
-                  solo
-                  dense
-                  v-model="row.inclusiveDatesToVolWork"
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="2">
-                <v-text-field
-                  placeholder=""
-                  solo
-                  v-model="row.numberOfHoursVolWork"
-                  dense
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="2">
-                <v-text-field
-                  placeholder=""
-                  solo
-                  v-model="row.positionOfWorkVolWork"
-                  dense
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-
-              <td colspan="2">
-                <button
-                  class="material-icons"
-                  @click="removeRow('voluntaryWorkInvolvement', row)"
-                >
-                  remove_circle
-                </button>
-              </td>
+              <td colspan="1">{{}}</td>
+              <td colspan="1">{{}}</td>
+              <td colspan="2">{{}}</td>
+              <td colspan="2">{{}}</td>
+              <td colspan="2">{{}}</td>
             </tr>
           </tbody>
         </v-simple-table>
@@ -1694,15 +545,6 @@
               <th rowspan="2" colspan="2" style="text-align: left">
                 CONDUCTED/ SPONSORED BY (Write in full)
               </th>
-
-              <th rowspan="2" colspan="2" style="text-align: left">
-                <button
-                  class="material-icons"
-                  @click="addRow(learningAndDevelopment)"
-                >
-                  add_circle
-                </button>
-              </th>
             </tr>
             <tr>
               <th style="text-align: left">From</th>
@@ -1714,80 +556,12 @@
               v-for="row in learningAndDevelopment"
               :key="row.learningAndDevelopmentInterventions"
             >
-              <td colspan="1">
-                <v-text-field
-                  placeholder=""
-                  solo
-                  dense
-                  v-model="row.learningAndDevelopmentInterventions"
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="1">
-                <v-text-field
-                  placeholder=""
-                  solo
-                  v-model="row.learningAndDevelopmentInclusiveDatesFrom"
-                  dense
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="2">
-                <v-text-field
-                  placeholder=""
-                  solo
-                  v-model="row.learningAndDevelopmentInclusiveDatesTo"
-                  dense
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="2">
-                <v-text-field
-                  placeholder=""
-                  solo
-                  dense
-                  v-model="row.learningAndDevelopmentNumberOfHours"
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="2">
-                <v-text-field
-                  placeholder=""
-                  solo
-                  dense
-                  v-model="row.learningAndDevelopmentTypeOfLD"
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="2">
-                <v-text-field
-                  placeholder=""
-                  v-model="row.learningAndDevelopmentConductedBy"
-                  solo
-                  dense
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="2">
-                <button
-                  class="material-icons"
-                  @click="removeRow('learningAndDevelopment', row)"
-                >
-                  remove_circle
-                </button>
-              </td>
+              <td colspan="1">{{}}</td>
+              <td colspan="1">{{}}</td>
+              <td colspan="2">{{}}</td>
+              <td colspan="2">{{}}</td>
+              <td colspan="2">{{}}</td>
+              <td colspan="2">{{}}</td>
             </tr>
           </tbody>
         </v-simple-table>
@@ -1811,14 +585,6 @@
                 33. MEMBERSHIP IN ASSOCIATION/ORGANIZATION<br />
                 (Write in full)
               </th>
-              <th colspan="2" style="text-align: left">
-                <button
-                  class="material-icons"
-                  @click="addRow('otherInformation')"
-                >
-                  add_circle
-                </button>
-              </th>
             </tr>
           </thead>
           <tbody>
@@ -1826,71 +592,17 @@
               v-for="row in otherInformation"
               :key="row.otherInformationSpecialSkills"
             >
-              <td colspan="3">
-                <v-text-field
-                  placeholder=""
-                  solo
-                  v-model="row.otherInformationSpecialSkills"
-                  value=""
-                  class="text-center pt-5"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="3">
-                <v-text-field
-                  placeholder=""
-                  v-model="row.otherInformationNonacademicDistinctions"
-                  solo
-                  dense
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="3">
-                <v-text-field
-                  placeholder=""
-                  solo
-                  dense
-                  v-model="row.otherInformationAssociationMembers"
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="2">
-                <button
-                  class="material-icons"
-                  @click="removeRow('otherInformation', row)"
-                >
-                  remove_circle
-                </button>
-              </td>
+              <td colspan="3">{{}}</td>
+              <td colspan="3">{{}}</td>
+              <td colspan="3">{{}}</td>
             </tr>
           </tbody>
           <tfoot>
             <tr>
               <td>SIGNATURE</td>
-              <td colspan="3">
-                <v-text-field
-                  placeholder="Hello World"
-                  solo
-                  class="text-center pt-6"
-                  type="file"
-                >
-                </v-text-field>
-              </td>
+              <td colspan="3">{{}}</td>
               <td colspan="1">DATE</td>
-              <td colspan="3">
-                <v-text-field
-                  placeholder="Hello World"
-                  solo
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
+              <td colspan="3">{{}}</td>
             </tr>
           </tfoot>
         </v-simple-table>
@@ -1910,18 +622,7 @@
               >
             </v-col>
             <v-col cols="12" sm="6">
-              <v-card class="pa-3" outlined tile height="200px">
-                <v-textarea
-                  auto-grow
-                  placeholder=""
-                  class="mx-2"
-                  label="If YES, give details:"
-                  dense
-                  v-model="questionThirtyFour"
-                  type="text"
-                >
-                </v-textarea>
-              </v-card>
+              <v-card class="pa-3" outlined tile height="200px"> {{}} </v-card>
             </v-col>
           </v-row>
           <v-row no-gutters>
@@ -1934,33 +635,11 @@
             </v-col>
             <v-col cols="12" sm="6">
               <v-card class="pa-4" outlined tile height="280px">
-                <v-textarea
-                  placeholder=""
-                  auto-grow
-                  class="mx-2"
-                  label="If YES, give details:"
-                  dense
-                  v-model="questionThirtyFiveA"
-                  max-width="50px"
-                  type="text"
-                >
-                </v-textarea>
+                {{ hello }}
                 <span class="ma-3">If YES, give details: </span><br />
 
-                <v-text-field
-                  label="Date Filed: "
-                  dense
-                  type="text"
-                  v-model="questionThirtyFiveDateFiled"
-                >
-                </v-text-field>
-                <v-text-field
-                  label="Status of Case/s: "
-                  dense
-                  type="text"
-                  v-model="questionThirtyFiveCaseStatus"
-                >
-                </v-text-field>
+                {{ helo }}
+                {{}}
               </v-card>
             </v-col>
           </v-row>
@@ -1973,18 +652,7 @@
               >
             </v-col>
             <v-col cols="12" sm="6">
-              <v-card class="pa-3" outlined tile height="150px">
-                <v-textarea
-                  auto-grow
-                  placeholder=""
-                  class="mx-2"
-                  label="If YES, give details:"
-                  dense
-                  v-model="questionThirtySix"
-                  type="text"
-                >
-                </v-textarea>
-              </v-card>
+              <v-card class="pa-3" outlined tile height="150px"> {{}} </v-card>
             </v-col>
           </v-row>
           <v-row no-gutters>
@@ -1997,17 +665,7 @@
               >
             </v-col>
             <v-col cols="12" sm="6">
-              <v-card class="pa-3" outlined tile height="150px">
-                <v-textarea
-                  auto-grow
-                  placeholder=""
-                  class="mx-2"
-                  label="If YES, give details:"
-                  dense
-                  v-model="questionThirtySeven"
-                >
-                </v-textarea>
-              </v-card>
+              <v-card class="pa-3" outlined tile height="150px"> {{}} </v-card>
             </v-col>
           </v-row>
           <v-row no-gutters>
@@ -2023,18 +681,7 @@
               >
             </v-col>
             <v-col cols="12" sm="6">
-              <v-card class="pa-3" outlined tile height="200px">
-                <v-textarea
-                  auto-grow
-                  placeholder=""
-                  class="mx-2"
-                  label="If YES, give details:"
-                  dense
-                  v-model="questionThirtyEight"
-                  type="text"
-                >
-                </v-textarea>
-              </v-card>
+              <v-card class="pa-3" outlined tile height="200px"> {{}} </v-card>
             </v-col>
           </v-row>
           <v-row no-gutters>
@@ -2045,18 +692,7 @@
               >
             </v-col>
             <v-col cols="12" sm="6">
-              <v-card class="pa-3" outlined tile height="150px">
-                <v-textarea
-                  auto-grow
-                  placeholder=""
-                  class="mx-2"
-                  label="If YES, give details:"
-                  dense
-                  v-model="questionThirtyNine"
-                  type="text"
-                >
-                </v-textarea>
-              </v-card>
+              <v-card class="pa-3" outlined tile height="150px"> {{}} </v-card>
             </v-col>
           </v-row>
           <v-row no-gutters>
@@ -2075,39 +711,9 @@
             </v-col>
             <v-col cols="12" sm="6">
               <v-card class="pa-3" outlined tile height="330px">
-                <v-textarea
-                  auto-grow
-                  placeholder=""
-                  class="mx-2"
-                  label=" If YES, give details:"
-                  dense
-                  type="text"
-                  v-model="questionFourtyA"
-                >
-                </v-textarea
-                ><br />
-                <v-text-field
-                  auto-grow
-                  placeholder=""
-                  class="mx-2"
-                  label="If YES, please specify ID No:"
-                  dense
-                  v-model="questionFourtyB"
-                  type="text"
-                >
-                </v-text-field
-                ><br />
-                <v-text-field
-                  auto-grow
-                  placeholder=""
-                  class="mx-2"
-                  v-model="questionFourtyC"
-                  label="If YES, please specify ID No:"
-                  dense
-                  type="text"
-                >
-                </v-text-field
-                ><br />
+                {{}} ><br />
+                {{}} ><br />
+                {{}} ><br />
               </v-card>
             </v-col>
           </v-row>
@@ -2133,44 +739,20 @@
                   <tbody>
                     <tr height="10px">
                       <td>
-                        {{referenceNameFirst}}
+                        {{ referenceNameFirst }}
                       </td>
-                      <td>
-                        <v-text-field dense v-model="referenceAddressFirst">
-                        </v-text-field>
-                      </td>
-                      <td>
-                        <v-text-field dense v-model="referenceTelNoFirst">
-                        </v-text-field>
-                      </td>
+                      <td>{{}}</td>
+                      <td>{{}}</td>
                     </tr>
                     <tr height="10px">
-                      <td>
-                        <v-text-field dense v-model="referenceNameSecond">
-                        </v-text-field>
-                      </td>
-                      <td>
-                        <v-text-field dense v-model="referenceAddressSecond">
-                        </v-text-field>
-                      </td>
-                      <td>
-                        <v-text-field dense v-model="referenceTelNoSecond">
-                        </v-text-field>
-                      </td>
+                      <td>{{}}</td>
+                      <td>{{}}</td>
+                      <td>{{}}</td>
                     </tr>
                     <tr height="10px">
-                      <td>
-                        <v-text-field dense v-model="referenceNameThird">
-                        </v-text-field>
-                      </td>
-                      <td>
-                        <v-text-field dense v-model="referenceAddressThird">
-                        </v-text-field>
-                      </td>
-                      <td>
-                        <v-text-field dense v-model="referenceTelNoThird">
-                        </v-text-field>
-                      </td>
+                      <td>{{}}</td>
+                      <td>{{}}</td>
+                      <td>{{}}</td>
                     </tr>
                   </tbody>
                 </v-simple-table>
@@ -2184,17 +766,7 @@
                   signature over printed name Computer generated or photocopied
                   picture is not acceptable</v-card-text
                 >
-                <v-container class="">
-                  <v-file-input
-                    auto-grow
-                    placeholder=""
-                    class="mx-2"
-                    v-model="personalPhotoAttachment"
-                    label="Insert Picture"
-                    dense
-                  >
-                  </v-file-input>
-                </v-container>
+                <v-container class=""> {{}} </v-container>
               </v-card>
             </v-col>
           </v-row>
@@ -2230,50 +802,30 @@
                   class="text-no-wrap"
                   height="10px"
                   style="font-size: 10px"
-                  >Government Issued ID:
-                  <v-text-field
-                    dense
-                    v-model="governmentIssuedID"
-                  ></v-text-field
-                ></v-container>
+                  >Government Issued ID: {{}} ></v-container
+                >
                 <v-container height="10px" style="font-size: 10px"
-                  >ID/License/Passport No.:
-                  <v-text-field
-                    dense
-                    v-model="governmentIssuedIDNo"
-                  ></v-text-field
-                ></v-container>
+                  >ID/License/Passport No.: {{}} ></v-container
+                >
                 <v-container height="10px" style="font-size: 10px"
-                  >Date/Place of Issuance:
-                  <v-text-field
-                    dense
-                    width="10px"
-                    v-model="governmentIDDateOrPlaceIssued"
-                  ></v-text-field
-                ></v-container>
+                  >Date/Place of Issuance: {{}} ></v-container
+                >
               </v-card>
             </v-col>
             <v-col cols="12" sm="4">
               <v-card>
-                <v-container
-                  ><v-file-input dense v-model="oathSignature"></v-file-input
-                ></v-container>
+                <v-container>{{}} ></v-container>
                 <v-card-subtitle
                   >Signature (Sign inside the box)</v-card-subtitle
                 >
-                <v-container
-                  ><v-text-field
-                    dense
-                    v-model="oathDateAccomplished"
-                  ></v-text-field
-                ></v-container>
+                <v-container>{{}} ></v-container>
                 <v-card-subtitle>Date Accomplished</v-card-subtitle>
               </v-card>
             </v-col>
             <v-col cols="12" sm="4">
               <v-card>
                 <v-container
-                  ><v-file-input dense v-model="rightThumbMark"></v-file-input
+                  ><v-text-field dense v-model="rightThumbMark"></v-text-field
                 ></v-container>
                 <v-card-subtitle>Right Thumbmark</v-card-subtitle>
               </v-card>
@@ -2282,14 +834,7 @@
           <v-row>
             <v-col cols="12" sm="12" style="border: none">
               SUBSCRIBED AND SWORN to before me this ,
-              <span width="200px"
-                ><v-text-field
-                  type="date"
-                  class="pa-1 text-center"
-                  width="100px"
-                  v-model="subscribedAndSwornDate"
-                ></v-text-field
-              ></span>
+              <span width="200px">{{}} ></span>
               exhibiting his/her validly issued government ID as indicated
               above.
             </v-col>
@@ -2301,10 +846,7 @@
             justify="center"
             style="margin-left: auto; margin-right: auto"
           >
-            <v-file-input
-              dense
-              v-model="personAdministeringOath"
-            ></v-file-input>
+            {{}}
             <span>Person Administering Oath</span>
           </v-card>
         </v-container>
@@ -2315,29 +857,20 @@
           >Finalize Part 1-4</v-btn
         >
       </v-tab-item>
-      </v-tabs>
-    <v-tabs v-if="edit==true">
+    </v-tabs>
+    <v-tabs v-if="edit == true">
       <v-tab>Part 1</v-tab>
       <v-tab-item>
-        <v-card-title
-          v-model="headerText"
-          label="Search"
-          single-line
-          hide-details
+        <v-card-title label="Search" single-line hide-details
           ><span>CS Form N0.212<br />Revised 2017</span>
           <span>Personal Data Sheet</span>
         </v-card-title>
-        <v-card-subtitle
-          v-model="subtitleText"
-          label="Search"
-          single-line
-          hide-details
-        >
+        <v-card-subtitle label="Search" single-line hide-details>
           WARNING: Any misrepresentation made in the Personal Data Sheet and the
           Work Experience Sheet shall cause the filing of
           administrative/criminal case/s against the person concerned.
         </v-card-subtitle>
-        <v-card-text v-model="cardText" label="Search" single-line hide-details>
+        <v-card-text label="Search" single-line hide-details>
           READ THE ATTACHED GUIDE TO FILLING OUT THE PERSONAL DATA SHEET (PDS)
           BEFORE ACCOMPLISHING THE PDS FORM.
         </v-card-text>
@@ -2386,7 +919,6 @@
                 <td colspan="4">
                   <v-text-field
                     label="NAME EXTENSION (JR., SR)"
-                    
                     v-model="personalSuffix"
                     id="suffix"
                     dense
@@ -2465,7 +997,6 @@
                 <td colspan="3">
                   <v-text-field
                     label="Pls. indicate country:"
-                    
                     v-model="personalDualCitizenship"
                     id="countryOfCitizenship"
                     dense
@@ -2491,8 +1022,7 @@
                 </td>
                 <td colspan="3">
                   <v-text-field
-                 label="Input Dual Citizenship"
-                   
+                    label="Input Dual Citizenship"
                     dense
                     id="personalDualCitizenship"
                     class="text-center pt-6"
@@ -2525,7 +1055,6 @@
                 <td rowspan="1" colspan="2">
                   <v-text-field
                     label="House/Block/Lot No."
-                   
                     id="personalHouseNo"
                     v-model="personalResAddressHouseNo"
                     dense
@@ -2563,7 +1092,7 @@
                 </td>
                 <td rowspan="1" colspan="2">
                   <v-text-field
-                  label="Barangay"
+                    label="Barangay"
                     filled
                     v-model="personalResAddressBarangay"
                     id="personalBarangay"
@@ -3757,7 +2286,7 @@
                 <v-text-field
                   placeholder=""
                   solo
-                  v-model="row.inclusiveDatToWorkExperience"
+                  v-model="row.inclusiveDateToWorkExperience"
                   dense
                   class="text-center pt-6"
                   type="text"
@@ -4104,7 +2633,7 @@
             </tr>
           </tbody>
         </v-simple-table>
-        <v-simple-table height="auto" class="pa-0 pa-0 ma-12" width="80vw">
+        <!-- <v-simple-table height="auto" class="pa-0 pa-0 ma-12" width="80vw">
           <thead>
             <tr>
               <th colspan="8" style="text-align: left">
@@ -4206,7 +2735,21 @@
               </td>
             </tr>
           </tfoot>
-        </v-simple-table>
+        </v-simple-table> -->
+        <v-container class="grey lighten-5">
+          <v-row><v-col cols="12" class="sm-12">VIII. OTHER INFORMATION</v-col></v-row>
+          <v-row no-gutters>
+            <v-col  cols="12" sm="4">
+              <v-card class="pa-2" outlined tile> One of three columns </v-card>
+            </v-col>
+            <v-col  cols="12" sm="4">
+              <v-card class="pa-2" outlined tile> One of three columns </v-card>
+            </v-col>
+            <v-col  cols="12" sm="4">
+              <v-card class="pa-2" outlined tile> One of three columns </v-card>
+            </v-col>
+          </v-row>
+        </v-container>
       </v-tab-item>
       <v-tab>Part 4</v-tab>
       <v-tab-item>
@@ -4441,49 +2984,36 @@
                       <th>NAME</th>
                       <th>ADDRESS</th>
                       <th>TEL. NO.</th>
+                      <th rowspan="1" colspan="1" style="text-align: left">
+                        <button
+                          class="material-icons"
+                          @click="addRow('references')"
+                        >
+                          add_circle
+                        </button>
+                      </th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr height="10px">
+                    <tr height="10px" v-for="row in references" :key="row.name">
                       <td>
-                        <v-text-field dense v-model="referenceNameFirst">
+                        <v-text-field dense v-model="row.name"> </v-text-field>
+                      </td>
+                      <td>
+                        <v-text-field dense v-model="row.address">
                         </v-text-field>
                       </td>
                       <td>
-                        <v-text-field dense v-model="referenceAddressFirst">
+                        <v-text-field dense v-model="row.telephoneNo">
                         </v-text-field>
                       </td>
-                      <td>
-                        <v-text-field dense v-model="referenceTelNoFirst">
-                        </v-text-field>
-                      </td>
-                    </tr>
-                    <tr height="10px">
-                      <td>
-                        <v-text-field dense v-model="referenceNameSecond">
-                        </v-text-field>
-                      </td>
-                      <td>
-                        <v-text-field dense v-model="referenceAddressSecond">
-                        </v-text-field>
-                      </td>
-                      <td>
-                        <v-text-field dense v-model="referenceTelNoSecond">
-                        </v-text-field>
-                      </td>
-                    </tr>
-                    <tr height="10px">
-                      <td>
-                        <v-text-field dense v-model="referenceNameThird">
-                        </v-text-field>
-                      </td>
-                      <td>
-                        <v-text-field dense v-model="referenceAddressThird">
-                        </v-text-field>
-                      </td>
-                      <td>
-                        <v-text-field dense v-model="referenceTelNoThird">
-                        </v-text-field>
+                      <td colspan="1">
+                        <button
+                          class="material-icons"
+                          @click="removeRow('references', row)"
+                        >
+                          remove_circle
+                        </button>
                       </td>
                     </tr>
                   </tbody>
@@ -4499,15 +3029,16 @@
                   picture is not acceptable</v-card-text
                 >
                 <v-container class="">
-                  <v-file-input
+                  <v-text-field
                     auto-grow
                     placeholder=""
                     class="mx-2"
                     v-model="personalPhotoAttachment"
                     label="Insert Picture"
                     dense
+                    type="file"
                   >
-                  </v-file-input>
+                  </v-text-field>
                 </v-container>
               </v-card>
             </v-col>
@@ -4569,9 +3100,13 @@
             </v-col>
             <v-col cols="12" sm="4">
               <v-card>
-                <v-container
-                  ><v-file-input dense v-model="oathSignature"></v-file-input
-                ></v-container>
+                <v-container>
+                  <v-text-field
+                    dense
+                    type="file"
+                    v-model="oathSignature"
+                  ></v-text-field>
+                </v-container>
                 <v-card-subtitle
                   >Signature (Sign inside the box)</v-card-subtitle
                 >
@@ -4587,7 +3122,11 @@
             <v-col cols="12" sm="4">
               <v-card>
                 <v-container
-                  ><v-file-input dense v-model="rightThumbMark"></v-file-input
+                  ><v-text-field
+                    dense
+                    type="file"
+                    v-model="rightThumbMark"
+                  ></v-text-field
                 ></v-container>
                 <v-card-subtitle>Right Thumbmark</v-card-subtitle>
               </v-card>
@@ -4615,10 +3154,11 @@
             justify="center"
             style="margin-left: auto; margin-right: auto"
           >
-            <v-file-input
+            <v-text-field
               dense
+              type="file"
               v-model="personAdministeringOath"
-            ></v-file-input>
+            ></v-text-field>
             <span>Person Administering Oath</span>
           </v-card>
         </v-container>
@@ -4637,7 +3177,7 @@
 export default {
   data() {
     return {
-      edit:true,
+      edit: true,
       personalSurname: "",
       personalFirstName: "",
       personalMiddleName: "",
@@ -4845,10 +3385,21 @@ export default {
           otherInformationAssociationMembers: "",
         },
       ],
+      references: [
+        {
+          name: "",
+          address: "",
+          telephoneNo: "",
+        },
+      ],
+      name: "",
+      address: "",
+      telephoneNo: "",
     };
   },
   methods: {
     addRow: function (array) {
+      console.log(array);
       let newRow = [];
       switch (array) {
         case "civilServiceEligibility":
@@ -4929,6 +3480,15 @@ export default {
           };
           this.workExperience.push(newRow);
           break;
+        case "references":
+          console.log("reached");
+          newRow = {
+            name: this.name,
+            address: this.address,
+            telephoneNo: this.telephoneNo,
+          };
+          this.references.push(newRow);
+          break;
         default:
           return "Something went wrong!";
       }
@@ -4953,6 +3513,9 @@ export default {
         case "otherInformation":
           this.otherInformation.splice(row, 1);
           break;
+        case "references":
+          this.references.splice(row, 1);
+          break;
         default:
           return "Something went wrong!";
       }
@@ -4969,12 +3532,12 @@ export default {
       const personalCitizenship = this.personalCitizenship;
       const personalDualCitizenship = this.personalDualCitizenship;
       const personalSex = this.personalSex;
-      const personalCivilStatus = personalCivilStatus;
+      const personalCivilStatus = this.personalCivilStatus;
       const personalHeight = this.personalHeight;
       const personalWeight = this.personalWeight;
       const personalBloodType = this.personalBloodType;
       const personalGSISIDNo = this.personalGSISIDNo;
-      const personalResAddressHouseNo = personalResAddressHouseNo;
+      const personalResAddressHouseNo = this.personalResAddressHouseNo;
       const personalResAddressStreet = this.personalResAddressStreet;
       const personalResAddressSubdivision = this.personalResAddressSubdivision;
       const personalResAddressBarangay = this.personalResAddressBarangay;
