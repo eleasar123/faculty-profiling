@@ -723,114 +723,128 @@
             >
           </h5>
         </v-card>
-        <v-card tile>
-          <v-card-text>
-            <v-row>
-              Name of Employee:
-              <v-text-field
-                placeholder="Name"
-                solo
-                style="width: 200px"
-                dense
-                type="text"
-              >
-              </v-text-field
-            ></v-row>
 
-            <br />
-            Position: <br />
-            Bureau/Center/Service/Division: <br />
-            Rating Period: <br />
-          </v-card-text>
-        </v-card>
-
-        <div id="app">
-          <v-app id="inspire">
-            <v-container>
-              <v-row no-gutters>
-                <v-col v-for="n in 2" :key="n">
-                  <v-card
-                    v-if="n === 1"
+        <v-row no-gutters>
+          <v-col v-for="n in 2" :key="n" class="">
+            <v-card
+              v-if="n === 1"
+              class="pa-4"
+              outlined
+              tile
+              style="height: 260px"
+            >
+              <tr>
+                <v-row>
+                  <v-subheader> Name of Employee: </v-subheader>
+                  <v-text-field
+                    placeholder="Name"
+                    solo
                     class="pa-2"
-                    style="height: 500px"
-                    outlined
-                    tile
+                    style="width: 100"
+                    dense
+                    type="text"
                   >
-                    <v-row class="">
-                      <v-subheader> Name of Employee:</v-subheader>
+                  </v-text-field
+                ></v-row>
+              </tr>
+              <tr>
+                <v-row>
+                  <v-subheader> Position : </v-subheader>
+                  <v-text-field
+                    placeholder="Name"
+                    solo
+                    class="pa-2"
+                    style="width: 100"
+                    dense
+                    type="text"
+                  >
+                  </v-text-field
+                ></v-row>
+              </tr>
+              <tr>
+                <v-row>
+                  <v-subheader> Bureau/Center/Service/Division: </v-subheader>
+                  <v-text-field
+                    placeholder="Name"
+                    solo
+                    class="pa-2"
+                    style="width: 50"
+                    dense
+                    type="text"
+                  >
+                  </v-text-field
+                ></v-row>
+              </tr>
+              <tr>
+                <v-row>
+                  <v-subheader> Rating Period: </v-subheader>
+                  <v-text-field
+                    placeholder="Name"
+                    solo
+                    class="pa-2"
+                    style="width: 100"
+                    dense
+                    type="text"
+                  >
+                  </v-text-field
+                ></v-row>
+              </tr>
+            </v-card>
 
-                      <v-col cols="6">
-                        <v-text-field
-                          placeholder="Name"
-                          solo
-                          style="width: 200px; float:right"
-                          dense
-                          type="text"
-                        >
-                        </v-text-field>
-                      </v-col>
-                      <v-subheader> Position:</v-subheader>
-
-                      <v-col cols="6">
-                        <v-text-field
-                          placeholder="Name"
-                          solo
-                          style="width: 200px "
-                          dense
-                          type="text"
-                        >
-                        </v-text-field>
-                      </v-col>
-                      <v-subheader>  Bureau/Center/Service/Division:</v-subheader>
-
-                      <v-col cols="6">
-                        <v-text-field
-                          placeholder="Name"
-                          solo
-                          style="width: 200px"
-                          dense
-                          type="text"
-                        > 
-                        </v-text-field>
-                      </v-col>
-                      <v-subheader> Rating Period:</v-subheader>
-
-                      <v-col cols="6">
-                        <v-text-field
-                          placeholder="Name"
-                          solo
-                          style="width: 200px"
-                          dense
-                          type="text"
-                        >
-                        </v-text-field>
-                      </v-col>
-                    </v-row>
-
-                    <v-row>
-                      <v-col cols="6">
-                        <v-subheader>Position:</v-subheader>
-                      </v-col>
-                      <v-col cols="6">
-                        <v-text-field
-                          placeholder="Name"
-                          solo
-                          style="width: 200px"
-                          dense
-                          type="text"
-                        >
-                        </v-text-field>
-                      </v-col>
-                    </v-row>
-                  </v-card>
-                  <v-card v-else-if="n === 2" class="pa-2" outlined tile>
-                    Development Needs
-                  </v-card>
-                </v-col>
-              </v-row>
-            </v-container>
-          </v-app>
-        </div>
+            <v-card
+             
+                v-else-if="n === 2"
+              class="pa-2 card-3 "
+              outlined
+              tile
+              style="height: 260px"
+            >
+              <tr>  
+                <v-row>
+                  <v-subheader> Name of Rater: </v-subheader>
+                  <v-text-field
+                    placeholder="Name"
+                    solo
+                    class="pa-2"
+                    style="width: 100"
+                    dense
+                    type="text"
+                  >
+                  </v-text-field
+                ></v-row>
+              </tr>
+              <tr>
+                <v-row>
+                  <v-subheader> Position : </v-subheader>
+                  <v-text-field
+                    placeholder="Name"
+                    solo
+                    class="pa-2"
+                    style="width: 100"
+                    dense
+                    type="text"
+                  >
+                  </v-text-field
+                ></v-row>
+              </tr>
+              <tr>
+                <v-row>
+                  <v-subheader> Date of Review: </v-subheader>
+                  <v-text-field
+                    placeholder="Name"
+                    solo
+                    class="pa-2"
+                    style="width: 50"
+                    dense
+                    type="text"
+                  >
+                  </v-text-field
+                ></v-row>
+              </tr>
+            </v-card>
+          </v-col>
+        </v-row>
+       
 
         <div id="app">
           <v-app id="inspire">
