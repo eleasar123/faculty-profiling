@@ -1,20 +1,20 @@
 <template>
-  <v-main class="pa-0 pa-0 ma-12">
+  <v-main class="pa-0 pa-0 ">
     <v-container
       v-if="edit == false"
-      class="pa-2"
-      style="width: 50vw; border: none; height: auto; position: relative"
+      class="text-center"
+      style="width: 100vw; border: none; height: auto;"
     >
-      <button class="material-icons">keyboard_arrow_left</button>
-      Eleasar Y. Patot
-      <button class="material-icons">keyboard_arrow_right</button>
-      <v-select
+      <button class="material-icons float-left" style="position:absolute;top:1%;left:6%">keyboard_arrow_left</button>
+       <v-select
         label=""
         dense
         outlined
-        class="mb-5"
-        style="max-width: 50%; position: absolute; right: 150px; top: 0px"
-      ></v-select>
+        class="mx-5"
+        style="width:30%;max-width:50%"
+      > </v-select>
+     
+     <button class="material-icons pl-2 float-right" style="position:absolute;top:1%;right:62%">keyboard_arrow_right</button>
     </v-container>
 
     <v-tabs v-if="edit == false">
@@ -2633,120 +2633,149 @@
             </tr>
           </tbody>
         </v-simple-table>
-        <!-- <v-simple-table height="auto" class="pa-0 pa-0 ma-12" width="80vw">
-          <thead>
-            <tr>
-              <th colspan="8" style="text-align: left">
-                VIII. OTHER INFORMATION
-              </th>
-            </tr>
 
-            <tr>
-              <th colspan="3" style="text-align: left">
-                31. SPECIAL SKILLS AND HOBBIES
-              </th>
-              <th colspan="3" style="text-align: left">
-                32. NON-ACADEMIC DISTINCTIONS/RECOGNITION<br />
-                (Write in full)
-              </th>
-              <th colspan="3" style="text-align: left">
-                33. MEMBERSHIP IN ASSOCIATION/ORGANIZATION<br />
-                (Write in full)
-              </th>
-              <th colspan="2" style="text-align: left">
-                <button
-                  class="material-icons"
-                  @click="addRow('otherInformation')"
-                >
-                  add_circle
-                </button>
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr
-              v-for="row in otherInformation"
-              :key="row.otherInformationSpecialSkills"
-            >
-              <td colspan="3">
-                <v-text-field
-                  placeholder=""
-                  solo
-                  v-model="row.otherInformationSpecialSkills"
-                  value=""
-                  class="text-center pt-5"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="3">
-                <v-text-field
-                  placeholder=""
-                  v-model="row.otherInformationNonacademicDistinctions"
-                  solo
-                  dense
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="3">
-                <v-text-field
-                  placeholder=""
-                  solo
-                  dense
-                  v-model="row.otherInformationAssociationMembers"
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="2">
-                <button
-                  class="material-icons"
-                  @click="removeRow('otherInformation', row)"
-                >
-                  remove_circle
-                </button>
-              </td>
-            </tr>
-          </tbody>
-          <tfoot>
-            <tr>
-              <td>SIGNATURE</td>
-              <td colspan="3">
-                <v-text-field
-                  placeholder="Hello World"
-                  solo
-                  class="text-center pt-6"
-                  type="file"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="1">DATE</td>
-              <td colspan="3">
-                <v-text-field
-                  placeholder="Hello World"
-                  solo
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-            </tr>
-          </tfoot>
-        </v-simple-table> -->
         <v-container class="grey lighten-5">
-          <v-row><v-col cols="12" class="sm-12">VIII. OTHER INFORMATION</v-col></v-row>
+          <v-row
+            ><v-col cols="12" class="sm-12"
+              >VIII. OTHER INFORMATION</v-col
+            ></v-row
+          >
           <v-row no-gutters>
-            <v-col  cols="12" sm="4">
-              <v-card class="pa-2" outlined tile> One of three columns </v-card>
+            <v-col cols="12" sm="4">
+              <v-card class="pa-2" outlined tile>
+                <v-card-title class="text-caption">
+                  31. SPECIAL SKILLS AND HOBBIES <br />(Write in full)<button
+                    class="material-icons"
+                    @click="addRow('otherInfoSpecialSkills')"
+                  >
+                    add_circle
+                  </button>
+                </v-card-title>
+                <v-card-text>
+                  <v-container>
+                    <v-container
+                      v-for="row in otherInfoSpecialSkills"
+                      :key="row.ID"
+                    >
+                      <v-text-field
+                        filled
+                        dense
+                        v-model="row.otherInformationSpecialSkills"
+                        
+                        style="float:left"
+                      ></v-text-field>
+                      <button
+                        class="material-icons"
+                        style="float:right"
+                        @click="removeRow('otherInfoSpecialSkills', row)"
+                      >
+                        remove_circle
+                      </button>
+                    </v-container>
+                  </v-container>
+                </v-card-text>
+              </v-card>
             </v-col>
-            <v-col  cols="12" sm="4">
-              <v-card class="pa-2" outlined tile> One of three columns </v-card>
+            <v-col cols="12" sm="4">
+              <v-card class="pa-2" outlined tile>
+                <v-card-title class="text-caption">
+                  32. NON-ACADEMIC DISTINCTIONS/RECOGNITION <br />(Write in
+                  full)
+                  <button
+                    class="material-icons"
+                    @click="addRow('otherInfoNonacademicDistinctions')"
+                  >
+                    add_circle
+                  </button>
+                </v-card-title>
+                <v-card-text>
+                  <v-container>
+                    <v-container
+                      v-for="row in otherInfoNonacademicDistinctions"
+                      :key="row.ID"
+                    >
+                      <v-text-field
+                        filled
+                        dense
+                        v-model="row.otherInformationNonacademicDistinctions"
+                        style="float:left"
+                      ></v-text-field>
+                      <button
+                        class="material-icons"
+                        style="float:right"
+                        @click="
+                          removeRow('otherInfoNonacademicDistinctions', row)
+                        "
+                      >
+                        remove_circle
+                      </button>
+                    </v-container>
+                  </v-container>
+                </v-card-text>
+              </v-card>
             </v-col>
-            <v-col  cols="12" sm="4">
-              <v-card class="pa-2" outlined tile> One of three columns </v-card>
+            <v-col cols="12" sm="4">
+              <v-card class="pa-2" outlined tile>
+                <v-card-title class="text-caption text-wrap">
+                  33. MEMBERSHIP IN ASSOCIATION/ORGANIZATION <br />(Write in
+                  full)
+                  <button
+                    class="material-icons"
+                    
+                    @click="addRow('otherInfoAssociationMembers')"  
+                  >
+                    add_circle
+                  </button>
+                </v-card-title>
+                <v-card-text class="text-center">
+                  <v-container>
+                    <v-container
+                      v-for="row in otherInfoAssociationMembers"
+                      :key="row.ID"
+                    >
+                      <v-text-field
+                        filled
+                        dense
+                        v-model="row.otherInformationAssociationMembers"
+                        style="float:left"
+                      ></v-text-field>
+                      <button
+                        class="material-icons"
+                        style="float:right"
+                        @click="removeRow('otherInfoAssociationMembers', row)"
+                      >
+                        remove_circle
+                      </button>
+                    </v-container>
+                  </v-container>
+                </v-card-text>
+              </v-card>
+            </v-col>
+          </v-row>
+          <v-row>
+            <v-col cols="12" sm="3"> SIGNATURE </v-col>
+            <v-col cols="12" sm="3">
+              <v-text-field
+                placeholder=""
+                filled
+                dense
+                v-model="otherInfoSignature"
+                class="text-center"
+                type="file"
+              >
+              </v-text-field>
+            </v-col>
+            <v-col cols="12" sm="3"> DATE </v-col>
+            <v-col cols="12" sm="3">
+              <v-text-field
+                placeholder=""
+                filled
+                v-model="otherInfoDateOfSignature"
+                dense
+                class="text-center"
+                type="date"
+              >
+              </v-text-field>
             </v-col>
           </v-row>
         </v-container>
@@ -3296,6 +3325,8 @@ export default {
       otherInformationSpecialSkills: "",
       otherInformationNonacademicDistinctions: "",
       otherInformationAssociationMembers: "",
+      otherInfoSignature: "",
+      otherInfoDateOfSignature: "",
       questionThirtyFour: "",
       questionThirtyFiveA: "",
       questionThirtyFiveDateFiled: "",
@@ -3378,11 +3409,19 @@ export default {
           educBackgroundScholarship: "",
         },
       ],
-      otherInformation: [
+      otherInfoSpecialSkills: [
         {
           otherInformationSpecialSkills: "",
+        },
+      ],
+      otherInfoNonacademicDistinctions: [
+        {
           otherInformationNonacademicDistinctions: "",
-          otherInformationAssociationMembers: "",
+        },
+      ],
+      otherInfoAssociationMembers: [
+        {
+          otherInformationSpecialSkills: "",
         },
       ],
       references: [
@@ -3454,15 +3493,24 @@ export default {
           };
           this.learningAndDevelopment.push(newRow);
           break;
-        case "otherInformation":
+        case "otherInfoSpecialSkills":
           newRow = {
             otherInformationSpecialSkills: this.otherInformationSpecialSkills,
-            otherInformationNonacademicDistinctions:
-              this.otherInformationNonacademicDistinctions,
-            otherInformationAssociationMembers:
-              this.otherInformationAssociationMembers,
           };
-          this.otherInformation.push(newRow);
+          this.otherInfoSpecialSkills.push(newRow);
+          break;
+        case "otherInfoNonacademicDistinctions":
+          newRow = {
+            otherInfoNonacademicDistinctions:
+              this.otherInfoNonacademicDistinctions,
+          };
+          this.otherInfoNonacademicDistinctions.push(newRow);
+          break;
+        case "otherInfoAssociationMembers":
+          newRow = {
+            otherInfoAssociationMembers: this.otherInfoAssociationMembers,
+          };
+          this.otherInfoAssociationMembers.push(newRow);
           break;
         case "workExperience":
           newRow = {
@@ -3510,8 +3558,14 @@ export default {
         case "learningAndDevelopment":
           this.learningAndDevelopment.splice(row, 1);
           break;
-        case "otherInformation":
-          this.otherInformation.splice(row, 1);
+        case "otherInfoSpecialSkills":
+          this.otherInfoSpecialSkills.splice(row, 1);
+          break;
+        case "otherInfoNonacademicDistinctions":
+          this.otherInfoNonacademicDistinctions.splice(row, 1);
+          break;
+        case "otherInfoAssociationMembers":
+          this.otherInfoAssociationMembers.splice(row, 1);
           break;
         case "references":
           this.references.splice(row, 1);
@@ -3611,7 +3665,12 @@ export default {
       const workExperienceDateOfSignature = this.workExperienceDateOfSignature;
       const voluntaryWorkInvolvement = this.voluntaryWorkInvolvement;
       const learningAndDevelopment = this.learningAndDevelopment;
-      const otherInformation = this.otherInformation;
+      const otherInfoSpecialSkills = this.otherInfoSpecialSkills;
+      const otherInfoNonacademicDistinctions =
+        this.otherInfoNonacademicDistinctions;
+      const otherInfoAssociationMembers = this.otherInfoAssociationMembers;
+      const otherInfoSignature = this.otherInfoSignature;
+      const otherInfoDateOfSignature = this.otherInfoDateOfSignature;
       const questionThirtyFour = this.questionThirtyFour;
       const questionThirtyFiveA = this.questionThirtyFiveA;
       const questionThirtyFiveDateFiled = this.questionThirtyFiveDateFiled;
@@ -3732,7 +3791,11 @@ export default {
         workExperienceDateOfSignature,
         voluntaryWorkInvolvement,
         learningAndDevelopment,
-        otherInformation,
+        otherInfoSpecialSkills,
+        otherInfoNonacademicDistinctions,
+        otherInfoAssociationMembers,
+        otherInfoSignature,
+        otherInfoDateOfSignature,
         questionThirtyFour,
         questionThirtyFiveA,
         questionThirtyFiveDateFiled,
