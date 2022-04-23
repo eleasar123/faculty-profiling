@@ -67,7 +67,7 @@
   export default {
     data () {
       return {
-       tab: "subscribe"
+       tab: "c1"
       }
     },
     

@@ -13,8 +13,12 @@
     "vue": "^2.6.14",
     "vue-router": "^3.1.3",
     "vuetify": "^2.6.0",
+<<<<<<< HEAD
     "vuex": "^3.6.2",
     "yarn": "^1.22.18"
+=======
+    "vuex": "3.6.2"
+>>>>>>> 768e60180aa6fd4393e871de4bee76e45c50e1c5
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",
@@ -44,6 +48,11 @@
       "parser": "@babel/eslint-parser"
     },
     "rules": {}
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
   },
   "browserslist": [
     "> 1%",

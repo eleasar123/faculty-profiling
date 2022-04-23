@@ -1,5 +1,4 @@
 import axios from "axios";
-
 const state = () => ({
     pdsInfos: null,
 });
@@ -34,10 +33,10 @@ const actions = {
 
     createPds({ dispatch }, data) {
         return axios
-          .post("pds/create", data)
-          .then(async (result) => {
+          .post('pds/create', data)
+          .then(async(result) => {
             try {
-              await dispatch("retrievePdsInfos");
+              await dispatch('retrievePdsInfos');
               return result;
             } catch (error) {
               return error;

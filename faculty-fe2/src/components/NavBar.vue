@@ -22,7 +22,7 @@
             </v-menu>
             <v-btn text>
                 <span>Exit</span>
-                <v-icon right>exit_to_app</v-icon>
+                <v-icon right></v-icon>
              </v-btn>
        </v-app-bar>
       <v-navigation-drawer  v-model="drawer" dark app color="#00063F">
@@ -57,9 +57,11 @@ export default {
       links :[
           {icon: 'person', text:'Personal Info',  route: '/'},
           {icon: 'dashboard', text:'Manage User', route: '/manageUser'},
+          {icon: 'folder', text:'Personal Data Sheet', route: '/personalDataSheet'},
           {icon: 'folder', text:'Manage IPCRF', route: '/manageIpcrf' ,items: [
             { title: 'List Item' }
           ]}
+          
       ]
      
     }),

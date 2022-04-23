@@ -68,11 +68,15 @@ export default {
         password,
       };
       const returnedData = await this.$store.dispatch("loginLocally", data);
+<<<<<<< HEAD
       console.log(returnedData.data[0].message);
+=======
+      console.log(returnedData);
+>>>>>>> 768e60180aa6fd4393e871de4bee76e45c50e1c5
       if (returnedData.data[0].message === "Credentials matched!") {
         localStorage.setItem("userData", data);
         sessionStorage.setItem("userData", data);
-        this.$router.push("/home");
+        this.$router.push("/personalDataSheet");
       }
     },
 
