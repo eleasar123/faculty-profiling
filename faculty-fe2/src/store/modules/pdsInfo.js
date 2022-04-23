@@ -21,22 +21,25 @@ const actions = {
         });
     },
 
-    retrievePdsInfoById({ state, commit }) {
-        return axios.get(`pds/${JSON.parse(state.userToken).ID}`).then((result) => {
-
-            commit('setPdsInfos', JSON.stringify(result.data));
-            return result;
-        }).catch((err) => {
+    retrievePdsInfoById() {
+        console.log(JSON.parse(sessionStorage.getItem("user_session")))
+        state.basicInfoData = []
+        return axios
+          .get("getAllBasicInformationById/" + JSON.parse(sessionStorage.getItem("user_session")).ID)
+          .then((res) => {
+            return res;
+          })
+          .catch((err) => {
             return err.response;
-        });
-    },
+          });
+      },
 
     createPds({ dispatch }, data) {
         return axios
           .post('pds/create', data)
           .then(async(result) => {
             try {
-              await dispatch('retrievePdsInfos');
+              await dispatch('retrievePdsInfo');
               return result;
             } catch (error) {
               return error;
