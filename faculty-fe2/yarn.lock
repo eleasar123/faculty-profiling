@@ -4056,6 +4056,11 @@
   dependencies:
     "semver" "^6.0.0"
 
+"material-design-icons-iconfont@^6.5.0":
+  "integrity" "sha512-ImxSGnW7o5InRxgpL1UUuTPkBsgjzdQ8m7YBe5SdLfyjfcbIYVSHNHzBablNEVuliRdM8efa6mqiFtt8BQyMwA=="
+  "resolved" "https://registry.npmjs.org/material-design-icons-iconfont/-/material-design-icons-iconfont-6.5.0.tgz"
+  "version" "6.5.0"
+
 "mdn-data@2.0.14":
   "integrity" "sha512-dn6wd0uw5GsdswPFfsgMp5NSB0/aDe6fK94YJV/AJDYXL6HVLWBsxeq7js7Ad+mU2K9LAlwpk6kN2D5mwCPVow=="
   "resolved" "https://registry.npmjs.org/mdn-data/-/mdn-data-2.0.14.tgz"
@@ -6212,6 +6217,11 @@
     "string-width" "^4.2.0"
     "y18n" "^5.0.5"
     "yargs-parser" "^20.2.2"
+
+"yarn@^1.22.18":
+  "integrity" "sha512-oFffv6Jp2+BTUBItzx1Z0dpikTX+raRdqupfqzeMKnoh7WD6RuPAxcqDkMUy9vafJkrB0YaV708znpuMhEBKGQ=="
+  "resolved" "https://registry.npmjs.org/yarn/-/yarn-1.22.18.tgz"
+  "version" "1.22.18"
 
 "yorkie@^2.0.0":
   "integrity" "sha512-jcKpkthap6x63MB4TxwCyuIGkV0oYP/YRyuQU5UO0Yz/E/ZAu+653/uov+phdmO54n6BcvFRyyt0RRrWdN2mpw=="
