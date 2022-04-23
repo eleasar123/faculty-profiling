@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import PersonalData from '../views/PersonalData.vue'
+import EsatView from '../views/EsatView.vue';
 import ManageUser from '../views/ManageUser.vue'
 import ManageIpcrf from '../views/ManageIpcrf.vue'
 import Login from '../views/Login/Login.vue'
@@ -25,6 +26,11 @@ const routes = [{
         path: '/manageIpcrf',
         name: 'manageIpcrf',
         component: ManageIpcrf
+    },
+    {
+        path: '/esat',
+        name: 'Esat',
+        component: EsatView
     },
     {
         path: '/login',

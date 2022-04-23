@@ -1,4 +1,4 @@
-v
+
 <template>
   <v-app>
     <v-card>
@@ -98,15 +98,16 @@ v
                       <td>Name of Employee:</td>
                       <td>
                         <v-text-field
-                          class="textField"
-                          v-model="employeeName"
+                          class="textField mt-5"
+                          solo dense
+                          v-model="employeeName"  
                         ></v-text-field>
                       </td>
                     </tr>
                     <tr>
                       <td>Employee ID:</td>
                       <td>
-                        <v-text-field v-model="employeeId"></v-text-field>
+                        <v-text-field class="mt-5" v-model="employeeId" solo dense></v-text-field>
                       </td>
                     </tr>
                     <tr>
@@ -120,7 +121,7 @@ v
                     <tr>
                       <td>Age:</td>
                       <td>
-                        <v-text-field v-model="employeeAge"></v-text-field>
+                        <v-text-field v-model="employeeAge" class="mt-5" solo dense></v-text-field>
                       </td>
                     </tr>
                     <tr>
@@ -171,20 +172,20 @@ v
                       <td>District/Municipality:</td>
                       <td>
                         <v-text-field
-                          v-model="employeeMunicipality"
+                          v-model="employeeMunicipality" class="mt-5" solo dense
                         ></v-text-field>
                       </td>
                     </tr>
                     <tr>
                       <td>School ID:</td>
                       <td>
-                        <v-text-field v-model="schoolId"></v-text-field>
+                        <v-text-field v-model="schoolId" class="mt-5" solo dense></v-text-field>
                       </td>
                     </tr>
                     <tr>
                       <td>School Name:</td>
                       <td>
-                        <v-text-field v-model="schoolName"></v-text-field>
+                        <v-text-field v-model="schoolName" class="mt-5" solo dense></v-text-field>
                       </td>
                     </tr>
                     <tr>
