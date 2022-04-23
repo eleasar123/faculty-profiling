@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\CivilServiceEligibility;
 use App\Models\LearningAndDevelopment;
-use App\Models\OtherInformation;
+use App\Models\OtherInfoAssociationMembers;
+use App\Models\OtherInfoNonacademicDistinctions;
+use App\Models\OtherInfoSpecialSkills;
 use App\Models\PdsAdditionalInfo;
 use App\Models\PdsQuestions;
 use App\Models\PersonalDataSheetEducationalBackground;
@@ -30,7 +32,9 @@ class PersonalInfoController extends Controller
   $pds->push([['workExperience' => WorkExperience::all()]]);
   $pds->push([['voluntaryWorkInvolvement' => VoluntaryWorkInvolvement::all()]]);
   $pds->push([['learningAndDevelopment' => learningAndDevelopment::all()]]);
-  $pds->push([['otherInformation' => OtherInformation::all()]]);
+  $pds->push([['otherInfoSpecialSkills' => OtherInfoSpecialSkills::all()]]);
+  $pds->push([['otherInfoNonacademicDistinctions' => OtherInfoNonacademicDistinctions::all()]]);
+  $pds->push([['otherInfoAssociationMembers' => OtherInfoSpecialSkills::all()]]);
   $pds->push([['references' => References::all()]]);
   $pds->push([['pdsQuestions' => PdsQuestions::all()]]);
   $pds->push([['pdsAdditionalInfo' => PdsAdditionalInfo::all()]]);
@@ -64,124 +68,121 @@ class PersonalInfoController extends Controller
  {
   //
   $request->validate([
-   'user'                            => 'required',
-   'personalSurname'                 => 'required',
-   'personalFirstName'               => 'required',
-   'personalMiddleName'              => 'required',
-   'personalSuffix'                  => 'required',
-   'personalDateOfBirth'             => 'required',
-   'personalPlaceOfBirth'            => 'required',
-   'personalCitizenship'             => 'required',
-   'personalDualCitizenship'         => 'required',
-   'personalSex'                     => 'required',
-   'personalCivilStatus'             => 'required',
-   'personalHeight'                  => 'required',
-   'personalWeight'                  => 'required',
-   'personalBloodType'               => 'required',
-   'personalGSISIDNo'                => 'required',
-   'personalResAddressHouseNo'       => 'required',
-   'personalResAddressStreet'        => 'required',
-   'personalResAddressSubdivision'   => 'required',
-   'personalResAddressBarangay'      => 'required',
-   'personalResAddressCity'          => 'required',
-   'personalResAddressProvince'      => 'required',
-   'personalZipCode'                 => 'required',
-   'personalPAGIBIGIDNo'             => 'required',
-   'personalPHILHEALTHNo'            => 'required',
-   'personalPermanentAddHouseNo'     => 'required',
-   'personalPermanentAddStreet'      => 'required',
-   'personalPermanentAddSubdivision' => 'required',
-   'personalPermanentAddBarangay'    => 'required',
-   'personalPermanentAddCity'        => 'required',
-   'personalPermanentAddProvince'    => 'required',
-   'personalPermanentAddZipCode'     => 'required',
-   'personalSSSNo'                   => 'required',
-   'personalTelephoneNo'             => 'required',
-   'personalTinNo'                   => 'required',
-   'personalMobileNo'                => 'required',
-   'personalAgencyEmployeeNo'        => 'required',
-   'personalEmailAddress'            => 'required',
-   'familySpouseSurname'             => 'required',
-   'familySpouseFirstName'           => 'required',
-   'familySpouseMiddleName'          => 'required',
-   'familySpouseSuffix'              => 'required',
-   'familySpouseOccupation'          => 'required',
-   'familyEmployerName'              => 'required',
-   'familyBusinessAddress'           => 'required',
-   'familyTelephoneNo'               => 'required',
-   'familyFatherSurname'             => 'required',
-   'familyFatherFirstName'           => 'required',
-   'familyFatherMiddleName'          => 'required',
-   'familyFatherSuffix'              => 'required',
-   'familyMotherMaidenName'          => 'required',
-   'familyMotherSurname'             => 'required',
-   'familyMotherFirstName'           => 'required',
-   'familyMotherMiddleName'          => 'required',
-   'nameOfChildrenOne'               => 'required',
-   'nameOfChildrenTwo'               => 'required',
-   'nameOfChildrenThree'             => 'required',
-   'nameOfChildrenFour'              => 'required',
-   'nameOfChildrenFive'              => 'required',
-   'nameOfChildrenSix'               => 'required',
-   'nameOfChildrenSeven'             => 'required',
-   'nameOfChildrenEight'             => 'required',
-   'nameOfChildrenNine'              => 'required',
-   'nameOfChildrenTen'               => 'required',
-   'nameOfChildrenEleven'            => 'required',
-   'nameOfChildrenTwelve'            => 'required',
-   'nameOfChildrenThirteen'          => 'required',
-   'dateOfBirthOne'                  => 'required',
-   'dateOfBirthTwo'                  => 'required',
-   'dateOfBirthThree'                => 'required',
-   'dateOfBirthFour'                 => 'required',
-   'dateOfBirthFive'                 => 'required',
-   'dateOfBirthSix'                  => 'required',
-   'dateOfBirthSeven'                => 'required',
-   'dateOfBirthEight'                => 'required',
-   'dateOfBirthNine'                 => 'required',
-   'dateOfBirthTen'                  => 'required',
-   'dateOfBirthEleven'               => 'required',
-   'dateOfBirthTwelve'               => 'required',
-   'dateOfBirthThirteen'             => 'required',
-   'educationalBackground'           => 'required',
-   'educBackgroundSignature'         => 'required',
-   'educBackgroundDateOfSignature'   => 'required',
-   'civilServiceEligibility'         => 'required',
-   'workExperience'                  => 'required',
-   'workExperienceSignature'         => 'required',
-   'workExperienceDateOfSignature'   => 'required',
-   'voluntaryWorkInvolvement'        => 'required',
-   'learningAndDevelopment'          => 'required',
-   'otherInformation'                => 'required',
-   'questionThirtyFour'              => 'required',
-   'questionThirtyFiveA'             => 'required',
-   'questionThirtyFiveDateFiled'     => 'required',
-   'questionThirtyFiveCaseStatus'    => 'required',
-   'questionThirtySix'               => 'required',
-   'questionThirtySeven'             => 'required',
-   'questionThirtyEight'             => 'required',
-   'questionThirtyNine'              => 'required',
-   'questionFourtyA'                 => 'required',
-   'questionFourtyB'                 => 'required',
-   'questionFourtyC'                 => 'required',
-   'referenceNameFirst'              => 'required',
-   'referenceAddressFirst'           => 'required',
-   'referenceTelNoFirst'             => 'required',
-   'referenceNameSecond'             => 'required',
-   'referenceAddressSecond'          => 'required',
-   'referenceTelNoSecond'            => 'required',
-   'referenceNameThird'              => 'required',
-   'referenceAddressThird'           => 'required',
-   'referenceTelNoThird'             => 'required',
-   'personalPhotoAttachment'         => 'required',
-   'governmentIssuedID'              => 'required',
-   'governmentIssuedIDNo'            => 'required',
-   'governmentIDDateOrPlaceIssued'   => 'required',
-   'oathSignature'                   => 'required',
-   'oathDateAccomplished'            => 'required',
-   'rightThumbMark'                  => 'required',
-   'subscribedAndSwornDate'          => 'required',
-   'personAdministeringOath'         => 'required',
+   'user'                             => 'required',
+   'personalSurname'                  => 'required',
+   'personalFirstName'                => 'required',
+   'personalMiddleName'               => 'required',
+   'personalSuffix'                   => 'required',
+   'personalDateOfBirth'              => 'required',
+   'personalPlaceOfBirth'             => 'required',
+   'personalCitizenship'              => 'required',
+   'personalDualCitizenship'          => 'required',
+   'personalSex'                      => 'required',
+   'personalCivilStatus'              => 'required',
+   'personalHeight'                   => 'required',
+   'personalWeight'                   => 'required',
+   'personalBloodType'                => 'required',
+   'personalGSISIDNo'                 => 'required',
+   'personalResAddressHouseNo'        => 'required',
+   'personalResAddressStreet'         => 'required',
+   'personalResAddressSubdivision'    => 'required',
+   'personalResAddressBarangay'       => 'required',
+   'personalResAddressCity'           => 'required',
+   'personalResAddressProvince'       => 'required',
+   'personalZipCode'                  => 'required',
+   'personalPAGIBIGIDNo'              => 'required',
+   'personalPHILHEALTHNo'             => 'required',
+   'personalPermanentAddHouseNo'      => 'required',
+   'personalPermanentAddStreet'       => 'required',
+   'personalPermanentAddSubdivision'  => 'required',
+   'personalPermanentAddBarangay'     => 'required',
+   'personalPermanentAddCity'         => 'required',
+   'personalPermanentAddProvince'     => 'required',
+   'personalPermanentAddZipCode'      => 'required',
+   'personalSSSNo'                    => 'required',
+   'personalTelephoneNo'              => 'required',
+   'personalTinNo'                    => 'required',
+   'personalMobileNo'                 => 'required',
+   'personalAgencyEmployeeNo'         => 'required',
+   'personalEmailAddress'             => 'required',
+   'familySpouseSurname'              => 'required',
+   'familySpouseFirstName'            => 'required',
+   'familySpouseMiddleName'           => 'required',
+   'familySpouseSuffix'               => 'required',
+   'familySpouseOccupation'           => 'required',
+   'familyEmployerName'               => 'required',
+   'familyBusinessAddress'            => 'required',
+   'familyTelephoneNo'                => 'required',
+   'familyFatherSurname'              => 'required',
+   'familyFatherFirstName'            => 'required',
+   'familyFatherMiddleName'           => 'required',
+   'familyFatherSuffix'               => 'required',
+   'familyMotherMaidenName'           => 'required',
+   'familyMotherSurname'              => 'required',
+   'familyMotherFirstName'            => 'required',
+   'familyMotherMiddleName'           => 'required',
+   'nameOfChildrenOne'                => 'required',
+   'nameOfChildrenTwo'                => 'required',
+   'nameOfChildrenThree'              => 'required',
+   'nameOfChildrenFour'               => 'required',
+   'nameOfChildrenFive'               => 'required',
+   'nameOfChildrenSix'                => 'required',
+   'nameOfChildrenSeven'              => 'required',
+   'nameOfChildrenEight'              => 'required',
+   'nameOfChildrenNine'               => 'required',
+   'nameOfChildrenTen'                => 'required',
+   'nameOfChildrenEleven'             => 'required',
+   'nameOfChildrenTwelve'             => 'required',
+   'nameOfChildrenThirteen'           => 'required',
+   'dateOfBirthOne'                   => 'required',
+   'dateOfBirthTwo'                   => 'required',
+   'dateOfBirthThree'                 => 'required',
+   'dateOfBirthFour'                  => 'required',
+   'dateOfBirthFive'                  => 'required',
+   'dateOfBirthSix'                   => 'required',
+   'dateOfBirthSeven'                 => 'required',
+   'dateOfBirthEight'                 => 'required',
+   'dateOfBirthNine'                  => 'required',
+   'dateOfBirthTen'                   => 'required',
+   'dateOfBirthEleven'                => 'required',
+   'dateOfBirthTwelve'                => 'required',
+   'dateOfBirthThirteen'              => 'required',
+   'educationalBackground'            => 'required',
+   'educBackgroundSignature'          => 'required',
+   'educBackgroundDateOfSignature'    => 'required',
+   'civilServiceEligibility'          => 'required',
+   'workExperience'                   => 'required',
+   'workExperienceSignature'          => 'required',
+   'workExperienceDateOfSignature'    => 'required',
+   'voluntaryWorkInvolvement'         => 'required',
+   'learningAndDevelopment'           => 'required',
+   'otherInfoSpecialSkills'           => 'required',
+   'otherInfoNonacademicDistinctions' => 'required',
+   'otherInfoAssociationMembers'      => 'required',
+   'otherInfoSignature'               => 'required',
+   'otherInfoDateOfSignature'         => 'required',
+   'otherInfoAssociationMembers'      => 'required',
+   'questionThirtyFour'               => 'required',
+   'questionThirtyFiveA'              => 'required',
+   'questionThirtyFiveBDateFiled'      => 'required',
+   'questionThirtyFiveBStatusOfCase'     => 'required',
+   'questionThirtySix'                => 'required',
+   'questionThirtySeven'              => 'required',
+   'questionThirtyEight'              => 'required',
+   'questionThirtyNine'               => 'required',
+   'questionFourtyA'                  => 'required',
+   'questionFourtyB'                  => 'required',
+   'questionFourtyC'                  => 'required',
+   'references'                       => 'required',
+   'personalPhotoAttachment'          => 'required',
+   'governmentIssuedID'               => 'required',
+   'governmentIssuedIDNo'             => 'required',
+   'governmentIDDateOrPlaceIssued'    => 'required',
+   'oathSignature'                    => 'required',
+   'oathDateAccomplished'             => 'required',
+   'rightThumbMark'                   => 'required',
+   'subscribedAndSwornDate'           => 'required',
+   'personAdministeringOath'          => 'required',
 
   ]);
 
@@ -195,13 +196,13 @@ class PersonalInfoController extends Controller
    'place_of_birth'                  => $request->personalPlaceOfBirth,
    'sex'                             => $request->personalSex,
    'civil_status'                    => $request->personalCivilStatus,
-   'height'                          => $request->personaHeight,
+   'height'                          => $request->personalHeight,
    'weight'                          => $request->personalWeight,
    'blood_type'                      => $request->personalBloodType,
    'gsis_id_no'                      => $request->personalGSISIDNo,
-   'pag-ibig_id_no'                  => $request->personalPAGIBIGIDNo,
+   'pag_ibig_id_no'                  => $request->personalPAGIBIGIDNo,
    'sss_no'                          => $request->personalSSSNo,
-   'tin_no'                          => $request->personalTINNo,
+   'tin_no'                          => $request->personalTinNo,
    'agency_employee_no'              => $request->personalAgencyEmployeeNo,
    'citizenship'                     => $request->personalCitizenship,
    'dual_citizenship'                => $request->personalDualCitizenship,
@@ -236,26 +237,17 @@ class PersonalInfoController extends Controller
    'spouse_employer'         => $request->familyEmployerName,
    'spouse_business_address' => $request->familyBusinessAddress,
    'spouse_telephone_no'     => $request->familyTelephoneNo,
-   'spouse_children'         => $request->spouse_children,
+   'spouse_children'         => $request->spouse_children == "" ? "hello world" : $request->spouse_children,
    'father_last_name'        => $request->familyFatherSurname,
    'father_first_name'       => $request->familyFatherFirstName,
    'father_middle_name'      => $request->familyFatherMiddleName,
    'father_suffix'           => $request->familyFatherSuffix,
-   'father_occupation'       => $request->father_occupation,
-   'spouse_employer'         => $request->father_employer,
-   'father_business_address' => $request->father_business_address,
-   'father_telephone_no'     => $request->father_telephone_no,
-   'father_children'         => $request->father_children,
+   'father_children'         => $request->father_children == "" ? "hello world" : $request->father_children,
    'mother_maiden_name'      => $request->familyMotherMaidenName,
-   'mother_last_name'        => $request->mother_last_name,
-   'mother_first_name'       => $request->mother_first_name,
-   'mother_middle_name'      => $request->mother_middle_name,
-   'mother_suffix'           => $request->mother_suffix,
-   'mother_occupation'       => $request->mother_occupation,
-   'souse_employer'          => $request->mother_employer,
-   'mother_business_address' => $request->mother_business_address,
-   'mother_telephone_no'     => $request->mother_telephone_no,
-   'mother_children'         => $request->mother_children,
+   'mother_last_name'        => $request->familyMotherSurname,
+   'mother_first_name'       => $request->familyMotherFirstName,
+   'mother_middle_name'      => $request->familyMotherMiddleName,
+   'mother_children'         => $request->mother_children == "" ? "hello world" : $request->mother_children,
   ]);
 
   foreach ($request->educationalBackground as $educBackground) {
@@ -264,10 +256,10 @@ class PersonalInfoController extends Controller
     'user_id'                    => $request->user,
     'level'                      => $educBackground['educBackgroundLevel'],
     'name_of_school'             => $educBackground['educBackgroundNameOfSchool'],
-    'basic_education/course'     => $educBackground['educBackgroundBasicEducation'],
+    'basic_education_course'     => $educBackground['educBackgroundBasicEducation'],
     'period_of_attendance_from'  => $educBackground['educBackgroundPeriodOfAttendanceFrom'],
     'period_of_attendance_to'    => $educBackground['educBackgroundPeriodOfAttendanceTo'],
-    'highest_level/units_earned' => $educBackground['educBackgroundHighestLevel'],
+    'highest_level_units_earned' => $educBackground['educBackgroundHighestLevel'],
     'year_graduated'             => $educBackground['educBackgroundYearGraduated'],
     'academic_honors_received'   => $educBackground['educBackgroundScholarship'],
    ]);
@@ -321,7 +313,7 @@ class PersonalInfoController extends Controller
     'organization_name_and_address'  => $volWork['nameAndAddressOfOrgVolWork'],
     'voluntary_inclusive_dates_from' => $volWork['inclusiveDatesFromVolWork'],
     'voluntary_inclusive_dates_to'   => $volWork['inclusiveDatesToVolWork'],
-    'number_of_hours'                => $volWork['numberOfHoursToVolWork'],
+    'number_of_hours'                => $volWork['numberOfHoursVolWork'],
     'position'                       => $volWork['positionOfWorkVolWork'],
    ]);
    try {
@@ -348,43 +340,92 @@ class PersonalInfoController extends Controller
    }
   }
 
-  foreach ($request->otherInformation as $otherInfo) {
-   $otherInformation = new OtherInformation([
+//   foreach ($request->otherInformation as $otherInfo) {
+//    $otherInformation = new OtherInformation([
+//     'user_id'                    => $request->user,
+//     'special_skills_and_hobbies' => $otherInfo['otherInformationSpecialSkills'],
+//     'non_academic_distinctions'  => $otherInfo['otherInformationNonacademicDistinctions'],
+//     'organization_membership'    => $otherInfo['otherInformationAssociationMembers'],
+//    ]);
+//    try {
+//     $otherInformation->save();
+//    } catch (Throwable $e) {
+//     return $e;
+//    }
+//   }
+  foreach ($request->otherInfoSpecialSkills as $otherInfo) {
+   $otherInfoSpecialSkills = new OtherInfoSpecialSkills([
     'user_id'                    => $request->user,
     'special_skills_and_hobbies' => $otherInfo['otherInformationSpecialSkills'],
-    'non-academic_distinctions'  => $otherInfo['otherInformationNonacademicDistinctions'],
-    'organization_membership'    => $otherInfo['otherInformationAssociationMembers'],
    ]);
    try {
-    $otherInformation->save();
+    $otherInfoSpecialSkills->save();
    } catch (Throwable $e) {
     return $e;
    }
   }
-  $references = new References([
-   'user_id'           => $request->user,
-   'reference_name'    => $request->reference_name,
-   'reference_address' => $request->reference_address,
-   'reference_tel_no'  => $request->reference_tel_no,
-  ]);
-
+  foreach ($request->otherInfoNonacademicDistinctions as $otherInfo) {
+   $otherInfoNonacademicDistinctions = new OtherInfoNonacademicDistinctions([
+    'user_id'                   => $request->user,
+    'non_academic_distinctions' => $otherInfo['otherInformationNonacademicDistinctions'],
+   ]);
+   try {
+    $otherInfoNonacademicDistinctions->save();
+   } catch (Throwable $e) {
+    return $e;
+   }
+  }
+  foreach ($request->otherInfoAssociationMembers as $otherInfo) {
+   $otherInfoAssociationMembers = new OtherInfoAssociationMembers([
+    'user_id'             => $request->user,
+    'association_members' => $otherInfo['otherInformationAssociationMembers'],
+   ]);
+   try {
+    $otherInfoAssociationMembers->save();
+   } catch (Throwable $e) {
+    return $e;
+   }
+  }
+  foreach ($request->references as $reference) {
+   $references = new References([
+    'user_id'           => $request->user,
+    'reference_name'    => $reference['name'],
+    'reference_address' => $reference['address'],
+    'reference_tel_no'  => $reference['telephoneNo'],
+   ]);
+   try {
+    $references->save();
+   } catch (Throwable $e) {
+    return $e;
+   }
+  }
   $pdsQuestions = new PdsQuestions([
-   'user_id'   => $request->user,
-   'questions' => $request->questions,
-   'answer'    => $request->answer,
+   'user_id'                               => $request->user,
+   'question_thirty_four'                  => $request->questionThirtyFour,
+   'question_thirty_five_a'                => $request->questionThirtyFiveA,
+   'question_thirty_five_b_date_filed'     => $request->questionThirtyFiveBDateFiled,
+   'question_thirty_five_B_status_of_case' => $request->questionThirtyFiveBStatusOfCase,
+   'question_thirty_six'                   => $request->questionThirtySix,
+   'question_thirty_seven'                 => $request->questionThirtySeven,
+   'question_thirty_eight'                 => $request->questionThirtyEight,
+   'question_thirty_nine'                  => $request->questionThirtyNine,
+   'question_forty_a'                      => $request->questionFourtyA,
+   'question_forty_b'                      => $request->questionFourtyB,
+   'question_forty_c'                      => $request->questionFourtyC,
   ]);
 
   $pdsAdditionalInfo = new PdsAdditionalInfo([
    'user_id'                   => $request->user,
-   'oath'                      => $request->oath,
-   'government_id'             => $request->government_id,
-   'id_no'                     => $request->id_no,
-   'date/place_of_issuance'    => $request->date_place_of_issuance,
-   'signature'                 => $request->signature,
-   'photo'                     => $request->photo,
-   'right_thumbmark'           => $request->right_thumbmark,
-   'sworn_date'                => $request->sworn_date,
-   'person_administering_oath' => $request->person_administering_oath,
+   'oath'                      => $request->oathSignature,
+   'government_id'             => $request->governmentIssuedID,
+   'id_no'                     => $request->governmentIssuedIDNo,
+   'date_place_of_issuance'    => $request->governmentIDDateOrPlaceIssued,
+   'signature'                 => $request->oathSignature,
+   'oath_date_accomplished'    => $request->oathDateAccomplished,
+   'photo'                     => $request->personalPhotoAttachment,
+   'right_thumbmark'           => $request->rightThumbMark,
+   'sworn_date'                => $request->subscribedAndSwornDate,
+   'person_administering_oath' => $request->personAdministeringOath,
   ]);
 
   try {
@@ -603,7 +644,7 @@ class PersonalInfoController extends Controller
     'user_id'                    => $request->user,
     'level'                      => $educBackground['educBackgroundLevel'],
     'name_of_school'             => $educBackground['educBackgroundNameOfSchool'],
-    'basic_education/course'     => $educBackground['educBackgroundBasicEducation'],
+    'basic_education_course'     => $educBackground['educBackgroundBasicEducation'],
     'period_of_attendance_from'  => $educBackground['educBackgroundPeriodOfAttendanceFrom'],
     'period_of_attendance_to'    => $educBackground['educBackgroundPeriodOfAttendanceTo'],
     'highest_level/units_earned' => $educBackground['educBackgroundHighestLevel'],
@@ -660,7 +701,7 @@ class PersonalInfoController extends Controller
     'organization_name_and_address'  => $volWork['nameAndAddressOfOrgVolWork'],
     'voluntary_inclusive_dates_from' => $volWork['inclusiveDatesFromVolWork'],
     'voluntary_inclusive_dates_to'   => $volWork['inclusiveDatesToVolWork'],
-    'number_of_hours'                => $volWork['numberOfHoursToVolWork'],
+    'number_of_hours'                => $volWork['numberOfHoursVolWork'],
     'position'                       => $volWork['positionOfWorkVolWork'],
    ]);
    try {
@@ -740,5 +781,3 @@ class PersonalInfoController extends Controller
  }
 
 }
-
-

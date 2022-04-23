@@ -14,19 +14,10 @@ return new class extends Migration
     public function up()
     {
         //
-        Schema::create('pds_additional_infos', function (Blueprint $table){
+        Schema::create('other_info_association_members', function (Blueprint $table){
             $table->increments('id');
             $table->string('user_id');
-            $table->string('oath');
-            $table->string('government_id');
-            $table->string('id_no');
-            $table->string('date_place_of_issuance');
-            $table->string('signature');
-            $table->string('oath_date_accomplished');
-            $table->string('photo');
-            $table->string('right_thumbmark');
-            $table->string('sworn_date');
-            $table->string('person_administering_oath');
+            $table->string('association_members');
             $table->timestamp('created_at') ->useCurrent();
             $table->timestamp('updated_at') -> nullable() -> useCurrentOnUpdate();
             $table->softDeletesTz();
@@ -41,6 +32,6 @@ return new class extends Migration
     public function down()
     {
         //
-        Schema::dropIfExists('pds_additional_info');
+        Schema::dropIfExists('other_info_association_members');
     }
 };

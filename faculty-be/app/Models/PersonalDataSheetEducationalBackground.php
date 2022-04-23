@@ -22,10 +22,10 @@ class PersonalDataSheetEducationalBackground extends Model
         'user_id',
         'level',
         'name_of_school',
-        'basic_education/course',
+        'basic_education_course',
         'period_of_attendance_from',
         'period_of_attendance_to',
-        'highest_level/units_earned',
+        'highest_level_units_earned',
         'year_graduated',
         'academic_honors_received',
     ];

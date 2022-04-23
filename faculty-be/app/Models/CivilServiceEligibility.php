@@ -19,7 +19,7 @@ class CivilServiceEligibility extends Model
      */
     protected $fillable = [
     //civil service eligibility
-        'user_ids',
+        'user_id',
         'career_service',
         'rating',
         'date_of_examination',

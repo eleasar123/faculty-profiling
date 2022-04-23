@@ -9,7 +9,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\User;
-class PersonalDataSheetFamilyBackground extends Model
+
+class OtherInfoAssociationMembers extends Model
 {
     use HasFactory, HasFactory, Notifiable;
     /**
@@ -18,28 +19,9 @@ class PersonalDataSheetFamilyBackground extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-    //family background
+    //other information
         'user_id',
-        'spouse_last_name',
-        'spouse_first_name',
-        'spouse_middle_name',
-        'spouse_suffix',
-        'spouse_occupation',   
-        'spouse_employer',
-        'spouse_business_address', 
-        'spouse_telephone_no',
-        'spouse_children',
-        'father_last_name',
-        'father_first_name',
-        'father_middle_name',
-        'father_suffix',
-        'father_children',
-        'mother_maiden_name',
-        'mother_last_name',
-        'mother_first_name',
-        'mother_middle_name',
-        'mother_occupation', 
-        'mother_children',
+        'association_members',
     ];
 
     public function user()
