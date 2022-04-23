@@ -4,12 +4,7 @@ import PersonalData from '../views/PersonalData.vue'
 import ManageUser from '../views/ManageUser.vue'
 import ManageIpcrf from '../views/ManageIpcrf.vue'
 import Login from '../views/Login/Login.vue'
-<<<<<<< HEAD
-import EsatView from '../views/EsatView.vue'
-import NewEsat from '../views/NewEsat.vue'
-=======
 import PersonalDataSheet from '../views/Profile/PersonalDataSheet.vue'
->>>>>>> 768e60180aa6fd4393e871de4bee76e45c50e1c5
 Vue.use(VueRouter)
 
 const routes = [{
@@ -32,32 +27,15 @@ const routes = [{
         component: ManageIpcrf
     },
     {
-<<<<<<< HEAD
         path: '/login',
         name: 'login',
         component: Login
     },
     {
-        path: '/esat',
-        name: 'esat',
-        component: EsatView
+        path: '/personalDataSheet',
+        name: 'PersonalDataSheet',
+        component: PersonalDataSheet
     },
-    {
-        path: '/newesat',
-        name: 'newesat',
-        component: NewEsat
-    }
-=======
-      path: '/login',
-      name: 'login',
-      component: Login
-  },
-  {
-    path: '/personalDataSheet',
-    name: 'PersonalDataSheet',
-    component: PersonalDataSheet
-  },
->>>>>>> 768e60180aa6fd4393e871de4bee76e45c50e1c5
 ]
 
 const router = new VueRouter({
