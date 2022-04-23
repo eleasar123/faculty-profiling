@@ -463,12 +463,7 @@
                 </h5>
               </v-card>
               <v-row no-gutters>
-                <v-col
-                  v-for="n in 4"
-                  :key="n"
-                  :cols="n === 1 || 3 ? 3 : undefined"
-                  class=""
-                >
+                <v-col v-for="n in 4" :key="n">
                   <v-card
                     v-if="n === 1"
                     class="pa-2 card-1 text-justify"
@@ -613,12 +608,7 @@
                 </v-col>
               </v-row>
               <v-row no-gutters>
-                <v-col
-                  v-for="n in 4"
-                  :key="n"
-                  :cols="n === 1 || 3 ? 3 : undefined"
-                  class=""
-                >
+                <v-col v-for="n in 4" :key="n">
                   <v-card
                     v-if="n === 1"
                     class="pa-2 card-9 text-justify"
@@ -683,11 +673,11 @@
                   </v-card>
                   <v-card
                     v-else-if="n === 4"
-                    class="pa-2 text-center card-12 text-justify"
+                    class="pa-2 text-center card-12"
+                    style="overflow-y: auto; height: 570px"
                     outlined
                     tile
                     label="0"
-                    style="overflow-y: auto; height: 570px"
                     ><br /><br /><br /><br /><br /><br /><br />
                     0
                   </v-card>
@@ -695,7 +685,7 @@
               </v-row>
               <v-card class="pa-2" outlined tile>
                 <h5 class="font-weight-regular">
-                  Note: The assessment in the demonstration of competencies
+                  Note: The assessment in the demonstration of competencie s
                   shall not be reflected in the final rating. These competencies
                   are monitored to inform professional development plans (DepEd
                   Order No. 2, s. 2015, p. 9).
@@ -731,120 +721,214 @@
               class="pa-4"
               outlined
               tile
-              style="height: 260px"
+              style="height: 220px"
             >
               <tr>
-                <v-row>
+                <td colspan="3" style="text-align: left">
                   <v-subheader> Name of Employee: </v-subheader>
-                  <v-text-field
-                    placeholder="Name"
-                    solo
-                    class="pa-2"
-                    style="width: 100"
-                    dense
-                    type="text"
-                  >
-                  </v-text-field
-                ></v-row>
+                </td>
               </tr>
               <tr>
-                <v-row>
-                  <v-subheader> Position : </v-subheader>
-                  <v-text-field
-                    placeholder="Name"
-                    solo
-                    class="pa-2"
-                    style="width: 100"
-                    dense
-                    type="text"
-                  >
-                  </v-text-field
-                ></v-row>
+                <td colspan="3" style="text-align: left">
+                  <v-subheader> Position: </v-subheader>
+                </td>
               </tr>
               <tr>
-                <v-row>
-                  <v-subheader> Bureau/Center/Service/Division: </v-subheader>
-                  <v-text-field
-                    placeholder="Name"
-                    solo
-                    class="pa-2"
-                    style="width: 50"
-                    dense
-                    type="text"
-                  >
-                  </v-text-field
-                ></v-row>
+                <td colspan="3" style="text-align: left">
+                  <v-subheader> Bureau/Center/Service/Division:</v-subheader>
+                </td>
+                <v-row> </v-row>
               </tr>
               <tr>
-                <v-row>
+                <td colspan="3" style="text-align: left">
                   <v-subheader> Rating Period: </v-subheader>
-                  <v-text-field
-                    placeholder="Name"
-                    solo
-                    class="pa-2"
-                    style="width: 100"
-                    dense
-                    type="text"
-                  >
-                  </v-text-field
-                ></v-row>
+                </td>
               </tr>
             </v-card>
 
             <v-card
-             
-                v-else-if="n === 2"
-              class="pa-2 card-3 "
+              v-else-if="n === 2"
+              class="pa-4"
               outlined
               tile
-              style="height: 260px"
+              style="height: 220px"
             >
-              <tr>  
-                <v-row>
-                  <v-subheader> Name of Rater: </v-subheader>
-                  <v-text-field
-                    placeholder="Name"
-                    solo
-                    class="pa-2"
-                    style="width: 100"
-                    dense
-                    type="text"
-                  >
-                  </v-text-field
-                ></v-row>
+              <tr>
+                <td colspan="3" style="text-align: left">
+                  <v-subheader>Name of Rater: </v-subheader>
+                </td>
               </tr>
               <tr>
-                <v-row>
-                  <v-subheader> Position : </v-subheader>
-                  <v-text-field
-                    placeholder="Name"
-                    solo
-                    class="pa-2"
-                    style="width: 100"
-                    dense
-                    type="text"
-                  >
-                  </v-text-field
-                ></v-row>
+                <td colspan="3" style="text-align: left">
+                  <v-subheader> Position: </v-subheader>
+                </td>
               </tr>
               <tr>
-                <v-row>
-                  <v-subheader> Date of Review: </v-subheader>
-                  <v-text-field
-                    placeholder="Name"
-                    solo
-                    class="pa-2"
-                    style="width: 50"
-                    dense
-                    type="text"
-                  >
-                  </v-text-field
-                ></v-row>
+                <td colspan="3" style="text-align: left">
+                  <v-subheader> Date of Review:</v-subheader>
+                </td>
               </tr>
             </v-card>
           </v-col>
         </v-row>
-       
+        <!-- <v-row no-gutters>
+          <v-col v-for="n in 2" :key="n" class="">
+            <v-card
+              v-if="n === 1"
+              class="pa-4"
+              outlined
+              tile
+              style="height: 300px"
+            >
+              <tr>
+                <td colspan="3" style="text-align: left">
+                  <v-subheader> Name of Employee: </v-subheader>
+                </td>
+
+                <v-row>
+                  <v-text-field
+                    placeholder="Enter Name"
+                    solo
+                    dense
+                    class="text-center pa-3 nameOfEmployee"
+                    type="text"
+                  >
+                  </v-text-field>
+                </v-row>
+              </tr>
+              <tr>
+                <td colspan="3" style="text-align: left">
+                  <v-subheader> Position: </v-subheader>
+                </td>
+
+                <v-row>
+                  <v-text-field
+                    placeholder="Enter Position"
+                    solo
+                    dense
+                    class="text-center pa-3"
+                    type="text"
+                  >
+                  </v-text-field>
+                </v-row>
+              </tr>
+              <tr>
+                <td colspan="3" style="text-align: left">
+                  <v-subheader> Bureau/Center/Service/Division:</v-subheader>
+                </td>
+
+                <v-row>
+                  <v-text-field
+                    placeholder="Enter Name"
+                    solo
+                    dense
+                    class="text-center pa-3 nameOfEmployee"
+                    type="text"
+                  >
+                  </v-text-field>
+                </v-row>
+              </tr>
+              <tr>
+                <td colspan="3" style="text-align: left">
+                  <v-subheader> Rating Period: </v-subheader>
+                </td>
+
+                <v-row>
+                  <v-text-field
+                    placeholder="Enter Position"
+                    solo
+                    dense
+                    class="text-center pa-3"
+                    type="text"
+                  >
+                  </v-text-field>
+                </v-row>
+              </tr>
+            </v-card>
+
+            <v-card
+              v-else-if="n === 2"
+              class="pa-4"
+              outlined
+              tile
+              style="height: 300px"
+            >
+              <tr>
+                <td colspan="3" style="text-align: left">
+                  <v-subheader>Name of Rater: </v-subheader>
+                </td>
+
+                <v-row>
+                  <v-text-field
+                    placeholder="Enter Name"
+                    solo
+                    dense
+                    class="text-center pa-3 nameOfEmployee"
+                    type="text"
+                  >
+                  </v-text-field>
+                </v-row>
+              </tr>
+              <tr>
+                <td colspan="3" style="text-align: left">
+                  <v-subheader> Position: </v-subheader>
+                </td>
+
+                <v-row>
+                  <v-text-field
+                    placeholder="Enter Position"
+                    solo
+                    dense
+                    class="text-center pa-3"
+                    type="text"
+                  >
+                  </v-text-field>
+                </v-row>
+              </tr>
+              <tr>
+                <td colspan="3" style="text-align: left">
+                  <v-subheader> Date of Review:</v-subheader>
+                </td>
+
+                <v-row>
+                  <v-text-field
+                    placeholder="Enter Name"
+                    solo
+                    dense
+                    class="text-center pa-3 nameOfEmployee"
+                    type="text"
+                  >
+                  </v-text-field>
+                </v-row>
+              </tr>
+            </v-card>
+          </v-col>
+        </v-row> -->
+        <v-card class="pa-2 text-center" color="grey lighten-2" outlined tile>
+          <b>PART III. SUMMARY OF RATINGS FOR DISCUSSION</b>
+        </v-card>
+        <v-row no-gutters v-for="n in 6" :key="n">
+          <v-col>
+            <v-card v-if="n === 1" class="pa-2 part3" outlined tile>
+             KRA 
+            </v-card>
+            <v-card v-else-if="n === 2" class="pa-2 kra" outlined tile>
+              KRA 1
+            </v-card>
+            <v-card v-else-if="n === 3" class="pa-2 kra" outlined tile>
+              KRA 2
+            </v-card>
+            <v-card v-else-if="n === 4" class="pa-2 kra" outlined tile>
+              KRA 3 </v-card
+            ><v-card v-else-if="n === 5" class="pa-2 kra" outlined tile>
+              KRA 4
+            </v-card>
+            <v-card v-else-if="n === 6" class="pa-2 part3" outlined tile>
+              Plus Factor
+            </v-card>
+          </v-col>
+        </v-row>
+        
 
         <div id="app">
           <v-app id="inspire">
@@ -1172,6 +1256,19 @@
   </v-card>
 </template>
 <style >
+.nameOfEmployee {
+  width: 300px;
+}
+.part3 {
+  width: 200px;
+  text-align: center;
+}
+.kra{
+ 
+text-align: center;
+ width: 200px;
+ height: 150px;
+}
 </style>
 <script>
 export default {
