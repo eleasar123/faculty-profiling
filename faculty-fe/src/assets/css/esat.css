@@ -1,0 +1,50 @@
+#esatLogo {
+    width: 100px;
+    height: 100px;
+    margin-left: 60%;
+    margin-top: 2%;
+}
+
+#esatTxt {
+    margin-top: 2%;
+    margin-left: -10%;
+}
+
+#disclosure {
+    text-align: justify;
+    background-color: rgb(211, 238, 158);
+    border: green 3px solid;
+}
+
+#disclose {
+    font-weight: bolder;
+}
+
+.part1 td {
+    text-align: right;
+    font-size: smaller;
+}
+
+.part1a {
+    border: black 2px solid;
+}
+
+td {
+    border: 1px solid black;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.radio {
+    width: 30%;
+}
+
+.lvlOfCapability,
+.priorityForDev {
+    border-right: 1px black solid;
+}
+
+.part2Instruction,
+.part3Instruction {
+    border: black 2px solid;
+}
