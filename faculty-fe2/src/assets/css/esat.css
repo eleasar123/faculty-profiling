@@ -13,7 +13,7 @@
 #disclosure {
     text-align: justify;
     background-color: rgb(211, 238, 158);
-    border: green 3px solid;
+    border: rgb(64, 35, 131) 4px solid;
 }
 
 #disclose {
@@ -35,6 +35,16 @@ td {
     padding-right: 10px;
 }
 
+#objective {
+    font-weight: bolder;
+    background-color: rgb(211, 238, 158);
+}
+
+.head {
+    background-color: rgb(211, 238, 158);
+    padding: 7px;
+}
+
 .radio {
     width: 30%;
 }
@@ -47,4 +57,33 @@ td {
 .part2Instruction,
 .part3Instruction {
     border: black 2px solid;
+    background-color: white;
+}
+
+.bgContainer {
+    background-color: rgb(211, 238, 158);
+    border: rgb(81, 22, 218) 4px solid;
+}
+
+.bgCard {
+    background-color: rgb(211, 238, 158);
+    border: green 3px solid;
+}
+
+.heading {
+    font-weight: bolder;
+    font-size: 20px;
+}
+
+#radioBtn {
+    justify-content: space-around;
+}
+
+.checkBox {
+    background-color: rgb(211, 238, 158);
+    width: 7px;
+}
+
+.infoDetails {
+    background-color: rgb(211, 238, 158);
 }
