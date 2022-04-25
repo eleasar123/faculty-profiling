@@ -95,7 +95,7 @@
                     <v-text-field
                       class="textField mt-5"
                       solo
-                      dense 
+                      dense
                       flat
                       v-model="employeeName"
                     ></v-text-field>
@@ -103,12 +103,12 @@
                   <td rowspan="8"></td>
                   <td>Number of Years in Teaching:</td>
                   <td>
-                    <v-select solo class="mt-5" :items="items"></v-select>
+                    <v-select solo class="mt-5" v-model="yearsInTeaching" :items="items"></v-select>
                   </td>
                   <td rowspan="8"></td>
                   <td>Region:</td>
                   <td>
-                    <v-select solo class="mt-5" :items="items"></v-select>
+                    <v-select solo class="mt-5" :items="items" v-model="region"></v-select>
                   </td>
                 </tr>
                 <tr class="infoDetails">
@@ -123,17 +123,17 @@
                   </td>
                   <td rowspan="2">Highest Degree Obtained:</td>
                   <td>
-                    <v-select solo class="mt-5" :items="items"></v-select>
+                    <v-select solo class="mt-5" v-model="highestDegreeObtained" :items="items"></v-select>
                   </td>
                   <td>Division:</td>
                   <td>
-                    <v-select solo class="mt-5" :items="items"></v-select>
+                    <v-select solo class="mt-5" :items="items" v-model="division"></v-select>
                   </td>
                 </tr>
                 <tr class="infoDetails">
                   <td>Position:</td>
                   <td>
-                    <v-select solo class="mt-5" :items="items"></v-select>
+                    <v-select solo class="mt-5" v-model="position" :items="items"></v-select>
                   </td>
                   <td>
                     <v-select solo class="mt-5" :items="items"></v-select>
@@ -151,11 +151,11 @@
                 <tr class="infoDetails">
                   <td>Employment Status:</td>
                   <td>
-                    <v-select solo class="mt-5" :items="items"></v-select>
+                    <v-select solo class="mt-5" v-model="employmentStatus" :items="items"></v-select>
                   </td>
                   <td>Level Taught:</td>
                   <td>
-                    <v-select solo class="mt-5" :items="items"></v-select>
+                    <v-select solo class="mt-5" v-model="levelTaught" :items="items"></v-select>
                   </td>
                   <td>School ID:</td>
                   <td>
@@ -179,7 +179,7 @@
                   </td>
                   <td>Grade Level taught:</td>
                   <td>
-                    <v-select solo class="mt-5" :items="items"></v-select>
+                    <v-select solo class="mt-5" v-model="gradeLevelTaught" :items="items"></v-select>
                   </td>
                   <td>School Name:</td>
                   <td>
@@ -194,7 +194,7 @@
                 <tr class="infoDetails">
                   <td>Sex:</td>
                   <td>
-                    <v-select solo class="mt-5" :items="items"></v-select>
+                    <v-select solo class="mt-5" v-model="employeeSex" :items="items"></v-select>
                   </td>
                   <td colspan="2"></td>
                   <td>School Type:</td>
@@ -203,6 +203,7 @@
                       solo
                       class="mt-5"
                       :items="items"
+                      v-model="schoolType"
                       label="School Type"
                     ></v-select>
                   </td>
@@ -215,6 +216,7 @@
                       solo
                       class="mt-5"
                       :items="items"
+                      v-model="schoolSize"
                       label="School Size"
                     ></v-select>
                   </td>
@@ -226,6 +228,7 @@
                       solo
                       class="mt-5"
                       :items="items"
+                      v-model="curricularClassification"
                       label="Curricular Classification"
                     ></v-select>
                   </td>
@@ -1437,7 +1440,7 @@
                 <v-row no-gutters>
                   <v-col cols="12" sm="6" md="8"> </v-col>
                   <v-col cols="4" md="4">
-                    <v-btn class="float-right mb-4 me-4 mt-5">FINISH</v-btn>
+                    <v-btn class="float-right mb-4 me-4 mt-5" @click='finalizeEsat'>FINISH</v-btn>
                   </v-col>
                 </v-row>
               </v-col>
@@ -1447,7 +1450,7 @@
 
         <v-tab-item :key="5" value="c5">
           <v-card flat>
-            <v-container class="bgContainer mt-5">
+            <v-container class="mt-5">
               <h2 class="heading text-center">
                 Electronic Self-Assessment Tool(e-SAT)SY 2020-2021
               </h2>
@@ -1993,11 +1996,26 @@ export default {
     return {
       employeeName: "",
       employeeId: "",
+      position: "",
+      employmentStatus: "",
       employeeAge: "",
+      employeeSex: "",
+
+      yearsInTeaching: "",
+      highestDegreeObtained: "",
+      levelTaught: "",
+      gradeLevelTaught: "",
+
+
+      region: "",
+      division: "",
       employeeMunicipality: "",
       schoolId: "",
       schoolName: "",
-      highestDegreeObtained: "",
+      schoolType: "",
+      schoolSize: "",
+      curricularClassification: "",
+
 
       english: "",
       filipino: "",
@@ -2077,6 +2095,203 @@ export default {
       tab: "subscribe",
     };
   },
+  methods: {
+    finalizeEsat: async function () {
+     const employeeName = this.employeeName;
+     const employeeId = this.employeeId;
+     const position = this.position;
+     const employmentStatus = this.employmentStatus;
+     const employeeAge = this.employeeAge;
+     const employeeSex = this.employeeSex;
+
+    const yearsInTeaching = this.yearsInTeaching;
+    const highestDegreeObtained = this.highestDegreeObtained;
+    const levelTaught = this.levelTaught;
+    const gradeLevelTaught = this.gradeLevelTaught;
+
+
+     const region = this.region;
+      const division = this.division;
+     const employeeMunicipality = this.employeeMunicipality;
+     const schoolId = this.schoolId;
+     const schoolName = this.schoolName;
+      const schoolType = this.schoolType;
+       const schoolSize = this.schoolSize;
+        const curricularClassification = this.curricularClassification;
+    //  const highestDegreeObtained = this.highestDegreeObtained;
+     const english = this.english;
+     const filipino = this.filipino;
+     const mathematics = this.mathematics;
+     const generalScience = this.generalScience;
+     const biology = this.biology;
+     const chemistry = this.chemistry;
+     const physics = this.physics;
+     const socialScience = this.socialScience;
+     const earlyChildhoodEducation = this.earlyChildhoodEducation;
+     const valuesEducation =this.valuesEducation;
+     const sped = this.sped;
+     const music = this.music;
+     const arts = this.arts;
+     const physicalEducation = this.physicalEducation;
+     const health = this.health;
+     const tle_he_tvl = this.tle_he_tvl;
+     const specifyAreaofSpecialization = this.specifyAreaofSpecialization;
+     const MotherTongue = this.MotherTongue;
+     const Filipino = this.Filipino;
+     const English = this.English;
+     const Mathematics = this.Mathematics;
+     const Science = this.Science;
+     const AralingPanlipunan = this.AralingPanlipunan;
+     const EdukasyonSaPagpapakatao = this.EdukasyonSaPagpapakatao;
+     const Mapeh = this.Mapeh;
+     const TLE_HE = this.TLE_HE;
+     const EPP_LE_HE = this.EPP_LE_HE;
+     const specialPrograms = this.specialPrograms;
+     const specifySubjectsTaught = this.specifySubjectsTaught;
+     const capability1 = this.capability1;
+     const development1 = this.development1;
+     const capability2 = this.capability2;
+     const development2 = this.development2;
+     const capability3 = this.capability3;
+     const development3 = this.development3;
+     const capability4 = this.capability4;
+     const development4 = this.development4;
+     const capability5 = this.capability5;
+     const development5 = this.development5;
+     const capability6 = this.capability6;
+     const development6 = this.development6;
+     const capability7 = this.capability7;
+     const development7 = this.development7;
+     const capability8 = this.capability8;
+     const development8 = this.development8;
+     const capability9 = this.capability9;
+     const development9 = this.development9;
+     const capability10 = this.capability10;
+     const development10 = this.development10;
+     const capability11 = this.capability11;
+     const development11 = this.development11;
+     const capability12 = this.capability12;
+     const development12 = this.development12;
+     const personalComments = this.personalComments;
+     const teamwork1 = this.teamwork1;
+     const teamwork2 = this.teamwork2;
+     const teamwork3 = this.teamwork3;
+     const teamwork4 = this.teamwork4;
+     const teamwork5 = this.teamwork5;
+     const serviceOrientation1 = this.serviceOrientation1;
+     const serviceOrientation2 = this.serviceOrientation2;
+     const serviceOrientation3 = this.serviceOrientation3;
+     const serviceOrientation4 = this.serviceOrientation4;
+     const serviceOrientation5 = this.serviceOrientation5;
+     const innovation1 = this.innovation1;
+     const innovation2 = this.innovation2;
+     const innovation3 = this.innovation3;
+     const innovation4 = this.innovation4;
+     const innovation5 = this.innovation5;
+
+     const user = 1;
+
+    const data = {
+        user,
+        employeeName,
+        employeeId,
+        position,
+        employmentStatus,
+        employeeAge,
+        employeeSex,
+
+        yearsInTeaching,
+        highestDegreeObtained,
+        levelTaught,
+        gradeLevelTaught,
+
+        region,
+        division,
+        employeeMunicipality,
+        schoolId,
+        schoolName,
+        schoolType,
+        schoolSize,
+        curricularClassification,
+        
+        english,
+        filipino,
+        mathematics,
+        generalScience,
+        biology,
+        chemistry,
+        physics,
+        socialScience,
+        earlyChildhoodEducation,
+        valuesEducation,
+        sped,
+        music,
+        arts,
+        physicalEducation,
+        health,
+        tle_he_tvl,
+        specifyAreaofSpecialization,
+        MotherTongue,
+        Filipino,
+        English,
+        Mathematics,
+        Science,
+        AralingPanlipunan,
+        EdukasyonSaPagpapakatao,
+        Mapeh,
+        TLE_HE,
+        EPP_LE_HE,
+        specialPrograms,
+        specifySubjectsTaught,
+        capability1,
+        development1,
+        capability2,
+        development2,
+        capability3,
+        development3,
+        capability4,
+        development4,
+        capability5,
+        development5,
+        capability6,
+        development6,
+        capability7,
+        development7,
+        capability8,
+        development8,
+        capability9,
+        development9,
+        capability10,
+        development10,
+        capability11,
+        development11,
+        capability12,
+        development12,
+        personalComments,
+        teamwork1,
+        teamwork2,
+        teamwork3,
+        teamwork4,
+        teamwork5,
+        serviceOrientation1,
+        serviceOrientation2,
+        serviceOrientation3,
+        serviceOrientation4,
+        serviceOrientation5,
+        innovation1,
+        innovation2,
+        innovation3,
+        innovation4,
+        innovation5,
+
+
+     }
+     console.log(data);
+
+
+    }
+
+  }
 };
 </script>
 <style scope src="../assets/css/esat.css"></style>

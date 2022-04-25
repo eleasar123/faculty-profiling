@@ -24,42 +24,42 @@ axios.defaults.headers.common['Content-Type'] = 'application/json';
 // });
 // Create a new store instance.
 export default new Vuex.Store({
-  modules:{
-    userLogin,
-    pds,
-    esat,
-    ipcrf,
-  },
-  // state: {
-  //   users:[],
-  //   userProfile: [],
-  //   // return {
-  //   count: 0
-  //   // }
-  // },
-  // mutations: {
-  //   increment () {
-  //     this.state.count++
-  //   },
-  //   setUser(data){
-  //     this.state.users = JSON.parse(data).data;
-  //   }
-  // },
-  // getters:{
-  //   doneTodosCount (state, getters) {
-  //     return getters.doneTodos.length
-  //   }
-  // },
-  // actions:{
-  //   increment (context) {
-  //     context.commit('increment')
-  //   },
-  //   getUsers(){
-  //     return axios.get('user').then((response) => response.data)
-  //     .catch((error) => {
-  //       return error.response
-  //     })
-  //   },
+    modules: {
+        userLogin,
+        pds,
+        esat,
+        ipcrf,
+    },
+    // state: {
+    //   users:[],
+    //   userProfile: [],
+    //   // return {
+    //   count: 0
+    //   // }
+    // },
+    // mutations: {
+    //   increment () {
+    //     this.state.count++
+    //   },
+    //   setUser(data){
+    //     this.state.users = JSON.parse(data).data;
+    //   }
+    // },
+    // getters:{
+    //   doneTodosCount (state, getters) {
+    //     return getters.doneTodos.length
+    //   }
+    // },
+    // actions:{
+    //   increment (context) {
+    //     context.commit('increment')
+    //   },
+    //   getUsers(){
+    //     return axios.get('user').then((response) => response.data)
+    //     .catch((error) => {
+    //       return error.response
+    //     })
+    //   },
     // login(data){
     //   return axios.post('login', data).then((response) => {
     //     this.setUser(data)
@@ -68,7 +68,7 @@ export default new Vuex.Store({
     //     console.log(error)
     //   })
     // }
-  // },
+    // },
 })
 
 // const app = createApp({ /* your root component */ })
