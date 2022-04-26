@@ -12,16 +12,7 @@ Vue.use(Vuex);
 axios.defaults.baseURL = "http://127.0.0.1:8000/api/";
 // axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
 axios.defaults.headers.common['Content-Type'] = 'application/json';
-// axios.create({
-//   baseURL: "http://localhost:8000/",
-//   // timeout: 1000,
-//   // headers: { "X-Custom-Header": "faculty-profiling" },
-// });
-// axios.create({
-//   baseURL: 'http://localhost:8000/',
-//   timeout: 1000,
-//   headers: {'X-Custom-Header': 'foobar'}
-// });
+
 // Create a new store instance.
 export default new Vuex.Store({
   modules:{

@@ -61,13 +61,13 @@
                 <th colspan="8">I. PERSONAL INFORMATION</th>
               </tr>
             </thead>
-            <tbody class="text-center" color="secondary" v-for="row in pds[0]" :key="row.ID">
+            <tbody class="text-center" color="secondary" v-for="row in pdsPersonalInfo" :key="row.id">
               <tr>
                 <td width="50px" colspan="2" style="text-align: left">
                   2. SURNAME
                 </td>
-                <td colspan="7">
-                  {{row.personalInfo.last_name}}
+                <td colspan="8">
+                  {{row.last_name}}
                 </td>
               </tr>
 
@@ -76,10 +76,10 @@
                   FIRST NAME
                 </td>
                 <td colspan="4">
-                  {{row.personalInfo.first_name}}
+                  {{row.first_name}}
                 </td>
                 <td colspan="4">
-                    {{row.personalInfo.suffix}}
+                    {{row.suffix}}
                 </td>
               </tr>
               <tr>
@@ -87,7 +87,7 @@
                   MIDDLE NAME
                 </td>
                 <td colspan="8">
-                   {{row.personalInfo.middle_name}}
+                   {{row.middle_name}}
                 </td>
               </tr>
 
@@ -97,33 +97,33 @@
                   (mm/dd/yyyy)
                 </td>
                 <td colspan="2">
-                   {{row.personalInfo.date_of_birth}}
+                   {{row.date_of_birth}}
                 </td>
                 <td rowspan="3" colspan="2">
                   16.CITIZENSHIP<br />If holder of dual citizenship,<br />please
                   indicate the details.
                 </td>
-                <td colspan="3">
-                    {{row.personalInfo.citizenship}}
+                <td colspan="4">
+                    {{row.citizenship}}
                 </td>
               </tr>
               <tr>
                 <td colspan="2" style="text-align: left">PLACE OF BIRTH</td>
                 <td colspan="2">
-                   {{row.personalInfo.place_of_birth}}
+                   {{row.place_of_birth}}
                 </td>
 
-                <td colspan="3">
-                   {{row.personalInfo.dual_citizenship}}
+                <td colspan="4">
+                   {{row.dual_citizenship}}
                 </td>
               </tr>
               <tr>
                 <td colspan="2" style="text-align: left">SEX</td>
                 <td colspan="2">
-                    {{row.personalInfo.sex}}
+                    {{row.sex}}
                 </td>
-                <td colspan="3">
-                   {{row.personalInfo.dual_citizenship}}
+                <td colspan="4">
+                   {{row.dual_citizenship}}
                 </td>
               </tr>
               <tr>
@@ -131,130 +131,119 @@
                   CIVIL STATUS
                 </td>
                 <td rowspan="2" colspan="2">
-                  {{row.personalInfo.civil_status}}
+                  {{row.civil_status}}
                 </td>
-                <td rowspan="4">
+                <td rowspan="4" colspan="2">
                   RESIDENTIAL<br />
                   ADDRESS<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
                   ZIP CODE
                 </td>
                 <td rowspan="1" colspan="2">
-                  {{row.personalInfo.residential_address_house_no}}
+                  {{row.residential_address_house_no}}
                 </td>
                 <td rowspan="1" colspan="2">
-                 {{row.personalInfo.residential_address_street}}
+                 {{row.residential_address_street}}
                 </td>
               </tr>
 
               <tr>
                 <td rowspan="1" colspan="2">
-                  {{row.personalInfo.residential_address_subdivision}}
+                  {{row.residential_address_subdivision}}
                 </td>
                 <td rowspan="1" colspan="2">
-                  {{row.personalInfo.residential_address_barangay}}
+                  {{row.residential_address_barangay}}
                 </td>
               </tr>
 
               <tr>
                 <td colspan="2" style="text-align: left">HEIGHT (m)</td>
                 <td colspan="2">
-                 {{row.personalInfo.height}}
+                 {{row.height}}
                 </td>
                 <td colspan="2">
-                  {{row.personalInfo.residential_address_city}}
+                  {{row.residential_address_city}}
                 </td>
                 <td colspan="2">
-                  {{row.personalInfo.residential_address_province}}
+                  {{row.residential_address_province}}
                 </td>
               </tr>
               <tr>
                 <td colspan="2" style="text-align: left">WEIGHT (kg)</td>
                 <td colspan="2">
-                 {{row.personalInfo.weight}}
+                 {{row.weight}}
                 </td>
 
-                <td colspan="3">
-              {{row.personalInfo.residential_address_zip_code }}
+                <td colspan="4">
+              {{row.residential_address_zip_code }}
                 </td>
               </tr>
               <tr>
                 <td colspan="2" style="text-align: left">BLOOD TYPE</td>
-                <td colspan="2">
                   <td rowspan="1" colspan="2">
-                  {{row.personalInfo.blood_type}}
-               
+                  {{row.blood_type}}
                 </td>
-                <td rowspan="4">
+                <td rowspan="4" colspan="2">
                   PERMANENT ADDRESS<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
                   ZIP CODE
                 </td>
                 <td colspan="2">
-                  {{row.personalInfo.permanent_address_house_no}}
+                  {{row.permanent_address_house_no}}
                 </td>
                 <td colspan="2">
-                  {{row.personalInfo.permanent_address_street}}
+                  {{row.permanent_address_street}}
                 </td>
               </tr>
               <tr>
                 <td colspan="2" style="text-align: left">GSIS ID NO.</td>
                 <td colspan="2">
-                  {{row.personalInfo.gsis_id_no}}
+                  {{row.gsis_id_no}}
                 </td>
                 <td colspan="2">
-                  {{row.personalInfo.permanent_address_subdivision}}
+                  {{row.permanent_address_subdivision}}
                 </td>
                 <td colspan="2">
-                 {{row.personalInfo.permanent_address_barangay}}
+                 {{row.permanent_address_barangay}}
                 </td>
               </tr>
               <tr>
                 <td colspan="2" style="text-align: left">PAG-IBIG ID NO.</td>
                 <td colspan="2">
-                  {{row.personalInfo.pag_ibig_id_no}}
+                  {{row.pag_ibig_id_no}}
                 </td>
                 <td colspan="2">
-                  {{row.personalInfo.permanent_address_city}}
+                  {{row.permanent_address_city}}
                 </td>
                 <td colspan="2">
-                  {{row.personalInfo.permanent_address_province}}
+                  {{row.permanent_address_province}}
                 </td>
               </tr>
               <tr>
                 <td colspan="2" style="text-align: left">PHILHEALTH NO.</td>
                 <td colspan="2">
-                {{row.personalInfo.philhealth_no}}
+                {{row.philhealth_no}}
                 </td>
                 <td colspan="3">
-                  {{row.personalInfo.permanent_zip_code}}
+                  {{row.permanent_zip_code}}
                 </td>
               </tr>
               <tr>
                 <td colspan="2" style="text-align: left">SSS NO.</td>
                 <td colspan="2">
-                  {{row.personalInfo.sss_no}}
+                  {{row.sss_no}}
                 </td>
                 <td>19.TELEPHONE NO.</td>
-                <td colspan="3">
-                  {{row.personalInfo.telephone_no}}
+                <td colspan="4">
+                  {{row.telephone_no}}
                 </td>
               </tr>
               <tr>
                 <td colspan="2" style="text-align: left">14.TIN NO.</td>
                 <td colspan="2">
-                  {{row.personalInfo.tin_no}}
+                  {{row.tin_no}}
                 </td>
                 <td>20.MOBILE NO.</td>
-                <td colspan="3">
-                  <v-text-field
-                    v-model="personalMobileNo"
-                    placeholder=""
-                    solo
-                    id="personalMobileNo"
-                    dense
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
+                <td colspan="4">
+                  {{row.mobile_no}}
                 </td>
               </tr>
               <tr>
@@ -262,30 +251,12 @@
                   AGENCY EMPLOYEE NO.
                 </td>
                 <td colspan="2">
-                  <v-text-field
-                    placeholder=""
-                    filled
-                    v-model="personalAgencyEmployeeNo"
-                    id="personalAgencyEmpNo"
-                    dense
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
+                  {{row.agency_employee_no}}
                 </td>
                 <td>21. E-MAIL ADDRESS (if any)</td>
 
-                <td colspan="3">
-                  <v-text-field
-                    placeholder=""
-                    filled
-                    dense
-                    v-model="personalEmailAddress"
-                    id="personalEmailAddress"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
+                <td colspan="4">
+                 {{row.email_address}}
                 </td>
               </tr>
             </tbody>
@@ -298,19 +269,11 @@
                 <th colspan="5">II. FAMILY BACKGROUND</th>
               </tr>
             </thead>
-            <tbody class="" color="secondary">
+            <tbody class="" color="secondary" v-for="row in pdsFamilyBackground" :key="row.id">
               <tr>
                 <td width="50px">SPOUSE'S SURNAME</td>
                 <td colspan="4">
-                  <v-text-field
-                    placeholder=""
-                    solo
-                    v-model="familySpouseSurname"
-                    id="spouseSurname"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
+                  {{row.spouse_last_name}}
                 </td>
                 <td>23. NAME of CHILDREN (Write full name and list all)</td>
                 <td>DATE OF BIRTH (mm/dd/yyyy)</td>
@@ -319,28 +282,10 @@
               <tr>
                 <td width="80px">FIRST NAME</td>
                 <td colspan="3">
-                  <v-text-field
-                    placeholder=""
-                    solo
-                    v-model="familySpouseFirstName"
-                    id="spouseFirstName"
-                    dense
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
+                  {{row.spouse_first_name}}
                 </td>
                 <td colspan="1">
-                  <v-text-field
-                    label="NAME EXTENSION (JR., SR)"
-                    filled
-                    v-model="familySpouseSuffix"
-                    id="spouseSuffix"
-                    dense
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
+                 {{row.spouse_suffix}}
                 </td>
                 <td colspan="1">
                   <v-text-field
@@ -823,107 +768,13 @@
             </tbody>
           </template>
         </v-simple-table>
-        
-        <!-- <v-container class="grey lighten-5 pa-5" style ="max-width:95%">
-          <v-row class="pa-5"
-            ><v-col cols="12" class="sm-12"
-              >II. FAMILY BACKGROUND</v-col
-            ></v-row
-          >
-          <v-row no-gutters class="px-5">
-            <v-col cols="12" sm="3">
-                  22. SPOUSE'S SURNAME
-               
-            </v-col>
-            <v-col cols="12" sm="3" >
-                  <v-text-field
-                    placeholder=""
-                    solo
-                    dense
-                    v-model="dateOfBirthThirteen"
-                    id="childDOB13"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-             
-            </v-col>
-           <v-col cols="12" sm="3">
-              <v-card class="pa-2" outlined tile>
-                <v-card-title class="text-caption">
-                  31. SPECIAL SKILLS AND HOBBIES <br />(Write in full)<button
-                    class="material-icons"
-                    @click="addRow('otherInfoSpecialSkills')"
-                  >
-                    add_circle
-                  </button>
-                </v-card-title>
-                <v-card-text>
-                  <v-container>
-                    <v-container
-                      v-for="row in otherInfoSpecialSkills"
-                      :key="row.ID"
-                    >
-                      <v-text-field
-                        filled
-                        dense
-                        v-model="row.otherInformationSpecialSkills"
-                        
-                        style="float:left"
-                      ></v-text-field>
-                      <button
-                        class="material-icons"
-                        style="float:right"
-                        @click="removeRow('otherInfoSpecialSkills', row)"
-                      >
-                        remove_circle
-                      </button>
-                    </v-container>
-                  </v-container>
-                </v-card-text>
-              </v-card>
-            </v-col>
-             <v-col cols="12" sm="3">
-              
-                 DATE OF BIRTH (mm/dd/yyyy)  
-                  
-            </v-col>
-          </v-row>
-          <v-row>
-            <v-col cols="12" sm="3"> SIGNATURE </v-col>
-            <v-col cols="12" sm="3">
-              <v-text-field
-                placeholder=""
-                filled
-                dense
-                v-model="otherInfoSignature"
-                class="text-center"
-                type="file"
-              >
-              </v-text-field>
-            </v-col>
-            <v-col cols="12" sm="3"> DATE </v-col>
-            <v-col cols="12" sm="3">
-              <v-text-field
-                placeholder=""
-                filled
-                v-model="otherInfoDateOfSignature"
-                dense
-                class="text-center"
-                type="date"
-              >
-              </v-text-field>
-            </v-col>
-          </v-row>
-        </v-container> -->
+      
         <v-simple-table height="auto" class="pa-0 pa-0 ma-12" width="80vw">
           <template v-slot:default>
             <thead cols="4">
               <tr clas="pa-0">
                 <th colspan="4">III. EDUCATIONAL BACKGROUND</th>
               </tr>
-            </thead>
-            <tbody class="text-center" color="secondary">
               <tr>
                 <td rowspan="2">LEVEL</td>
                 <td rowspan="2">NAME OF SCHOOL<br />(Write in full)</td>
@@ -936,112 +787,41 @@
                 </td>
                 <td rowspan="2">YEAR GRADUATED</td>
                 <td rowspan="2">SCHOLARSHIP/ ACADEMIC HONORS RECEIVED</td>
-                <td rowspan="2">
-                  <button
-                    class="material-icons"
-                    @click="addRow('educationalBackground')"
-                  >
-                    add_circle
-                  </button>
-                </td>
+                
               </tr>
 
               <tr>
                 <td>From</td>
                 <td>To</td>
               </tr>
-
-              <tr
-                v-for="row in educationalBackground"
-                :key="row.educBackgroundLevel"
-              >
+            </thead>
+            <tbody class="text-center" color="secondary"  >
+            
+              <tr v-for="row in pdsEducationalBackground"
+                :key="row.id">
                 <td colspan="1">
-                  <v-text-field
-                    placeholder=""
-                    solo
-                    v-model="row.educBackgroundLevel"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
+                  {{row.level}}
                 </td>
                 <td colspan="1">
-                  <v-text-field
-                    placeholder=""
-                    solo
-                    v-model="row.educBackgroundNameOfSchool"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
+                  {{row.name_of_school}}
                 </td>
                 <td colspan="1">
-                  <v-text-field
-                    placeholder=""
-                    v-model="row.educBackgroundBasicEducation"
-                    solo
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
+                  {{row.basic_education_course}}
                 </td>
                 <td colspan="1">
-                  <v-text-field
-                    placeholder=""
-                    v-model="row.educBackgroundPeriodOfAttendanceFrom"
-                    solo
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
+                  {{row.period_of_attendance_from}}
                 </td>
                 <td colspan="1">
-                  <v-text-field
-                    placeholder=""
-                    solo
-                    v-model="row.educBackgroundPeriodOfAttendanceTo"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
+                  {{row.period_of_attendance_to}}
                 </td>
                 <td colspan="1">
-                  <v-text-field
-                    placeholder=""
-                    solo
-                    v-model="row.educBackgroundHighestLevel"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
+                  {{row.highest_level_units_earned}}
                 </td>
                 <td colspan="1">
-                  <v-text-field
-                    placeholder=""
-                    solo
-                    v-model="row.educBackgroundYearGraduated"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
+                 {{row.year_graduated}}
                 </td>
                 <td colspan="1">
-                  <v-text-field
-                    placeholder=""
-                    v-model="row.educBackgroundScholarship"
-                    solo
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-                <td colspan="1">
-                  <button
-                    class="material-icons"
-                    @click="removeRow('educationalBackground', row)"
-                  >
-                    remove_circle
-                  </button>
+                 {{row.academic_honors_received}}
                 </td>
               </tr>
             </tbody>
@@ -1049,27 +829,13 @@
               <tr>
                 <td>SIGNATURE</td>
                 <td colspan="4">
-                  <v-text-field
-                    placeholder="SIGNATURE"
-                    solo
-                    v-model="educBackgroundSignature"
-                    id="signaturePart1"
-                    class="text-center pt-6"
-                    type="file"
-                  >
-                  </v-text-field>
+                 {{pdsPersonalInfo[0].signature}}
                 </td>
                 <td colspan="1" class="pl-10">DATE</td>
                 <td colspan="4">
-                  <v-text-field
-                    placeholder=""
-                    solo
-                    v-model="educBackgroundDateOfSignature"
-                    id="dateOfSignaturePart1"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
+                  {{
+                    pdsPersonalInfo[0].date_signed
+                  }}
                 </td>
               </tr>
             </tfoot>
@@ -1087,7 +853,7 @@
             </tr>
 
             <tr>
-              <th rowspan="2" colspan="2" style="text-align: left">
+              <th rowspan="2" colspan="2" style="text-align: left;" class=" text-wrap">
                 CAREER SERVICE/ RA 1080 (BOARD/ BAR) UNDER SPECIAL LAWS/ CES/
                 CSEE BARANGAY ELIGIBILITY / DRIVER'S LICENSE
               </th>
@@ -1103,14 +869,6 @@
               <th colspan="2" style="text-align: left">
                 LICENSE (if applicable)
               </th>
-              <th rowspan="2" colspan="2" style="text-align: left">
-                <button
-                  class="material-icons"
-                  @click="addRow('civilServiceEligibility')"
-                >
-                  add_circle
-                </button>
-              </th>
             </tr>
             <tr>
               <th style="text-align: left">NUMBER</th>
@@ -1118,82 +876,27 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="row in civilServiceEligibility" :key="row.careerService">
-              <td colspan="2">
-                <v-text-field
-                  placeholder=""
-                  solo
-                  v-model="row.careerService"
-                  value=""
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="2">
-                <v-text-field
-                  placeholder=""
-                  v-model="row.rating"
-                  solo
-                  dense
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="2">
-                <v-text-field
-                  placeholder=""
-                  solo
-                  dense
-                  v-model="row.dateOfExamination"
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="2">
-                <v-text-field
-                  placeholder=""
-                  solo
-                  v-model="row.placeOfExamination"
-                  dense
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="1">
-                <v-text-field
-                  placeholder=""
-                  v-model="row.licenseNumber"
-                  solo
-                  dense
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="1">
-                <v-text-field
-                  placeholder=""
-                  solo
-                  v-model="row.dateOfValidity"
-                  dense
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="2">
-                <button
-                  class="material-icons"
-                  @click="removeRow('civilServiceEligibility', row)"
-                >
-                  remove_circle
-                </button>
-              </td>
-            </tr>
+            <tr v-for="row in pdsCivilServiceEligibility"
+                :key="row.id">
+                <td colspan="2">
+                  {{row.career_service}}
+                </td>
+                <td colspan="2">
+                  {{row.rating}}
+                </td>
+                <td colspan="2">
+                  {{row.date_of_examination}}
+                </td>
+                <td colspan="2">
+                  {{row.place_of_examination}}
+                </td>
+                <td colspan="1">
+                  {{row.license_number}}
+                </td>
+                <td colspan="1">
+                  {{row.license_date_of_validity}}
+                </td>
+              </tr>
           </tbody>
         </v-simple-table>
         <v-simple-table height="auto" class="pa-0 pa-0 ma-12" width="80vw">
@@ -1229,11 +932,6 @@
                 STATUS OF APPOINTMENT
               </th>
               <th colspan="2" style="text-align: left">GOV'T SERVICE (Y/ N)</th>
-              <th rowspan="2" colspan="2" style="text-align: left">
-                <button class="material-icons" @click="addRow(workExperience)">
-                  add_circle
-                </button>
-              </th>
             </tr>
             <tr>
               <th style="text-align: left">From</th>
@@ -1241,131 +939,44 @@
             </tr>
           </thead>
           <tbody>
-            <tr
-              v-for="row in workExperience"
-              :key="row.inclusiveDateFromWorkExperience"
-            >
-              <td colspan="1">
-                <v-text-field
-                  placeholder=""
-                  solo
-                  v-model="row.inclusiveDateFromWorkExperience"
-                  value=""
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="1">
-                <v-text-field
-                  placeholder=""
-                  solo
-                  v-model="row.inclusiveDateToWorkExperience"
-                  dense
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="2">
-                <v-text-field
-                  placeholder=""
-                  solo
-                  dense
-                  v-model="row.positionTitleWorkExperience"
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="2">
-                <v-text-field
-                  placeholder=""
-                  solo
-                  v-model="row.departmentWorkExperience"
-                  dense
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="2">
-                <v-text-field
-                  placeholder=""
-                  solo
-                  dense
-                  v-model="row.monthlySalaryWorkExperience"
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="2">
-                <v-text-field
-                  placeholder=""
-                  solo
-                  dense
-                  v-model="row.salaryGradeWorkExperience"
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="2">
-                <v-text-field
-                  placeholder=""
-                  solo
-                  dense
-                  v-model="row.statusOfAppointmentWorkExperience"
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="2">
-                <v-text-field
-                  placeholder=""
-                  solo
-                  dense
-                  v-model="row.governmentServiceWorkExperience"
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="2">
-                <button
-                  class="material-icons"
-                  @click="removeRow('workExperience', row)"
-                >
-                  remove_circle
-                </button>
-              </td>
-            </tr>
+            <tr v-for="row in pdsWorkExperience"
+                :key="row.id">
+                <td colspan="1">
+                  {{row.work_inclusive_dates_from}}
+                </td>
+                <td colspan="1">
+                  {{row.work_inclusive_dates_to}}
+                </td>
+                 <td colspan="2">
+                  {{row.position}}
+                </td>
+                <td colspan="2">
+                  {{row.department}}
+                </td>
+                <td colspan="2">
+                  {{row.monthly_salary}}
+                </td>
+                <td colspan="2">
+                  {{row.salary_grade}}
+                </td>
+                <td colspan="2">
+                  {{row.status_of_appointment}}
+                </td>
+                  <td colspan="2">
+                  {{row.government_service}}
+                </td>
+              </tr>
           </tbody>
           <tfoot>
+            
             <tr>
               <td>SIGNATURE</td>
               <td colspan="3">
-                <v-text-field
-                  placeholder=""
-                  v-model="workExperienceSignature"
-                  solo
-                  class="text-center pt-6"
-                  type="file"
-                >
-                </v-text-field>
+               
               </td>
               <td colspan="1">DATE</td>
               <td colspan="3">
-                <v-text-field
-                  placeholder=""
-                  solo
-                  v-model="workExperienceDateOfSignature"
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
+                
               </td>
             </tr>
           </tfoot>
@@ -1395,14 +1006,7 @@
               <th rowspan="2" colspan="2" style="text-align: left">
                 POSITION / NATURE OF WORK
               </th>
-              <th rowspan="2" colspan="2" style="text-align: left">
-                <button
-                  class="material-icons"
-                  @click="addRow('voluntaryWorkInvolvement')"
-                >
-                  add_circle
-                </button>
-              </th>
+              
             </tr>
             <tr>
               <th style="text-align: left">From</th>
@@ -1410,75 +1014,25 @@
             </tr>
           </thead>
           <tbody>
-            <tr
-              v-for="row in voluntaryWorkInvolvement"
-              :key="row.nameAndAddressOfOrgVolWork"
-            >
-              <td colspan="1">
-                <v-text-field
-                  placeholder=""
-                  solo
-                  v-model="row.nameAndAddressOfOrgVolWork"
-                  dense
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="1">
-                <v-text-field
-                  placeholder=""
-                  solo
-                  dense
-                  v-model="row.inclusiveDatesFromVolWork"
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="2">
-                <v-text-field
-                  placeholder=""
-                  solo
-                  dense
-                  v-model="row.inclusiveDatesToVolWork"
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="2">
-                <v-text-field
-                  placeholder=""
-                  solo
-                  v-model="row.numberOfHoursVolWork"
-                  dense
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="2">
-                <v-text-field
-                  placeholder=""
-                  solo
-                  v-model="row.positionOfWorkVolWork"
-                  dense
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-
-              <td colspan="2">
-                <button
-                  class="material-icons"
-                  @click="removeRow('voluntaryWorkInvolvement', row)"
-                >
-                  remove_circle
-                </button>
-              </td>
-            </tr>
+             <tr v-for="row in pdsVoluntaryWorkInvolvement"
+                :key="row.id">
+                <td colspan="2">
+                  {{row.organization_name_and_address}}
+                </td>
+                <td colspan="1">
+                  {{row.voluntary_inclusive_dates_from}}
+                </td>
+                 <td colspan="1">
+                  {{row.voluntary_inclusive_dates_to}}
+                </td>
+                 <td colspan="2">
+                  {{row.number_of_hours}}
+                </td>
+                <td colspan="2">
+                  {{row.position}}
+                </td>
+                
+              </tr>
           </tbody>
         </v-simple-table>
         <v-simple-table height="auto" class="pa-0 pa-0 ma-12" width="80vw">
@@ -1510,15 +1064,6 @@
               <th rowspan="2" colspan="2" style="text-align: left">
                 CONDUCTED/ SPONSORED BY (Write in full)
               </th>
-
-              <th rowspan="2" colspan="2" style="text-align: left">
-                <button
-                  class="material-icons"
-                  @click="addRow(learningAndDevelopment)"
-                >
-                  add_circle
-                </button>
-              </th>
             </tr>
             <tr>
               <th style="text-align: left">From</th>
@@ -1526,85 +1071,28 @@
             </tr>
           </thead>
           <tbody>
-            <tr
-              v-for="row in learningAndDevelopment"
-              :key="row.learningAndDevelopmentInterventions"
-            >
-              <td colspan="1">
-                <v-text-field
-                  placeholder=""
-                  solo
-                  dense
-                  v-model="row.learningAndDevelopmentInterventions"
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="1">
-                <v-text-field
-                  placeholder=""
-                  solo
-                  v-model="row.learningAndDevelopmentInclusiveDatesFrom"
-                  dense
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="2">
-                <v-text-field
-                  placeholder=""
-                  solo
-                  v-model="row.learningAndDevelopmentInclusiveDatesTo"
-                  dense
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="2">
-                <v-text-field
-                  placeholder=""
-                  solo
-                  dense
-                  v-model="row.learningAndDevelopmentNumberOfHours"
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="2">
-                <v-text-field
-                  placeholder=""
-                  solo
-                  dense
-                  v-model="row.learningAndDevelopmentTypeOfLD"
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="2">
-                <v-text-field
-                  placeholder=""
-                  v-model="row.learningAndDevelopmentConductedBy"
-                  solo
-                  dense
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="2">
-                <button
-                  class="material-icons"
-                  @click="removeRow('learningAndDevelopment', row)"
-                >
-                  remove_circle
-                </button>
-              </td>
-            </tr>
+             <tr v-for="row in pdsLearningAndDevelopment"
+                :key="row.id">
+                <td colspan="2">
+                  {{row.learning_and_development_interventions}}
+                </td>
+                <td colspan="1">
+                  {{row.learning_inclusive_dates_from}}
+                </td>
+                 <td colspan="1">
+                  {{row.learning_inclusive_dates_to}}
+                </td>
+                 <td colspan="2">
+                  {{row.number_of_hours}}
+                </td>
+                <td colspan="2">
+                  {{row.type_of_ld}}
+                </td>
+                <td colspan="2">
+                  {{row.conducted_by}}
+                </td>
+                
+              </tr>
           </tbody>
         </v-simple-table>
 
@@ -1618,33 +1106,15 @@
             <v-col cols="12" sm="4">
               <v-card class="pa-2" outlined tile>
                 <v-card-title class="text-caption">
-                  31. SPECIAL SKILLS AND HOBBIES <br />(Write in full)<button
-                    class="material-icons"
-                    @click="addRow('otherInfoSpecialSkills')"
-                  >
-                    add_circle
-                  </button>
+                  31. SPECIAL SKILLS AND HOBBIES <br />(Write in full)
                 </v-card-title>
                 <v-card-text>
                   <v-container>
                     <v-container
-                      v-for="row in otherInfoSpecialSkills"
-                      :key="row.ID"
+                      v-for="row in pdsOtherInfoSpecialSkills"
+                      :key="row.id"
                     >
-                      <v-text-field
-                        filled
-                        dense
-                        v-model="row.otherInformationSpecialSkills"
-                        
-                        style="float:left"
-                      ></v-text-field>
-                      <button
-                        class="material-icons"
-                        style="float:right"
-                        @click="removeRow('otherInfoSpecialSkills', row)"
-                      >
-                        remove_circle
-                      </button>
+                      <v-container> {{row.special_skills_and_hobbies}}</v-container>
                     </v-container>
                   </v-container>
                 </v-card-text>
@@ -1655,34 +1125,14 @@
                 <v-card-title class="text-caption">
                   32. NON-ACADEMIC DISTINCTIONS/RECOGNITION <br />(Write in
                   full)
-                  <button
-                    class="material-icons"
-                    @click="addRow('otherInfoNonacademicDistinctions')"
-                  >
-                    add_circle
-                  </button>
                 </v-card-title>
                 <v-card-text>
                   <v-container>
                     <v-container
-                      v-for="row in otherInfoNonacademicDistinctions"
-                      :key="row.ID"
+                      v-for="row in pdsOtherInfoNonacademicDistinctions"
+                      :key="row.id"
                     >
-                      <v-text-field
-                        filled
-                        dense
-                        v-model="row.otherInformationNonacademicDistinctions"
-                        style="float:left"
-                      ></v-text-field>
-                      <button
-                        class="material-icons"
-                        style="float:right"
-                        @click="
-                          removeRow('otherInfoNonacademicDistinctions', row)
-                        "
-                      >
-                        remove_circle
-                      </button>
+                     <v-container>{{row.non_academic_distinctions}}</v-container>
                     </v-container>
                   </v-container>
                 </v-card-text>
@@ -1693,33 +1143,15 @@
                 <v-card-title class="text-caption text-wrap">
                   33. MEMBERSHIP IN ASSOCIATION/ORGANIZATION <br />(Write in
                   full)
-                  <button
-                    class="material-icons"
-                    
-                    @click="addRow('otherInfoAssociationMembers')"  
-                  >
-                    add_circle
-                  </button>
+                 
                 </v-card-title>
                 <v-card-text class="text-center">
                   <v-container>
                     <v-container
-                      v-for="row in otherInfoAssociationMembers"
-                      :key="row.ID"
+                      v-for="row in pdsOtherInfoAssociationMembers"
+                      :key="row.id"
                     >
-                      <v-text-field
-                        filled
-                        dense
-                        v-model="row.otherInformationAssociationMembers"
-                        style="float:left"
-                      ></v-text-field>
-                      <button
-                        class="material-icons"
-                        style="float:right"
-                        @click="removeRow('otherInfoAssociationMembers', row)"
-                      >
-                        remove_circle
-                      </button>
+                     <v-container>{{row.association_members}}</v-container>
                     </v-container>
                   </v-container>
                 </v-card-text>
@@ -1729,27 +1161,11 @@
           <v-row>
             <v-col cols="12" sm="3"> SIGNATURE </v-col>
             <v-col cols="12" sm="3">
-              <v-text-field
-                placeholder=""
-                filled
-                dense
-                v-model="otherInfoSignature"
-                class="text-center"
-                type="file"
-              >
-              </v-text-field>
+              
             </v-col>
             <v-col cols="12" sm="3"> DATE </v-col>
             <v-col cols="12" sm="3">
-              <v-text-field
-                placeholder=""
-                filled
-                v-model="otherInfoDateOfSignature"
-                dense
-                class="text-center"
-                type="date"
-              >
-              </v-text-field>
+              
             </v-col>
           </v-row>
         </v-container>
@@ -4855,7 +4271,17 @@ export default {
       name: "",
       address: "",
       telephoneNo: "",
-      pds:[],
+      pdsPersonalInfo:[],
+      pdsFamilyBackground:[],
+      pdsEducationalBackground:[],
+      pdsCivilServiceEligibility:[],
+      pdsWorkExperience:[],
+      pdsVoluntaryWorkInvolvement:[],
+      pdsLearningAndDevelopment:[],
+      pdsOtherInfoSpecialSkills:[],
+      pdsOtherInfoNonacademicDistinctions:[],
+      pdsOtherInfoAssociationMembers:[],
+      pdsReferences:[],
       user:"user",
     };
     
@@ -4867,11 +4293,45 @@ export default {
     async retrievePds(){console.log("hello world")
     const returnedData = await this.$store.dispatch("retrievePdsInfoById")
     this.pds = returnedData.data;
-    console.log(this.pds[0][0].personalInfo)  
+    console.log(this.pds)  
     if(this.pds[0][0].personalInfo==null){
       this.edit=true
+     
     }else{
-      this.edit=false
+      this.edit=false; 
+      this.pdsPersonalInfo.push(this.pds[0][0].personalInfo[0]);
+      console.log(this.pdsPersonalInfo[0].signature)
+      console.log(this.pdsPersonalInfo)
+      this.pdsFamilyBackground.push(this.pds[1][0].familyBackground[0]);
+      console.log(this.pdsFamilyBackground)
+      for(let educ of this.pds[2][0].educationalBackground){
+        this.pdsEducationalBackground.push(educ)
+      }
+      for(let civil of this.pds[3][0].civilServiceEligibility){
+        this.pdsCivilServiceEligibility.push(civil)
+      }
+      for(let work of this.pds[4][0].workExperience){
+        this.pdsWorkExperience.push(work)
+      }
+
+      for(let voluntary of this.pds[5][0].voluntaryWorkInvolvement){
+        this.pdsVoluntaryWorkInvolvement.push(voluntary)
+      }
+      for(let learning of this.pds[6][0].learningAndDevelopment){
+        this.pdsLearningAndDevelopment.push(learning)
+      }
+      for(let other of this.pds[7][0].otherInfoSpecialSkills){
+        this.pdsOtherInfoSpecialSkills.push(other)
+      }
+       for(let other of this.pds[8][0].otherInfoNonacademicDistinctions){
+        this.pdsOtherInfoNonacademicDistinctions.push(other)
+      }
+       for(let other of this.pds[9][0].otherInfoAssociationMembers){
+        this.pdsOtherInfoAssociationMembers.push(other)
+      }
+       for(let references of this.pds[10][0].references){
+        this.pdsReferences.push(references)
+      }
     }
     // this.pds=this.$store.getters.pdsInfosAll;
     // console.log(this.pds)
