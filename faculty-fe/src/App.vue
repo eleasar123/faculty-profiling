@@ -1,9 +1,14 @@
 <template>
 
-  <v-app>
+  <v-app v-if="userData!==null">
+    <Navbar></Navbar>
     <v-content class="ma-4">
       <router-view></router-view>
     </v-content>
+   
+  </v-app>
+ <v-app v-else>
+      <router-view></router-view>
    
   </v-app>
 
@@ -11,25 +16,26 @@
 
 <script>
 
-// import Navbar from '@/components/NavBar.vue'
+import Navbar from '@/components/NavBar.vue'
 
 export default {
   name: 'App',
 
   components: {
-  // Navbar
+  Navbar
   },
 
   data: () => ({
     ////
-    userData:JSON.parse(sessionStorage.getItem("userData"))
+    userData:JSON.parse(sessionStorage.getItem("user_session")),
   }),
   created(){
+    
     console.log(this.userData)
     if(this.userData==null){
       this.$router.push("/login");
     }else{
-      this.$router.push("/home")
+      this.$router.push("/")
     }
   }
 };

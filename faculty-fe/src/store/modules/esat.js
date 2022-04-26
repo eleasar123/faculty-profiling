@@ -37,7 +37,7 @@ const actions = {
           .post("esat/create", data)
           .then(async (result) => {
             try {
-              await dispatch("retrieveEsatInfos");
+              await dispatch("retrieveEsatInfo");
               return result;
             } catch (error) {
               return error;

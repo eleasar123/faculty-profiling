@@ -8,8 +8,8 @@ const state = () => ({
 const mutations = {
     setUserToken(state, data) {
         state.userToken = data;
-        sessionStorage.setItem("user_session", JSON.stringify(data));
-        localStorage.setItem("user_session", data);
+        sessionStorage.setItem("user_session", JSON.stringify(data.data[1][0].account));
+        sessionStorage.setItem("user_token", JSON.stringify(data.data[2][0].token));
     //     axios.defaults.headers.common.Authorization = `bearer ${
     //   JSON.parse(data).access_token
     // }`;
@@ -24,7 +24,8 @@ const mutations = {
     },
 
     setUserDetails(state, data) {
-        state.userDetails = JSON.parse(data);
+        state.userDetails = JSON.stringify(data.data[1][0].account);
+        console.log(state.userDetails)
         localStorage.setItem('user_details', data);
     }
 };

@@ -57,7 +57,12 @@
 export default {
   name: "LogIn",
   data() {
-    return {};
+    return {
+      userData: [],
+    };
+  },
+  created(){
+//hfhaksjdhkj
   },
   methods: {
     async getDetails() {
@@ -70,9 +75,9 @@ export default {
       const returnedData = await this.$store.dispatch("loginLocally", data);
       console.log(returnedData);
       if (returnedData.data[0].message === "Credentials matched!") {
-        localStorage.setItem("userData", data);
-        sessionStorage.setItem("userData", data);
-        this.$router.push("/personalDataSheet");
+        // localStorage.setItem("userData", data);
+        // sessionStorage.setItem("userData", data);
+        this.$router.push("/");
       }
     },
 

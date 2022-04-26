@@ -22,10 +22,10 @@ const actions = {
     },
 
     retrievePdsInfoById() {
-        console.log(JSON.parse(sessionStorage.getItem("user_session")))
-        state.basicInfoData = []
+        console.log(JSON.parse(sessionStorage.getItem("user_session")).id)
+        state.pdsInfos = []
         return axios
-          .get("getAllBasicInformationById/" + JSON.parse(sessionStorage.getItem("user_session")).ID)
+          .get("pds/" + JSON.parse(sessionStorage.getItem("user_session")).id)
           .then((res) => {
             return res;
           })

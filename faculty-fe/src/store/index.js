@@ -30,26 +30,26 @@ export default new Vuex.Store({
     esat,
     ipcrf,
   },
-  // state: {
-  //   users:[],
-  //   userProfile: [],
-  //   // return {
-  //   count: 0
-  //   // }
-  // },
-  // mutations: {
-  //   increment () {
-  //     this.state.count++
-  //   },
-  //   setUser(data){
-  //     this.state.users = JSON.parse(data).data;
-  //   }
-  // },
-  // getters:{
-  //   doneTodosCount (state, getters) {
-  //     return getters.doneTodos.length
-  //   }
-  // },
+  state: {
+    users:[],
+    userProfile: [],
+    // return {
+    count: 0
+    // }
+  },
+  mutations: {
+    increment () {
+      this.state.count++
+    },
+    setUser(data){
+      this.state.users = JSON.parse(data).data;
+    }
+  },
+  getters:{
+    doneTodosCount (state, getters) {
+      return getters.doneTodos.length
+    }
+  },
   // actions:{
   //   increment (context) {
   //     context.commit('increment')
