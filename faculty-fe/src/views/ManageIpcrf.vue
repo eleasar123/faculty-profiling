@@ -907,52 +907,450 @@
         <v-card class="pa-2 text-center" color="grey lighten-2" outlined tile>
           <b>PART III. SUMMARY OF RATINGS FOR DISCUSSION</b>
         </v-card>
-        <v-row no-gutters v-for="n in 6" :key="n">
-          <v-col>
-            <v-card v-if="n === 1" class="pa-2 part3" outlined tile>
-             KRA 
-            </v-card>
-            <v-card v-else-if="n === 2" class="pa-2 kra" outlined tile>
-              KRA 1
-            </v-card>
-            <v-card v-else-if="n === 3" class="pa-2 kra" outlined tile>
-              KRA 2
-            </v-card>
-            <v-card v-else-if="n === 4" class="pa-2 kra" outlined tile>
-              KRA 3 </v-card
-            ><v-card v-else-if="n === 5" class="pa-2 kra" outlined tile>
-              KRA 4
-            </v-card>
-            <v-card v-else-if="n === 6" class="pa-2 part3" outlined tile>
-              Plus Factor
-            </v-card>
-          </v-col>
+        <!-- first row -->
+        <v-row no-gutters class="text-center">
+          <template v-for="n in 7">
+            <v-col :key="n" v-if="n === 1">
+              <v-card class="pa-2 pt-4" outlined tile> KRA <br /><br /></v-card>
+            </v-col>
+
+            <v-col :key="n" v-else-if="n === 2">
+              <v-card class="pa-2 pt-4" outlined tile
+                >Weight per <br />
+                KRA
+              </v-card>
+            </v-col>
+
+            <v-col :key="n" v-else-if="n === 3">
+              <v-card class="pa-2 pt-4" outlined tile>
+                Objectives <br />
+                <br
+              /></v-card>
+            </v-col>
+            <v-col :key="n" v-else-if="n === 4">
+              <v-card class="pa-2 pt-4" outlined tile>
+                Weight per Objective
+              </v-card>
+            </v-col>
+            <v-col :key="n" v-else-if="n === 5" md="4">
+              <v-card class="pa-2 pt-4" outlined tile>
+                Numerical Ratings
+              </v-card>
+            </v-col>
+
+            <v-col :key="n" v-else-if="n === 6">
+              <v-card class="pa-2 pt-4" outlined tile>
+                Score <br />
+                <br
+              /></v-card>
+            </v-col>
+            <v-col :key="n" v-else-if="n === 7">
+              <v-card class="pa-2 pt-4" outlined tile>
+                Adjectival <br />
+                Rating
+              </v-card>
+            </v-col>
+          </template>
         </v-row>
-        
 
-        <div id="app">
-          <v-app id="inspire">
-            <v-container class="grey lighten-5">
-              <v-row no-gutters>
-                <v-col v-for="n in 4" :key="n" class="text-center">
-                  <v-card v-if="n === 1" class="pa-2" outlined tile>
-                    Strengths
-                  </v-card>
-                  <v-card v-else-if="n === 2" class="pa-2" outlined tile>
-                    Development Needs
-                  </v-card>
+        <!-- second row -->
+        <v-row no-gutters>
+          <template v-for="n in 7">
+            <v-col :key="n" v-if="n === 1">
+              <v-card class="pa-2 pb-5" outlined tile
+                ><br /><br />
+                KRA 1 <br /><br
+              /></v-card>
+            </v-col>
 
-                  <v-card v-else-if="n === 3" class="pa-2" outlined tile>
-                    Timeline
-                  </v-card>
-                  <v-card v-else-if="n === 4" class="pa-2" outlined tile>
-                    Resources Needed
-                  </v-card>
-                </v-col>
-              </v-row>
-            </v-container>
-          </v-app>
-        </div>
+            <v-col :key="n" v-else-if="n === 2">
+              <v-card class="pa-2 pb-5" outlined tile
+                ><br /><br />
+                hello <br /><br />
+              </v-card>
+            </v-col>
+            <!-- pt-13 pb-12 -->
+            <v-col :key="n" v-else-if="n === 3">
+              <v-card class="pb-1" outlined tile>
+                <div class="pa-2">saba dha</div>
+                <v-divider></v-divider>
+                <div class="pa-2 pb-2">saba dha <br /></div>
+                <v-divider></v-divider>
+                <div class="pa-2 pb-1" style="height: 38px">saba dha</div>
+              </v-card>
+            </v-col>
+
+            <v-col :key="n" v-else-if="n === 4">
+              <v-card class="pb-1" outlined tile>
+                <div class="pa-2">saba dha</div>
+                <v-divider></v-divider>
+                <div class="pa-2 pb-2">saba dha <br /></div>
+                <v-divider></v-divider>
+                <div class="pa-2 pb-1" style="height: 38px">saba dha</div>
+              </v-card>
+            </v-col>
+            <v-col :key="n" v-else-if="n === 5" md="4" cols="12">
+              <v-card class="pa-0" outlined tile>
+                <v-row no-gutters class="pa-0">
+                  <div class="pa-5 pl-10"></div>
+                  <v-divider class="mx-4" vertical></v-divider>
+                  <div class="pa-5 pl-9"></div>
+                  <v-divider class="mx-4" vertical></v-divider>
+                  <div class="pa-5 pl-10"></div>
+                  <v-divider class="mx-4" vertical></v-divider>
+                  <div class="pa-5 pl-9"></div>
+                </v-row>
+                <v-row no-gutters class="pa-0">
+                  <div class="pa-5 pl-10"></div>
+                  <v-divider class="mx-4" vertical></v-divider>
+                  <div class="pa-5 pl-9"></div>
+                  <v-divider class="mx-4" vertical></v-divider>
+                  <div class="pa-5 pl-10"></div>
+                  <v-divider class="mx-4" vertical></v-divider>
+                  <div class="pa-5 pl-9"></div>
+                </v-row>
+                <v-row no-gutters class="pa-0">
+                  <div class="pa-5 pl-10"></div>
+                  <v-divider class="mx-4" vertical></v-divider>
+                  <div class="pa-5 pl-9"></div>
+                  <v-divider class="mx-4" vertical></v-divider>
+                  <div class="pa-5 pl-10"></div>
+                  <v-divider class="mx-4" vertical></v-divider>
+                  <div class="pa-5 pl-9"></div>
+                </v-row>
+              </v-card>
+            </v-col>
+
+            <v-col :key="n" v-else-if="n === 6">
+              <v-card class="pb-1" outlined tile>
+                <div class="pa-2">saba dha</div>
+                <v-divider></v-divider>
+                <div class="pa-2 pb-2">saba dha <br /></div>
+                <v-divider></v-divider>
+                <div class="pa-2 pb-1" style="height: 38px">saba dha</div>
+              </v-card>
+            </v-col>
+            <v-col :key="n" v-else-if="n === 7">
+              <v-card class="pb-1" outlined tile>
+                <div class="pa-2">saba dha</div>
+                <v-divider></v-divider>
+                <div class="pa-2 pb-2">saba dha <br /></div>
+                <v-divider></v-divider>
+                <div class="pa-2 pb-1" style="height: 38px">saba dha</div>
+              </v-card>
+            </v-col>
+          </template>
+        </v-row>
+        <!-- third row -->
+
+        <v-row no-gutters>
+          <template v-for="n in 7">
+            <v-col :key="n" v-if="n === 1">
+              <v-card class="pa-2 pb-5" outlined tile
+                ><br /><br />
+                KRA 2 <br /><br
+              /></v-card>
+            </v-col>
+
+            <v-col :key="n" v-else-if="n === 2">
+              <v-card class="pa-2 pb-5" outlined tile
+                ><br /><br />
+                hello <br /><br />
+              </v-card>
+            </v-col>
+            <!-- pt-13 pb-12 -->
+            <v-col :key="n" v-else-if="n === 3">
+              <v-card class="pb-1" outlined tile>
+                <div class="pa-2">saba dha</div>
+                <v-divider></v-divider>
+                <div class="pa-2 pb-2">saba dha <br /></div>
+                <v-divider></v-divider>
+                <div class="pa-2 pb-1" style="height: 38px">saba dha</div>
+              </v-card>
+            </v-col>
+
+            <v-col :key="n" v-else-if="n === 4">
+              <v-card class="pb-1" outlined tile>
+                <div class="pa-2">saba dha</div>
+                <v-divider></v-divider>
+                <div class="pa-2 pb-2">saba dha <br /></div>
+                <v-divider></v-divider>
+                <div class="pa-2 pb-1" style="height: 38px">saba dha</div>
+              </v-card>
+            </v-col>
+            <v-col :key="n" v-else-if="n === 5" md="4" cols="12">
+              <v-card class="pa-0" outlined tile>
+                <v-row no-gutters class="pa-0">
+                  <div class="pa-5 pl-10"></div>
+                  <v-divider class="mx-4" vertical></v-divider>
+                  <div class="pa-5 pl-9"></div>
+                  <v-divider class="mx-4" vertical></v-divider>
+                  <div class="pa-5 pl-10"></div>
+                  <v-divider class="mx-4" vertical></v-divider>
+                  <div class="pa-5 pl-9"></div>
+                </v-row>
+                <v-row no-gutters class="pa-0">
+                  <div class="pa-5 pl-10"></div>
+                  <v-divider class="mx-4" vertical></v-divider>
+                  <div class="pa-5 pl-9"></div>
+                  <v-divider class="mx-4" vertical></v-divider>
+                  <div class="pa-5 pl-10"></div>
+                  <v-divider class="mx-4" vertical></v-divider>
+                  <div class="pa-5 pl-9"></div>
+                </v-row>
+                <v-row no-gutters class="pa-0">
+                  <div class="pa-5 pl-10"></div>
+                  <v-divider class="mx-4" vertical></v-divider>
+                  <div class="pa-5 pl-9"></div>
+                  <v-divider class="mx-4" vertical></v-divider>
+                  <div class="pa-5 pl-10"></div>
+                  <v-divider class="mx-4" vertical></v-divider>
+                  <div class="pa-5 pl-9"></div>
+                </v-row>
+              </v-card>
+            </v-col>
+
+            <v-col :key="n" v-else-if="n === 6">
+              <v-card class="pb-1" outlined tile>
+                <div class="pa-2">saba dha</div>
+                <v-divider></v-divider>
+                <div class="pa-2 pb-2">saba dha <br /></div>
+                <v-divider></v-divider>
+                <div class="pa-2 pb-1" style="height: 38px">saba dha</div>
+              </v-card>
+            </v-col>
+            <v-col :key="n" v-else-if="n === 7">
+              <v-card class="pb-1" outlined tile>
+                <div class="pa-2">saba dha</div>
+                <v-divider></v-divider>
+                <div class="pa-2 pb-2">saba dha <br /></div>
+                <v-divider></v-divider>
+                <div class="pa-2 pb-1" style="height: 38px">saba dha</div>
+              </v-card>
+            </v-col>
+          </template>
+        </v-row>
+
+        <!-- third row -->
+        <v-row no-gutters>
+          <template v-for="n in 7">
+            <v-col :key="n" v-if="n === 1">
+              <v-card class="pa-2 pb-8" outlined tile
+                ><br />
+                KRA 3 <br /></v-card>
+            </v-col>
+
+            <v-col :key="n" v-else-if="n === 2">
+              <v-card class="pa-2 pb-8" outlined tile
+                ><br />
+                KRA 1 <br
+              /></v-card>
+            </v-col>
+            <!-- pt-13 pb-12 -->
+            <v-col :key="n" v-else-if="n === 3">
+              <v-card class="pb-0" outlined tile>
+                <div class="pa-2  ">saba dha</div>
+                <v-divider></v-divider>
+                <div class="pa-2 pb-3">saba dha </div>
+              </v-card>
+            </v-col>
+
+            <v-col :key="n" v-else-if="n === 4">
+              <v-card class="pb-0" outlined tile>
+                <div class="pa-2">saba dha</div>
+                <v-divider></v-divider>
+                <div class="pa-2 pb-3">saba dha </div>
+              </v-card>
+            </v-col>
+            <v-col :key="n" v-else-if="n === 5" md="4" cols="12">
+              <v-card class="pa-0" outlined tile>
+
+                <v-row no-gutters class="pa-0">
+                  <div class="pa-5 pl-10"></div>
+                  <v-divider class="mx-4" vertical></v-divider>
+                  <div class="pa-5 pl-9"></div>
+                  <v-divider class="mx-4" vertical></v-divider>
+                  <div class="pa-5 pl-10"></div>
+                  <v-divider class="mx-4" vertical></v-divider>
+                  <div class="pa-5 pl-9"></div>
+                </v-row>
+
+                <v-row no-gutters class="pa-0">
+                  <div class="pa-5 pl-10"></div>
+                  <v-divider class="mx-4" vertical></v-divider>
+                  <div class="pa-5 pl-9"></div>
+                  <v-divider class="mx-4" vertical></v-divider>
+                  <div class="pa-5 pl-10"></div>
+                  <v-divider class="mx-4" vertical></v-divider>
+                  <div class="pa-6 pl-9"></div>
+                </v-row>
+              
+              </v-card>
+            </v-col>
+
+            <v-col :key="n" v-else-if="n === 6">
+              <v-card class="pb-1" outlined tile>
+                <div class="pa-2">saba dha</div>
+                <v-divider></v-divider>
+                <div class="pa-2 pb-2">saba dha <br /></div>
+              </v-card>
+            </v-col>
+            <v-col :key="n" v-else-if="n === 7">
+              <v-card class="pb-1" outlined tile>
+                <div class="pa-2">saba dha</div>
+                <v-divider></v-divider>
+                <div class="pa-2 pb-2">saba dha <br /></div>
+              </v-card>
+            </v-col>
+          </template>
+        </v-row>
+            <!-- fourth row -->
+        <v-row no-gutters>
+          <template v-for="n in 7">
+            <v-col :key="n" v-if="n === 1">
+              <v-card class="pa-2 pb-5" outlined tile
+                ><br /><br />
+                KRA 4 <br /><br
+              /></v-card>
+            </v-col>
+
+            <v-col :key="n" v-else-if="n === 2">
+              <v-card class="pa-2 pb-5" outlined tile
+                ><br /><br />
+                hello <br /><br />
+              </v-card>
+            </v-col>
+           
+            <v-col :key="n" v-else-if="n === 3">
+              <v-card class="pb-1" outlined tile>
+                <div class="pa-2">saba dha</div>
+                <v-divider></v-divider>
+                <div class="pa-2 pb-2">saba dha <br /></div>
+                <v-divider></v-divider>
+                <div class="pa-2 pb-1" style="height: 38px">saba dha</div>
+              </v-card>
+            </v-col>
+
+            <v-col :key="n" v-else-if="n === 4">
+              <v-card class="pb-1" outlined tile>
+                <div class="pa-2">saba dha</div>
+                <v-divider></v-divider>
+                <div class="pa-2 pb-2">saba dha <br /></div>
+                <v-divider></v-divider>
+                <div class="pa-2 pb-1" style="height: 38px">saba dha</div>
+              </v-card>
+            </v-col>
+            <v-col :key="n" v-else-if="n === 5" md="4" cols="12">
+              <v-card class="pa-0" outlined tile>
+                <v-row no-gutters class="pa-0">
+                  <div class="pa-5 pl-10"></div>
+                  <v-divider class="mx-4" vertical></v-divider>
+                  <div class="pa-5 pl-9"></div>
+                  <v-divider class="mx-4" vertical></v-divider>
+                  <div class="pa-5 pl-10"></div>
+                  <v-divider class="mx-4" vertical></v-divider>
+                  <div class="pa-5 pl-9"></div>
+                </v-row>
+                <v-row no-gutters class="pa-0">
+                  <div class="pa-5 pl-10"></div>
+                  <v-divider class="mx-4" vertical></v-divider>
+                  <div class="pa-5 pl-9"></div>
+                  <v-divider class="mx-4" vertical></v-divider>
+                  <div class="pa-5 pl-10"></div>
+                  <v-divider class="mx-4" vertical></v-divider>
+                  <div class="pa-5 pl-9"></div>
+                </v-row>
+                <v-row no-gutters class="pa-0">
+                  <div class="pa-5 pl-10"></div>
+                  <v-divider class="mx-4" vertical></v-divider>
+                  <div class="pa-5 pl-9"></div>
+                  <v-divider class="mx-4" vertical></v-divider>
+                  <div class="pa-5 pl-10"></div>
+                  <v-divider class="mx-4" vertical></v-divider>
+                  <div class="pa-5 pl-9"></div>
+                </v-row>
+              </v-card>
+            </v-col>
+
+            <v-col :key="n" v-else-if="n === 6">
+              <v-card class="pb-1" outlined tile>
+                <div class="pa-2">saba dha</div>
+                <v-divider></v-divider>
+                <div class="pa-2 pb-2">saba dha <br /></div>
+                <v-divider></v-divider>
+                <div class="pa-2 pb-1" style="height: 38px">saba dha</div>
+              </v-card>
+            </v-col>
+            <v-col :key="n" v-else-if="n === 7">
+              <v-card class="pb-1" outlined tile>
+                <div class="pa-2">saba dha</div>
+                <v-divider></v-divider>
+                <div class="pa-2 pb-2">saba dha <br /></div>
+                <v-divider></v-divider>
+                <div class="pa-2 pb-1" style="height: 38px">saba dha</div>
+              </v-card>
+            </v-col>
+          </template>
+        </v-row>
+
+            <!-- second row -->
+        <v-row no-gutters>
+          <template v-for="n in 7">
+            <v-col :key="n" v-if="n === 1">
+              <v-card class="pa-2 pb-3" outlined tile
+                >
+                KRA 1 <br /></v-card>
+            </v-col>
+
+            <v-col :key="n" v-else-if="n === 2">
+              <v-card class="pa-2 pb-3" outlined tile
+                >
+                hello <br />
+              </v-card>
+            </v-col>
+            <!-- pt-13 pb-12 -->
+            <v-col :key="n" v-else-if="n === 3">
+              <v-card class="pb-1" outlined tile>
+                <div class="pa-2">saba dha</div>
+               
+              </v-card>
+            </v-col>
+
+            <v-col :key="n" v-else-if="n === 4">
+              <v-card class="pb-1" outlined tile>
+                <div class="pa-2">saba dha</div>
+                
+              </v-card>
+            </v-col>
+            <v-col :key="n" v-else-if="n === 5" md="4" cols="12">
+              <v-card class="pa-0" outlined tile>
+                <v-row no-gutters class="pa-0">
+                  <div class="pa-5 pl-10"></div>
+                  <v-divider class="mx-4" vertical></v-divider>
+                  <div class="pa-5 pl-9"></div>
+                  <v-divider class="mx-4" vertical></v-divider>
+                  <div class="pa-5 pl-10"></div>
+                  <v-divider class="mx-4" vertical></v-divider>
+                  <div class="pa-5 pl-9"></div>
+                </v-row>
+               
+              </v-card>
+            </v-col>
+
+            <v-col :key="n" v-else-if="n === 6">
+              <v-card class="pb-1" outlined tile>
+                <div class="pa-2">saba dha</div>
+              
+              </v-card>
+            </v-col>
+            <v-col :key="n" v-else-if="n === 7">
+              <v-card class="pb-1" outlined tile>
+                <div class="pa-2">saba dha</div>
+            
+              </v-card>
+            </v-col>
+          </template>
+        </v-row>
       </v-tab-item>
       <!-- Part 4 -->
       <v-tab>Part 4</v-tab>
@@ -1263,11 +1661,10 @@
   width: 200px;
   text-align: center;
 }
-.kra{
- 
-text-align: center;
- width: 200px;
- height: 150px;
+.kra {
+  text-align: center;
+  width: 200px;
+  height: 150px;
 }
 </style>
 <script>
