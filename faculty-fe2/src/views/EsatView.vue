@@ -103,12 +103,22 @@
                   <td rowspan="8"></td>
                   <td>Number of Years in Teaching:</td>
                   <td>
-                    <v-select solo class="mt-5" v-model="yearsInTeaching" :items="items"></v-select>
+                    <v-select
+                      solo
+                      class="mt-5"
+                      v-model="yearsInTeaching"
+                      :items="yearsItems"
+                    ></v-select>
                   </td>
                   <td rowspan="8"></td>
                   <td>Region:</td>
                   <td>
-                    <v-select solo class="mt-5" :items="items" v-model="region"></v-select>
+                    <v-select
+                      solo
+                      class="mt-5"
+                      :items="regionItems"
+                      v-model="region"
+                    ></v-select>
                   </td>
                 </tr>
                 <tr class="infoDetails">
@@ -123,17 +133,33 @@
                   </td>
                   <td rowspan="2">Highest Degree Obtained:</td>
                   <td>
-                    <v-select solo class="mt-5" v-model="highestDegreeObtained" :items="items"></v-select>
+                    <v-select
+                      solo
+                      class="mt-5"
+                      v-model="highestDegreeObtained"
+                      :items="highestDegreeItems"
+                    ></v-select>
                   </td>
                   <td>Division:</td>
                   <td>
-                    <v-select solo class="mt-5" :items="items" v-model="division"></v-select>
+                    <v-select
+                      solo
+                      class="mt-5"
+                      :items="divisionItems"
+                      v-model="division"
+                    ></v-select>
                   </td>
                 </tr>
                 <tr class="infoDetails">
                   <td>Position:</td>
                   <td>
-                    <v-select solo class="mt-5" v-model="position" :items="items"></v-select>
+                    <v-select
+                     :items="positionItems"
+                      solo
+                      class="mt-5"
+                      v-model="position"
+                      
+                    ></v-select>
                   </td>
                   <td>
                     <v-select solo class="mt-5" :items="items"></v-select>
@@ -151,11 +177,21 @@
                 <tr class="infoDetails">
                   <td>Employment Status:</td>
                   <td>
-                    <v-select solo class="mt-5" v-model="employmentStatus" :items="items"></v-select>
+                    <v-select
+                      solo
+                      class="mt-5"
+                      v-model="employmentStatus"
+                      :items="statusItems"
+                    ></v-select>
                   </td>
                   <td>Level Taught:</td>
                   <td>
-                    <v-select solo class="mt-5" v-model="levelTaught" :items="items"></v-select>
+                    <v-select
+                      solo
+                      class="mt-5"
+                      v-model="levelTaught"
+                      :items="levelTaughtItems"
+                    ></v-select>
                   </td>
                   <td>School ID:</td>
                   <td>
@@ -170,16 +206,22 @@
                 <tr class="infoDetails">
                   <td>Age:</td>
                   <td>
-                    <v-text-field
-                      v-model="employeeAge"
-                      class="mt-5"
+                    <v-select
+                      :items="ageitems"
                       solo
-                      dense
-                    ></v-text-field>
+                      class="mt-5"
+                      v-model="employeeAge"
+                      
+                    ></v-select>
                   </td>
                   <td>Grade Level taught:</td>
                   <td>
-                    <v-select solo class="mt-5" v-model="gradeLevelTaught" :items="items"></v-select>
+                    <v-select
+                      solo
+                      class="mt-5"
+                      v-model="gradeLevelTaught"
+                      :items="gLevelTaughtItems"
+                    ></v-select>
                   </td>
                   <td>School Name:</td>
                   <td>
@@ -194,7 +236,12 @@
                 <tr class="infoDetails">
                   <td>Sex:</td>
                   <td>
-                    <v-select solo class="mt-5" v-model="employeeSex" :items="items"></v-select>
+                    <v-select
+                      solo
+                      class="mt-5"
+                      v-model="employeeSex"
+                      :items="sexItems"
+                    ></v-select>
                   </td>
                   <td colspan="2"></td>
                   <td>School Type:</td>
@@ -202,7 +249,7 @@
                     <v-select
                       solo
                       class="mt-5"
-                      :items="items"
+                      :items="schoolTypeItems"
                       v-model="schoolType"
                       label="School Type"
                     ></v-select>
@@ -215,7 +262,7 @@
                     <v-select
                       solo
                       class="mt-5"
-                      :items="items"
+                      :items="schoolSizeItems"
                       v-model="schoolSize"
                       label="School Size"
                     ></v-select>
@@ -227,7 +274,7 @@
                     <v-select
                       solo
                       class="mt-5"
-                      :items="items"
+                      :items="classificationItems"
                       v-model="curricularClassification"
                       label="Curricular Classification"
                     ></v-select>
@@ -1440,7 +1487,11 @@
                 <v-row no-gutters>
                   <v-col cols="12" sm="6" md="8"> </v-col>
                   <v-col cols="4" md="4">
-                    <v-btn class="float-right mb-4 me-4 mt-5" @click='finalizeEsat'>FINISH</v-btn>
+                    <v-btn
+                      class="float-right mb-4 me-4 mt-5"
+                      @click="finalizeEsat"
+                      >FINISH</v-btn
+                    >
                   </v-col>
                 </v-row>
               </v-col>
@@ -1992,8 +2043,24 @@
 <script>
 // @ is an alias to /src
 export default {
+
   data() {
     return {
+      positionItems: ['Teacher I', 'Teacher II', 'Teacher III','SPET I','SPET II','SPET III','SPET IV','SPET V','Instructor I','Instructor II', 'Special Science Teacher I', 'Special Science Teacher II', 'Special Science Teacher III', 'Special Science Teacher IV', 'Special Science Teacher v', 'Master Teacher I', 'Master Teacher II', 'Master Teacher III', 'Master Teacher IV'],
+      statusItems: ['Regular Permanent','Provisional','Substitute','Contractual'],
+      ageitems: ['Under 25 years old','25-30','31-35','36-40','41-45','46-50','51-55','Over 55 years old'],
+      sexItems: ['Male','female'],
+      yearsItems: ['0-3 years','4-10 years','More than 10 years'],
+      highestDegreeItems: ['Bachelor`s Degree','master`s Degree','Doctorate Degree'],
+      levelTaughtItems: [],
+      gLevelTaughtItems: [],
+      regionItems: ['National Capital Region (NCR)','Cordillera Administrative Region (CAR)','I - Ilocos Region','II - Cagayan Valley','III - Central Luzon','IV-A - CALABARZON','IV-B - MIMAROPA','V - Bicol Region','VI - Western Visayas','VII - Central Visayas','VIII - Eastern Visayas','IX - Zamboanga Peninsula','X - Northern Mindanao','XI - Davao Region','XII - SOCCSKSARGEN','XIII - CARAGA Region','Bangsamoro Autonomous Region in Muslim Mindanao (BARMM)'],
+      divisionItems: [],
+      schoolTypeItems: ['Urban','Rural'],
+      schoolSizeItems: ['Small','Medium','Large'],
+      classificationItems: ['Community-based Learning Center','Grade 11-12','Grade 7-10; Grade 11-12','Grade 7-10','Grade 1-6; Grade 7-10; Grade 11-12','Grade 1-6; Grade 11-12','Grade 1-6; Grade 7-10','Grade 1-6','Kindergarten; Grade 11-12','Kindergarten; Grade 7-10; Grade 11-12','Kindergarten; Grade 7-10','Kinder to Grade 12 attached to Tertiary','Kinder to Grade 10 attached to Tertiary','Kinder to Grade 6; Grade 11-12','Kinder to Grade 12','Kinder to Grade 10','Kinder to Grade 6','Kindergarten'],
+
+
       employeeName: "",
       employeeId: "",
       position: "",
@@ -2006,7 +2073,6 @@ export default {
       levelTaught: "",
       gradeLevelTaught: "",
 
-
       region: "",
       division: "",
       employeeMunicipality: "",
@@ -2015,7 +2081,6 @@ export default {
       schoolType: "",
       schoolSize: "",
       curricularClassification: "",
-
 
       english: "",
       filipino: "",
@@ -2032,7 +2097,8 @@ export default {
       arts: "",
       physicalEducation: "",
       health: "",
-      tle_he_tvl: "",
+      TLE_HE_TVL: "",
+      selected: "",
       specifyAreaofSpecialization: "",
 
       MotherTongue: "",
@@ -2046,6 +2112,7 @@ export default {
       TLE_HE: "",
       EPP_LE_HE: "",
       specialPrograms: "",
+      selected1: "",
       specifySubjectsTaught: "",
 
       capability1: "",
@@ -2074,6 +2141,24 @@ export default {
       development12: "",
       personalComments: "",
 
+      selfManagement1: "",
+      selfManagement2: "",
+      selfManagement3: "",
+      selfManagement4: "",
+      selfManagement5: "",
+
+      professionalAndEthics1: "",
+      professionalAndEthics2: "",
+      professionalAndEthics3: "",
+      professionalAndEthics4: "",
+      professionalAndEthics5: "",
+
+      resultsFocus1: "",
+      resultsFocus2: "",
+      resultsFocus3: "",
+      resultsFocus4: "",
+      resultsFocus5: "",
+
       teamwork1: "",
       teamwork2: "",
       teamwork3: "",
@@ -2097,101 +2182,117 @@ export default {
   },
   methods: {
     finalizeEsat: async function () {
-     const employeeName = this.employeeName;
-     const employeeId = this.employeeId;
-     const position = this.position;
-     const employmentStatus = this.employmentStatus;
-     const employeeAge = this.employeeAge;
-     const employeeSex = this.employeeSex;
+      const employeeName = this.employeeName;
+      const employeeId = this.employeeId;
+      const position = this.position;
+      const employmentStatus = this.employmentStatus;
+      const employeeAge = this.employeeAge;
+      const employeeSex = this.employeeSex;
 
-    const yearsInTeaching = this.yearsInTeaching;
-    const highestDegreeObtained = this.highestDegreeObtained;
-    const levelTaught = this.levelTaught;
-    const gradeLevelTaught = this.gradeLevelTaught;
+      const yearsInTeaching = this.yearsInTeaching;
+      const highestDegreeObtained = this.highestDegreeObtained;
+      const levelTaught = this.levelTaught;
+      const gradeLevelTaught = this.gradeLevelTaught;
 
-
-     const region = this.region;
+      const region = this.region;
       const division = this.division;
-     const employeeMunicipality = this.employeeMunicipality;
-     const schoolId = this.schoolId;
-     const schoolName = this.schoolName;
+      const employeeMunicipality = this.employeeMunicipality;
+      const schoolId = this.schoolId;
+      const schoolName = this.schoolName;
       const schoolType = this.schoolType;
-       const schoolSize = this.schoolSize;
-        const curricularClassification = this.curricularClassification;
-    //  const highestDegreeObtained = this.highestDegreeObtained;
-     const english = this.english;
-     const filipino = this.filipino;
-     const mathematics = this.mathematics;
-     const generalScience = this.generalScience;
-     const biology = this.biology;
-     const chemistry = this.chemistry;
-     const physics = this.physics;
-     const socialScience = this.socialScience;
-     const earlyChildhoodEducation = this.earlyChildhoodEducation;
-     const valuesEducation =this.valuesEducation;
-     const sped = this.sped;
-     const music = this.music;
-     const arts = this.arts;
-     const physicalEducation = this.physicalEducation;
-     const health = this.health;
-     const tle_he_tvl = this.tle_he_tvl;
-     const specifyAreaofSpecialization = this.specifyAreaofSpecialization;
-     const MotherTongue = this.MotherTongue;
-     const Filipino = this.Filipino;
-     const English = this.English;
-     const Mathematics = this.Mathematics;
-     const Science = this.Science;
-     const AralingPanlipunan = this.AralingPanlipunan;
-     const EdukasyonSaPagpapakatao = this.EdukasyonSaPagpapakatao;
-     const Mapeh = this.Mapeh;
-     const TLE_HE = this.TLE_HE;
-     const EPP_LE_HE = this.EPP_LE_HE;
-     const specialPrograms = this.specialPrograms;
-     const specifySubjectsTaught = this.specifySubjectsTaught;
-     const capability1 = this.capability1;
-     const development1 = this.development1;
-     const capability2 = this.capability2;
-     const development2 = this.development2;
-     const capability3 = this.capability3;
-     const development3 = this.development3;
-     const capability4 = this.capability4;
-     const development4 = this.development4;
-     const capability5 = this.capability5;
-     const development5 = this.development5;
-     const capability6 = this.capability6;
-     const development6 = this.development6;
-     const capability7 = this.capability7;
-     const development7 = this.development7;
-     const capability8 = this.capability8;
-     const development8 = this.development8;
-     const capability9 = this.capability9;
-     const development9 = this.development9;
-     const capability10 = this.capability10;
-     const development10 = this.development10;
-     const capability11 = this.capability11;
-     const development11 = this.development11;
-     const capability12 = this.capability12;
-     const development12 = this.development12;
-     const personalComments = this.personalComments;
-     const teamwork1 = this.teamwork1;
-     const teamwork2 = this.teamwork2;
-     const teamwork3 = this.teamwork3;
-     const teamwork4 = this.teamwork4;
-     const teamwork5 = this.teamwork5;
-     const serviceOrientation1 = this.serviceOrientation1;
-     const serviceOrientation2 = this.serviceOrientation2;
-     const serviceOrientation3 = this.serviceOrientation3;
-     const serviceOrientation4 = this.serviceOrientation4;
-     const serviceOrientation5 = this.serviceOrientation5;
-     const innovation1 = this.innovation1;
-     const innovation2 = this.innovation2;
-     const innovation3 = this.innovation3;
-     const innovation4 = this.innovation4;
-     const innovation5 = this.innovation5;
+      const schoolSize = this.schoolSize;
+      const curricularClassification = this.curricularClassification;
+      //  const highestDegreeObtained = this.highestDegreeObtained;
+      const english = this.english;
+      const filipino = this.filipino;
+      const mathematics = this.mathematics;
+      const generalScience = this.generalScience;
+      const biology = this.biology;
+      const chemistry = this.chemistry;
+      const physics = this.physics;
+      const socialScience = this.socialScience;
+      const earlyChildhoodEducation = this.earlyChildhoodEducation;
+      const valuesEducation = this.valuesEducation;
+      const sped = this.sped;
+      const music = this.music;
+      const arts = this.arts;
+      const physicalEducation = this.physicalEducation;
+      const health = this.health;
+      const TLE_HE_TVL = this.TLE_HE_TVL;
+      const selected = this.selected;
+      const specifyAreaofSpecialization = this.specifyAreaofSpecialization;
+      const MotherTongue = this.MotherTongue;
+      const Filipino = this.Filipino;
+      const English = this.English;
+      const Mathematics = this.Mathematics;
+      const Science = this.Science;
+      const AralingPanlipunan = this.AralingPanlipunan;
+      const EdukasyonSaPagpapakatao = this.EdukasyonSaPagpapakatao;
+      const Mapeh = this.Mapeh;
+      const TLE_HE = this.TLE_HE;
+      const EPP_LE_HE = this.EPP_LE_HE;
+      const specialPrograms = this.specialPrograms;
+      const selected1 = this.selected1;
+      const specifySubjectsTaught = this.specifySubjectsTaught;
+      const capability1 = this.capability1;
+      const development1 = this.development1;
+      const capability2 = this.capability2;
+      const development2 = this.development2;
+      const capability3 = this.capability3;
+      const development3 = this.development3;
+      const capability4 = this.capability4;
+      const development4 = this.development4;
+      const capability5 = this.capability5;
+      const development5 = this.development5;
+      const capability6 = this.capability6;
+      const development6 = this.development6;
+      const capability7 = this.capability7;
+      const development7 = this.development7;
+      const capability8 = this.capability8;
+      const development8 = this.development8;
+      const capability9 = this.capability9;
+      const development9 = this.development9;
+      const capability10 = this.capability10;
+      const development10 = this.development10;
+      const capability11 = this.capability11;
+      const development11 = this.development11;
+      const capability12 = this.capability12;
+      const development12 = this.development12;
+      const personalComments = this.personalComments;
+      const selfManagement1 = this.selfManagement1;
+      const selfManagement2 = this.selfManagement2;
+      const selfManagement3 = this.selfManagement3;
+      const selfManagement4 = this.selfManagement4;
+      const selfManagement5 = this.selfManagement5;
+      const professionalAndEthics1 = this.professionalAndEthics1;
+      const professionalAndEthics2 = this.professionalAndEthics2;
+      const professionalAndEthics3 = this.professionalAndEthics3;
+      const professionalAndEthics4 = this.professionalAndEthics4;
+      const professionalAndEthics5 = this.professionalAndEthics5;
+      const resultsFocus1 = this.resultsFocus1;
+      const resultsFocus2 = this.resultsFocus2;
+      const resultsFocus3 = this.resultsFocus3;
+      const resultsFocus4 = this.resultsFocus4;
+      const resultsFocus5 = this.resultsFocus5;
+      const teamwork1 = this.teamwork1;
+      const teamwork2 = this.teamwork2;
+      const teamwork3 = this.teamwork3;
+      const teamwork4 = this.teamwork4;
+      const teamwork5 = this.teamwork5;
+      const serviceOrientation1 = this.serviceOrientation1;
+      const serviceOrientation2 = this.serviceOrientation2;
+      const serviceOrientation3 = this.serviceOrientation3;
+      const serviceOrientation4 = this.serviceOrientation4;
+      const serviceOrientation5 = this.serviceOrientation5;
+      const innovation1 = this.innovation1;
+      const innovation2 = this.innovation2;
+      const innovation3 = this.innovation3;
+      const innovation4 = this.innovation4;
+      const innovation5 = this.innovation5;
 
-     const user = 1;
+      const user = 1;
 
-    const data = {
+      const data = {
         user,
         employeeName,
         employeeId,
@@ -2213,7 +2314,7 @@ export default {
         schoolType,
         schoolSize,
         curricularClassification,
-        
+
         english,
         filipino,
         mathematics,
@@ -2229,7 +2330,8 @@ export default {
         arts,
         physicalEducation,
         health,
-        tle_he_tvl,
+        TLE_HE_TVL,
+        selected,
         specifyAreaofSpecialization,
         MotherTongue,
         Filipino,
@@ -2242,6 +2344,7 @@ export default {
         TLE_HE,
         EPP_LE_HE,
         specialPrograms,
+        selected1,
         specifySubjectsTaught,
         capability1,
         development1,
@@ -2268,6 +2371,21 @@ export default {
         capability12,
         development12,
         personalComments,
+        selfManagement1,
+        selfManagement2,
+        selfManagement3,
+        selfManagement4,
+        selfManagement5,
+        professionalAndEthics1,
+        professionalAndEthics2,
+        professionalAndEthics3,
+        professionalAndEthics4,
+        professionalAndEthics5,
+        resultsFocus1,
+        resultsFocus2,
+        resultsFocus3,
+        resultsFocus4,
+        resultsFocus5,
         teamwork1,
         teamwork2,
         teamwork3,
@@ -2283,15 +2401,10 @@ export default {
         innovation3,
         innovation4,
         innovation5,
-
-
-     }
-     console.log(data);
-
-
-    }
-
-  }
+      };
+      console.log(data);
+    },
+  },
 };
 </script>
 <style scope src="../assets/css/esat.css"></style>
