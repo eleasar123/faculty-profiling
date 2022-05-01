@@ -19,16 +19,16 @@ class LoginController extends Controller
             $userDetails = [];
             $response = collect();
             $message = '';
-            $userIdWithEmail = User::select('id')->where('password', $userInfo->password)->first();
-            $userIdWithPassword = User::select('id')->where('email', $userInfo->email)->first();
+            $userIdWithEmail = User::select('id')->where('email', $userInfo->email)->first();
+            $userIdWithPassword = User::select('id')->where('password', $userInfo->password)->first();
             
             $userId = $userIdWithEmail == '' ? $userIdWithPassword : $userIdWithEmail;
             if($userId === null) {
                 $message = "Incorrect email and password";
                 $userDetails =[];
             }else{
-                $userDetails = User::find($userId -> id)->first();
-                if($userDetails -> email != $userInfo -> email AND $userDetails -> password === $userInfo -> password){
+                $userDetails = User::find($userId -> id);
+                if($userDetails -> email != $userInfo -> email AND $userDetails -> password == $userInfo -> password){
                     $message = 'Incorrect email!';
 
                 }elseif($userDetails -> email === $userInfo -> email AND $userDetails -> password != $userInfo -> password){

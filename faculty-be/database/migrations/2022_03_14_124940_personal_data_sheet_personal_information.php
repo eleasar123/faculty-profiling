@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('date_of_birth');   
             $table->string('place_of_birth');
             $table->string('sex'); 
+            $table->string('civil_status');
             $table->string('height');
             $table->string('weight');
             $table->string('blood_type');
@@ -31,6 +32,7 @@ return new class extends Migration
             $table->string('pag_ibig_id_no');
             $table->string('sss_no');
             $table->string('tin_no');
+            $table->string('philhealth_no');
             $table->string('agency_employee_no');
             $table->string('citizenship');
             $table->string('dual_citizenship');
