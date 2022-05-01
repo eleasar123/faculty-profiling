@@ -16,9 +16,7 @@ const mutations = {
     },
 
     clearUserSession() {
-        sessionStorage.removeItem("user_session");
-        localStorage.removeItem("user_details");
-
+        sessionStorage.clear();
         axios.defaults.headers.common.Authorization = "";
         location.reload();
     },
@@ -56,9 +54,7 @@ const actions = {
 
     logout({ commit }) {
         commit("clearUserSession");
-        this.$router.push({
-            path: window.location.host.split(':')[0] == "localhost" ? "/login" : ""
-        });
+        this.$router.push('login');
     },
 };
 

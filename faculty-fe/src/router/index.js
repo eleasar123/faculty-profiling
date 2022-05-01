@@ -6,7 +6,8 @@ import ManageUser from "../views/ManageUser.vue";
 import ManageIpcrf from "../views/ManageIpcrf.vue";
 import Login from "../views/Login/Login.vue";
 import HomeView from "../views/Index.vue";
-import PersonalDataSheet from "../views/Profile/PersonalDataSheet.vue";
+import PersonalDataSheet from "../views/Profile/PDSUser.vue";
+import ViewPds from "../views/Profile/ViewPdsAdmin.vue"
 Vue.use(VueRouter);
 
 const routes = [
@@ -16,8 +17,9 @@ const routes = [
     component: Login,
   },
   {
-    path: "/",
-    redirect: "/home",
+    path: "/viewPds",
+    name: "viewPds",
+    component: ViewPds
   },
   {
     path: "/home",

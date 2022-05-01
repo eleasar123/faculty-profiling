@@ -20,7 +20,7 @@
         </v-list-item>
       </v-list>
             </v-menu>
-            <v-btn text>
+            <v-btn text @click="logOut">
                 <span>Exit</span>
                 <v-icon right @click="this.$store.dispatch('clearUserSession')"></v-icon>
              </v-btn>
@@ -71,7 +71,12 @@ export default {
      
     }),
 
- 
+  methods:{
+    logOut: function (){
+      console.log('reached')
+      this.$store.dispatch('logout')
+    }
+  },
     components: {
    // Popup
   },

@@ -18,20 +18,26 @@
           <v-col>
             <v-text-field
             prepend-inner-icon="mdi-email-outline"
-              label="  Enter your Email"
+              label="Enter email"
               id="email"
               type="email"
-              placeholder="Enter your Email"
-              rounded solo dense
+              v-model="email"
+              placeholder=""
+              rounded 
+              solo 
+              dense
             ></v-text-field>
             <v-text-field
-           
+            :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
             prepend-inner-icon="mdi-account-outline"
-              label="Enter your Password"
-              id="password"
-              type="password"
-              placeholder="Enter your Password"
-              rounded solo dense
+              v-model="password"
+              label="Enter password"
+              :type="show1 ? 'text' : 'password'"
+              rounded 
+              solo 
+              flat
+              dense
+              @click:append="show1 = !show1"
             ></v-text-field>
           </v-col>
 
@@ -59,25 +65,36 @@ export default {
   data() {
     return {
       userData: [],
+      email: '',
+      password: '',
+       show1: false,
+      rules: {
+          required: value => !!value || 'Required.',
+          min: v => v.length >= 8 || 'Min 8 characters',
+          emailMatch: () => (`The email and password you entered don't match`),
+        },
     };
   },
   created(){
 //hfhaksjdhkj
+this.password = ''
   },
   methods: {
     async getDetails() {
-      const email = document.getElementById("email").value;
-      const password = document.getElementById("password").value;
+      const email = this.email;
+      const password = this.password;
       const data = {
         email,
         password,
       };
+      console.log(data)
       const returnedData = await this.$store.dispatch("loginLocally", data);
       console.log(returnedData);
       if (returnedData.data[0].message === "Credentials matched!") {
         // localStorage.setItem("userData", data);
         // sessionStorage.setItem("userData", data);
-        this.$router.push("/");
+        // this.$router.push("/personalData");
+        window.location= '/personalData'
       }
     },
 

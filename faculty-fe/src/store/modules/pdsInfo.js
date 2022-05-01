@@ -27,7 +27,9 @@ const actions = {
         return axios
           .get("pds/" + JSON.parse(sessionStorage.getItem("user_session")).id)
           .then((res) => {
+            console.log(res)
             return res;
+
           })
           .catch((err) => {
             return err.response;

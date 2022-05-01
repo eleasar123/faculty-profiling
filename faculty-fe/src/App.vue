@@ -34,8 +34,6 @@ export default {
     console.log(this.userData)
     if(this.userData==null){
       this.$router.push("/login");
-    }else{
-      this.$router.push("/")
     }
   }
 };
