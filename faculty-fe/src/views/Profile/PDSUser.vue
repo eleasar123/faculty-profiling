@@ -1,11 +1,10 @@
 <template>
   <v-main class="pa-0 ma-0">
-  
-   <v-container v-if="user == 'Admin' && edit == false">
-       <v-card>
+    <v-container v-if="user == 'Admin' && edit == false">
+      <v-card>
         <v-card-title>
-        Personal Data Sheet 
-      <v-spacer></v-spacer>
+          Personal Data Sheet
+          <v-spacer></v-spacer>
           <v-text-field
             v-model="search"
             append-icon="mdi-magnify"
@@ -13,25 +12,21 @@
             single-line
             hide-details
             dense
-            style="width:50%"
+            style="width: 50%"
           ></v-text-field>
         </v-card-title>
         <v-data-table
           :headers="headers"
           :items="pds"
           :search="search"
-          :loading=loading
+          :loading="loading"
           loading-text="Please wait while loading data..."
         >
-        <template v-slot:[`item.actions`]="{ item }">
-      <v-icon
-        small
-        class="mr-2"
-        @click="viewItem(item)"
-      >
-        mdi-eye
-      </v-icon>
-    </template>
+          <template v-slot:[`item.actions`]="{ item }">
+            <v-icon small class="mr-2" @click="viewItem(item)">
+              mdi-eye
+            </v-icon>
+          </template>
         </v-data-table>
       </v-card>
     </v-container>
@@ -66,8 +61,8 @@
       </button>
     </v-container> !-->
 
-    <v-container v-if="create == false && user=='Teacher'">
-    <v-btn @click="editPds" class="float-right">Edit</v-btn>
+    <v-container v-if="create == false && user == 'Teacher'&& edit ==false">
+      <v-btn @click="editPds" class="float-right">Edit</v-btn>
       <v-tabs>
         <v-tab>C1</v-tab>
         <v-tab-item>
@@ -2050,7 +2045,13 @@
                   >
                   </v-text-field>
                 </td>
-                <td>23. NAME of CHILDREN (Write full name and list all)</td>
+                <td>23. NAME of CHILDREN (Write full name and list all)
+                 <button
+                  class="material-icons"
+                  @click="addRow('children')"
+                >
+                  add_circle
+                </button></td>
                 <td>DATE OF BIRTH (mm/dd/yyyy)</td>
               </tr>
 
@@ -2080,23 +2081,32 @@
                   >
                   </v-text-field>
                 </td>
-                <td colspan="1">
-                  <v-text-field
-                    placeholder=""
+                <td colspan="1" rowspan="6" >
+                <v-container v-for="row in children" :key="row.childName"> 
+                <v-text-field
                     solo
-                    v-model="nameOfChildrenOne"
-                    id="childrenFullname1"
+                    v-model="row.childName"
                     dense
-                    class="text-center pt-6"
+                    class="text-center pt-6 float-left"
                     type="text"
+ 
+                    style="width:70%"
                   >
                   </v-text-field>
+                   <button
+                  class="material-icons float-right pt-10"
+                  @click="removeRow('children',row)"
+                >
+                  remove_circle
+                </button>
+                </v-container>
                 </td>
                 <td colspan="1">
                   <v-text-field
                     placeholder=""
-                    solo
-                    v-model="dateOfBirthOne"
+                    outlined
+                    label="Birthdate"
+                    v-model="dateOfBirthSpouse"
                     id="childDOB1"
                     dense
                     class="text-center pt-6"
@@ -2110,7 +2120,7 @@
                 <td colspan="4">
                   <v-text-field
                     placeholder=""
-                    solo
+                    outlined
                     v-model="familySpouseMiddleName"
                     id="spouseMiddleName"
                     class="text-center pt-6"
@@ -2118,22 +2128,12 @@
                   >
                   </v-text-field>
                 </td>
-                <td colspan="1">
-                  <v-text-field
-                    placeholder=""
-                    solo
-                    v-model="nameOfChildrenTwo"
-                    id="childFullName2"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
+                
                 <td colspan="1">
                   <v-text-field
                     placeholder=""
                     id="childDOB2"
-                    v-model="dateOfBirthTwo"
+                    readonly
                     solo
                     class="text-center pt-6"
                     type="text"
@@ -2155,23 +2155,13 @@
                   >
                   </v-text-field>
                 </td>
-                <td colspan="1">
-                  <v-text-field
-                    placeholder=""
-                    solo
-                    v-model="nameOfChildrenThree"
-                    id="childFullName3"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
+               
                 <td colspan="1">
                   <v-text-field
                     placeholder=""
                     id="childDOB3"
                     solo
-                    v-model="dateOfBirthThree"
+                    readonly
                     class="text-center pt-6"
                     type="text"
                   >
@@ -2191,22 +2181,12 @@
                   >
                   </v-text-field>
                 </td>
+               
                 <td colspan="1">
                   <v-text-field
                     placeholder=""
                     solo
-                    v-model="nameOfChildrenFour"
-                    id="childFullName4"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-                <td colspan="1">
-                  <v-text-field
-                    placeholder=""
-                    solo
-                    v-model="dateOfBirthFour"
+                    readonly
                     id="childDOB4"
                     class="text-center pt-6"
                     type="text"
@@ -2227,22 +2207,12 @@
                   >
                   </v-text-field>
                 </td>
-                <td colspan="1">
-                  <v-text-field
-                    placeholder=""
-                    id="childFullName5"
-                    solo
-                    v-model="nameOfChildrenFive"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
+               
                 <td colspan="1">
                   <v-text-field
                     placeholder=""
                     solo
-                    v-model="dateOfBirthFive"
+                   readonly
                     id="childDOB5"
                     class="text-center pt-6"
                     type="text"
@@ -2267,18 +2237,7 @@
                   <v-text-field
                     placeholder=""
                     solo
-                    v-model="nameOfChildrenSix"
-                    id="childFullName6"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-                <td colspan="1">
-                  <v-text-field
-                    placeholder=""
-                    solo
-                    v-model="dateOfBirthSix"
+                    readonly
                     id="childDOB6"
                     class="text-center pt-6"
                     type="text"
@@ -2304,7 +2263,7 @@
                   <v-text-field
                     placeholder=""
                     solo
-                    v-model="nameOfChildrenSeven"
+                    readonly
                     id="childFullName7"
                     class="text-center pt-6"
                     type="text"
@@ -2315,7 +2274,7 @@
                   <v-text-field
                     placeholder=""
                     solo
-                    v-model="dateOfBirthSeven"
+                    v-model="dateOfBirthFather"
                     id="childDOB7"
                     class="text-center pt-6"
                     type="text"
@@ -2353,6 +2312,8 @@
                   <v-text-field
                     placeholder=""
                     solo
+                    flat
+                    readonly
                     v-model="nameOfChildrenEight"
                     id="childFullName8"
                     dense
@@ -2365,7 +2326,9 @@
                   <v-text-field
                     placeholder=""
                     solo
-                    v-model="dateOfBirthEight"
+                    flat
+                    readonly
+                    
                     id="childDOB8"
                     dense
                     class="text-center pt-6"
@@ -2391,7 +2354,8 @@
                   <v-text-field
                     placeholder=""
                     solo
-                    v-model="nameOfChildrenNine"
+                    flat
+                    readonly
                     id="childFullName9"
                     class="text-center pt-6"
                     type="text"
@@ -2402,7 +2366,8 @@
                   <v-text-field
                     placeholder=""
                     solo
-                    v-model="dateOfBirthNine"
+                    flat
+                    readonly
                     id="childDOB9"
                     class="text-center pt-6"
                     type="text"
@@ -2427,7 +2392,8 @@
                   <v-text-field
                     placeholder=""
                     solo
-                    v-model="nameOfChildrenTen"
+                    flat
+                    readonly
                     id="childFullName10"
                     class="text-center pt-6"
                     type="text"
@@ -2438,7 +2404,7 @@
                   <v-text-field
                     placeholder=""
                     solo
-                    v-model="dateOfBirthTen"
+                    v-model="dateOfBirthMother"
                     id="childDOB"
                     class="text-center pt-6"
                     type="text"
@@ -2463,7 +2429,8 @@
                   <v-text-field
                     placeholder=""
                     solo
-                    v-model="nameOfChildrenEleven"
+                   flat
+                    readonly
                     id="childFullName11"
                     class="text-center pt-6"
                     type="text"
@@ -2474,7 +2441,8 @@
                   <v-text-field
                     placeholder=""
                     solo
-                    v-model="dateOfBirthEleven"
+                    flat
+                    readonly
                     id="childDOB11"
                     class="text-center pt-6"
                     type="text"
@@ -2501,7 +2469,8 @@
                   <v-text-field
                     placeholder=""
                     solo
-                    v-model="nameOfChildrenTwelve"
+                   flat
+                    readonly
                     id="childFullName12"
                     dense
                     class="text-center pt-6"
@@ -2515,7 +2484,8 @@
                     solo
                     id="childDOB12"
                     dense
-                    v-model="dateOfBirthTwelve"
+                    flat
+                    readonly
                     class="text-center pt-6"
                     type="text"
                   >
@@ -2539,7 +2509,8 @@
                   <v-text-field
                     placeholder=" "
                     solo
-                    v-model="nameOfChildrenThirteen"
+                    flat
+                    readonly
                     id="childFullName13"
                     class="text-center pt-6"
                     type="text"
@@ -2550,7 +2521,8 @@
                   <v-text-field
                     placeholder=""
                     solo
-                    v-model="dateOfBirthThirteen"
+                    flat
+                    readonly
                     id="childDOB13"
                     class="text-center pt-6"
                     type="text"
@@ -2562,98 +2534,6 @@
           </template>
         </v-simple-table>
 
-        <!-- <v-container class="grey lighten-5 pa-5" style ="max-width:95%">
-          <v-row class="pa-5"
-            ><v-col cols="12" class="sm-12"
-              >II. FAMILY BACKGROUND</v-col
-            ></v-row
-          >
-          <v-row no-gutters class="px-5">
-            <v-col cols="12" sm="3">
-                  22. SPOUSE'S SURNAME
-               
-            </v-col>
-            <v-col cols="12" sm="3" >
-                  <v-text-field
-                    placeholder=""
-                    solo
-                    dense
-                    v-model="dateOfBirthThirteen"
-                    id="childDOB13"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-             
-            </v-col>
-           <v-col cols="12" sm="3">
-              <v-card class="pa-2" outlined tile>
-                <v-card-title class="text-caption">
-                  31. SPECIAL SKILLS AND HOBBIES <br />(Write in full)<button
-                    class="material-icons"
-                    @click="addRow('otherInfoSpecialSkills')"
-                  >
-                    add_circle
-                  </button>
-                </v-card-title>
-                <v-card-text>
-                  <v-container>
-                    <v-container
-                      v-for="row in otherInfoSpecialSkills"
-                      :key="row.ID"
-                    >
-                      <v-text-field
-                        filled
-                        dense
-                        v-model="row.otherInformationSpecialSkills"
-                        
-                        style="float:left"
-                      ></v-text-field>
-                      <button
-                        class="material-icons"
-                        style="float:right"
-                        @click="removeRow('otherInfoSpecialSkills', row)"
-                      >
-                        remove_circle
-                      </button>
-                    </v-container>
-                  </v-container>
-                </v-card-text>
-              </v-card>
-            </v-col>
-             <v-col cols="12" sm="3">
-              
-                 DATE OF BIRTH (mm/dd/yyyy)  
-                  
-            </v-col>
-          </v-row>
-          <v-row>
-            <v-col cols="12" sm="3"> SIGNATURE </v-col>
-            <v-col cols="12" sm="3">
-              <v-text-field
-                placeholder=""
-                filled
-                dense
-                v-model="otherInfoSignature"
-                class="text-center"
-                type="file"
-              >
-              </v-text-field>
-            </v-col>
-            <v-col cols="12" sm="3"> DATE </v-col>
-            <v-col cols="12" sm="3">
-              <v-text-field
-                placeholder=""
-                filled
-                v-model="otherInfoDateOfSignature"
-                dense
-                class="text-center"
-                type="date"
-              >
-              </v-text-field>
-            </v-col>
-          </v-row>
-        </v-container> -->
         <v-simple-table height="auto" class="pa-0 pa-0 ma-12" width="80vw">
           <template v-slot:default>
             <thead cols="4">
@@ -2787,17 +2667,18 @@
               <tr>
                 <td>SIGNATURE</td>
                 <td colspan="4">
-                  <v-text-field
-                    placeholder="SIGNATURE"
+                  <v-file-input
                     solo
+                    show-size
+                    ref=""
                     accept="image/png, image/jpeg, image/bmp"
-                    ref="file"
                     v-model="educBackgroundSignature"
                     id="signaturePart1"
                     class="text-center pt-6"
-                    type="file"
+                    chips
+                    @change="handleFileInput"
                   >
-                  </v-text-field>
+                  </v-file-input>
                 </td>
                 <td colspan="1" class="pl-10">DATE</td>
                 <td colspan="4">
@@ -3087,14 +2968,16 @@
             <tr>
               <td>SIGNATURE</td>
               <td colspan="3">
-                <v-text-field
-                  placeholder=""
-                  v-model="workExperienceSignature"
-                  solo
-                  class="text-center pt-6"
-                  type="file"
-                >
-                </v-text-field>
+                <v-file-input
+                    solo
+                    show-size
+                    accept="image/png, image/jpeg, image/bmp"
+                    v-model="workExperienceSignature"
+                    id="signaturePart1"
+                    class="text-center pt-6"
+                    chips
+                  >
+                  </v-file-input>
               </td>
               <td colspan="1">DATE</td>
               <td colspan="3">
@@ -3467,15 +3350,16 @@
           <v-row>
             <v-col cols="12" sm="3"> SIGNATURE </v-col>
             <v-col cols="12" sm="3">
-              <v-text-field
-                placeholder=""
-                filled
-                dense
-                v-model="otherInfoSignature"
-                class="text-center"
-                type="file"
-              >
-              </v-text-field>
+               <v-file-input
+                    solo
+                    show-size
+                    accept="image/png, image/jpeg, image/bmp"
+                    v-model="otherInfoSignature"
+                    id="signaturePart1"
+                    class="text-center pt-6"
+                    chips
+                  >
+                  </v-file-input>
             </v-col>
             <v-col cols="12" sm="3"> DATE </v-col>
             <v-col cols="12" sm="3">
@@ -4996,98 +4880,6 @@
           </template>
         </v-simple-table>
 
-        <!-- <v-container class="grey lighten-5 pa-5" style ="max-width:95%">
-          <v-row class="pa-5"
-            ><v-col cols="12" class="sm-12"
-              >II. FAMILY BACKGROUND</v-col
-            ></v-row
-          >
-          <v-row no-gutters class="px-5">
-            <v-col cols="12" sm="3">
-                  22. SPOUSE'S SURNAME
-               
-            </v-col>
-            <v-col cols="12" sm="3" >
-                  <v-text-field
-                    placeholder=""
-                    solo
-                    dense
-                    v-model="dateOfBirthThirteen"
-                    id="childDOB13"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-             
-            </v-col>
-           <v-col cols="12" sm="3">
-              <v-card class="pa-2" outlined tile>
-                <v-card-title class="text-caption">
-                  31. SPECIAL SKILLS AND HOBBIES <br />(Write in full)<button
-                    class="material-icons"
-                    @click="addRow('otherInfoSpecialSkills')"
-                  >
-                    add_circle
-                  </button>
-                </v-card-title>
-                <v-card-text>
-                  <v-container>
-                    <v-container
-                      v-for="row in otherInfoSpecialSkills"
-                      :key="row.ID"
-                    >
-                      <v-text-field
-                        filled
-                        dense
-                        v-model="row.otherInformationSpecialSkills"
-                        
-                        style="float:left"
-                      ></v-text-field>
-                      <button
-                        class="material-icons"
-                        style="float:right"
-                        @click="removeRow('otherInfoSpecialSkills', row)"
-                      >
-                        remove_circle
-                      </button>
-                    </v-container>
-                  </v-container>
-                </v-card-text>
-              </v-card>
-            </v-col>
-             <v-col cols="12" sm="3">
-              
-                 DATE OF BIRTH (mm/dd/yyyy)  
-                  
-            </v-col>
-          </v-row>
-          <v-row>
-            <v-col cols="12" sm="3"> SIGNATURE </v-col>
-            <v-col cols="12" sm="3">
-              <v-text-field
-                placeholder=""
-                filled
-                dense
-                v-model="otherInfoSignature"
-                class="text-center"
-                type="file"
-              >
-              </v-text-field>
-            </v-col>
-            <v-col cols="12" sm="3"> DATE </v-col>
-            <v-col cols="12" sm="3">
-              <v-text-field
-                placeholder=""
-                filled
-                v-model="otherInfoDateOfSignature"
-                dense
-                class="text-center"
-                type="date"
-              >
-              </v-text-field>
-            </v-col>
-          </v-row>
-        </v-container> -->
         <v-simple-table height="auto" class="pa-0 pa-0 ma-12" width="80vw">
           <template v-slot:default>
             <thead cols="4">
@@ -5221,17 +5013,15 @@
               <tr>
                 <td>SIGNATURE</td>
                 <td colspan="4">
-                  <v-text-field
-                    placeholder="SIGNATURE"
+                  <v-file-input
                     solo
                     accept="image/png, image/jpeg, image/bmp"
                     ref="file"
                     v-model="educBackgroundSignature"
                     id="signaturePart1"
                     class="text-center pt-6"
-                    type="file"
                   >
-                  </v-text-field>
+                  </v-file-input>
                 </td>
                 <td colspan="1" class="pl-10">DATE</td>
                 <td colspan="4">
@@ -6359,24 +6149,24 @@
 export default {
   data() {
     return {
-      search: '',
-      items: ['Foo', 'Bar', 'Fizz', 'Buzz'],
+      search: "",
+      items: ["Foo", "Bar", "Fizz", "Buzz"],
       headers: [
-        { text: 'ID', value: 'user_id' },
+        { text: "ID", value: "user_id" },
         {
-          text: 'Last Name',
-          align: 'start',
+          text: "Last Name",
+          align: "start",
           sortable: false,
-          value: 'last_name',
+          value: "last_name",
         },
-        { text: 'Middle Name', value: 'middle_name' },
-        { text: 'First Name', value: 'first_name' },
-        { text: 'Date of Birth', value: 'date_of_birth' },
-        { text: 'Sex', value: 'sex' },
-        { text: 'Blood Type', value: 'blood_type' },
-         { text: "Actions", value: "actions", sortable: false },
+        { text: "Middle Name", value: "middle_name" },
+        { text: "First Name", value: "first_name" },
+        { text: "Date of Birth", value: "date_of_birth" },
+        { text: "Sex", value: "sex" },
+        { text: "Blood Type", value: "blood_type" },
+        { text: "Actions", value: "actions", sortable: false },
       ],
-      create:false,
+      create: false,
       edit: false,
       loading: false,
       personalSurname: "",
@@ -6606,7 +6396,7 @@ export default {
       name: "",
       address: "",
       telephoneNo: "",
-      pds:[],
+      pds: [],
       pdsPersonalInfo: [],
       pdsFamilyBackground: [],
       pdsEducationalBackground: [],
@@ -6620,140 +6410,185 @@ export default {
       pdsQuestions: [],
       pdsAdditionalInfo: [],
       pdsReferences: [],
-      editedIndex: '',
+      editedIndex: "",
+      childName: '',
+      children:[{
+        childName: ''
+      }],
+      
       editedItem: [],
       user: JSON.parse(sessionStorage.getItem("user_session")).role,
-      // loading:false
+      formDataEducationalBackground: new FormData(),
+
     };
   },
   created() {
     this.retrievePds();
   },
   methods: {
-    viewItem (item) {
-        let data = ''
-        let pdsPersonalInfo=''
-        let pdsFamilyBackground=''
-        let pdsEducationalBackground=''
-        let pdsCivilServiceEligibility=''
-        let pdsWorkExperience=''
-        let pdsVoluntaryWorkInvolvement=''
-        let pdsLearningAndDevelopment=''
-        let pdsOtherInfoSpecialSkills=''
-        let pdsOtherInfoNonacademicDistinctions=''
-        let pdsOtherInfoAssociationMembers=''
-        let pdsReferences=''
-        let pdsQuestions=''
-        let pdsAdditionalInfo=''
-        this.editedIndex = this.pds.indexOf(item)
-        this.editedItem = Object.assign({}, item)
-        console.log(item, this.editedIndex, this.editedItem)
-        // console.log(this.$store.getters.pdsInfosAll)
-        data=this.$store.getters.pdsInfosAll
-        pdsPersonalInfo = data[0][0].personalInfo[this.editedIndex]
-        pdsFamilyBackground = data[1][0].familyBackground[this.editedIndex]
-        pdsEducationalBackground = data[2][0].educationalBackground[this.editedIndex]
-        pdsCivilServiceEligibility = data[3][0].civilServiceEligibility[this.editedIndex]
-        pdsWorkExperience = data[4][0].workExperience[this.editedIndex]
-        pdsVoluntaryWorkInvolvement = data[5][0].voluntaryWorkInvolvement[this.editedIndex]
-        pdsLearningAndDevelopment = data[6][0].learningAndDevelopment[this.editedIndex]
-        pdsOtherInfoSpecialSkills = data[7][0].otherInfoSpecialSkills[this.editedIndex]
-        pdsOtherInfoNonacademicDistinctions = data[8][0].otherInfoNonacademicDistinctions[this.editedIndex]
-        pdsOtherInfoAssociationMembers = data[9][0].otherInfoAssociationMembers[this.editedIndex]
-        pdsReferences = data[10][0].references[this.editedIndex]
-        pdsQuestions = data[11][0].pdsQuestions[this.editedIndex]
-        pdsAdditionalInfo = data[12][0].pdsAdditionalInfo[this.editedIndex]
-        data=[]
-        data.push(pdsPersonalInfo)
-        data.push(pdsFamilyBackground)
-        data.push(pdsEducationalBackground)
-        data.push(pdsCivilServiceEligibility)
-        data.push(pdsWorkExperience)
-        data.push(pdsVoluntaryWorkInvolvement)
-        data.push(pdsLearningAndDevelopment)
-        data.push(pdsOtherInfoSpecialSkills)
-        data.push(pdsOtherInfoNonacademicDistinctions)
-        data.push(pdsOtherInfoAssociationMembers)
-        data.push(pdsReferences)
-        data.push(pdsQuestions)
-        data.push(pdsAdditionalInfo)
-        sessionStorage.setItem('pdsPersonalInfo', JSON.stringify(pdsPersonalInfo))
-        sessionStorage.setItem('pdsFamilyBackground', JSON.stringify(pdsFamilyBackground))
-        sessionStorage.setItem('pdsEducationalBackground', JSON.stringify(pdsEducationalBackground))
-        sessionStorage.setItem('pdsCivilServiceEligibility', JSON.stringify(pdsCivilServiceEligibility))
-        sessionStorage.setItem('pdsWorkExperience', JSON.stringify(pdsWorkExperience))
-        sessionStorage.setItem('pdsVoluntaryWorkInvolvement', JSON.stringify(pdsVoluntaryWorkInvolvement))
-        sessionStorage.setItem('pdsLearningAndDevelopment', JSON.stringify(pdsLearningAndDevelopment))
-        sessionStorage.setItem('pdsOtherInfoSpecialSkills', JSON.stringify(pdsOtherInfoSpecialSkills))
-        sessionStorage.setItem('pdsOtherInfoNonacademicDistinctions', JSON.stringify(pdsOtherInfoNonacademicDistinctions))
-        sessionStorage.setItem('pdsOtherInfoAssociationMembers', JSON.stringify(pdsOtherInfoAssociationMembers))
-        sessionStorage.setItem('pdsReferences', JSON.stringify(pdsReferences))
-        sessionStorage.setItem('pdsQuestions', JSON.stringify(pdsQuestions))
-        sessionStorage.setItem('pdsAdditionalInfo', JSON.stringify(pdsAdditionalInfo))
-        this.$router.push({ path: '/viewPds', query: { pdsData:data} }) // -> /user
-      },
+    viewItem(item) {
+      let data = "";
+      let pdsPersonalInfo = "";
+      let pdsFamilyBackground = "";
+      let pdsEducationalBackground = "";
+      let pdsCivilServiceEligibility = "";
+      let pdsWorkExperience = "";
+      let pdsVoluntaryWorkInvolvement = "";
+      let pdsLearningAndDevelopment = "";
+      let pdsOtherInfoSpecialSkills = "";
+      let pdsOtherInfoNonacademicDistinctions = "";
+      let pdsOtherInfoAssociationMembers = "";
+      let pdsReferences = "";
+      let pdsQuestions = "";
+      let pdsAdditionalInfo = "";
+      this.editedIndex = this.pds.indexOf(item);
+      this.editedItem = Object.assign({}, item);
+      console.log(item, this.editedIndex, this.editedItem);
+      // console.log(this.$store.getters.pdsInfosAll)
+      data = this.$store.getters.pdsInfosAll;
+      pdsPersonalInfo = data[0][0].personalInfo[this.editedIndex];
+      pdsFamilyBackground = data[1][0].familyBackground[this.editedIndex];
+      pdsEducationalBackground =
+        data[2][0].educationalBackground[this.editedIndex];
+      pdsCivilServiceEligibility =
+        data[3][0].civilServiceEligibility[this.editedIndex];
+      pdsWorkExperience = data[4][0].workExperience[this.editedIndex];
+      pdsVoluntaryWorkInvolvement =
+        data[5][0].voluntaryWorkInvolvement[this.editedIndex];
+      pdsLearningAndDevelopment =
+        data[6][0].learningAndDevelopment[this.editedIndex];
+      pdsOtherInfoSpecialSkills =
+        data[7][0].otherInfoSpecialSkills[this.editedIndex];
+      pdsOtherInfoNonacademicDistinctions =
+        data[8][0].otherInfoNonacademicDistinctions[this.editedIndex];
+      pdsOtherInfoAssociationMembers =
+        data[9][0].otherInfoAssociationMembers[this.editedIndex];
+      pdsReferences = data[10][0].references[this.editedIndex];
+      pdsQuestions = data[11][0].pdsQuestions[this.editedIndex];
+      pdsAdditionalInfo = data[12][0].pdsAdditionalInfo[this.editedIndex];
+      data = [];
+      data.push(pdsPersonalInfo);
+      data.push(pdsFamilyBackground);
+      data.push(pdsEducationalBackground);
+      data.push(pdsCivilServiceEligibility);
+      data.push(pdsWorkExperience);
+      data.push(pdsVoluntaryWorkInvolvement);
+      data.push(pdsLearningAndDevelopment);
+      data.push(pdsOtherInfoSpecialSkills);
+      data.push(pdsOtherInfoNonacademicDistinctions);
+      data.push(pdsOtherInfoAssociationMembers);
+      data.push(pdsReferences);
+      data.push(pdsQuestions);
+      data.push(pdsAdditionalInfo);
+      sessionStorage.setItem(
+        "pdsPersonalInfo",
+        JSON.stringify(pdsPersonalInfo)
+      );
+      sessionStorage.setItem(
+        "pdsFamilyBackground",
+        JSON.stringify(pdsFamilyBackground)
+      );
+      sessionStorage.setItem(
+        "pdsEducationalBackground",
+        JSON.stringify(pdsEducationalBackground)
+      );
+      sessionStorage.setItem(
+        "pdsCivilServiceEligibility",
+        JSON.stringify(pdsCivilServiceEligibility)
+      );
+      sessionStorage.setItem(
+        "pdsWorkExperience",
+        JSON.stringify(pdsWorkExperience)
+      );
+      sessionStorage.setItem(
+        "pdsVoluntaryWorkInvolvement",
+        JSON.stringify(pdsVoluntaryWorkInvolvement)
+      );
+      sessionStorage.setItem(
+        "pdsLearningAndDevelopment",
+        JSON.stringify(pdsLearningAndDevelopment)
+      );
+      sessionStorage.setItem(
+        "pdsOtherInfoSpecialSkills",
+        JSON.stringify(pdsOtherInfoSpecialSkills)
+      );
+      sessionStorage.setItem(
+        "pdsOtherInfoNonacademicDistinctions",
+        JSON.stringify(pdsOtherInfoNonacademicDistinctions)
+      );
+      sessionStorage.setItem(
+        "pdsOtherInfoAssociationMembers",
+        JSON.stringify(pdsOtherInfoAssociationMembers)
+      );
+      sessionStorage.setItem("pdsReferences", JSON.stringify(pdsReferences));
+      sessionStorage.setItem("pdsQuestions", JSON.stringify(pdsQuestions));
+      sessionStorage.setItem(
+        "pdsAdditionalInfo",
+        JSON.stringify(pdsAdditionalInfo)
+      );
+      this.$router.push({ path: "/viewPds", query: { pdsData: data } }); // -> /user
+    },
     async retrievePds() {
       console.log(this.user);
-      this.loading=true
-      const returnedData = await this.$store.dispatch("retrievePdsInfoById");
-      const returnedAllData = await this.$store.dispatch("retrievePdsInfo");
-      console.log(returnedAllData)
-      if(this.user=='Admin' && returnedAllData.statusText=='OK'){
-        console.log("reached")
+      this.loading = true;
+
+      if (this.user == "Admin" ) {
+        const returnedAllData = await this.$store.dispatch("retrievePdsInfo");
+        console.log("reached");
         //this.$store.getters.pdsInfosAll = returnedAllData.data
         this.pds = returnedAllData.data[0][0].personalInfo;
-        this.loading = false
-        console.log(this.loading)
-      }else if(this.user == 'Teacher'){
+        this.loading = false;
+        console.log(this.loading);
+      } else if (this.user == "Teacher") {
+        const returnedData = await this.$store.dispatch("retrievePdsInfoById");
         this.pds = returnedData.data;
-        console.log(this.pds);
-      if (this.pds[0][0].personalInfo == null && this.user=='Teacher') {
-        this.create = true;
+        // console.log(JSON.parse(this.pds[0][0].pdsPersonalInfo));
+        if (this.pds[0][0].personalInfo[0] == undefined) {
+          this.create = true;
+         
+        } else {
+          this.create = false;
+          this.pdsPersonalInfo.push(this.pds[0][0].personalInfo[0]);
+          // console.log(this.pdsPersonalInfo[0].signature);
+          // console.log(this.pdsPersonalInfo);
+          this.pdsFamilyBackground.push(this.pds[1][0].familyBackground[0]);
+          
+          for (let educ of this.pds[2][0].educationalBackground) {
+            this.pdsEducationalBackground.push(educ);
+          }
+          for (let civil of this.pds[3][0].civilServiceEligibility) {
+            this.pdsCivilServiceEligibility.push(civil);
+          }
+          for (let work of this.pds[4][0].workExperience) {
+            this.pdsWorkExperience.push(work);
+          }
+
+          for (let voluntary of this.pds[5][0].voluntaryWorkInvolvement) {
+            this.pdsVoluntaryWorkInvolvement.push(voluntary);
+          }
+          for (let learning of this.pds[6][0].learningAndDevelopment) {
+            this.pdsLearningAndDevelopment.push(learning);
+          }
+          for (let other of this.pds[7][0].otherInfoSpecialSkills) {
+            this.pdsOtherInfoSpecialSkills.push(other);
+          }
+          for (let other of this.pds[8][0].otherInfoNonacademicDistinctions) {
+            this.pdsOtherInfoNonacademicDistinctions.push(other);
+          }
+          for (let other of this.pds[9][0].otherInfoAssociationMembers) {
+            this.pdsOtherInfoAssociationMembers.push(other);
+          }
+
+          for (let references of this.pds[10][0].references) {
+            this.pdsReferences.push(references);
+          }
+          this.pdsQuestions.push(this.pds[11][0].pdsQuestions[0]);
+          this.pdsAdditionalInfo.push(this.pds[12][0].pdsAdditionalInfo[0]);
+        }
       } else {
-        
-        this.create = false;
-        this.pdsPersonalInfo.push(this.pds[0][0].personalInfo[0]);
-        // console.log(this.pdsPersonalInfo[0].signature);
-        // console.log(this.pdsPersonalInfo);
-        this.pdsFamilyBackground.push(this.pds[1][0].familyBackground[0]);
-        console.log(this.pdsFamilyBackground);
-        for (let educ of this.pds[2][0].educationalBackground) {
-          this.pdsEducationalBackground.push(educ);
-        }
-        for (let civil of this.pds[3][0].civilServiceEligibility) {
-          this.pdsCivilServiceEligibility.push(civil);
-        }
-        for (let work of this.pds[4][0].workExperience) {
-          this.pdsWorkExperience.push(work);
-        }
-
-        for (let voluntary of this.pds[5][0].voluntaryWorkInvolvement) {
-          this.pdsVoluntaryWorkInvolvement.push(voluntary);
-        }
-        for (let learning of this.pds[6][0].learningAndDevelopment) {
-          this.pdsLearningAndDevelopment.push(learning);
-        }
-        for (let other of this.pds[7][0].otherInfoSpecialSkills) {
-          this.pdsOtherInfoSpecialSkills.push(other);
-        }
-        for (let other of this.pds[8][0].otherInfoNonacademicDistinctions) {
-          this.pdsOtherInfoNonacademicDistinctions.push(other);
-        }
-        for (let other of this.pds[9][0].otherInfoAssociationMembers) {
-          this.pdsOtherInfoAssociationMembers.push(other);
-        }
-
-        for (let references of this.pds[10][0].references) {
-          this.pdsReferences.push(references);
-        }
-        this.pdsQuestions.push(this.pds[11][0].pdsQuestions[0]);
-        this.pdsAdditionalInfo.push(this.pds[12][0].pdsAdditionalInfo[0]);
-      }
-      }else{
         this.pds = [];
       }
-      
-      
+
       // this.pds=this.$store.getters.pdsInfosAll;
       // console.log(this.pds)
       //   console.log(this.pds)
@@ -6858,11 +6693,20 @@ export default {
           };
           this.references.push(newRow);
           break;
+         case "children":
+          console.log("reached");
+          newRow = {
+            childName: this.childName,
+          
+          };
+          this.children.push(newRow);
+          break;
         default:
           return "Something went wrong!";
       }
     },
     removeRow: function (array, row) {
+      console.log(array, row)
       switch (array) {
         case "educationalBackground":
           this.educationalBackground.splice(row, 1);
@@ -6891,18 +6735,21 @@ export default {
         case "references":
           this.references.splice(row, 1);
           break;
+        case "children":
+          this.children.splice(row, 1);
+          break;
         default:
           return "Something went wrong!";
       }
     },
-    editPds: function (){
-      console.log("reached")
+    editPds: function () {
+      console.log("reached");
+      this.edit = true
+      this.create =false
     },
     finalizePds: async function (method) {
       console.log(
-        method,
-        this.questionThirtyFiveDateFiled,
-        this.questionThirtyFiveCaseStatus
+        this.educBackgroundSignature, method
       );
       const personalSurname = this.personalSurname;
       const personalFirstName = this.personalFirstName;
@@ -6957,32 +6804,10 @@ export default {
       const familyMotherSurname = this.familyMotherSurname;
       const familyMotherFirstName = this.familyMotherFirstName;
       const familyMotherMiddleName = this.familyMotherMiddleName;
-      const nameOfChildrenOne = this.nameOfChildrenOne;
-      const nameOfChildrenTwo = this.nameOfChildrenTwo;
-      const nameOfChildrenThree = this.nameOfChildrenThree;
-      const nameOfChildrenFour = this.nameOfChildrenFour;
-      const nameOfChildrenFive = this.nameOfChildrenFive;
-      const nameOfChildrenSix = this.nameOfChildrenSix;
-      const nameOfChildrenSeven = this.nameOfChildrenSeven;
-      const nameOfChildrenEight = this.nameOfChildrenEight;
-      const nameOfChildrenNine = this.nameOfChildrenNine;
-      const nameOfChildrenTen = this.nameOfChildrenTen;
-      const nameOfChildrenEleven = this.nameOfChildrenEleven;
-      const nameOfChildrenTwelve = this.nameOfChildrenTwelve;
-      const nameOfChildrenThirteen = this.nameOfChildrenThirteen;
-      const dateOfBirthOne = this.dateOfBirthOne;
-      const dateOfBirthTwo = this.dateOfBirthTwo;
-      const dateOfBirthThree = this.dateOfBirthThree;
-      const dateOfBirthFour = this.dateOfBirthFour;
-      const dateOfBirthFive = this.dateOfBirthFive;
-      const dateOfBirthSix = this.dateOfBirthSix;
-      const dateOfBirthSeven = this.dateOfBirthSeven;
-      const dateOfBirthEight = this.dateOfBirthEight;
-      const dateOfBirthNine = this.dateOfBirthNine;
-      const dateOfBirthTen = this.dateOfBirthTen;
-      const dateOfBirthEleven = this.dateOfBirthEleven;
-      const dateOfBirthTwelve = this.dateOfBirthTwelve;
-      const dateOfBirthThirteen = this.dateOfBirthThirteen;
+      const children = this.children;
+      const dateOfBirthSpouse = this.dateOfBirthSpouse;
+      const dateOfBirthFather = this.dateOfBirthFather;
+      const dateOfBirthMother = this.dateOfBirthMother;
       const educationalBackground = this.educationalBackground;
       const educBackgroundSignature = this.educBackgroundSignature;
       const educBackgroundDateOfSignature = this.educBackgroundDateOfSignature;
@@ -7019,8 +6844,12 @@ export default {
       const rightThumbMark = this.rightThumbMark;
       const subscribedAndSwornDate = this.subscribedAndSwornDate;
       const personAdministeringOath = this.personAdministeringOath;
-      // const user = sessionStorage.userData.ID
-      const user = 1;
+      const user = sessionStorage.user_session.id
+      console.log(educBackgroundSignature)
+      this.formDataEducationalBackground.append('file', educBackgroundSignature)
+      this.formDataEducationalBackground.append("fileName", educBackgroundSignature.name);
+      this.formDataEducationalBackground.append("path", "educational-background/");
+      const formDataEducationalBackground = this.formDataEducationalBackground
       const data = {
         user,
         personalSurname,
@@ -7075,34 +6904,12 @@ export default {
         familyMotherSurname,
         familyMotherFirstName,
         familyMotherMiddleName,
-        nameOfChildrenOne,
-        nameOfChildrenTwo,
-        nameOfChildrenThree,
-        nameOfChildrenFour,
-        nameOfChildrenFive,
-        nameOfChildrenSix,
-        nameOfChildrenSeven,
-        nameOfChildrenEight,
-        nameOfChildrenNine,
-        nameOfChildrenTen,
-        nameOfChildrenEleven,
-        nameOfChildrenTwelve,
-        nameOfChildrenThirteen,
-        dateOfBirthOne,
-        dateOfBirthTwo,
-        dateOfBirthThree,
-        dateOfBirthFour,
-        dateOfBirthFive,
-        dateOfBirthSix,
-        dateOfBirthSeven,
-        dateOfBirthEight,
-        dateOfBirthNine,
-        dateOfBirthTen,
-        dateOfBirthEleven,
-        dateOfBirthTwelve,
-        dateOfBirthThirteen,
+        children,
+        dateOfBirthSpouse,
+        dateOfBirthFather,
+        dateOfBirthMother,
         educationalBackground,
-        educBackgroundSignature,
+        formDataEducationalBackground,
         educBackgroundDateOfSignature,
         civilServiceEligibility,
         workExperience,
@@ -7137,6 +6944,7 @@ export default {
         subscribedAndSwornDate,
         personAdministeringOath,
       };
+      console.log(data.educBackgroundSignature.name)
       const returnedData = await this.$store.dispatch("createPds", data);
       console.log(returnedData);
       if (returnedData.data == "success") {
@@ -7144,7 +6952,32 @@ export default {
         this.pds = this.$store.getters.pdsInfosAll;
       }
     },
+    download: async function () {
+      let formData = new FormData();
+      formData.append("fileName", "sung_jin_woo_by_hkiddo_ddsq3y4-pre.jpg");
+      formData.append("file", this.file);
+      formData.append("path", "employee/other-data/");
+      this.$store.dispatch("downloadAttachment", formData);
+    },
+    handleFileInput: function (event) {
+      console.log(event)
+     let formData = new FormData();
+      formData.append("fileName", event.name);
+      formData.append("file", event);
+      formData.append("path", "educational-background/");
+      console.log(formData)
+    //  this.$store.dispatch("uploadFile", formData);
+    //   let fileReader = new fileReader();
+    // fileReader.readAsDataUrl(imageFile)
+    // fileReader.addEventListener('load', () => {
+    //   imageUrl.value;
+    // })
+    }
   },
+  // watch(imageFile, ()=> {
+   
+    
+  // })
 };
 </script>
 
