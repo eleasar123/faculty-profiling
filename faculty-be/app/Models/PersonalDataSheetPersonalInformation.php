@@ -38,6 +38,7 @@ class PersonalDataSheetPersonalInformation extends Model
         'agency_employee_no',
         'citizenship',
         'dual_citizenship',
+        'country_of_citizenship',
         'residential_address_house_no',
         'residential_address_street',
         'residential_address_subdivision',
@@ -57,7 +58,10 @@ class PersonalDataSheetPersonalInformation extends Model
         'email_address',
         'signature',
         'date_signed',
-        
+        'work_experience_signature',
+        'work_experience_date_signed',
+        'other_info_signature',
+        'other_info_date_signed',
     ];
 
     public function user()

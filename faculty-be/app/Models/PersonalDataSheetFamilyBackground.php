@@ -28,18 +28,18 @@ class PersonalDataSheetFamilyBackground extends Model
         'spouse_employer',
         'spouse_business_address', 
         'spouse_telephone_no',
-        'spouse_children',
+        'spouse_date_of_birth',
         'father_last_name',
         'father_first_name',
         'father_middle_name',
         'father_suffix',
-        'father_children',
+        'father_date_of_birth',
         'mother_maiden_name',
         'mother_last_name',
         'mother_first_name',
         'mother_middle_name',
         'mother_occupation', 
-        'mother_children',
+        'mother_date_of_birth',
     ];
 
     public function user()
