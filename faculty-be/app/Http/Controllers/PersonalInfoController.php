@@ -29,7 +29,7 @@ public function handleImage(Request $request){
 //   $request->validate([
 //     'formDataEducationalBackground' => 'required|mimes:jpg,jpeg,png,csv,txt,xlx,xls,pdf|max:2048'
 //  ]);
-if($request->hasFile('formDataEducationalBackground')){
+if($request->hasFile('file')){
   return 'hello';
 }
 }
@@ -182,6 +182,9 @@ if($request->hasFile('formDataEducationalBackground')){
 //   $request->validate([
 //     'formDataEducationalBackground' => 'required|mimes:jpg,jpeg,png,csv,txt,xlx,xls,pdf|max:2048'
 //  ]);
+if($request->hasFile('file')){
+  return 'hello';
+}
   $personalInfo = new PersonalDataSheetPersonalInformation([
    'user_id'                         => $request->user,
    'last_name'                       => $request->personalSurname,
@@ -236,6 +239,9 @@ if($request->hasFile('formDataEducationalBackground')){
 //   $path=$form['fileName'];
 //   dd($path);
 //  }
+if($request->hasFile('file')){
+  return 'hello';
+}
  //$request->file('formDataEducationalBackground');
 //  $input = $request->file('formDataEducationalBackground');
 //  return $input;
