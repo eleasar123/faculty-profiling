@@ -63,6 +63,7 @@ Route::middleware(['cors'])->group(function () {
     // Route::post('pds/create', 'App\Http\Controllers\PersonalDataSheetController@createPds');
     Route::post('pds/create', 'App\Http\Controllers\PersonalInfoController@createPds');
     Route::patch('pds/update', 'App\Http\Controllers\PersonalInfoController@updatePds');
+    Route::post('pds/handleImage', 'App\Http\Controllers\PersonalInfoController@handleImage');
     // Route::apiResource('esat', App\Http\Controllers\EsatController::class);
     //routes for esat
     Route::get('esat/', 'App\Http\Controllers\EsatController@index');

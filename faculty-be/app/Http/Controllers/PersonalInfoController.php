@@ -21,9 +21,18 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\FileSystem;
 use Illuminate\Http\File;
+use Illuminate\Http\UploadedFile;
 class PersonalInfoController extends Controller
 {
- //
+ //receive image
+public function handleImage(Request $request){
+//   $request->validate([
+//     'formDataEducationalBackground' => 'required|mimes:jpg,jpeg,png,csv,txt,xlx,xls,pdf|max:2048'
+//  ]);
+if($request->hasFile('formDataEducationalBackground')){
+  return 'hello';
+}
+}
  //get all the pds of the teachers
  public function index()
  {
@@ -71,130 +80,107 @@ class PersonalInfoController extends Controller
 
  public function createPds(Request $request)
  {
-  //
-  $request->validate([
-   'user'                             => 'required',
-   'personalSurname'                  => 'required',
-   'personalFirstName'                => 'required',
-   'personalMiddleName'               => 'required',
-   'personalSuffix'                   => 'required',
-   'personalDateOfBirth'              => 'required',
-   'personalPlaceOfBirth'             => 'required',
-   'personalCitizenship'              => 'required',
-   'personalDualCitizenship'          => 'required',
-   'countryOfCitizenship'          => 'required',
-   'personalSex'                      => 'required',
-   'personalCivilStatus'              => 'required',
-   'personalHeight'                   => 'required',
-   'personalWeight'                   => 'required',
-   'personalBloodType'                => 'required',
-   'personalGSISIDNo'                 => 'required',
-   'personalPHILHEALTHNo'                 => 'required',
-   'personalResAddressHouseNo'        => 'required',
-   'personalResAddressStreet'         => 'required',
-   'personalResAddressSubdivision'    => 'required',
-   'personalResAddressBarangay'       => 'required',
-   'personalResAddressCity'           => 'required',
-   'personalResAddressProvince'       => 'required',
-   'personalZipCode'                  => 'required',
-   'personalPAGIBIGIDNo'              => 'required',
-   'personalPHILHEALTHNo'             => 'required',
-   'personalPermanentAddHouseNo'      => 'required',
-   'personalPermanentAddStreet'       => 'required',
-   'personalPermanentAddSubdivision'  => 'required',
-   'personalPermanentAddBarangay'     => 'required',
-   'personalPermanentAddCity'         => 'required',
-   'personalPermanentAddProvince'     => 'required',
-   'personalPermanentAddZipCode'      => 'required',
-   'personalSSSNo'                    => 'required',
-   'personalTelephoneNo'              => 'required',
-   'personalTinNo'                    => 'required',
-   'personalMobileNo'                 => 'required',
-   'personalAgencyEmployeeNo'         => 'required',
-   'personalEmailAddress'             => 'required',
-   'familySpouseSurname'              => 'required',
-   'familySpouseFirstName'            => 'required',
-   'familySpouseMiddleName'           => 'required',
-   'familySpouseSuffix'               => 'required',
-   'familySpouseOccupation'           => 'required',
-   'familyEmployerName'               => 'required',
-   'familyBusinessAddress'            => 'required',
-   'familyTelephoneNo'                => 'required',
-   'familyFatherSurname'              => 'required',
-   'familyFatherFirstName'            => 'required',
-   'familyFatherMiddleName'           => 'required',
-   'familyFatherSuffix'               => 'required',
-   'familyMotherMaidenName'           => 'required',
-   'familyMotherSurname'              => 'required',
-   'familyMotherFirstName'            => 'required',
-   'familyMotherMiddleName'           => 'required',
-   'nameOfChildrenOne'                => 'required',
-   'nameOfChildrenTwo'                => 'required',
-   'nameOfChildrenThree'              => 'required',
-   'nameOfChildrenFour'               => 'required',
-   'nameOfChildrenFive'               => 'required',
-   'nameOfChildrenSix'                => 'required',
-   'nameOfChildrenSeven'              => 'required',
-   'nameOfChildrenEight'              => 'required',
-   'nameOfChildrenNine'               => 'required',
-   'nameOfChildrenTen'                => 'required',
-   'nameOfChildrenEleven'             => 'required',
-   'nameOfChildrenTwelve'             => 'required',
-   'nameOfChildrenThirteen'           => 'required',
-   'dateOfBirthOne'                   => 'required',
-   'dateOfBirthTwo'                   => 'required',
-   'dateOfBirthThree'                 => 'required',
-   'dateOfBirthFour'                  => 'required',
-   'dateOfBirthFive'                  => 'required',
-   'dateOfBirthSix'                   => 'required',
-   'dateOfBirthSeven'                 => 'required',
-   'dateOfBirthEight'                 => 'required',
-   'dateOfBirthNine'                  => 'required',
-   'dateOfBirthTen'                   => 'required',
-   'dateOfBirthEleven'                => 'required',
-   'dateOfBirthTwelve'                => 'required',
-   'dateOfBirthThirteen'              => 'required',
-   'educationalBackground'            => 'required',
-   'educBackgroundSignature'          => 'required',
-   'educBackgroundDateOfSignature'    => 'required',
-   'civilServiceEligibility'          => 'required',
-   'workExperience'                   => 'required',
-   'workExperienceSignature'          => 'required',
-   'workExperienceDateOfSignature'    => 'required',
-   'voluntaryWorkInvolvement'         => 'required',
-   'learningAndDevelopment'           => 'required',
-   'otherInfoSpecialSkills'           => 'required',
-   'otherInfoNonacademicDistinctions' => 'required',
-   'otherInfoAssociationMembers'      => 'required',
-   'otherInfoSignature'               => 'required',
-   'otherInfoDateOfSignature'         => 'required',
-   'otherInfoAssociationMembers'      => 'required',
-   'questionThirtyFour'               => 'required',
-   'questionThirtyFiveA'              => 'required',
-   'questionThirtyFiveBDateFiled'      => 'required',
-   'questionThirtyFiveBStatusOfCase'     => 'required',
-   'questionThirtySix'                => 'required',
-   'questionThirtySeven'              => 'required',
-   'questionThirtyEight'              => 'required',
-   'questionThirtyNine'               => 'required',
-   'questionFourtyA'                  => 'required',
-   'questionFourtyB'                  => 'required',
-   'questionFourtyC'                  => 'required',
-   'references'                       => 'required',
-   'personalPhotoAttachment'          => 'required',
-   'governmentIssuedID'               => 'required',
-   'governmentIssuedIDNo'             => 'required',
-   'governmentIDDateOrPlaceIssued'    => 'required',
-   'oathSignature'                    => 'required',
-   'oathDateAccomplished'             => 'required',
-   'rightThumbMark'                   => 'required',
-   'subscribedAndSwornDate'           => 'required',
-   'personAdministeringOath'          => 'required',
-   'children'          => 'required',
+    
+    // $request->validate([
+    // 'user'                             => 'required',
+    // 'personalSurname'                  => 'required',
+    // 'personalFirstName'                => 'required',
+    // 'personalMiddleName'               => 'required',
+    // 'personalSuffix'                   => 'required',
+    // 'personalDateOfBirth'              => 'required',
+    // 'personalPlaceOfBirth'             => 'required',
+    // 'personalCitizenship'              => 'required',
+    // 'personalDualCitizenship'          => 'required',
+    // 'countryOfCitizenship'          => 'required',
+    // 'personalSex'                      => 'required',
+    // 'personalCivilStatus'              => 'required',
+    // 'personalHeight'                   => 'required',
+    // 'personalWeight'                   => 'required',
+    // 'personalBloodType'                => 'required',
+    // 'personalGSISIDNo'                 => 'required',
+    // 'personalPHILHEALTHNo'                 => 'required',
+    // 'personalResAddressHouseNo'        => 'required',
+    // 'personalResAddressStreet'         => 'required',
+    // 'personalResAddressSubdivision'    => 'required',
+    // 'personalResAddressBarangay'       => 'required',
+    // 'personalResAddressCity'           => 'required',
+    // 'personalResAddressProvince'       => 'required',
+    // 'personalZipCode'                  => 'required',
+    // 'personalPAGIBIGIDNo'              => 'required',
+    // 'personalPHILHEALTHNo'             => 'required',
+    // 'personalPermanentAddHouseNo'      => 'required',
+    // 'personalPermanentAddStreet'       => 'required',
+    // 'personalPermanentAddSubdivision'  => 'required',
+    // 'personalPermanentAddBarangay'     => 'required',
+    // 'personalPermanentAddCity'         => 'required',
+    // 'personalPermanentAddProvince'     => 'required',
+    // 'personalPermanentAddZipCode'      => 'required',
+    // 'personalSSSNo'                    => 'required',
+    // 'personalTelephoneNo'              => 'required',
+    // 'personalTinNo'                    => 'required',
+    // 'personalMobileNo'                 => 'required',
+    // 'personalAgencyEmployeeNo'         => 'required',
+    // 'personalEmailAddress'             => 'required',
+    // 'familySpouseSurname'              => 'required',
+    // 'familySpouseFirstName'            => 'required',
+    // 'familySpouseMiddleName'           => 'required',
+    // 'familySpouseSuffix'               => 'required',
+    // 'familySpouseOccupation'           => 'required',
+    // 'familyEmployerName'               => 'required',
+    // 'familyBusinessAddress'            => 'required',
+    // 'familyTelephoneNo'                => 'required',
+    // 'familyFatherSurname'              => 'required',
+    // 'familyFatherFirstName'            => 'required',
+    // 'familyFatherMiddleName'           => 'required',
+    // 'familyFatherSuffix'               => 'required',
+    // 'familyMotherMaidenName'           => 'required',
+    // 'familyMotherSurname'              => 'required',
+    // 'familyMotherFirstName'            => 'required',
+    // 'familyMotherMiddleName'           => 'required',
+    // 'dateOfBirthSpouse'                => 'required',
+    // 'dateOfBirthFather'                => 'required',
+    // 'dateOfBirthMother'              => 'required',
+    // 'educationalBackground'            => 'required',
+    // 'formDataEducationalBackground'          => 'required',
+    // 'educBackgroundDateOfSignature'    => 'required',
+    // 'civilServiceEligibility'          => 'required',
+    // 'workExperience'                   => 'required',
+    // 'workExperienceSignature'          => 'required',
+    // 'workExperienceDateOfSignature'    => 'required',
+    // 'voluntaryWorkInvolvement'         => 'required',
+    // 'learningAndDevelopment'           => 'required',
+    // 'otherInfoSpecialSkills'           => 'required',
+    // 'otherInfoNonacademicDistinctions' => 'required',
+    // 'otherInfoAssociationMembers'      => 'required',
+    // 'otherInfoSignature'               => 'required',
+    // 'otherInfoDateOfSignature'         => 'required',
+    // 'otherInfoAssociationMembers'      => 'required',
+    // 'questionThirtyFour'               => 'required',
+    // 'questionThirtyFiveA'              => 'required',
+    // 'questionThirtyFiveBDateFiled'      => 'required',
+    // 'questionThirtyFiveBStatusOfCase'     => 'required',
+    // 'questionThirtySix'                => 'required',
+    // 'questionThirtySeven'              => 'required',
+    // 'questionThirtyEight'              => 'required',
+    // 'questionThirtyNine'               => 'required',
+    // 'questionFourtyA'                  => 'required',
+    // 'questionFourtyB'                  => 'required',
+    // 'questionFourtyC'                  => 'required',
+    // 'references'                       => 'required',
+    // 'personalPhotoAttachment'          => 'required',
+    // 'governmentIssuedID'               => 'required',
+    // 'governmentIssuedIDNo'             => 'required',
+    // 'governmentIDDateOrPlaceIssued'    => 'required',
+    // 'oathSignature'                    => 'required',
+    // 'oathDateAccomplished'             => 'required',
+    // 'rightThumbMark'                   => 'required',
+    // 'subscribedAndSwornDate'           => 'required',
+    // 'personAdministeringOath'          => 'required',
+    // 'children'          => 'required',
 
-  ]);
+    // ]);
 //   $request->validate([
-//     'educBackgroundSignature' => 'required|mimes:jpg,jpeg,png,csv,txt,xlx,xls,pdf|max:2048'
+//     'formDataEducationalBackground' => 'required|mimes:jpg,jpeg,png,csv,txt,xlx,xls,pdf|max:2048'
 //  ]);
   $personalInfo = new PersonalDataSheetPersonalInformation([
    'user_id'                         => $request->user,
@@ -242,11 +228,20 @@ class PersonalInfoController extends Controller
    'other_info_signature'                       => $request->otherInfoSignature,
    'other_info_date_signed'                     => $request->otherInfoDateOfSignature,
   ]);
-  // Storage::disk('local')->put( $request->educBackgroundSignature, 'Signatures' ); //using multiple disks for storing files
+  //Storage::disk('local')->put( 'public/educational-background/', $request->formDataEducationalBackground, ); //using multiple disks for storing files
    // Storage::put($request->educBackgroundSignature,'public');
- $file = $request->file('educBackgroundSignature')->store('public');
+ //$file = $request->file('formDataEducationalBackground')->isValid();
+//  $path='';
+//  foreach($request-> formDataEducationalBackground as $form){
+//   $path=$form['fileName'];
+//   dd($path);
+//  }
+ //$request->file('formDataEducationalBackground');
+//  $input = $request->file('formDataEducationalBackground');
+//  return $input;
+//  return($input);
   //Storage::disk('local')->putFile("app/public/pds", $request->educBackgroundSignature);
-  $content = 'Hello World';
+  // $content = 'Hello World';
   // Storage::put('avatars/2', $file);
 
  // Storage::put($request->file('educBackgroundSignature')->name, $file);
@@ -254,14 +249,15 @@ class PersonalInfoController extends Controller
   // return($name);
   // $extension = $file->getClientOriginalExtension();
 
-  if($file){
-    dd("true");
-    $destinationPath = 'public/signatures/personalInfo';
-    $image =$request->file('educBackgroundSignature');
-    $imageName = $image->getClientOriginalName();
-    $path = $request->file('educBackgroundSignature')->storeAs($destinationPath, $imageName);
-    //$input['image'] = $imageName;
-  }
+  // if($file){
+  //   return("true");
+  //   $destinationPath = 'public/signatures/personalInfo';
+  //   $image =$request->file('educBackgroundSignature');
+  //   $imageName = $image->getClientOriginalName();
+  //   $path = $request->file('educBackgroundSignature')->storeAs($destinationPath, $imageName);
+  //   //$input['image'] = $imageName;
+  // }
+  // return $file;
   //Storage::putFile( 'signatures', new File($request->educBackgroundSignature ), ); //if using one or default disk
  // php artisan storage:link
  //echo asset('storage/file.txt');
