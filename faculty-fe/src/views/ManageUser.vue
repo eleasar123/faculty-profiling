@@ -110,7 +110,7 @@
                           v-model="editedItem.name"
                           label="Full Name"
                           variant="outlined"
-                          readonly
+                       
                         ></v-text-field>
                   </v-col>
                       <v-col
@@ -121,7 +121,7 @@
                           v-model="editedItem.email"
                           label="Email Address"
                           variant="outlined"
-                          readonly
+                          
                         ></v-text-field>
                   </v-col><br>
 
@@ -133,7 +133,18 @@
                           v-model="editedItem.password"
                           label="Password"
                           variant="outlined"
-                          readonly
+                      
+                        ></v-text-field>
+                  </v-col>
+                   <v-col
+                    cols="12"
+                    sm="6"
+                  >
+                        <v-text-field
+                          v-model="editedItem.role"
+                          label="Role"
+                          variant="outlined"
+                       
                         ></v-text-field>
                   </v-col>
                   
@@ -213,6 +224,7 @@
         { text: 'Full Name', value: 'name' },
         { text: 'Email Address', value: 'email' },
         { text: 'Password', value: 'password' },
+        { text: 'Role', value: 'role' },
         { text: 'Actions', value: 'actions', sortable: false },
       ],
       desserts: [],
@@ -221,14 +233,17 @@
         name: '',
         email: '',
         password: '',
+        role: ''
      
       },
       defaultItem: {
         name: '',
         email: '',
         password: '',
+        role: ''
     
       },
+    users: [],
     }),
     computed: {
       formTitle () {
@@ -308,7 +323,8 @@
         if (this.editedIndex > -1) {
           Object.assign(this.desserts[this.editedIndex], this.editedItem)
         } else {
-          this.desserts.push(this.editedItem)
+          this.users.push(this.editedItem)
+          console.log(this.users)
         }
         this.close()
       },

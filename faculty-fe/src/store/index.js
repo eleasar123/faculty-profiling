@@ -45,7 +45,7 @@ export default new Vuex.Store({
     uploadFile(context, file) {
       console.log([...file]);
       return axios
-        .post("uploadAttachment", file, {
+        .post("pds/handleImage", file, {
           headers: {
             "Content-Type": "multipart/form-data",
           },
