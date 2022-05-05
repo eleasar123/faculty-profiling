@@ -17,16 +17,16 @@ return new class extends Migration
         Schema::create('pds_additional_infos', function (Blueprint $table){
             $table->increments('id');
             $table->string('user_id');
-            $table->string('oath');
+            $table->string('oath')-> nullable();
             $table->string('government_id');
             $table->string('id_no');
             $table->string('date_place_of_issuance');
-            $table->string('signature');
+            $table->string('signature')-> nullable();
             $table->string('oath_date_accomplished');
-            $table->string('photo');
-            $table->string('right_thumbmark');
+            $table->string('photo')-> nullable();
+            $table->string('right_thumbmark')-> nullable();
             $table->string('sworn_date');
-            $table->string('person_administering_oath');
+            $table->string('person_administering_oath')-> nullable();
             $table->timestamp('created_at') ->useCurrent();
             $table->timestamp('updated_at') -> nullable() -> useCurrentOnUpdate();
             $table->softDeletesTz();

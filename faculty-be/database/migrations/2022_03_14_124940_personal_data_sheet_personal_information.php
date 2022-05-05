@@ -54,11 +54,11 @@ return new class extends Migration
             $table->string('telephone_no');
             $table->string('mobile_no');
             $table->string('email_address');
-            $table->string('signature');
-            $table->string('date_signed');
-            $table->string('work_experience_signature');
+            $table->string('educational_signature') -> nullable();
+            $table->string('educational_date_signed');
+            $table->string('work_experience_signature')-> nullable();
             $table->string('work_experience_date_signed');
-            $table->string('other_info_signature');
+            $table->string('other_info_signature')-> nullable();
             $table->string('other_info_date_signed');
             $table->timestamp('created_at') ->useCurrent();
             $table->timestamp('updated_at') -> nullable() -> useCurrentOnUpdate();

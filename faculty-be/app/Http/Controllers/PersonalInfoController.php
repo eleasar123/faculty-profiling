@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Children;
 use App\Models\CivilServiceEligibility;
 use App\Models\LearningAndDevelopment;
 use App\Models\OtherInfoAssociationMembers;
@@ -14,25 +15,75 @@ use App\Models\PersonalDataSheetFamilyBackground;
 use App\Models\PersonalDataSheetPersonalInformation;
 use App\Models\References;
 use App\Models\User;
-use App\Models\Children;
 use App\Models\VoluntaryWorkInvolvement;
 use App\Models\WorkExperience;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\FileSystem;
 use Illuminate\Http\File;
-use Illuminate\Http\UploadedFile;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 class PersonalInfoController extends Controller
 {
  //receive image
-public function handleImage(Request $request){
-//   $request->validate([
-//     'formDataEducationalBackground' => 'required|mimes:jpg,jpeg,png,csv,txt,xlx,xls,pdf|max:2048'
-//  ]);
-if($request->hasFile('file')){
-  return 'hello';
-}
-}
+ public function handleImage(Request $request)
+ {
+  //  return $request->all();
+  $request->validate([
+   'fileEducBackgroundSignature' => 'required|mimes:jpg,jpeg,png,csv,txt,xlx,xls,pdf|max:2048',
+  ]);
+  if ($request->hasFile('fileEducBackgroundSignature')) {
+  $image           = $request->file('fileEducBackgroundSignature');
+   $destinationPath = 'public/signatures/educational-background/';
+   $imageName       = $image->getClientOriginalName();
+   $path            = $request->file('fileEducBackgroundSignature')->storeAs($destinationPath, $imageName);
+   $input['image']  = $imageName;
+  }
+  if ($request->hasFile('fileWorkExperienceSignature')) {
+    $destinationPath = `public/signatures/personalInfo/$request->user`;
+    $image           = $request->file('educBackgroundSignature');
+    $imageName       = $image->getClientOriginalName();
+    $path            = $request->file('educBackgroundSignature')->storeAs($destinationPath, $imageName);
+    $input['image']  = $imageName;
+   }
+   if ($request->hasFile('fileOtherInfoSignature')) {
+
+    $destinationPath = `public/signatures/personalInfo/$request->user`;
+    $image           = $request->file('educBackgroundSignature');
+    $imageName       = $image->getClientOriginalName();
+    $path            = $request->file('educBackgroundSignature')->storeAs($destinationPath, $imageName);
+    $input['image']  = $imageName;
+   }
+   if ($request->hasFile('personalPhotoAttachment')) {
+    $destinationPath = `public/signatures/personalInfo/$request->user`;
+    $image           = $request->file('educBackgroundSignature');
+    $imageName       = $image->getClientOriginalName();
+    $path            = $request->file('educBackgroundSignature')->storeAs($destinationPath, $imageName);
+    $input['image']  = $imageName;
+   }
+   if ($request->hasFile('oathSignature')) {
+    $destinationPath = `public/signatures/personalInfo/$request->user`;
+    $image           = $request->file('educBackgroundSignature');
+    $imageName       = $image->getClientOriginalName();
+    $path            = $request->file('educBackgroundSignature')->storeAs($destinationPath, $imageName);
+    $input['image']  = $imageName;
+   }
+   if ($request->hasFile('rightThumbMark')) {
+    $destinationPath = `public/signatures/personalInfo/$request->user`;
+    $image           = $request->file('educBackgroundSignature');
+    $imageName       = $image->getClientOriginalName();
+    $path            = $request->file('educBackgroundSignature')->storeAs($destinationPath, $imageName);
+    $input['image']  = $imageName;
+   }
+   if ($request->hasFile('personAdministeringOath')) {
+    $destinationPath = `public/signatures/personalInfo/$request->user`;
+    $image           = $request->file('educBackgroundSignature');
+    $imageName       = $image->getClientOriginalName();
+    $path            = $request->file('educBackgroundSignature')->storeAs($destinationPath, $imageName);
+    $input['image']  = $imageName;
+   }
+  $affected = DB::table('users')
+   ->where('id', 1)
+   ->update(['votes' => 1]);
+ }
  //get all the pds of the teachers
  public function index()
  {
@@ -60,19 +111,19 @@ if($request->hasFile('file')){
  {
   //
   $pds = collect();
-  $pds->push([['personalInfo' => PersonalDataSheetPersonalInformation::where('user_id',$id)->get()]]);
-  $pds->push([['familyBackground' => PersonalDataSheetFamilyBackground::where('user_id',$id)->get()]]);
-  $pds->push([['educationalBackground' => PersonalDataSheetEducationalBackground::where('user_id',$id)->get()]]);
-  $pds->push([['civilServiceEligibility' => CivilServiceEligibility::where('user_id',$id)->get()]]);
-  $pds->push([['workExperience' => WorkExperience::where('user_id',$id)->get()]]);
-  $pds->push([['voluntaryWorkInvolvement' => VoluntaryWorkInvolvement::where('user_id',$id)->get()]]);
-  $pds->push([['learningAndDevelopment' => learningAndDevelopment::where('user_id',$id)->get()]]);
-  $pds->push([['otherInfoSpecialSkills' => OtherInfoSpecialSkills::where('user_id',$id)->get()]]);
-  $pds->push([['otherInfoNonacademicDistinctions' => OtherInfoNonacademicDistinctions::where('user_id',$id)->get()]]);
-  $pds->push([['otherInfoAssociationMembers' => OtherInfoAssociationMembers::where('user_id',$id)->get()]]);
-  $pds->push([['references' => References::where('user_id',$id)->get()]]);
-  $pds->push([['pdsQuestions' => PdsQuestions::where('user_id',$id)->get()]]);
-  $pds->push([['pdsAdditionalInfo' => PdsAdditionalInfo::where('user_id',$id)->get()]]);
+  $pds->push([['personalInfo' => PersonalDataSheetPersonalInformation::where('user_id', $id)->get()]]);
+  $pds->push([['familyBackground' => PersonalDataSheetFamilyBackground::where('user_id', $id)->get()]]);
+  $pds->push([['educationalBackground' => PersonalDataSheetEducationalBackground::where('user_id', $id)->get()]]);
+  $pds->push([['civilServiceEligibility' => CivilServiceEligibility::where('user_id', $id)->get()]]);
+  $pds->push([['workExperience' => WorkExperience::where('user_id', $id)->get()]]);
+  $pds->push([['voluntaryWorkInvolvement' => VoluntaryWorkInvolvement::where('user_id', $id)->get()]]);
+  $pds->push([['learningAndDevelopment' => learningAndDevelopment::where('user_id', $id)->get()]]);
+  $pds->push([['otherInfoSpecialSkills' => OtherInfoSpecialSkills::where('user_id', $id)->get()]]);
+  $pds->push([['otherInfoNonacademicDistinctions' => OtherInfoNonacademicDistinctions::where('user_id', $id)->get()]]);
+  $pds->push([['otherInfoAssociationMembers' => OtherInfoAssociationMembers::where('user_id', $id)->get()]]);
+  $pds->push([['references' => References::where('user_id', $id)->get()]]);
+  $pds->push([['pdsQuestions' => PdsQuestions::where('user_id', $id)->get()]]);
+  $pds->push([['pdsAdditionalInfo' => PdsAdditionalInfo::where('user_id', $id)->get()]]);
 
   return $pds;
 
@@ -80,111 +131,106 @@ if($request->hasFile('file')){
 
  public function createPds(Request $request)
  {
-    
-    // $request->validate([
-    // 'user'                             => 'required',
-    // 'personalSurname'                  => 'required',
-    // 'personalFirstName'                => 'required',
-    // 'personalMiddleName'               => 'required',
-    // 'personalSuffix'                   => 'required',
-    // 'personalDateOfBirth'              => 'required',
-    // 'personalPlaceOfBirth'             => 'required',
-    // 'personalCitizenship'              => 'required',
-    // 'personalDualCitizenship'          => 'required',
-    // 'countryOfCitizenship'          => 'required',
-    // 'personalSex'                      => 'required',
-    // 'personalCivilStatus'              => 'required',
-    // 'personalHeight'                   => 'required',
-    // 'personalWeight'                   => 'required',
-    // 'personalBloodType'                => 'required',
-    // 'personalGSISIDNo'                 => 'required',
-    // 'personalPHILHEALTHNo'                 => 'required',
-    // 'personalResAddressHouseNo'        => 'required',
-    // 'personalResAddressStreet'         => 'required',
-    // 'personalResAddressSubdivision'    => 'required',
-    // 'personalResAddressBarangay'       => 'required',
-    // 'personalResAddressCity'           => 'required',
-    // 'personalResAddressProvince'       => 'required',
-    // 'personalZipCode'                  => 'required',
-    // 'personalPAGIBIGIDNo'              => 'required',
-    // 'personalPHILHEALTHNo'             => 'required',
-    // 'personalPermanentAddHouseNo'      => 'required',
-    // 'personalPermanentAddStreet'       => 'required',
-    // 'personalPermanentAddSubdivision'  => 'required',
-    // 'personalPermanentAddBarangay'     => 'required',
-    // 'personalPermanentAddCity'         => 'required',
-    // 'personalPermanentAddProvince'     => 'required',
-    // 'personalPermanentAddZipCode'      => 'required',
-    // 'personalSSSNo'                    => 'required',
-    // 'personalTelephoneNo'              => 'required',
-    // 'personalTinNo'                    => 'required',
-    // 'personalMobileNo'                 => 'required',
-    // 'personalAgencyEmployeeNo'         => 'required',
-    // 'personalEmailAddress'             => 'required',
-    // 'familySpouseSurname'              => 'required',
-    // 'familySpouseFirstName'            => 'required',
-    // 'familySpouseMiddleName'           => 'required',
-    // 'familySpouseSuffix'               => 'required',
-    // 'familySpouseOccupation'           => 'required',
-    // 'familyEmployerName'               => 'required',
-    // 'familyBusinessAddress'            => 'required',
-    // 'familyTelephoneNo'                => 'required',
-    // 'familyFatherSurname'              => 'required',
-    // 'familyFatherFirstName'            => 'required',
-    // 'familyFatherMiddleName'           => 'required',
-    // 'familyFatherSuffix'               => 'required',
-    // 'familyMotherMaidenName'           => 'required',
-    // 'familyMotherSurname'              => 'required',
-    // 'familyMotherFirstName'            => 'required',
-    // 'familyMotherMiddleName'           => 'required',
-    // 'dateOfBirthSpouse'                => 'required',
-    // 'dateOfBirthFather'                => 'required',
-    // 'dateOfBirthMother'              => 'required',
-    // 'educationalBackground'            => 'required',
-    // 'formDataEducationalBackground'          => 'required',
-    // 'educBackgroundDateOfSignature'    => 'required',
-    // 'civilServiceEligibility'          => 'required',
-    // 'workExperience'                   => 'required',
-    // 'workExperienceSignature'          => 'required',
-    // 'workExperienceDateOfSignature'    => 'required',
-    // 'voluntaryWorkInvolvement'         => 'required',
-    // 'learningAndDevelopment'           => 'required',
-    // 'otherInfoSpecialSkills'           => 'required',
-    // 'otherInfoNonacademicDistinctions' => 'required',
-    // 'otherInfoAssociationMembers'      => 'required',
-    // 'otherInfoSignature'               => 'required',
-    // 'otherInfoDateOfSignature'         => 'required',
-    // 'otherInfoAssociationMembers'      => 'required',
-    // 'questionThirtyFour'               => 'required',
-    // 'questionThirtyFiveA'              => 'required',
-    // 'questionThirtyFiveBDateFiled'      => 'required',
-    // 'questionThirtyFiveBStatusOfCase'     => 'required',
-    // 'questionThirtySix'                => 'required',
-    // 'questionThirtySeven'              => 'required',
-    // 'questionThirtyEight'              => 'required',
-    // 'questionThirtyNine'               => 'required',
-    // 'questionFourtyA'                  => 'required',
-    // 'questionFourtyB'                  => 'required',
-    // 'questionFourtyC'                  => 'required',
-    // 'references'                       => 'required',
-    // 'personalPhotoAttachment'          => 'required',
-    // 'governmentIssuedID'               => 'required',
-    // 'governmentIssuedIDNo'             => 'required',
-    // 'governmentIDDateOrPlaceIssued'    => 'required',
-    // 'oathSignature'                    => 'required',
-    // 'oathDateAccomplished'             => 'required',
-    // 'rightThumbMark'                   => 'required',
-    // 'subscribedAndSwornDate'           => 'required',
-    // 'personAdministeringOath'          => 'required',
-    // 'children'          => 'required',
 
-    // ]);
-//   $request->validate([
-//     'formDataEducationalBackground' => 'required|mimes:jpg,jpeg,png,csv,txt,xlx,xls,pdf|max:2048'
-//  ]);
-if($request->hasFile('file')){
-  return 'hello';
-}
+  $request->validate([
+   'user'                             => 'required',
+   'personalSurname'                  => 'required',
+   'personalFirstName'                => 'required',
+   'personalMiddleName'               => 'required',
+   'personalSuffix'                   => 'required',
+   'personalDateOfBirth'              => 'required',
+   'personalPlaceOfBirth'             => 'required',
+   'personalCitizenship'              => 'required',
+   'personalDualCitizenship'          => 'required',
+   'countryOfCitizenship'             => 'required',
+   'personalSex'                      => 'required',
+   'personalCivilStatus'              => 'required',
+   'personalHeight'                   => 'required',
+   'personalWeight'                   => 'required',
+   'personalBloodType'                => 'required',
+   'personalGSISIDNo'                 => 'required',
+   'personalPHILHEALTHNo'             => 'required',
+   'personalResAddressHouseNo'        => 'required',
+   'personalResAddressStreet'         => 'required',
+   'personalResAddressSubdivision'    => 'required',
+   'personalResAddressBarangay'       => 'required',
+   'personalResAddressCity'           => 'required',
+   'personalResAddressProvince'       => 'required',
+   'personalZipCode'                  => 'required',
+   'personalPAGIBIGIDNo'              => 'required',
+   'personalPHILHEALTHNo'             => 'required',
+   'personalPermanentAddHouseNo'      => 'required',
+   'personalPermanentAddStreet'       => 'required',
+   'personalPermanentAddSubdivision'  => 'required',
+   'personalPermanentAddBarangay'     => 'required',
+   'personalPermanentAddCity'         => 'required',
+   'personalPermanentAddProvince'     => 'required',
+   'personalPermanentAddZipCode'      => 'required',
+   'personalSSSNo'                    => 'required',
+   'personalTelephoneNo'              => 'required',
+   'personalTinNo'                    => 'required',
+   'personalMobileNo'                 => 'required',
+   'personalAgencyEmployeeNo'         => 'required',
+   'personalEmailAddress'             => 'required',
+   'familySpouseSurname'              => 'required',
+   'familySpouseFirstName'            => 'required',
+   'familySpouseMiddleName'           => 'required',
+   'familySpouseSuffix'               => 'required',
+   'familySpouseOccupation'           => 'required',
+   'familyEmployerName'               => 'required',
+   'familyBusinessAddress'            => 'required',
+   'familyTelephoneNo'                => 'required',
+   'familyFatherSurname'              => 'required',
+   'familyFatherFirstName'            => 'required',
+   'familyFatherMiddleName'           => 'required',
+   'familyFatherSuffix'               => 'required',
+   'familyMotherMaidenName'           => 'required',
+   'familyMotherSurname'              => 'required',
+   'familyMotherFirstName'            => 'required',
+   'familyMotherMiddleName'           => 'required',
+   'dateOfBirthSpouse'                => 'required',
+   'dateOfBirthFather'                => 'required',
+   'dateOfBirthMother'                => 'required',
+   'educationalBackground'            => 'required',
+
+   'educBackgroundDateOfSignature'    => 'required',
+   'civilServiceEligibility'          => 'required',
+   'workExperience'                   => 'required',
+
+   'workExperienceDateOfSignature'    => 'required',
+   'voluntaryWorkInvolvement'         => 'required',
+   'learningAndDevelopment'           => 'required',
+   'otherInfoSpecialSkills'           => 'required',
+   'otherInfoNonacademicDistinctions' => 'required',
+   'otherInfoAssociationMembers'      => 'required',
+
+   'otherInfoDateOfSignature'         => 'required',
+   'otherInfoAssociationMembers'      => 'required',
+   'questionThirtyFour'               => 'required',
+   'questionThirtyFiveA'              => 'required',
+   'questionThirtyFiveBDateFiled'     => 'required',
+   'questionThirtyFiveBStatusOfCase'  => 'required',
+   'questionThirtySix'                => 'required',
+   'questionThirtySeven'              => 'required',
+   'questionThirtyEight'              => 'required',
+   'questionThirtyNine'               => 'required',
+   'questionFourtyA'                  => 'required',
+   'questionFourtyB'                  => 'required',
+   'questionFourtyC'                  => 'required',
+   'references'                       => 'required',
+
+   'governmentIssuedID'               => 'required',
+   'governmentIssuedIDNo'             => 'required',
+   'governmentIDDateOrPlaceIssued'    => 'required',
+
+   'oathDateAccomplished'             => 'required',
+
+   'subscribedAndSwornDate'           => 'required',
+
+   'children'                         => 'required',
+
+  ]);
+
   $personalInfo = new PersonalDataSheetPersonalInformation([
    'user_id'                         => $request->user,
    'last_name'                       => $request->personalSurname,
@@ -202,11 +248,11 @@ if($request->hasFile('file')){
    'pag_ibig_id_no'                  => $request->personalPAGIBIGIDNo,
    'sss_no'                          => $request->personalSSSNo,
    'tin_no'                          => $request->personalTinNo,
-   'philhealth_no'                          => $request->personalPHILHEALTHNo,
+   'philhealth_no'                   => $request->personalPHILHEALTHNo,
    'agency_employee_no'              => $request->personalAgencyEmployeeNo,
    'citizenship'                     => $request->personalCitizenship,
    'dual_citizenship'                => $request->personalDualCitizenship,
-   'country_of_citizenship'                => $request->countryOfCitizenship,
+   'country_of_citizenship'          => $request->countryOfCitizenship,
    'residential_address_house_no'    => $request->personalResAddressHouseNo,
    'residential_address_street'      => $request->personalResAddressStreet,
    'residential_address_subdivision' => $request->personalResAddressSubdivision,
@@ -224,25 +270,25 @@ if($request->hasFile('file')){
    'telephone_no'                    => $request->personalTelephoneNo,
    'mobile_no'                       => $request->personalMobileNo,
    'email_address'                   => $request->personalEmailAddress,
-   'signature'                       => $request->educBackgroundSignature,
-   'date_signed'                     => $request->educBackgroundDateOfSignature,
-   'work_experience_signature'                       => $request->workExperienceSignature,
-   'work_experience_date_signed'                     => $request->workExperienceDateOfSignature,
-   'other_info_signature'                       => $request->otherInfoSignature,
-   'other_info_date_signed'                     => $request->otherInfoDateOfSignature,
+   //  'educational_signature'                       => $request->educBackgroundSignature,
+   'educational_date_signed'         => $request->educBackgroundDateOfSignature,
+   //  'work_experience_signature'                       => $request->workExperienceSignature,
+   'work_experience_date_signed'     => $request->workExperienceDateOfSignature,
+   //  'other_info_signature'                       => $request->otherInfoSignature,
+   'other_info_date_signed'          => $request->otherInfoDateOfSignature,
   ]);
   //Storage::disk('local')->put( 'public/educational-background/', $request->formDataEducationalBackground, ); //using multiple disks for storing files
-   // Storage::put($request->educBackgroundSignature,'public');
- //$file = $request->file('formDataEducationalBackground')->isValid();
+  // Storage::put($request->educBackgroundSignature,'public');
+  //$file = $request->file('formDataEducationalBackground')->isValid();
 //  $path='';
 //  foreach($request-> formDataEducationalBackground as $form){
 //   $path=$form['fileName'];
 //   dd($path);
 //  }
-if($request->hasFile('file')){
-  return 'hello';
-}
- //$request->file('formDataEducationalBackground');
+  if ($request->hasFile('file')) {
+   return 'hello';
+  }
+  //$request->file('formDataEducationalBackground');
 //  $input = $request->file('formDataEducationalBackground');
 //  return $input;
 //  return($input);
@@ -250,7 +296,7 @@ if($request->hasFile('file')){
   // $content = 'Hello World';
   // Storage::put('avatars/2', $file);
 
- // Storage::put($request->file('educBackgroundSignature')->name, $file);
+  // Storage::put($request->file('educBackgroundSignature')->name, $file);
   // $name = $file->getClientOriginalName();
   // return($name);
   // $extension = $file->getClientOriginalExtension();
@@ -265,10 +311,10 @@ if($request->hasFile('file')){
   // }
   // return $file;
   //Storage::putFile( 'signatures', new File($request->educBackgroundSignature ), ); //if using one or default disk
- // php artisan storage:link
- //echo asset('storage/file.txt');
+  // php artisan storage:link
+  //echo asset('storage/file.txt');
 
- //Retrieving files
+  //Retrieving files
 //  $contents = Storage::get('file.jpg');
 //  if (Storage::disk('s3')->exists('file.jpg')) {
 //   // ...
@@ -279,7 +325,7 @@ if($request->hasFile('file')){
 
 // //Downloading the file
 // return Storage::download('file.jpg');
- 
+
 // return Storage::download('file.jpg', $name, $headers);
 // //getting the url of the file
 // $url = Storage::url('file.jpg');
@@ -296,14 +342,17 @@ if($request->hasFile('file')){
    'spouse_employer'         => $request->familyEmployerName,
    'spouse_business_address' => $request->familyBusinessAddress,
    'spouse_telephone_no'     => $request->familyTelephoneNo,
+   'spouse_date_of_birth'    => $request->dateOfBirthSpouse,
    'father_last_name'        => $request->familyFatherSurname,
    'father_first_name'       => $request->familyFatherFirstName,
    'father_middle_name'      => $request->familyFatherMiddleName,
    'father_suffix'           => $request->familyFatherSuffix,
+   'father_date_of_birth'    => $request->dateOfBirthFather,
    'mother_maiden_name'      => $request->familyMotherMaidenName,
    'mother_last_name'        => $request->familyMotherSurname,
    'mother_first_name'       => $request->familyMotherFirstName,
    'mother_middle_name'      => $request->familyMotherMiddleName,
+   'mother_date_of_birth'    => $request->dateOfBirthMother,
   ]);
 
   foreach ($request->educationalBackground as $educBackground) {
@@ -325,17 +374,17 @@ if($request->hasFile('file')){
     return e;
    }
   }
-   foreach ($request->children as $child) {
-    // return $educBackground['educBackgroundLevel'];
-    $children = new Children([
-     'user_id'                    => $request->user,
-     'child_name'             => $child['childName'],
-    ]);
-    try {
-     $children->save();
-    } catch (Throwable $e) {
-     return e;
-    }
+  foreach ($request->children as $child) {
+   // return $educBackground['educBackgroundLevel'];
+   $children = new Children([
+    'user_id'    => $request->user,
+    'child_name' => $child['childName'],
+   ]);
+   try {
+    $children->save();
+   } catch (Throwable $e) {
+    return e;
+   }
 
   }
 
@@ -408,19 +457,6 @@ if($request->hasFile('file')){
    }
   }
 
-//   foreach ($request->otherInformation as $otherInfo) {
-//    $otherInformation = new OtherInformation([
-//     'user_id'                    => $request->user,
-//     'special_skills_and_hobbies' => $otherInfo['otherInformationSpecialSkills'],
-//     'non_academic_distinctions'  => $otherInfo['otherInformationNonacademicDistinctions'],
-//     'organization_membership'    => $otherInfo['otherInformationAssociationMembers'],
-//    ]);
-//    try {
-//     $otherInformation->save();
-//    } catch (Throwable $e) {
-//     return $e;
-//    }
-//   }
   foreach ($request->otherInfoSpecialSkills as $otherInfo) {
    $otherInfoSpecialSkills = new OtherInfoSpecialSkills([
     'user_id'                    => $request->user,
@@ -483,32 +519,35 @@ if($request->hasFile('file')){
   ]);
 
   $pdsAdditionalInfo = new PdsAdditionalInfo([
-   'user_id'                   => $request->user,
-   'oath'                      => $request->oathSignature,
-   'government_id'             => $request->governmentIssuedID,
-   'id_no'                     => $request->governmentIssuedIDNo,
-   'date_place_of_issuance'    => $request->governmentIDDateOrPlaceIssued,
-   'signature'                 => $request->oathSignature,
-   'oath_date_accomplished'    => $request->oathDateAccomplished,
-   'photo'                     => $request->personalPhotoAttachment,
-   'right_thumbmark'           => $request->rightThumbMark,
-   'sworn_date'                => $request->subscribedAndSwornDate,
-   'person_administering_oath' => $request->personAdministeringOath,
+   'user_id'                => $request->user,
+   //  'oath'                      => $request->oathSignature,
+   'government_id'          => $request->governmentIssuedID,
+   'id_no'                  => $request->governmentIssuedIDNo,
+   'date_place_of_issuance' => $request->governmentIDDateOrPlaceIssued,
+   //  'signature'                 => $request->oathSignature,
+   'oath_date_accomplished' => $request->oathDateAccomplished,
+   //  'photo'                     => $request->personalPhotoAttachment,
+   //  'right_thumbmark'           => $request->rightThumbMark,
+   'sworn_date'             => $request->subscribedAndSwornDate,
+   //  'person_administering_oath' => $request->personAdministeringOath,
   ]);
 
   try {
    $personalInfo->save();
    $familyBackground->save();
-   $references->save();
    $pdsQuestions->save();
    $pdsAdditionalInfo->save();
-   return "success";
+   $pds = collect();
+   $pds->push([['personalInfoId' => DB::table('personal_data_sheet_personal_information')->where('user_id', $request->user)->get()]]);
+   $pds->push([['pdsAdditionalInfoId' => DB::table('pds_additional_infos')->where('user_id', $request->user)->get()]]);
+   $pds->push([['message' => "success"]]);
+
+   return $pds;
   } catch (Throwable $error) {
    return $error;
   }
 
  }
- 
 
  public function editPds(Request $request)
  {
@@ -594,7 +633,7 @@ if($request->hasFile('file')){
    'dateOfBirthTwelve'               => 'required',
    'dateOfBirthThirteen'             => 'required',
    'educationalBackground'           => 'required',
-   'formDataEducationalBackground'         => 'required',
+   'formDataEducationalBackground'   => 'required',
    'educBackgroundDateOfSignature'   => 'required',
    'civilServiceEligibility'         => 'required',
    'workExperience'                  => 'required',
@@ -843,7 +882,11 @@ if($request->hasFile('file')){
    $references->save();
    $pdsQuestions->save();
    $pdsAdditionalInfo->save();
-   return "success";
+   $pds                 = collect();
+   $message             = "success";
+   $personalInfoId      = DB::table('personal_data_sheet_personal_information')->where('user_id', $request->user)->get();
+   $pdsAdditionalInfoId = DB::table('pds_additional_infos')->where('user_id', $request->user)->get();
+
   } catch (Throwable $error) {
    return $error;
   }
