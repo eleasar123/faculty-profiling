@@ -12,7 +12,11 @@
         <v-tabs-slider></v-tabs-slider>
 
         <v-tab href="#subscribe">
-          C1
+          Home
+          <!-- <v-icon>mdi-phone</v-icon> -->
+        </v-tab>
+        <v-tab href="#privacy">
+          Privacy Note
           <!-- <v-icon>mdi-phone</v-icon> -->
         </v-tab>
 
@@ -22,6 +26,7 @@
 
         <v-tab href="#c4"> Part III </v-tab>
         <v-tab href="#c5"> Show Print </v-tab>
+        <v-tab href="#c6"> esatCard </v-tab>
       </v-tabs>
 
       <v-tabs-items v-model="tab">
@@ -62,12 +67,13 @@
                   discuss with them your IPCRF-Development Plan (IPCRF-DP) based
                   on your self-assessment.
                 </v-card-text>
-                <v-card-text class="font-weight-medium">
+                <v-card-text class="font-weight-medium mb-5">
                   Please accomplish this tool individually and submit the file
                   to copy to the School Head or Department Head for the
                   school-wide consolidation. Please print a copy of the result
                   for the preparation of your IPCRF-DP.
-                  <v-btn class="float-right mt-2 mb-4 font-weight-black"
+
+                  <v-btn class="float-right mt-5 mb-4 font-weight-black"
                     ><h3>START</h3></v-btn
                   >
                 </v-card-text>
@@ -75,6 +81,42 @@
             </v-container>
           </v-card>
         </v-tab-item>
+
+        <v-tab-item :key="1.1" value="privacy">
+          <v-container>
+            <v-row no-gutters>
+              <v-col cols="4"> </v-col>
+              <v-col cols="6">
+                <v-container id="esatTxt" class="container-fluid">
+                  <h3 class="text-center font-weight-bold">
+                    ELECTRONIC SELF-ASSESSMENT TOOL
+                  </h3>
+                  <h3 class="text-center font-weight-bold">SY 2020-2021</h3>
+                </v-container>
+              </v-col>
+            </v-row>
+          </v-container>
+
+          <v-container id="disclosure" class="mt-5">
+            <h1 class="text-center" id="privacyNote">PRIVACY NOTE</h1>
+            <v-card-text class="font-weight-medium mb-5">
+              <p id="privacy">
+                I Authorize the personnel of Department of Education to collect,
+                process, retain, and dipose my personal information in
+                accordance with the Data Privacy Act of 2012.
+              </p>
+            </v-card-text>
+          </v-container>
+
+          <v-btn class="float-left mt-5 mb-5 ml-5 font-weight-black"
+            ><h3>DISAGREE</h3></v-btn
+          >
+
+          <v-btn class="float-right mt-5 mb-5 mr-5 font-weight-black"
+            ><h3>AGREE</h3></v-btn
+          >
+        </v-tab-item>
+
         <v-tab-item :key="2" value="contact">
           <v-card flat>
             <v-container class="bgContainer mt-5">
@@ -105,7 +147,7 @@
                   <td>
                     <v-select
                       solo
-                      class="mt-5"
+                      class="mt-6"
                       v-model="yearsInTeaching"
                       :items="yearsItems"
                     ></v-select>
@@ -115,7 +157,7 @@
                   <td>
                     <v-select
                       solo
-                      class="mt-5"
+                      class="mt-6"
                       :items="regionItems"
                       v-model="region"
                     ></v-select>
@@ -125,7 +167,7 @@
                   <td>Employee ID:</td>
                   <td>
                     <v-text-field
-                      class="mt-5"
+                      class="mt-6"
                       v-model="employeeId"
                       solo
                       dense
@@ -135,7 +177,7 @@
                   <td>
                     <v-select
                       solo
-                      class="mt-5"
+                      class="mt-6"
                       v-model="highestDegreeObtained"
                       :items="highestDegreeItems"
                     ></v-select>
@@ -144,7 +186,7 @@
                   <td>
                     <v-select
                       solo
-                      class="mt-5"
+                      class="mt-6"
                       :items="divisionItems"
                       v-model="division"
                     ></v-select>
@@ -154,21 +196,26 @@
                   <td>Position:</td>
                   <td>
                     <v-select
-                     :items="positionItems"
+                      :items="positionItems"
                       solo
-                      class="mt-5"
+                      class="mt-6"
                       v-model="position"
-                      
                     ></v-select>
                   </td>
                   <td>
-                    <v-select solo class="mt-5" :items="items"></v-select>
+                    <v-select
+                      v-model="specifiedHighestDegreeObtained"
+                      :items="highestDegreeItems"
+                      class="mt-6"
+                      solo
+                      dense
+                    ></v-select>
                   </td>
                   <td>District/Municipality:</td>
                   <td>
                     <v-text-field
                       v-model="employeeMunicipality"
-                      class="mt-5"
+                      class="mt-6"
                       solo
                       dense
                     ></v-text-field>
@@ -179,7 +226,7 @@
                   <td>
                     <v-select
                       solo
-                      class="mt-5"
+                      class="mt-6"
                       v-model="employmentStatus"
                       :items="statusItems"
                     ></v-select>
@@ -188,7 +235,7 @@
                   <td>
                     <v-select
                       solo
-                      class="mt-5"
+                      class="mt-6"
                       v-model="levelTaught"
                       :items="levelTaughtItems"
                     ></v-select>
@@ -197,7 +244,7 @@
                   <td>
                     <v-text-field
                       v-model="schoolId"
-                      class="mt-5"
+                      class="mt-6"
                       solo
                       dense
                     ></v-text-field>
@@ -209,16 +256,15 @@
                     <v-select
                       :items="ageitems"
                       solo
-                      class="mt-5"
+                      class="mt-6"
                       v-model="employeeAge"
-                      
                     ></v-select>
                   </td>
                   <td>Grade Level taught:</td>
                   <td>
                     <v-select
                       solo
-                      class="mt-5"
+                      class="mt-6"
                       v-model="gradeLevelTaught"
                       :items="gLevelTaughtItems"
                     ></v-select>
@@ -227,7 +273,7 @@
                   <td>
                     <v-text-field
                       v-model="schoolName"
-                      class="mt-5"
+                      class="mt-6"
                       solo
                       dense
                     ></v-text-field>
@@ -238,7 +284,7 @@
                   <td>
                     <v-select
                       solo
-                      class="mt-5"
+                      class="mt-6"
                       v-model="employeeSex"
                       :items="sexItems"
                     ></v-select>
@@ -248,7 +294,7 @@
                   <td>
                     <v-select
                       solo
-                      class="mt-5"
+                      class="mt-6"
                       :items="schoolTypeItems"
                       v-model="schoolType"
                       label="School Type"
@@ -261,7 +307,7 @@
                   <td>
                     <v-select
                       solo
-                      class="mt-5"
+                      class="mt-6"
                       :items="schoolSizeItems"
                       v-model="schoolSize"
                       label="School Size"
@@ -273,7 +319,7 @@
                   <td>
                     <v-select
                       solo
-                      class="mt-5"
+                      class="mt-6"
                       :items="classificationItems"
                       v-model="curricularClassification"
                       label="Curricular Classification"
@@ -281,152 +327,6 @@
                   </td>
                 </tr>
               </v-simple-table>
-
-              <!-- <v-row class="mt-5">
-                <v-col>
-                  <v-simple-table class="table part1">
-                    <tr class="infoDetails">
-                      <td>Name of Employee:</td>
-                      <td>
-                        <v-text-field
-                          class="textField mt-5"
-                          solo
-                          dense
-                          v-model="employeeName"
-                        ></v-text-field>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Employee ID:</td>
-                      <td>
-                        <v-text-field
-                          class="mt-5"
-                          v-model="employeeId"
-                          solo
-                          dense
-                        ></v-text-field>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Position:</td>
-                      <td><v-select solo class="mt-5" :items="items"></v-select></td>
-                    </tr>
-                    <tr>
-                      <td>Employment Status:</td>
-                      <td><v-select solo class="mt-5" :items="items"></v-select></td>
-                    </tr>
-                    <tr>
-                      <td>Age:</td>
-                      <td>
-                        <v-text-field
-                          v-model="employeeAge"
-                          class="mt-5"
-                          solo
-                          dense
-                        ></v-text-field>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Sex:</td>
-                      <td><v-select solo class="mt-5" :items="items"></v-select></td>
-                    </tr>
-                  </v-simple-table>
-                </v-col>
-                <v-col>
-                  <v-simple-table class="table part1">
-                    <tr>
-                      <td>Number of Years in Teaching:</td>
-                      <td><v-select :items="items"></v-select></td>
-                    </tr>
-                    <tr>
-                      <td>Highest Degree Obtained:</td>
-                      <td><v-select :items="items"></v-select></td>
-                    </tr>
-                    <tr>
-                      <td>Specify Highest Degree Obtained:</td>
-                      <td>
-                        <v-text-field
-                          v-model="highestDegreeObtained"
-                        ></v-text-field>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Level Taught:</td>
-                      <td><v-select :items="items"></v-select></td>
-                    </tr>
-                    <tr>
-                      <td>Grade Level taught:</td>
-                      <td><v-select :items="items"></v-select></td>
-                    </tr>
-                  </v-simple-table>
-                </v-col>
-                <v-col>
-                  <v-simple-table class="table part1">
-                    <tr>
-                      <td>Region:</td>
-                      <td><v-select :items="items"></v-select></td>
-                    </tr>
-                    <tr>
-                      <td>Division:</td>
-                      <td><v-select :items="items"></v-select></td>
-                    </tr>
-                    <tr>
-                      <td>District/Municipality:</td>
-                      <td>
-                        <v-text-field
-                          v-model="employeeMunicipality"
-                          class="mt-5"
-                          solo
-                          dense
-                        ></v-text-field>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>School ID:</td>
-                      <td>
-                        <v-text-field
-                          v-model="schoolId"
-                          class="mt-5"
-                          solo
-                          dense
-                        ></v-text-field>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>School Name:</td>
-                      <td>
-                        <v-text-field
-                          v-model="schoolName"
-                          class="mt-5"
-                          solo
-                          dense
-                        ></v-text-field>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>School Type:</td>
-                      <td>
-                        <v-select :items="items" label="School Type"></v-select>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>School Size:</td>
-                      <td>
-                        <v-select :items="items" label="School Size"></v-select>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Curricular Classification:</td>
-                      <td>
-                        <v-select
-                          :items="items"
-                          label="Curricular Classification"
-                        ></v-select>
-                      </td>
-                    </tr>
-                  </v-simple-table>
-                </v-col>
-              </v-row> -->
 
               <v-container class="mt-5">
                 <v-row>
@@ -638,6 +538,7 @@
                   <v-col cols="12" sm="6" md="8"> </v-col>
                   <v-col cols="4" md="4">
                     <v-btn class="float-right mb-4 me-4 mt-5">NEXT</v-btn>
+                    <v-btn class="float-right mb-4 me-4 mt-5">CANCEL</v-btn>
                   </v-col>
                 </v-row>
               </v-container>
@@ -1036,8 +937,8 @@
                       outlined
                       dense
                     ></v-text-field>
-
-                    <v-btn class="float-right mb-4 me-4 mt-5">Next</v-btn>
+                    <v-btn class="float-right mb-4 me-4 mt-5">NEXT</v-btn>
+                    <v-btn class="float-right mb-4 me-4 mt-5">BACK</v-btn>
                   </v-col>
                 </v-col>
               </v-row>
@@ -1490,8 +1391,9 @@
                     <v-btn
                       class="float-right mb-4 me-4 mt-5"
                       @click="finalizeEsat"
-                      >FINISH</v-btn
+                      >SAVE</v-btn
                     >
+                    <v-btn class="float-right mb-4 me-4 mt-5">BACK</v-btn>
                   </v-col>
                 </v-row>
               </v-col>
@@ -1520,31 +1422,33 @@
                 <v-col>
                   <v-simple-table class="table">
                     <tr>
-                      <td>Name of Employee:</td>
+                      <td class="esatPrint">Name of Employee:</td>
                       <td>dsfb</td>
                     </tr>
                     <tr>
-                      <td>Position:</td>
+                      <td class="esatPrint">Position:</td>
                       <td>dsfb</td>
                     </tr>
                     <tr>
-                      <td>Employment Status:</td>
+                      <td class="esatPrint">Employment Status:</td>
                       <td>dsfb</td>
                     </tr>
                     <tr>
-                      <td>Age:</td>
+                      <td class="esatPrint">Age:</td>
                       <td>dsfb</td>
                     </tr>
                     <tr>
-                      <td>Sex:</td>
+                      <td class="esatPrint">Sex:</td>
                       <td>dsfb</td>
                     </tr>
                     <tr>
-                      <td>Number of Years in Teaching:</td>
+                      <td class="esatPrint">Number of Years in Teaching:</td>
                       <td>dsfb</td>
                     </tr>
                     <tr>
-                      <td>Specify Highest Degree Obtained:</td>
+                      <td class="esatPrint">
+                        Specify Highest Degree Obtained:
+                      </td>
                       <td>dsfb</td>
                     </tr>
                   </v-simple-table>
@@ -1552,27 +1456,27 @@
                 <v-col>
                   <v-simple-table class="table">
                     <tr>
-                      <td>Region:</td>
+                      <td class="esatPrint">Region:</td>
                       <td>EXAMPLE</td>
                     </tr>
                     <tr>
-                      <td>Division:</td>
+                      <td class="esatPrint">Division:</td>
                       <td>dsfb</td>
                     </tr>
                     <tr>
-                      <td>School:</td>
+                      <td class="esatPrint">School:</td>
                       <td>dsfb</td>
                     </tr>
                     <tr>
-                      <td>Curricular Classification:</td>
+                      <td class="esatPrint">Curricular Classification:</td>
                       <td>dsfb</td>
                     </tr>
                     <tr>
-                      <td>Area(s) of Specialization:</td>
+                      <td class="esatPrint">Area(s) of Specialization:</td>
                       <td>dsfb</td>
                     </tr>
                     <tr>
-                      <td>Subjects(s) Taught:</td>
+                      <td class="esatPrint">Subjects(s) Taught:</td>
                       <td>dsfb</td>
                     </tr>
                   </v-simple-table>
@@ -2035,6 +1939,61 @@
             </v-row>
           </v-card>
         </v-tab-item>
+
+        <v-tab-item :key="6" value="c6">
+          <v-container class="mt-5 mb-5 p-5">
+            <v-card class="bgCard pa-2" id="cardEsat">
+              <h2 class="heading ml-5">ELECTRONIC SELF-ASSESMENT TOOL</h2>
+               <v-row no-gutters>
+                  <v-col cols="2">
+                    <v-img
+                      id="esatLogocard"
+                      :src="require('../assets/esatlogo.png')"
+                    ></v-img>
+                  </v-col>
+                  <v-col cols="5" class="ml=2">
+                    <v-container id="esatTxt" class="container-fluid">
+                     
+                      <h3 class="text-left font-weight-bold">SY 2020-2021</h3>
+                    </v-container>
+                  </v-col>
+                </v-row>
+
+              <h3 class="heading mt-2" id="ecard">Survey Completed</h3>
+
+              <p class="font-weight-regular font-italic">
+                Submit this file to you Department Head for consolidation.
+              </p>
+
+              <v-row>
+                <v-col>
+                  <v-simple-table class="table ml-5">
+                    <tr>
+                      <td class="esatCard">Name:</td>
+                      <td colspan="2">Elsa Patot</td>
+                    </tr>
+                    <tr>
+                      <td class="esatCard">School:</td>
+                      <td colspan="2">University Of San Carlos</td>
+                    </tr>
+                    <tr>
+                      <td class="esatCard">School Year:</td>
+                      <td>SY 2021-2022</td>
+                      <td rowspan="2" class="text-center">
+                        <v-btn dense> View </v-btn>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="esatCard">Date:</td>
+                      <td>12/8/2021</td>
+                    </tr>
+                  </v-simple-table>
+                </v-col>
+                <v-col> </v-col>
+              </v-row>
+            </v-card>
+          </v-container>
+        </v-tab-item>
       </v-tabs-items>
     </v-card>
   </v-app>
@@ -2043,23 +2002,130 @@
 <script>
 // @ is an alias to /src
 export default {
-
   data() {
     return {
-      positionItems: ['Teacher I', 'Teacher II', 'Teacher III','SPET I','SPET II','SPET III','SPET IV','SPET V','Instructor I','Instructor II', 'Special Science Teacher I', 'Special Science Teacher II', 'Special Science Teacher III', 'Special Science Teacher IV', 'Special Science Teacher v', 'Master Teacher I', 'Master Teacher II', 'Master Teacher III', 'Master Teacher IV'],
-      statusItems: ['Regular Permanent','Provisional','Substitute','Contractual'],
-      ageitems: ['Under 25 years old','25-30','31-35','36-40','41-45','46-50','51-55','Over 55 years old'],
-      sexItems: ['Male','female'],
-      yearsItems: ['0-3 years','4-10 years','More than 10 years'],
-      highestDegreeItems: ['Bachelor`s Degree','master`s Degree','Doctorate Degree'],
-      levelTaughtItems: [],
-      gLevelTaughtItems: [],
-      regionItems: ['National Capital Region (NCR)','Cordillera Administrative Region (CAR)','I - Ilocos Region','II - Cagayan Valley','III - Central Luzon','IV-A - CALABARZON','IV-B - MIMAROPA','V - Bicol Region','VI - Western Visayas','VII - Central Visayas','VIII - Eastern Visayas','IX - Zamboanga Peninsula','X - Northern Mindanao','XI - Davao Region','XII - SOCCSKSARGEN','XIII - CARAGA Region','Bangsamoro Autonomous Region in Muslim Mindanao (BARMM)'],
-      divisionItems: [],
-      schoolTypeItems: ['Urban','Rural'],
-      schoolSizeItems: ['Small','Medium','Large'],
-      classificationItems: ['Community-based Learning Center','Grade 11-12','Grade 7-10; Grade 11-12','Grade 7-10','Grade 1-6; Grade 7-10; Grade 11-12','Grade 1-6; Grade 11-12','Grade 1-6; Grade 7-10','Grade 1-6','Kindergarten; Grade 11-12','Kindergarten; Grade 7-10; Grade 11-12','Kindergarten; Grade 7-10','Kinder to Grade 12 attached to Tertiary','Kinder to Grade 10 attached to Tertiary','Kinder to Grade 6; Grade 11-12','Kinder to Grade 12','Kinder to Grade 10','Kinder to Grade 6','Kindergarten'],
-
+      positionItems: [
+        "Teacher I",
+        "Teacher II",
+        "Teacher III",
+        "SPET I",
+        "SPET II",
+        "SPET III",
+        "SPET IV",
+        "SPET V",
+        "Instructor I",
+        "Instructor II",
+        "Special Science Teacher I",
+        "Special Science Teacher II",
+        "Special Science Teacher III",
+        "Special Science Teacher IV",
+        "Special Science Teacher v",
+        "Master Teacher I",
+        "Master Teacher II",
+        "Master Teacher III",
+        "Master Teacher IV",
+      ],
+      statusItems: [
+        "Regular Permanent",
+        "Provisional",
+        "Substitute",
+        "Contractual",
+      ],
+      ageitems: [
+        "Under 25 years old",
+        "25-30",
+        "31-35",
+        "36-40",
+        "41-45",
+        "46-50",
+        "51-55",
+        "Over 55 years old",
+      ],
+      sexItems: ["Male", "Female"],
+      yearsItems: ["0-3 years", "4-10 years", "More than 10 years"],
+      highestDegreeItems: [
+        "Bachelor`s Degree",
+        "Master`s Degree",
+        "Doctorate Degree",
+      ],
+      levelTaughtItems: [
+        "Grade 7",
+        "Grade 8",
+        "Grade 9",
+        "Grade 10",
+        "Grade 11",
+        "Grade 12",
+      ],
+      gLevelTaughtItems: [
+        "Grade 7",
+        "Grade 8",
+        "Grade 9",
+        "Grade 10",
+        "Grade 11",
+        "Grade 12",
+      ],
+      regionItems: [
+        "National Capital Region (NCR)",
+        "Cordillera Administrative Region (CAR)",
+        "I - Ilocos Region",
+        "II - Cagayan Valley",
+        "III - Central Luzon",
+        "IV-A - CALABARZON",
+        "IV-B - MIMAROPA",
+        "V - Bicol Region",
+        "VI - Western Visayas",
+        "VII - Central Visayas",
+        "VIII - Eastern Visayas",
+        "IX - Zamboanga Peninsula",
+        "X - Northern Mindanao",
+        "XI - Davao Region",
+        "XII - SOCCSKSARGEN",
+        "XIII - CARAGA Region",
+        "Bangsamoro Autonomous Region in Muslim Mindanao (BARMM)",
+      ],
+      divisionItems: [
+        "Bohol",
+        "Cebu",
+        "Negros Oriental",
+        "Siquijor",
+        "Bais City",
+        "Bayawan City",
+        "Bogo City",
+        "Carcar City",
+        "Cebu City",
+        "Danao City",
+        "Dumaguete City",
+        "Guihulngan City",
+        "Lapu-Lapu City",
+        "Mandaue City",
+        "Naga City",
+        "Tagbilaran City",
+        "Talisay City",
+        "Tanjay City",
+        "Toledo City",
+      ],
+      schoolTypeItems: ["Urban", "Rural"],
+      schoolSizeItems: ["Small", "Medium", "Large"],
+      classificationItems: [
+        "Community-based Learning Center",
+        "Grade 11-12",
+        "Grade 7-10; Grade 11-12",
+        "Grade 7-10",
+        "Grade 1-6; Grade 7-10; Grade 11-12",
+        "Grade 1-6; Grade 11-12",
+        "Grade 1-6; Grade 7-10",
+        "Grade 1-6",
+        "Kindergarten; Grade 11-12",
+        "Kindergarten; Grade 7-10; Grade 11-12",
+        "Kindergarten; Grade 7-10",
+        "Kinder to Grade 12 attached to Tertiary",
+        "Kinder to Grade 10 attached to Tertiary",
+        "Kinder to Grade 6; Grade 11-12",
+        "Kinder to Grade 12",
+        "Kinder to Grade 10",
+        "Kinder to Grade 6",
+        "Kindergarten",
+      ],
 
       employeeName: "",
       employeeId: "",
@@ -2070,6 +2136,7 @@ export default {
 
       yearsInTeaching: "",
       highestDegreeObtained: "",
+      specifiedHighestDegreeObtained: "",
       levelTaught: "",
       gradeLevelTaught: "",
 
@@ -2191,6 +2258,7 @@ export default {
 
       const yearsInTeaching = this.yearsInTeaching;
       const highestDegreeObtained = this.highestDegreeObtained;
+      const specifiedHighestDegreeObtained = this.highestDegreeObtained;
       const levelTaught = this.levelTaught;
       const gradeLevelTaught = this.gradeLevelTaught;
 
@@ -2203,11 +2271,12 @@ export default {
       const schoolSize = this.schoolSize;
       const curricularClassification = this.curricularClassification;
       //  const highestDegreeObtained = this.highestDegreeObtained;
-      const english = this.english;
-      const filipino = this.filipino;
-      const mathematics = this.mathematics;
-      const generalScience = this.generalScience;
-      const biology = this.biology;
+      const english = this.english == null ? "" : this.english;
+      const filipino = this.filipino == null ? "" : this.filipino;
+      const mathematics = this.mathematics == null ? "" : this.mathematics;
+      const generalScience =
+        this.generalScience == null ? "" : this.generalScience;
+      const biology = this.biology == null ? "" : this.biology;
       const chemistry = this.chemistry;
       const physics = this.physics;
       const socialScience = this.socialScience;
@@ -2220,7 +2289,37 @@ export default {
       const health = this.health;
       const TLE_HE_TVL = this.TLE_HE_TVL;
       const selected = this.selected;
-      const specifyAreaofSpecialization = this.specifyAreaofSpecialization;
+      const others = this.specifyAreaofSpecialization;
+
+      let specifyAreaofSpecialization = "";
+      let specialization = [
+        english,
+        filipino,
+        mathematics,
+        generalScience,
+        biology,
+        chemistry,
+        physics,
+        socialScience,
+        earlyChildhoodEducation,
+        valuesEducation,
+        sped,
+        music,
+        arts,
+        physicalEducation,
+        health,
+        TLE_HE_TVL,
+        others,
+      ];
+
+      for (let sub of specialization) {
+        if (sub == "") {
+          continue;
+        } else {
+          specifyAreaofSpecialization += sub + ", ";
+        }
+      }
+
       const MotherTongue = this.MotherTongue;
       const Filipino = this.Filipino;
       const English = this.English;
@@ -2233,7 +2332,32 @@ export default {
       const EPP_LE_HE = this.EPP_LE_HE;
       const specialPrograms = this.specialPrograms;
       const selected1 = this.selected1;
-      const specifySubjectsTaught = this.specifySubjectsTaught;
+      const otherSubjectTaught = this.specifySubjectsTaught;
+
+      let specifySubjectsTaught = "";
+      let subjectTaught = [
+        MotherTongue,
+        Filipino,
+        English,
+        Mathematics,
+        Science,
+        AralingPanlipunan,
+        EdukasyonSaPagpapakatao,
+        Mapeh,
+        TLE_HE,
+        EPP_LE_HE,
+        specialPrograms,
+        otherSubjectTaught,
+      ];
+
+      for (let sub in subjectTaught) {
+        if (sub == "") {
+          continue;
+        } else {
+          specifySubjectsTaught += sub + ",";
+        }
+      }
+
       const capability1 = this.capability1;
       const development1 = this.development1;
       const capability2 = this.capability2;
@@ -2290,10 +2414,235 @@ export default {
       const innovation4 = this.innovation4;
       const innovation5 = this.innovation5;
 
-      const user = 1;
-
+      const userId = 1;
+      const functionalObjectives = [
+        {
+          userID: userId,
+          objectiveNo: "1.1",
+          capability: capability1,
+          priority: development1,
+        },
+        {
+          userID: userId,
+          objectiveNo: "1.2",
+          capability: capability2,
+          priority: development2,
+        },
+        {
+          userID: userId,
+          objectiveNo: "1.3",
+          capability: capability3,
+          priority: development3,
+        },
+        {
+          userID: userId,
+          objectiveNo: "2.1",
+          capability: capability4,
+          priority: development4,
+        },
+        {
+          userID: userId,
+          objectiveNo: "2.2",
+          capability: capability5,
+          priority: development5,
+        },
+        {
+          userID: userId,
+          objectiveNo: "2.3",
+          capability: capability6,
+          priority: development6,
+        },
+        {
+          userID: userId,
+          objectiveNo: "3.1",
+          capability: capability7,
+          priority: development7,
+        },
+        {
+          userID: userId,
+          objectiveNo: "3.2",
+          capability: capability8,
+          priority: development8,
+        },
+        {
+          userID: userId,
+          objectiveNo: "4.1",
+          capability: capability9,
+          priority: development9,
+        },
+        {
+          userID: userId,
+          objectiveNo: "4.2",
+          capability: capability10,
+          priority: development10,
+        },
+        {
+          userID: userId,
+          objectiveNo: "4.3",
+          capability: capability11,
+          priority: development11,
+        },
+        {
+          userID: userId,
+          objectiveNo: "5.1",
+          capability: capability12,
+          priority: development12,
+        },
+      ];
+      const coreBehavioralCompetencies = [
+        {
+          userID: userId,
+          objectiveNo: "1.1",
+          value: selfManagement1,
+        },
+        {
+          userID: userId,
+          objectiveNo: "1.2",
+          value: selfManagement2,
+        },
+        {
+          userID: userId,
+          objectiveNo: "1.3",
+          value: selfManagement3,
+        },
+        {
+          userID: userId,
+          objectiveNo: "1.4",
+          value: selfManagement4,
+        },
+        {
+          userID: userId,
+          objectiveNo: "1.5",
+          value: selfManagement5,
+        },
+        {
+          userID: userId,
+          objectiveNo: "2.1",
+          value: professionalAndEthics1,
+        },
+        {
+          userID: userId,
+          objectiveNo: "2.2",
+          value: professionalAndEthics2,
+        },
+        {
+          userID: userId,
+          objectiveNo: "2.3",
+          value: professionalAndEthics3,
+        },
+        {
+          userID: userId,
+          objectiveNo: "2.4",
+          value: professionalAndEthics4,
+        },
+        {
+          userID: userId,
+          objectiveNo: "2.5",
+          value: professionalAndEthics5,
+        },
+        {
+          userID: userId,
+          objectiveNo: "3.1",
+          value: resultsFocus1,
+        },
+        {
+          userID: userId,
+          objectiveNo: "3.2",
+          value: resultsFocus2,
+        },
+        {
+          userID: userId,
+          objectiveNo: "3.3",
+          value: resultsFocus3,
+        },
+        {
+          userID: userId,
+          objectiveNo: "3.4",
+          value: resultsFocus4,
+        },
+        {
+          userID: userId,
+          objectiveNo: "3.5",
+          value: resultsFocus5,
+        },
+        {
+          userID: userId,
+          objectiveNo: "4.1",
+          value: teamwork1,
+        },
+        {
+          userID: userId,
+          objectiveNo: "4.2",
+          value: teamwork2,
+        },
+        {
+          userID: userId,
+          objectiveNo: "4.3",
+          value: teamwork3,
+        },
+        {
+          userID: userId,
+          objectiveNo: "4.4",
+          value: teamwork4,
+        },
+        {
+          userID: userId,
+          objectiveNo: "4.5",
+          value: teamwork5,
+        },
+        {
+          userID: userId,
+          objectiveNo: "5.1",
+          value: serviceOrientation1,
+        },
+        {
+          userID: userId,
+          objectiveNo: "5.2",
+          value: serviceOrientation2,
+        },
+        {
+          userID: userId,
+          objectiveNo: "5.3",
+          value: serviceOrientation3,
+        },
+        {
+          userID: userId,
+          objectiveNo: "5.4",
+          value: serviceOrientation4,
+        },
+        {
+          userID: userId,
+          objectiveNo: "5.5",
+          value: serviceOrientation5,
+        },
+        {
+          userID: userId,
+          objectiveNo: "6.1",
+          value: innovation1,
+        },
+        {
+          userID: userId,
+          objectiveNo: "6.2",
+          value: innovation2,
+        },
+        {
+          userID: userId,
+          objectiveNo: "6.3",
+          value: innovation3,
+        },
+        {
+          userID: userId,
+          objectiveNo: "6.4",
+          value: innovation4,
+        },
+        {
+          userID: userId,
+          objectiveNo: "6.5",
+          value: innovation5,
+        },
+      ];
       const data = {
-        user,
+        userId,
         employeeName,
         employeeId,
         position,
@@ -2303,6 +2652,7 @@ export default {
 
         yearsInTeaching,
         highestDegreeObtained,
+        specifiedHighestDegreeObtained,
         levelTaught,
         gradeLevelTaught,
 
@@ -2314,6 +2664,8 @@ export default {
         schoolType,
         schoolSize,
         curricularClassification,
+        functionalObjectives,
+        coreBehavioralCompetencies,
 
         english,
         filipino,
@@ -2346,63 +2698,16 @@ export default {
         specialPrograms,
         selected1,
         specifySubjectsTaught,
-        capability1,
-        development1,
-        capability2,
-        development2,
-        capability3,
-        development3,
-        capability4,
-        development4,
-        capability5,
-        development5,
-        capability6,
-        development6,
-        capability7,
-        development7,
-        capability8,
-        development8,
-        capability9,
-        development9,
-        capability10,
-        development10,
-        capability11,
-        development11,
-        capability12,
-        development12,
         personalComments,
-        selfManagement1,
-        selfManagement2,
-        selfManagement3,
-        selfManagement4,
-        selfManagement5,
-        professionalAndEthics1,
-        professionalAndEthics2,
-        professionalAndEthics3,
-        professionalAndEthics4,
-        professionalAndEthics5,
-        resultsFocus1,
-        resultsFocus2,
-        resultsFocus3,
-        resultsFocus4,
-        resultsFocus5,
-        teamwork1,
-        teamwork2,
-        teamwork3,
-        teamwork4,
-        teamwork5,
-        serviceOrientation1,
-        serviceOrientation2,
-        serviceOrientation3,
-        serviceOrientation4,
-        serviceOrientation5,
-        innovation1,
-        innovation2,
-        innovation3,
-        innovation4,
-        innovation5,
       };
-      console.log(data);
+      const returnedData = await this.$store.dispatch("createEsat", data);
+      // const returnedData = await this.post("createEsat", data);
+      console.log(returnedData);
+      if (returnedData == "success") {
+        console.log("success");
+      } else {
+        console.log("Unsuccessful");
+      }
     },
   },
 };

@@ -12,7 +12,7 @@ const mutations = {
 };
 
 const actions = {
-    retrieveEsatInfo({  commit }) {
+    retrieveEsatInfos({ commit }) {
         return axios.get(`esat/`).then((result) => {
 
             commit('setEsatInfos', JSON.stringify(result.data));
@@ -34,47 +34,44 @@ const actions = {
 
     createEsat({ dispatch }, data) {
         return axios
-          .post("esat/create", data)
-          .then(async (result) => {
-            try {
-              await dispatch("retrieveEsatInfos");
-              return result;
-            } catch (error) {
-              return error;
-            }
-          })
-          .catch((err) => {
-            return err.response;
-          });
-      },
+            .post("esat/create", data)
+            .then(async(result) => {
+                try {
+                    await dispatch("retrieveEsatInfos");
+                    return result;
+                } catch (error) {
+                    return error;
+                }
+            })
+            .catch((err) => {
+                return err.response;
+            });
+    },
 
-    updateEsatInfo({state}, props) {
+    updateEsatInfo({ state }, props) {
         return axios
             .post(`esat/edit/${props.ID}`, props)
             .then((result) => {
-              state.esatInfos[props.index] = props.editedData;
-              return result;
+                state.esatInfos[props.index] = props.editedData;
+                return result;
             })
             .catch((err) => {
-              return err.response;
+                return err.response;
             });
     },
 
     deleteEsatInfo({ state }, props) {
         const index = state.esatInfos.indexOf(props.item);
         return axios
-        .delete("esat/delete/" + props.ID)
-        .then((result) => {
-            state.esatInfos.splice(index, 1);
-            return result;
-        })
-        .catch((err) => {
-            return err.response;
-        });
-     },
-
-
-   
+            .delete("esat/delete/" + props.ID)
+            .then((result) => {
+                state.esatInfos.splice(index, 1);
+                return result;
+            })
+            .catch((err) => {
+                return err.response;
+            });
+    },
 };
 
 const getters = {

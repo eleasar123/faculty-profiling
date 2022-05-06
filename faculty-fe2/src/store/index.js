@@ -9,7 +9,7 @@ import ipcrf from './modules/ipcrf'
 Vue.use(Vuex);
 
 // const AUTH_TOKEN = sessionStorage.getItem('userToken')
-axios.defaults.baseURL = "http://127.0.0.1:8000/api/";
+axios.defaults.baseURL = "http://127.0.0.1:8000/";
 // axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
 axios.defaults.headers.common['Content-Type'] = 'application/json';
 // axios.create({

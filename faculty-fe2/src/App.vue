@@ -1,9 +1,9 @@
 <template>
   <v-app>
   <Navbar/>
-    <v-content class="ma-4">
+    <v-main class="ma-4">
       <router-view></router-view>
-    </v-content>
+    </v-main>
    
   </v-app>
  
