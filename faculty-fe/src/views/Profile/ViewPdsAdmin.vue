@@ -1,9 +1,9 @@
-<template>
-  <v-main>
-   
-  <v-btn @click="back" >Back</v-btn>
-    <v-container fluid>
-      <v-tabs>
+<template >
+<v-btn @click="back" class="float-left">Back</v-btn>
+   <v-container fluid style="border:solid 1px black" class="pa-0 text-center">
+  
+    
+      <v-tabs >
         <v-tab>C1</v-tab>
         <v-tab-item>
           <v-card-title label="Search" single-line hide-details
@@ -22,8 +22,8 @@
 
           <v-simple-table
             height="auto"
-            class="pa-0 pa-0 ma-12"
-            max-width="60vw"
+            class="pa-0  ma-0"
+            max-width="100vw"
           >
             <template v-slot:default>
               <thead cols="4">
@@ -237,7 +237,7 @@
               </tbody>
             </template>
           </v-simple-table>
-          <v-simple-table height="auto" class="pa-0 pa-0 ma-12" width="80vw">
+         <v-simple-table height="auto" class="pa-0 pa-0 ma-0" width="100vw">
             <template v-slot:default>
               <thead>
                 <tr clas="pa-0">
@@ -255,7 +255,9 @@
                   <td colspan="4">
                     {{ row.spouse_last_name }}
                   </td>
-                  <td>23. NAME of CHILDREN (Write full name and list all)</td>
+                  <td>
+                    23. NAME of CHILDREN <br />(Write full name and list all)
+                  </td>
                   <td>DATE OF BIRTH (mm/dd/yyyy)</td>
                 </tr>
 
@@ -267,471 +269,128 @@
                   <td colspan="1">
                     {{ row.spouse_suffix }}
                   </td>
-                  <td colspan="1">
-                    
+                  <td rowspan="6">
+                    <v-container
+                      v-for="child in children"
+                      :key="child.id"
+                      class="grey lighten-5"
+                    >
+                      <v-col cols="12" sm="8">{{ child.child_name }} </v-col>
+                    </v-container>
                   </td>
-                  <td colspan="1">
-                     {{ row.spouse_suffix }}
+                  <td colspan="2">
+                    {{ row.spouse_date_of_birth }}
                   </td>
                 </tr>
                 <tr>
                   <td width="80px">MIDDLE NAME</td>
                   <td colspan="4">
-                    <v-text-field
-                      placeholder=""
-                      solo
-                      v-model="familySpouseMiddleName"
-                      id="spouseMiddleName"
-                      class="text-center pt-6"
-                      type="text"
-                    >
-                    </v-text-field>
+                    {{ row.spouse_middle_name }}
                   </td>
-                  <td colspan="1">
-                    <v-text-field
-                      placeholder=""
-                      solo
-                      v-model="nameOfChildrenTwo"
-                      id="childFullName2"
-                      class="text-center pt-6"
-                      type="text"
-                    >
-                    </v-text-field>
-                  </td>
-                  <td colspan="1">
-                    <v-text-field
-                      placeholder=""
-                      id="childDOB2"
-                      v-model="dateOfBirthTwo"
-                      solo
-                      class="text-center pt-6"
-                      type="text"
-                    >
-                    </v-text-field>
-                  </td>
+
+                  <td colspan="1"></td>
                 </tr>
 
                 <tr>
                   <td max-width="100px">OCCUPATION</td>
                   <td colspan="4">
-                    <v-text-field
-                      placeholder=""
-                      solo
-                      v-model="familySpouseOccupation"
-                      id="spouseOccupation"
-                      class="text-center pt-6"
-                      type="text"
-                    >
-                    </v-text-field>
+                    {{ row.spouse_occupation }}
                   </td>
-                  <td colspan="1">
-                    <v-text-field
-                      placeholder=""
-                      solo
-                      v-model="nameOfChildrenThree"
-                      id="childFullName3"
-                      class="text-center pt-6"
-                      type="text"
-                    >
-                    </v-text-field>
-                  </td>
-                  <td colspan="1">
-                    <v-text-field
-                      placeholder=""
-                      id="childDOB3"
-                      solo
-                      v-model="dateOfBirthThree"
-                      class="text-center pt-6"
-                      type="text"
-                    >
-                    </v-text-field>
-                  </td>
+
+                  <td colspan="1"></td>
                 </tr>
                 <tr>
                   <td max-width="100px">EMPLOYER/BUSINESS NAME</td>
                   <td colspan="4">
-                    <v-text-field
-                      placeholder=""
-                      solo
-                      v-model="familyEmployerName"
-                      id="employerNameFamilyBackground"
-                      class="text-center pt-6"
-                      type="text"
-                    >
-                    </v-text-field>
+                    {{ row.spouse_employer }}
                   </td>
-                  <td colspan="1">
-                    <v-text-field
-                      placeholder=""
-                      solo
-                      v-model="nameOfChildrenFour"
-                      id="childFullName4"
-                      class="text-center pt-6"
-                      type="text"
-                    >
-                    </v-text-field>
-                  </td>
-                  <td colspan="1">
-                    <v-text-field
-                      placeholder=""
-                      solo
-                      v-model="dateOfBirthFour"
-                      id="childDOB4"
-                      class="text-center pt-6"
-                      type="text"
-                    >
-                    </v-text-field>
-                  </td>
+
+                  <td colspan="1"></td>
                 </tr>
                 <tr>
                   <td max-width="100px">BUSINESS ADDRESS</td>
                   <td colspan="4">
-                    <v-text-field
-                      placeholder=""
-                      solo
-                      v-model="familyBusinessAddress"
-                      id="businessAddressFamilyBackground"
-                      class="text-center pt-6"
-                      type="text"
-                    >
-                    </v-text-field>
+                    {{ row.spouse_business_address }}
                   </td>
-                  <td colspan="1">
-                    <v-text-field
-                      placeholder=""
-                      id="childFullName5"
-                      solo
-                      v-model="nameOfChildrenFive"
-                      class="text-center pt-6"
-                      type="text"
-                    >
-                    </v-text-field>
-                  </td>
-                  <td colspan="1">
-                    <v-text-field
-                      placeholder=""
-                      solo
-                      v-model="dateOfBirthFive"
-                      id="childDOB5"
-                      class="text-center pt-6"
-                      type="text"
-                    >
-                    </v-text-field>
-                  </td>
+
+                  <td colspan="1"></td>
                 </tr>
                 <tr>
                   <td max-width="100px">TELEPHONE NO.</td>
                   <td colspan="4">
-                    <v-text-field
-                      placeholder=""
-                      solo
-                      v-model="familyTelephoneNo"
-                      id="telephonNumberFamilyBackground"
-                      class="text-center pt-6"
-                      type="text"
-                    >
-                    </v-text-field>
+                    {{ row.spouse_telephone_no }}
                   </td>
-                  <td colspan="1">
-                    <v-text-field
-                      placeholder=""
-                      solo
-                      v-model="nameOfChildrenSix"
-                      id="childFullName6"
-                      class="text-center pt-6"
-                      type="text"
-                    >
-                    </v-text-field>
-                  </td>
-                  <td colspan="1">
-                    <v-text-field
-                      placeholder=""
-                      solo
-                      v-model="dateOfBirthSix"
-                      id="childDOB6"
-                      class="text-center pt-6"
-                      type="text"
-                    >
-                    </v-text-field>
-                  </td>
+                  <td colspan="1"></td>
                 </tr>
 
                 <tr>
                   <td>25. FATHER'S SURNAME</td>
                   <td colspan="4">
-                    <v-text-field
-                      placeholder=""
-                      solo
-                      v-model="familyFatherSurname"
-                      id="fatherSurname"
-                      class="text-center pt-6"
-                      type="text"
-                    >
-                    </v-text-field>
+                    {{ row.father_last_name }}
                   </td>
+                  <td colspan="1"></td>
                   <td colspan="1">
-                    <v-text-field
-                      placeholder=""
-                      solo
-                      v-model="nameOfChildrenSeven"
-                      id="childFullName7"
-                      class="text-center pt-6"
-                      type="text"
-                    >
-                    </v-text-field>
-                  </td>
-                  <td colspan="1">
-                    <v-text-field
-                      placeholder=""
-                      solo
-                      v-model="dateOfBirthSeven"
-                      id="childDOB7"
-                      class="text-center pt-6"
-                      type="text"
-                    >
-                    </v-text-field>
+                    {{ row.father_date_of_birth }}
                   </td>
                 </tr>
                 <tr>
                   <td width="80px">FIRST NAME</td>
                   <td colspan="3">
-                    <v-text-field
-                      placeholder=""
-                      solo
-                      v-model="familyFatherFirstName"
-                      id="fatherFirstName"
-                      dense
-                      class="text-center pt-6"
-                      type="text"
-                    >
-                    </v-text-field>
+                    {{ row.father_first_name }}
                   </td>
                   <td colspan="1">
-                    <v-text-field
-                      label="NAME EXTENSION (JR., SR)"
-                      filled
-                      id="fatherSuffix"
-                      v-model="familyFatherSuffix"
-                      dense
-                      class="text-center pt-6"
-                      type="text"
-                    >
-                    </v-text-field>
+                    {{ row.father_suffix }}
                   </td>
-                  <td colspan="1">
-                    <v-text-field
-                      placeholder=""
-                      solo
-                      v-model="nameOfChildrenEight"
-                      id="childFullName8"
-                      dense
-                      class="text-center pt-6"
-                      type="text"
-                    >
-                    </v-text-field>
-                  </td>
-                  <td colspan="1">
-                    <v-text-field
-                      placeholder=""
-                      solo
-                      v-model="dateOfBirthEight"
-                      id="childDOB8"
-                      dense
-                      class="text-center pt-6"
-                      type="text"
-                    >
-                    </v-text-field>
-                  </td>
+                  <td colspan="1"></td>
+                  <td colspan="1"></td>
                 </tr>
                 <tr>
                   <td width="80px">MIDDLE NAME</td>
                   <td colspan="4">
-                    <v-text-field
-                      placeholder=""
-                      solo
-                      v-model="familyFatherMiddleName"
-                      id="fatherMiddleName"
-                      class="text-center pt-6"
-                      type="text"
-                    >
-                    </v-text-field>
+                    {{ row.father_middle_name }}
                   </td>
-                  <td colspan="1">
-                    <v-text-field
-                      placeholder=""
-                      solo
-                      v-model="nameOfChildrenNine"
-                      id="childFullName9"
-                      class="text-center pt-6"
-                      type="text"
-                    >
-                    </v-text-field>
-                  </td>
-                  <td colspan="1">
-                    <v-text-field
-                      placeholder=""
-                      solo
-                      v-model="dateOfBirthNine"
-                      id="childDOB9"
-                      class="text-center pt-6"
-                      type="text"
-                    >
-                    </v-text-field>
-                  </td>
+                  <td colspan="1"></td>
+                  <td colspan="1"></td>
                 </tr>
                 <tr>
                   <td>26. MOTHER'S MAIDEN NAME</td>
                   <td colspan="4">
-                    <v-text-field
-                      placeholder=""
-                      solo
-                      v-model="familyMotherMaidenName"
-                      id="motherMaidenName"
-                      class="text-center pt-6"
-                      type="text"
-                    >
-                    </v-text-field>
+                    {{ row.mother_maiden_name }}
                   </td>
+                  <td colspan="1"></td>
                   <td colspan="1">
-                    <v-text-field
-                      placeholder=""
-                      solo
-                      v-model="nameOfChildrenTen"
-                      id="childFullName10"
-                      class="text-center pt-6"
-                      type="text"
-                    >
-                    </v-text-field>
-                  </td>
-                  <td colspan="1">
-                    <v-text-field
-                      placeholder=""
-                      solo
-                      v-model="dateOfBirthTen"
-                      id="childDOB"
-                      class="text-center pt-6"
-                      type="text"
-                    >
-                    </v-text-field>
+                    {{ row.mother_date_of_birth }}
                   </td>
                 </tr>
                 <tr>
                   <td>SURNAME</td>
                   <td colspan="4">
-                    <v-text-field
-                      placeholder=""
-                      solo
-                      v-model="familyMotherSurname"
-                      id="motherSurname"
-                      class="text-center pt-6"
-                      type="text"
-                    >
-                    </v-text-field>
+                    {{ row.mother_last_name }}
                   </td>
-                  <td colspan="1">
-                    <v-text-field
-                      placeholder=""
-                      solo
-                      v-model="nameOfChildrenEleven"
-                      id="childFullName11"
-                      class="text-center pt-6"
-                      type="text"
-                    >
-                    </v-text-field>
-                  </td>
-                  <td colspan="1">
-                    <v-text-field
-                      placeholder=""
-                      solo
-                      v-model="dateOfBirthEleven"
-                      id="childDOB11"
-                      class="text-center pt-6"
-                      type="text"
-                    >
-                    </v-text-field>
-                  </td>
+                  <td colspan="1"></td>
+                  <td colspan="1"></td>
                 </tr>
                 <tr>
                   <td width="80px">FIRST NAME</td>
                   <td colspan="4">
-                    <v-text-field
-                      placeholder=""
-                      solo
-                      v-model="familyMotherFirstName"
-                      id="motherFirstName"
-                      dense
-                      class="text-center pt-6"
-                      type="text"
-                    >
-                    </v-text-field>
+                    {{ row.mother_first_name }}
                   </td>
 
-                  <td colspan="1">
-                    <v-text-field
-                      placeholder=""
-                      solo
-                      v-model="nameOfChildrenTwelve"
-                      id="childFullName12"
-                      dense
-                      class="text-center pt-6"
-                      type="text"
-                    >
-                    </v-text-field>
-                  </td>
-                  <td colspan="1">
-                    <v-text-field
-                      placeholder=""
-                      solo
-                      id="childDOB12"
-                      dense
-                      v-model="dateOfBirthTwelve"
-                      class="text-center pt-6"
-                      type="text"
-                    >
-                    </v-text-field>
-                  </td>
+                  <td colspan="1"></td>
+                  <td colspan="1"></td>
                 </tr>
                 <tr>
                   <td width="80px">MIDDLE NAME</td>
                   <td colspan="4">
-                    <v-text-field
-                      placeholder=""
-                      solo
-                      v-model="familyMotherMiddleName"
-                      id="motherMiddleName"
-                      class="text-center pt-6"
-                      type="text"
-                    >
-                    </v-text-field>
+                    {{ row.mother_middle_name }}
                   </td>
-                  <td colspan="1">
-                    <v-text-field
-                      placeholder=" "
-                      solo
-                      v-model="nameOfChildrenThirteen"
-                      id="childFullName13"
-                      class="text-center pt-6"
-                      type="text"
-                    >
-                    </v-text-field>
-                  </td>
-                  <td colspan="1">
-                    <v-text-field
-                      placeholder=""
-                      solo
-                      v-model="dateOfBirthThirteen"
-                      id="childDOB13"
-                      class="text-center pt-6"
-                      type="text"
-                    >
-                    </v-text-field>
-                  </td>
+                  <td colspan="1"></td>
+                  <td colspan="1"></td>
                 </tr>
               </tbody>
             </template>
           </v-simple-table>
-
-          <v-simple-table height="auto" class="pa-0 pa-0 ma-12" width="80vw">
+          <v-simple-table height="auto" class="pa-0 pa-0 ma-0" width="100vw">
             <template v-slot:default>
               <thead cols="4">
                 <tr clas="pa-0">
@@ -801,7 +460,7 @@
         </v-tab-item>
         <v-tab>C2</v-tab>
         <v-tab-item>
-          <v-simple-table height="auto" class="pa-0 pa-0 ma-12" width="80vw">
+          <v-simple-table height="auto" class="pa-0 pa-0 ma-0" width="100vw">
             <thead>
               <tr>
                 <th colspan="8" style="text-align: left">
@@ -860,7 +519,7 @@
               </tr>
             </tbody>
           </v-simple-table>
-          <v-simple-table height="auto" class="pa-0 pa-0 ma-12" width="80vw">
+          <v-simple-table height="auto" class="pa-0 pa-0 ma-0" width="100vw">
             <thead>
               <tr>
                 <th colspan="8" style="text-align: left">
@@ -989,7 +648,7 @@
               </tr>
             </tbody>
           </v-simple-table>
-          <v-simple-table height="auto" class="pa-0 pa-0 ma-12" width="80vw">
+          <v-simple-table height="auto" class="pa-0 pa-0 ma-0" width="100vw">
             <thead>
               <tr>
                 <th colspan="8" style="text-align: left">
@@ -1203,7 +862,7 @@
                   promote/actively campaign for a national or local
                   candidate?</v-card
                 >
-              </v-col>
+              </v-col>x``
               <v-col cols="12" sm="6">
                 <v-card class="pa-3" outlined tile height="200px">
                   {{ row.question_thirty_eight }}
@@ -1394,8 +1053,7 @@
           >
         </v-tab-item>
       </v-tabs>
-    </v-container>
-  </v-main>
+      </v-container>
 </template>
 <script>
 export default {
@@ -1414,7 +1072,8 @@ export default {
       pdsOtherInfoAssociationMembers: [],
       pdsReferences: [],
       pdsQuestions: [],
-      pdsAdditionalInfo: []
+      pdsAdditionalInfo: [],
+      children: []
     };
   },
   created() {
@@ -1434,6 +1093,7 @@ export default {
     this.pdsReferences.push(sessionStorage.getItem('pdsReferences'))
     this.pdsQuestions.push(sessionStorage.getItem('pdsQuestions'))
     this.pdsAdditionalInfo.push(sessionStorage.getItem('pdsAdditionalInfo'))
+    this.children.push(sessionStorage.getItem('children'))
     for(const data of this.pdsEducationalBackground){
       console.log(data)
     }

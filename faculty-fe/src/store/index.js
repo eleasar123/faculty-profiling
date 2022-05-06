@@ -8,9 +8,9 @@ import esat from "./modules/esat";
 import ipcrf from "./modules/ipcrf";
 Vue.use(Vuex);
 
-// const AUTH_TOKEN = sessionStorage.getItem('userToken')
+const AUTH_TOKEN = sessionStorage.getItem('user_token')
 axios.defaults.baseURL = "http://127.0.0.1:8000/api/";
-// axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
+axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
 axios.defaults.headers.common["Content-Type"] = "application/json";
 
 // Create a new store instance.
@@ -86,6 +86,20 @@ export default new Vuex.Store({
         })
         .catch((error) => {
           console.log(error.response.data);
+        });
+    },
+
+    getImageUrl() {
+      console.log(JSON.parse(sessionStorage.getItem("user_session")).id)
+      return axios
+        .get("pds/getImage/" + JSON.parse(sessionStorage.getItem("user_session")).id)
+        .then((res) => {
+          console.log(res)
+          return res;
+
+        })
+        .catch((err) => {
+          return err.response;
         });
     },
   },

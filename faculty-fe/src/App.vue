@@ -3,7 +3,11 @@
   <v-app v-if="userData!==null">
     <Navbar></Navbar>
     <v-content class="ma-4">
-      <router-view></router-view>
+    <v-container fluid>
+      <v-layout>
+        <router-view></router-view>
+      </v-layout>
+    </v-container>
     </v-content>
    
   </v-app>

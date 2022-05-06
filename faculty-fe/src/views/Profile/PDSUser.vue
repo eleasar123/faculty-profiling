@@ -30,36 +30,6 @@
         </v-data-table>
       </v-card>
     </v-container>
-    <!-- <v-container
-      v-if="user == 'Admin' && edit == false"
-      class="text-left pa-0"
-      style="width: 50%; border: none; height: auto"
-    >
-       <button
-        class="material-icons float-left"
-        style="position: absolute; top: 1%; left: 6%"
-      >
-        keyboard_arrow_left
-      </button> 
-      <v-select
-        label=""
-        dense
-        solo
-        :items="items"      
-       v-model="items[0]"
-        flat
-        class="ma-0"
-        style="width: 30%; max-width: 50%"
-      >
-      </v-select> 
-
-     <button
-        class="material-icons pl-2 float-right"
-        style="position: absolute; top: 1%; right: 62%"
-      >
-        keyboard_arrow_right
-      </button>
-    </v-container> !-->
 
     <v-container v-if="create == false && user == 'Teacher' && edit == false">
       <v-btn @click="editPds" class="float-right">Edit</v-btn>
@@ -297,6 +267,7 @@
               </tbody>
             </template>
           </v-simple-table>
+
           <v-simple-table height="auto" class="pa-0 pa-0 ma-12" width="80vw">
             <template v-slot:default>
               <thead>
@@ -315,7 +286,9 @@
                   <td colspan="4">
                     {{ row.spouse_last_name }}
                   </td>
-                  <td>23. NAME of CHILDREN (Write full name and list all)</td>
+                  <td>
+                    23. NAME of CHILDREN <br />(Write full name and list all)
+                  </td>
                   <td>DATE OF BIRTH (mm/dd/yyyy)</td>
                 </tr>
 
@@ -327,483 +300,124 @@
                   <td colspan="1">
                     {{ row.spouse_suffix }}
                   </td>
-                  <td colspan="1">
-                    <v-text-field
-                      placeholder=""
-                      solo
-                      v-model="nameOfChildrenOne"
-                      id="childrenFullname1"
-                      dense
-                      class="text-center pt-6"
-                      type="text"
+                  <td rowspan="6">
+                    <v-container
+                      v-for="child in children"
+                      :key="child.id"
+                      class="grey lighten-5"
                     >
-                    </v-text-field>
+                      <v-col cols="12" sm="8">{{ child.child_name }} </v-col>
+                    </v-container>
                   </td>
-                  <td colspan="1">
-                    <v-text-field
-                      placeholder=""
-                      solo
-                      v-model="dateOfBirthOne"
-                      id="childDOB1"
-                      dense
-                      class="text-center pt-6"
-                      type="text"
-                    >
-                    </v-text-field>
+                  <td colspan="2">
+                    {{ row.spouse_date_of_birth }}
                   </td>
                 </tr>
                 <tr>
                   <td width="80px">MIDDLE NAME</td>
                   <td colspan="4">
-                    <v-text-field
-                      placeholder=""
-                      solo
-                      v-model="familySpouseMiddleName"
-                      id="spouseMiddleName"
-                      class="text-center pt-6"
-                      type="text"
-                    >
-                    </v-text-field>
+                    {{ row.spouse_middle_name }}
                   </td>
-                  <td colspan="1">
-                    <v-text-field
-                      placeholder=""
-                      solo
-                      v-model="nameOfChildrenTwo"
-                      id="childFullName2"
-                      class="text-center pt-6"
-                      type="text"
-                    >
-                    </v-text-field>
-                  </td>
-                  <td colspan="1">
-                    <v-text-field
-                      placeholder=""
-                      id="childDOB2"
-                      v-model="dateOfBirthTwo"
-                      solo
-                      class="text-center pt-6"
-                      type="text"
-                    >
-                    </v-text-field>
-                  </td>
+
+                  <td colspan="1"></td>
                 </tr>
 
                 <tr>
                   <td max-width="100px">OCCUPATION</td>
                   <td colspan="4">
-                    <v-text-field
-                      placeholder=""
-                      solo
-                      v-model="familySpouseOccupation"
-                      id="spouseOccupation"
-                      class="text-center pt-6"
-                      type="text"
-                    >
-                    </v-text-field>
+                    {{ row.spouse_occupation }}
                   </td>
-                  <td colspan="1">
-                    <v-text-field
-                      placeholder=""
-                      solo
-                      v-model="nameOfChildrenThree"
-                      id="childFullName3"
-                      class="text-center pt-6"
-                      type="text"
-                    >
-                    </v-text-field>
-                  </td>
-                  <td colspan="1">
-                    <v-text-field
-                      placeholder=""
-                      id="childDOB3"
-                      solo
-                      v-model="dateOfBirthThree"
-                      class="text-center pt-6"
-                      type="text"
-                    >
-                    </v-text-field>
-                  </td>
+
+                  <td colspan="1"></td>
                 </tr>
                 <tr>
                   <td max-width="100px">EMPLOYER/BUSINESS NAME</td>
                   <td colspan="4">
-                    <v-text-field
-                      placeholder=""
-                      solo
-                      v-model="familyEmployerName"
-                      id="employerNameFamilyBackground"
-                      class="text-center pt-6"
-                      type="text"
-                    >
-                    </v-text-field>
+                    {{ row.spouse_employer }}
                   </td>
-                  <td colspan="1">
-                    <v-text-field
-                      placeholder=""
-                      solo
-                      v-model="nameOfChildrenFour"
-                      id="childFullName4"
-                      class="text-center pt-6"
-                      type="text"
-                    >
-                    </v-text-field>
-                  </td>
-                  <td colspan="1">
-                    <v-text-field
-                      placeholder=""
-                      solo
-                      v-model="dateOfBirthFour"
-                      id="childDOB4"
-                      class="text-center pt-6"
-                      type="text"
-                    >
-                    </v-text-field>
-                  </td>
+
+                  <td colspan="1"></td>
                 </tr>
                 <tr>
                   <td max-width="100px">BUSINESS ADDRESS</td>
                   <td colspan="4">
-                    <v-text-field
-                      placeholder=""
-                      solo
-                      v-model="familyBusinessAddress"
-                      id="businessAddressFamilyBackground"
-                      class="text-center pt-6"
-                      type="text"
-                    >
-                    </v-text-field>
+                    {{ row.spouse_business_address }}
                   </td>
-                  <td colspan="1">
-                    <v-text-field
-                      placeholder=""
-                      id="childFullName5"
-                      solo
-                      v-model="nameOfChildrenFive"
-                      class="text-center pt-6"
-                      type="text"
-                    >
-                    </v-text-field>
-                  </td>
-                  <td colspan="1">
-                    <v-text-field
-                      placeholder=""
-                      solo
-                      v-model="dateOfBirthFive"
-                      id="childDOB5"
-                      class="text-center pt-6"
-                      type="text"
-                    >
-                    </v-text-field>
-                  </td>
+
+                  <td colspan="1"></td>
                 </tr>
                 <tr>
                   <td max-width="100px">TELEPHONE NO.</td>
                   <td colspan="4">
-                    <v-text-field
-                      placeholder=""
-                      solo
-                      v-model="familyTelephoneNo"
-                      id="telephonNumberFamilyBackground"
-                      class="text-center pt-6"
-                      type="text"
-                    >
-                    </v-text-field>
+                    {{ row.spouse_telephone_no }}
                   </td>
-                  <td colspan="1">
-                    <v-text-field
-                      placeholder=""
-                      solo
-                      v-model="nameOfChildrenSix"
-                      id="childFullName6"
-                      class="text-center pt-6"
-                      type="text"
-                    >
-                    </v-text-field>
-                  </td>
-                  <td colspan="1">
-                    <v-text-field
-                      placeholder=""
-                      solo
-                      v-model="dateOfBirthSix"
-                      id="childDOB6"
-                      class="text-center pt-6"
-                      type="text"
-                    >
-                    </v-text-field>
-                  </td>
+                  <td colspan="1"></td>
                 </tr>
 
                 <tr>
                   <td>25. FATHER'S SURNAME</td>
                   <td colspan="4">
-                    <v-text-field
-                      placeholder=""
-                      solo
-                      v-model="familyFatherSurname"
-                      id="fatherSurname"
-                      class="text-center pt-6"
-                      type="text"
-                    >
-                    </v-text-field>
+                    {{ row.father_last_name }}
                   </td>
+                  <td colspan="1"></td>
                   <td colspan="1">
-                    <v-text-field
-                      placeholder=""
-                      solo
-                      v-model="nameOfChildrenSeven"
-                      id="childFullName7"
-                      class="text-center pt-6"
-                      type="text"
-                    >
-                    </v-text-field>
-                  </td>
-                  <td colspan="1">
-                    <v-text-field
-                      placeholder=""
-                      solo
-                      v-model="dateOfBirthSeven"
-                      id="childDOB7"
-                      class="text-center pt-6"
-                      type="text"
-                    >
-                    </v-text-field>
+                    {{ row.father_date_of_birth }}
                   </td>
                 </tr>
                 <tr>
                   <td width="80px">FIRST NAME</td>
                   <td colspan="3">
-                    <v-text-field
-                      placeholder=""
-                      solo
-                      v-model="familyFatherFirstName"
-                      id="fatherFirstName"
-                      dense
-                      class="text-center pt-6"
-                      type="text"
-                    >
-                    </v-text-field>
+                    {{ row.father_first_name }}
                   </td>
                   <td colspan="1">
-                    <v-text-field
-                      label="NAME EXTENSION (JR., SR)"
-                      filled
-                      id="fatherSuffix"
-                      v-model="familyFatherSuffix"
-                      dense
-                      class="text-center pt-6"
-                      type="text"
-                    >
-                    </v-text-field>
+                    {{ row.father_suffix }}
                   </td>
-                  <td colspan="1">
-                    <v-text-field
-                      placeholder=""
-                      solo
-                      v-model="nameOfChildrenEight"
-                      id="childFullName8"
-                      dense
-                      class="text-center pt-6"
-                      type="text"
-                    >
-                    </v-text-field>
-                  </td>
-                  <td colspan="1">
-                    <v-text-field
-                      placeholder=""
-                      solo
-                      v-model="dateOfBirthEight"
-                      id="childDOB8"
-                      dense
-                      class="text-center pt-6"
-                      type="text"
-                    >
-                    </v-text-field>
-                  </td>
+                  <td colspan="1"></td>
+                  <td colspan="1"></td>
                 </tr>
                 <tr>
                   <td width="80px">MIDDLE NAME</td>
                   <td colspan="4">
-                    <v-text-field
-                      placeholder=""
-                      solo
-                      v-model="familyFatherMiddleName"
-                      id="fatherMiddleName"
-                      class="text-center pt-6"
-                      type="text"
-                    >
-                    </v-text-field>
+                    {{ row.father_middle_name }}
                   </td>
-                  <td colspan="1">
-                    <v-text-field
-                      placeholder=""
-                      solo
-                      v-model="nameOfChildrenNine"
-                      id="childFullName9"
-                      class="text-center pt-6"
-                      type="text"
-                    >
-                    </v-text-field>
-                  </td>
-                  <td colspan="1">
-                    <v-text-field
-                      placeholder=""
-                      solo
-                      v-model="dateOfBirthNine"
-                      id="childDOB9"
-                      class="text-center pt-6"
-                      type="text"
-                    >
-                    </v-text-field>
-                  </td>
+                  <td colspan="1"></td>
+                  <td colspan="1"></td>
                 </tr>
                 <tr>
                   <td>26. MOTHER'S MAIDEN NAME</td>
                   <td colspan="4">
-                    <v-text-field
-                      placeholder=""
-                      solo
-                      v-model="familyMotherMaidenName"
-                      id="motherMaidenName"
-                      class="text-center pt-6"
-                      type="text"
-                    >
-                    </v-text-field>
+                    {{ row.mother_maiden_name }}
                   </td>
+                  <td colspan="1"></td>
                   <td colspan="1">
-                    <v-text-field
-                      placeholder=""
-                      solo
-                      v-model="nameOfChildrenTen"
-                      id="childFullName10"
-                      class="text-center pt-6"
-                      type="text"
-                    >
-                    </v-text-field>
-                  </td>
-                  <td colspan="1">
-                    <v-text-field
-                      placeholder=""
-                      solo
-                      v-model="dateOfBirthTen"
-                      id="childDOB"
-                      class="text-center pt-6"
-                      type="text"
-                    >
-                    </v-text-field>
+                    {{ row.mother_date_of_birth }}
                   </td>
                 </tr>
+                <!--Hello World -->
                 <tr>
                   <td>SURNAME</td>
                   <td colspan="4">
-                    <v-text-field
-                      placeholder=""
-                      solo
-                      v-model="familyMotherSurname"
-                      id="motherSurname"
-                      class="text-center pt-6"
-                      type="text"
-                    >
-                    </v-text-field>
+                    {{ row.mother_last_name }}
                   </td>
-                  <td colspan="1">
-                    <v-text-field
-                      placeholder=""
-                      solo
-                      v-model="nameOfChildrenEleven"
-                      id="childFullName11"
-                      class="text-center pt-6"
-                      type="text"
-                    >
-                    </v-text-field>
-                  </td>
-                  <td colspan="1">
-                    <v-text-field
-                      placeholder=""
-                      solo
-                      v-model="dateOfBirthEleven"
-                      id="childDOB11"
-                      class="text-center pt-6"
-                      type="text"
-                    >
-                    </v-text-field>
-                  </td>
+                  <td colspan="1"></td>
+                  <td colspan="1"></td>
                 </tr>
                 <tr>
                   <td width="80px">FIRST NAME</td>
                   <td colspan="4">
-                    <v-text-field
-                      placeholder=""
-                      solo
-                      v-model="familyMotherFirstName"
-                      id="motherFirstName"
-                      dense
-                      class="text-center pt-6"
-                      type="text"
-                    >
-                    </v-text-field>
+                    {{ row.mother_first_name }}
                   </td>
 
-                  <td colspan="1">
-                    <v-text-field
-                      placeholder=""
-                      solo
-                      v-model="nameOfChildrenTwelve"
-                      id="childFullName12"
-                      dense
-                      class="text-center pt-6"
-                      type="text"
-                    >
-                    </v-text-field>
-                  </td>
-                  <td colspan="1">
-                    <v-text-field
-                      placeholder=""
-                      solo
-                      id="childDOB12"
-                      dense
-                      v-model="dateOfBirthTwelve"
-                      class="text-center pt-6"
-                      type="text"
-                    >
-                    </v-text-field>
-                  </td>
+                  <td colspan="1"></td>
+                  <td colspan="1"></td>
                 </tr>
                 <tr>
                   <td width="80px">MIDDLE NAME</td>
                   <td colspan="4">
-                    <v-text-field
-                      placeholder=""
-                      solo
-                      v-model="familyMotherMiddleName"
-                      id="motherMiddleName"
-                      class="text-center pt-6"
-                      type="text"
-                    >
-                    </v-text-field>
+                    {{ row.mother_middle_name }}
                   </td>
-                  <td colspan="1">
-                    <v-text-field
-                      placeholder=" "
-                      solo
-                      v-model="nameOfChildrenThirteen"
-                      id="childFullName13"
-                      class="text-center pt-6"
-                      type="text"
-                    >
-                    </v-text-field>
-                  </td>
-                  <td colspan="1">
-                    <v-text-field
-                      placeholder=""
-                      solo
-                      v-model="dateOfBirthThirteen"
-                      id="childDOB13"
-                      class="text-center pt-6"
-                      type="text"
-                    >
-                    </v-text-field>
-                  </td>
+                  <td colspan="1"></td>
+                  <td colspan="1"></td>
                 </tr>
               </tbody>
             </template>
@@ -834,8 +448,13 @@
                   <td>To</td>
                 </tr>
               </thead>
-              <tbody class="text-center" color="secondary">
-                <tr v-for="row in pdsEducationalBackground" :key="row.id">
+              <tbody
+                class="text-center"
+                color="secondary"
+                v-for="row in pdsEducationalBackground"
+                :key="row.id"
+              >
+                <tr>
                   <td colspan="1">
                     {{ row.level }}
                   </td>
@@ -866,11 +485,11 @@
                 <tr>
                   <td>SIGNATURE</td>
                   <td colspan="4">
-                    {{ pdsPersonalInfo[0].signature }}
+                    {{ pdsPersonalInfo[0].educational_signature }}
                   </td>
                   <td colspan="1" class="pl-10">DATE</td>
                   <td colspan="4">
-                    {{ pdsPersonalInfo[0].date_signed }}
+                    {{ pdsPersonalInfo[0].educational_date_signed }}
                   </td>
                 </tr>
               </tfoot>
@@ -915,8 +534,8 @@
                 <th style="text-align: left">Date of Validity</th>
               </tr>
             </thead>
-            <tbody>
-              <tr v-for="row in pdsCivilServiceEligibility" :key="row.id">
+            <tbody v-for="row in pdsCivilServiceEligibility" :key="row.id">
+              <tr>
                 <td colspan="2">
                   {{ row.career_service }}
                 </td>
@@ -979,8 +598,8 @@
                 <th style="text-align: left">To</th>
               </tr>
             </thead>
-            <tbody>
-              <tr v-for="row in pdsWorkExperience" :key="row.id">
+            <tbody v-for="row in pdsWorkExperience" :key="row.id">
+              <tr>
                 <td colspan="1">
                   {{ row.work_inclusive_dates_from }}
                 </td>
@@ -1009,10 +628,14 @@
             </tbody>
             <tfoot>
               <tr>
-                <td>SIGNATURE</td>
-                <td colspan="3"></td>
-                <td colspan="1">DATE</td>
-                <td colspan="3"></td>
+                <td colspan="2">SIGNATURE</td>
+                <td colspan="5">
+                  {{ pdsPersonalInfo[0].work_experience_signature }}
+                </td>
+                <td colspan="2">DATE</td>
+                <td colspan="4">
+                  {{ pdsPersonalInfo[0].work_experience_date_signed }}
+                </td>
               </tr>
             </tfoot>
           </v-simple-table>
@@ -1047,8 +670,8 @@
                 <th style="text-align: left">To</th>
               </tr>
             </thead>
-            <tbody>
-              <tr v-for="row in pdsVoluntaryWorkInvolvement" :key="row.id">
+            <tbody v-for="row in pdsVoluntaryWorkInvolvement" :key="row.id">
+              <tr>
                 <td colspan="2">
                   {{ row.organization_name_and_address }}
                 </td>
@@ -1102,8 +725,8 @@
                 <th style="text-align: left">To</th>
               </tr>
             </thead>
-            <tbody>
-              <tr v-for="row in pdsLearningAndDevelopment" :key="row.id">
+            <tbody v-for="row in pdsLearningAndDevelopment" :key="row.id">
+              <tr>
                 <td colspan="2">
                   {{ row.learning_and_development_interventions }}
                 </td>
@@ -1134,12 +757,12 @@
             >
             <v-row no-gutters>
               <v-col cols="12" sm="4">
-                <v-card class="pa-2" outlined tile>
+                <v-card class="pa-2" outlined tile width="500px">
                   <v-card-title class="text-caption">
                     31. SPECIAL SKILLS AND HOBBIES <br />(Write in full)
                   </v-card-title>
                   <v-card-text>
-                    <v-container>
+                    <v-container width="500px">
                       <v-container
                         v-for="row in pdsOtherInfoSpecialSkills"
                         :key="row.id"
@@ -1152,14 +775,14 @@
                   </v-card-text>
                 </v-card>
               </v-col>
-              <v-col cols="12" sm="4">
+              <v-col cols="12" sm="4" width="500px">
                 <v-card class="pa-2" outlined tile>
                   <v-card-title class="text-caption">
                     32. NON-ACADEMIC DISTINCTIONS/RECOGNITION <br />(Write in
                     full)
                   </v-card-title>
                   <v-card-text>
-                    <v-container>
+                    <v-container width="500px">
                       <v-container
                         v-for="row in pdsOtherInfoNonacademicDistinctions"
                         :key="row.id"
@@ -1172,14 +795,14 @@
                   </v-card-text>
                 </v-card>
               </v-col>
-              <v-col cols="12" sm="4">
+              <v-col cols="12" sm="4" width="500px">
                 <v-card class="pa-2" outlined tile>
                   <v-card-title class="text-caption text-wrap">
                     33. MEMBERSHIP IN ASSOCIATION/ORGANIZATION <br />(Write in
                     full)
                   </v-card-title>
                   <v-card-text class="text-center">
-                    <v-container>
+                    <v-container width="500px">
                       <v-container
                         v-for="row in pdsOtherInfoAssociationMembers"
                         :key="row.id"
@@ -1193,9 +816,13 @@
             </v-row>
             <v-row>
               <v-col cols="12" sm="3"> SIGNATURE </v-col>
-              <v-col cols="12" sm="3"> </v-col>
+              <v-col cols="12" sm="3">
+                {{ pdsPersonalInfo[0].other_info_signature }}</v-col
+              >
               <v-col cols="12" sm="3"> DATE </v-col>
-              <v-col cols="12" sm="3"> </v-col>
+              <v-col cols="12" sm="3">
+                {{ pdsPersonalInfo[0].other_info_date_signed }}</v-col
+              >
             </v-row>
           </v-container>
         </v-tab-item>
@@ -1566,16 +1193,13 @@
                   (mm/dd/yyyy)
                 </td>
                 <td colspan="2">
-               <v-row>
+                  <v-row>
                     <v-col cols="12" sm="8" md="8" class="text-center">
                       <v-menu
                         ref="personalDialog"
                         v-model="personalDOBMenu"
-                        
                         persistent
-                        
                         width="290px"
-                        
                       >
                         <template v-slot:activator="{ on, attrs }">
                           <v-text-field
@@ -1592,7 +1216,6 @@
                           v-model="personalDateOfBirth"
                           scrollable
                         >
-                          
                         </v-date-picker>
                       </v-menu>
                     </v-col>
@@ -1660,6 +1283,7 @@
                   <v-text-field
                     label="Input Dual Citizenship"
                     dense
+                    v-model="personalDualCitizenship"
                     id="personalDualCitizenship"
                     class="text-center pt-6"
                     type="text"
@@ -2121,16 +1745,13 @@
                   </v-container>
                 </td>
                 <td colspan="2">
-                   <v-row>
+                  <v-row>
                     <v-col cols="12" sm="8" md="8" class="text-center">
                       <v-menu
                         ref="personalDialog"
                         v-model="spouseDOBMenu"
-                        
                         persistent
-                        
                         width="290px"
-                        
                       >
                         <template v-slot:activator="{ on, attrs }">
                           <v-text-field
@@ -2147,7 +1768,6 @@
                           v-model="dateOfBirthSpouse"
                           scrollable
                         >
-                          
                         </v-date-picker>
                       </v-menu>
                     </v-col>
@@ -2315,11 +1935,8 @@
                       <v-menu
                         ref="personalDialog"
                         v-model="fatherDOBMenu"
-                        
                         persistent
-                        
                         width="290px"
-                        
                       >
                         <template v-slot:activator="{ on, attrs }">
                           <v-text-field
@@ -2336,7 +1953,6 @@
                           v-model="dateOfBirthFather"
                           scrollable
                         >
-                          
                         </v-date-picker>
                       </v-menu>
                     </v-col>
@@ -2466,11 +2082,8 @@
                       <v-menu
                         ref="personalDialog"
                         v-model="motherDOBMenu"
-                        
                         persistent
-                        
                         width="290px"
-                        
                       >
                         <template v-slot:activator="{ on, attrs }">
                           <v-text-field
@@ -2487,7 +2100,6 @@
                           v-model="dateOfBirthMother"
                           scrollable
                         >
-                          
                         </v-date-picker>
                       </v-menu>
                     </v-col>
@@ -2757,23 +2369,19 @@
                     v-model="educBackgroundSignature"
                     id="signaturePart1"
                     class="text-center pt-6"
-                   
                     @change="handleFileInput"
                   >
                   </v-file-input>
                 </td>
                 <td colspan="1" class="pl-10">DATE</td>
                 <td colspan="4">
-                   <v-row>
+                  <v-row>
                     <v-col cols="12" sm="8" md="8" class="text-center">
                       <v-menu
                         ref="personalDialog"
                         v-model="educBackgroundDOSMenu"
-                        
                         persistent
-                        
                         width="290px"
-                        
                       >
                         <template v-slot:activator="{ on, attrs }">
                           <v-text-field
@@ -2790,7 +2398,6 @@
                           v-model="educBackgroundDateOfSignature"
                           scrollable
                         >
-                          
                         </v-date-picker>
                       </v-menu>
                     </v-col>
@@ -3085,37 +2692,33 @@
               </td>
               <td colspan="1">DATE</td>
               <td colspan="4">
-                    <v-row>
-                    <v-col cols="12" sm="8" md="8" class="text-center">
-                      <v-menu
-                        ref="personalDialog"
-                        v-model="workExpDOSMenu"
-                        
-                        persistent
-                        
-                        width="290px"
-                        
+                <v-row>
+                  <v-col cols="12" sm="8" md="8" class="text-center">
+                    <v-menu
+                      ref="personalDialog"
+                      v-model="workExpDOSMenu"
+                      persistent
+                      width="290px"
+                    >
+                      <template v-slot:activator="{ on, attrs }">
+                        <v-text-field
+                          v-model="computedDateFormattedWorkExpDOS"
+                          label=""
+                          append-icon="mdi-calendar"
+                          readonly
+                          v-bind="attrs"
+                          v-on="on"
+                        ></v-text-field>
+                      </template>
+                      <v-date-picker
+                        class="float-right"
+                        v-model="workExperienceDateOfSignature"
+                        scrollable
                       >
-                        <template v-slot:activator="{ on, attrs }">
-                          <v-text-field
-                            v-model="computedDateFormattedWorkExpDOS"
-                            label=""
-                            append-icon="mdi-calendar"
-                            readonly
-                            v-bind="attrs"
-                            v-on="on"
-                          ></v-text-field>
-                        </template>
-                        <v-date-picker
-                          class="float-right"
-                          v-model="workExperienceDateOfSignature"
-                          scrollable
-                        >
-                          
-                        </v-date-picker>
-                      </v-menu>
-                    </v-col>
-                  </v-row>
+                      </v-date-picker>
+                    </v-menu>
+                  </v-col>
+                </v-row>
               </td>
             </tr>
           </tfoot>
@@ -3490,37 +3093,33 @@
             </v-col>
             <v-col cols="12" sm="3"> DATE </v-col>
             <v-col cols="12" sm="3">
-                     <v-row>
-                    <v-col cols="12" sm="8" md="8" class="text-center">
-                      <v-menu
-                        ref="personalDialog"
-                        v-model="otherInfoDOSMenu"
-                        
-                        persistent
-                        
-                        width="290px"
-                        
-                      >
-                        <template v-slot:activator="{ on, attrs }">
-                          <v-text-field
-                            v-model="computedDateFormattedOtherInfoDOS"
-                            label=""
-                            append-icon="mdi-calendar"
-                            readonly
-                            v-bind="attrs"
-                            v-on="on"
-                          ></v-text-field>
-                        </template>
-                        <v-date-picker
-                          class="float-right"
-                          v-model="otherInfoDateOfSignature"
-                          scrollable
-                        >
-                          
-                        </v-date-picker>
-                      </v-menu>
-                    </v-col>
-                  </v-row>
+              <v-row>
+                <v-col cols="12" sm="8" md="8" class="text-center">
+                  <v-menu
+                    ref="personalDialog"
+                    v-model="otherInfoDOSMenu"
+                    persistent
+                    width="290px"
+                  >
+                    <template v-slot:activator="{ on, attrs }">
+                      <v-text-field
+                        v-model="computedDateFormattedOtherInfoDOS"
+                        label=""
+                        append-icon="mdi-calendar"
+                        readonly
+                        v-bind="attrs"
+                        v-on="on"
+                      ></v-text-field>
+                    </template>
+                    <v-date-picker
+                      class="float-right"
+                      v-model="otherInfoDateOfSignature"
+                      scrollable
+                    >
+                    </v-date-picker>
+                  </v-menu>
+                </v-col>
+              </v-row>
             </v-col>
           </v-row>
         </v-container>
@@ -3878,7 +3477,7 @@
             <v-col cols="12" sm="4">
               <v-card>
                 <v-container>
-                   <v-file-input
+                  <v-file-input
                     solo
                     show-size
                     ref=""
@@ -3895,18 +3494,14 @@
                 <v-card-subtitle
                   >Signature (Sign inside the box)</v-card-subtitle
                 >
-                <v-container
-                  >
-                       <v-row>
+                <v-container>
+                  <v-row>
                     <v-col cols="12" sm="8" md="8" class="text-center">
                       <v-menu
                         ref="personalDialog"
                         v-model="oathDateMenu"
-                        
                         persistent
-                        
                         width="290px"
-                        
                       >
                         <template v-slot:activator="{ on, attrs }">
                           <v-text-field
@@ -3923,7 +3518,6 @@
                           v-model="oathDateAccomplished"
                           scrollable
                         >
-                          
                         </v-date-picker>
                       </v-menu>
                     </v-col>
@@ -3934,9 +3528,8 @@
             </v-col>
             <v-col cols="12" sm="4">
               <v-card>
-                <v-container
-                  >
-                   <v-file-input
+                <v-container>
+                  <v-file-input
                     solo
                     show-size
                     ref=""
@@ -3957,37 +3550,33 @@
           <v-row>
             <v-col cols="12" sm="12" style="border: none">
               SUBSCRIBED AND SWORN to before me this ,
-               <v-row>
-                    <v-col cols="12" sm="8" md="8" class="text-center">
-                      <v-menu
-                        ref="personalDialog"
-                        v-model="swornDateMenu"
-                        
-                        persistent
-                        
-                        width="290px"
-                        
-                      >
-                        <template v-slot:activator="{ on, attrs }">
-                          <v-text-field
-                            v-model="computedDateFormattedSwornDate"
-                            label=""
-                            append-icon="mdi-calendar"
-                            readonly
-                            v-bind="attrs"
-                            v-on="on"
-                          ></v-text-field>
-                        </template>
-                        <v-date-picker
-                          class="float-right"
-                          v-model="subscribedAndSwornDate"
-                          scrollable
-                        >
-                          
-                        </v-date-picker>
-                      </v-menu>
-                    </v-col>
-                  </v-row>
+              <v-row>
+                <v-col cols="12" sm="8" md="8" class="text-center">
+                  <v-menu
+                    ref="personalDialog"
+                    v-model="swornDateMenu"
+                    persistent
+                    width="290px"
+                  >
+                    <template v-slot:activator="{ on, attrs }">
+                      <v-text-field
+                        v-model="computedDateFormattedSwornDate"
+                        label=""
+                        append-icon="mdi-calendar"
+                        readonly
+                        v-bind="attrs"
+                        v-on="on"
+                      ></v-text-field>
+                    </template>
+                    <v-date-picker
+                      class="float-right"
+                      v-model="subscribedAndSwornDate"
+                      scrollable
+                    >
+                    </v-date-picker>
+                  </v-menu>
+                </v-col>
+              </v-row>
               exhibiting his/her validly issued government ID as indicated
               above.
             </v-col>
@@ -3999,19 +3588,19 @@
             justify="center"
             style="margin-left: auto; margin-right: auto"
           >
-                 <v-file-input
-                    solo
-                    show-size
-                    ref=""
-                    accept="image/png, image/jpeg, image/bmp"
-                    v-model="personAdministeringOath"
-                    class="text-center pt-6"
-                    label="Insert Picture"
-                    dense
-                    chips
-                    @change="handleFileInput"
-                  >
-                  </v-file-input>
+            <v-file-input
+              solo
+              show-size
+              ref=""
+              accept="image/png, image/jpeg, image/bmp"
+              v-model="personAdministeringOath"
+              class="text-center pt-6"
+              label="Insert Picture"
+              dense
+              chips
+              @change="handleFileInput"
+            >
+            </v-file-input>
             <span>Person Administering Oath</span>
           </v-card>
         </v-container>
@@ -4025,7 +3614,8 @@
       </v-tab-item>
     </v-tabs>
     <v-tabs v-if="edit == true">
-       <v-tab>Part 1</v-tab>
+      <v-btn class="float-right" @click="edit = false">Back</v-btn>
+      <v-tab>Part 1</v-tab>
       <v-tab-item>
         <v-card-title label="Search" single-line hide-details
           ><span>CS Form N0.212<br />Revised 2017</span>
@@ -4117,16 +3707,13 @@
                   (mm/dd/yyyy)
                 </td>
                 <td colspan="2">
-               <v-row>
+                  <v-row>
                     <v-col cols="12" sm="8" md="8" class="text-center">
                       <v-menu
                         ref="personalDialog"
                         v-model="personalDOBMenu"
-                        
                         persistent
-                        
                         width="290px"
-                        
                       >
                         <template v-slot:activator="{ on, attrs }">
                           <v-text-field
@@ -4143,7 +3730,6 @@
                           v-model="personalDateOfBirth"
                           scrollable
                         >
-                          
                         </v-date-picker>
                       </v-menu>
                     </v-col>
@@ -4672,16 +4258,13 @@
                   </v-container>
                 </td>
                 <td colspan="2">
-                   <v-row>
+                  <v-row>
                     <v-col cols="12" sm="8" md="8" class="text-center">
                       <v-menu
                         ref="personalDialog"
                         v-model="spouseDOBMenu"
-                        
                         persistent
-                        
                         width="290px"
-                        
                       >
                         <template v-slot:activator="{ on, attrs }">
                           <v-text-field
@@ -4698,7 +4281,6 @@
                           v-model="dateOfBirthSpouse"
                           scrollable
                         >
-                          
                         </v-date-picker>
                       </v-menu>
                     </v-col>
@@ -4866,11 +4448,8 @@
                       <v-menu
                         ref="personalDialog"
                         v-model="fatherDOBMenu"
-                        
                         persistent
-                        
                         width="290px"
-                        
                       >
                         <template v-slot:activator="{ on, attrs }">
                           <v-text-field
@@ -4887,7 +4466,6 @@
                           v-model="dateOfBirthFather"
                           scrollable
                         >
-                          
                         </v-date-picker>
                       </v-menu>
                     </v-col>
@@ -5017,11 +4595,8 @@
                       <v-menu
                         ref="personalDialog"
                         v-model="motherDOBMenu"
-                        
                         persistent
-                        
                         width="290px"
-                        
                       >
                         <template v-slot:activator="{ on, attrs }">
                           <v-text-field
@@ -5038,7 +4613,6 @@
                           v-model="dateOfBirthMother"
                           scrollable
                         >
-                          
                         </v-date-picker>
                       </v-menu>
                     </v-col>
@@ -5315,16 +4889,13 @@
                 </td>
                 <td colspan="1" class="pl-10">DATE</td>
                 <td colspan="4">
-                   <v-row>
+                  <v-row>
                     <v-col cols="12" sm="8" md="8" class="text-center">
                       <v-menu
                         ref="personalDialog"
                         v-model="educBackgroundDOSMenu"
-                        
                         persistent
-                        
                         width="290px"
-                        
                       >
                         <template v-slot:activator="{ on, attrs }">
                           <v-text-field
@@ -5341,7 +4912,6 @@
                           v-model="educBackgroundDateOfSignature"
                           scrollable
                         >
-                          
                         </v-date-picker>
                       </v-menu>
                     </v-col>
@@ -5636,37 +5206,33 @@
               </td>
               <td colspan="1">DATE</td>
               <td colspan="4">
-                    <v-row>
-                    <v-col cols="12" sm="8" md="8" class="text-center">
-                      <v-menu
-                        ref="personalDialog"
-                        v-model="workExpDOSMenu"
-                        
-                        persistent
-                        
-                        width="290px"
-                        
+                <v-row>
+                  <v-col cols="12" sm="8" md="8" class="text-center">
+                    <v-menu
+                      ref="personalDialog"
+                      v-model="workExpDOSMenu"
+                      persistent
+                      width="290px"
+                    >
+                      <template v-slot:activator="{ on, attrs }">
+                        <v-text-field
+                          v-model="computedDateFormattedWorkExpDOS"
+                          label=""
+                          append-icon="mdi-calendar"
+                          readonly
+                          v-bind="attrs"
+                          v-on="on"
+                        ></v-text-field>
+                      </template>
+                      <v-date-picker
+                        class="float-right"
+                        v-model="workExperienceDateOfSignature"
+                        scrollable
                       >
-                        <template v-slot:activator="{ on, attrs }">
-                          <v-text-field
-                            v-model="computedDateFormattedWorkExpDOS"
-                            label=""
-                            append-icon="mdi-calendar"
-                            readonly
-                            v-bind="attrs"
-                            v-on="on"
-                          ></v-text-field>
-                        </template>
-                        <v-date-picker
-                          class="float-right"
-                          v-model="workExperienceDateOfSignature"
-                          scrollable
-                        >
-                          
-                        </v-date-picker>
-                      </v-menu>
-                    </v-col>
-                  </v-row>
+                      </v-date-picker>
+                    </v-menu>
+                  </v-col>
+                </v-row>
               </td>
             </tr>
           </tfoot>
@@ -6041,37 +5607,33 @@
             </v-col>
             <v-col cols="12" sm="3"> DATE </v-col>
             <v-col cols="12" sm="3">
-                     <v-row>
-                    <v-col cols="12" sm="8" md="8" class="text-center">
-                      <v-menu
-                        ref="personalDialog"
-                        v-model="otherInfoDOSMenu"
-                        
-                        persistent
-                        
-                        width="290px"
-                        
-                      >
-                        <template v-slot:activator="{ on, attrs }">
-                          <v-text-field
-                            v-model="computedDateFormattedOtherInfoDOS"
-                            label=""
-                            append-icon="mdi-calendar"
-                            readonly
-                            v-bind="attrs"
-                            v-on="on"
-                          ></v-text-field>
-                        </template>
-                        <v-date-picker
-                          class="float-right"
-                          v-model="otherInfoDateOfSignature"
-                          scrollable
-                        >
-                          
-                        </v-date-picker>
-                      </v-menu>
-                    </v-col>
-                  </v-row>
+              <v-row>
+                <v-col cols="12" sm="8" md="8" class="text-center">
+                  <v-menu
+                    ref="personalDialog"
+                    v-model="otherInfoDOSMenu"
+                    persistent
+                    width="290px"
+                  >
+                    <template v-slot:activator="{ on, attrs }">
+                      <v-text-field
+                        v-model="computedDateFormattedOtherInfoDOS"
+                        label=""
+                        append-icon="mdi-calendar"
+                        readonly
+                        v-bind="attrs"
+                        v-on="on"
+                      ></v-text-field>
+                    </template>
+                    <v-date-picker
+                      class="float-right"
+                      v-model="otherInfoDateOfSignature"
+                      scrollable
+                    >
+                    </v-date-picker>
+                  </v-menu>
+                </v-col>
+              </v-row>
             </v-col>
           </v-row>
         </v-container>
@@ -6429,7 +5991,7 @@
             <v-col cols="12" sm="4">
               <v-card>
                 <v-container>
-                   <v-file-input
+                  <v-file-input
                     solo
                     show-size
                     ref=""
@@ -6446,18 +6008,14 @@
                 <v-card-subtitle
                   >Signature (Sign inside the box)</v-card-subtitle
                 >
-                <v-container
-                  >
-                       <v-row>
+                <v-container>
+                  <v-row>
                     <v-col cols="12" sm="8" md="8" class="text-center">
                       <v-menu
                         ref="personalDialog"
                         v-model="oathDateMenu"
-                        
                         persistent
-                        
                         width="290px"
-                        
                       >
                         <template v-slot:activator="{ on, attrs }">
                           <v-text-field
@@ -6474,7 +6032,6 @@
                           v-model="oathDateAccomplished"
                           scrollable
                         >
-                          
                         </v-date-picker>
                       </v-menu>
                     </v-col>
@@ -6485,9 +6042,8 @@
             </v-col>
             <v-col cols="12" sm="4">
               <v-card>
-                <v-container
-                  >
-                   <v-file-input
+                <v-container>
+                  <v-file-input
                     solo
                     show-size
                     ref=""
@@ -6508,37 +6064,33 @@
           <v-row>
             <v-col cols="12" sm="12" style="border: none">
               SUBSCRIBED AND SWORN to before me this ,
-               <v-row>
-                    <v-col cols="12" sm="8" md="8" class="text-center">
-                      <v-menu
-                        ref="personalDialog"
-                        v-model="swornDateMenu"
-                        
-                        persistent
-                        
-                        width="290px"
-                        
-                      >
-                        <template v-slot:activator="{ on, attrs }">
-                          <v-text-field
-                            v-model="computedDateFormattedSwornDate"
-                            label=""
-                            append-icon="mdi-calendar"
-                            readonly
-                            v-bind="attrs"
-                            v-on="on"
-                          ></v-text-field>
-                        </template>
-                        <v-date-picker
-                          class="float-right"
-                          v-model="subscribedAndSwornDate"
-                          scrollable
-                        >
-                          
-                        </v-date-picker>
-                      </v-menu>
-                    </v-col>
-                  </v-row>
+              <v-row>
+                <v-col cols="12" sm="8" md="8" class="text-center">
+                  <v-menu
+                    ref="personalDialog"
+                    v-model="swornDateMenu"
+                    persistent
+                    width="290px"
+                  >
+                    <template v-slot:activator="{ on, attrs }">
+                      <v-text-field
+                        v-model="computedDateFormattedSwornDate"
+                        label=""
+                        append-icon="mdi-calendar"
+                        readonly
+                        v-bind="attrs"
+                        v-on="on"
+                      ></v-text-field>
+                    </template>
+                    <v-date-picker
+                      class="float-right"
+                      v-model="subscribedAndSwornDate"
+                      scrollable
+                    >
+                    </v-date-picker>
+                  </v-menu>
+                </v-col>
+              </v-row>
               exhibiting his/her validly issued government ID as indicated
               above.
             </v-col>
@@ -6550,19 +6102,19 @@
             justify="center"
             style="margin-left: auto; margin-right: auto"
           >
-                 <v-file-input
-                    solo
-                    show-size
-                    ref=""
-                    accept="image/png, image/jpeg, image/bmp"
-                    v-model="personAdministeringOath"
-                    class="text-center pt-6"
-                    label="Insert Picture"
-                    dense
-                    chips
-                    @change="handleFileInput"
-                  >
-                  </v-file-input>
+            <v-file-input
+              solo
+              show-size
+              ref=""
+              accept="image/png, image/jpeg, image/bmp"
+              v-model="personAdministeringOath"
+              class="text-center pt-6"
+              label="Insert Picture"
+              dense
+              chips
+              @change="handleFileInput"
+            >
+            </v-file-input>
             <span>Person Administering Oath</span>
           </v-card>
         </v-container>
@@ -6589,12 +6141,22 @@ export default {
   data() {
     return {
       educBackgroundDOSMenu: false,
-      oathDateAccomplishedMenu: false,
+      oathDateMenu: false,
       swornDateMenu: false,
       workExpDOSMenu: false,
-      date: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
-      dateFormatted: this.formatDate((new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10)),
-      dateFormattedPersonalDOB:this.formatDate((new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10)),
+      date: new Date(Date.now() - new Date().getTimezoneOffset() * 60000)
+        .toISOString()
+        .substr(0, 10),
+      dateFormatted: this.formatDate(
+        new Date(Date.now() - new Date().getTimezoneOffset() * 60000)
+          .toISOString()
+          .substr(0, 10)
+      ),
+      dateFormattedPersonalDOB: this.formatDate(
+        new Date(Date.now() - new Date().getTimezoneOffset() * 60000)
+          .toISOString()
+          .substr(0, 10)
+      ),
       otherInfoDOSMenu: false,
       personalDOBMenu: false,
       spouseDOBMenu: false,
@@ -6620,16 +6182,20 @@ export default {
       create: false,
       edit: false,
       loading: false,
-      
+
       personalSurname: "",
       personalFirstName: "",
       personalMiddleName: "",
       personalSuffix: "",
-      personalDateOfBirth:(new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
+      personalDateOfBirth: new Date(
+        Date.now() - new Date().getTimezoneOffset() * 60000
+      )
+        .toISOString()
+        .substr(0, 10),
       personalPlaceOfBirth: "",
       personalCitizenship: "",
       personalDualCitizenship: "",
-      countryOfCitizenship: '',
+      countryOfCitizenship: "",
       personalSex: "",
       personalCivilStatus: "",
       personalHeight: "",
@@ -6674,10 +6240,22 @@ export default {
       familyMotherSurname: "",
       familyMotherFirstName: "",
       familyMotherMiddleName: "",
-      dateOfBirthSpouse: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
-      dateOfBirthFather: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
-      dateOfBirthMother: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
-    
+      dateOfBirthSpouse: new Date(
+        Date.now() - new Date().getTimezoneOffset() * 60000
+      )
+        .toISOString()
+        .substr(0, 10),
+      dateOfBirthFather: new Date(
+        Date.now() - new Date().getTimezoneOffset() * 60000
+      )
+        .toISOString()
+        .substr(0, 10),
+      dateOfBirthMother: new Date(
+        Date.now() - new Date().getTimezoneOffset() * 60000
+      )
+        .toISOString()
+        .substr(0, 10),
+
       educBackgroundLevel: "",
       educBackgroundNameOfSchool: "",
       educBackgroundBasicEducation: "",
@@ -6687,7 +6265,11 @@ export default {
       educBackgroundYearGraduated: "",
       educBackgroundScholarship: "",
       educBackgroundSignature: "",
-      educBackgroundDateOfSignature: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
+      educBackgroundDateOfSignature: new Date(
+        Date.now() - new Date().getTimezoneOffset() * 60000
+      )
+        .toISOString()
+        .substr(0, 10),
       careerService: "",
       rating: "",
       dateOfExamination: "",
@@ -6703,7 +6285,11 @@ export default {
       statusOfAppointmentWorkExperience: "",
       governmentServiceWorkExperience: "",
       workExperienceSignature: "",
-      workExperienceDateOfSignature: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
+      workExperienceDateOfSignature: new Date(
+        Date.now() - new Date().getTimezoneOffset() * 60000
+      )
+        .toISOString()
+        .substr(0, 10),
       nameAndAddressOfOrgVolWork: "",
       inclusiveDatesFromVolWork: "",
       inclusiveDatesToVolWork: "",
@@ -6719,7 +6305,11 @@ export default {
       otherInformationNonacademicDistinctions: "",
       otherInformationAssociationMembers: "",
       otherInfoSignature: "",
-      otherInfoDateOfSignature: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
+      otherInfoDateOfSignature: new Date(
+        Date.now() - new Date().getTimezoneOffset() * 60000
+      )
+        .toISOString()
+        .substr(0, 10),
       questionThirtyFour: "",
       questionThirtyFiveA: "",
       questionThirtyFiveDateFiled: "",
@@ -6745,9 +6335,17 @@ export default {
       governmentIssuedIDNo: "",
       governmentIDDateOrPlaceIssued: "",
       oathSignature: "",
-      oathDateAccomplished: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
+      oathDateAccomplished: new Date(
+        Date.now() - new Date().getTimezoneOffset() * 60000
+      )
+        .toISOString()
+        .substr(0, 10),
       rightThumbMark: "",
-      subscribedAndSwornDate: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
+      subscribedAndSwornDate: new Date(
+        Date.now() - new Date().getTimezoneOffset() * 60000
+      )
+        .toISOString()
+        .substr(0, 10),
       personAdministeringOath: "",
       civilServiceEligibility: [
         {
@@ -6849,52 +6447,362 @@ export default {
         },
       ],
 
-      editedItem: [],
+      editedItem: {
+        educBackgroundDOSMenu: false,
+        oathDateMenu: false,
+        swornDateMenu: false,
+        workExpDOSMenu: false,
+        date: new Date(Date.now() - new Date().getTimezoneOffset() * 60000)
+          .toISOString()
+          .substr(0, 10),
+        dateFormatted: this.formatDate(
+          new Date(Date.now() - new Date().getTimezoneOffset() * 60000)
+            .toISOString()
+            .substr(0, 10)
+        ),
+        dateFormattedPersonalDOB: this.formatDate(
+          new Date(Date.now() - new Date().getTimezoneOffset() * 60000)
+            .toISOString()
+            .substr(0, 10)
+        ),
+        otherInfoDOSMenu: false,
+        personalDOBMenu: false,
+        spouseDOBMenu: false,
+        fatherDOBMenu: false,
+        motherDOBMenu: false,
+        search: "",
+        items: ["Foo", "Bar", "Fizz", "Buzz"],
+        headers: [
+          { text: "ID", value: "user_id" },
+          {
+            text: "Last Name",
+            align: "start",
+            sortable: false,
+            value: "last_name",
+          },
+          { text: "Middle Name", value: "middle_name" },
+          { text: "First Name", value: "first_name" },
+          { text: "Date of Birth", value: "date_of_birth" },
+          { text: "Sex", value: "sex" },
+          { text: "Blood Type", value: "blood_type" },
+          { text: "Actions", value: "actions", sortable: false },
+        ],
+        create: false,
+        edit: false,
+        loading: false,
+
+        personalSurname: "",
+        personalFirstName: "",
+        personalMiddleName: "",
+        personalSuffix: "",
+        personalDateOfBirth: new Date(
+          Date.now() - new Date().getTimezoneOffset() * 60000
+        )
+          .toISOString()
+          .substr(0, 10),
+        personalPlaceOfBirth: "",
+        personalCitizenship: "",
+        personalDualCitizenship: "",
+        countryOfCitizenship: "",
+        personalSex: "",
+        personalCivilStatus: "",
+        personalHeight: "",
+        personalWeight: "",
+        personalBloodType: "",
+        personalGSISIDNo: "",
+        personalResAddressHouseNo: "",
+        personalResAddressStreet: "",
+        personalResAddressSubdivision: "",
+        personalResAddressBarangay: "",
+        personalResAddressCity: "",
+        personalResAddressProvince: "",
+        personalZipCode: "",
+        personalPAGIBIGIDNo: "",
+        personalPHILHEALTHNo: "",
+        personalPermanentAddHouseNo: "",
+        personalPermanentAddStreet: "",
+        personalPermanentAddSubdivision: "",
+        personalPermanentAddBarangay: "",
+        personalPermanentAddCity: "",
+        personalPermanentAddProvince: "",
+        personalPermanentAddZipCode: "",
+        personalSSSNo: "",
+        personalTelephoneNo: "",
+        personalTinNo: "",
+        personalMobileNo: "",
+        personalAgencyEmployeeNo: "",
+        personalEmailAddress: "",
+        familySpouseSurname: "",
+        familySpouseFirstName: "",
+        familySpouseMiddleName: "",
+        familySpouseSuffix: "",
+        familySpouseOccupation: "",
+        familyEmployerName: "",
+        familyBusinessAddress: "",
+        familyTelephoneNo: "",
+        familyFatherSurname: "",
+        familyFatherFirstName: "",
+        familyFatherMiddleName: "",
+        familyFatherSuffix: "",
+        familyMotherMaidenName: "",
+        familyMotherSurname: "",
+        familyMotherFirstName: "",
+        familyMotherMiddleName: "",
+        dateOfBirthSpouse: new Date(
+          Date.now() - new Date().getTimezoneOffset() * 60000
+        )
+          .toISOString()
+          .substr(0, 10),
+        dateOfBirthFather: new Date(
+          Date.now() - new Date().getTimezoneOffset() * 60000
+        )
+          .toISOString()
+          .substr(0, 10),
+        dateOfBirthMother: new Date(
+          Date.now() - new Date().getTimezoneOffset() * 60000
+        )
+          .toISOString()
+          .substr(0, 10),
+
+        educBackgroundLevel: "",
+        educBackgroundNameOfSchool: "",
+        educBackgroundBasicEducation: "",
+        educBackgroundPeriodOfAttendanceFrom: "",
+        educBackgroundPeriodOfAttendanceTo: "",
+        educBackgroundHighestLevel: "",
+        educBackgroundYearGraduated: "",
+        educBackgroundScholarship: "",
+        educBackgroundSignature: "",
+        educBackgroundDateOfSignature: new Date(
+          Date.now() - new Date().getTimezoneOffset() * 60000
+        )
+          .toISOString()
+          .substr(0, 10),
+        careerService: "",
+        rating: "",
+        dateOfExamination: "",
+        placeOfExamination: "",
+        licenseNumber: "",
+        dateOfValidity: "",
+        inclusiveDateFromWorkExperience: "",
+        inclusiveDateToWorkExperience: "",
+        positionTitleWorkExperience: "",
+        departmentWorkExperience: "",
+        monthlySalaryWorkExperience: "",
+        salaryGradeWorkExperience: "",
+        statusOfAppointmentWorkExperience: "",
+        governmentServiceWorkExperience: "",
+        workExperienceSignature: "",
+        workExperienceDateOfSignature: new Date(
+          Date.now() - new Date().getTimezoneOffset() * 60000
+        )
+          .toISOString()
+          .substr(0, 10),
+        nameAndAddressOfOrgVolWork: "",
+        inclusiveDatesFromVolWork: "",
+        inclusiveDatesToVolWork: "",
+        numberOfHoursVolWork: "",
+        positionOfWorkVolWork: "",
+        learningAndDevelopmentInterventions: "",
+        learningAndDevelopmentInclusiveDatesFrom: "",
+        learningAndDevelopmentInclusiveDatesTo: "",
+        learningAndDevelopmentNumberOfHours: "",
+        learningAndDevelopmentTypeOfLD: "",
+        learningAndDevelopmentConductedBy: "",
+        otherInformationSpecialSkills: "",
+        otherInformationNonacademicDistinctions: "",
+        otherInformationAssociationMembers: "",
+        otherInfoSignature: "",
+        otherInfoDateOfSignature: new Date(
+          Date.now() - new Date().getTimezoneOffset() * 60000
+        )
+          .toISOString()
+          .substr(0, 10),
+        questionThirtyFour: "",
+        questionThirtyFiveA: "",
+        questionThirtyFiveDateFiled: "",
+        questionThirtyFiveCaseStatus: "",
+        questionThirtySix: "",
+        questionThirtySeven: "",
+        questionThirtyEight: "",
+        questionThirtyNine: "",
+        questionFourtyA: "",
+        questionFourtyB: "",
+        questionFourtyC: "",
+        referenceNameFirst: "",
+        referenceAddressFirst: "",
+        referenceTelNoFirst: "",
+        referenceNameSecond: "",
+        referenceAddressSecond: "",
+        referenceTelNoSecond: "",
+        referenceNameThird: "",
+        referenceAddressThird: "",
+        referenceTelNoThird: "",
+        personalPhotoAttachment: "",
+        governmentIssuedID: "",
+        governmentIssuedIDNo: "",
+        governmentIDDateOrPlaceIssued: "",
+        oathSignature: "",
+        oathDateAccomplished: new Date(
+          Date.now() - new Date().getTimezoneOffset() * 60000
+        )
+          .toISOString()
+          .substr(0, 10),
+        rightThumbMark: "",
+        subscribedAndSwornDate: new Date(
+          Date.now() - new Date().getTimezoneOffset() * 60000
+        )
+          .toISOString()
+          .substr(0, 10),
+        personAdministeringOath: "",
+        civilServiceEligibility: [
+          {
+            careerService: "",
+            rating: "",
+            dateOfExamination: "",
+            placeOfExamination: "",
+            licenseNumber: "",
+            dateOfValidity: "",
+          },
+        ],
+        workExperience: [
+          {
+            inclusiveDateFromWorkExperience: "",
+            inclusiveDateToWorkExperience: "",
+            positionTitleWorkExperience: "",
+            departmentWorkExperience: "",
+            monthlySalaryWorkExperience: "",
+            salaryGradeWorkExperience: "",
+            statusOfAppointmentWorkExperience: "",
+            governmentServiceWorkExperience: "",
+          },
+        ], //the declared array
+        voluntaryWorkInvolvement: [
+          {
+            nameAdAddressOfOrgVolWork: "",
+            inclusiveDatesFromVolWork: "",
+            inclusiveDatesToVolWork: "",
+            numberOfHoursVolWork: "",
+            positionOfWorkVolWork: "",
+          },
+        ],
+        learningAndDevelopment: [
+          {
+            learningAndDevelopmentInterventions: "",
+            learningAndDevelopmentInclusiveDatesFrom: "",
+            learningAndDevelopmentInclusiveDatesTo: "",
+            learningAndDevelopmentNumberOfHours: "",
+            learningAndDevelopmentTypeOfLD: "",
+            learningAndDevelopmentConductedBy: "",
+          },
+        ],
+        educationalBackground: [
+          {
+            educBackgroundLevel: "",
+            educBackgroundNameOfSchool: "",
+            educBackgroundBasicEducation: "",
+            educBackgroundPeriodOfAttendanceFrom: "",
+            educBackgroundPeriodOfAttendanceTo: "",
+            educBackgroundHighestLevel: "",
+            educBackgroundYearGraduated: "",
+            educBackgroundScholarship: "",
+          },
+        ],
+        otherInfoSpecialSkills: [
+          {
+            otherInformationSpecialSkills: "",
+          },
+        ],
+        otherInfoNonacademicDistinctions: [
+          {
+            otherInformationNonacademicDistinctions: "",
+          },
+        ],
+        otherInfoAssociationMembers: [
+          {
+            otherInformationSpecialSkills: "",
+          },
+        ],
+        references: [
+          {
+            name: "",
+            address: "",
+            telephoneNo: "",
+          },
+        ],
+        name: "",
+        address: "",
+        telephoneNo: "",
+        pds: [],
+        pdsPersonalInfo: [],
+        pdsFamilyBackground: [],
+        pdsEducationalBackground: [],
+        pdsCivilServiceEligibility: [],
+        pdsWorkExperience: [],
+        pdsVoluntaryWorkInvolvement: [],
+        pdsLearningAndDevelopment: [],
+        pdsOtherInfoSpecialSkills: [],
+        pdsOtherInfoNonacademicDistinctions: [],
+        pdsOtherInfoAssociationMembers: [],
+        pdsQuestions: [],
+        pdsAdditionalInfo: [],
+        pdsReferences: [],
+        editedIndex: "",
+        childName: "",
+        children: [
+          {
+            childName: "",
+          },
+        ],
+      },
+
       user: JSON.parse(sessionStorage.getItem("user_session")).role,
-      
+      imageUrl:[],
+      imageData: '',
     };
   },
-computed: {
-      computedDateFormattedPersonalDOB () {
-        return this.formatDate(this.personalDateOfBirth)
-      },
-       computedDateFormattedSpouseDOB () {
-        return this.formatDate(this.dateOfBirthSpouse)
-      },
-       computedDateFormattedFatherDOB () {
-        return this.formatDate(this.dateOfBirthFather)
-      },
-       computedDateFormattedMotherDOB () {
-        return this.formatDate(this.dateOfBirthMother)
-      },
-       computedDateFormattedEducBackgroundDOS () {
-        return this.formatDate(this.educBackgroundDateOfSignature)
-      },
-      computedDateFormattedWorkExpDOS () {
-        return this.formatDate(this.workExperienceDateOfSignature)
-      },
-      computedDateFormattedOtherInfoDOS () {
-        return this.formatDate(this.otherInfoDateOfSignature)
-      },
-       computedDateFormattedOathDate () {
-        return this.formatDate(this.oathDateAccomplished)
-      },
-       computedDateFormattedSwornDate () {
-        return this.formatDate(this.subscribedAndSwornDate)
-      },
+  computed: {
+    computedDateFormattedPersonalDOB() {
+      return this.formatDate(this.personalDateOfBirth);
     },
+    computedDateFormattedSpouseDOB() {
+      return this.formatDate(this.dateOfBirthSpouse);
+    },
+    computedDateFormattedFatherDOB() {
+      return this.formatDate(this.dateOfBirthFather);
+    },
+    computedDateFormattedMotherDOB() {
+      return this.formatDate(this.dateOfBirthMother);
+    },
+    computedDateFormattedEducBackgroundDOS() {
+      return this.formatDate(this.educBackgroundDateOfSignature);
+    },
+    computedDateFormattedWorkExpDOS() {
+      return this.formatDate(this.workExperienceDateOfSignature);
+    },
+    computedDateFormattedOtherInfoDOS() {
+      return this.formatDate(this.otherInfoDateOfSignature);
+    },
+    computedDateFormattedOathDate() {
+      return this.formatDate(this.oathDateAccomplished);
+    },
+    computedDateFormattedSwornDate() {
+      return this.formatDate(this.subscribedAndSwornDate);
+    },
+  },
   watch: {
-      date (val) {
-        this.dateFormatted = this.formatDate(this.date)
-        console.log(val)
-      },
-      personalDOBDate (val){
-        this.dateFormattedPersonalDOB = this.formatDate(this.personalDateOfBirth)
-        console.log(val)
-      }
+    date(val) {
+      this.dateFormatted = this.formatDate(this.date);
+      console.log(val);
     },
+    personalDOBDate(val) {
+      this.dateFormattedPersonalDOB = this.formatDate(this.personalDateOfBirth);
+      console.log(val);
+    },
+  },
   created() {
     this.retrievePds();
+    console.log(this.editedItem);
   },
   methods: {
     viewItem(item) {
@@ -6912,6 +6820,7 @@ computed: {
       let pdsReferences = "";
       let pdsQuestions = "";
       let pdsAdditionalInfo = "";
+      let children = "";
       this.editedIndex = this.pds.indexOf(item);
       this.editedItem = Object.assign({}, item);
       console.log(item, this.editedIndex, this.editedItem);
@@ -6937,6 +6846,7 @@ computed: {
       pdsReferences = data[10][0].references[this.editedIndex];
       pdsQuestions = data[11][0].pdsQuestions[this.editedIndex];
       pdsAdditionalInfo = data[12][0].pdsAdditionalInfo[this.editedIndex];
+      children = data[13][0].children[this.editedIndex];
       data = [];
       data.push(pdsPersonalInfo);
       data.push(pdsFamilyBackground);
@@ -6951,6 +6861,7 @@ computed: {
       data.push(pdsReferences);
       data.push(pdsQuestions);
       data.push(pdsAdditionalInfo);
+      data.push(children);
       sessionStorage.setItem(
         "pdsPersonalInfo",
         JSON.stringify(pdsPersonalInfo)
@@ -6997,6 +6908,7 @@ computed: {
         "pdsAdditionalInfo",
         JSON.stringify(pdsAdditionalInfo)
       );
+      sessionStorage.setItem("children", JSON.stringify(children));
       this.$router.push({ path: "/viewPds", query: { pdsData: data } }); // -> /user
     },
     async retrievePds() {
@@ -7012,14 +6924,16 @@ computed: {
         console.log(this.loading);
       } else if (this.user == "Teacher") {
         const returnedData = await this.$store.dispatch("retrievePdsInfoById");
+        const imageUrl = await this.$store.dispatch('getImageUrl')
         this.pds = returnedData.data;
+        this.imageUrl = imageUrl.data;
         // console.log(JSON.parse(this.pds[0][0].pdsPersonalInfo));
         if (this.pds[0][0].personalInfo[0] == undefined) {
           this.create = true;
         } else {
           this.create = false;
           this.pdsPersonalInfo.push(this.pds[0][0].personalInfo[0]);
-          // console.log(this.pdsPersonalInfo[0].signature);
+          console.log(this.imageUrl);
           // console.log(this.pdsPersonalInfo);
           this.pdsFamilyBackground.push(this.pds[1][0].familyBackground[0]);
 
@@ -7052,8 +6966,13 @@ computed: {
           for (let references of this.pds[10][0].references) {
             this.pdsReferences.push(references);
           }
+
           this.pdsQuestions.push(this.pds[11][0].pdsQuestions[0]);
           this.pdsAdditionalInfo.push(this.pds[12][0].pdsAdditionalInfo[0]);
+          for (const child of this.pds[13][0].children) {
+            this.children.push(child);
+          }
+        
         }
       } else {
         this.pds = [];
@@ -7064,18 +6983,18 @@ computed: {
       //   console.log(this.pds)
     },
     formatDate(date) {
-      console.log(date)
+      console.log(date);
       if (!date) return null;
 
       const [year, month, day] = date.split("-");
       return `${month}/${day}/${year}`;
     },
-    parseDate (date) {
-        if (!date) return null
+    parseDate(date) {
+      if (!date) return null;
 
-        const [month, day, year] = date.split('/')
-        return `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`
-      },
+      const [month, day, year] = date.split("/");
+      return `${year}-${month.padStart(2, "0")}-${day.padStart(2, "0")}`;
+    },
     addRow: function (array) {
       console.log(array);
       let newRow = [];
@@ -7328,16 +7247,15 @@ computed: {
       //const user = JSON.parse(sessionStorage.getItem('user_session')).id
       const user = JSON.parse(sessionStorage.user_session).id;
 
-      let formDataEducationalBackground = new FormData()
-      formDataEducationalBackground.append(
-        'fileEducationalBackgroundSignature',educBackgroundSignature,
-      );
-      formDataEducationalBackground.append(
-        'fileWorkExperienceSignature', workExperienceSignature,
-      );
-      formDataEducationalBackground.append(
-        'fileOtherInfoSignature', otherInfoSignature,
-      );
+      let formData = new FormData();
+      formData.append("fileEducBackgroundSignature", educBackgroundSignature);
+      formData.append("fileWorkExperienceSignature", workExperienceSignature);
+      formData.append("fileOtherInfoSignature", otherInfoSignature);
+      formData.append("personalPhotoAttachment", personalPhotoAttachment);
+      formData.append("oathSignature", oathSignature);
+      formData.append("rightThumbMark", rightThumbMark);
+      formData.append("personAdministeringOath", personAdministeringOath);
+      formData.append("user", user);
       const data = {
         user,
         personalSurname,
@@ -7398,18 +7316,17 @@ computed: {
         dateOfBirthFather,
         dateOfBirthMother,
         educationalBackground,
-        formDataEducationalBackground,
         educBackgroundDateOfSignature,
         civilServiceEligibility,
         workExperience,
-        workExperienceSignature,
+
         workExperienceDateOfSignature,
         voluntaryWorkInvolvement,
         learningAndDevelopment,
         otherInfoSpecialSkills,
         otherInfoNonacademicDistinctions,
         otherInfoAssociationMembers,
-        otherInfoSignature,
+
         otherInfoDateOfSignature,
         questionThirtyFour,
         questionThirtyFiveA,
@@ -7423,21 +7340,36 @@ computed: {
         questionFourtyB,
         questionFourtyC,
         references,
-        personalPhotoAttachment,
+
         governmentIssuedID,
         governmentIssuedIDNo,
         governmentIDDateOrPlaceIssued,
-        oathSignature,
+
         oathDateAccomplished,
         rightThumbMark,
         subscribedAndSwornDate,
-        personAdministeringOath,
       };
+      /*formDataEducationalBackground,workExperienceSignature,otherInfoSignature,personalPhotoAttachment,oathSignature,personAdministeringOath,*/
       const returnedData = await this.$store.dispatch("createPds", data);
       console.log(returnedData);
-      if (returnedData.data == "success") {
-        console.log("success ");
-        this.pds = this.$store.getters.pdsInfosAll;
+      let personalInfoId = returnedData[0][0].personalInfoId[0];
+      let pdsAdditionalInfoId = returnedData[1][0].pdsAdditionalInfoId[0];
+      let message = returnedData[2][0].message[0];
+      console.log(personalInfoId, pdsAdditionalInfoId, message);
+      formData.append(
+        "personalInfoId",
+        personalInfoId,
+        "pdsAdditionalInfoId",
+        pdsAdditionalInfoId
+      );
+      if (message == "success") {
+        const fileUpload = await this.$store.dispatch("uploadFile", formData);
+        if (fileUpload == "success") {
+          this.pds = this.$store.getters.pdsInfosAll;
+          this.retrievePds();
+        }
+        //this.pds = this.$store.getters.pdsInfosAll;
+        //this.retrievePds()
       }
     },
     download: async function () {
@@ -7449,12 +7381,24 @@ computed: {
     },
     handleFileInput: function (event) {
       console.log(event);
-      let formDataEducationalBackground = new FormData();
+      let formData = new FormData();
       // formDataEducationalBackground.append("fileName", event.name);
-      formDataEducationalBackground.append("file", event);
-      // formDataEducationalBackground.append("path", "educational-background/");
+      formData.append("fileEducBackgroundSignature", event);
+      formData.append("user", 1);
+      
+      if(event){
+         var reader = new FileReader();
+                // Define a callback function to run, when FileReader finishes its job
+                reader.onload = (e) => {
+                    // Note: arrow function used here, so that "this.imageData" refers to the imageData of Vue component
+                    // Read image as base64 and set to imageData
+                    this.imageData = e.target.result;
+                }
+                // Start the reader job - read file as a data url (base64 format)
+                reader.readAsDataURL(event);
+      }
       // console.log(formDataEducationalBackground);
-       this.$store.dispatch("uploadFile", formDataEducationalBackground);
+      //  this.$store.dispatch("uploadFile", formData);
       //   let fileReader = new fileReader();
       // fileReader.readAsDataUrl(imageFile)
       // fileReader.addEventListener('load', () => {
@@ -7468,4 +7412,4 @@ computed: {
 };
 </script>
 
-<style scoped></style>
+<style scoped src="../../assets/css/main.css"></style>
