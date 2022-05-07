@@ -1,7 +1,7 @@
 <template >
-<v-btn @click="back" class="float-left">Back</v-btn>
+
    <v-container fluid style="border:solid 1px black" class="pa-0 text-center">
-  
+  <v-btn @click="back" class="float-left">Back</v-btn>
     
       <v-tabs >
         <v-tab>C1</v-tab>
