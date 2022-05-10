@@ -9,8 +9,17 @@ Vue.config.productionTip = false
 Vue.prototype.$axios = Axios;
 
 new Vue({
-  router,
-  vuetify,
-  store,
-  render: h => h(App)
+    // el: "#esat",
+    // data: {
+    //     privacyNote: false,
+    //     showPart1: false,
+    //     showPart2: false,
+    //     showPart3: false,
+    //     showPrint: false,
+    //     esatCard: false,
+    // },
+    router,
+    vuetify,
+    store,
+    render: h => h(App)
 }).$mount('#app')

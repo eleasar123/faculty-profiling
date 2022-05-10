@@ -11,26 +11,20 @@
       >
         <v-tabs-slider></v-tabs-slider>
 
-        <v-tab href="#subscribe">
-          Home
-          <!-- <v-icon>mdi-phone</v-icon> -->
-        </v-tab>
-        <v-tab href="#privacy">
-          Privacy Note
-          <!-- <v-icon>mdi-phone</v-icon> -->
-        </v-tab>
+        <v-tab href="#subscribe"> Home </v-tab>
+        <v-tab href="#privacy"> Privacy Note </v-tab>
 
-        <v-tab href="#contact"> Part I </v-tab>
+        <v-tab href="#part1"> Part I </v-tab>
 
-        <v-tab href="#c3"> Part II </v-tab>
+        <v-tab href="#part2"> Part II </v-tab>
 
-        <v-tab href="#c4"> Part III </v-tab>
-        <v-tab href="#c5"> Show Print </v-tab>
-        <v-tab href="#c6"> esatCard </v-tab>
+        <v-tab href="#part3"> Part III </v-tab>
+        <v-tab href="#show_print"> Show Print </v-tab>
+        <v-tab href="#esat_card"> esatCard </v-tab>
       </v-tabs>
 
       <v-tabs-items v-model="tab">
-        <v-tab-item :key="1" value="subscribe">
+        <v-tab-item :key="1" value="subscribe" v-if="disclosure">
           <v-card flat>
             <v-container>
               <v-container>
@@ -43,9 +37,12 @@
                   </v-col>
                   <v-col cols="6">
                     <v-container id="esatTxt" class="container-fluid">
-                      <h3 class="text-center font-weight-bold">
+                      <h1
+                        style="font-size: 20px"
+                        class="text-center font-weight-bold"
+                      >
                         ELECTRONIC SELF-ASSESSMENT TOOL
-                      </h3>
+                      </h1>
                       <h3 class="text-center font-weight-bold">SY 2020-2021</h3>
                     </v-container>
                   </v-col>
@@ -73,7 +70,11 @@
                   school-wide consolidation. Please print a copy of the result
                   for the preparation of your IPCRF-DP.
 
-                  <v-btn class="float-right mt-5 mb-4 font-weight-black"
+                  <v-btn
+                    class="float-right mt-5 mb-4 font-weight-black"
+                    @click="
+                      goToPrivacy(), (disclosure = false), (privacyNote = true)
+                    "
                     ><h3>START</h3></v-btn
                   >
                 </v-card-text>
@@ -82,871 +83,898 @@
           </v-card>
         </v-tab-item>
 
-        <v-tab-item :key="1.1" value="privacy">
-          <v-container>
-            <v-row no-gutters>
-              <v-col cols="4"> </v-col>
-              <v-col cols="6">
-                <v-container id="esatTxt" class="container-fluid">
-                  <h3 class="text-center font-weight-bold">
-                    ELECTRONIC SELF-ASSESSMENT TOOL
-                  </h3>
-                  <h3 class="text-center font-weight-bold">SY 2020-2021</h3>
-                </v-container>
-              </v-col>
-            </v-row>
-          </v-container>
-
-          <v-container id="disclosure" class="mt-5">
-            <h1 class="text-center" id="privacyNote">PRIVACY NOTE</h1>
-            <v-card-text class="font-weight-medium mb-5">
-              <p id="privacy">
-                I Authorize the personnel of Department of Education to collect,
-                process, retain, and dipose my personal information in
-                accordance with the Data Privacy Act of 2012.
-              </p>
-            </v-card-text>
-          </v-container>
-
-          <v-btn class="float-left mt-5 mb-5 ml-5 font-weight-black"
-            ><h3>DISAGREE</h3></v-btn
-          >
-
-          <v-btn class="float-right mt-5 mb-5 mr-5 font-weight-black"
-            ><h3>AGREE</h3></v-btn
-          >
-        </v-tab-item>
-
-        <v-tab-item :key="2" value="contact">
-          <v-card flat>
-            <v-container class="bgContainer mt-5">
-              <h1 class="heading text-center">
-                Electronic Self-Assessment Tool(e-SAT)SY 2020-2021
+        <v-tab-item :key="1.1" value="privacy" v-if="privacyNote">
+          <v-container class="container pa-5 px-3">
+            <v-container class="container">
+              <h1 style="font-size: 30px" class="text-center font-weight-bold">
+                ELECTRONIC SELF-ASSESSMENT TOOL
               </h1>
-
-              <h2 class="heading text-center">
-                Teacher I-III, SPET I-IV, Instructor I-II, Special Science
-                Teacher I-II (Proficient Teachers)
-              </h2>
-
-              <h2 class="heading mt-6">PART I. DEMOGRAPHIC PROFILE</h2>
-              <v-simple-table class="table part1" dense>
-                <tr class="infoDetails">
-                  <td>Name of Employee:</td>
-                  <td>
-                    <v-text-field
-                      class="textField mt-5"
-                      solo
-                      dense
-                      flat
-                      v-model="employeeName"
-                    ></v-text-field>
-                  </td>
-                  <td rowspan="8"></td>
-                  <td>Number of Years in Teaching:</td>
-                  <td>
-                    <v-select
-                      solo
-                      class="mt-6"
-                      v-model="yearsInTeaching"
-                      :items="yearsItems"
-                    ></v-select>
-                  </td>
-                  <td rowspan="8"></td>
-                  <td>Region:</td>
-                  <td>
-                    <v-select
-                      solo
-                      class="mt-6"
-                      :items="regionItems"
-                      v-model="region"
-                    ></v-select>
-                  </td>
-                </tr>
-                <tr class="infoDetails">
-                  <td>Employee ID:</td>
-                  <td>
-                    <v-text-field
-                      class="mt-6"
-                      v-model="employeeId"
-                      solo
-                      dense
-                    ></v-text-field>
-                  </td>
-                  <td rowspan="2">Highest Degree Obtained:</td>
-                  <td>
-                    <v-select
-                      solo
-                      class="mt-6"
-                      v-model="highestDegreeObtained"
-                      :items="highestDegreeItems"
-                    ></v-select>
-                  </td>
-                  <td>Division:</td>
-                  <td>
-                    <v-select
-                      solo
-                      class="mt-6"
-                      :items="divisionItems"
-                      v-model="division"
-                    ></v-select>
-                  </td>
-                </tr>
-                <tr class="infoDetails">
-                  <td>Position:</td>
-                  <td>
-                    <v-select
-                      :items="positionItems"
-                      solo
-                      class="mt-6"
-                      v-model="position"
-                    ></v-select>
-                  </td>
-                  <td>
-                    <v-select
-                      v-model="specifiedHighestDegreeObtained"
-                      :items="highestDegreeItems"
-                      class="mt-6"
-                      solo
-                      dense
-                    ></v-select>
-                  </td>
-                  <td>District/Municipality:</td>
-                  <td>
-                    <v-text-field
-                      v-model="employeeMunicipality"
-                      class="mt-6"
-                      solo
-                      dense
-                    ></v-text-field>
-                  </td>
-                </tr>
-                <tr class="infoDetails">
-                  <td>Employment Status:</td>
-                  <td>
-                    <v-select
-                      solo
-                      class="mt-6"
-                      v-model="employmentStatus"
-                      :items="statusItems"
-                    ></v-select>
-                  </td>
-                  <td>Level Taught:</td>
-                  <td>
-                    <v-select
-                      solo
-                      class="mt-6"
-                      v-model="levelTaught"
-                      :items="levelTaughtItems"
-                    ></v-select>
-                  </td>
-                  <td>School ID:</td>
-                  <td>
-                    <v-text-field
-                      v-model="schoolId"
-                      class="mt-6"
-                      solo
-                      dense
-                    ></v-text-field>
-                  </td>
-                </tr>
-                <tr class="infoDetails">
-                  <td>Age:</td>
-                  <td>
-                    <v-select
-                      :items="ageitems"
-                      solo
-                      class="mt-6"
-                      v-model="employeeAge"
-                    ></v-select>
-                  </td>
-                  <td>Grade Level taught:</td>
-                  <td>
-                    <v-select
-                      solo
-                      class="mt-6"
-                      v-model="gradeLevelTaught"
-                      :items="gLevelTaughtItems"
-                    ></v-select>
-                  </td>
-                  <td>School Name:</td>
-                  <td>
-                    <v-text-field
-                      v-model="schoolName"
-                      class="mt-6"
-                      solo
-                      dense
-                    ></v-text-field>
-                  </td>
-                </tr>
-                <tr class="infoDetails">
-                  <td>Sex:</td>
-                  <td>
-                    <v-select
-                      solo
-                      class="mt-6"
-                      v-model="employeeSex"
-                      :items="sexItems"
-                    ></v-select>
-                  </td>
-                  <td colspan="2"></td>
-                  <td>School Type:</td>
-                  <td>
-                    <v-select
-                      solo
-                      class="mt-6"
-                      :items="schoolTypeItems"
-                      v-model="schoolType"
-                      label="School Type"
-                    ></v-select>
-                  </td>
-                </tr>
-                <tr class="infoDetails">
-                  <td colspan="6" rowspan="2"></td>
-                  <td>School Size:</td>
-                  <td>
-                    <v-select
-                      solo
-                      class="mt-6"
-                      :items="schoolSizeItems"
-                      v-model="schoolSize"
-                      label="School Size"
-                    ></v-select>
-                  </td>
-                </tr>
-                <tr class="infoDetails">
-                  <td>Curricular Classification:</td>
-                  <td>
-                    <v-select
-                      solo
-                      class="mt-6"
-                      :items="classificationItems"
-                      v-model="curricularClassification"
-                      label="Curricular Classification"
-                    ></v-select>
-                  </td>
-                </tr>
-              </v-simple-table>
-
-              <v-container class="mt-5">
-                <v-row>
-                  <v-col>
-                    <v-card class="bgCard pa-2" outlined tile>
-                      <h4 class="text-center">AREA(S) OF SPECIALIZATION</h4>
-                      <h5 class="text-center grey--text">
-                        Please tick all the boxes that apply.
-                      </h5>
-
-                      <v-card flat>
-                        <v-card-text>
-                          <v-container fluid>
-                            <v-row>
-                              <v-col cols="12" lg="6" md="4">
-                                <v-checkbox
-                                  v-model="english"
-                                  label="English"
-                                  value="English"
-                                ></v-checkbox>
-
-                                <v-checkbox
-                                  v-model="filipino"
-                                  label="Filipino"
-                                  value="Filipino"
-                                ></v-checkbox>
-
-                                <v-checkbox
-                                  v-model="mathematics"
-                                  label="Mathematics"
-                                  value="Mathematics"
-                                ></v-checkbox>
-                                <v-checkbox
-                                  v-model="generalScience"
-                                  label="General Science"
-                                  value="General Science"
-                                ></v-checkbox>
-                                <v-checkbox
-                                  v-model="biology"
-                                  label="Biology"
-                                  value="Biology"
-                                ></v-checkbox>
-                                <v-checkbox
-                                  v-model="chemistry"
-                                  label="Chemistry"
-                                  value="Chemistry"
-                                ></v-checkbox>
-                                <v-checkbox
-                                  v-model="physics"
-                                  label="Physics"
-                                  value="Physics"
-                                ></v-checkbox>
-                                <v-checkbox
-                                  v-model="socialScience"
-                                  label="Social Science"
-                                  value="Social Science"
-                                ></v-checkbox>
-                                <v-checkbox
-                                  v-model="earlyChildhoodEducation"
-                                  label="Early Childhood Education"
-                                  value="Early Childhood Education"
-                                ></v-checkbox>
-                              </v-col>
-                              <v-col cols="12" lg="5" md="4">
-                                <v-checkbox
-                                  v-model="valuesEducation"
-                                  label="Values Education"
-                                  value="Values Education"
-                                ></v-checkbox>
-                                <v-checkbox
-                                  v-model="sped"
-                                  label="SPED"
-                                  value="SPED"
-                                ></v-checkbox>
-                                <v-checkbox
-                                  v-model="music"
-                                  label="Music"
-                                  value="Music"
-                                ></v-checkbox>
-                                <v-checkbox
-                                  v-model="arts"
-                                  label="Arts"
-                                  value="Arts"
-                                ></v-checkbox>
-                                <v-checkbox
-                                  v-model="physicalEducation"
-                                  label="Physical Education"
-                                  value="Physical Education"
-                                ></v-checkbox>
-                                <v-checkbox
-                                  v-model="health"
-                                  label="Health"
-                                  value="Health"
-                                ></v-checkbox>
-                                <v-checkbox
-                                  v-model="TLE_HE_TVL"
-                                  label="TLE/HE/TVL"
-                                  value="TLE/HE/TVL"
-                                ></v-checkbox>
-                                <v-checkbox
-                                  v-model="selected"
-                                  label="Others"
-                                  value="Others"
-                                ></v-checkbox>
-                                <v-text-field
-                                  v-model="specifyAreaofSpecialization"
-                                  label="Specify"
-                                  solo
-                                ></v-text-field>
-                              </v-col>
-                            </v-row>
-                          </v-container>
-                        </v-card-text>
-                      </v-card>
-                    </v-card>
-                  </v-col>
-                  <v-col order="12">
-                    <v-card class="pa-2" outlined tile>
-                      <h4 class="text-center">SUBJECT(S) TAUGHT</h4>
-                      <h5 class="text-center grey--text">
-                        Please tick all the boxes that appply.
-                      </h5>
-
-                      <v-card flat>
-                        <v-card-text>
-                          <v-container fluid>
-                            <v-row>
-                              <v-col cols="12" lg="6" md="4">
-                                <v-checkbox
-                                  v-model="MotherTongue"
-                                  label="Mother Tongue"
-                                  value="Mother Tongue"
-                                ></v-checkbox>
-
-                                <v-checkbox
-                                  v-model="Filipino"
-                                  label="Filipino"
-                                  value="Filipino"
-                                ></v-checkbox>
-
-                                <v-checkbox
-                                  v-model="English"
-                                  label="English"
-                                  value="English"
-                                ></v-checkbox>
-
-                                <v-checkbox
-                                  v-model="Mathematics"
-                                  label="Mathematics"
-                                  value="Mathematics"
-                                ></v-checkbox>
-                                <v-checkbox
-                                  v-model="Science"
-                                  label="Science"
-                                  value="Science"
-                                ></v-checkbox>
-                                <v-checkbox
-                                  v-model="AralingPanlipunan"
-                                  label="Araling Panlipunan"
-                                  value="Araling Panlipunan"
-                                ></v-checkbox>
-                                <v-checkbox
-                                  v-model="EdukasyonSaPagpapakatao"
-                                  label="Edukasyon sa Pagpapakatao"
-                                  value="Edukasyon sa Pagpapakatao"
-                                ></v-checkbox>
-                              </v-col>
-                              <v-col cols="12" lg="6" md="4">
-                                <v-checkbox
-                                  v-model="Mapeh"
-                                  label="MAPEH"
-                                  value="MAPEH"
-                                ></v-checkbox>
-                                <v-checkbox
-                                  v-model="TLE_HE"
-                                  label="TLE/HE"
-                                  value="TLE/HE"
-                                ></v-checkbox>
-                                <v-checkbox
-                                  v-model="EPP_LE_HE"
-                                  label="EPP-LE/HE"
-                                  value="EPP-LE/HE"
-                                ></v-checkbox>
-                                <v-checkbox
-                                  v-model="specialPrograms"
-                                  label="Special Programs (i.e. Journalism and Foreign Language) "
-                                  value="Special Programs"
-                                ></v-checkbox>
-
-                                <v-checkbox
-                                  v-model="selected1"
-                                  label="Others"
-                                  value="Others"
-                                ></v-checkbox>
-                                <v-text-field
-                                  v-model="specifySubjectsTaught"
-                                  label="Specify"
-                                  solo
-                                ></v-text-field>
-                              </v-col>
-                            </v-row>
-                          </v-container>
-                        </v-card-text>
-                      </v-card>
-                    </v-card>
-                  </v-col>
-                </v-row>
-                <v-row no-gutters>
-                  <v-col cols="12" sm="6" md="8"> </v-col>
-                  <v-col cols="4" md="4">
-                    <v-btn class="float-right mb-4 me-4 mt-5">NEXT</v-btn>
-                    <v-btn class="float-right mb-4 me-4 mt-5">CANCEL</v-btn>
-                  </v-col>
-                </v-row>
-              </v-container>
+              <h1 style="font-size: 20px" class="text-center font-weight-bold">
+                SY 2020-2021
+              </h1>
             </v-container>
-          </v-card>
+
+            <v-container id="disclosure" class="mt-5 pa-3">
+              <h1 class="text-center" id="privacyNote">PRIVACY NOTE</h1>
+              <v-card-text class="font-weight-medium mb-5">
+                <p id="privacy">
+                  I Authorize the personnel of Department of Education to
+                  collect, process, retain, and dispose my personal information
+                  in accordance with the Data Privacy Act of 2012.
+                </p>
+              </v-card-text>
+            </v-container>
+            <v-btn
+              class="float-left mt-5 mb-5 ml-5 font-weight-black"
+              @click="
+                returnDisclosure(), (privacyNote = false), (disclosure = true)
+              "
+              ><h3>DISAGREE</h3></v-btn
+            >
+
+            <v-btn
+              class="float-right mt-5 mb-5 mr-5 font-weight-black"
+              @click="
+                goToPart1(),
+                  (disclosure = false),
+                  (privacyNote = false),
+                  (showPart1 = true)
+              "
+              ><h3>AGREE</h3></v-btn
+            >
+          </v-container>
         </v-tab-item>
 
-        <v-tab-item :key="3" value="c3">
-          <v-card flat>
-            <v-container class="bgContainer mt-5">
-              <h1 class="heading text-center">
-                Electronic Self-Assessment Tool(e-SAT)SY 2020-2021
-              </h1>
+        <v-tab-item :key="2" value="part1" v-if="showPart1">
+          <v-container class="bgContainer mt-5">
+            <h1 class="heading text-center">
+              Electronic Self-Assessment Tool(e-SAT)SY 2020-2021
+            </h1>
 
-              <h2 class="heading text-center">
-                Teacher I-III, SPET I-IV, Instructor I-II, Special Science
-                Teacher I-II (Proficient Teachers)
-              </h2>
-              <v-container class="container">
-                <h2 class="heading mt-6">PART II. OBJECTIVES</h2>
-                <v-row>
-                  <v-col>
-                    <v-container class="part2Instruction">
-                      INSTRUCTIONS: There are two columns for every objective.
-                      Please click one circle in each column corresponding to
-                      how you rate your<b> [1] level of capability </b> and
-                      <b> [2] priority for development</b> for each objective.
-                    </v-container>
-                  </v-col>
-                </v-row>
-              </v-container>
+            <h2 class="heading text-center">
+              Teacher I-III, SPET I-IV, Instructor I-II, Special Science Teacher
+              I-II (Proficient Teachers)
+            </h2>
 
-              <v-simple-table id="objective" class="table text-center">
-                <tr>
-                  <td rowspan="3">Objectives</td>
-                  <td class="radio" colspan="4">Level of Capability</td>
-                  <td class="radio" colspan="4">Priority for Development</td>
-                </tr>
-                <tr>
-                  <td>Low</td>
-                  <td>Moderate</td>
-                  <td>High</td>
-                  <td>Very High</td>
-                  <td>Low</td>
-                  <td>Moderate</td>
-                  <td>High</td>
-                  <td>Very High</td>
-                </tr>
-                <tr>
-                  <td>1</td>
-                  <td>2</td>
-                  <td>3</td>
-                  <td>4</td>
-                  <td>1</td>
-                  <td>2</td>
-                  <td>3</td>
-                  <td>4</td>
-                </tr>
-              </v-simple-table>
+            <h2 class="heading mt-6">PART I. DEMOGRAPHIC PROFILE</h2>
+            <v-simple-table class="table part1" dense>
+              <tr class="infoDetails">
+                <td>Name of Employee:</td>
+                <td>
+                  <v-text-field
+                    class="textField mt-5"
+                    solo
+                    dense
+                    flat
+                    v-model="employeeName"
+                  ></v-text-field>
+                </td>
+                <td rowspan="8"></td>
+                <td>Number of Years in Teaching:</td>
+                <td>
+                  <v-select
+                    solo
+                    class="mt-6"
+                    v-model="yearsInTeaching"
+                    :items="yearsItems"
+                  ></v-select>
+                </td>
+                <td rowspan="8"></td>
+                <td>Region:</td>
+                <td>
+                  <v-select
+                    solo
+                    class="mt-6"
+                    :items="regionItems"
+                    v-model="region"
+                  ></v-select>
+                </td>
+              </tr>
+              <tr class="infoDetails">
+                <td>Employee ID:</td>
+                <td>
+                  <v-text-field
+                    class="mt-6"
+                    v-model="employeeId"
+                    solo
+                    dense
+                  ></v-text-field>
+                </td>
+                <td rowspan="2">Highest Degree Obtained:</td>
+                <td>
+                  <v-select
+                    solo
+                    class="mt-6"
+                    v-model="highestDegreeObtained"
+                    :items="highestDegreeItems"
+                  ></v-select>
+                </td>
+                <td>Division:</td>
+                <td>
+                  <v-select
+                    solo
+                    class="mt-6"
+                    :items="divisionItems"
+                    v-model="division"
+                  ></v-select>
+                </td>
+              </tr>
+              <tr class="infoDetails">
+                <td>Position:</td>
+                <td>
+                  <v-select
+                    :items="positionItems"
+                    solo
+                    class="mt-6"
+                    v-model="position"
+                  ></v-select>
+                </td>
+                <td>
+                  <v-select
+                    v-model="specifiedHighestDegreeObtained"
+                    :items="highestDegreeItems"
+                    class="mt-6"
+                    solo
+                    dense
+                  ></v-select>
+                </td>
+                <td>District/Municipality:</td>
+                <td>
+                  <v-text-field
+                    v-model="employeeMunicipality"
+                    class="mt-6"
+                    solo
+                    dense
+                  ></v-text-field>
+                </td>
+              </tr>
+              <tr class="infoDetails">
+                <td>Employment Status:</td>
+                <td>
+                  <v-select
+                    solo
+                    class="mt-6"
+                    v-model="employmentStatus"
+                    :items="statusItems"
+                  ></v-select>
+                </td>
+                <td>Level Taught:</td>
+                <td>
+                  <v-select
+                    solo
+                    class="mt-6"
+                    v-model="levelTaught"
+                    :items="levelTaughtItems"
+                  ></v-select>
+                </td>
+                <td>School ID:</td>
+                <td>
+                  <v-text-field
+                    v-model="schoolId"
+                    class="mt-6"
+                    solo
+                    dense
+                  ></v-text-field>
+                </td>
+              </tr>
+              <tr class="infoDetails">
+                <td>Age:</td>
+                <td>
+                  <v-select
+                    :items="ageitems"
+                    solo
+                    class="mt-6"
+                    v-model="employeeAge"
+                  ></v-select>
+                </td>
+                <td>Grade Level taught:</td>
+                <td>
+                  <v-select
+                    solo
+                    class="mt-6"
+                    v-model="gradeLevelTaught"
+                    :items="gLevelTaughtItems"
+                  ></v-select>
+                </td>
+                <td>School Name:</td>
+                <td>
+                  <v-text-field
+                    v-model="schoolName"
+                    class="mt-6"
+                    solo
+                    dense
+                  ></v-text-field>
+                </td>
+              </tr>
+              <tr class="infoDetails">
+                <td>Sex:</td>
+                <td>
+                  <v-select
+                    solo
+                    class="mt-6"
+                    v-model="employeeSex"
+                    :items="sexItems"
+                  ></v-select>
+                </td>
+                <td colspan="2"></td>
+                <td>School Type:</td>
+                <td>
+                  <v-select
+                    solo
+                    class="mt-6"
+                    :items="schoolTypeItems"
+                    v-model="schoolType"
+                    label="School Type"
+                  ></v-select>
+                </td>
+              </tr>
+              <tr class="infoDetails">
+                <td colspan="6" rowspan="2"></td>
+                <td>School Size:</td>
+                <td>
+                  <v-select
+                    solo
+                    class="mt-6"
+                    :items="schoolSizeItems"
+                    v-model="schoolSize"
+                    label="School Size"
+                  ></v-select>
+                </td>
+              </tr>
+              <tr class="infoDetails">
+                <td>Curricular Classification:</td>
+                <td>
+                  <v-select
+                    solo
+                    class="mt-6"
+                    :items="classificationItems"
+                    v-model="curricularClassification"
+                    label="Curricular Classification"
+                  ></v-select>
+                </td>
+              </tr>
+            </v-simple-table>
 
-              <v-simple-table class="table">
-                <tr>
-                  <td class="head" colspan="3">
-                    <h2>1.Content Knowledge and Pedagogy (PPST Domain 1)</h2>
-                  </td>
-                </tr>
-                <tr>
-                  <td id="description">
-                    1.1 Applied knowledge of content within and across
-                    curriculum teaching areas. (PPST Indicator 1.1.2)
-                  </td>
-                  <td class="radio">
-                    <v-radio-group id="radioBtn" v-model="capability1" row>
-                      <v-radio label="" value="low"></v-radio>
-                      <v-radio label="" value="moderate"></v-radio>
-                      <v-radio label="" value="high"></v-radio>
-                      <v-radio label="" value="very high"></v-radio>
-                    </v-radio-group>
-                  </td>
-                  <td class="radio">
-                    <v-radio-group id="radioBtn" v-model="development1" row>
-                      <v-radio label="" value="low"></v-radio>
-                      <v-radio label="" value="moderate"></v-radio>
-                      <v-radio label="" value="high"></v-radio>
-                      <v-radio label="" value="very high"></v-radio>
-                    </v-radio-group>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    1.2 Ensured the positive use of ICT to facilitate the
-                    teaching and learning learning process. (PPST Indicator
-                    1.3.2)
-                  </td>
-                  <td class="radio">
-                    <v-radio-group id="radioBtn" v-model="capability2" row>
-                      <v-radio label="" value="low"></v-radio>
-                      <v-radio label="" value="moderate"></v-radio>
-                      <v-radio label="" value="high"></v-radio>
-                      <v-radio label="" value="very high"></v-radio>
-                    </v-radio-group>
-                  </td>
-                  <td class="radio">
-                    <v-radio-group id="radioBtn" v-model="development2" row>
-                      <v-radio label="" value="low"></v-radio>
-                      <v-radio label="" value="moderate"></v-radio>
-                      <v-radio label="" value="high"></v-radio>
-                      <v-radio label="" value="very high"></v-radio>
-                    </v-radio-group>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    1.3 Applied a range of teaching strategies to develop
-                    critical and creative thinking, as well as other higher
-                    order thinking skills. (PPST Indicator 1.5.2)
-                  </td>
-                  <td>
-                    <v-radio-group id="radioBtn" v-model="capability3" row>
-                      <v-radio label="" value="low"></v-radio>
-                      <v-radio label="" value="moderate"></v-radio>
-                      <v-radio label="" value="high"></v-radio>
-                      <v-radio label="" value="very high"></v-radio>
-                    </v-radio-group>
-                  </td>
-                  <td>
-                    <v-radio-group id="radioBtn" v-model="development3" row>
-                      <v-radio label="" value="low"></v-radio>
-                      <v-radio label="" value="moderate"></v-radio>
-                      <v-radio label="" value="high"></v-radio>
-                      <v-radio label="" value="very high"></v-radio>
-                    </v-radio-group>
-                  </td>
-                </tr>
-              </v-simple-table>
+            <v-container class="mt-5">
+              <v-row>
+                <v-col>
+                  <v-card class="bgCard pa-2" outlined tile>
+                    <h4 class="text-center">AREA(S) OF SPECIALIZATION</h4>
+                    <h5 class="text-center grey--text">
+                      Please tick all the boxes that apply.
+                    </h5>
 
-              <!-- 2 -->
-              <v-simple-table class="table">
-                <tr>
-                  <td colspan="3" class="head">
-                    <h2>
-                      2. Diversity of Learners & Assessment and Reporting (PPST
-                      Domain 2 and Domain 5)
-                    </h2>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    2.1 Established a learner-centered culture by using teaching
-                    strategies that respond to their linguistic, cultural,
-                    socio-economic and religious backgrounds.
-                  </td>
-                  <td class="radio">
-                    <v-radio-group id="radioBtn" v-model="capability4" row>
-                      <v-radio label="" value="low"></v-radio>
-                      <v-radio label="" value="moderate"></v-radio>
-                      <v-radio label="" value="high"></v-radio>
-                      <v-radio label="" value="very high"></v-radio>
-                    </v-radio-group>
-                  </td>
-                  <td class="radio">
-                    <v-radio-group id="radioBtn" v-model="development4" row>
-                      <v-radio label="" value="low"></v-radio>
-                      <v-radio label="" value="moderate"></v-radio>
-                      <v-radio label="" value="high"></v-radio>
-                      <v-radio label="" value="very high"></v-radio>
-                    </v-radio-group>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    2.2 Planned and delivered teaching strategies that are
-                    responsive to the special educational needs of learners in
-                    difficult circumstances, including: geographic isolation;
-                    chronic illness; displacement due to armed conflict, urban
-                    resettlement or disasters; child labor practices. (PPST
-                    Indicator 3.4.2)
-                  </td>
-                  <td class="radio">
-                    <v-radio-group id="radioBtn" v-model="capability5" row>
-                      <v-radio label="" value="low"></v-radio>
-                      <v-radio label="" value="moderate"></v-radio>
-                      <v-radio label="" value="high"></v-radio>
-                      <v-radio label="" value="very high"></v-radio>
-                    </v-radio-group>
-                  </td>
-                  <td class="radio">
-                    <v-radio-group id="radioBtn" v-model="development5" row>
-                      <v-radio label="" value="low"></v-radio>
-                      <v-radio label="" value="moderate"></v-radio>
-                      <v-radio label="" value="high"></v-radio>
-                      <v-radio label="" value="very high"></v-radio>
-                    </v-radio-group>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    2.3 Used strategies for providing timely, accurate and
-                    constructive feedback to improve learner performance. (PPST
-                    Indicator 5.3.2)
-                  </td>
-                  <td class="radio">
-                    <v-radio-group id="radioBtn" v-model="capability6" row>
-                      <v-radio label="" value="low"></v-radio>
-                      <v-radio label="" value="moderate"></v-radio>
-                      <v-radio label="" value="high"></v-radio>
-                      <v-radio label="" value="very high"></v-radio>
-                    </v-radio-group>
-                  </td>
-                  <td class="radio">
-                    <v-radio-group id="radioBtn" v-model="development6" row>
-                      <v-radio label="" value="low"></v-radio>
-                      <v-radio label="" value="moderate"></v-radio>
-                      <v-radio label="" value="high"></v-radio>
-                      <v-radio label="" value="very high"></v-radio>
-                    </v-radio-group>
-                  </td>
-                </tr>
-              </v-simple-table>
-              <!-- 3 -->
+                    <v-card flat>
+                      <v-card-text>
+                        <v-container fluid>
+                          <v-row>
+                            <v-col cols="12" lg="6" md="4">
+                              <v-checkbox
+                                v-model="english"
+                                label="English"
+                                value="English"
+                              ></v-checkbox>
 
-              <v-simple-table class="table">
-                <tr>
-                  <td colspan="3" class="head">
-                    <h2>3. Curriculum and Planning (PPST Domain 4)</h2>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    3.1 Selected, developed, organized and used appropriate
-                    teaching and learning resources, including ICT, to address
-                    learning goals. (PPST Indicator 4.5.2)
-                  </td>
-                  <td class="radio">
-                    <v-radio-group id="radioBtn" v-model="capability7" row>
-                      <v-radio label="" value="low"></v-radio>
-                      <v-radio label="" value="moderate"></v-radio>
-                      <v-radio label="" value="high"></v-radio>
-                      <v-radio label="" value="very high"></v-radio>
-                    </v-radio-group>
-                  </td>
-                  <td class="radio">
-                    <v-radio-group id="radioBtn" v-model="development7" row>
-                      <v-radio label="" value="low"></v-radio>
-                      <v-radio label="" value="moderate"></v-radio>
-                      <v-radio label="" value="high"></v-radio>
-                      <v-radio label="" value="very high"></v-radio>
-                    </v-radio-group>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    3.2 Set achievable and appropriate learning outcomes that
-                    are aligned with learning competencies. (PPST Indicator
-                    4.2.2)
-                  </td>
-                  <td class="radio">
-                    <v-radio-group id="radioBtn" v-model="capability8" row>
-                      <v-radio label="" value="low"></v-radio>
-                      <v-radio label="" value="moderate"></v-radio>
-                      <v-radio label="" value="high"></v-radio>
-                      <v-radio label="" value="very high"></v-radio>
-                    </v-radio-group>
-                  </td>
-                  <td class="radio">
-                    <v-radio-group id="radioBtn" v-model="development8" row>
-                      <v-radio label="" value="low"></v-radio>
-                      <v-radio label="" value="moderate"></v-radio>
-                      <v-radio label="" value="high"></v-radio>
-                      <v-radio label="" value="very high"></v-radio>
-                    </v-radio-group>
-                  </td>
-                </tr>
-              </v-simple-table>
+                              <v-checkbox
+                                v-model="filipino"
+                                label="Filipino"
+                                value="Filipino"
+                              ></v-checkbox>
 
-              <!-- 4 -->
-              <v-simple-table class="table">
-                <tr>
-                  <td colspan="3" class="head">
-                    <h2>
-                      4. Community Linkages and Professional Engagement &
-                      Personal Growth and Professional Development (PPST Domain
-                      6 and 7)
-                    </h2>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    4.1 Built relationships with parents/guardians and the wider
-                    school community to facilitate involvement in the educative
-                    process. (PPST Indicator 6.2.2)
-                  </td>
-                  <td class="radio">
-                    <v-radio-group id="radioBtn" v-model="capability9" row>
-                      <v-radio label="" value="low"></v-radio>
-                      <v-radio label="" value="moderate"></v-radio>
-                      <v-radio label="" value="high"></v-radio>
-                      <v-radio label="" value="very high"></v-radio>
-                    </v-radio-group>
-                  </td>
-                  <td class="radio">
-                    <v-radio-group id="radioBtn" v-model="development9" row>
-                      <v-radio label="" value="low"></v-radio>
-                      <v-radio label="" value="moderate"></v-radio>
-                      <v-radio label="" value="high"></v-radio>
-                      <v-radio label="" value="very high"></v-radio>
-                    </v-radio-group>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    4.2 Participates in professional networks to share knowledge
-                    and to enhance practice. (PPST Indicator 7.3.2)
-                  </td>
-                  <td class="radio">
-                    <v-radio-group id="radioBtn" v-model="capability10" row>
-                      <v-radio label="" value="low"></v-radio>
-                      <v-radio label="" value="moderate"></v-radio>
-                      <v-radio label="" value="high"></v-radio>
-                      <v-radio label="" value="very high"></v-radio>
-                    </v-radio-group>
-                  </td>
-                  <td class="radio">
-                    <v-radio-group id="radioBtn" v-model="development10" row>
-                      <v-radio label="" value="low"></v-radio>
-                      <v-radio label="" value="moderate"></v-radio>
-                      <v-radio label="" value="high"></v-radio>
-                      <v-radio label="" value="very high"></v-radio>
-                    </v-radio-group>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    4.3 Developed a personal improvement plan based on
-                    reflection of one’s practice and ongoing professional
-                    learning. (PPST Indicator 7.4.2)
-                  </td>
-                  <td class="radio">
-                    <v-radio-group id="radioBtn" v-model="capability11" row>
-                      <v-radio label="" value="low"></v-radio>
-                      <v-radio label="" value="moderate"></v-radio>
-                      <v-radio label="" value="high"></v-radio>
-                      <v-radio label="" value="very high"></v-radio>
-                    </v-radio-group>
-                  </td>
-                  <td class="radio">
-                    <v-radio-group id="radioBtn" v-model="development11" row>
-                      <v-radio label="" value="low"></v-radio>
-                      <v-radio label="" value="moderate"></v-radio>
-                      <v-radio label="" value="high"></v-radio>
-                      <v-radio label="" value="very high"></v-radio>
-                    </v-radio-group>
-                  </td>
-                </tr>
-              </v-simple-table>
-
-              <!-- 5 -->
-              <v-simple-table class="table">
-                <tr>
-                  <td colspan="3" class="head"><h2>PLUS FACTOR</h2></td>
-                </tr>
-                <tr>
-                  <td>
-                    5.1 Performed various related works/activities that
-                    contribute to the teaching-learning process.
-                  </td>
-                  <td class="radio">
-                    <v-radio-group id="radioBtn" v-model="capability12" row>
-                      <v-radio label="" value="low"></v-radio>
-                      <v-radio label="" value="moderate"></v-radio>
-                      <v-radio label="" value="high"></v-radio>
-                      <v-radio label="" value="very high"></v-radio>
-                    </v-radio-group>
-                  </td>
-                  <td class="radio">
-                    <v-radio-group id="radioBtn" v-model="development12" row>
-                      <v-radio label="" value="low"></v-radio>
-                      <v-radio label="" value="moderate"></v-radio>
-                      <v-radio label="" value="high"></v-radio>
-                      <v-radio label="" value="very high"></v-radio>
-                    </v-radio-group>
-                  </td>
-                </tr>
-              </v-simple-table>
-              <!-- comments -->
-              <v-row no-gutters>
-                <v-col cols="12" lg="12" md="8">
-                  <v-col cols="12" lg="12" md="8">
-                    <v-card class="pa-2 font-weight-bold" outlined tile>
-                      Personal Comments
+                              <v-checkbox
+                                v-model="mathematics"
+                                label="Mathematics"
+                                value="Mathematics"
+                              ></v-checkbox>
+                              <v-checkbox
+                                v-model="generalScience"
+                                label="General Science"
+                                value="General Science"
+                              ></v-checkbox>
+                              <v-checkbox
+                                v-model="biology"
+                                label="Biology"
+                                value="Biology"
+                              ></v-checkbox>
+                              <v-checkbox
+                                v-model="chemistry"
+                                label="Chemistry"
+                                value="Chemistry"
+                              ></v-checkbox>
+                              <v-checkbox
+                                v-model="physics"
+                                label="Physics"
+                                value="Physics"
+                              ></v-checkbox>
+                              <v-checkbox
+                                v-model="socialScience"
+                                label="Social Science"
+                                value="Social Science"
+                              ></v-checkbox>
+                              <v-checkbox
+                                v-model="earlyChildhoodEducation"
+                                label="Early Childhood Education"
+                                value="Early Childhood Education"
+                              ></v-checkbox>
+                            </v-col>
+                            <v-col cols="12" lg="5" md="4">
+                              <v-checkbox
+                                v-model="valuesEducation"
+                                label="Values Education"
+                                value="Values Education"
+                              ></v-checkbox>
+                              <v-checkbox
+                                v-model="sped"
+                                label="SPED"
+                                value="SPED"
+                              ></v-checkbox>
+                              <v-checkbox
+                                v-model="music"
+                                label="Music"
+                                value="Music"
+                              ></v-checkbox>
+                              <v-checkbox
+                                v-model="arts"
+                                label="Arts"
+                                value="Arts"
+                              ></v-checkbox>
+                              <v-checkbox
+                                v-model="physicalEducation"
+                                label="Physical Education"
+                                value="Physical Education"
+                              ></v-checkbox>
+                              <v-checkbox
+                                v-model="health"
+                                label="Health"
+                                value="Health"
+                              ></v-checkbox>
+                              <v-checkbox
+                                v-model="TLE_HE_TVL"
+                                label="TLE/HE/TVL"
+                                value="TLE/HE/TVL"
+                              ></v-checkbox>
+                              <v-checkbox
+                                v-model="selected"
+                                label="Others"
+                                value="Others"
+                              ></v-checkbox>
+                              <v-text-field
+                                v-model="otherSpecialized"
+                                label="Specify"
+                                solo
+                              ></v-text-field>
+                            </v-col>
+                          </v-row>
+                        </v-container>
+                      </v-card-text>
                     </v-card>
-                    <v-text-field
-                      v-model="personalComments"
-                      label=""
-                      solo
-                      outlined
-                      dense
-                    ></v-text-field>
-                    <v-btn class="float-right mb-4 me-4 mt-5">NEXT</v-btn>
-                    <v-btn class="float-right mb-4 me-4 mt-5">BACK</v-btn>
-                  </v-col>
+                  </v-card>
+                </v-col>
+                <v-col order="12">
+                  <v-card class="pa-2" outlined tile>
+                    <h4 class="text-center">SUBJECT(S) TAUGHT</h4>
+                    <h5 class="text-center grey--text">
+                      Please tick all the boxes that appply.
+                    </h5>
+
+                    <v-card flat>
+                      <v-card-text>
+                        <v-container fluid>
+                          <v-row>
+                            <v-col cols="12" lg="6" md="4">
+                              <v-checkbox
+                                v-model="MotherTongue"
+                                label="Mother Tongue"
+                                value="Mother Tongue"
+                              ></v-checkbox>
+
+                              <v-checkbox
+                                v-model="Filipino"
+                                label="Filipino"
+                                value="Filipino"
+                              ></v-checkbox>
+
+                              <v-checkbox
+                                v-model="English"
+                                label="English"
+                                value="English"
+                              ></v-checkbox>
+
+                              <v-checkbox
+                                v-model="Mathematics"
+                                label="Mathematics"
+                                value="Mathematics"
+                              ></v-checkbox>
+                              <v-checkbox
+                                v-model="Science"
+                                label="Science"
+                                value="Science"
+                              ></v-checkbox>
+                              <v-checkbox
+                                v-model="AralingPanlipunan"
+                                label="Araling Panlipunan"
+                                value="Araling Panlipunan"
+                              ></v-checkbox>
+                              <v-checkbox
+                                v-model="EdukasyonSaPagpapakatao"
+                                label="Edukasyon sa Pagpapakatao"
+                                value="Edukasyon sa Pagpapakatao"
+                              ></v-checkbox>
+                            </v-col>
+                            <v-col cols="12" lg="6" md="4">
+                              <v-checkbox
+                                v-model="Mapeh"
+                                label="MAPEH"
+                                value="MAPEH"
+                              ></v-checkbox>
+                              <v-checkbox
+                                v-model="TLE_HE"
+                                label="TLE/HE"
+                                value="TLE/HE"
+                              ></v-checkbox>
+                              <v-checkbox
+                                v-model="EPP_LE_HE"
+                                label="EPP-LE/HE"
+                                value="EPP-LE/HE"
+                              ></v-checkbox>
+                              <v-checkbox
+                                v-model="specialPrograms"
+                                label="Special Programs (i.e. Journalism and Foreign Language) "
+                                value="Special Programs"
+                              ></v-checkbox>
+
+                              <v-checkbox
+                                v-model="selected1"
+                                label="Others"
+                                value="Others"
+                              ></v-checkbox>
+                              <v-text-field
+                                v-model="otherSubTaught"
+                                label="Specify"
+                                solo
+                              ></v-text-field>
+                            </v-col>
+                          </v-row>
+                        </v-container>
+                      </v-card-text>
+                    </v-card>
+                  </v-card>
+                </v-col>
+              </v-row>
+              <v-row no-gutters>
+                <v-col cols="12" sm="6" md="8"> </v-col>
+                <v-col cols="4" md="4">
+                  <v-btn
+                    class="float-right mb-4 me-4 mt-5"
+                    @click="
+                      goToPart2(), (showPart1 = false), (showPart2 = true)
+                    "
+                    >NEXT</v-btn
+                  >
+                  <v-btn
+                    class="float-right mb-4 me-4 mt-5"
+                    @click="
+                      returnPrivacyNote(),
+                        (showPart1 = false),
+                        (privacyNote = true),
+                        (disclosure = false)
+                    "
+                    >CANCEL</v-btn
+                  >
                 </v-col>
               </v-row>
             </v-container>
-          </v-card>
+          </v-container>
         </v-tab-item>
 
-        <v-tab-item :key="4" value="c4">
+        <v-tab-item :key="3" value="part2" v-if="showPart2">
+          <v-container class="bgContainer mt-5">
+            <h1 class="heading text-center">
+              Electronic Self-Assessment Tool(e-SAT)SY 2020-2021
+            </h1>
+
+            <h2 class="heading text-center">
+              Teacher I-III, SPET I-IV, Instructor I-II, Special Science Teacher
+              I-II (Proficient Teachers)
+            </h2>
+            <v-container class="container">
+              <h2 class="heading mt-6">PART II. OBJECTIVES</h2>
+              <v-row>
+                <v-col>
+                  <v-container class="part2Instruction">
+                    INSTRUCTIONS: There are two columns for every objective.
+                    Please click one circle in each column corresponding to how
+                    you rate your<b> [1] level of capability </b> and
+                    <b> [2] priority for development</b> for each objective.
+                  </v-container>
+                </v-col>
+              </v-row>
+            </v-container>
+
+            <v-simple-table id="objective" class="table text-center">
+              <tr>
+                <td rowspan="3">Objectives</td>
+                <td class="radio" colspan="4">Level of Capability</td>
+                <td class="radio" colspan="4">Priority for Development</td>
+              </tr>
+              <tr>
+                <td>Low</td>
+                <td>Moderate</td>
+                <td>High</td>
+                <td>Very High</td>
+                <td>Low</td>
+                <td>Moderate</td>
+                <td>High</td>
+                <td>Very High</td>
+              </tr>
+              <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+              </tr>
+            </v-simple-table>
+
+            <v-simple-table class="table">
+              <tr>
+                <td class="head" colspan="3">
+                  <h2>1.Content Knowledge and Pedagogy (PPST Domain 1)</h2>
+                </td>
+              </tr>
+              <tr>
+                <td id="description">
+                  1.1 Applied knowledge of content within and across curriculum
+                  teaching areas. (PPST Indicator 1.1.2)
+                </td>
+                <td class="radio">
+                  <v-radio-group id="radioBtn" v-model="capability1" row>
+                    <v-radio label="" value="low"></v-radio>
+                    <v-radio label="" value="moderate"></v-radio>
+                    <v-radio label="" value="high"></v-radio>
+                    <v-radio label="" value="very high"></v-radio>
+                  </v-radio-group>
+                </td>
+                <td class="radio">
+                  <v-radio-group id="radioBtn" v-model="development1" row>
+                    <v-radio label="" value="low"></v-radio>
+                    <v-radio label="" value="moderate"></v-radio>
+                    <v-radio label="" value="high"></v-radio>
+                    <v-radio label="" value="very high"></v-radio>
+                  </v-radio-group>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  1.2 Ensured the positive use of ICT to facilitate the teaching
+                  and learning learning process. (PPST Indicator 1.3.2)
+                </td>
+                <td class="radio">
+                  <v-radio-group id="radioBtn" v-model="capability2" row>
+                    <v-radio label="" value="low"></v-radio>
+                    <v-radio label="" value="moderate"></v-radio>
+                    <v-radio label="" value="high"></v-radio>
+                    <v-radio label="" value="very high"></v-radio>
+                  </v-radio-group>
+                </td>
+                <td class="radio">
+                  <v-radio-group id="radioBtn" v-model="development2" row>
+                    <v-radio label="" value="low"></v-radio>
+                    <v-radio label="" value="moderate"></v-radio>
+                    <v-radio label="" value="high"></v-radio>
+                    <v-radio label="" value="very high"></v-radio>
+                  </v-radio-group>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  1.3 Applied a range of teaching strategies to develop critical
+                  and creative thinking, as well as other higher order thinking
+                  skills. (PPST Indicator 1.5.2)
+                </td>
+                <td>
+                  <v-radio-group id="radioBtn" v-model="capability3" row>
+                    <v-radio label="" value="low"></v-radio>
+                    <v-radio label="" value="moderate"></v-radio>
+                    <v-radio label="" value="high"></v-radio>
+                    <v-radio label="" value="very high"></v-radio>
+                  </v-radio-group>
+                </td>
+                <td>
+                  <v-radio-group id="radioBtn" v-model="development3" row>
+                    <v-radio label="" value="low"></v-radio>
+                    <v-radio label="" value="moderate"></v-radio>
+                    <v-radio label="" value="high"></v-radio>
+                    <v-radio label="" value="very high"></v-radio>
+                  </v-radio-group>
+                </td>
+              </tr>
+            </v-simple-table>
+
+            <!-- 2 -->
+            <v-simple-table class="table">
+              <tr>
+                <td colspan="3" class="head">
+                  <h2>
+                    2. Diversity of Learners & Assessment and Reporting (PPST
+                    Domain 2 and Domain 5)
+                  </h2>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  2.1 Established a learner-centered culture by using teaching
+                  strategies that respond to their linguistic, cultural,
+                  socio-economic and religious backgrounds.
+                </td>
+                <td class="radio">
+                  <v-radio-group id="radioBtn" v-model="capability4" row>
+                    <v-radio label="" value="low"></v-radio>
+                    <v-radio label="" value="moderate"></v-radio>
+                    <v-radio label="" value="high"></v-radio>
+                    <v-radio label="" value="very high"></v-radio>
+                  </v-radio-group>
+                </td>
+                <td class="radio">
+                  <v-radio-group id="radioBtn" v-model="development4" row>
+                    <v-radio label="" value="low"></v-radio>
+                    <v-radio label="" value="moderate"></v-radio>
+                    <v-radio label="" value="high"></v-radio>
+                    <v-radio label="" value="very high"></v-radio>
+                  </v-radio-group>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  2.2 Planned and delivered teaching strategies that are
+                  responsive to the special educational needs of learners in
+                  difficult circumstances, including: geographic isolation;
+                  chronic illness; displacement due to armed conflict, urban
+                  resettlement or disasters; child labor practices. (PPST
+                  Indicator 3.4.2)
+                </td>
+                <td class="radio">
+                  <v-radio-group id="radioBtn" v-model="capability5" row>
+                    <v-radio label="" value="low"></v-radio>
+                    <v-radio label="" value="moderate"></v-radio>
+                    <v-radio label="" value="high"></v-radio>
+                    <v-radio label="" value="very high"></v-radio>
+                  </v-radio-group>
+                </td>
+                <td class="radio">
+                  <v-radio-group id="radioBtn" v-model="development5" row>
+                    <v-radio label="" value="low"></v-radio>
+                    <v-radio label="" value="moderate"></v-radio>
+                    <v-radio label="" value="high"></v-radio>
+                    <v-radio label="" value="very high"></v-radio>
+                  </v-radio-group>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  2.3 Used strategies for providing timely, accurate and
+                  constructive feedback to improve learner performance. (PPST
+                  Indicator 5.3.2)
+                </td>
+                <td class="radio">
+                  <v-radio-group id="radioBtn" v-model="capability6" row>
+                    <v-radio label="" value="low"></v-radio>
+                    <v-radio label="" value="moderate"></v-radio>
+                    <v-radio label="" value="high"></v-radio>
+                    <v-radio label="" value="very high"></v-radio>
+                  </v-radio-group>
+                </td>
+                <td class="radio">
+                  <v-radio-group id="radioBtn" v-model="development6" row>
+                    <v-radio label="" value="low"></v-radio>
+                    <v-radio label="" value="moderate"></v-radio>
+                    <v-radio label="" value="high"></v-radio>
+                    <v-radio label="" value="very high"></v-radio>
+                  </v-radio-group>
+                </td>
+              </tr>
+            </v-simple-table>
+            <!-- 3 -->
+
+            <v-simple-table class="table">
+              <tr>
+                <td colspan="3" class="head">
+                  <h2>3. Curriculum and Planning (PPST Domain 4)</h2>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  3.1 Selected, developed, organized and used appropriate
+                  teaching and learning resources, including ICT, to address
+                  learning goals. (PPST Indicator 4.5.2)
+                </td>
+                <td class="radio">
+                  <v-radio-group id="radioBtn" v-model="capability7" row>
+                    <v-radio label="" value="low"></v-radio>
+                    <v-radio label="" value="moderate"></v-radio>
+                    <v-radio label="" value="high"></v-radio>
+                    <v-radio label="" value="very high"></v-radio>
+                  </v-radio-group>
+                </td>
+                <td class="radio">
+                  <v-radio-group id="radioBtn" v-model="development7" row>
+                    <v-radio label="" value="low"></v-radio>
+                    <v-radio label="" value="moderate"></v-radio>
+                    <v-radio label="" value="high"></v-radio>
+                    <v-radio label="" value="very high"></v-radio>
+                  </v-radio-group>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  3.2 Set achievable and appropriate learning outcomes that are
+                  aligned with learning competencies. (PPST Indicator 4.2.2)
+                </td>
+                <td class="radio">
+                  <v-radio-group id="radioBtn" v-model="capability8" row>
+                    <v-radio label="" value="low"></v-radio>
+                    <v-radio label="" value="moderate"></v-radio>
+                    <v-radio label="" value="high"></v-radio>
+                    <v-radio label="" value="very high"></v-radio>
+                  </v-radio-group>
+                </td>
+                <td class="radio">
+                  <v-radio-group id="radioBtn" v-model="development8" row>
+                    <v-radio label="" value="low"></v-radio>
+                    <v-radio label="" value="moderate"></v-radio>
+                    <v-radio label="" value="high"></v-radio>
+                    <v-radio label="" value="very high"></v-radio>
+                  </v-radio-group>
+                </td>
+              </tr>
+            </v-simple-table>
+
+            <!-- 4 -->
+            <v-simple-table class="table">
+              <tr>
+                <td colspan="3" class="head">
+                  <h2>
+                    4. Community Linkages and Professional Engagement & Personal
+                    Growth and Professional Development (PPST Domain 6 and 7)
+                  </h2>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  4.1 Built relationships with parents/guardians and the wider
+                  school community to facilitate involvement in the educative
+                  process. (PPST Indicator 6.2.2)
+                </td>
+                <td class="radio">
+                  <v-radio-group id="radioBtn" v-model="capability9" row>
+                    <v-radio label="" value="low"></v-radio>
+                    <v-radio label="" value="moderate"></v-radio>
+                    <v-radio label="" value="high"></v-radio>
+                    <v-radio label="" value="very high"></v-radio>
+                  </v-radio-group>
+                </td>
+                <td class="radio">
+                  <v-radio-group id="radioBtn" v-model="development9" row>
+                    <v-radio label="" value="low"></v-radio>
+                    <v-radio label="" value="moderate"></v-radio>
+                    <v-radio label="" value="high"></v-radio>
+                    <v-radio label="" value="very high"></v-radio>
+                  </v-radio-group>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  4.2 Participates in professional networks to share knowledge
+                  and to enhance practice. (PPST Indicator 7.3.2)
+                </td>
+                <td class="radio">
+                  <v-radio-group id="radioBtn" v-model="capability10" row>
+                    <v-radio label="" value="low"></v-radio>
+                    <v-radio label="" value="moderate"></v-radio>
+                    <v-radio label="" value="high"></v-radio>
+                    <v-radio label="" value="very high"></v-radio>
+                  </v-radio-group>
+                </td>
+                <td class="radio">
+                  <v-radio-group id="radioBtn" v-model="development10" row>
+                    <v-radio label="" value="low"></v-radio>
+                    <v-radio label="" value="moderate"></v-radio>
+                    <v-radio label="" value="high"></v-radio>
+                    <v-radio label="" value="very high"></v-radio>
+                  </v-radio-group>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  4.3 Developed a personal improvement plan based on reflection
+                  of one’s practice and ongoing professional learning. (PPST
+                  Indicator 7.4.2)
+                </td>
+                <td class="radio">
+                  <v-radio-group id="radioBtn" v-model="capability11" row>
+                    <v-radio label="" value="low"></v-radio>
+                    <v-radio label="" value="moderate"></v-radio>
+                    <v-radio label="" value="high"></v-radio>
+                    <v-radio label="" value="very high"></v-radio>
+                  </v-radio-group>
+                </td>
+                <td class="radio">
+                  <v-radio-group id="radioBtn" v-model="development11" row>
+                    <v-radio label="" value="low"></v-radio>
+                    <v-radio label="" value="moderate"></v-radio>
+                    <v-radio label="" value="high"></v-radio>
+                    <v-radio label="" value="very high"></v-radio>
+                  </v-radio-group>
+                </td>
+              </tr>
+            </v-simple-table>
+
+            <!-- 5 -->
+            <v-simple-table class="table">
+              <tr>
+                <td colspan="3" class="head"><h2>PLUS FACTOR</h2></td>
+              </tr>
+              <tr>
+                <td>
+                  5.1 Performed various related works/activities that contribute
+                  to the teaching-learning process.
+                </td>
+                <td class="radio">
+                  <v-radio-group id="radioBtn" v-model="capability12" row>
+                    <v-radio label="" value="low"></v-radio>
+                    <v-radio label="" value="moderate"></v-radio>
+                    <v-radio label="" value="high"></v-radio>
+                    <v-radio label="" value="very high"></v-radio>
+                  </v-radio-group>
+                </td>
+                <td class="radio">
+                  <v-radio-group id="radioBtn" v-model="development12" row>
+                    <v-radio label="" value="low"></v-radio>
+                    <v-radio label="" value="moderate"></v-radio>
+                    <v-radio label="" value="high"></v-radio>
+                    <v-radio label="" value="very high"></v-radio>
+                  </v-radio-group>
+                </td>
+              </tr>
+            </v-simple-table>
+            <!-- comments -->
+            <v-row no-gutters>
+              <v-col cols="12" lg="12" md="8">
+                <v-col cols="12" lg="12" md="8">
+                  <v-card class="pa-2 font-weight-bold" outlined tile>
+                    Personal Comments
+                  </v-card>
+                  <v-text-field
+                    v-model="personalComments"
+                    label=""
+                    solo
+                    outlined
+                    dense
+                  ></v-text-field>
+                  <v-btn
+                    class="float-right mb-4 me-4 mt-5"
+                    @click="
+                      goToPart3(), (showPart2 = false), (showPart3 = true)
+                    "
+                    >NEXT</v-btn
+                  >
+                  <v-btn
+                    class="float-right mb-4 me-4 mt-5"
+                    @click="
+                      returnPart1(), (showPart2 = false), (showPart1 = true)
+                    "
+                    >BACK</v-btn
+                  >
+                </v-col>
+              </v-col>
+            </v-row>
+          </v-container>
+        </v-tab-item>
+
+        <v-tab-item :key="4" value="part3" v-if="showPart3">
           <v-container class="bgContainer mt-5">
             <h1 class="text-center">
               Electronic Self-Assessment Tool(e-SAT)SY 2020-2021
@@ -1389,11 +1417,22 @@
                   <v-col cols="12" sm="6" md="8"> </v-col>
                   <v-col cols="4" md="4">
                     <v-btn
-                      class="float-right mb-4 me-4 mt-5"
+                      class="float-right mb-4 me-4 mt-5" v-if="saveInfos"
                       @click="finalizeEsat"
                       >SAVE</v-btn
                     >
-                    <v-btn class="float-right mb-4 me-4 mt-5">BACK</v-btn>
+                      <v-btn
+                      class="float-right mb-4 me-4 mt-5" v-if="updateInfos"
+                      >UPDATE</v-btn
+                    >
+                    <v-btn
+                    
+                      class="float-right mb-4 me-4 mt-5"
+                      @click="
+                        returnPart2(), (showPart3 = false), (showPart2 = true)
+                      "
+                      >BACK</v-btn
+                    >
                   </v-col>
                 </v-row>
               </v-col>
@@ -1401,7 +1440,7 @@
           </v-container>
         </v-tab-item>
 
-        <v-tab-item :key="5" value="c5">
+        <v-tab-item :key="5" value="show_print">
           <v-card flat>
             <v-container class="mt-5">
               <h2 class="heading text-center">
@@ -1928,8 +1967,19 @@
                 <v-row no-gutters>
                   <v-col cols="12" sm="6" md="8"> </v-col>
                   <v-col cols="4" md="4">
-                    <v-btn class="float-right mb-4 me-4 mt-5">FINISH</v-btn>
                     <v-btn class="float-right mb-4 me-4 mt-5">PRINT</v-btn>
+                    <v-btn
+                      class="float-right mb-4 me-4 mt-5"
+                      @click="goToEsatCard(), (esatCard = true)"
+                      >FINISH</v-btn
+                    >
+                    <v-btn
+                      class="float-right mb-4 me-4 mt-5"
+                      @click="
+                        editInfo(), (showPrint = false), (showPart1 = true), updateInfos = true, saveInfos = false
+                      "
+                      >EDIT</v-btn
+                    >
                   </v-col>
                 </v-row>
               </v-container>
@@ -1940,24 +1990,23 @@
           </v-card>
         </v-tab-item>
 
-        <v-tab-item :key="6" value="c6">
+        <v-tab-item :key="6" value="esat_card" v-if="esatCard">
           <v-container class="mt-5 mb-5 p-5">
             <v-card class="bgCard pa-2" id="cardEsat">
               <h2 class="heading ml-5">ELECTRONIC SELF-ASSESMENT TOOL</h2>
-               <v-row no-gutters>
-                  <v-col cols="2">
-                    <v-img
-                      id="esatLogocard"
-                      :src="require('../assets/esatlogo.png')"
-                    ></v-img>
-                  </v-col>
-                  <v-col cols="5" class="ml=2">
-                    <v-container id="esatTxt" class="container-fluid">
-                     
-                      <h3 class="text-left font-weight-bold">SY 2020-2021</h3>
-                    </v-container>
-                  </v-col>
-                </v-row>
+              <v-row no-gutters>
+                <v-col cols="2">
+                  <v-img
+                    id="esatLogocard"
+                    :src="require('../assets/esatlogo.png')"
+                  ></v-img>
+                </v-col>
+                <v-col cols="5" class="ml=2">
+                  <v-container id="esatTxt" class="container-fluid">
+                    <h3 class="text-left font-weight-bold">SY 2020-2021</h3>
+                  </v-container>
+                </v-col>
+              </v-row>
 
               <h3 class="heading mt-2" id="ecard">Survey Completed</h3>
 
@@ -2002,8 +2051,60 @@
 <script>
 // @ is an alias to /src
 export default {
+  methods: {},
   data() {
     return {
+      goToPrivacy() {
+        this.tab = "privacy";
+      },
+      returnDisclosure() {
+        this.tab = "subscribe";
+      },
+      returnPrivacyNote() {
+        this.tab = "privacy";
+      },
+      goToPart1() {
+        this.tab = "part1";
+      },
+      returnPart1() {
+        this.tab = "part1";
+      },
+      goToPart2() {
+        this.tab = "part2";
+      },
+      returnPart2() {
+        this.tab = "part2";
+      },
+      goToPart3() {
+        this.tab = "part3";
+      },
+      returnPart3() {
+        this.tab = "part3";
+      },
+      // goToShowPrint() {
+      //   this.tab = "show_print";
+      // },
+      editInfo() {
+        this.tab = "part1";
+      },
+      // returnShowPrint() {
+      //   this.tab = "show_print";
+      // },
+      goToEsatCard() {
+        this.tab = "esat_card";
+      },
+      // returnEsatCard() {
+      //   this.tab = "esat_card";
+      // },
+      disclosure: true,
+      privacyNote: false,
+      showPart1: false,
+      showPart2: false,
+      showPart3: false,
+      // showPrint: false,
+      // esatCard: false,
+      saveInfos:true,
+      updateInfos:false,
       positionItems: [
         "Teacher I",
         "Teacher II",
@@ -2166,7 +2267,7 @@ export default {
       health: "",
       TLE_HE_TVL: "",
       selected: "",
-      specifyAreaofSpecialization: "",
+      otherSpecialized: "",
 
       MotherTongue: "",
       Filipino: "",
@@ -2180,7 +2281,7 @@ export default {
       EPP_LE_HE: "",
       specialPrograms: "",
       selected1: "",
-      specifySubjectsTaught: "",
+      otherSubTaught: "",
 
       capability1: "",
       development1: "",
@@ -2277,19 +2378,26 @@ export default {
       const generalScience =
         this.generalScience == null ? "" : this.generalScience;
       const biology = this.biology == null ? "" : this.biology;
-      const chemistry = this.chemistry;
-      const physics = this.physics;
-      const socialScience = this.socialScience;
-      const earlyChildhoodEducation = this.earlyChildhoodEducation;
-      const valuesEducation = this.valuesEducation;
-      const sped = this.sped;
-      const music = this.music;
-      const arts = this.arts;
-      const physicalEducation = this.physicalEducation;
-      const health = this.health;
-      const TLE_HE_TVL = this.TLE_HE_TVL;
+      const chemistry = this.chemistry == null ? "" : this.chemistry;
+      const physics = this.physics == null ? "" : this.physics;
+      const socialScience =
+        this.socialScience == null ? "" : this.socialScience;
+      const earlyChildhoodEducation =
+        this.earlyChildhoodEducation == null
+          ? ""
+          : this.earlyChildhoodEducation;
+      const valuesEducation =
+        this.valuesEducation == null ? "" : this.valuesEducation;
+      const sped = this.sped == null ? "" : this.sped;
+      const music = this.music == null ? "" : this.music;
+      const arts = this.arts == null ? "" : this.arts;
+      const physicalEducation =
+        this.physicalEducation == null ? "" : this.physicalEducation;
+      const health = this.health == null ? "" : this.health;
+      const TLE_HE_TVL = this.TLE_HE_TVL == null ? "" : this.TLE_HE_TVL;
       const selected = this.selected;
-      const others = this.specifyAreaofSpecialization;
+      const otherSpecializedSub =
+        this.otherSpecialized == null ? "" : this.otherSpecialized;
 
       let specifyAreaofSpecialization = "";
       let specialization = [
@@ -2309,7 +2417,7 @@ export default {
         physicalEducation,
         health,
         TLE_HE_TVL,
-        others,
+        otherSpecializedSub,
       ];
 
       for (let sub of specialization) {
@@ -2320,19 +2428,25 @@ export default {
         }
       }
 
-      const MotherTongue = this.MotherTongue;
-      const Filipino = this.Filipino;
-      const English = this.English;
-      const Mathematics = this.Mathematics;
-      const Science = this.Science;
-      const AralingPanlipunan = this.AralingPanlipunan;
-      const EdukasyonSaPagpapakatao = this.EdukasyonSaPagpapakatao;
-      const Mapeh = this.Mapeh;
-      const TLE_HE = this.TLE_HE;
-      const EPP_LE_HE = this.EPP_LE_HE;
-      const specialPrograms = this.specialPrograms;
+      const MotherTongue = this.MotherTongue == null ? "" : this.MotherTongue;
+      const Filipino = this.Filipino == null ? "" : this.Filipino;
+      const English = this.English == null ? "" : this.English;
+      const Mathematics = this.Mathematics == null ? "" : this.Mathematics;
+      const Science = this.Science == null ? "" : this.Science;
+      const AralingPanlipunan =
+        this.AralingPanlipunan == null ? "" : this.AralingPanlipunan;
+      const EdukasyonSaPagpapakatao =
+        this.EdukasyonSaPagpapakatao == null
+          ? ""
+          : this.EdukasyonSaPagpapakatao;
+      const Mapeh = this.Mapeh == null ? "" : this.Mapeh;
+      const TLE_HE = this.TLE_HE == null ? "" : this.TLE_HE;
+      const EPP_LE_HE = this.EPP_LE_HE == null ? "" : this.EPP_LE_HE;
+      const specialPrograms =
+        this.specialPrograms == null ? "" : this.specialPrograms;
       const selected1 = this.selected1;
-      const otherSubjectTaught = this.specifySubjectsTaught;
+      const otherSubjectTaught =
+        this.otherSubTaught == null ? "" : this.otherSubTaught;
 
       let specifySubjectsTaught = "";
       let subjectTaught = [
@@ -2350,11 +2464,11 @@ export default {
         otherSubjectTaught,
       ];
 
-      for (let sub in subjectTaught) {
-        if (sub == "") {
+      for (let subTaught of subjectTaught) {
+        if (subTaught == "") {
           continue;
         } else {
-          specifySubjectsTaught += sub + ",";
+          specifySubjectsTaught += subTaught + ",";
         }
       }
 
@@ -2705,8 +2819,6 @@ export default {
       console.log(returnedData);
       if (returnedData == "success") {
         console.log("success");
-      } else {
-        console.log("Unsuccessful");
       }
     },
   },

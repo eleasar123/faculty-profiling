@@ -12,19 +12,16 @@
     margin-top: 2%;
 }
 
-#esatTxt {
-    margin-left: -10%;
-}
-
 #disclosure {
     text-align: justify;
     background-color: rgb(211, 238, 158);
     border: rgb(64, 35, 131) 4px solid;
 }
 
-#disclose {
+
+/* #disclose {
     font-weight: bolder;
-}
+} */
 
 #cardEsat {
     background-color: #e491a3;
