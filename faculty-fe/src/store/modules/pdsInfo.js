@@ -22,12 +22,14 @@ const actions = {
     },
 
     retrievePdsInfoById() {
-        console.log(JSON.parse(sessionStorage.getItem("user_session")))
-        state.basicInfoData = []
+        console.log(JSON.parse(sessionStorage.getItem("user_session")).id)
+        state.pdsInfos = []
         return axios
-          .get("getAllBasicInformationById/" + JSON.parse(sessionStorage.getItem("user_session")).ID)
+          .get("pds/" + JSON.parse(sessionStorage.getItem("user_session")).id)
           .then((res) => {
+            console.log(res)
             return res;
+
           })
           .catch((err) => {
             return err.response;
@@ -37,6 +39,7 @@ const actions = {
     createPds({ dispatch }, data) {
         return axios
           .post('pds/create', data)
+          
           .then(async(result) => {
             try {
               await dispatch('retrievePdsInfo');

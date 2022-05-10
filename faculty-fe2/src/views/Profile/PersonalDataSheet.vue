@@ -1,5 +1,23 @@
 <template>
   <v-main class="pa-0 pa-0 ">
+    <v-container v-if="user==admin">
+  <v-card>
+    <v-card-title>
+      <v-text-field
+        v-model="search"
+        append-icon="mdi-magnify"
+        label="Search"
+        single-line
+        hide-details
+      ></v-text-field>
+    </v-card-title>
+    <v-data-table
+      :headers="headers"
+      :items="pds"
+      :search="search"
+    ></v-data-table>
+  </v-card>
+    </v-container>
     <v-container
       v-if="edit == false"
       class="text-center"
@@ -17,9 +35,8 @@
      <button class="material-icons pl-2 float-right" style="position:absolute;top:1%;right:62%">keyboard_arrow_right</button>
     </v-container>
 
-    <v-tabs v-if="edit == false">
-      <v-tab>Part 1</v-tab>
-      <v-tab-item>
+    <v-container v-if="edit == false"  >
+      
         <v-card-title label="Search" single-line hide-details
           ><span>CS Form N0.212<br />Revised 2017</span>
           <span>Personal Data Sheet</span>
@@ -346,9 +363,7 @@
             </tfoot>
           </template>
         </v-simple-table>
-      </v-tab-item>
-      <v-tab>Part 2</v-tab>
-      <v-tab-item>
+
         <v-simple-table height="auto" class="pa-0 pa-0 ma-12" width="80vw">
           <thead>
             <tr>
@@ -472,9 +487,7 @@
             </tr>
           </tfoot>
         </v-simple-table>
-      </v-tab-item>
-      <v-tab>Part 3</v-tab>
-      <v-tab-item>
+
         <v-simple-table height="auto" class="pa-0 pa-0 ma-12" width="80vw">
           <thead>
             <tr>
@@ -606,9 +619,7 @@
             </tr>
           </tfoot>
         </v-simple-table>
-      </v-tab-item>
-      <v-tab>Part 4</v-tab>
-      <v-tab-item>
+
         <v-container fluid>
           <v-row no-gutters>
             <v-col cols="12" sm="6">
@@ -853,11 +864,7 @@
         <!-- </tbody>
         
         </v-simple-table> -->
-        <v-btn class="primary" @click="finalizePds('create')"
-          >Finalize Part 1-4</v-btn
-        >
-      </v-tab-item>
-    </v-tabs>
+       </v-container>
     <v-tabs v-if="edit == true">
       <v-tab>Part 1</v-tab>
       <v-tab-item>
@@ -1941,7 +1948,99 @@
             </tbody>
           </template>
         </v-simple-table>
-        <br />
+        
+        <!-- <v-container class="grey lighten-5 pa-5" style ="max-width:95%">
+          <v-row class="pa-5"
+            ><v-col cols="12" class="sm-12"
+              >II. FAMILY BACKGROUND</v-col
+            ></v-row
+          >
+          <v-row no-gutters class="px-5">
+            <v-col cols="12" sm="3">
+                  22. SPOUSE'S SURNAME
+               
+            </v-col>
+            <v-col cols="12" sm="3" >
+                  <v-text-field
+                    placeholder=""
+                    solo
+                    dense
+                    v-model="dateOfBirthThirteen"
+                    id="childDOB13"
+                    class="text-center pt-6"
+                    type="text"
+                  >
+                  </v-text-field>
+             
+            </v-col>
+           <v-col cols="12" sm="3">
+              <v-card class="pa-2" outlined tile>
+                <v-card-title class="text-caption">
+                  31. SPECIAL SKILLS AND HOBBIES <br />(Write in full)<button
+                    class="material-icons"
+                    @click="addRow('otherInfoSpecialSkills')"
+                  >
+                    add_circle
+                  </button>
+                </v-card-title>
+                <v-card-text>
+                  <v-container>
+                    <v-container
+                      v-for="row in otherInfoSpecialSkills"
+                      :key="row.ID"
+                    >
+                      <v-text-field
+                        filled
+                        dense
+                        v-model="row.otherInformationSpecialSkills"
+                        
+                        style="float:left"
+                      ></v-text-field>
+                      <button
+                        class="material-icons"
+                        style="float:right"
+                        @click="removeRow('otherInfoSpecialSkills', row)"
+                      >
+                        remove_circle
+                      </button>
+                    </v-container>
+                  </v-container>
+                </v-card-text>
+              </v-card>
+            </v-col>
+             <v-col cols="12" sm="3">
+              
+                 DATE OF BIRTH (mm/dd/yyyy)  
+                  
+            </v-col>
+          </v-row>
+          <v-row>
+            <v-col cols="12" sm="3"> SIGNATURE </v-col>
+            <v-col cols="12" sm="3">
+              <v-text-field
+                placeholder=""
+                filled
+                dense
+                v-model="otherInfoSignature"
+                class="text-center"
+                type="file"
+              >
+              </v-text-field>
+            </v-col>
+            <v-col cols="12" sm="3"> DATE </v-col>
+            <v-col cols="12" sm="3">
+              <v-text-field
+                placeholder=""
+                filled
+                v-model="otherInfoDateOfSignature"
+                dense
+                class="text-center"
+                type="date"
+              >
+              </v-text-field>
+            </v-col>
+          </v-row>
+        </v-container> -->
         <v-simple-table height="auto" class="pa-0 pa-0 ma-12" width="80vw">
           <template v-slot:default>
             <thead cols="4">
@@ -3206,7 +3305,7 @@
 export default {
   data() {
     return {
-      edit: true,
+      edit: false,
       personalSurname: "",
       personalFirstName: "",
       personalMiddleName: "",
@@ -3434,9 +3533,23 @@ export default {
       name: "",
       address: "",
       telephoneNo: "",
+      pds:[],
+      user:"user",
     };
+    
+  },
+  created(){
+    this.retrievePds();
   },
   methods: {
+    async retrievePds(){console.log("hello world")
+    const returnedData = await this.$store.dispatch("retrievePdsInfoById")
+    this.pds = returnedData.data;
+    console.log(returnedData)
+    this.pds=this.$store.getters.pdsInfosAll;
+    console.log(this.pds)
+      console.log(this.pds)
+    },
     addRow: function (array) {
       console.log(array);
       let newRow = [];
@@ -3576,7 +3689,7 @@ export default {
     },
 
     finalizePds: async function (method) {
-      console.log(method, this.personalCivilStatus);
+      console.log(method, this.questionThirtyFiveDateFiled, this.questionThirtyFiveCaseStatus);
       const personalSurname = this.personalSurname;
       const personalFirstName = this.personalFirstName;
       const personalMiddleName = this.personalMiddleName;
@@ -3673,8 +3786,8 @@ export default {
       const otherInfoDateOfSignature = this.otherInfoDateOfSignature;
       const questionThirtyFour = this.questionThirtyFour;
       const questionThirtyFiveA = this.questionThirtyFiveA;
-      const questionThirtyFiveDateFiled = this.questionThirtyFiveDateFiled;
-      const questionThirtyFiveCaseStatus = this.questionThirtyFiveCaseStatus;
+      const questionThirtyFiveBDateFiled = this.questionThirtyFiveDateFiled;
+      const questionThirtyFiveBStatusOfCase = this.questionThirtyFiveCaseStatus;
       const questionThirtySix = this.questionThirtySix;
       const questionThirtySeven = this.questionThirtySeven;
       const questionThirtyEight = this.questionThirtyEight;
@@ -3682,15 +3795,7 @@ export default {
       const questionFourtyA = this.questionFourtyA;
       const questionFourtyB = this.questionFourtyB;
       const questionFourtyC = this.questionFourtyC;
-      const referenceNameFirst = this.referenceNameFirst;
-      const referenceAddressFirst = this.referenceAddressFirst;
-      const referenceTelNoFirst = this.referenceTelNoFirst;
-      const referenceNameSecond = this.referenceNameSecond;
-      const referenceAddressSecond = this.referenceAddressSecond;
-      const referenceTelNoSecond = this.referenceTelNoSecond;
-      const referenceNameThird = this.referenceNameThird;
-      const referenceAddressThird = this.referenceAddressThird;
-      const referenceTelNoThird = this.referenceTelNoThird;
+      const references = this.references;
       const personalPhotoAttachment = this.personalPhotoAttachment;
       const governmentIssuedID = this.governmentIssuedID;
       const governmentIssuedIDNo = this.governmentIssuedIDNo;
@@ -3798,8 +3903,8 @@ export default {
         otherInfoDateOfSignature,
         questionThirtyFour,
         questionThirtyFiveA,
-        questionThirtyFiveDateFiled,
-        questionThirtyFiveCaseStatus,
+        questionThirtyFiveBDateFiled,
+        questionThirtyFiveBStatusOfCase,
         questionThirtySix,
         questionThirtySeven,
         questionThirtyEight,
@@ -3807,15 +3912,7 @@ export default {
         questionFourtyA,
         questionFourtyB,
         questionFourtyC,
-        referenceNameFirst,
-        referenceAddressFirst,
-        referenceTelNoFirst,
-        referenceNameSecond,
-        referenceAddressSecond,
-        referenceTelNoSecond,
-        referenceNameThird,
-        referenceAddressThird,
-        referenceTelNoThird,
+        references,
         personalPhotoAttachment,
         governmentIssuedID,
         governmentIssuedIDNo,
@@ -3830,6 +3927,7 @@ export default {
       console.log(returnedData);
       if (returnedData == "success") {
         console.log("success ");
+        this.pds = this.$store.getters.pdsInfosAll;
       }
     },
   },

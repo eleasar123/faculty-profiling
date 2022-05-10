@@ -2102,7 +2102,7 @@ export default {
       showPart2: false,
       showPart3: false,
       // showPrint: false,
-      // esatCard: false,
+      esatCard: true,
       saveInfos:true,
       updateInfos:false,
       positionItems: [
