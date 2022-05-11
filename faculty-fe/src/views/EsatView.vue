@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-main>
     <v-card>
       <v-tabs
         mt-5
@@ -2048,7 +2048,7 @@
         </v-tab-item>
       </v-tabs-items>
     </v-card>
-  </v-app>
+  </v-main>
 </template>
 
 <script>

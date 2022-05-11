@@ -1,5 +1,5 @@
 <template>
-  
+  <v-main>
   <v-app v-if="userData!==null">
     
     <Navbar></Navbar>
@@ -13,7 +13,7 @@
  <v-app v-else>
       <router-view></router-view>
   </v-app>
- 
+ </v-main>
 </template>
 
 <script>
@@ -29,6 +29,14 @@ export default {
 
   data: () => ({
     //
+    userData: JSON.parse(sessionStorage.getItem("user_session")).id,
+    
   }),
+  created(){
+    this.userData = JSON.parse(sessionStorage.user_session)
+    if(this.userData == null){
+      this.$route.push('loginLocally')
+    }
+  }
 };
 </script>

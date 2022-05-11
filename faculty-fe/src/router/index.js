@@ -5,7 +5,7 @@ import EsatView from "../views/EsatView.vue";
 import ManageUser from "../views/ManageUser.vue";
 import ManageIpcrf from "../views/ManageIpcrf.vue";
 import Login from "../views/Login/Login.vue";
-import HomeView from "../views/Index.vue";
+//import HomeView from "../views/Index.vue";
 import PersonalDataSheet from "../views/Profile/PDSUser.vue";
 import ViewPds from "../views/Profile/ViewPdsAdmin.vue"
 import ProductsInventory from '../views/Test/ProductsInventory'
@@ -23,6 +23,11 @@ const routes = [{
     component: PersonalData,
   },
   {
+    path: "/login",
+    name: "login",
+    component: Login,
+  },
+  {
     path: "/manageUser",
     name: "manageUser",
     component: ManageUser,
@@ -35,6 +40,11 @@ const routes = [{
     path: "/manageIpcrf",
     name: "manageIpcrf",
     component: ManageIpcrf,
+  },
+  {
+    path: "/viewPds",
+    name: "viewPds",
+    component: ViewPds,
   },
   {
     path: "/esat",
