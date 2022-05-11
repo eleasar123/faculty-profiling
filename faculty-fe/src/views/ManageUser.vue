@@ -317,13 +317,18 @@
       },
       async deleteItem(data){
         console.log(data)
-        this.dialogDelete = true
+        this.deleteDialog = true
+        console.log(this.agree)
         if(this.agree == true){
-          const returnedData = await this.$store.dispatch('deleteProduct', data)
-        if(returnedData){
+          console.log(true)
+          const returnedData = await this.$store.dispatch('deleteUser', data)
           console.log(returnedData)
-           this.initializeData()
-        }
+          if(returnedData){
+            console.log(returnedData)
+            this.agree = false
+            this.deleteDialog = false
+            this.initializeData()
+          }
         }
         
        
