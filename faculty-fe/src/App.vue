@@ -1,5 +1,5 @@
 <template>
-
+  
   <v-app v-if="userData!==null">
     
     <Navbar></Navbar>
@@ -12,9 +12,8 @@
   </v-app>
  <v-app v-else>
       <router-view></router-view>
-   
   </v-app>
-
+ 
 </template>
 
 <script>
@@ -25,19 +24,11 @@ export default {
   name: 'App',
 
   components: {
-  Navbar
+   Navbar
   },
 
   data: () => ({
-    ////
-    userData:JSON.parse(sessionStorage.getItem("user_session")),
+    //
   }),
-  created(){
-    
-    console.log(this.userData)
-    if(this.userData==null){
-      this.$router.push("/login");
-    }
-  }
 };
 </script>

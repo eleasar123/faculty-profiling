@@ -7,7 +7,7 @@ const state = () => ({
 const mutations = {
     setUser(state, data) {
         state.users = JSON.parse(data);
-        sessionStorage.setItem('users', data);
+        localStorage.setItem('users', data);
     }
 };
 

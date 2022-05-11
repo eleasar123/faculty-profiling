@@ -1,5 +1,5 @@
-import Vue from "vue";
-import Vuex from "vuex";
+import Vue from 'vue'
+import Vuex from 'vuex'
 //import { createStore } from 'vuex'
 import axios from "axios";
 import userLogin from "./modules/userLogin";
@@ -106,8 +106,46 @@ export default new Vuex.Store({
           return err.response;
         });
     },
-  },
-});
+    // state: {
+    //   users:[],
+    //   userProfile: [],
+    //   // return {
+    //   count: 0
+    //   // }
+    // },
+    // mutations: {
+    //   increment () {
+    //     this.state.count++
+    //   },
+    //   setUser(data){
+    //     this.state.users = JSON.parse(data).data;
+    //   }
+    // },
+    // getters:{
+    //   doneTodosCount (state, getters) {
+    //     return getters.doneTodos.length
+    //   }
+    // },
+    // actions:{
+    //   increment (context) {
+    //     context.commit('increment')
+    //   },
+    //   getUsers(){
+    //     return axios.get('user').then((response) => response.data)
+    //     .catch((error) => {
+    //       return error.response
+    //     })
+    //   },
+    // login(data){
+    //   return axios.post('login', data).then((response) => {
+    //     this.setUser(data)
+    //     return response} )
+    //   .catch((error) => {
+    //     console.log(error)
+    //   })
+    // }
+   },
+})
 
 // const app = createApp({ /* your root component */ })
 

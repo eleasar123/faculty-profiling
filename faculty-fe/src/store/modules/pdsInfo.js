@@ -22,36 +22,33 @@ const actions = {
     },
 
     retrievePdsInfoById() {
-        console.log(JSON.parse(sessionStorage.getItem("user_session")).id)
-        state.pdsInfos = []
+        console.log(JSON.parse(sessionStorage.getItem("user_session")))
+        state.basicInfoData = []
         return axios
-          .get("pds/" + JSON.parse(sessionStorage.getItem("user_session")).id)
-          .then((res) => {
-            console.log(res)
-            return res;
-
-          })
-          .catch((err) => {
-            return err.response;
-          });
-      },
+            .get("getAllBasicInformationById/" + JSON.parse(sessionStorage.getItem("user_session")).ID)
+            .then((res) => {
+                return res;
+            })
+            .catch((err) => {
+                return err.response;
+            });
+    },
 
     createPds({ dispatch }, data) {
         return axios
-          .post('pds/create', data)
-          
-          .then(async(result) => {
-            try {
-              await dispatch('retrievePdsInfo');
-              return result;
-            } catch (error) {
-              return error;
-            }
-          })
-          .catch((err) => {
-            return err.response;
-          });
-      },
+            .post('pds/create', data)
+            .then(async(result) => {
+                try {
+                    await dispatch('retrievePdsInfo');
+                    return result;
+                } catch (error) {
+                    return error;
+                }
+            })
+            .catch((err) => {
+                return err.response;
+            });
+    },
 
     updatePdsInfo({dispatch}, props) {
         return axios
@@ -65,25 +62,25 @@ const actions = {
             }
             })
             .catch((err) => {
-              return err.response;
+                return err.response;
             });
     },
 
     deletePdsInfo({ state }, props) {
         const index = state.pdsInfos.indexOf(props.item);
         return axios
-        .delete("pds/delete/" + props.ID)
-        .then((result) => {
-            state.pdsInfos.splice(index, 1);
-            return result;
-        })
-        .catch((err) => {
-            return err.response;
-        });
-     },
+            .delete("pds/delete/" + props.ID)
+            .then((result) => {
+                state.pdsInfos.splice(index, 1);
+                return result;
+            })
+            .catch((err) => {
+                return err.response;
+            });
+    },
 
 
-   
+
 };
 
 const getters = {

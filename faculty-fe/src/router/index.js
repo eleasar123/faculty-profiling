@@ -11,25 +11,12 @@ import ViewPds from "../views/Profile/ViewPdsAdmin.vue"
 import ProductsInventory from '../views/Test/ProductsInventory'
 Vue.use(VueRouter);
 
-const routes = [
-  {
-    path: "/login",
-    name: "login",
-    component: Login,
-  },
-  {
-    path: "/viewPds",
-    name: "viewPds",
-    component: ViewPds
-  },
-  {
-    path: "/home",
-    component: HomeView,
-    name: 'HomeView',
-    meta: {
-      auth: true,
+const routes = [{
+        path: '/',
+        name: 'personalData',
+        component: PersonalData
     },
-  },
+
   {
     path: "/personalData",
     name: "personalData",
@@ -67,9 +54,9 @@ const routes = [
 ];
 
 const router = new VueRouter({
-  mode: "history",
-  base: process.env.BASE_URL,
-  routes,
-});
+    mode: 'history',
+    base: process.env.BASE_URL,
+    routes
+})
 
-export default router;
+export default router
