@@ -1,7 +1,6 @@
 <template>
   <v-main>
   <v-app v-if="userData!==null">
-    
     <Navbar></Navbar>
     <v-content class="ma-4">
       <v-layout>
@@ -29,13 +28,14 @@ export default {
 
   data: () => ({
     //
-    userData: JSON.parse(sessionStorage.getItem("user_session")).id,
+    userData: JSON.parse(sessionStorage.getItem("user_session")),
     
   }),
   created(){
-    this.userData = JSON.parse(sessionStorage.user_session)
-    if(this.userData == null){
-      this.$route.push('loginLocally')
+    console.log(this.userData)
+    if(this.userData == null || this.userData == undefined){
+      console.log(true)
+      this.$router.push('/login')
     }
   }
 };

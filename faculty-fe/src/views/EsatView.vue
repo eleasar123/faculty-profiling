@@ -1,5 +1,5 @@
 <template>
-  <v-main>
+<v-container fluid>
     <v-card>
       <v-tabs
         mt-5
@@ -2048,7 +2048,7 @@
         </v-tab-item>
       </v-tabs-items>
     </v-card>
-  </v-main>
+</v-container>
 </template>
 
 <script>

@@ -19,17 +19,18 @@
             <v-text-field
             prepend-inner-icon="mdi-email-outline"
               label="  Enter your Email"
-              id="email"
+              v-model="email"
               type="email"
               placeholder="Enter your Email"
               rounded solo dense
             ></v-text-field>
             <v-text-field
            
-            prepend-inner-icon="mdi-account-outline"
+             :append-icon="value ? 'visibility' : 'visibility_off'"
+              @click:append="() => (value = !value)"
+              :type="value ? 'password' : 'text'"
               label="Enter your Password"
-              id="password"
-              type="password"
+              v-model="password"
               placeholder="Enter your Password"
               rounded solo dense
             ></v-text-field>
@@ -57,22 +58,28 @@
 export default {
   name: "LogIn",
   data() {
-    return {};
+    return {
+      value: String,
+      email: '',
+      password: '',
+    };
   },
   methods: {
     async getDetails() {
-      const email = document.getElementById("email").value;
-      const password = document.getElementById("password").value;
+      const email = this.email
+      const password = this.password
       const data = {
         email,
         password,
       };
+      console.log(data)
       const returnedData = await this.$store.dispatch("loginLocally", data);
       console.log(returnedData);
       if (returnedData.data[0].message === "Credentials matched!") {
-        localStorage.setItem("userData", data);
-        sessionStorage.setItem("userData", data);
-        this.$router.push("/personalDataSheet");
+        // localStorage.setItem("userData", data);
+        // sessionStorage.setItem("userData", data);
+        window.location.href = '/personalDataSheet'
+        // this.$router.push("/personalDataSheet");
       }
     },
 

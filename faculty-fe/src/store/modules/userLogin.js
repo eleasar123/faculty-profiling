@@ -7,9 +7,9 @@ const state = () => ({
 
 const mutations = {
     setUserToken(state, data) {
-        state.userToken = data;
-        sessionStorage.setItem("user_session", JSON.stringify(data));
-        localStorage.setItem("user_session", data);
+        console.log(data)
+        sessionStorage.setItem("user_session", JSON.stringify(data[1][0].account));
+        sessionStorage.setItem("token",  JSON.stringify(data[2][0].token));
     //     axios.defaults.headers.common.Authorization = `bearer ${
     //   JSON.parse(data).access_token
     // }`;
@@ -18,7 +18,7 @@ const mutations = {
     clearUserSession() {
         sessionStorage.removeItem("user_session");
         localStorage.removeItem("user_details");
-
+        sessionStorage.clear();
         axios.defaults.headers.common.Authorization = "";
         location.reload();
     },
@@ -35,7 +35,7 @@ const actions = {
             .post('login', data)
             .then((result) => {
                 console.log(result);
-                commit("setUserToken", result);
+                commit("setUserToken", result.data);
                 return result;
             })
             .catch((err) => {

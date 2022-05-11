@@ -20,7 +20,7 @@
         </v-list-item>
       </v-list>
             </v-menu>
-            <v-btn text>
+            <v-btn text @click="logOut">
                 <span>Exit</span>
                 <v-icon right></v-icon>
              </v-btn>
@@ -65,6 +65,11 @@ export default {
       ]
      
     }),
+    methods: {
+      logOut(){
+        this.$store.dispatch('logout')
+      }
+    },
 
  
     components: {
