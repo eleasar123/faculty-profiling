@@ -6,10 +6,12 @@ import userLogin from "./modules/userLogin";
 import pds from "./modules/pdsInfo";
 import esat from "./modules/esat";
 import ipcrf from "./modules/ipcrf";
+import products from "./modules/products";
+import user from "./modules/users"
 Vue.use(Vuex);
 
 const AUTH_TOKEN = sessionStorage.getItem('user_token')
-axios.defaults.baseURL = "http://127.0.0.1:8000/api/";
+axios.defaults.baseURL = "http://localhost:8000/api/";
 axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
 axios.defaults.headers.common["Content-Type"] = "application/json";
 
@@ -20,6 +22,8 @@ export default new Vuex.Store({
     pds,
     esat,
     ipcrf,
+    products,
+    user
   },
   state: {
     users: [],
@@ -36,11 +40,11 @@ export default new Vuex.Store({
       this.state.users = JSON.parse(data).data;
     },
   },
-  getters: {
-    doneTodosCount(state, getters) {
-      return getters.doneTodos.length;
-    },
-  },
+  // getters: {
+  //   doneTodosCount(state, getters) {
+  //     return getters.doneTodos.length;
+  //   },
+  // },
   actions: {
     uploadFile(context, file) {
       console.log([...file]);

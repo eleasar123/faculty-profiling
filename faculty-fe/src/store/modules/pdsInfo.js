@@ -53,12 +53,16 @@ const actions = {
           });
       },
 
-    updatePdsInfo({state}, props) {
+    updatePdsInfo({dispatch}, props) {
         return axios
-            .post(`pds/edit/${props.ID}`, props)
-            .then((result) => {
-              state.pds[props.index] = props.editedData;
+            .post(`pds/edit`, props)
+            .then(async(result) => {
+               try {
+              await dispatch('retrievePdsInfo');
               return result;
+            } catch (error) {
+              return error;
+            }
             })
             .catch((err) => {
               return err.response;

@@ -12,16 +12,17 @@ const mutations = {
 };
 
 const actions = {
-    retrieveUserData({  commit }) {
-        return axios.get(`user/`).then((result) => {
-            commit('setUser', JSON.stringify(result.data));
+    retrieveUserProfile() {
+        return axios.get('user/').then((result) => {
+           
+            console.log(result)
             return result;
         }).catch((err) => {
             return err.response;
         });
     },
 
-    retrieveUserDataById({ state, commit }) {
+    retrieveUserProfileById({ state, commit }) {
         return axios.get(`user/${JSON.parse(state.users).id}`).then((result) => {
 
             commit('setUser', JSON.stringify(result.data));
@@ -36,7 +37,7 @@ const actions = {
           .post("user/create", data)
           .then(async (result) => {
             try {
-              await dispatch("retrieveUserData");
+              await dispatch("retrieveUserProfile");
               return result;
             } catch (error) {
               return error;
@@ -47,22 +48,26 @@ const actions = {
           });
       },
 
-    updateAddressData({state}, props) {
+    updateUser({ dispatch }, data) {
         return axios
-            .post(`user/edit/${props.ID}`, props)
-            .then((result) => {
-              state.users[props.index] = props.editedData;
-              return result;
+            .patch('user/edit/', data)
+            .then(async (result) => {
+                try {
+                  await dispatch("retrieveUserProfile");
+                  return result;
+                }catch(error){
+                    return error;
+                }
             })
             .catch((err) => {
               return err.response;
             });
     },
 
-    deleteAddressData({ state }, props) {
-        const index = state.users.indexOf(props.item);
+    deleteUser({ state }, props) {
+        const index = state.users.indexOf(props);
         return axios
-        .delete("user/delete/" + props.ID)
+        .delete("user/delete/" + props.id)
         .then((result) => {
             state.users.splice(index, 1);
             return result;
@@ -77,7 +82,7 @@ const actions = {
 };
 
 const getters = {
-    userDetailsAll: (state) => state.users,
+    userProfilesAll: (state) => state.users,
 };
 
 export default {

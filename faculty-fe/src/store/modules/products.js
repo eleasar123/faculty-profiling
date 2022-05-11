@@ -1,42 +1,41 @@
 import axios from "axios";
 
 const state = () => ({
-    users: null,
+    products: null,
 });
 
 const mutations = {
-    setUser(state, data) {
-        state.users = JSON.parse(data);
-        localStorage.setItem('users', data);
+    setProducts(state, data) {
+        state.products = JSON.parse(data);
     }
 };
 
 const actions = {
-    retrieveUserData({  commit }) {
-        return axios.get(`user/`).then((result) => {
-            commit('setUser', JSON.stringify(result.data));
+    retrieveProducts({ commit }) {
+        return axios.get(`products`).then((result) => {
+            commit('setProducts', JSON.stringify(result.data));
             return result;
         }).catch((err) => {
             return err.response;
         });
     },
 
-    retrieveUserDataById({ state, commit }) {
-        return axios.get(`user/${JSON.parse(state.userToken).ID}`).then((result) => {
+    retrieveProductById({ state, commit }) {
+        return axios.get(`products/${JSON.parse(state.products).ID}`).then((result) => {
 
-            commit('setUser', JSON.stringify(result.data));
+            commit('setProducts', JSON.stringify(result.data));
             return result;
         }).catch((err) => {
             return err.response;
         });
     },
 
-    createUser({ dispatch }, data) {
+    createProduct({ dispatch }, data) {
         return axios
-          .post("user/create", data)
+          .post("products", data)
           .then(async (result) => {
             try {
-              await dispatch("retrieveUserData");
+              await dispatch("retrieveProducts");
               return result;
             } catch (error) {
               return error;
@@ -47,11 +46,11 @@ const actions = {
           });
       },
 
-    updateAddressData({state}, props) {
+    updateProduct({state}, props) {
         return axios
-            .post(`user/edit/${props.ID}`, props)
+            .put(`products/`+ props.id, props)
             .then((result) => {
-              state.users[props.index] = props.editedData;
+              state.products[props.index] = props.editedData;
               return result;
             })
             .catch((err) => {
@@ -59,12 +58,12 @@ const actions = {
             });
     },
 
-    deleteAddressData({ state }, props) {
-        const index = state.users.indexOf(props.item);
+    deleteProduct({ state }, props) {
+        const index = state.products.indexOf(props.item);
         return axios
-        .delete("user/delete/" + props.ID)
+        .delete("products/" + props.id)
         .then((result) => {
-            state.users.splice(index, 1);
+            state.products.splice(index, 1);
             return result;
         })
         .catch((err) => {
@@ -77,7 +76,7 @@ const actions = {
 };
 
 const getters = {
-    userDetailsAll: (state) => state.users,
+    productsAll: (state) => state.products,
 };
 
 export default {

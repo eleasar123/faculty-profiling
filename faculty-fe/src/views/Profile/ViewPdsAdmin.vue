@@ -1,7 +1,7 @@
 <template >
-
+<v-main>
    <v-container fluid style="border:solid 1px black" class="pa-0 text-center">
-  <v-btn @click="back" class="float-left">Back</v-btn>
+      <v-btn @click="back" class="float-left">Back</v-btn>
     
       <v-tabs >
         <v-tab>C1</v-tab>
@@ -812,7 +812,7 @@
               </v-col>
               <v-col cols="12" sm="6">
                 <v-card class="pa-4" outlined tile height="auto">
-                  {{ row.question_thirty_five_a }}
+                  {{ row.question_thirty_five_a }}<br><br>
                   <span class="ma-3">If YES, give details: </span><br />
                   <label>Date Filed:</label>
                   {{ row.question_thirty_five_b_date_filed }}<br />
@@ -862,7 +862,7 @@
                   promote/actively campaign for a national or local
                   candidate?</v-card
                 >
-              </v-col>x``
+              </v-col>
               <v-col cols="12" sm="6">
                 <v-card class="pa-3" outlined tile height="200px">
                   {{ row.question_thirty_eight }}
@@ -1054,6 +1054,7 @@
         </v-tab-item>
       </v-tabs>
       </v-container>
+      </v-main>
 </template>
 <script>
 export default {
@@ -1081,23 +1082,22 @@ export default {
     
     console.log(sessionStorage.getItem('pdsPersonalInfo'))
     this.pdsPersonalInfo.push(JSON.parse(sessionStorage.getItem('pdsPersonalInfo')))
-    this.pdsFamilyBackground.push(sessionStorage.getItem('pdsFamilyBackground'))
-    this.pdsEducationalBackground.push(sessionStorage.getItem('pdsEducationalBackground'))
-    this.pdsCivilServiceEligibility.push(sessionStorage.getItem('pdsCivilServiceEligibility'))
-    this.pdsWorkExperience.push(sessionStorage.getItem('pdsWorkExperience'))
-    this.pdsVoluntaryWorkInvolvement.push(sessionStorage.getItem('pdsVoluntaryWorkInvolvement'))
-    this.pdsLearningAndDevelopment.push(sessionStorage.getItem('pdsLearningAndDevelopment'))
-    this.pdsOtherInfoSpecialSkills.push(sessionStorage.getItem('pdsOtherInfoSpecialSkills'))
-    this.pdsOtherInfoNonacademicDistinctions.push(sessionStorage.getItem('pdsOtherInfoNonacademicDistinctions'))
-    this.pdsOtherInfoAssociationMembers.push(sessionStorage.getItem('pdsOtherInfoAssociationMembers'))
-    this.pdsReferences.push(sessionStorage.getItem('pdsReferences'))
-    this.pdsQuestions.push(sessionStorage.getItem('pdsQuestions'))
-    this.pdsAdditionalInfo.push(sessionStorage.getItem('pdsAdditionalInfo'))
-    this.children.push(sessionStorage.getItem('children'))
-    for(const data of this.pdsEducationalBackground){
-      console.log(data)
-    }
+    this.pdsFamilyBackground.push(JSON.parse(sessionStorage.getItem('pdsFamilyBackground')))
+    this.pdsEducationalBackground.push(JSON.parse(sessionStorage.getItem('pdsEducationalBackground')))
+    this.pdsCivilServiceEligibility.push(JSON.parse(sessionStorage.getItem('pdsCivilServiceEligibility')))
+    this.pdsWorkExperience.push(JSON.parse(sessionStorage.getItem('pdsWorkExperience')))
+    this.pdsVoluntaryWorkInvolvement.push(JSON.parse(sessionStorage.getItem('pdsVoluntaryWorkInvolvement')))
+    this.pdsLearningAndDevelopment.push(JSON.parse(sessionStorage.getItem('pdsLearningAndDevelopment')))
+    this.pdsOtherInfoSpecialSkills.push(JSON.parse(sessionStorage.getItem('pdsOtherInfoSpecialSkills')))
+    this.pdsOtherInfoNonacademicDistinctions.push(JSON.parse(sessionStorage.getItem('pdsOtherInfoNonacademicDistinctions')))
+    this.pdsOtherInfoAssociationMembers.push(JSON.parse(sessionStorage.getItem('pdsOtherInfoAssociationMembers')))
+    this.pdsReferences.push(JSON.parse(sessionStorage.getItem('pdsReferences')))
+    this.pdsQuestions.push(JSON.parse(sessionStorage.getItem('pdsQuestions')))
+    this.pdsAdditionalInfo.push(JSON.parse(sessionStorage.getItem('pdsAdditionalInfo')))
+    this.children.push(JSON.parse(sessionStorage.getItem('children')))
+    console.log(this.pdsFamilyBackground)
   },
+
   methods: {
     back: function(){
       this.$router.push("/personalDataSheet")

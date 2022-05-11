@@ -1,6 +1,7 @@
 <template>
 
   <v-app v-if="userData!==null">
+    
     <Navbar></Navbar>
     <v-content class="ma-4">
       <v-layout>

@@ -302,7 +302,7 @@
                   </td>
                   <td rowspan="6">
                     <v-container
-                      v-for="child in children"
+                      v-for="child in pdsChildren"
                       :key="child.id"
                       class="grey lighten-5"
                     >
@@ -3614,7 +3614,7 @@
       </v-tab-item>
     </v-tabs>
     <v-tabs v-if="edit == true">
-      <v-btn class="float-right" @click="edit = false">Back</v-btn>
+      <v-btn class="float-right" style="float:right" @click="edit = false">Back</v-btn>
       <v-tab>Part 1</v-tab>
       <v-tab-item>
         <v-card-title label="Search" single-line hide-details
@@ -3638,7 +3638,7 @@
                 <th colspan="8">I. PERSONAL INFORMATION</th>
               </tr>
             </thead>
-            <tbody class="text-center" color="secondary">
+            <tbody class="text-center" color="secondary" >
               <tr>
                 <td width="50px" colspan="2" style="text-align: left">
                   2. SURNAME
@@ -6121,7 +6121,7 @@
         <!-- </tbody>
         
         </v-simple-table> -->
-        <v-btn class="primary" @click="finalizePds('create')"
+        <v-btn class="primary" @click="finalizePds('edit')"
           >Finalize Part 1-4</v-btn
         >
         <!-- <button v-print>Print local range</button> -->
@@ -6321,6 +6321,7 @@ export default {
       questionFourtyA: "",
       questionFourtyB: "",
       questionFourtyC: "",
+      idList: [],
       referenceNameFirst: "",
       referenceAddressFirst: "",
       referenceTelNoFirst: "",
@@ -6335,6 +6336,7 @@ export default {
       governmentIssuedIDNo: "",
       governmentIDDateOrPlaceIssued: "",
       oathSignature: "",
+
       oathDateAccomplished: new Date(
         Date.now() - new Date().getTimezoneOffset() * 60000
       )
@@ -6390,6 +6392,7 @@ export default {
       ],
       educationalBackground: [
         {
+          id: "",
           educBackgroundLevel: "",
           educBackgroundNameOfSchool: "",
           educBackgroundBasicEducation: "",
@@ -6439,6 +6442,7 @@ export default {
       pdsQuestions: [],
       pdsAdditionalInfo: [],
       pdsReferences: [],
+      pdsChildren: [],
       editedIndex: "",
       childName: "",
       children: [
@@ -6447,318 +6451,13 @@ export default {
         },
       ],
 
-      editedItem: {
-        educBackgroundDOSMenu: false,
-        oathDateMenu: false,
-        swornDateMenu: false,
-        workExpDOSMenu: false,
-        date: new Date(Date.now() - new Date().getTimezoneOffset() * 60000)
-          .toISOString()
-          .substr(0, 10),
-        dateFormatted: this.formatDate(
-          new Date(Date.now() - new Date().getTimezoneOffset() * 60000)
-            .toISOString()
-            .substr(0, 10)
-        ),
-        dateFormattedPersonalDOB: this.formatDate(
-          new Date(Date.now() - new Date().getTimezoneOffset() * 60000)
-            .toISOString()
-            .substr(0, 10)
-        ),
-        otherInfoDOSMenu: false,
-        personalDOBMenu: false,
-        spouseDOBMenu: false,
-        fatherDOBMenu: false,
-        motherDOBMenu: false,
-        search: "",
-        items: ["Foo", "Bar", "Fizz", "Buzz"],
-        headers: [
-          { text: "ID", value: "user_id" },
-          {
-            text: "Last Name",
-            align: "start",
-            sortable: false,
-            value: "last_name",
-          },
-          { text: "Middle Name", value: "middle_name" },
-          { text: "First Name", value: "first_name" },
-          { text: "Date of Birth", value: "date_of_birth" },
-          { text: "Sex", value: "sex" },
-          { text: "Blood Type", value: "blood_type" },
-          { text: "Actions", value: "actions", sortable: false },
-        ],
-        create: false,
-        edit: false,
-        loading: false,
-
-        personalSurname: "",
-        personalFirstName: "",
-        personalMiddleName: "",
-        personalSuffix: "",
-        personalDateOfBirth: new Date(
-          Date.now() - new Date().getTimezoneOffset() * 60000
-        )
-          .toISOString()
-          .substr(0, 10),
-        personalPlaceOfBirth: "",
-        personalCitizenship: "",
-        personalDualCitizenship: "",
-        countryOfCitizenship: "",
-        personalSex: "",
-        personalCivilStatus: "",
-        personalHeight: "",
-        personalWeight: "",
-        personalBloodType: "",
-        personalGSISIDNo: "",
-        personalResAddressHouseNo: "",
-        personalResAddressStreet: "",
-        personalResAddressSubdivision: "",
-        personalResAddressBarangay: "",
-        personalResAddressCity: "",
-        personalResAddressProvince: "",
-        personalZipCode: "",
-        personalPAGIBIGIDNo: "",
-        personalPHILHEALTHNo: "",
-        personalPermanentAddHouseNo: "",
-        personalPermanentAddStreet: "",
-        personalPermanentAddSubdivision: "",
-        personalPermanentAddBarangay: "",
-        personalPermanentAddCity: "",
-        personalPermanentAddProvince: "",
-        personalPermanentAddZipCode: "",
-        personalSSSNo: "",
-        personalTelephoneNo: "",
-        personalTinNo: "",
-        personalMobileNo: "",
-        personalAgencyEmployeeNo: "",
-        personalEmailAddress: "",
-        familySpouseSurname: "",
-        familySpouseFirstName: "",
-        familySpouseMiddleName: "",
-        familySpouseSuffix: "",
-        familySpouseOccupation: "",
-        familyEmployerName: "",
-        familyBusinessAddress: "",
-        familyTelephoneNo: "",
-        familyFatherSurname: "",
-        familyFatherFirstName: "",
-        familyFatherMiddleName: "",
-        familyFatherSuffix: "",
-        familyMotherMaidenName: "",
-        familyMotherSurname: "",
-        familyMotherFirstName: "",
-        familyMotherMiddleName: "",
-        dateOfBirthSpouse: new Date(
-          Date.now() - new Date().getTimezoneOffset() * 60000
-        )
-          .toISOString()
-          .substr(0, 10),
-        dateOfBirthFather: new Date(
-          Date.now() - new Date().getTimezoneOffset() * 60000
-        )
-          .toISOString()
-          .substr(0, 10),
-        dateOfBirthMother: new Date(
-          Date.now() - new Date().getTimezoneOffset() * 60000
-        )
-          .toISOString()
-          .substr(0, 10),
-
-        educBackgroundLevel: "",
-        educBackgroundNameOfSchool: "",
-        educBackgroundBasicEducation: "",
-        educBackgroundPeriodOfAttendanceFrom: "",
-        educBackgroundPeriodOfAttendanceTo: "",
-        educBackgroundHighestLevel: "",
-        educBackgroundYearGraduated: "",
-        educBackgroundScholarship: "",
-        educBackgroundSignature: "",
-        educBackgroundDateOfSignature: new Date(
-          Date.now() - new Date().getTimezoneOffset() * 60000
-        )
-          .toISOString()
-          .substr(0, 10),
-        careerService: "",
-        rating: "",
-        dateOfExamination: "",
-        placeOfExamination: "",
-        licenseNumber: "",
-        dateOfValidity: "",
-        inclusiveDateFromWorkExperience: "",
-        inclusiveDateToWorkExperience: "",
-        positionTitleWorkExperience: "",
-        departmentWorkExperience: "",
-        monthlySalaryWorkExperience: "",
-        salaryGradeWorkExperience: "",
-        statusOfAppointmentWorkExperience: "",
-        governmentServiceWorkExperience: "",
-        workExperienceSignature: "",
-        workExperienceDateOfSignature: new Date(
-          Date.now() - new Date().getTimezoneOffset() * 60000
-        )
-          .toISOString()
-          .substr(0, 10),
-        nameAndAddressOfOrgVolWork: "",
-        inclusiveDatesFromVolWork: "",
-        inclusiveDatesToVolWork: "",
-        numberOfHoursVolWork: "",
-        positionOfWorkVolWork: "",
-        learningAndDevelopmentInterventions: "",
-        learningAndDevelopmentInclusiveDatesFrom: "",
-        learningAndDevelopmentInclusiveDatesTo: "",
-        learningAndDevelopmentNumberOfHours: "",
-        learningAndDevelopmentTypeOfLD: "",
-        learningAndDevelopmentConductedBy: "",
-        otherInformationSpecialSkills: "",
-        otherInformationNonacademicDistinctions: "",
-        otherInformationAssociationMembers: "",
-        otherInfoSignature: "",
-        otherInfoDateOfSignature: new Date(
-          Date.now() - new Date().getTimezoneOffset() * 60000
-        )
-          .toISOString()
-          .substr(0, 10),
-        questionThirtyFour: "",
-        questionThirtyFiveA: "",
-        questionThirtyFiveDateFiled: "",
-        questionThirtyFiveCaseStatus: "",
-        questionThirtySix: "",
-        questionThirtySeven: "",
-        questionThirtyEight: "",
-        questionThirtyNine: "",
-        questionFourtyA: "",
-        questionFourtyB: "",
-        questionFourtyC: "",
-        referenceNameFirst: "",
-        referenceAddressFirst: "",
-        referenceTelNoFirst: "",
-        referenceNameSecond: "",
-        referenceAddressSecond: "",
-        referenceTelNoSecond: "",
-        referenceNameThird: "",
-        referenceAddressThird: "",
-        referenceTelNoThird: "",
-        personalPhotoAttachment: "",
-        governmentIssuedID: "",
-        governmentIssuedIDNo: "",
-        governmentIDDateOrPlaceIssued: "",
-        oathSignature: "",
-        oathDateAccomplished: new Date(
-          Date.now() - new Date().getTimezoneOffset() * 60000
-        )
-          .toISOString()
-          .substr(0, 10),
-        rightThumbMark: "",
-        subscribedAndSwornDate: new Date(
-          Date.now() - new Date().getTimezoneOffset() * 60000
-        )
-          .toISOString()
-          .substr(0, 10),
-        personAdministeringOath: "",
-        civilServiceEligibility: [
-          {
-            careerService: "",
-            rating: "",
-            dateOfExamination: "",
-            placeOfExamination: "",
-            licenseNumber: "",
-            dateOfValidity: "",
-          },
-        ],
-        workExperience: [
-          {
-            inclusiveDateFromWorkExperience: "",
-            inclusiveDateToWorkExperience: "",
-            positionTitleWorkExperience: "",
-            departmentWorkExperience: "",
-            monthlySalaryWorkExperience: "",
-            salaryGradeWorkExperience: "",
-            statusOfAppointmentWorkExperience: "",
-            governmentServiceWorkExperience: "",
-          },
-        ], //the declared array
-        voluntaryWorkInvolvement: [
-          {
-            nameAdAddressOfOrgVolWork: "",
-            inclusiveDatesFromVolWork: "",
-            inclusiveDatesToVolWork: "",
-            numberOfHoursVolWork: "",
-            positionOfWorkVolWork: "",
-          },
-        ],
-        learningAndDevelopment: [
-          {
-            learningAndDevelopmentInterventions: "",
-            learningAndDevelopmentInclusiveDatesFrom: "",
-            learningAndDevelopmentInclusiveDatesTo: "",
-            learningAndDevelopmentNumberOfHours: "",
-            learningAndDevelopmentTypeOfLD: "",
-            learningAndDevelopmentConductedBy: "",
-          },
-        ],
-        educationalBackground: [
-          {
-            educBackgroundLevel: "",
-            educBackgroundNameOfSchool: "",
-            educBackgroundBasicEducation: "",
-            educBackgroundPeriodOfAttendanceFrom: "",
-            educBackgroundPeriodOfAttendanceTo: "",
-            educBackgroundHighestLevel: "",
-            educBackgroundYearGraduated: "",
-            educBackgroundScholarship: "",
-          },
-        ],
-        otherInfoSpecialSkills: [
-          {
-            otherInformationSpecialSkills: "",
-          },
-        ],
-        otherInfoNonacademicDistinctions: [
-          {
-            otherInformationNonacademicDistinctions: "",
-          },
-        ],
-        otherInfoAssociationMembers: [
-          {
-            otherInformationSpecialSkills: "",
-          },
-        ],
-        references: [
-          {
-            name: "",
-            address: "",
-            telephoneNo: "",
-          },
-        ],
-        name: "",
-        address: "",
-        telephoneNo: "",
-        pds: [],
-        pdsPersonalInfo: [],
-        pdsFamilyBackground: [],
-        pdsEducationalBackground: [],
-        pdsCivilServiceEligibility: [],
-        pdsWorkExperience: [],
-        pdsVoluntaryWorkInvolvement: [],
-        pdsLearningAndDevelopment: [],
-        pdsOtherInfoSpecialSkills: [],
-        pdsOtherInfoNonacademicDistinctions: [],
-        pdsOtherInfoAssociationMembers: [],
-        pdsQuestions: [],
-        pdsAdditionalInfo: [],
-        pdsReferences: [],
-        editedIndex: "",
-        childName: "",
-        children: [
-          {
-            childName: "",
-          },
-        ],
-      },
+      
 
       user: JSON.parse(sessionStorage.getItem("user_session")).role,
       imageUrl:[],
       imageData: '',
+      personalInfoId: '',
+      pdsAdditionalInfoId: '',
     };
   },
   computed: {
@@ -6803,6 +6502,9 @@ export default {
   created() {
     this.retrievePds();
     console.log(this.editedItem);
+    if(this.edit == true){
+      console.log(this.edit)
+    }
   },
   methods: {
     viewItem(item) {
@@ -6932,6 +6634,20 @@ export default {
           this.create = true;
         } else {
           this.create = false;
+          this.pdsPersonalInfo = []
+          this.pdsFamilyBackground = []
+          this.pdsEducationalBackground = []
+          this.pdsCivilServiceEligibility = []
+          this.pdsWorkExperience = []
+          this.pdsVoluntaryWorkInvolvement = []
+          this.pdsLearningAndDevelopment = []
+          this.pdsOtherInfoSpecialSkills = []
+          this.pdsOtherInfoNonacademicDistinctions = []
+          this.pdsOtherInfoAssociationMembers = []
+          this.references = []
+          this.pdsQuestions = []
+          this.pdsAdditionalInfo = []
+          this.pdsChildren = []
           this.pdsPersonalInfo.push(this.pds[0][0].personalInfo[0]);
           console.log(this.imageUrl);
           // console.log(this.pdsPersonalInfo);
@@ -6970,7 +6686,7 @@ export default {
           this.pdsQuestions.push(this.pds[11][0].pdsQuestions[0]);
           this.pdsAdditionalInfo.push(this.pds[12][0].pdsAdditionalInfo[0]);
           for (const child of this.pds[13][0].children) {
-            this.children.push(child);
+            this.pdsChildren.push(child);
           }
         
         }
@@ -7001,6 +6717,7 @@ export default {
       switch (array) {
         case "civilServiceEligibility":
           newRow = {
+            id: "",
             careerService: this.careerService,
             rating: this.rating,
             dateOfExamination: this.dateOfExamination,
@@ -7012,6 +6729,7 @@ export default {
           break;
         case "voluntaryWorkInvolvement":
           newRow = {
+            id: "",
             nameAdAddressOfOrgVolWork: this.nameAdAddressOfOrgVolWork,
             inclusiveDatesFromVolWork: this.inclusiveDatesFromVolWork,
             inclusiveDatesToVolWork: this.inclusiveDatesToVolWork,
@@ -7022,6 +6740,7 @@ export default {
           break;
         case "educationalBackground":
           newRow = {
+            id: "",
             educBackgroundLevel: this.educBackgroundLevel,
             educBackgroundNameOfSchool: this.educBackgroundNameOfSchool,
             educBackgroundBasicEducation: this.educBackgroundBasicEducation,
@@ -7037,6 +6756,7 @@ export default {
           break;
         case "learningAndDevelopment":
           newRow = {
+            id: "",
             learningAndDevelopmentInterventions:
               this.learningAndDevelopmentInterventions,
             learningAndDevelopmentInclusiveDatesFrom:
@@ -7053,12 +6773,14 @@ export default {
           break;
         case "otherInfoSpecialSkills":
           newRow = {
+            id: "",
             otherInformationSpecialSkills: this.otherInformationSpecialSkills,
           };
           this.otherInfoSpecialSkills.push(newRow);
           break;
         case "otherInfoNonacademicDistinctions":
           newRow = {
+            id: "",
             otherInfoNonacademicDistinctions:
               this.otherInfoNonacademicDistinctions,
           };
@@ -7066,12 +6788,14 @@ export default {
           break;
         case "otherInfoAssociationMembers":
           newRow = {
+            id: "",
             otherInfoAssociationMembers: this.otherInfoAssociationMembers,
           };
           this.otherInfoAssociationMembers.push(newRow);
           break;
         case "workExperience":
           newRow = {
+            id: "",
             inclusiveDateFromWorkExperience:
               this.inclusiveDateFromWorkExperience,
             inclusiveDateToWorkExperience: this.inclusiveDateToWorkExperience,
@@ -7089,6 +6813,7 @@ export default {
         case "references":
           console.log("reached");
           newRow = {
+            id: "",
             name: this.name,
             address: this.address,
             telephoneNo: this.telephoneNo,
@@ -7098,6 +6823,7 @@ export default {
         case "children":
           console.log("reached");
           newRow = {
+            id: "",
             childName: this.childName,
           };
           this.children.push(newRow);
@@ -7145,11 +6871,241 @@ export default {
     },
     editPds: function () {
       console.log("reached");
-      this.edit = true;
       this.create = false;
+      this.edit = true;
+      //pass the value from backend to individual variables in data
+      console.log(this.pdsPersonalInfo);
+      this.personalSurname = this.pdsPersonalInfo[0].last_name,
+      this.personalFirstName = this.pdsPersonalInfo[0].first_name
+      this.personalMiddleName = this.pdsPersonalInfo[0].middle_name
+      this.personalSuffix = this.pdsPersonalInfo[0].last_name
+      this.personalDateOfBirth = this.pdsPersonalInfo[0].date_of_birth
+      this.personalPlaceOfBirth = this.pdsPersonalInfo[0].place_of_birth
+      this.personalCitizenship = this.pdsPersonalInfo[0].citizenship
+      this.personalDualCitizenship = this.pdsPersonalInfo[0].dual_citizenship
+      this.countryOfCitizenship = this.pdsPersonalInfo[0].country_of_citizenship
+      this.personalSex = this.pdsPersonalInfo[0].sex
+      this.personalCivilStatus = this.pdsPersonalInfo[0].civil_status
+      this.personalHeight = this.pdsPersonalInfo[0].height
+      this.personalWeight = this.pdsPersonalInfo[0].weight
+      this.personalBloodType = this.pdsPersonalInfo[0].blood_type
+      this.personalGSISIDNo = this.pdsPersonalInfo[0].gsis_id_no
+      this.personalResAddressHouseNo = this.pdsPersonalInfo[0].residential_address_house_no
+      this.personalResAddressStreet = this.pdsPersonalInfo[0].residential_address_street
+      this.personalResAddressSubdivision = this.pdsPersonalInfo[0].residential_address_subdivison
+      this.personalResAddressBarangay = this.pdsPersonalInfo[0].residential_address_barangay
+      this.personalResAddressCity = this.pdsPersonalInfo[0].residential_address_city
+      this.personalResAddressProvince = this.pdsPersonalInfo[0].residential_address_province
+      this.personalZipCode = this.pdsPersonalInfo[0].residential_address_zip_code
+      this.personalPAGIBIGIDNo = this.pdsPersonalInfo[0].pag_ibig_id_no
+      this.personalPHILHEALTHNo = this.pdsPersonalInfo[0].philhealth_no
+      this.personalPermanentAddHouseNo = this.pdsPersonalInfo[0].permanent_address_house_no
+      this.personalPermanentAddStreet = this.pdsPersonalInfo[0].permanent_address_street
+      this.personalPermanentAddSubdivision = this.pdsPersonalInfo[0].permanent_address_subdivison
+      this.personalPermanentAddBarangay = this.pdsPersonalInfo[0].permanent_address_barangay
+      this.personalPermanentAddCity = this.pdsPersonalInfo[0].permanent_address_city
+      this.personalPermanentAddProvince = this.pdsPersonalInfo[0].permanent_address_province
+      this.personalPermanentAddZipCode = this.pdsPersonalInfo[0].permanent_address_zip_code
+      this.personalSSSNo = this.pdsPersonalInfo[0].sss_no
+      this.personalTelephoneNo = this.pdsPersonalInfo[0].telephone_no
+      this.personalTinNo = this.pdsPersonalInfo[0].tin_no
+      this.personalMobileNo = this.pdsPersonalInfo[0].mobile_no
+      this.personalAgencyEmployeeNo = this.pdsPersonalInfo[0].agency_employee_no
+      this.personalEmailAddress = this.pdsPersonalInfo[0].email_address
+      console.log(this.pdsFamilyBackground)
+      this.familySpouseSurname = this.pdsFamilyBackground[0].spouse_last_name
+      this.familySpouseFirstName = this.pdsFamilyBackground[0].spouse_first_name
+      this.familySpouseMiddleName = this.pdsFamilyBackground[0].spouse_middle_name
+      this.familySpouseSuffix = this.pdsFamilyBackground[0].spouse_suffix
+      this.familySpouseOccupation = this.pdsFamilyBackground[0].spouse_occupation
+      this.familyEmployerName = this.pdsFamilyBackground[0].spouse_employer
+      this.familyBusinessAddress = this.pdsFamilyBackground[0].spouse_business_address
+      this.familyTelephoneNo = this.pdsFamilyBackground[0].spouse_telephone_no
+      this.familyFatherSurname = this.pdsFamilyBackground[0].father_last_name
+      this.familyFatherFirstName = this.pdsFamilyBackground[0].father_first_name
+      this.familyFatherMiddleName = this.pdsFamilyBackground[0].father_middle_name
+      this.familyFatherSuffix = this.pdsFamilyBackground[0].father_suffix
+      this.familyMotherMaidenName = this.pdsFamilyBackground[0].mother_maiden_name
+      this.familyMotherSurname = this.pdsFamilyBackground[0].mother_last_name
+      this.familyMotherFirstName = this.pdsFamilyBackground[0].mother_first_name
+      this.familyMotherMiddleName = this.pdsFamilyBackground[0].mother_middle_name
+      this.dateOfBirthSpouse = this.pdsFamilyBackground[0].spouse_date_of_birth
+      this.dateOfBirthFather = this.pdsFamilyBackground[0].father_date_of_birth
+      this.dateOfBirthMother = this.pdsFamilyBackground[0].mother_date_of_birth
+      console.log(this.pdsEducationalBackground);
+      this.educationalBackground = []
+      for(const [index, item] of this.pdsEducationalBackground.entries()){
+        console.log(index)
+        const newRow ={
+        id: item.id,
+        educBackgroundLevel : item.level,
+        educBackgroundNameOfSchool : item.name_of_school,
+        educBackgroundBasicEducation : item.basic_education_course,
+        educBackgroundPeriodOfAttendanceFrom : item.period_of_attendance_from,
+        educBackgroundPeriodOfAttendanceTo : item.period_of_attendance_to,
+        educBackgroundHighestLevel : item.highest_level_units_earned,
+        educBackgroundYearGraduated : item.year_graduated,
+        educBackgroundScholarship : item.academic_honors_received
+      }
+      this.educationalBackground.push(newRow)
+      }
+      console.log(this.educationalBackground)
+      this.civilServiceEligibility = []
+      console.log(this.pdsCivilServiceEligibility);
+      for(const [index, item] of this.pdsCivilServiceEligibility.entries()){
+        console.log(index)
+      const newRow = {
+        id: item.id,
+            careerService: item.career_service,
+            rating: item.rating,
+            dateOfExamination: item.date_of_examination,
+            placeOfExamination: item.place_of_examination,
+            licenseNumber: item.license_number,
+            dateOfValidity: item.license_date_of_validity,
+          };
+          this.civilServiceEligibility.push(newRow);
+      }
+      console.log(this.pdsWorkExperience);
+      this.workExperience = []
+      for(const [index, item] of this.pdsWorkExperience.entries()){
+        console.log(index)
+      const newRow = {
+        id: item.id,
+            inclusiveDateFromWorkExperience: 
+              item.work_inclusive_dates_from,
+            inclusiveDateToWorkExperience: item.work_inclusive_dates_to,
+            positionTitleWorkExperience: item.position,
+            departmentWorkExperience: item.department,
+            monthlySalaryWorkExperience: item.monthly_salary,
+            salaryGradeWorkExperience: item.salar_grade,
+            statusOfAppointmentWorkExperience:
+              item.status_of_appointment,
+            governmentServiceWorkExperience:
+              item.government_service,
+          };
+          this.workExperience.push(newRow);
+      }
+      console.log(this.pdsVoluntaryWorkInvolvement);
+      this.voluntaryWorkInvolvement = []
+       for(const [index, item] of this.pdsVoluntaryWorkInvolvement.entries()){
+        console.log(index)
+       const newRow = {
+         id: item.id,
+            nameAdAddressOfOrgVolWork: item.organization_name_and_address,
+            inclusiveDatesFromVolWork: item.voluntary_inclusive_dates_from,
+            inclusiveDatesToVolWork: item.voluntary_inclusive_dates_to,
+            numberOfHoursVolWork: item.number_of_hours,
+            positionOfWorkVolWork: item.position,
+          };
+          this.voluntaryWorkInvolvement.push(newRow);
+       }
+      console.log(this.pdsLearningAndDevelopment);
+      this.learningAndDevelopment = []
+       for(const [index, item] of this.pdsLearningAndDevelopment.entries()){
+        console.log(index)
+      const newRow = {
+            id: item.id,
+            learningAndDevelopmentInterventions:
+              item.learning_and_development_interventions,
+            learningAndDevelopmentInclusiveDatesFrom:
+              item.learning_inclusive_dates_from,
+            learningAndDevelopmentInclusiveDatesTo:
+              item.learning_inclusive_dates_to,
+            learningAndDevelopmentNumberOfHours:
+              item.number_of_hours,
+            learningAndDevelopmentTypeOfLD: item.type_of_ld,
+            learningAndDevelopmentConductedBy:
+              item.conducted_by,
+          };
+          this.learningAndDevelopment.push(newRow);
+       }
+      console.log(this.pdsOtherInfoSpecialSkills);
+      this.otherInfoSpecialSkills = []
+       for(const [index, item] of this.pdsOtherInfoSpecialSkills.entries()){
+        console.log(index)
+      const  newRow = {
+            id: item.id,
+            otherInformationSpecialSkills: item.special_skills_and_hobbies,
+          };
+          this.otherInfoSpecialSkills.push(newRow);
+       }
+      console.log(this.pdsOtherInfoNonacademicDistinctions);
+      this.otherInfoNonacademicDistinctions = []
+      for(const [index, item] of this.pdsOtherInfoNonacademicDistinctions.entries()){
+        console.log(index)
+      const  newRow = {
+            id: item.id,
+            otherInfoNonacademicDistinctions: item.non_academic_distinctions,
+          };
+          this.otherInfoNonacademicDistinctions.push(newRow);
+       }
+      console.log(this.pdsOtherInfoAssociationMembers);
+      this.otherInfoAssociationMembers = []
+      for(const [index, item] of this.pdsOtherInfoAssociationMembers.entries()){
+        console.log(index)
+      const  newRow = {
+            id: item.id,
+            otherInfoAssociationMembers: item.association_members,
+          };
+          this.otherInfoAssociationMembers.push(newRow);
+       }
+      console.log(this.pdsQuestions);
+      this.questionThirtyFour = this.pdsQuestions[0].question_thirty_four
+      this.questionThirtyFiveA = this.pdsQuestions[0].question_thirty_five_a
+      this.questionThirtyFiveDateFiled = this.pdsQuestions[0].question_thirty_five_b_date_filed
+      this.questionThirtyFiveCaseStatus = this.pdsQuestions[0].question_thirty_five_B_status_of_case
+      this.questionThirtySix = this.pdsQuestions[0].question_thirty_six
+      this.questionThirtySeven = this.pdsQuestions[0].question_thirty_seven
+      this.questionThirtyEight = this.pdsQuestions[0].question_thirty_eight
+      this.questionThirtyNine = this.pdsQuestions[0].question_thirty_nine
+      this.questionFourtyA = this.pdsQuestions[0].question_fourty_a
+      this.questionFourtyB = this.pdsQuestions[0].question_fourty_b
+      this.questionFourtyB = this.pdsQuestions[0].question_fourty_b
+      console.log(this.pdsReferences);
+      this.references = []
+      for(const [index, item] of this.pdsReferences.entries()){
+        console.log(index)
+      const newRow = {
+            id: item.id,
+            name: this.reference_name,
+            address: this.reference_address,
+            telephoneNo: this.reference_tel_no,
+          };
+          this.references.push(newRow);
+       }
+      console.log(this.pdsChildren);
+      this.children = []
+      for(const [index, item] of this.pdsChildren.entries()){
+        console.log(index)
+      const newRow = {
+            id: item.id,
+            childName: item.child_name,
+          };
+          this.children.push(newRow);
+       }
+       console.log(this.pdsAdditionalInfo)
+      
+      this.personalInfoId = this.pdsPersonalInfo[0].id
+      this.pdsAdditionalInfoId = this.pdsAdditionalInfo[0].id
+      this.personalPhotoAttachment = this.pdsAdditionalInfo[0].photo
+      this.governmentIssuedID = this.pdsAdditionalInfo[0].government_id
+        this.governmentIssuedIDNo = this.pdsAdditionalInfo[0].id_no
+      this.governmentIDDateOrPlaceIssued = this.pdsAdditionalInfo[0].date_place_of_issuance
+      this.oathSignature = this.pdsAdditionalInfo[0].signature
+      this.oathDateAccomplished = this.pdsAdditionalInfo[0].oath_date_accomplished
+      this.rightThumbMark = this.pdsAdditionalInfo[0].right_thumbmark
+      this.personAdministeringOath = this.pdsAdditionalInfo[0].person_administering_oath
+      this.subscribedAndSwornDate = this.pdsAdditionalInfo[0].sworn_date
+
+      this.idList = {
+        personalInfoId: this.pdsPersonalInfo[0].id,
+        familyBackgroundId: this.pdsFamilyBackground[0].id,
+        pdsQuestionsId: this.pdsQuestions[0].id,
+        pdsAdditionalInfo: this.pdsAdditionalInfoId
+      }
     },
     finalizePds: async function (method) {
-      console.log(this.educBackgroundSignature, method);
+      console.log(method);
       const personalSurname = this.personalSurname;
       const personalFirstName = this.personalFirstName;
       const personalMiddleName = this.personalMiddleName;
@@ -7246,7 +7202,7 @@ export default {
       const personAdministeringOath = this.personAdministeringOath;
       //const user = JSON.parse(sessionStorage.getItem('user_session')).id
       const user = JSON.parse(sessionStorage.user_session).id;
-
+      const idList = this.idList;
       let formData = new FormData();
       formData.append("fileEducBackgroundSignature", educBackgroundSignature);
       formData.append("fileWorkExperienceSignature", workExperienceSignature);
@@ -7258,6 +7214,7 @@ export default {
       formData.append("user", user);
       const data = {
         user,
+        idList,
         personalSurname,
         personalFirstName,
         personalMiddleName,
@@ -7349,11 +7306,12 @@ export default {
         rightThumbMark,
         subscribedAndSwornDate,
       };
-      /*formDataEducationalBackground,workExperienceSignature,otherInfoSignature,personalPhotoAttachment,oathSignature,personAdministeringOath,*/
+      if(method == 'create'){
+        /*formDataEducationalBackground,workExperienceSignature,otherInfoSignature,personalPhotoAttachment,oathSignature,personAdministeringOath,*/
       const returnedData = await this.$store.dispatch("createPds", data);
       console.log(returnedData);
-      let personalInfoId = returnedData[0][0].personalInfoId[0];
-      let pdsAdditionalInfoId = returnedData[1][0].pdsAdditionalInfoId[0];
+      let personalInfoId = returnedData[0][0].personalInfoId[0].id;
+      let pdsAdditionalInfoId = returnedData[1][0].pdsAdditionalInfoId[0].id;
       let message = returnedData[2][0].message[0];
       console.log(personalInfoId, pdsAdditionalInfoId, message);
       formData.append(
@@ -7371,6 +7329,19 @@ export default {
         //this.pds = this.$store.getters.pdsInfosAll;
         //this.retrievePds()
       }
+      }
+      else if(method == 'edit'){
+         formData.append(
+        "personalInfoId",
+        this.personalInfoId,
+        "pdsAdditionalInfoId",
+        this.pdsAdditionalInfoId
+      );
+        const returnedData = await this.$store.dispatch("updatePdsInfo", data);
+        const fileUpload = await this.$store.dispatch("uploadFile", formData);
+        console.log(returnedData, fileUpload)
+      }
+      
     },
     download: async function () {
       let formData = new FormData();

@@ -8,6 +8,7 @@ import Login from "../views/Login/Login.vue";
 import HomeView from "../views/Index.vue";
 import PersonalDataSheet from "../views/Profile/PDSUser.vue";
 import ViewPds from "../views/Profile/ViewPdsAdmin.vue"
+import ProductsInventory from '../views/Test/ProductsInventory'
 Vue.use(VueRouter);
 
 const routes = [
@@ -57,6 +58,11 @@ const routes = [
     path: "/personalDataSheet",
     name: "PersonalDataSheet",
     component: PersonalDataSheet,
+  },
+  {
+    path: "/products",
+    name: "ProductsInventory",
+    component: ProductsInventory,
   },
 ];
 
