@@ -1,484 +1,365 @@
 <template>
-  <v-main class="pa-0 pa-0 ">
-    <v-container v-if="user==admin">
-  <v-card>
-    <v-card-title>
-      <v-text-field
-        v-model="search"
-        append-icon="mdi-magnify"
-        label="Search"
-        single-line
-        hide-details
-      ></v-text-field>
-    </v-card-title>
-    <v-data-table
-      :headers="headers"
-      :items="pds"
-      :search="search"
-    ></v-data-table>
-  </v-card>
+  <v-main class="pa-0 pa-0">
+    <v-container v-if="user == admin">
+      <v-card>
+        <v-card-title>
+          <v-text-field
+            v-model="search"
+            append-icon="mdi-magnify"
+            label="Search"
+            single-line
+            hide-details
+          ></v-text-field>
+        </v-card-title>
+        <v-data-table
+          :headers="headers"
+          :items="pds"
+          :search="search"
+        ></v-data-table>
+      </v-card>
     </v-container>
     <v-container
       v-if="edit == false"
       class="text-center"
-      style="width: 100vw; border: none; height: auto;"
+      style="width: 100vw; border: none; height: auto"
     >
-      <button class="material-icons float-left" style="position:absolute;top:1%;left:6%">keyboard_arrow_left</button>
-       <v-select
+      <button
+        class="material-icons float-left"
+        style="position: absolute; top: 1%; left: 6%"
+      >
+        keyboard_arrow_left
+      </button>
+      <v-select
         label=""
         dense
         outlined
         class="mx-5"
-        style="width:30%;max-width:50%"
-      > </v-select>
-     
-     <button class="material-icons pl-2 float-right" style="position:absolute;top:1%;right:62%">keyboard_arrow_right</button>
+        style="width: 30%; max-width: 50%"
+      >
+      </v-select>
+
+      <button
+        class="material-icons pl-2 float-right"
+        style="position: absolute; top: 1%; right: 62%"
+      >
+        keyboard_arrow_right
+      </button>
     </v-container>
 
-    <v-container v-if="edit == false"  >
-      
-        <v-card-title label="Search" single-line hide-details
-          ><span>CS Form N0.212<br />Revised 2017</span>
-          <span>Personal Data Sheet</span>
-        </v-card-title>
-        <v-card-subtitle label="Search" single-line hide-details>
-          WARNING: Any misrepresentation made in the Personal Data Sheet and the
-          Work Experience Sheet shall cause the filing of
-          administrative/criminal case/s against the person concerned.
-        </v-card-subtitle>
-        <v-card-text label="Search" single-line hide-details>
-          READ THE ATTACHED GUIDE TO FILLING OUT THE PERSONAL DATA SHEET (PDS)
-          BEFORE ACCOMPLISHING THE PDS FORM.
-        </v-card-text>
+    <v-container v-if="edit == false">
+      <v-card-title label="Search" single-line hide-details
+        ><span>CS Form N0.212<br />Revised 2017</span>
+        <span>Personal Data Sheet</span>
+      </v-card-title>
+      <v-card-subtitle label="Search" single-line hide-details>
+        WARNING: Any misrepresentation made in the Personal Data Sheet and the
+        Work Experience Sheet shall cause the filing of administrative/criminal
+        case/s against the person concerned.
+      </v-card-subtitle>
+      <v-card-text label="Search" single-line hide-details>
+        READ THE ATTACHED GUIDE TO FILLING OUT THE PERSONAL DATA SHEET (PDS)
+        BEFORE ACCOMPLISHING THE PDS FORM.
+      </v-card-text>
 
-        <v-simple-table height="auto" class="pa-0 pa-0 ma-12" max-width="60vw">
-          <template v-slot:default>
-            <thead cols="4">
-              <tr clas="pa-0">
-                <th colspan="8">I. PERSONAL INFORMATION</th>
-              </tr>
-            </thead>
-            <tbody class="text-center" color="secondary">
-              <!-- v-for="info of personalInfo" :key="info.personalSurname" -->
-              <tr>
-                <td width="50px" colspan="2" style="text-align: left">
-                  2. SURNAME
-                </td>
-                <td colspan="7">{{}}</td>
-              </tr>
-
-              <tr>
-                <td width="50px" colspan="2" style="text-align: left">
-                  FIRST NAME
-                </td>
-                <td colspan="4">{{}}</td>
-                <td colspan="4">
-                  NAME EXTENSION (JR., SR)<br />
-                  {{}}
-                </td>
-              </tr>
-              <tr>
-                <td width="80px" colspan="2" style="text-align: left">
-                  MIDDLE NAME
-                </td>
-                <td colspan="8">{{}}</td>
-              </tr>
-
-              <tr>
-                <td max-width="100px" colspan="2" style="text-align: left">
-                  DATE OF BIRTH <br />
-                  (mm/dd/yyyy)
-                </td>
-                <td colspan="2">{{}}</td>
-                <td rowspan="3" colspan="2">
-                  16.CITIZENSHIP<br />If holder of dual citizenship,<br />please
-                  indicate the details.
-                </td>
-                <td colspan="3">{{}}</td>
-              </tr>
-              <tr>
-                <td colspan="2" style="text-align: left">PLACE OF BIRTH</td>
-                <td colspan="2">{{}}</td>
-
-                <td colspan="3">{{}}</td>
-              </tr>
-              <tr>
-                <td colspan="2" style="text-align: left">SEX</td>
-                <td colspan="2">{{}}</td>
-                <td colspan="3">{{}}</td>
-              </tr>
-              <tr>
-                <td colspan="2" style="text-align: left" rowspan="2">
-                  CIVIL STATUS
-                </td>
-                <td rowspan="2" colspan="2">{{}}</td>
-                <td rowspan="4">
-                  RESIDENTIAL<br />
-                  ADDRESS<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-                  ZIP CODE
-                </td>
-                <td rowspan="1" colspan="2">{{}}</td>
-                <td rowspan="1" colspan="2">{{}}</td>
-              </tr>
-
-              <tr>
-                <td rowspan="1" colspan="2">{{}}</td>
-                <td rowspan="1" colspan="2">{{}}</td>
-              </tr>
-
-              <tr>
-                <td colspan="2" style="text-align: left">HEIGHT (m)</td>
-                <td colspan="2">{{}}</td>
-                <td colspan="2">{{}}</td>
-                <td colspan="2">{{}}</td>
-              </tr>
-              <tr>
-                <td colspan="2" style="text-align: left">WEIGHT (kg)</td>
-                <td colspan="2">{{}}</td>
-
-                <td colspan="3">{{}}</td>
-              </tr>
-              <tr>
-                <td colspan="2" style="text-align: left">BLOOD TYPE</td>
-                <td colspan="2">{{}}</td>
-                <td rowspan="4">
-                  PERMANENT ADDRESS<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-                  ZIP CODE
-                </td>
-                <td colspan="2">{{}}</td>
-                <td colspan="2">{{}}</td>
-              </tr>
-              <tr>
-                <td colspan="2" style="text-align: left">GSIS ID NO.</td>
-                <td colspan="2">{{}}</td>
-                <td colspan="2">{{}}</td>
-                <td colspan="2">{{}}</td>
-              </tr>
-              <tr>
-                <td colspan="2" style="text-align: left">PAG-IBIG ID NO.</td>
-                <td colspan="2">{{}}</td>
-                <td colspan="2">{{}}</td>
-                <td colspan="2">{{}}</td>
-              </tr>
-              <tr>
-                <td colspan="2" style="text-align: left">PHILHEALTH NO.</td>
-                <td colspan="2">{{}}</td>
-                <td colspan="3">{{}}</td>
-              </tr>
-              <tr>
-                <td colspan="2" style="text-align: left">SSS NO.</td>
-                <td colspan="2">{{}}</td>
-                <td>19.TELEPHONE NO.</td>
-                <td colspan="3">{{}}</td>
-              </tr>
-              <tr>
-                <td colspan="2" style="text-align: left">14.TIN NO.</td>
-                <td colspan="2">{{}}</td>
-                <td>20.MOBILE NO.</td>
-                <td colspan="3">{{}}</td>
-              </tr>
-              <tr>
-                <td colspan="2" style="text-align: left">
-                  AGENCY EMPLOYEE NO.
-                </td>
-                <td colspan="2">{{}}</td>
-                <td>21. E-MAIL ADDRESS (if any)</td>
-
-                <td colspan="3">{{}}</td>
-              </tr>
-            </tbody>
-          </template>
-        </v-simple-table>
-        <v-simple-table height="auto" class="pa-0 pa-0 ma-12" width="80vw">
-          <template v-slot:default>
-            <thead>
-              <tr clas="pa-0">
-                <th colspan="5">II. FAMILY BACKGROUND</th>
-              </tr>
-            </thead>
-            <tbody class="" color="secondary">
-              <tr>
-                <td width="50px">SPOUSE'S SURNAME</td>
-                <td colspan="4">{{}}</td>
-                <td>23. NAME of CHILDREN (Write full name and list all)</td>
-                <td>DATE OF BIRTH (mm/dd/yyyy)</td>
-              </tr>
-
-              <tr>
-                <td width="80px">FIRST NAME</td>
-                <td colspan="3">{{}}</td>
-                <td colspan="1">{{}}</td>
-                <td colspan="1">{{}}</td>
-                <td colspan="1">{{}}</td>
-              </tr>
-              <tr>
-                <td width="80px">MIDDLE NAME</td>
-                <td colspan="4">{{}}</td>
-                <td colspan="1">{{}}</td>
-                <td colspan="1">{{}}</td>
-              </tr>
-
-              <tr>
-                <td max-width="100px">OCCUPATION</td>
-                <td colspan="4">{{}}</td>
-                <td colspan="1">{{}}</td>
-                <td colspan="1">{{}}</td>
-              </tr>
-              <tr>
-                <td max-width="100px">EMPLOYER/BUSINESS NAME</td>
-                <td colspan="4">{{}}</td>
-                <td colspan="1">{{}}</td>
-                <td colspan="1">{{}}</td>
-              </tr>
-              <tr>
-                <td max-width="100px">BUSINESS ADDRESS</td>
-                <td colspan="4">{{}}</td>
-                <td colspan="1">{{}}</td>
-                <td colspan="1">{{}}</td>
-              </tr>
-              <tr>
-                <td max-width="100px">TELEPHONE NO.</td>
-                <td colspan="4">{{}}</td>
-                <td colspan="1">{{}}</td>
-                <td colspan="1">{{}}</td>
-              </tr>
-
-              <tr>
-                <td>25. FATHER'S SURNAME</td>
-                <td colspan="4">{{}}</td>
-                <td colspan="1">{{}}</td>
-                <td colspan="1">{{}}</td>
-              </tr>
-              <tr>
-                <td width="80px">FIRST NAME</td>
-                <td colspan="3">{{}}</td>
-                <td colspan="1">{{}}</td>
-                <td colspan="1">{{}}</td>
-                <td colspan="1">{{}}</td>
-              </tr>
-              <tr>
-                <td width="80px">MIDDLE NAME</td>
-                <td colspan="4">{{}}</td>
-                <td colspan="1">{{}}</td>
-                <td colspan="1">{{}}</td>
-              </tr>
-              <tr>
-                <td>26. MOTHER'S MAIDEN NAME</td>
-                <td colspan="4">{{}}</td>
-                <td colspan="1">{{}}</td>
-                <td colspan="1">{{}}</td>
-              </tr>
-              <tr>
-                <td>SURNAME</td>
-                <td colspan="4">{{}}</td>
-                <td colspan="1">{{}}</td>
-                <td colspan="1">{{}}</td>
-              </tr>
-              <tr>
-                <td width="80px">FIRST NAME</td>
-                <td colspan="4">{{}}</td>
-
-                <td colspan="1">{{}}</td>
-                <td colspan="1">{{}}</td>
-              </tr>
-              <tr>
-                <td width="80px">MIDDLE NAME</td>
-                <td colspan="4">{{}}</td>
-                <td colspan="1">{{}}</td>
-                <td colspan="1">{{}}</td>
-              </tr>
-            </tbody>
-          </template>
-        </v-simple-table>
-        <br />
-        <v-simple-table height="auto" class="pa-0 pa-0 ma-12" width="80vw">
-          <template v-slot:default>
-            <thead cols="4">
-              <tr clas="pa-0">
-                <th colspan="4">III. EDUCATIONAL BACKGROUND</th>
-              </tr>
-            </thead>
-            <tbody class="text-center" color="secondary">
-              <tr>
-                <td rowspan="2">LEVEL</td>
-                <td rowspan="2">NAME OF SCHOOL<br />(Write in full)</td>
-                <td rowspan="2">
-                  BASIC EDUCATION/DEGREE/COURSE<br />(Write in full)
-                </td>
-                <td colspan="2">PERIOD OF ATTENDANCE<br />From To</td>
-                <td rowspan="2">
-                  HIGHEST LEVEL/UNITS EARNED (if not graduated)
-                </td>
-                <td rowspan="2">YEAR GRADUATED</td>
-                <td rowspan="2">SCHOLARSHIP/ ACADEMIC HONORS RECEIVED</td>
-              </tr>
-
-              <tr>
-                <td>From</td>
-                <td>To</td>
-              </tr>
-
-              <tr
-                v-for="row in educationalBackground"
-                :key="row.educBackgroundLevel"
-              >
-                <td colspan="1">{{}}</td>
-                <td colspan="1">{{}}</td>
-                <td colspan="1">{{}}</td>
-                <td colspan="1">{{}}</td>
-
-                <td colspan="1">{{}}</td>
-                <td colspan="1">{{}}</td>
-                <td colspan="1">{{}}</td>
-                <td colspan="1">{{}}</td>
-              </tr>
-            </tbody>
-            <tfoot>
-              <tr>
-                <td>SIGNATURE</td>
-                <td colspan="4">
-                  <v-text-field
-                    placeholder="SIGNATURE"
-                    solo
-                    v-model="educBackgroundSignature"
-                    id="signaturePart1"
-                    class="text-center pt-6"
-                    type="file"
-                  >
-                  </v-text-field>
-                </td>
-                <td colspan="1" class="pl-10">DATE</td>
-                <td colspan="4">
-                  <v-text-field
-                    placeholder=""
-                    solo
-                    v-model="educBackgroundDateOfSignature"
-                    id="dateOfSignaturePart1"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-              </tr>
-            </tfoot>
-          </template>
-        </v-simple-table>
-
-        <v-simple-table height="auto" class="pa-0 pa-0 ma-12" width="80vw">
-          <thead>
-            <tr>
-              <th colspan="8" style="text-align: left">
-                IV. CIVIL SERVICE ELIGIBILITY
-              </th>
-            </tr>
-
-            <tr>
-              <th rowspan="2" colspan="2" style="text-align: left">
-                CAREER SERVICE/ RA 1080 (BOARD/ BAR) UNDER SPECIAL LAWS/ CES/
-                CSEE BARANGAY ELIGIBILITY / DRIVER'S LICENSE
-              </th>
-              <th rowspan="2" colspan="2" style="text-align: left">
-                RATING <br />(If Applicable)
-              </th>
-              <th rowspan="2" colspan="2" style="text-align: left">
-                DATE OF EXAMINATION / CONFERMENT
-              </th>
-              <th rowspan="2" colspan="2" style="text-align: left">
-                PLACE OF EXAMINATION / CONFERMENT
-              </th>
-              <th colspan="2" style="text-align: left">
-                LICENSE (if applicable)
-              </th>
-            </tr>
-            <tr>
-              <th style="text-align: left">NUMBER</th>
-              <th style="text-align: left">Date of Validity</th>
+      <v-simple-table height="auto" class="pa-0 pa-0 ma-12" max-width="60vw">
+        <template v-slot:default>
+          <thead cols="4">
+            <tr clas="pa-0">
+              <th colspan="8">I. PERSONAL INFORMATION</th>
             </tr>
           </thead>
-          <tbody>
-            <tr v-for="row in civilServiceEligibility" :key="row.careerService">
+          <tbody class="text-center" color="secondary">
+            <!-- v-for="info of personalInfo" :key="info.personalSurname" -->
+            <tr>
+              <td width="50px" colspan="2" style="text-align: left">
+                2. SURNAME
+              </td>
+              <td colspan="7">{{}}</td>
+            </tr>
+
+            <tr>
+              <td width="50px" colspan="2" style="text-align: left">
+                FIRST NAME
+              </td>
+              <td colspan="4">{{}}</td>
+              <td colspan="4">
+                NAME EXTENSION (JR., SR)<br />
+                {{}}
+              </td>
+            </tr>
+            <tr>
+              <td width="80px" colspan="2" style="text-align: left">
+                MIDDLE NAME
+              </td>
+              <td colspan="8">{{}}</td>
+            </tr>
+
+            <tr>
+              <td max-width="100px" colspan="2" style="text-align: left">
+                DATE OF BIRTH <br />
+                (mm/dd/yyyy)
+              </td>
+              <td colspan="2">{{}}</td>
+              <td rowspan="3" colspan="2">
+                16.CITIZENSHIP<br />If holder of dual citizenship,<br />please
+                indicate the details.
+              </td>
+              <td colspan="3">{{}}</td>
+            </tr>
+            <tr>
+              <td colspan="2" style="text-align: left">PLACE OF BIRTH</td>
+              <td colspan="2">{{}}</td>
+
+              <td colspan="3">{{}}</td>
+            </tr>
+            <tr>
+              <td colspan="2" style="text-align: left">SEX</td>
+              <td colspan="2">{{}}</td>
+              <td colspan="3">{{}}</td>
+            </tr>
+            <tr>
+              <td colspan="2" style="text-align: left" rowspan="2">
+                CIVIL STATUS
+              </td>
+              <td rowspan="2" colspan="2">{{}}</td>
+              <td rowspan="4">
+                RESIDENTIAL<br />
+                ADDRESS<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+                ZIP CODE
+              </td>
+              <td rowspan="1" colspan="2">{{}}</td>
+              <td rowspan="1" colspan="2">{{}}</td>
+            </tr>
+
+            <tr>
+              <td rowspan="1" colspan="2">{{}}</td>
+              <td rowspan="1" colspan="2">{{}}</td>
+            </tr>
+
+            <tr>
+              <td colspan="2" style="text-align: left">HEIGHT (m)</td>
               <td colspan="2">{{}}</td>
               <td colspan="2">{{}}</td>
               <td colspan="2">{{}}</td>
+            </tr>
+            <tr>
+              <td colspan="2" style="text-align: left">WEIGHT (kg)</td>
               <td colspan="2">{{}}</td>
+
+              <td colspan="3">{{}}</td>
+            </tr>
+            <tr>
+              <td colspan="2" style="text-align: left">BLOOD TYPE</td>
+              <td colspan="2">{{}}</td>
+              <td rowspan="4">
+                PERMANENT ADDRESS<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+                ZIP CODE
+              </td>
+              <td colspan="2">{{}}</td>
+              <td colspan="2">{{}}</td>
+            </tr>
+            <tr>
+              <td colspan="2" style="text-align: left">GSIS ID NO.</td>
+              <td colspan="2">{{}}</td>
+              <td colspan="2">{{}}</td>
+              <td colspan="2">{{}}</td>
+            </tr>
+            <tr>
+              <td colspan="2" style="text-align: left">PAG-IBIG ID NO.</td>
+              <td colspan="2">{{}}</td>
+              <td colspan="2">{{}}</td>
+              <td colspan="2">{{}}</td>
+            </tr>
+            <tr>
+              <td colspan="2" style="text-align: left">PHILHEALTH NO.</td>
+              <td colspan="2">{{}}</td>
+              <td colspan="3">{{}}</td>
+            </tr>
+            <tr>
+              <td colspan="2" style="text-align: left">SSS NO.</td>
+              <td colspan="2">{{}}</td>
+              <td>19.TELEPHONE NO.</td>
+              <td colspan="3">{{}}</td>
+            </tr>
+            <tr>
+              <td colspan="2" style="text-align: left">14.TIN NO.</td>
+              <td colspan="2">{{}}</td>
+              <td>20.MOBILE NO.</td>
+              <td colspan="3">{{}}</td>
+            </tr>
+            <tr>
+              <td colspan="2" style="text-align: left">AGENCY EMPLOYEE NO.</td>
+              <td colspan="2">{{}}</td>
+              <td>21. E-MAIL ADDRESS (if any)</td>
+
+              <td colspan="3">{{}}</td>
+            </tr>
+          </tbody>
+        </template>
+      </v-simple-table>
+      <v-simple-table height="auto" class="pa-0 pa-0 ma-12" width="80vw">
+        <template v-slot:default>
+          <thead>
+            <tr clas="pa-0">
+              <th colspan="5">II. FAMILY BACKGROUND</th>
+            </tr>
+          </thead>
+          <tbody class="" color="secondary">
+            <tr>
+              <td width="50px">SPOUSE'S SURNAME</td>
+              <td colspan="4">{{}}</td>
+              <td>23. NAME of CHILDREN (Write full name and list all)</td>
+              <td>DATE OF BIRTH (mm/dd/yyyy)</td>
+            </tr>
+
+            <tr>
+              <td width="80px">FIRST NAME</td>
+              <td colspan="3">{{}}</td>
+              <td colspan="1">{{}}</td>
+              <td colspan="1">{{}}</td>
+              <td colspan="1">{{}}</td>
+            </tr>
+            <tr>
+              <td width="80px">MIDDLE NAME</td>
+              <td colspan="4">{{}}</td>
+              <td colspan="1">{{}}</td>
+              <td colspan="1">{{}}</td>
+            </tr>
+
+            <tr>
+              <td max-width="100px">OCCUPATION</td>
+              <td colspan="4">{{}}</td>
+              <td colspan="1">{{}}</td>
+              <td colspan="1">{{}}</td>
+            </tr>
+            <tr>
+              <td max-width="100px">EMPLOYER/BUSINESS NAME</td>
+              <td colspan="4">{{}}</td>
+              <td colspan="1">{{}}</td>
+              <td colspan="1">{{}}</td>
+            </tr>
+            <tr>
+              <td max-width="100px">BUSINESS ADDRESS</td>
+              <td colspan="4">{{}}</td>
+              <td colspan="1">{{}}</td>
+              <td colspan="1">{{}}</td>
+            </tr>
+            <tr>
+              <td max-width="100px">TELEPHONE NO.</td>
+              <td colspan="4">{{}}</td>
+              <td colspan="1">{{}}</td>
+              <td colspan="1">{{}}</td>
+            </tr>
+
+            <tr>
+              <td>25. FATHER'S SURNAME</td>
+              <td colspan="4">{{}}</td>
+              <td colspan="1">{{}}</td>
+              <td colspan="1">{{}}</td>
+            </tr>
+            <tr>
+              <td width="80px">FIRST NAME</td>
+              <td colspan="3">{{}}</td>
+              <td colspan="1">{{}}</td>
+              <td colspan="1">{{}}</td>
+              <td colspan="1">{{}}</td>
+            </tr>
+            <tr>
+              <td width="80px">MIDDLE NAME</td>
+              <td colspan="4">{{}}</td>
+              <td colspan="1">{{}}</td>
+              <td colspan="1">{{}}</td>
+            </tr>
+            <tr>
+              <td>26. MOTHER'S MAIDEN NAME</td>
+              <td colspan="4">{{}}</td>
+              <td colspan="1">{{}}</td>
+              <td colspan="1">{{}}</td>
+            </tr>
+            <tr>
+              <td>SURNAME</td>
+              <td colspan="4">{{}}</td>
+              <td colspan="1">{{}}</td>
+              <td colspan="1">{{}}</td>
+            </tr>
+            <tr>
+              <td width="80px">FIRST NAME</td>
+              <td colspan="4">{{}}</td>
+
+              <td colspan="1">{{}}</td>
+              <td colspan="1">{{}}</td>
+            </tr>
+            <tr>
+              <td width="80px">MIDDLE NAME</td>
+              <td colspan="4">{{}}</td>
               <td colspan="1">{{}}</td>
               <td colspan="1">{{}}</td>
             </tr>
           </tbody>
-        </v-simple-table>
-        <v-simple-table height="auto" class="pa-0 pa-0 ma-12" width="80vw">
-          <thead>
+        </template>
+      </v-simple-table>
+      <br />
+      <v-simple-table height="auto" class="pa-0 pa-0 ma-12" width="80vw">
+        <template v-slot:default>
+          <thead cols="4">
+            <tr clas="pa-0">
+              <th colspan="4">III. EDUCATIONAL BACKGROUND</th>
+            </tr>
+          </thead>
+          <tbody class="text-center" color="secondary">
             <tr>
-              <th colspan="8" style="text-align: left">
-                V. WORK EXPERIENCE <br />
-                (Include private employment. Start from your recent work.)
-                Description of duties should be indicated in the attached Work
-                Experience sheet.
-              </th>
+              <td rowspan="2">LEVEL</td>
+              <td rowspan="2">NAME OF SCHOOL<br />(Write in full)</td>
+              <td rowspan="2">
+                BASIC EDUCATION/DEGREE/COURSE<br />(Write in full)
+              </td>
+              <td colspan="2">PERIOD OF ATTENDANCE<br />From To</td>
+              <td rowspan="2">HIGHEST LEVEL/UNITS EARNED (if not graduated)</td>
+              <td rowspan="2">YEAR GRADUATED</td>
+              <td rowspan="2">SCHOLARSHIP/ ACADEMIC HONORS RECEIVED</td>
             </tr>
 
             <tr>
-              <th colspan="2" style="text-align: left">
-                28. INCLUSIVE DATES (mm/dd/yyyy)
-              </th>
-              <th rowspan="2" colspan="2" style="text-align: left">
-                POSITION TITLE (Write in full/Do not abbreviate)
-              </th>
-              <th rowspan="2" colspan="2" style="text-align: left">
-                DEPARTMENT / AGENCY / OFFICE / COMPANY (Write in full/Do not
-                abbreviate)
-              </th>
-              <th rowspan="2" colspan="2" style="text-align: left">
-                MONTHLY SALARY
-              </th>
-              <th colspan="2" style="text-align: left">
-                SALARY/ JOB/ PAY GRADE (if applicable)& STEP (Format "00-0")/
-                INCREMENT
-              </th>
-              <th colspan="2" style="text-align: left">
-                STATUS OF APPOINTMENT
-              </th>
-              <th colspan="2" style="text-align: left">GOV'T SERVICE (Y/ N)</th>
+              <td>From</td>
+              <td>To</td>
             </tr>
-            <tr>
-              <th style="text-align: left">From</th>
-              <th style="text-align: left">To</th>
-            </tr>
-          </thead>
-          <tbody>
+
             <tr
-              v-for="row in workExperience"
-              :key="row.inclusiveDateFromWorkExperience"
+              v-for="row in educationalBackground"
+              :key="row.educBackgroundLevel"
             >
               <td colspan="1">{{}}</td>
               <td colspan="1">{{}}</td>
-              <td colspan="2">{{}}</td>
-              <td colspan="2">{{}}</td>
-              <td colspan="2">{{}}</td>
-              <td colspan="2">{{}}</td>
-              <td colspan="2">{{}}</td>
-              <td colspan="2">{{}}></td>
+              <td colspan="1">{{}}</td>
+              <td colspan="1">{{}}</td>
+
+              <td colspan="1">{{}}</td>
+              <td colspan="1">{{}}</td>
+              <td colspan="1">{{}}</td>
+              <td colspan="1">{{}}</td>
             </tr>
           </tbody>
           <tfoot>
             <tr>
               <td>SIGNATURE</td>
-              <td colspan="3">
+              <td colspan="4">
                 <v-text-field
-                  placeholder=""
-                  v-model="workExperienceSignature"
+                  placeholder="SIGNATURE"
                   solo
+                  v-model="educBackgroundSignature"
+                  id="signaturePart1"
                   class="text-center pt-6"
                   type="file"
                 >
                 </v-text-field>
               </td>
-              <td colspan="1">DATE</td>
-              <td colspan="3">
+              <td colspan="1" class="pl-10">DATE</td>
+              <td colspan="4">
                 <v-text-field
                   placeholder=""
                   solo
-                  v-model="workExperienceDateOfSignature"
+                  v-model="educBackgroundDateOfSignature"
+                  id="dateOfSignaturePart1"
                   class="text-center pt-6"
                   type="text"
                 >
@@ -486,385 +367,503 @@
               </td>
             </tr>
           </tfoot>
-        </v-simple-table>
+        </template>
+      </v-simple-table>
 
-        <v-simple-table height="auto" class="pa-0 pa-0 ma-12" width="80vw">
-          <thead>
-            <tr>
-              <th colspan="8" style="text-align: left">
-                VI. VOLUNTARY WORK OR INVOLVEMENT IN CIVIC / NON-GOVERNMENT /
-                PEOPLE / VOLUNTARY ORGANIZATION/S
-              </th>
-            </tr>
+      <v-simple-table height="auto" class="pa-0 pa-0 ma-12" width="80vw">
+        <thead>
+          <tr>
+            <th colspan="8" style="text-align: left">
+              IV. CIVIL SERVICE ELIGIBILITY
+            </th>
+          </tr>
 
-            <tr>
-              <th rowspan="2" colspan="2" style="text-align: left">
-                29. NAME & ADDRESS OF ORGANIZATION (Write in full)
-              </th>
-              <th colspan="2" style="text-align: left">
-                INCLUSIVE DATES (mm/dd/yyyy)
-              </th>
-              <th rowspan="2" colspan="2" style="text-align: left">
-                NUMBER OF HOURS
-              </th>
-              <th rowspan="2" colspan="2" style="text-align: left">
-                POSITION / NATURE OF WORK
-              </th>
-            </tr>
-            <tr>
-              <th style="text-align: left">From</th>
-              <th style="text-align: left">To</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr
-              v-for="row in voluntaryWorkInvolvement"
-              :key="row.nameAndAddressOfOrgVolWork"
-            >
-              <td colspan="1">{{}}</td>
-              <td colspan="1">{{}}</td>
-              <td colspan="2">{{}}</td>
-              <td colspan="2">{{}}</td>
-              <td colspan="2">{{}}</td>
-            </tr>
-          </tbody>
-        </v-simple-table>
-        <v-simple-table height="auto" class="pa-0 pa-0 ma-12" width="80vw">
-          <thead>
-            <tr>
-              <th colspan="8" style="text-align: left">
-                VII. LEARNING AND DEVELOPMENT (L&D) INTERVENTIONS/TRAINING
-                PROGRAMS ATTENDED<br />(Start from the most recent L&D/training
-                program and include only the relevant L&D/training taken for the
-                last five (5) years for Division Chief/Executive/Managerial
-                positions)
-              </th>
-            </tr>
+          <tr>
+            <th rowspan="2" colspan="2" style="text-align: left">
+              CAREER SERVICE/ RA 1080 (BOARD/ BAR) UNDER SPECIAL LAWS/ CES/ CSEE
+              BARANGAY ELIGIBILITY / DRIVER'S LICENSE
+            </th>
+            <th rowspan="2" colspan="2" style="text-align: left">
+              RATING <br />(If Applicable)
+            </th>
+            <th rowspan="2" colspan="2" style="text-align: left">
+              DATE OF EXAMINATION / CONFERMENT
+            </th>
+            <th rowspan="2" colspan="2" style="text-align: left">
+              PLACE OF EXAMINATION / CONFERMENT
+            </th>
+            <th colspan="2" style="text-align: left">
+              LICENSE (if applicable)
+            </th>
+          </tr>
+          <tr>
+            <th style="text-align: left">NUMBER</th>
+            <th style="text-align: left">Date of Validity</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="row in civilServiceEligibility" :key="row.careerService">
+            <td colspan="2">{{}}</td>
+            <td colspan="2">{{}}</td>
+            <td colspan="2">{{}}</td>
+            <td colspan="2">{{}}</td>
+            <td colspan="1">{{}}</td>
+            <td colspan="1">{{}}</td>
+          </tr>
+        </tbody>
+      </v-simple-table>
+      <v-simple-table height="auto" class="pa-0 pa-0 ma-12" width="80vw">
+        <thead>
+          <tr>
+            <th colspan="8" style="text-align: left">
+              V. WORK EXPERIENCE <br />
+              (Include private employment. Start from your recent work.)
+              Description of duties should be indicated in the attached Work
+              Experience sheet.
+            </th>
+          </tr>
 
-            <tr>
-              <th rowspan="2" colspan="2" style="text-align: left">
-                30. TITLE OF LEARNING AND DEVELOPMENT INTERVENTIONS/TRAINING
-                PROGRAMS (Write in full)
-              </th>
-              <th colspan="2" style="text-align: left">
-                INCLUSIVE DATES OF ATTENDANCE (mm/dd/yyyy)
-              </th>
-              <th rowspan="2" colspan="2" style="text-align: left">
-                NUMBER OF HOURS
-              </th>
-              <th rowspan="2" colspan="2" style="text-align: left">
-                Type of LD ( Managerial/ Supervisory/ Technical/etc)
-              </th>
-              <th rowspan="2" colspan="2" style="text-align: left">
-                CONDUCTED/ SPONSORED BY (Write in full)
-              </th>
-            </tr>
-            <tr>
-              <th style="text-align: left">From</th>
-              <th style="text-align: left">To</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr
-              v-for="row in learningAndDevelopment"
-              :key="row.learningAndDevelopmentInterventions"
-            >
-              <td colspan="1">{{}}</td>
-              <td colspan="1">{{}}</td>
-              <td colspan="2">{{}}</td>
-              <td colspan="2">{{}}</td>
-              <td colspan="2">{{}}</td>
-              <td colspan="2">{{}}</td>
-            </tr>
-          </tbody>
-        </v-simple-table>
-        <v-simple-table height="auto" class="pa-0 pa-0 ma-12" width="80vw">
-          <thead>
-            <tr>
-              <th colspan="8" style="text-align: left">
-                VIII. OTHER INFORMATION
-              </th>
-            </tr>
-
-            <tr>
-              <th colspan="3" style="text-align: left">
-                31. SPECIAL SKILLS AND HOBBIES
-              </th>
-              <th colspan="3" style="text-align: left">
-                32. NON-ACADEMIC DISTINCTIONS/RECOGNITION<br />
-                (Write in full)
-              </th>
-              <th colspan="3" style="text-align: left">
-                33. MEMBERSHIP IN ASSOCIATION/ORGANIZATION<br />
-                (Write in full)
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr
-              v-for="row in otherInformation"
-              :key="row.otherInformationSpecialSkills"
-            >
-              <td colspan="3">{{}}</td>
-              <td colspan="3">{{}}</td>
-              <td colspan="3">{{}}</td>
-            </tr>
-          </tbody>
-          <tfoot>
-            <tr>
-              <td>SIGNATURE</td>
-              <td colspan="3">{{}}</td>
-              <td colspan="1">DATE</td>
-              <td colspan="3">{{}}</td>
-            </tr>
-          </tfoot>
-        </v-simple-table>
-
-        <v-container fluid>
-          <v-row no-gutters>
-            <v-col cols="12" sm="6">
-              <v-card class="pa-6" outlined tile height="200px">
-                34. Are you related by consanguinity or affinity to the
-                appointing or recommending authority, or to the chief of bureau
-                or office or to the person who has immediate supervision over
-                you in the Office, Bureau or Department where you will be
-                apppointed, a. within the third degree? b. within the fourth
-                degree (for Local Government Unit - Career Employees)?</v-card
-              >
-            </v-col>
-            <v-col cols="12" sm="6">
-              <v-card class="pa-3" outlined tile height="200px"> {{}} </v-card>
-            </v-col>
-          </v-row>
-          <v-row no-gutters>
-            <v-col cols="12" sm="6">
-              <v-card class="pa-4" outlined tile height="280px">
-                35. a. Have you ever been found guilty of any administrative
-                offense?<br />
-                b. Have you been criminally charged before any court?</v-card
-              >
-            </v-col>
-            <v-col cols="12" sm="6">
-              <v-card class="pa-4" outlined tile height="280px">
-                {{ hello }}
-                <span class="ma-3">If YES, give details: </span><br />
-
-                {{ helo }}
-                {{}}
-              </v-card>
-            </v-col>
-          </v-row>
-          <v-row no-gutters>
-            <v-col cols="12" sm="6">
-              <v-card class="pa-6" outlined tile height="150px">
-                36. Have you ever been convicted of any crime or violation of
-                any law, decree, ordinance or regulation by any court or
-                tribunal?</v-card
-              >
-            </v-col>
-            <v-col cols="12" sm="6">
-              <v-card class="pa-3" outlined tile height="150px"> {{}} </v-card>
-            </v-col>
-          </v-row>
-          <v-row no-gutters>
-            <v-col cols="12" sm="6">
-              <v-card class="pa-6" outlined tile height="150px">
-                37. Have you ever been separated from the service in any of the
-                following modes: resignation, retirement, dropped from the
-                rolls, dismissal, termination, end of term, finished contract or
-                phased out (abolition) in the public or private sector?</v-card
-              >
-            </v-col>
-            <v-col cols="12" sm="6">
-              <v-card class="pa-3" outlined tile height="150px"> {{}} </v-card>
-            </v-col>
-          </v-row>
-          <v-row no-gutters>
-            <v-col cols="12" sm="6">
-              <v-card class="pa-6" outlined tile height="200px">
-                38. a. Have you ever been a candidate in a national or local
-                election held within the last year (except Barangay
-                election)?<br />
-                b. Have you resigned from the government service during the
-                three (3)-month period before the last election to
-                promote/actively campaign for a national or local
-                candidate?</v-card
-              >
-            </v-col>
-            <v-col cols="12" sm="6">
-              <v-card class="pa-3" outlined tile height="200px"> {{}} </v-card>
-            </v-col>
-          </v-row>
-          <v-row no-gutters>
-            <v-col cols="12" sm="6">
-              <v-card class="pa-6" outlined tile height="150px">
-                39. Have you acquired the status of an immigrant or permanent
-                resident of another country?</v-card
-              >
-            </v-col>
-            <v-col cols="12" sm="6">
-              <v-card class="pa-3" outlined tile height="150px"> {{}} </v-card>
-            </v-col>
-          </v-row>
-          <v-row no-gutters>
-            <v-col cols="12" sm="6">
-              <v-card class="pa-6" outlined tile height="330px">
-                40. 100% 10 C41:F42 Pursuant to: (a) Indigenous People's Act (RA
-                8371); (b) Magna Carta for Disabled Persons (RA 7277); and (c)
-                Solo Parents Welfare Act of 2000 (RA 8972), please answer the
-                following items: Screen reader support enabled. Pursuant to: (a)
-                Indigenous People's Act (RA 8371); (b) Magna Carta for Disabled
-                Persons (RA 7277); and (c) Solo Parents Welfare Act of 2000 (RA
-                8972), please answer the following items: Turn on screen reader
-                support a. Are you a member of any indigenous group? b. Are you
-                a person with disability? c. Are you a solo parent?</v-card
-              >
-            </v-col>
-            <v-col cols="12" sm="6">
-              <v-card class="pa-3" outlined tile height="330px">
-                {{}} ><br />
-                {{}} ><br />
-                {{}} ><br />
-              </v-card>
-            </v-col>
-          </v-row>
-          <v-row no-gutters class="ma-0">
-            <v-col cols="12" sm="8">
-              <v-card class="pa-6" outlined tile height="auto">
-                <v-card-text class="text-subtitle-2"
-                  >REFERENCES
-                  <span class="text-body-2" style="color: red"
-                    >(Person not related by consanguinity or affinity to
-                    applicant /appointee)</span
-                  ></v-card-text
-                >
-
-                <v-simple-table>
-                  <thead>
-                    <tr>
-                      <th>NAME</th>
-                      <th>ADDRESS</th>
-                      <th>TEL. NO.</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr height="10px">
-                      <td>
-                        {{ referenceNameFirst }}
-                      </td>
-                      <td>{{}}</td>
-                      <td>{{}}</td>
-                    </tr>
-                    <tr height="10px">
-                      <td>{{}}</td>
-                      <td>{{}}</td>
-                      <td>{{}}</td>
-                    </tr>
-                    <tr height="10px">
-                      <td>{{}}</td>
-                      <td>{{}}</td>
-                      <td>{{}}</td>
-                    </tr>
-                  </tbody>
-                </v-simple-table>
-              </v-card>
-            </v-col>
-            <v-col cols="12" sm="4">
-              <v-card class="pa-3" outlined tile height="300px">
-                <v-card-text class="ma-5 pa-10 text-wrap"
-                  >ID picture taken within the last 6 months 3.5 cm. X 4.5 cm
-                  (passport size) With full and handwritten name tag and
-                  signature over printed name Computer generated or photocopied
-                  picture is not acceptable</v-card-text
-                >
-                <v-container class=""> {{}} </v-container>
-              </v-card>
-            </v-col>
-          </v-row>
-          <v-row>
-            <v-col cols="12" sm="8">
-              <v-card
-                class=""
-                outlined
-                tile
-                height="auto"
-                style="font-size: 12px"
-              >
-                I declare under oath that I have personally accomplished this
-                Personal Data Sheet which is a true, correct and complete
-                statement pursuant to the provisions of pertinent laws, rules
-                and regulations of the Republic of the Philippines. I authorize
-                the agency head/authorized representative to verify/validate the
-                contents stated herein. I agree that any misrepresentation made
-                in this document and its attachments shall cause the filing of
-                administrative/criminal case/s against me.
-              </v-card>
-            </v-col>
-          </v-row>
-          <v-row>
-            <v-col cols="12" sm="4">
-              <v-card class="pa-1">
-                <v-card-subtitle class="text-center">
-                  Government Issued ID (i.e.Passport, GSIS, SSS, PRC, Driver's
-                  License, etc.) PLEASE INDICATE ID Number and Date of Issuance
-                </v-card-subtitle>
-
-                <v-container
-                  class="text-no-wrap"
-                  height="10px"
-                  style="font-size: 10px"
-                  >Government Issued ID: {{}} ></v-container
-                >
-                <v-container height="10px" style="font-size: 10px"
-                  >ID/License/Passport No.: {{}} ></v-container
-                >
-                <v-container height="10px" style="font-size: 10px"
-                  >Date/Place of Issuance: {{}} ></v-container
-                >
-              </v-card>
-            </v-col>
-            <v-col cols="12" sm="4">
-              <v-card>
-                <v-container>{{}} ></v-container>
-                <v-card-subtitle
-                  >Signature (Sign inside the box)</v-card-subtitle
-                >
-                <v-container>{{}} ></v-container>
-                <v-card-subtitle>Date Accomplished</v-card-subtitle>
-              </v-card>
-            </v-col>
-            <v-col cols="12" sm="4">
-              <v-card>
-                <v-container
-                  ><v-text-field dense v-model="rightThumbMark"></v-text-field
-                ></v-container>
-                <v-card-subtitle>Right Thumbmark</v-card-subtitle>
-              </v-card>
-            </v-col>
-          </v-row>
-          <v-row>
-            <v-col cols="12" sm="12" style="border: none">
-              SUBSCRIBED AND SWORN to before me this ,
-              <span width="200px">{{}} ></span>
-              exhibiting his/her validly issued government ID as indicated
-              above.
-            </v-col>
-          </v-row>
-          <v-card
-            class="pa-5 text-center"
-            width="400px"
-            align="center"
-            justify="center"
-            style="margin-left: auto; margin-right: auto"
+          <tr>
+            <th colspan="2" style="text-align: left">
+              28. INCLUSIVE DATES (mm/dd/yyyy)
+            </th>
+            <th rowspan="2" colspan="2" style="text-align: left">
+              POSITION TITLE (Write in full/Do not abbreviate)
+            </th>
+            <th rowspan="2" colspan="2" style="text-align: left">
+              DEPARTMENT / AGENCY / OFFICE / COMPANY (Write in full/Do not
+              abbreviate)
+            </th>
+            <th rowspan="2" colspan="2" style="text-align: left">
+              MONTHLY SALARY
+            </th>
+            <th colspan="2" style="text-align: left">
+              SALARY/ JOB/ PAY GRADE (if applicable)& STEP (Format "00-0")/
+              INCREMENT
+            </th>
+            <th colspan="2" style="text-align: left">STATUS OF APPOINTMENT</th>
+            <th colspan="2" style="text-align: left">GOV'T SERVICE (Y/ N)</th>
+          </tr>
+          <tr>
+            <th style="text-align: left">From</th>
+            <th style="text-align: left">To</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            v-for="row in workExperience"
+            :key="row.inclusiveDateFromWorkExperience"
           >
-            {{}}
-            <span>Person Administering Oath</span>
-          </v-card>
-        </v-container>
-        <!-- </tbody>
+            <td colspan="1">{{}}</td>
+            <td colspan="1">{{}}</td>
+            <td colspan="2">{{}}</td>
+            <td colspan="2">{{}}</td>
+            <td colspan="2">{{}}</td>
+            <td colspan="2">{{}}</td>
+            <td colspan="2">{{}}</td>
+            <td colspan="2">{{}}></td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td>SIGNATURE</td>
+            <td colspan="3">
+              <v-text-field
+                placeholder=""
+                v-model="workExperienceSignature"
+                solo
+                class="text-center pt-6"
+                type="file"
+              >
+              </v-text-field>
+            </td>
+            <td colspan="1">DATE</td>
+            <td colspan="3">
+              <v-text-field
+                placeholder=""
+                solo
+                v-model="workExperienceDateOfSignature"
+                class="text-center pt-6"
+                type="text"
+              >
+              </v-text-field>
+            </td>
+          </tr>
+        </tfoot>
+      </v-simple-table>
+
+      <v-simple-table height="auto" class="pa-0 pa-0 ma-12" width="80vw">
+        <thead>
+          <tr>
+            <th colspan="8" style="text-align: left">
+              VI. VOLUNTARY WORK OR INVOLVEMENT IN CIVIC / NON-GOVERNMENT /
+              PEOPLE / VOLUNTARY ORGANIZATION/S
+            </th>
+          </tr>
+
+          <tr>
+            <th rowspan="2" colspan="2" style="text-align: left">
+              29. NAME & ADDRESS OF ORGANIZATION (Write in full)
+            </th>
+            <th colspan="2" style="text-align: left">
+              INCLUSIVE DATES (mm/dd/yyyy)
+            </th>
+            <th rowspan="2" colspan="2" style="text-align: left">
+              NUMBER OF HOURS
+            </th>
+            <th rowspan="2" colspan="2" style="text-align: left">
+              POSITION / NATURE OF WORK
+            </th>
+          </tr>
+          <tr>
+            <th style="text-align: left">From</th>
+            <th style="text-align: left">To</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            v-for="row in voluntaryWorkInvolvement"
+            :key="row.nameAndAddressOfOrgVolWork"
+          >
+            <td colspan="1">{{}}</td>
+            <td colspan="1">{{}}</td>
+            <td colspan="2">{{}}</td>
+            <td colspan="2">{{}}</td>
+            <td colspan="2">{{}}</td>
+          </tr>
+        </tbody>
+      </v-simple-table>
+      <v-simple-table height="auto" class="pa-0 pa-0 ma-12" width="80vw">
+        <thead>
+          <tr>
+            <th colspan="8" style="text-align: left">
+              VII. LEARNING AND DEVELOPMENT (L&D) INTERVENTIONS/TRAINING
+              PROGRAMS ATTENDED<br />(Start from the most recent L&D/training
+              program and include only the relevant L&D/training taken for the
+              last five (5) years for Division Chief/Executive/Managerial
+              positions)
+            </th>
+          </tr>
+
+          <tr>
+            <th rowspan="2" colspan="2" style="text-align: left">
+              30. TITLE OF LEARNING AND DEVELOPMENT INTERVENTIONS/TRAINING
+              PROGRAMS (Write in full)
+            </th>
+            <th colspan="2" style="text-align: left">
+              INCLUSIVE DATES OF ATTENDANCE (mm/dd/yyyy)
+            </th>
+            <th rowspan="2" colspan="2" style="text-align: left">
+              NUMBER OF HOURS
+            </th>
+            <th rowspan="2" colspan="2" style="text-align: left">
+              Type of LD ( Managerial/ Supervisory/ Technical/etc)
+            </th>
+            <th rowspan="2" colspan="2" style="text-align: left">
+              CONDUCTED/ SPONSORED BY (Write in full)
+            </th>
+          </tr>
+          <tr>
+            <th style="text-align: left">From</th>
+            <th style="text-align: left">To</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            v-for="row in learningAndDevelopment"
+            :key="row.learningAndDevelopmentInterventions"
+          >
+            <td colspan="1">{{}}</td>
+            <td colspan="1">{{}}</td>
+            <td colspan="2">{{}}</td>
+            <td colspan="2">{{}}</td>
+            <td colspan="2">{{}}</td>
+            <td colspan="2">{{}}</td>
+          </tr>
+        </tbody>
+      </v-simple-table>
+      <v-simple-table height="auto" class="pa-0 pa-0 ma-12" width="80vw">
+        <thead>
+          <tr>
+            <th colspan="8" style="text-align: left">
+              VIII. OTHER INFORMATION
+            </th>
+          </tr>
+
+          <tr>
+            <th colspan="3" style="text-align: left">
+              31. SPECIAL SKILLS AND HOBBIES
+            </th>
+            <th colspan="3" style="text-align: left">
+              32. NON-ACADEMIC DISTINCTIONS/RECOGNITION<br />
+              (Write in full)
+            </th>
+            <th colspan="3" style="text-align: left">
+              33. MEMBERSHIP IN ASSOCIATION/ORGANIZATION<br />
+              (Write in full)
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            v-for="row in otherInformation"
+            :key="row.otherInformationSpecialSkills"
+          >
+            <td colspan="3">{{}}</td>
+            <td colspan="3">{{}}</td>
+            <td colspan="3">{{}}</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td>SIGNATURE</td>
+            <td colspan="3">{{}}</td>
+            <td colspan="1">DATE</td>
+            <td colspan="3">{{}}</td>
+          </tr>
+        </tfoot>
+      </v-simple-table>
+
+      <v-container fluid>
+        <v-row no-gutters>
+          <v-col cols="12" sm="6">
+            <v-card class="pa-6" outlined tile height="200px">
+              34. Are you related by consanguinity or affinity to the appointing
+              or recommending authority, or to the chief of bureau or office or
+              to the person who has immediate supervision over you in the
+              Office, Bureau or Department where you will be apppointed, a.
+              within the third degree? b. within the fourth degree (for Local
+              Government Unit - Career Employees)?</v-card
+            >
+          </v-col>
+          <v-col cols="12" sm="6">
+            <v-card class="pa-3" outlined tile height="200px"> {{}} </v-card>
+          </v-col>
+        </v-row>
+        <v-row no-gutters>
+          <v-col cols="12" sm="6">
+            <v-card class="pa-4" outlined tile height="280px">
+              35. a. Have you ever been found guilty of any administrative
+              offense?<br />
+              b. Have you been criminally charged before any court?</v-card
+            >
+          </v-col>
+          <v-col cols="12" sm="6">
+            <v-card class="pa-4" outlined tile height="280px">
+              {{ hello }}
+              <span class="ma-3">If YES, give details: </span><br />
+
+              {{ helo }}
+              {{}}
+            </v-card>
+          </v-col>
+        </v-row>
+        <v-row no-gutters>
+          <v-col cols="12" sm="6">
+            <v-card class="pa-6" outlined tile height="150px">
+              36. Have you ever been convicted of any crime or violation of any
+              law, decree, ordinance or regulation by any court or
+              tribunal?</v-card
+            >
+          </v-col>
+          <v-col cols="12" sm="6">
+            <v-card class="pa-3" outlined tile height="150px"> {{}} </v-card>
+          </v-col>
+        </v-row>
+        <v-row no-gutters>
+          <v-col cols="12" sm="6">
+            <v-card class="pa-6" outlined tile height="150px">
+              37. Have you ever been separated from the service in any of the
+              following modes: resignation, retirement, dropped from the rolls,
+              dismissal, termination, end of term, finished contract or phased
+              out (abolition) in the public or private sector?</v-card
+            >
+          </v-col>
+          <v-col cols="12" sm="6">
+            <v-card class="pa-3" outlined tile height="150px"> {{}} </v-card>
+          </v-col>
+        </v-row>
+        <v-row no-gutters>
+          <v-col cols="12" sm="6">
+            <v-card class="pa-6" outlined tile height="200px">
+              38. a. Have you ever been a candidate in a national or local
+              election held within the last year (except Barangay election)?<br />
+              b. Have you resigned from the government service during the three
+              (3)-month period before the last election to promote/actively
+              campaign for a national or local candidate?</v-card
+            >
+          </v-col>
+          <v-col cols="12" sm="6">
+            <v-card class="pa-3" outlined tile height="200px"> {{}} </v-card>
+          </v-col>
+        </v-row>
+        <v-row no-gutters>
+          <v-col cols="12" sm="6">
+            <v-card class="pa-6" outlined tile height="150px">
+              39. Have you acquired the status of an immigrant or permanent
+              resident of another country?</v-card
+            >
+          </v-col>
+          <v-col cols="12" sm="6">
+            <v-card class="pa-3" outlined tile height="150px"> {{}} </v-card>
+          </v-col>
+        </v-row>
+        <v-row no-gutters>
+          <v-col cols="12" sm="6">
+            <v-card class="pa-6" outlined tile height="330px">
+              40. 100% 10 C41:F42 Pursuant to: (a) Indigenous People's Act (RA
+              8371); (b) Magna Carta for Disabled Persons (RA 7277); and (c)
+              Solo Parents Welfare Act of 2000 (RA 8972), please answer the
+              following items: Screen reader support enabled. Pursuant to: (a)
+              Indigenous People's Act (RA 8371); (b) Magna Carta for Disabled
+              Persons (RA 7277); and (c) Solo Parents Welfare Act of 2000 (RA
+              8972), please answer the following items: Turn on screen reader
+              support a. Are you a member of any indigenous group? b. Are you a
+              person with disability? c. Are you a solo parent?</v-card
+            >
+          </v-col>
+          <v-col cols="12" sm="6">
+            <v-card class="pa-3" outlined tile height="330px">
+              {{}} ><br />
+              {{}} ><br />
+              {{}} ><br />
+            </v-card>
+          </v-col>
+        </v-row>
+        <v-row no-gutters class="ma-0">
+          <v-col cols="12" sm="8">
+            <v-card class="pa-6" outlined tile height="auto">
+              <v-card-text class="text-subtitle-2"
+                >REFERENCES
+                <span class="text-body-2" style="color: red"
+                  >(Person not related by consanguinity or affinity to applicant
+                  /appointee)</span
+                ></v-card-text
+              >
+
+              <v-simple-table>
+                <thead>
+                  <tr>
+                    <th>NAME</th>
+                    <th>ADDRESS</th>
+                    <th>TEL. NO.</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr height="10px">
+                    <td>
+                      {{ referenceNameFirst }}
+                    </td>
+                    <td>{{}}</td>
+                    <td>{{}}</td>
+                  </tr>
+                  <tr height="10px">
+                    <td>{{}}</td>
+                    <td>{{}}</td>
+                    <td>{{}}</td>
+                  </tr>
+                  <tr height="10px">
+                    <td>{{}}</td>
+                    <td>{{}}</td>
+                    <td>{{}}</td>
+                  </tr>
+                </tbody>
+              </v-simple-table>
+            </v-card>
+          </v-col>
+          <v-col cols="12" sm="4">
+            <v-card class="pa-3" outlined tile height="300px">
+              <v-card-text class="ma-5 pa-10 text-wrap"
+                >ID picture taken within the last 6 months 3.5 cm. X 4.5 cm
+                (passport size) With full and handwritten name tag and signature
+                over printed name Computer generated or photocopied picture is
+                not acceptable</v-card-text
+              >
+              <v-container class=""> {{}} </v-container>
+            </v-card>
+          </v-col>
+        </v-row>
+        <v-row>
+          <v-col cols="12" sm="8">
+            <v-card
+              class=""
+              outlined
+              tile
+              height="auto"
+              style="font-size: 12px"
+            >
+              I declare under oath that I have personally accomplished this
+              Personal Data Sheet which is a true, correct and complete
+              statement pursuant to the provisions of pertinent laws, rules and
+              regulations of the Republic of the Philippines. I authorize the
+              agency head/authorized representative to verify/validate the
+              contents stated herein. I agree that any misrepresentation made in
+              this document and its attachments shall cause the filing of
+              administrative/criminal case/s against me.
+            </v-card>
+          </v-col>
+        </v-row>
+        <v-row>
+          <v-col cols="12" sm="4">
+            <v-card class="pa-1">
+              <v-card-subtitle class="text-center">
+                Government Issued ID (i.e.Passport, GSIS, SSS, PRC, Driver's
+                License, etc.) PLEASE INDICATE ID Number and Date of Issuance
+              </v-card-subtitle>
+
+              <v-container
+                class="text-no-wrap"
+                height="10px"
+                style="font-size: 10px"
+                >Government Issued ID: {{}} ></v-container
+              >
+              <v-container height="10px" style="font-size: 10px"
+                >ID/License/Passport No.: {{}} ></v-container
+              >
+              <v-container height="10px" style="font-size: 10px"
+                >Date/Place of Issuance: {{}} ></v-container
+              >
+            </v-card>
+          </v-col>
+          <v-col cols="12" sm="4">
+            <v-card>
+              <v-container>{{}} ></v-container>
+              <v-card-subtitle>Signature (Sign inside the box)</v-card-subtitle>
+              <v-container>{{}} ></v-container>
+              <v-card-subtitle>Date Accomplished</v-card-subtitle>
+            </v-card>
+          </v-col>
+          <v-col cols="12" sm="4">
+            <v-card>
+              <v-container
+                ><v-text-field dense v-model="rightThumbMark"></v-text-field
+              ></v-container>
+              <v-card-subtitle>Right Thumbmark</v-card-subtitle>
+            </v-card>
+          </v-col>
+        </v-row>
+        <v-row>
+          <v-col cols="12" sm="12" style="border: none">
+            SUBSCRIBED AND SWORN to before me this ,
+            <span width="200px">{{}} ></span>
+            exhibiting his/her validly issued government ID as indicated above.
+          </v-col>
+        </v-row>
+        <v-card
+          class="pa-5 text-center"
+          width="400px"
+          align="center"
+          justify="center"
+          style="margin-left: auto; margin-right: auto"
+        >
+          {{}}
+          <span>Person Administering Oath</span>
+        </v-card>
+      </v-container>
+      <!-- </tbody>
         
         </v-simple-table> -->
-       </v-container>
+    </v-container>
     <v-tabs v-if="edit == true">
       <v-tab>Part 1</v-tab>
       <v-tab-item>
@@ -1948,7 +1947,7 @@
             </tbody>
           </template>
         </v-simple-table>
-        
+
         <!-- <v-container class="grey lighten-5 pa-5" style ="max-width:95%">
           <v-row class="pa-5"
             ><v-col cols="12" class="sm-12"
@@ -2760,12 +2759,11 @@
                         filled
                         dense
                         v-model="row.otherInformationSpecialSkills"
-                        
-                        style="float:left"
+                        style="float: left"
                       ></v-text-field>
                       <button
                         class="material-icons"
-                        style="float:right"
+                        style="float: right"
                         @click="removeRow('otherInfoSpecialSkills', row)"
                       >
                         remove_circle
@@ -2797,11 +2795,11 @@
                         filled
                         dense
                         v-model="row.otherInformationNonacademicDistinctions"
-                        style="float:left"
+                        style="float: left"
                       ></v-text-field>
                       <button
                         class="material-icons"
-                        style="float:right"
+                        style="float: right"
                         @click="
                           removeRow('otherInfoNonacademicDistinctions', row)
                         "
@@ -2820,8 +2818,7 @@
                   full)
                   <button
                     class="material-icons"
-                    
-                    @click="addRow('otherInfoAssociationMembers')"  
+                    @click="addRow('otherInfoAssociationMembers')"
                   >
                     add_circle
                   </button>
@@ -2836,11 +2833,11 @@
                         filled
                         dense
                         v-model="row.otherInformationAssociationMembers"
-                        style="float:left"
+                        style="float: left"
                       ></v-text-field>
                       <button
                         class="material-icons"
-                        style="float:right"
+                        style="float: right"
                         @click="removeRow('otherInfoAssociationMembers', row)"
                       >
                         remove_circle
@@ -3533,22 +3530,22 @@ export default {
       name: "",
       address: "",
       telephoneNo: "",
-      pds:[],
-      user:"user",
+      pds: [],
+      user: "user",
     };
-    
   },
-  created(){
+  created() {
     this.retrievePds();
   },
   methods: {
-    async retrievePds(){console.log("hello world")
-    const returnedData = await this.$store.dispatch("retrievePdsInfoById")
-    this.pds = returnedData.data;
-    console.log(returnedData)
-    this.pds=this.$store.getters.pdsInfosAll;
-    console.log(this.pds)
-      console.log(this.pds)
+    async retrievePds() {
+      console.log("hello world");
+      const returnedData = await this.$store.dispatch("retrievePdsInfoById");
+      this.pds = returnedData.data;
+      console.log(returnedData);
+      this.pds = this.$store.getters.pdsInfosAll;
+      console.log(this.pds);
+      console.log(this.pds);
     },
     addRow: function (array) {
       console.log(array);
@@ -3689,7 +3686,11 @@ export default {
     },
 
     finalizePds: async function (method) {
-      console.log(method, this.questionThirtyFiveDateFiled, this.questionThirtyFiveCaseStatus);
+      console.log(
+        method,
+        this.questionThirtyFiveDateFiled,
+        this.questionThirtyFiveCaseStatus
+      );
       const personalSurname = this.personalSurname;
       const personalFirstName = this.personalFirstName;
       const personalMiddleName = this.personalMiddleName;

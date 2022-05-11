@@ -1417,16 +1417,15 @@
                   <v-col cols="12" sm="6" md="8"> </v-col>
                   <v-col cols="4" md="4">
                     <v-btn
-                      class="float-right mb-4 me-4 mt-5" v-if="saveInfos"
+                      class="float-right mb-4 me-4 mt-5"
+                      v-if="saveInfos"
                       @click="finalizeEsat"
                       >SAVE</v-btn
                     >
-                      <v-btn
-                      class="float-right mb-4 me-4 mt-5" v-if="updateInfos"
+                    <v-btn class="float-right mb-4 me-4 mt-5" v-if="updateInfos"
                       >UPDATE</v-btn
                     >
                     <v-btn
-                    
                       class="float-right mb-4 me-4 mt-5"
                       @click="
                         returnPart2(), (showPart3 = false), (showPart2 = true)
@@ -1976,7 +1975,11 @@
                     <v-btn
                       class="float-right mb-4 me-4 mt-5"
                       @click="
-                        editInfo(), (showPrint = false), (showPart1 = true), updateInfos = true, saveInfos = false
+                        editInfo(),
+                          (showPrint = false),
+                          (showPart1 = true),
+                          (updateInfos = true),
+                          (saveInfos = false)
                       "
                       >EDIT</v-btn
                     >
@@ -2051,7 +2054,7 @@
 <script>
 // @ is an alias to /src
 export default {
-  methods: {},
+  // methods: {},
   data() {
     return {
       goToPrivacy() {
@@ -2103,8 +2106,8 @@ export default {
       showPart3: false,
       // showPrint: false,
       esatCard: true,
-      saveInfos:true,
-      updateInfos:false,
+      saveInfos: true,
+      updateInfos: false,
       positionItems: [
         "Teacher I",
         "Teacher II",
@@ -2348,7 +2351,22 @@ export default {
       tab: "subscribe",
     };
   },
+    created() {
+    this.retrieveEsat();
+  },
+  
   methods: {
+    async retrieveEsat() {
+    console.log("Retrieve Esat");
+    const returnedData = await this.$store.dispatch("retrieveEsatInfoById");
+    this.esat = returnedData.data;
+    console.log(returnedData.data);
+    // console.log(esat)
+    // console.log(returnedData);
+    //   this.pds = this.$store.getters.pdsInfosAll;
+    //   console.log(this.pds);
+    //   console.log(this.pds);
+  },
     finalizeEsat: async function () {
       const employeeName = this.employeeName;
       const employeeId = this.employeeId;
@@ -2528,7 +2546,7 @@ export default {
       const innovation4 = this.innovation4;
       const innovation5 = this.innovation5;
 
-      const userId = 1;
+      const userId = 3;
       const functionalObjectives = [
         {
           userID: userId,
@@ -2822,6 +2840,7 @@ export default {
       }
     },
   },
+
 };
 </script>
 <style scope src="../assets/css/esat.css"></style>

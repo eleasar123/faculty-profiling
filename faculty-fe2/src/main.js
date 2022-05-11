@@ -9,15 +9,7 @@ Vue.config.productionTip = false
 Vue.prototype.$axios = Axios;
 
 new Vue({
-    // el: "#esat",
-    // data: {
-    //     privacyNote: false,
-    //     showPart1: false,
-    //     showPart2: false,
-    //     showPart3: false,
-    //     showPrint: false,
-    //     esatCard: false,
-    // },
+
     router,
     vuetify,
     store,

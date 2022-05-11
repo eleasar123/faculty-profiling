@@ -22,14 +22,27 @@ const actions = {
         });
     },
 
-    retrieveEsatInfoById({ state, commit }) {
-        return axios.get(`esat/${JSON.parse(state.userToken).ID}`).then((result) => {
+    // retrieveEsatInfoById({ state, commit }) {
+    //     return axios.get(`esat/${JSON.parse(state.userToken).ID}`).then((result) => {
 
-            commit('setEsatInfos', JSON.stringify(result.data));
-            return result;
-        }).catch((err) => {
-            return err.response;
-        });
+    //         commit('setEsatInfos', JSON.stringify(result.data));
+    //         return result;
+    //     }).catch((err) => {
+    //         return err.response;
+    //     });
+    // },
+
+    retrieveEsatInfoById() {
+        console.log(JSON.parse(sessionStorage.getItem("user_session")))
+        state.basicInfoData = []
+        return axios
+            .get("retrieveEsatInfoById/" + JSON.parse(sessionStorage.getItem("user_session")).ID)
+            .then((res) => {
+                return res;
+            })
+            .catch((err) => {
+                return err.response;
+            });
     },
 
     createEsat({ dispatch }, data) {
