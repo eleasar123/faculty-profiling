@@ -7,7 +7,7 @@ const state = () => ({
 const mutations = {
     setUser(state, data) {
         state.users = JSON.parse(data);
-        sessionStorage.setItem('users', data);
+        localStorage.setItem('users', data);
     }
 };
 
@@ -22,7 +22,7 @@ const actions = {
     },
 
     retrieveUserDataById({ state, commit }) {
-        return axios.get(`user/${JSON.parse(state.users).id}`).then((result) => {
+        return axios.get(`user/${JSON.parse(state.userToken).ID}`).then((result) => {
 
             commit('setUser', JSON.stringify(result.data));
             return result;

@@ -20,9 +20,9 @@
         </v-list-item>
       </v-list>
             </v-menu>
-            <v-btn text @click="logOut">
+            <v-btn text>
                 <span>Exit</span>
-                <v-icon right @click="this.$store.dispatch('clearUserSession')"></v-icon>
+                <v-icon right></v-icon>
              </v-btn>
        </v-app-bar>
       <v-navigation-drawer  v-model="drawer" dark app color="#00063F">
@@ -51,18 +51,13 @@
 </template>
 <script>
 //import Popup from './Popup.vue'
-
 export default {
-  // components:{
- 
-  // },
    data: () => ({
       drawer: true,
       links :[
-          {icon: 'person', text:'Personal Info',  route: '/personalData'},
+          {icon: 'person', text:'Personal Info',  route: '/'},
           {icon: 'dashboard', text:'Manage User', route: '/manageUser'},
           {icon: 'folder', text:'Personal Data Sheet', route: '/personalDataSheet'},
-           {icon: 'person', text:'ESAT',  route: '/esat'},
           {icon: 'folder', text:'Manage IPCRF', route: '/manageIpcrf' ,items: [
             { title: 'List Item' }
           ]}
@@ -71,12 +66,7 @@ export default {
      
     }),
 
-  methods:{
-    logOut: function (){
-      console.log('reached')
-      this.$store.dispatch('logout')
-    }
-  },
+ 
     components: {
    // Popup
   },

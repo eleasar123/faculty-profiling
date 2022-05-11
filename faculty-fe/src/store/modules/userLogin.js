@@ -8,22 +8,23 @@ const state = () => ({
 const mutations = {
     setUserToken(state, data) {
         state.userToken = data;
-        sessionStorage.setItem("user_session", JSON.stringify(data.data[1][0].account));
-        sessionStorage.setItem("user_token", JSON.stringify(data.data[2][0].token));
+        sessionStorage.setItem("user_session", JSON.stringify(data));
+        localStorage.setItem("user_session", data);
     //     axios.defaults.headers.common.Authorization = `bearer ${
     //   JSON.parse(data).access_token
     // }`;
     },
 
     clearUserSession() {
-        sessionStorage.clear();
+        sessionStorage.removeItem("user_session");
+        localStorage.removeItem("user_details");
+
         axios.defaults.headers.common.Authorization = "";
         location.reload();
     },
 
     setUserDetails(state, data) {
-        state.userDetails = JSON.stringify(data.data[1][0].account);
-        console.log(state.userDetails)
+        state.userDetails = JSON.parse(data);
         localStorage.setItem('user_details', data);
     }
 };
@@ -54,7 +55,9 @@ const actions = {
 
     logout({ commit }) {
         commit("clearUserSession");
-        this.$router.push('login');
+        this.$router.push({
+            path: window.location.host.split(':')[0] == "localhost" ? "/login" : ""
+        });
     },
 };
 
