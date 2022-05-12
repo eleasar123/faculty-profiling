@@ -18,8 +18,8 @@ return new class extends Migration
             $table->increments('id');
             $table->string('user_id');
             $table->string('learning_and_development_interventions');
-            $table->string('learning_inclusive_dates_from');
-            $table->string('learning_inclusive_dates_to');
+            $table->date('learning_inclusive_dates_from');
+            $table->date('learning_inclusive_dates_to');
             $table->string('number_of_hours');
             $table->string('type_of_ld');
             $table->string('conducted_by');

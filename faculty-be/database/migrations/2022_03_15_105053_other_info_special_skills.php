@@ -17,7 +17,7 @@ return new class extends Migration
         Schema::create('other_info_special_skills', function (Blueprint $table){
             $table->increments('id');
             $table->string('user_id');
-            $table->string('special_skills_and_hobbies');
+            $table->string('special_skills_and_hobbies') -> nullable();
             $table->timestamp('created_at') ->useCurrent();
             $table->timestamp('updated_at') -> nullable() -> useCurrentOnUpdate();
             $table->softDeletesTz();

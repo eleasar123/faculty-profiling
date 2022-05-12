@@ -53,16 +53,16 @@ Route::middleware(['cors'])->group(function () {
     Route::get('user/', 'App\Http\Controllers\UserController@index');
     Route::get('user/{id}', 'App\Http\Controllers\UserController@getUser');
     Route::post('user/create', 'App\Http\Controllers\UserController@createUser');
-    Route::patch('user/edit/{id}', 'App\Http\Controllers\UserController@editUser');
+    Route::post('user/edit/{id}', 'App\Http\Controllers\UserController@editUser');
     Route::delete('user/delete/{id}', 'App\Http\Controllers\UserController@deleteUser');
 
     // Route::apiResource('pds', App\Http\Controllers\PersonalInfoController::class);
     //routes for pds
     Route::get('pds/', 'App\Http\Controllers\PersonalInfoController@index');
     Route::get('pds/{id}', 'App\Http\Controllers\PersonalInfoController@getPds');
-    // Route::post('pds/create', 'App\Http\Controllers\PersonalDataSheetController@createPds');
+    Route::get('pds/getImage/{id}', 'App\Http\Controllers\PersonalInfoController@getImage');
     Route::post('pds/create', 'App\Http\Controllers\PersonalInfoController@createPds');
-    Route::patch('pds/update', 'App\Http\Controllers\PersonalInfoController@updatePds');
+    Route::post('pds/update', 'App\Http\Controllers\PersonalInfoController@editPds');
     Route::post('pds/handleImage', 'App\Http\Controllers\PersonalInfoController@handleImage');
     // Route::apiResource('esat', App\Http\Controllers\EsatController::class);
     //routes for esat

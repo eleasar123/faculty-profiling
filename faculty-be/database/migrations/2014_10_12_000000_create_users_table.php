@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('password')->unique();
             $table->string('role');
-            $table->string('profile');
+            $table->string('profile')->nullable();
             $table->timestamp('created_at') ->useCurrent();
             $table->timestamp('updated_at') -> nullable() -> useCurrentOnUpdate();
             $table->softDeletesTz();

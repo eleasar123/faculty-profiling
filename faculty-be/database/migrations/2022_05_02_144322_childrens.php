@@ -16,7 +16,7 @@ return new class extends Migration
   Schema::create('childrens', function (Blueprint $table) {
    $table->increments('id');
    $table->string('user_id');
-   $table->string('child_name');
+   $table->string('child_name')->nullable();
    $table->timestamp('created_at')->useCurrent();
    $table->timestamp('updated_at')->nullable()->useCurrentOnUpdate();
    $table->softDeletesTz();

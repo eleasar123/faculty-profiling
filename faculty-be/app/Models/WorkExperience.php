@@ -22,6 +22,7 @@ class WorkExperience extends Model
         'user_id',
         'work_inclusive_dates_from',
         'work_inclusive_dates_to',
+        'position',
         'department',
         'monthly_salary',
         'salary_grade',

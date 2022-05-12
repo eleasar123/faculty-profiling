@@ -25,7 +25,7 @@ return new class extends Migration
             $table->string('oath_date_accomplished');
             $table->string('photo')-> nullable();
             $table->string('right_thumbmark')-> nullable();
-            $table->string('sworn_date');
+            $table->date('sworn_date');
             $table->string('person_administering_oath')-> nullable();
             $table->timestamp('created_at') ->useCurrent();
             $table->timestamp('updated_at') -> nullable() -> useCurrentOnUpdate();

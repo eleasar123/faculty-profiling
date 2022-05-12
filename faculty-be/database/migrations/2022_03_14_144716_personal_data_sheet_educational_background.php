@@ -17,13 +17,13 @@ return new class extends Migration
         Schema::create('personal_data_sheet_educational_backgrounds', function (Blueprint $table) {
             $table->increments('id');
             $table->string('user_id');
-            $table->string('level');
-            $table->string('name_of_school');
-            $table->string('basic_education_course');
-            $table->string('period_of_attendance_from');
-            $table->string('period_of_attendance_to');
-            $table->string('highest_level_units_earned');
-            $table->string('year_graduated');
+            $table->string('level')-> nullable();
+            $table->string('name_of_school')-> nullable();
+            $table->string('basic_education_course')-> nullable();
+            $table->date('period_of_attendance_from')-> nullable();
+            $table->date('period_of_attendance_to')-> nullable();
+            $table->string('highest_level_units_earned')-> nullable();
+            $table->string('year_graduated')-> nullable();
             $table->string('academic_honors_received');
             $table->timestamp('created_at') ->useCurrent();
             $table->timestamp('updated_at') -> nullable() -> useCurrentOnUpdate();

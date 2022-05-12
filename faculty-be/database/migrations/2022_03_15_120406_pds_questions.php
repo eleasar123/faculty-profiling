@@ -17,17 +17,17 @@ return new class extends Migration
         Schema::create('pds_questions', function (Blueprint $table){
             $table->increments('id');
             $table->string('user_id');
-            $table->text('question_thirty_four');
-            $table->text('question_thirty_five_a');
-            $table->text('question_thirty_five_b_date_filed');
-            $table->text('question_thirty_five_B_status_of_case');
-            $table->text('question_thirty_six');
-            $table->text('question_thirty_seven');
-            $table->text('question_thirty_eight');
-            $table->text('question_thirty_nine');
-            $table->text('question_forty_a');
-            $table->string('question_forty_b');
-            $table->string('question_forty_c');
+            $table->text('question_thirty_four') -> nullable();
+            $table->text('question_thirty_five_a') -> nullable();
+            $table->text('question_thirty_five_b_date_filed') -> nullable();
+            $table->text('question_thirty_five_B_status_of_case') -> nullable();
+            $table->text('question_thirty_six') -> nullable();
+            $table->text('question_thirty_seven') -> nullable();
+            $table->text('question_thirty_eight') -> nullable();
+            $table->text('question_thirty_nine') -> nullable();
+            $table->text('question_forty_a') -> nullable();
+            $table->string('question_forty_b') -> nullable();
+            $table->string('question_forty_c') -> nullable();
             $table->timestamp('created_at') ->useCurrent();
             $table->timestamp('updated_at') -> nullable() -> useCurrentOnUpdate();
             $table->softDeletesTz();

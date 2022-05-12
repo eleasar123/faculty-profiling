@@ -18,8 +18,8 @@ return new class extends Migration
             $table->increments('id');
             $table->string('user_id');
             $table->string('organization_name_and_address');
-            $table->string('voluntary_inclusive_dates_from');
-            $table->string('voluntary_inclusive_dates_to');
+            $table->date('voluntary_inclusive_dates_from');
+            $table->date('voluntary_inclusive_dates_to');
             $table->string('number_of_hours');
             $table->string('position');
             $table->timestamp('created_at') ->useCurrent();

@@ -17,7 +17,7 @@ return new class extends Migration
         Schema::create('other_info_nonacademic_distinctions', function (Blueprint $table){
             $table->increments('id');
             $table->string('user_id');
-            $table->string('non_academic_distinctions');
+            $table->string('non_academic_distinctions')->nullable();
             $table->timestamp('created_at') ->useCurrent();
             $table->timestamp('updated_at') -> nullable() -> useCurrentOnUpdate();
             $table->softDeletesTz();

@@ -17,7 +17,7 @@ return new class extends Migration
         Schema::create('other_info_association_members', function (Blueprint $table){
             $table->increments('id');
             $table->string('user_id');
-            $table->string('association_members');
+            $table->string('association_members') -> nullable();
             $table->timestamp('created_at') ->useCurrent();
             $table->timestamp('updated_at') -> nullable() -> useCurrentOnUpdate();
             $table->softDeletesTz();

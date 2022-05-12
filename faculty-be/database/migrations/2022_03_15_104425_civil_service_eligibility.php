@@ -17,12 +17,12 @@ return new class extends Migration
         Schema::create('civil_service_eligibilities', function (Blueprint $table){
             $table->increments('id');
             $table->string('user_id');
-            $table->string('career_service');
-            $table->string('rating');
-            $table->string('date_of_examination');
-            $table->string('place_of_examination');
-            $table->string('license_number');
-            $table->string('license_date_of_validity');
+            $table->string('career_service')->nullable();
+            $table->string('rating')->nullable();
+            $table->date('date_of_examination')->nullable();
+            $table->string('place_of_examination')->nullable();
+            $table->string('license_number')->nullable();
+            $table->string('license_date_of_validity')->nullable();
             $table->timestamp('created_at') ->useCurrent();
             $table->timestamp('updated_at') -> nullable() -> useCurrentOnUpdate();
             $table->softDeletesTz();
