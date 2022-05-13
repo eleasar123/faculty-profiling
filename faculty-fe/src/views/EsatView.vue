@@ -1,5 +1,5 @@
 <template>
-<v-container fluid>
+  <v-container>
     <v-card>
       <v-tabs
         mt-5
@@ -9,7 +9,7 @@
         dark
         icons-and-text
       >
-        <v-tabs-slider></v-tabs-slider>
+        <!-- <v-tabs-slider></v-tabs-slider> -->
 
         <v-tab href="#subscribe"> Home </v-tab>
         <v-tab href="#privacy"> Privacy Note </v-tab>
@@ -36,7 +36,7 @@
                     ></v-img>
                   </v-col>
                   <v-col cols="6">
-                    <v-container id="esatTxt" class="container-fluid">
+                    <v-container id="esatTxt">
                       <h1
                         style="font-size: 20px"
                         class="text-center font-weight-bold"
@@ -1453,515 +1453,846 @@
 
               <!-- showPRINT -->
 
-              <h2 class="heading mt-6 text-decoration-underline">
-                PART I. DEMOGRAPHIC PROFILE
-              </h2>
-              <v-row>
-                <v-col>
-                  <v-simple-table class="table">
+              <v-simple-table class="table mt-6">
+                <template v-slot:default>
+                  <thead>
+                    <tr>
+                      <th colspan="5">
+                        <h2
+                          style="color: black"
+                          class="font-weight-bold text-decoration-underline"
+                        >
+                          PART I. DEMOGRAPHIC PROFILE
+                        </h2>
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody
+                    style="color: black"
+                    v-for="row in esatDemographicProfile"
+                    :key="row.id"
+                  >
                     <tr>
                       <td class="esatPrint">Name of Employee:</td>
-                      <td>dsfb</td>
+                      <td class="showDataPart1">{{ row.name_of_employee }}</td>
+                      <td rowspan="7"></td>
+                      <td class="esatPrint">Region:</td>
+                      <td class="showDataPart1">{{ row.region }}</td>
                     </tr>
                     <tr>
                       <td class="esatPrint">Position:</td>
-                      <td>dsfb</td>
+                      <td class="showDataPart1">{{ row.position }}</td>
+                      <td class="esatPrint">School:</td>
+                      <td class="showDataPart1">
+                        {{ row.school_id }} - {{ row.school_name }}
+                      </td>
                     </tr>
                     <tr>
                       <td class="esatPrint">Employment Status:</td>
-                      <td>dsfb</td>
+                      <td class="showDataPart1">{{ row.employment_status }}</td>
+                      <td class="esatPrint">Division:</td>
+                      <td class="showDataPart1">{{ row.division }}</td>
                     </tr>
                     <tr>
                       <td class="esatPrint">Age:</td>
-                      <td>dsfb</td>
+                      <td class="showDataPart1">{{ row.age }}</td>
+                      <td class="esatPrint">Curricular Classification:</td>
+                      <td class="showDataPart1">
+                        {{ row.curricular_classification }}
+                      </td>
                     </tr>
                     <tr>
                       <td class="esatPrint">Sex:</td>
-                      <td>dsfb</td>
+                      <td class="showDataPart1">{{ row.sex }}</td>
+                      <td class="esatPrint">Area(s) of Specialization:</td>
+                      <td class="showDataPart1">
+                        {{ row.area_of_specialization }}
+                      </td>
                     </tr>
                     <tr>
                       <td class="esatPrint">Number of Years in Teaching:</td>
-                      <td>dsfb</td>
+                      <td class="showDataPart1">{{ row.years_in_teaching }}</td>
+                      <td class="esatPrint">Subjects(s) Taught:</td>
+                      <td class="showDataPart1">{{ row.subjects_taught }}</td>
                     </tr>
                     <tr>
                       <td class="esatPrint">
                         Specify Highest Degree Obtained:
                       </td>
-                      <td>dsfb</td>
+                      <td class="showDataPart1">
+                        {{ row.highest_degree_obtained }} -
+                        {{ row.specified_highest_degree_obtained }}
+                      </td>
                     </tr>
-                  </v-simple-table>
-                </v-col>
-                <v-col>
-                  <v-simple-table class="table">
-                    <tr>
-                      <td class="esatPrint">Region:</td>
-                      <td>EXAMPLE</td>
-                    </tr>
-                    <tr>
-                      <td class="esatPrint">Division:</td>
-                      <td>dsfb</td>
-                    </tr>
-                    <tr>
-                      <td class="esatPrint">School:</td>
-                      <td>dsfb</td>
-                    </tr>
-                    <tr>
-                      <td class="esatPrint">Curricular Classification:</td>
-                      <td>dsfb</td>
-                    </tr>
-                    <tr>
-                      <td class="esatPrint">Area(s) of Specialization:</td>
-                      <td>dsfb</td>
-                    </tr>
-                    <tr>
-                      <td class="esatPrint">Subjects(s) Taught:</td>
-                      <td>dsfb</td>
-                    </tr>
-                  </v-simple-table>
-                </v-col>
-              </v-row>
+                  </tbody>
+                </template>
+              </v-simple-table>
 
               <v-container class="mt-5">
                 <h2 class="font-weight-bold mt-6 text-decoration-underline">
-                  PART II. DEMOGRAPHIC PROFILE
+                  PART II. FUNCTIONAL OBJECTOVES
                 </h2>
                 <v-simple-table class="table">
-                  <thead class="font-weight-bold">
-                    <tr>
-                      <th class="text-center">Objectives</th>
-                      <th class="text-left">Level of Capacity</th>
-                      <th class="text-left">Priority for Development</th>
-                    </tr>
-                  </thead>
-                  <v-row>
-                    <v-col cols="12">
-                      <v-card class="pa-2 font-weight-bold" outlined tile>
-                        1.Content Knowledge and Pedagogy (PPST Domain 1)
-                      </v-card>
-                    </v-col>
-                  </v-row>
+                  <template v-slot:default>
+                    <thead class="font-weight-bold">
+                      <tr>
+                        <th
+                          colspan="2"
+                          style="
+                            color: black;
+                            font-size: 15px;
+                            border: black 0.5px solid;
+                          "
+                          class="text-center"
+                        >
+                          Objectives
+                        </th>
+                        <th
+                          style="
+                            color: black;
+                            font-size: 15px;
+                            border: black 0.5px solid;
+                          "
+                          class="text-left"
+                        >
+                          Level of Capacity
+                        </th>
+                        <th
+                          style="
+                            color: black;
+                            font-size: 15px;
+                            border: black 0.5px solid;
+                          "
+                          class="text-left"
+                        >
+                          Priority for Development
+                        </th>
+                      </tr>
+                    </thead>
 
-                  <tr>
-                    <td>
-                      1.1 Applied knowledge of content within and across
-                      curriculum teaching areas. (PPST Indicator 1.1.2)
-                    </td>
-                    <td>dsfb</td>
-                    <td>lorem epsom</td>
-                  </tr>
-                  <tr>
-                    <td>
-                      1.2 Ensured the positive use of ICT to facilitate the
-                      teaching and learning learning process. (PPST Indicator
-                      1.3.2)
-                    </td>
-                    <td>dsfb</td>
-                    <td>lorem epsom</td>
-                  </tr>
-                  <tr>
-                    <td>
-                      1.3 Applied a range of teaching strategies to develop
-                      critical and creative thinking, as well as other higher
-                      order thinking skills. (PPST Indicator 1.5.2)
-                    </td>
-                    <td>dsfb</td>
-                    <td>lorem epsom</td>
-                  </tr>
+                    <tbody>
+                      <tr>
+                        <td colspan="4">
+                          <h3>
+                            1.Content Knowledge and Pedagogy (PPST Domain 1)
+                          </h3>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="objNo">1.1</td>
+                        <td>
+                          Applied knowledge of content within and across
+                          curriculum teaching areas. (PPST Indicator 1.1.2)
+                        </td>
+                        <td class="text-center">
+                          {{ functionalObjectives[0].level_of_capability }}
+                        </td>
+                        <td class="text-center">
+                          {{ functionalObjectives[0].priority_for_development }}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="objNo">1.2</td>
+                        <td>
+                          Ensured the positive use of ICT to facilitate the
+                          teaching and learning learning process. (PPST
+                          Indicator 1.3.2)
+                        </td>
+                        <td class="text-center">
+                          {{ functionalObjectives[1].level_of_capability }}
+                        </td>
+                        <td class="text-center">
+                          {{ functionalObjectives[1].priority_for_development }}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="objNo">1.3</td>
+                        <td>
+                          Applied a range of teaching strategies to develop
+                          critical and creative thinking, as well as other
+                          higher order thinking skills. (PPST Indicator 1.5.2)
+                        </td>
+                        <td class="text-center">
+                          {{ functionalObjectives[2].level_of_capability }}
+                        </td>
+                        <td class="text-center">
+                          {{ functionalObjectives[2].priority_for_development }}
+                        </td>
+                      </tr>
 
-                  <v-row>
-                    <v-col cols="12">
-                      <v-card class="pa-2 font-weight-bold" outlined tile>
-                        2. Diversity of Learners & Assessment and Reporting
-                        (PPST Domain 2 and Domain 5)
-                      </v-card>
-                    </v-col>
-                  </v-row>
+                      <tr>
+                        <td colspan="4">
+                          <h3>
+                            2. Diversity of Learners & Assessment and Reporting
+                            (PPST Domain 2 and Domain 5)
+                          </h3>
+                        </td>
+                      </tr>
 
-                  <tr>
-                    <td>
-                      2.1 Established a learner-centered culture by using
-                      teaching strategies that respond to their linguistic,
-                      cultural, socio-economic and religious backgrounds.
-                    </td>
-                    <td>dsfb</td>
-                    <td>lorem epsom</td>
-                  </tr>
-                  <tr>
-                    <td>
-                      2.2 Planned and delivered teaching strategies that are
-                      responsive to the special educational needs of learners in
-                      difficult circumstances, including: geographic isolation;
-                      chronic illness; displacement due to armed conflict, urban
-                      resettlement or disasters; child labor practices. (PPST
-                      Indicator 3.4.2)
-                    </td>
-                    <td>dsfb</td>
-                    <td>lorem epsom</td>
-                  </tr>
-                  <tr>
-                    <td>
-                      2.3 Used strategies for providing timely, accurate and
-                      constructive feedback to improve learner performance.
-                      (PPST Indicator 5.3.2)
-                    </td>
-                    <td>dsfb</td>
-                    <td>lorem epsom</td>
-                  </tr>
+                      <tr>
+                        <td class="objNo">2.1</td>
+                        <td>
+                          Established a learner-centered culture by using
+                          teaching strategies that respond to their linguistic,
+                          cultural, socio-economic and religious backgrounds.
+                        </td>
+                        <td class="text-center">
+                          {{ functionalObjectives[3].level_of_capability }}
+                        </td>
+                        <td class="text-center">
+                          {{ functionalObjectives[3].priority_for_development }}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="objNo">2.2</td>
+                        <td>
+                          Planned and delivered teaching strategies that are
+                          responsive to the special educational needs of
+                          learners in difficult circumstances, including:
+                          geographic isolation; chronic illness; displacement
+                          due to armed conflict, urban resettlement or
+                          disasters; child labor practices. (PPST Indicator
+                          3.4.2)
+                        </td>
+                        <td class="text-center">
+                          {{ functionalObjectives[4].level_of_capability }}
+                        </td>
+                        <td class="text-center">
+                          {{ functionalObjectives[4].priority_for_development }}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="objNo">2.3</td>
+                        <td>
+                          Used strategies for providing timely, accurate and
+                          constructive feedback to improve learner performance.
+                          (PPST Indicator 5.3.2)
+                        </td>
+                        <td class="text-center">
+                          {{ functionalObjectives[5].level_of_capability }}
+                        </td>
+                        <td class="text-center">
+                          {{ functionalObjectives[5].priority_for_development }}
+                        </td>
+                      </tr>
 
-                  <v-row>
-                    <v-col cols="12">
-                      <v-card class="pa-2 font-weight-bold" outlined tile>
-                        3. Curriculum and Planning (PPST Domain 4)
-                      </v-card>
-                    </v-col>
-                  </v-row>
-                  <tr>
-                    <td>
-                      3.1 Selected, developed, organized and used appropriate
-                      teaching and learning resources, including ICT, to address
-                      learning goals. (PPST Indicator 4.5.2)
-                    </td>
-                    <td>dsfb</td>
-                    <td>lorem epsom</td>
-                  </tr>
-                  <tr>
-                    <td>
-                      3.2 Set achievable and appropriate learning outcomes that
-                      are aligned with learning competencies. (PPST Indicator
-                      4.2.2)
-                    </td>
-                    <td>dsfb</td>
-                    <td>lorem epsom</td>
-                  </tr>
+                      <tr>
+                        <td colspan="4">
+                          <h3>3. Curriculum and Planning (PPST Domain 4)</h3>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="objNo">3.1</td>
+                        <td>
+                          Selected, developed, organized and used appropriate
+                          teaching and learning resources, including ICT, to
+                          address learning goals. (PPST Indicator 4.5.2)
+                        </td>
+                        <td class="text-center">
+                          {{ functionalObjectives[6].level_of_capability }}
+                        </td>
+                        <td class="text-center">
+                          {{ functionalObjectives[6].priority_for_development }}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="objNo">3.2</td>
+                        <td>
+                          Set achievable and appropriate learning outcomes that
+                          are aligned with learning competencies. (PPST
+                          Indicator 4.2.2)
+                        </td>
+                        <td class="text-center">
+                          {{ functionalObjectives[7].level_of_capability }}
+                        </td>
+                        <td class="text-center">
+                          {{ functionalObjectives[7].priority_for_development }}
+                        </td>
+                      </tr>
 
-                  <v-row>
-                    <v-col cols="12">
-                      <v-card class="pa-2 font-weight-bold" outlined tile>
-                        4. Community Linkages and Professional Engagement &
-                        Personal Growth and Professional Development (PPST
-                        Domain 6 and 7)
-                      </v-card>
-                    </v-col>
-                  </v-row>
+                      <tr>
+                        <td colspan="4">
+                          <h3>
+                            4. Community Linkages and Professional Engagement &
+                            Personal Growth and Professional Development (PPST
+                            Domain 6 and 7)
+                          </h3>
+                        </td>
+                      </tr>
 
-                  <tr>
-                    <td>
-                      4.1 Built relationships with parents/guardians and the
-                      wider school community to facilitate involvement in the
-                      educative process. (PPST Indicator 6.2.2)
-                    </td>
-                    <td>dsfb</td>
-                    <td>lorem epsom</td>
-                  </tr>
-                  <tr>
-                    <td>
-                      4.2 Participates in professional networks to share
-                      knowledge and to enhance practice. (PPST Indicator 7.3.2)
-                    </td>
-                    <td>dsfb</td>
-                    <td>lorem epsom</td>
-                  </tr>
-                  <tr>
-                    <td>
-                      4.3 Developed a personal improvement plan based on
-                      reflection of one’s practice and ongoing professional
-                      learning. (PPST Indicator 7.4.2)
-                    </td>
-                    <td>dsfb</td>
-                    <td>lorem epsom</td>
-                  </tr>
-
-                  <v-row>
-                    <v-col cols="12">
-                      <v-card class="pa-2 font-weight-bold" outlined tile>
-                        PLUS FACTOR
-                      </v-card>
-                    </v-col>
-                  </v-row>
-                  <tr>
-                    <td>
-                      5.1 Performed various related works/activities that
-                      contribute to the teaching-learning process.
-                    </td>
-                    <td>dsfb</td>
-                    <td>lorem epsom</td>
-                  </tr>
+                      <tr>
+                        <td class="objNo">4.1</td>
+                        <td>
+                          Built relationships with parents/guardians and the
+                          wider school community to facilitate involvement in
+                          the educative process. (PPST Indicator 6.2.2)
+                        </td>
+                        <td class="text-center">
+                          {{ functionalObjectives[8].level_of_capability }}
+                        </td>
+                        <td class="text-center">
+                          {{ functionalObjectives[8].priority_for_development }}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="objNo">4.2</td>
+                        <td>
+                          Participates in professional networks to share
+                          knowledge and to enhance practice. (PPST Indicator
+                          7.3.2)
+                        </td>
+                        <td class="text-center">
+                          {{ functionalObjectives[9].level_of_capability }}
+                        </td>
+                        <td class="text-center">
+                          {{ functionalObjectives[9].priority_for_development }}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="objNo">4.3</td>
+                        <td>
+                          Developed a personal improvement plan based on
+                          reflection of one’s practice and ongoing professional
+                          learning. (PPST Indicator 7.4.2)
+                        </td>
+                        <td class="text-center">
+                          {{ functionalObjectives[10].level_of_capability }}
+                        </td>
+                        <td class="text-center">
+                          {{
+                            functionalObjectives[10].priority_for_development
+                          }}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td colspan="4"><h3>PLUS FACTOR</h3></td>
+                      </tr>
+                      <tr>
+                        <td class="objNo">5.1</td>
+                        <td>
+                          Performed various related works/activities that
+                          contribute to the teaching-learning process.
+                        </td>
+                        <td class="text-center">
+                          {{ functionalObjectives[11].level_of_capability }}
+                        </td>
+                        <td class="text-center">
+                          {{
+                            functionalObjectives[11].priority_for_development
+                          }}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td colspan="4">
+                          <h3>Personal Comments</h3>
+                        </td>
+                      </tr>
+                      <tr v-for="row in esatDemographicProfile" :key="row.id">
+                        <td colspan="4">{{ row.personal_comments }}</td>
+                      </tr>
+                    </tbody>
+                  </template>
                 </v-simple-table>
               </v-container>
 
               <v-container class="">
-                <h2 class="font-weight-bold mt-6 text-decoration-underline">
-                  PART III. CORE BEHAVIORAL COMPETENCIES
-                </h2>
-                <h3 class="mt-5">1. SELF-MANAGEMENT</h3>
+                <v-simple-table class="table" style="color: black">
+                  <template>
+                    <thead>
+                      <tr>
+                        <th colspan="3">
+                          <h2
+                            style="color: black"
+                            class="font-weight-bold mt-6 text-decoration-underline"
+                          >
+                            PART III. CORE BEHAVIORAL COMPETENCIES
+                          </h2>
+                        </th>
+                      </tr>
+                      <tr>
+                        <td colspan="3">
+                          <h3 style="color: black" class="mt-5">
+                            1. SELF-MANAGEMENT
+                          </h3>
+                        </td>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>
+                          {{
+                            coreBehavioralCompetencies[0].check_status == "1"
+                              ? "✔"
+                              : ""
+                          }}
+                        </td>
 
-                <v-simple-table class="table">
-                  <tr>
-                    <td>example</td>
-                    <td>1</td>
-                    <td>
-                      Sets personal goals and directions, needs and development.
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>dehg</td>
-                    <td>2</td>
-                    <td>
-                      Undertakes personal actions and behavior that are clear
-                      and purposive and takes into account personal goals and
-                      values congruent to that of the organization.
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>dfgfg</td>
-                    <td>3</td>
-                    <td>
-                      Displays emotional maturity and enthusiasm for and is
-                      challenged by higher goals.
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>bbn</td>
-                    <td>4</td>
-                    <td>
-                      Prioritizes work tasks and schedules (through Gantt
-                      charts, checklist, etc) achieve goals.
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>bgfnf</td>
-                    <td>5</td>
-                    <td>
-                      Sets high quality, challenging, realistic goals for self
-                      and others.
-                    </td>
-                  </tr>
-                </v-simple-table>
-                <h3>2.PROFESSIONALISM AND ETHICS</h3>
-                <v-simple-table class="table">
-                  <tr>
-                    <td>example</td>
-                    <td>1</td>
-                    <td>
-                      Demonstrates the values and behavior enshrined in the
-                      Norms and Conduct and Ethical Standards for public
-                      officials and employees. (RA 6713)
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>dehg</td>
-                    <td>2</td>
-                    <td>
-                      Practices ethical and professional behavior and conduct
-                      taking into account the impact of his/her actions and
-                      decisions.
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>dfgfg</td>
-                    <td>3</td>
-                    <td>
-                      Maintains a professional image: being trustworthy,
-                      regularity of attendance and punctuality, good grooming
-                      and communication.
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>bbn</td>
-                    <td>4</td>
-                    <td>
-                      Makes personal sacrifices to meet the organization’s
-                      needs.
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>bgfnf</td>
-                    <td>5</td>
-                    <td>
-                      Act with a sense of urgency and responsibility to meet the
-                      organization’s needs, improve system and help others
-                      improve their effectiveness.
-                    </td>
-                  </tr>
-                </v-simple-table>
-                <h3>3. RESULTS FOCUS</h3>
-                <v-simple-table class="table">
-                  <tr>
-                    <td>example</td>
-                    <td>1</td>
-                    <td>
-                      Achieves results with optimal use of time and resources
-                      most of the time.
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>dehg</td>
-                    <td>2</td>
-                    <td>
-                      Avoids rework, mistakes and wastage through effective work
-                      methods by placing organizational needs before personal
-                      needs.
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>dfgfg</td>
-                    <td>3</td>
-                    <td>
-                      Delivers error-free outputs most of the time by conforming
-                      to standard operating procedures correctly and
-                      consistently. Able to produce very satisfactory quality
-                      work in terms of usefulness/acceptability and completeness
-                      with no supervision required.
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>bbn</td>
-                    <td>4</td>
-                    <td>
-                      Expresses the desire to do better and may express
-                      frustration at waste or efficiency. May focus on new or
-                      more precise ways of meeting goals set.
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>bgfnf</td>
-                    <td>5</td>
-                    <td>
-                      Makes specific changes in the system or in own work
-                      methods to improve performance. Examples may include doing
-                      something better,faster, at a lower cost, more
-                      efficiently, or improving quality, customer satisfaction,
-                      morale, without setting any specific goal.
-                    </td>
-                  </tr>
-                </v-simple-table>
-                <h3><h3>4. TEAMWORK</h3></h3>
-                <v-simple-table class="table">
-                  <tr>
-                    <td>example</td>
-                    <td>1</td>
-                    <td>Willingly does his/her share of responsibility.</td>
-                  </tr>
-                  <tr>
-                    <td>dehg</td>
-                    <td>2</td>
-                    <td>
-                      Promotes collaboration and removes barriers to teamwork
-                      and goal accomplishment across the organization.
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>dfgfg</td>
-                    <td>3</td>
-                    <td>
-                      Applies negotiation principles in arriving at win-win
-                      agreements.
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>bbn</td>
-                    <td>4</td>
-                    <td>Drives consensus and team ownership of decisions.</td>
-                  </tr>
-                  <tr>
-                    <td>bgfnf</td>
-                    <td>5</td>
-                    <td>
-                      Works constructively and collaboratively with others and
-                      across organizations to accomplish organizational goals
-                      and objectives.
-                    </td>
-                  </tr>
-                </v-simple-table>
-                <h3>5. SERVICE ORIENTATION</h3>
-                <v-simple-table class="table">
-                  <tr>
-                    <td>example</td>
-                    <td>1</td>
-                    <td>
-                      Can explain and articulate organizational directions,
-                      issues and problems.
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>dehg</td>
-                    <td>2</td>
-                    <td>
-                      Takes personal responsibility for dealing with and/or
-                      correcting customer service issues and concerns.
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>dfgfg</td>
-                    <td>3</td>
-                    <td>
-                      Initiates activities that promote advocacy for men and
-                      women empowerment.
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>bbn</td>
-                    <td>4</td>
-                    <td>
-                      Participates in updating office vision, mission, mandates
-                      and strategies based on DepEd strategies and directions.
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>bgfnf</td>
-                    <td>5</td>
-                    <td>
-                      Develops and adopts services improvement program through
-                      simplified procedures that will further enhance service
-                      delivery.
-                    </td>
-                  </tr>
-                </v-simple-table>
-                <h3>6. INNOVATION</h3>
-                <v-simple-table class="table">
-                  <tr>
-                    <td>example</td>
-                    <td>1</td>
-                    <td>
-                      Examines the root cause of problems and suggests effective
-                      solutions. Foster new ideas, processes and suggests better
-                      ways to do things(cost and/or operaional effeciency).
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>dehg</td>
-                    <td>2</td>
-                    <td>
-                      Demonstrates an ability to think "beyond the box".
-                      Continuosly focuses on improving personal productivity to
-                      create higher value and results.
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>dfgfg</td>
-                    <td>3</td>
-                    <td>
-                      Promote a creative climate and inspires co-workers to
-                      develop original ideas or solutions.
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>bbn</td>
-                    <td>4</td>
-                    <td>
-                      Translates creative thinking into tangible changes and
-                      solutions that improve the work unit and organization.
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>bgfnf</td>
-                    <td>5</td>
-                    <td>
-                      Uses ingenious methods to accomplish responsibilities.
-                      Demonstrates resourcefulness and the ability to succeed
-                      with minimal resources.
-                    </td>
-                  </tr>
+                        <td>1</td>
+                        <td>
+                          Sets personal goals and directions, needs and
+                          development.
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          {{
+                            coreBehavioralCompetencies[1].check_status == "1"
+                              ? "✔"
+                              : ""
+                          }}
+                        </td>
+                        <td>2</td>
+                        <td>
+                          Undertakes personal actions and behavior that are
+                          clear and purposive and takes into account personal
+                          goals and values congruent to that of the
+                          organization.
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          {{
+                            coreBehavioralCompetencies[2].check_status == "1"
+                              ? "✔"
+                              : ""
+                          }}
+                        </td>
+                        <td>3</td>
+                        <td>
+                          Displays emotional maturity and enthusiasm for and is
+                          challenged by higher goals.
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          {{
+                            coreBehavioralCompetencies[3].check_status == "1"
+                              ? "✔"
+                              : ""
+                          }}
+                        </td>
+                        <td>4</td>
+                        <td>
+                          Prioritizes work tasks and schedules (through Gantt
+                          charts, checklist, etc) achieve goals.
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          {{
+                            coreBehavioralCompetencies[4].check_status === "1"
+                              ? "✔"
+                              : ""
+                          }}
+                        </td>
+                        <td>5</td>
+                        <td>
+                          Sets high quality, challenging, realistic goals for
+                          self and others.
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <td colspan="3">
+                          <h3>2.PROFESSIONALISM AND ETHICS</h3>
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <td>
+                          {{
+                            coreBehavioralCompetencies[5].check_status === "1"
+                              ? "✔"
+                              : ""
+                          }}
+                        </td>
+                        <td>1</td>
+                        <td>
+                          Demonstrates the values and behavior enshrined in the
+                          Norms and Conduct and Ethical Standards for public
+                          officials and employees. (RA 6713)
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          {{
+                            coreBehavioralCompetencies[6].check_status === "1"
+                              ? "✔"
+                              : ""
+                          }}
+                        </td>
+                        <td>2</td>
+                        <td>
+                          Practices ethical and professional behavior and
+                          conduct taking into account the impact of his/her
+                          actions and decisions.
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          {{
+                            coreBehavioralCompetencies[7].check_status === "1"
+                              ? "✔"
+                              : ""
+                          }}
+                        </td>
+                        <td>3</td>
+                        <td>
+                          Maintains a professional image: being trustworthy,
+                          regularity of attendance and punctuality, good
+                          grooming and communication.
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          {{
+                            coreBehavioralCompetencies[8].check_status === "1"
+                              ? "✔"
+                              : ""
+                          }}
+                        </td>
+                        <td>4</td>
+                        <td>
+                          Makes personal sacrifices to meet the organization’s
+                          needs.
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          {{
+                            coreBehavioralCompetencies[9].check_status === "1"
+                              ? "✔"
+                              : ""
+                          }}
+                        </td>
+                        <td>5</td>
+                        <td>
+                          Act with a sense of urgency and responsibility to meet
+                          the organization’s needs, improve system and help
+                          others improve their effectiveness.
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <td colspan="3"><h3>3. RESULTS FOCUS</h3></td>
+                      </tr>
+
+                      <tr>
+                        <td>
+                          {{
+                            coreBehavioralCompetencies[10].check_status === "1"
+                              ? "✔"
+                              : ""
+                          }}
+                        </td>
+                        <td>1</td>
+                        <td>
+                          Achieves results with optimal use of time and
+                          resources most of the time.
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          {{
+                            coreBehavioralCompetencies[11].check_status === "1"
+                              ? "✔"
+                              : ""
+                          }}
+                        </td>
+                        <td>2</td>
+                        <td>
+                          Avoids rework, mistakes and wastage through effective
+                          work methods by placing organizational needs before
+                          personal needs.
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          {{
+                            coreBehavioralCompetencies[12].check_status === "1"
+                              ? "✔"
+                              : ""
+                          }}
+                        </td>
+                        <td>3</td>
+                        <td>
+                          Delivers error-free outputs most of the time by
+                          conforming to standard operating procedures correctly
+                          and consistently. Able to produce very satisfactory
+                          quality work in terms of usefulness/acceptability and
+                          completeness with no supervision required.
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          {{
+                            coreBehavioralCompetencies[13].check_status === "1"
+                              ? "✔"
+                              : ""
+                          }}
+                        </td>
+                        <td>4</td>
+                        <td>
+                          Expresses the desire to do better and may express
+                          frustration at waste or efficiency. May focus on new
+                          or more precise ways of meeting goals set.
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          {{
+                            coreBehavioralCompetencies[14].check_status === "1"
+                              ? "✔"
+                              : ""
+                          }}
+                        </td>
+                        <td>5</td>
+                        <td>
+                          Makes specific changes in the system or in own work
+                          methods to improve performance. Examples may include
+                          doing something better,faster, at a lower cost, more
+                          efficiently, or improving quality, customer
+                          satisfaction, morale, without setting any specific
+                          goal.
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <td colspan="3">
+                          <h3>4. TEAMWORK</h3>
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <td>
+                          {{
+                            coreBehavioralCompetencies[15].check_status === "1"
+                              ? "✔"
+                              : ""
+                          }}
+                        </td>
+                        <td>1</td>
+                        <td>Willingly does his/her share of responsibility.</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          {{
+                            coreBehavioralCompetencies[16].check_status === "1"
+                              ? "✔"
+                              : ""
+                          }}
+                        </td>
+                        <td>2</td>
+                        <td>
+                          Promotes collaboration and removes barriers to
+                          teamwork and goal accomplishment across the
+                          organization.
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          {{
+                            coreBehavioralCompetencies[17].check_status === "1"
+                              ? "✔"
+                              : ""
+                          }}
+                        </td>
+                        <td>3</td>
+                        <td>
+                          Applies negotiation principles in arriving at win-win
+                          agreements.
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          {{
+                            coreBehavioralCompetencies[18].check_status === "1"
+                              ? "✔"
+                              : ""
+                          }}
+                        </td>
+                        <td>4</td>
+                        <td>
+                          Drives consensus and team ownership of decisions.
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          {{
+                            coreBehavioralCompetencies[19].check_status === "1"
+                              ? "✔"
+                              : ""
+                          }}
+                        </td>
+                        <td>5</td>
+                        <td>
+                          Works constructively and collaboratively with others
+                          and across organizations to accomplish organizational
+                          goals and objectives.
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <td colspan="3">
+                          <h3>5. SERVICE ORIENTATION</h3>
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <td>
+                          {{
+                            coreBehavioralCompetencies[20].check_status === "1"
+                              ? "✔"
+                              : ""
+                          }}
+                        </td>
+                        <td>1</td>
+                        <td>
+                          Can explain and articulate organizational directions,
+                          issues and problems.
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          {{
+                            coreBehavioralCompetencies[21].check_status === "1"
+                              ? "✔"
+                              : ""
+                          }}
+                        </td>
+                        <td>2</td>
+                        <td>
+                          Takes personal responsibility for dealing with and/or
+                          correcting customer service issues and concerns.
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          {{
+                            coreBehavioralCompetencies[22].check_status === "1"
+                              ? "✔"
+                              : ""
+                          }}
+                        </td>
+                        <td>3</td>
+                        <td>
+                          Initiates activities that promote advocacy for men and
+                          women empowerment.
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          {{
+                            coreBehavioralCompetencies[23].check_status === "1"
+                              ? "✔"
+                              : ""
+                          }}
+                        </td>
+                        <td>4</td>
+                        <td>
+                          Participates in updating office vision, mission,
+                          mandates and strategies based on DepEd strategies and
+                          directions.
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          {{
+                            coreBehavioralCompetencies[24].check_status === "1"
+                              ? "✔"
+                              : ""
+                          }}
+                        </td>
+                        <td>5</td>
+                        <td>
+                          Develops and adopts services improvement program
+                          through simplified procedures that will further
+                          enhance service delivery.
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <td colspan="3">
+                          <h3>6. INNOVATION</h3>
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <td>
+                          {{
+                            coreBehavioralCompetencies[25].check_status === "1"
+                              ? "✔"
+                              : ""
+                          }}
+                        </td>
+                        <td>1</td>
+                        <td>
+                          Examines the root cause of problems and suggests
+                          effective solutions. Foster new ideas, processes and
+                          suggests better ways to do things(cost and/or
+                          operaional effeciency).
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          {{
+                            coreBehavioralCompetencies[26].check_status === "1"
+                              ? "✔"
+                              : ""
+                          }}
+                        </td>
+                        <td>2</td>
+                        <td>
+                          Demonstrates an ability to think "beyond the box".
+                          Continuosly focuses on improving personal productivity
+                          to create higher value and results.
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          {{
+                            coreBehavioralCompetencies[27].check_status === "1"
+                              ? "✔"
+                              : ""
+                          }}
+                        </td>
+                        <td>3</td>
+                        <td>
+                          Promote a creative climate and inspires co-workers to
+                          develop original ideas or solutions.
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          {{
+                            coreBehavioralCompetencies[28].check_status === "1"
+                              ? "✔"
+                              : ""
+                          }}
+                        </td>
+                        <td>4</td>
+                        <td>
+                          Translates creative thinking into tangible changes and
+                          solutions that improve the work unit and organization.
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          {{
+                            coreBehavioralCompetencies[29].check_status === "1"
+                              ? "✔"
+                              : ""
+                          }}
+                        </td>
+                        <td>5</td>
+                        <td>
+                          Uses ingenious methods to accomplish responsibilities.
+                          Demonstrates resourcefulness and the ability to
+                          succeed with minimal resources.
+                        </td>
+                      </tr>
+                    </tbody>
+                  </template>
                 </v-simple-table>
                 <v-row no-gutters>
                   <v-col cols="12" sm="6" md="8"> </v-col>
@@ -1972,15 +2303,7 @@
                       @click="goToEsatCard(), (esatCard = true)"
                       >FINISH</v-btn
                     >
-                    <v-btn
-                      class="float-right mb-4 me-4 mt-5"
-                      @click="
-                        editInfo(),
-                          (showPrint = false),
-                          (showPart1 = true),
-                          (updateInfos = true),
-                          (saveInfos = false)
-                      "
+                    <v-btn class="float-right mb-4 me-4 mt-5" @click="editInfo"
                       >EDIT</v-btn
                     >
                   </v-col>
@@ -2005,7 +2328,7 @@
                   ></v-img>
                 </v-col>
                 <v-col cols="5" class="ml=2">
-                  <v-container id="esatTxt" class="container-fluid">
+                  <v-container id="esatTxt">
                     <h3 class="text-left font-weight-bold">SY 2020-2021</h3>
                   </v-container>
                 </v-col>
@@ -2020,25 +2343,35 @@
               <v-row>
                 <v-col>
                   <v-simple-table class="table ml-5">
-                    <tr>
-                      <td class="esatCard">Name:</td>
-                      <td colspan="2">Elsa Patot</td>
-                    </tr>
-                    <tr>
-                      <td class="esatCard">School:</td>
-                      <td colspan="2">University Of San Carlos</td>
-                    </tr>
-                    <tr>
-                      <td class="esatCard">School Year:</td>
-                      <td>SY 2021-2022</td>
-                      <td rowspan="2" class="text-center">
-                        <v-btn dense> View </v-btn>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="esatCard">Date:</td>
-                      <td>12/8/2021</td>
-                    </tr>
+                    <template>
+                      <tbody>
+                        <tr>
+                          <td class="esatCard">Name:</td>
+                          <td colspan="2">
+                            {{
+                              this.esatDemographicProfile[0].name_of_employee
+                            }}
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="esatCard">School:</td>
+                          <td colspan="2">
+                            {{ this.esatDemographicProfile[0].school_name }}
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="esatCard">School Year:</td>
+                          <td>SY 2021-2022</td>
+                          <td rowspan="2" class="text-center">
+                            <v-btn dense @click="viewPrint"> View </v-btn>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="esatCard">Date:</td>
+                          <td>12/8/2021</td>
+                        </tr>
+                      </tbody>
+                    </template>
                   </v-simple-table>
                 </v-col>
                 <v-col> </v-col>
@@ -2048,7 +2381,7 @@
         </v-tab-item>
       </v-tabs-items>
     </v-card>
-</v-container>
+  </v-container>
 </template>
 
 <script>
@@ -2087,9 +2420,9 @@ export default {
       // goToShowPrint() {
       //   this.tab = "show_print";
       // },
-      editInfo() {
-        this.tab = "part1";
-      },
+      // editInfoInfo() {
+      //   this.tab = "part1";
+      // },
       // returnShowPrint() {
       //   this.tab = "show_print";
       // },
@@ -2099,6 +2432,7 @@ export default {
       // returnEsatCard() {
       //   this.tab = "esat_card";
       // },
+
       disclosure: true,
       privacyNote: false,
       showPart1: false,
@@ -2349,25 +2683,38 @@ export default {
       innovation5: "",
 
       tab: "subscribe",
+      esatDemographicProfile: [],
+      coreBehavioralCompetencies: [],
+      functionalObjectives: [],
     };
   },
-    created() {
+  created() {
     this.retrieveEsat();
   },
-  
+
   methods: {
     async retrieveEsat() {
-    console.log("Retrieve Esat");
-    const returnedData = await this.$store.dispatch("retrieveEsatInfoById");
-    this.esat = returnedData.data;
-    console.log(returnedData.data);
-    // console.log(esat)
-    // console.log(returnedData);
-    //   this.pds = this.$store.getters.pdsInfosAll;
-    //   console.log(this.pds);
-    //   console.log(this.pds);
-  },
+      const returnedData = await this.$store.dispatch("retrieveEsatInfoById");
+
+      this.esatDemographicProfile = [];
+      this.coreBehavioralCompetencies = [];
+      this.functionalObjectives = [];
+      console.log(returnedData.data);
+
+      for (let value of returnedData.data[0][0].esatDemographicProfile) {
+        this.esatDemographicProfile.push(value);
+      }
+
+      for (let core of returnedData.data[1][0].esatCoreBehavioralCompetencies) {
+        this.coreBehavioralCompetencies.push(core);
+      }
+
+      for (let func of returnedData.data[2][0].esatFunctionalObjectives) {
+        this.functionalObjectives.push(func);
+      }
+    },
     finalizeEsat: async function () {
+      // (this.showPart3 = false), (this.tab = "esat_card");
       const employeeName = this.employeeName;
       const employeeId = this.employeeId;
       const position = this.position;
@@ -2389,6 +2736,7 @@ export default {
       const schoolType = this.schoolType;
       const schoolSize = this.schoolSize;
       const curricularClassification = this.curricularClassification;
+      const openComments = this.openComments;
       //  const highestDegreeObtained = this.highestDegreeObtained;
       const english = this.english == null ? "" : this.english;
       const filipino = this.filipino == null ? "" : this.filipino;
@@ -2446,6 +2794,15 @@ export default {
         }
       }
 
+      let specializeSplitLen =
+        specifyAreaofSpecialization.split(",").length - 1;
+      let specializeSubSplit = specifyAreaofSpecialization.split(
+        ",",
+        specializeSplitLen
+      );
+      let specializeSubSplitJoin = specializeSubSplit.join();
+      specifyAreaofSpecialization = specializeSubSplitJoin;
+
       const MotherTongue = this.MotherTongue == null ? "" : this.MotherTongue;
       const Filipino = this.Filipino == null ? "" : this.Filipino;
       const English = this.English == null ? "" : this.English;
@@ -2490,9 +2847,18 @@ export default {
         }
       }
 
+      let splitSpecifiedSubLen = specifySubjectsTaught.split(",").length - 1;
+      let specifiedSubSplit = specifySubjectsTaught.split(
+        ",",
+        splitSpecifiedSubLen
+      );
+      let specifiedSubSplitJoin = specifiedSubSplit.join();
+      specifySubjectsTaught = specifiedSubSplitJoin;
+
       const capability1 = this.capability1;
       const development1 = this.development1;
       const capability2 = this.capability2;
+
       const development2 = this.development2;
       const capability3 = this.capability3;
       const development3 = this.development3;
@@ -2546,7 +2912,7 @@ export default {
       const innovation4 = this.innovation4;
       const innovation5 = this.innovation5;
 
-      const userId = 3;
+      const userId = 1;
       const functionalObjectives = [
         {
           userID: userId,
@@ -2796,6 +3162,7 @@ export default {
         schoolType,
         schoolSize,
         curricularClassification,
+        openComments,
         functionalObjectives,
         coreBehavioralCompetencies,
 
@@ -2839,8 +3206,73 @@ export default {
         console.log("success");
       }
     },
-  },
+    editInfo: async function () {
+      this.tab = "part1";
+      this.showPrint = false;
+      this.showPart1 = true;
+      this.updateInfos = true;
+      this.saveInfos = false;
+      console.log("Edit");
 
+      (this.employeeName = this.esatDemographicProfile[0].name_of_employee),
+        (this.employeeId = this.esatDemographicProfile[0].employee_id),
+        (this.position = this.esatDemographicProfile[0].position),
+        (this.employmentStatus =
+          this.esatDemographicProfile[0].employment_status),
+        (this.employeeAge = this.esatDemographicProfile[0].age),
+        (this.employeeSex = this.esatDemographicProfile[0].sex),
+        (this.yearsInTeaching =
+          this.esatDemographicProfile[0].years_in_teaching),
+        (this.highestDegreeObtained =
+          this.esatDemographicProfile[0].highest_degree_obtained),
+        (this.specifiedHighestDegreeObtained =
+          this.esatDemographicProfile[0].specified_highest_degree_obtained),
+        (this.region = this.esatDemographicProfile[0].region),
+        (this.division = this.esatDemographicProfile[0].division),
+        (this.employeeMunicipality =
+          this.esatDemographicProfile[0].employee_Municipality),
+        (this.schoolId = this.esatDemographicProfile[0].school_id),
+        (this.schoolName = this.esatDemographicProfile[0].school_name),
+        (this.schoolType = this.esatDemographicProfile[0].school_type),
+        (this.schoolSize = this.esatDemographicProfile[0].school_size),
+        (this.curricularClassification =
+          this.esatDemographicProfile[0].curricular_classification),
+        (this.gradeLevelTaught =
+          this.esatDemographicProfile[0].grade_level_taught),
+        (this.levelTaught = this.esatDemographicProfile[0].level_taught),
+        (this.personalComments =
+          this.esatDemographicProfile[0].personal_comments);
+
+      let splitSpecializedLen =
+        this.esatDemographicProfile[0].area_of_specialization.split(",").length;
+      let splitSpecialize =
+        this.esatDemographicProfile[0].area_of_specialization.split(
+          ",",
+          splitSpecializedLen
+        );
+      for (let a in splitSpecialize) {
+        console.log(splitSpecialize[a]);
+      }
+    },
+    viewPrint: async function () {
+      // (this.tab = "show_print"), (this.showPrint = true);
+      // console.log("View Card")
+      // const returnedData = await this.$store.dispatch("retrieveEsatInfoById");
+      // this.esatDemographicProfile = [];
+      // this.coreBehavioralCompetencies = [];
+      // this.functionalObjectives = [];
+      // console.log(returnedData.data);
+      // for (let value of returnedData.data[0][0].esatDemographicProfile) {
+      //   this.esatDemographicProfile.push(value);
+      // }
+      // for (let core of returnedData.data[1][0].esatCoreBehavioralCompetencies) {
+      //   this.coreBehavioralCompetencies.push(core);
+      // }
+      // for (let func of returnedData.data[2][0].esatFunctionalObjectives) {
+      //   this.functionalObjectives.push(func);
+      // }
+    },
+  },
 };
 </script>
 <style scope src="../assets/css/esat.css"></style>
