@@ -33,10 +33,10 @@ const actions = {
     // },
 
     retrieveEsatInfoById() {
-        console.log(JSON.parse(sessionStorage.getItem("user_session")))
-        state.basicInfoData = []
+        // console.log(JSON.parse(sessionStorage.getItem("user_session")))
+        //state.basicInfoData = []
         return axios
-            .get("retrieveEsatInfoById/" + JSON.parse(sessionStorage.getItem("user_session")).ID)
+            .get("esat/" + JSON.parse(sessionStorage.getItem("user_session")).id)
             .then((res) => {
                 return res;
             })

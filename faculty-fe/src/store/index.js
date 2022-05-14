@@ -11,140 +11,140 @@ import user from "./modules/users"
 Vue.use(Vuex);
 
 const AUTH_TOKEN = sessionStorage.getItem('user_token')
-axios.defaults.baseURL = "http://localhost:8000/api/";
+axios.defaults.baseURL = "http://localhost:8000/";
 axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
 axios.defaults.headers.common["Content-Type"] = "application/json";
 
 // Create a new store instance.
 export default new Vuex.Store({
-  modules: {
-    userLogin,
-    pds,
-    esat,
-    ipcrf,
-    products,
-    user
-  },
-  state: {
-    users: [],
-    userProfile: [],
-    // return {
-    count: 0,
-    // }
-  },
-  mutations: {
-    increment() {
-      this.state.count++;
+    modules: {
+        userLogin,
+        pds,
+        esat,
+        ipcrf,
+        products,
+        user
     },
-    setUser(data) {
-      this.state.users = JSON.parse(data).data;
+    state: {
+        users: [],
+        userProfile: [],
+        // return {
+        count: 0,
+        // }
     },
-  },
-  // getters: {
-  //   doneTodosCount(state, getters) {
-  //     return getters.doneTodos.length;
-  //   },
-  // },
-  actions: {
-    uploadFile(context, file) {
-      console.log([...file]);
-      return axios
-        .post("pds/handleImage", file, {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        })
-        .then((response) => {
-          console.log(response.data);
-          context;
-        })
-        .catch((error) => {
-          console.log(error.response.data);
-        });
+    mutations: {
+        increment() {
+            this.state.count++;
+        },
+        setUser(data) {
+            this.state.users = JSON.parse(data).data;
+        },
     },
-
-    downloadFile(filename) {
-      return axios
-        .get("employee/downloadAttachment?filename=" + filename)
-        .response((response) => {
-          let blob = new Blob([response.data], {
-            type: "application/octet-stream",
-          });
-          let ref = this.state.ref;
-          ref.current.href = URL.createObjectURL(blob);
-          ref.current.download = filename;
-          ref.current.click();
-        });
-    },
-    downloadAttachment(context, file) {
-      console.log([...file]);
-      return axios
-        .get("employee/downloadAttachment?filename=", file, {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        })
-        .then((response) => {
-          console.log(response.data);
-          context;
-        })
-        .catch((error) => {
-          console.log(error.response.data);
-        });
-    },
-
-    getImageUrl() {
-      console.log(JSON.parse(sessionStorage.getItem("user_session")).id)
-      return axios
-        .get("pds/getImage/" + JSON.parse(sessionStorage.getItem("user_session")).id)
-        .then((res) => {
-          console.log(res)
-          return res;
-
-        })
-        .catch((err) => {
-          return err.response;
-        });
-    },
-    // state: {
-    //   users:[],
-    //   userProfile: [],
-    //   // return {
-    //   count: 0
-    //   // }
-    // },
-    // mutations: {
-    //   increment () {
-    //     this.state.count++
+    // getters: {
+    //   doneTodosCount(state, getters) {
+    //     return getters.doneTodos.length;
     //   },
-    //   setUser(data){
-    //     this.state.users = JSON.parse(data).data;
-    //   }
     // },
-    // getters:{
-    //   doneTodosCount (state, getters) {
-    //     return getters.doneTodos.length
-    //   }
-    // },
-    // actions:{
-    //   increment (context) {
-    //     context.commit('increment')
-    //   },
-    //   getUsers(){
-    //     return axios.get('user').then((response) => response.data)
-    //     .catch((error) => {
-    //       return error.response
-    //     })
-    //   },
-    // login(data){
-    //   return axios.post('login', data).then((response) => {
-    //     this.setUser(data)
-    //     return response} )
-    //   .catch((error) => {
-    //     console.log(error)
-    //   })
-    // }
-   },
+    actions: {
+        uploadFile(context, file) {
+            console.log([...file]);
+            return axios
+                .post("pds/handleImage", file, {
+                    headers: {
+                        "Content-Type": "multipart/form-data",
+                    },
+                })
+                .then((response) => {
+                    console.log(response.data);
+                    context;
+                })
+                .catch((error) => {
+                    console.log(error.response.data);
+                });
+        },
+
+        downloadFile(filename) {
+            return axios
+                .get("employee/downloadAttachment?filename=" + filename)
+                .response((response) => {
+                    let blob = new Blob([response.data], {
+                        type: "application/octet-stream",
+                    });
+                    let ref = this.state.ref;
+                    ref.current.href = URL.createObjectURL(blob);
+                    ref.current.download = filename;
+                    ref.current.click();
+                });
+        },
+        downloadAttachment(context, file) {
+            console.log([...file]);
+            return axios
+                .get("employee/downloadAttachment?filename=", file, {
+                    headers: {
+                        "Content-Type": "multipart/form-data",
+                    },
+                })
+                .then((response) => {
+                    console.log(response.data);
+                    context;
+                })
+                .catch((error) => {
+                    console.log(error.response.data);
+                });
+        },
+
+        getImageUrl() {
+            console.log(JSON.parse(sessionStorage.getItem("user_session")).id)
+            return axios
+                .get("pds/getImage/" + JSON.parse(sessionStorage.getItem("user_session")).id)
+                .then((res) => {
+                    console.log(res)
+                    return res;
+
+                })
+                .catch((err) => {
+                    return err.response;
+                });
+        },
+        // state: {
+        //   users:[],
+        //   userProfile: [],
+        //   // return {
+        //   count: 0
+        //   // }
+        // },
+        // mutations: {
+        //   increment () {
+        //     this.state.count++
+        //   },
+        //   setUser(data){
+        //     this.state.users = JSON.parse(data).data;
+        //   }
+        // },
+        // getters:{
+        //   doneTodosCount (state, getters) {
+        //     return getters.doneTodos.length
+        //   }
+        // },
+        // actions:{
+        //   increment (context) {
+        //     context.commit('increment')
+        //   },
+        //   getUsers(){
+        //     return axios.get('user').then((response) => response.data)
+        //     .catch((error) => {
+        //       return error.response
+        //     })
+        //   },
+        // login(data){
+        //   return axios.post('login', data).then((response) => {
+        //     this.setUser(data)
+        //     return response} )
+        //   .catch((error) => {
+        //     console.log(error)
+        //   })
+        // }
+    },
 })
 
 // const app = createApp({ /* your root component */ })

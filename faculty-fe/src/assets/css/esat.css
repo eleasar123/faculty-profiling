@@ -52,6 +52,10 @@
     font-size: smaller;
 }
 
+.esatPrint {
+    font-weight: bold;
+}
+
 .part1a {
     border: black 2px solid;
 }
@@ -113,4 +117,12 @@ td {
 
 .infoDetails {
     background-color: rgb(211, 238, 158);
+}
+
+.showDataPart1 {
+    width: 30%;
+}
+
+.objNo {
+    width: 1%;
 }
