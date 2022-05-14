@@ -25,6 +25,12 @@ return new class extends Migration
             $table->string('spouse_employer') -> nullable();
             $table->string('spouse_business_address') -> nullable(); 
             $table->string('spouse_telephone_no') -> nullable();
+            $table->string('first_child') -> nullable();
+            $table->string('second_child') -> nullable();
+            $table->string('third_child') -> nullable();
+            $table->string('fourth_child') -> nullable();
+            $table->string('fifth_child') -> nullable();
+            $table->string('sixth_child') -> nullable();
             $table->date('spouse_date_of_birth') -> nullable();
             $table->string('father_last_name');
             $table->string('father_first_name');

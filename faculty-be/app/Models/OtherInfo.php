@@ -9,8 +9,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\User;
-
-class OtherInfoNonacademicDistinctions extends Model
+class OtherInfo extends Model
 {
     use HasFactory, HasFactory, Notifiable;
     /**
@@ -21,7 +20,9 @@ class OtherInfoNonacademicDistinctions extends Model
     protected $fillable = [
     //other information
         'user_id',
-        'non_academic_distinctions',
+        'special_skills_and_hobbies',
+        'nonacademic_distinctions',
+        'association_members'
     ];
 
     public function user()

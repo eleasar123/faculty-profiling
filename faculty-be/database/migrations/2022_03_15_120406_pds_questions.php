@@ -23,7 +23,8 @@ return new class extends Migration
             $table->text('question_thirty_five_B_status_of_case') -> nullable();
             $table->text('question_thirty_six') -> nullable();
             $table->text('question_thirty_seven') -> nullable();
-            $table->text('question_thirty_eight') -> nullable();
+            $table->text('question_thirty_eight_a') -> nullable();
+            $table->text('question_thirty_eight_b') -> nullable();
             $table->text('question_thirty_nine') -> nullable();
             $table->text('question_forty_a') -> nullable();
             $table->string('question_forty_b') -> nullable();

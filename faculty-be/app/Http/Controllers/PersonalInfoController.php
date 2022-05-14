@@ -5,9 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Children;
 use App\Models\CivilServiceEligibility;
 use App\Models\LearningAndDevelopment;
-use App\Models\OtherInfoAssociationMembers;
-use App\Models\OtherInfoNonacademicDistinctions;
-use App\Models\OtherInfoSpecialSkills;
+use App\Models\OtherInfo;
 use App\Models\PdsAdditionalInfo;
 use App\Models\PdsQuestions;
 use App\Models\PersonalDataSheetEducationalBackground;
@@ -36,15 +34,15 @@ class PersonalInfoController extends Controller
  public function handleImage(Request $request)
  {
   //  return $request->all();
-  // $request->validate([
-  //  'educBackgroundSignature' => 'required|mimes:jpg,jpeg,png,csv,txt,xlx,xls,pdf',
-  //  'workExperienceSignature' => 'required|mimes:jpg,jpeg,png,csv,txt,xlx,xls,pdf',
-  //  'otherInfoSignature' => 'required|mimes:jpg,jpeg,png,csv,txt,xlx,xls,pdf',
-  //  'personalPhotoAttachment' => 'required|mimes:jpg,jpeg,png,csv,txt,xlx,xls,pdf',
-  //  'oathSignature' => 'required|mimes:jpg,jpeg,png,csv,txt,xlx,xls,pdf',
-  //  'rightThumbMark' => 'required|mimes:jpg,jpeg,png,csv,txt,xlx,xls,pdf',
-  //  'personAdministeringOath' => 'required|mimes:jpg,jpeg,png,csv,txt,xlx,xls,pdf',
-  // ]);
+  $request->validate([
+   'educBackgroundSignature' => 'required|mimes:jpg,jpeg,png,csv,txt,xlx,xls,pdf',
+   'workExperienceSignature' => 'required|mimes:jpg,jpeg,png,csv,txt,xlx,xls,pdf',
+   'otherInfoSignature' => 'required|mimes:jpg,jpeg,png,csv,txt,xlx,xls,pdf',
+   'personalPhotoAttachment' => 'required|mimes:jpg,jpeg,png,csv,txt,xlx,xls,pdf',
+   'oathSignature' => 'required|mimes:jpg,jpeg,png,csv,txt,xlx,xls,pdf',
+   'rightThumbMark' => 'required|mimes:jpg,jpeg,png,csv,txt,xlx,xls,pdf',
+   'personAdministeringOath' => 'required|mimes:jpg,jpeg,png,csv,txt,xlx,xls,pdf',
+  ]);
   // return $request;
   if ($request->hasFile('educBackgroundSignature')) {
   $image           = $request->file('educBackgroundSignature');
@@ -155,15 +153,11 @@ class PersonalInfoController extends Controller
   $pds->push([['workExperience' => WorkExperience::where('user_id', $id)->get()]]);
   $pds->push([['voluntaryWorkInvolvement' => VoluntaryWorkInvolvement::where('user_id', $id)->get()]]);
   $pds->push([['learningAndDevelopment' => learningAndDevelopment::where('user_id', $id)->get()]]);
-  $pds->push([['otherInfoSpecialSkills' => OtherInfoSpecialSkills::where('user_id', $id)->get()]]);
-  $pds->push([['otherInfoNonacademicDistinctions' => OtherInfoNonacademicDistinctions::where('user_id', $id)->get()]]);
-  $pds->push([['otherInfoAssociationMembers' => OtherInfoAssociationMembers::where('user_id', $id)->get()]]);
+  $pds->push([['otherInfo' => OtherInfo::where('user_id', $id)->get()]]);
   $pds->push([['references' => References::where('user_id', $id)->get()]]);
   $pds->push([['pdsQuestions' => PdsQuestions::where('user_id', $id)->get()]]);
   $pds->push([['pdsAdditionalInfo' => PdsAdditionalInfo::where('user_id', $id)->get()]]);
-  $pds->push([['children' => Children::where('user_id', $id)->get()]]);
 
-  
   return $pds;
  }
 
@@ -335,60 +329,7 @@ class PersonalInfoController extends Controller
    //  'other_info_signature'                       => $request->otherInfoSignature,
    'other_info_date_signed'          => $request->otherInfoDateOfSignature,
   ]);
-  //Storage::disk('local')->put( 'public/educational-background/', $request->formDataEducationalBackground, ); //using multiple disks for storing files
-  // Storage::put($request->educBackgroundSignature,'public');
-  //$file = $request->file('formDataEducationalBackground')->isValid();
-//  $path='';
-//  foreach($request-> formDataEducationalBackground as $form){
-//   $path=$form['fileName'];
-//   dd($path);
-//  }
-  if ($request->hasFile('file')) {
-   return 'hello';
-  }
-  //$request->file('formDataEducationalBackground');
-//  $input = $request->file('formDataEducationalBackground');
-//  return $input;
-//  return($input);
-  //Storage::disk('local')->putFile("app/public/pds", $request->educBackgroundSignature);
-  // $content = 'Hello World';
-  // Storage::put('avatars/2', $file);
 
-  // Storage::put($request->file('educBackgroundSignature')->name, $file);
-  // $name = $file->getClientOriginalName();
-  // return($name);
-  // $extension = $file->getClientOriginalExtension();
-
-  // if($file){
-  //   return("true");
-  //   $destinationPath = 'public/signatures/personalInfo';
-  //   $image =$request->file('educBackgroundSignature');
-  //   $imageName = $image->getClientOriginalName();
-  //   $path = $request->file('educBackgroundSignature')->storeAs($destinationPath, $imageName);
-  //   //$input['image'] = $imageName;
-  // }
-  // return $file;
-  //Storage::putFile( 'signatures', new File($request->educBackgroundSignature ), ); //if using one or default disk
-  // php artisan storage:link
-  //echo asset('storage/file.txt');
-
-  //Retrieving files
-//  $contents = asset('file.jpg');
-//  if (Storage::disk('s3')->exists('file.jpg')) {
-//   // ...
-// }
-// if (Storage::disk('s3')->missing('file.jpg')) {
-//   // ...
-// }
-
-// //Downloading the file
-// return Storage::download('file.jpg');
-
-// return Storage::download('file.jpg', $name, $headers);
-// //getting the url of the file
-// $url = Storage::url('file.jpg');
-// //get the size of a file
-// $size = Storage::size('file.jpg');
 
   $familyBackground = new PersonalDataSheetFamilyBackground([
    'user_id'                 => $request->user,
@@ -400,6 +341,12 @@ class PersonalInfoController extends Controller
    'spouse_employer'         => $request->familyEmployerName,
    'spouse_business_address' => $request->familyBusinessAddress,
    'spouse_telephone_no'     => $request->familyTelephoneNo,
+   'first_child' =>$request->firstChild,
+            'second_child' =>$request->secondChild,
+            'third_child' =>$request->thirdChild,
+            'fourth_child' =>$request->fourthChild,
+            'fifth_child' =>$request->fifthChild,
+            'sixth_child' =>$request->sixthChild,
    'spouse_date_of_birth'    => $request->dateOfBirthSpouse,
    'father_last_name'        => $request->familyFatherSurname,
    'father_first_name'       => $request->familyFatherFirstName,
@@ -515,39 +462,20 @@ class PersonalInfoController extends Controller
    }
   }
 
-  foreach ($request->otherInfoSpecialSkills as $otherInfo) {
-   $otherInfoSpecialSkills = new OtherInfoSpecialSkills([
+  foreach ($request->otherInfo as $otherInfo) {
+   $otherInfo = new OtherInfo([
     'user_id'                    => $request->user,
-    'special_skills_and_hobbies' => $otherInfo['otherInformationSpecialSkills'],
+    'special_skills_and_hobbies' => $otherInfo['otherInfoSpecialSkills'],
+    'nonacademic_distinctions' => $otherInfo['otherInformationNonacademicDistinctions'],
+    'association_members' => $otherInfo['otherInfoAssociationMembers'],
    ]);
    try {
-    $otherInfoSpecialSkills->save();
+    $otherInfo->save();
    } catch (Throwable $e) {
     return $e;
    }
   }
-  foreach ($request->otherInfoNonacademicDistinctions as $otherInfo) {
-   $otherInfoNonacademicDistinctions = new OtherInfoNonacademicDistinctions([
-    'user_id'                   => $request->user,
-    'non_academic_distinctions' => $otherInfo['otherInformationNonacademicDistinctions'],
-   ]);
-   try {
-    $otherInfoNonacademicDistinctions->save();
-   } catch (Throwable $e) {
-    return $e;
-   }
-  }
-  foreach ($request->otherInfoAssociationMembers as $otherInfo) {
-   $otherInfoAssociationMembers = new OtherInfoAssociationMembers([
-    'user_id'             => $request->user,
-    'association_members' => $otherInfo['otherInformationAssociationMembers'],
-   ]);
-   try {
-    $otherInfoAssociationMembers->save();
-   } catch (Throwable $e) {
-    return $e;
-   }
-  }
+  
   foreach ($request->references as $reference) {
    $references = new References([
     'user_id'           => $request->user,
@@ -569,7 +497,8 @@ class PersonalInfoController extends Controller
    'question_thirty_five_B_status_of_case' => $request->questionThirtyFiveBStatusOfCase,
    'question_thirty_six'                   => $request->questionThirtySix,
    'question_thirty_seven'                 => $request->questionThirtySeven,
-   'question_thirty_eight'                 => $request->questionThirtyEight,
+   'question_thirty_eight_a'                 => $request->questionThirtyEightA,
+   'question_thirty_eight_b'                 => $request->questionThirtyEightB,
    'question_thirty_nine'                  => $request->questionThirtyNine,
    'question_forty_a'                      => $request->questionFourtyA,
    'question_forty_b'                      => $request->questionFourtyB,
@@ -764,6 +693,11 @@ class PersonalInfoController extends Controller
                 'spouse_employer'         => $request->familyEmployerName,
                 'spouse_business_address' => $request->familyBusinessAddress,
                 'spouse_telephone_no'     => $request->familyTelephoneNo,
+                'second_child' =>$request->secondChild,
+                'third_child' =>$request->thirdChild,
+                'fourth_child' =>$request->fourthChild,
+                'fifth_child' =>$request->fifthChild,
+                'sixth_child' =>$request->sixthChild,
                 'spouse_date_of_birth'    => $request->dateOfBirthSpouse,
                 'father_last_name'        => $request->familyFatherSurname,
                 'father_first_name'       => $request->familyFatherFirstName,
@@ -800,20 +734,20 @@ class PersonalInfoController extends Controller
     return e;
    }
   }
-  foreach ($request->children as $child) {
-   // return $educBackground['educBackgroundLevel'];
-   $children = new Children([
-    'user_id'    => $request->user,
-    'child_name' => $child['childName'],
-   ]);
-   try {
-    DB::table('childrens')->where('user_id', $request->user)->delete();
-    $children->save();
-   } catch (Throwable $e) {
-    return e;
-   }
+  // foreach ($request->children as $child) {
+  //  // return $educBackground['educBackgroundLevel'];
+  //  $children = new Children([
+  //   'user_id'    => $request->user,
+  //   'child_name' => $child['childName'],
+  //  ]);
+  //  try {
+  //   DB::table('childrens')->where('user_id', $request->user)->delete();
+  //   $children->save();
+  //  } catch (Throwable $e) {
+  //   return e;
+  //  }
 
-  }
+  // }
 
   foreach ($request->civilServiceEligibility as $civilServ) {
    $civilServiceEligibility = new CivilServiceEligibility([
@@ -896,43 +830,21 @@ class PersonalInfoController extends Controller
    }
   }
 
-  foreach ($request->otherInfoSpecialSkills as $otherInfo) {
-   $otherInfoSpecialSkills = new OtherInfoSpecialSkills([
+  foreach ($request->otherInfo as $otherInfo) {
+   $otherInfo = new OtherInfo([
     'user_id'                    => $request->user,
-    'special_skills_and_hobbies' => $otherInfo['otherInformationSpecialSkills'],
+    'special_skills_and_hobbies' => $otherInfo['otherInfoSpecialSkills'],
+    'nonacademic_distinctions' => $otherInfo['otherInfoNonacademicDistinctions'],
+    'association_members' => $otherInfo['otherInfoAssociationMembers'],
    ]);
    try {
-    DB::table('other_info_special_skills')->where('user_id', $request->user)->delete();
-    $otherInfoSpecialSkills->save();
+    DB::table('other_info')->where('user_id', $request->user)->delete();
+    $otherInfo->save();
    } catch (Throwable $e) {
     return $e;
    }
   }
-  foreach ($request->otherInfoNonacademicDistinctions as $otherInfo) {
-   $otherInfoNonacademicDistinctions = new OtherInfoNonacademicDistinctions([
-    'user_id'                   => $request->user,
-    'non_academic_distinctions' => $otherInfo['otherInformationNonacademicDistinctions'],
-   ]);
-   try {
-    DB::table('other_info_nonacademic_distinctions')->where('user_id', $request->user)->delete();
-
-    $otherInfoNonacademicDistinctions->save();
-   } catch (Throwable $e) {
-    return $e;
-   }
-  }
-  foreach ($request->otherInfoAssociationMembers as $otherInfo) {
-   $otherInfoAssociationMembers = new OtherInfoAssociationMembers([
-    'user_id'             => $request->user,
-    'association_members' => $otherInfo['otherInformationAssociationMembers'],
-   ]);
-   try {
-    DB::table('other_info_association_members')->where('user_id', $request->user)->delete();
-    $otherInfoAssociationMembers->save();
-   } catch (Throwable $e) {
-    return $e;
-   }
-  }
+  
   foreach ($request->references as $reference) {
    $references = new References([
     'user_id'           => $request->user,
@@ -958,7 +870,8 @@ class PersonalInfoController extends Controller
    'question_thirty_five_B_status_of_case' => $request->questionThirtyFiveBStatusOfCase,
    'question_thirty_six'                   => $request->questionThirtySix,
    'question_thirty_seven'                 => $request->questionThirtySeven,
-   'question_thirty_eight'                 => $request->questionThirtyEight,
+   'question_thirty_eight_a'                 => $request->questionThirtyEightA,
+   'question_thirty_eight_b'                 => $request->questionThirtyEightB,
    'question_thirty_nine'                  => $request->questionThirtyNine,
    'question_forty_a'                      => $request->questionFourtyA,
    'question_forty_b'                      => $request->questionFourtyB,
