@@ -55,7 +55,7 @@ export default {
    data: () => ({
       drawer: true,
       links :[
-          {icon: 'person', text:'Personal Info',  route: '/'},
+          {icon: 'person', text:'ESAT',  route: '/esat'},
           {icon: 'dashboard', text:'Manage User', route: '/manageUser'},
           {icon: 'folder', text:'Personal Data Sheet', route: '/personalDataSheet'},
           {icon: 'folder', text:'Manage IPCRF', route: '/manageIpcrf' ,items: [

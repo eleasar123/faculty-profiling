@@ -75,6 +75,7 @@
       :headers="headers"
       :items="users"
       :search="search"
+      :loading ="loading"
     >
     <template v-slot:[`item.actions`]="{ item }">
             <v-btn small class="mr-2 primary" @click="editItem(item)">
@@ -121,7 +122,7 @@
                    hint="Input the user name"
                    v-model="name"
                    :rules="required"
-                  required
+                 
                 ></v-text-field>
               </v-col>
               <v-col
@@ -148,7 +149,7 @@
                   hint="Input the user role"
                   v-model="role"
                   :rules="required"
-                  required
+                  
                 ></v-text-field>
               </v-col>
                <v-col
@@ -161,7 +162,7 @@
                   hint="Input the user photo"
                   v-model="photo"
                   :rules="required"
-                  required
+                 
                 ></v-file-input>
               </v-col>
             </v-row>
@@ -176,7 +177,7 @@
                   hint="Input the user email"
                   v-model="email"
                   :rules="required"
-                  required
+             
                 ></v-text-field>
               </v-col>
               
@@ -234,7 +235,7 @@
           <v-btn
             color="green darken-1"
             text
-            @click="agree = true"
+            @click="agreeFunc"
           >
             Agree
           </v-btn>
@@ -248,6 +249,7 @@
 <script>
   export default {
     data: () => ({
+      loading:false,
       search: '',
       agree: false,
       dialog: false,
@@ -295,6 +297,7 @@
     },
     methods: {
       async initializeData () {
+        this.loading =true
         const role = JSON.parse(sessionStorage.user_session).role
         console.log(role)
      
@@ -311,25 +314,25 @@
               }
               console.log(user)
             }
+            this.loading =false
             console.log(this.users)
           }
         
       },
+      agreeFunc(){
+        this.agree = true
+        //console.log(this.agree)
+        // this.deleteDialog = false
+      },
       async deleteItem(data){
-        console.log(data)
-        this.deleteDialog = true
-        console.log(this.agree)
-        if(this.agree == true){
-          console.log(true)
-          const returnedData = await this.$store.dispatch('deleteUser', data)
+        const id = data.id
+          console.log(data.id)
+          const returnedData = await this.$store.dispatch('deleteUser', id)
           console.log(returnedData)
           if(returnedData){
             console.log(returnedData)
-            this.agree = false
-            this.deleteDialog = false
             this.initializeData()
           }
-        }
         
        
       },

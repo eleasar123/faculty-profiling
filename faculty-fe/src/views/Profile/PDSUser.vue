@@ -1,5 +1,5 @@
 <template>
-  <v-main class="pa-0 ma-0">
+  <v-container class="pa-0 ma-0 mr-0" fluid style="">
     <v-container v-if="user == 'Admin' && edit == false">
       <v-card>
         <v-card-title>
@@ -30,13 +30,25 @@
         </v-data-table>
       </v-card>
     </v-container>
-
-    <v-container v-if="create == false && user == 'Teacher' && edit == false">
+    <!-- <v-container class="d-print-inline">Hello World</v-container> -->
+    <v-container
+      class="d-print-inline-flex"
+      v-if="create == false && user == 'Teacher' && edit == false"
+      id="tab1"
+    >
       <v-btn @click="editPds" class="float-right">Edit</v-btn>
       <v-tabs>
         <v-tab>C1</v-tab>
         <v-tab-item>
-          <v-card-title label="Search" single-line hide-details
+         
+          <v-simple-table
+            height="auto"
+            class="pa-0 pa-0 ma-12"
+            max-width="60vw"
+          >
+            <template v-slot:default>
+              <thead cols="4">
+                <tr> <v-card-title label="Search" single-line hide-details
             ><span>CS Form N0.212<br />Revised 2017</span>
             <span>Personal Data Sheet</span>
           </v-card-title>
@@ -49,14 +61,7 @@
             READ THE ATTACHED GUIDE TO FILLING OUT THE PERSONAL DATA SHEET (PDS)
             BEFORE ACCOMPLISHING THE PDS FORM.
           </v-card-text>
-
-          <v-simple-table
-            height="auto"
-            class="pa-0 pa-0 ma-12"
-            max-width="60vw"
-          >
-            <template v-slot:default>
-              <thead cols="4">
+          </tr>
                 <tr clas="pa-0">
                   <th colspan="8">I. PERSONAL INFORMATION</th>
                 </tr>
@@ -97,7 +102,7 @@
                 </tr>
 
                 <tr>
-                  <td max-width="100px" colspan="2" style="text-align: left">
+                  <td  colspan="1" style="text-align: left">
                     DATE OF BIRTH <br />
                     (mm/dd/yyyy)
                   </td>
@@ -108,7 +113,7 @@
                     16.CITIZENSHIP<br />If holder of dual citizenship,<br />please
                     indicate the details.
                   </td>
-                  <td colspan="4">
+                  <td colspan="2">
                     {{ row.citizenship }}
                   </td>
                 </tr>
@@ -483,9 +488,25 @@
               </tbody>
               <tfoot>
                 <tr>
+                  <td
+                    colspan="10"
+                    style="background-color: rgb(160, 160, 160)"
+                  ></td>
+                </tr>
+                <tr>
                   <td>SIGNATURE</td>
-                  <td colspan="4">
-                    {{ pdsPersonalInfo[0].educational_signature }}
+                  <td
+                    colspan="4"
+                    class="d-flex justify-content-center text-center"
+                    style="margin: 20px 177px 20px 177px"
+                  >
+                    <img
+                      :src="imageUrl.educationalBackgroundSignature"
+                      alt="Base64 encoded image"
+                      style="border: none"
+                    />
+
+                    <!-- <v-spacer></v-spacer> -->
                   </td>
                   <td colspan="1" class="pl-10">DATE</td>
                   <td colspan="4">
@@ -628,12 +649,28 @@
             </tbody>
             <tfoot>
               <tr>
-                <td colspan="2">SIGNATURE</td>
-                <td colspan="5">
-                  {{ pdsPersonalInfo[0].work_experience_signature }}
+                <td
+                  colspan="12"
+                  style="background-color: rgb(160, 160, 160)"
+                ></td>
+              </tr>
+              <tr>
+                <td>SIGNATURE</td>
+                <td
+                  colspan="5"
+                  class="d-flex justify-content-center text-center"
+                  style="margin: 20px 177px 20px 177px"
+                >
+                  <img
+                    :src="imageUrl.workExperienceSignature"
+                    alt="Base64 encoded image"
+                    style="border: none"
+                  />
+
+                  <!-- <v-spacer></v-spacer> -->
                 </td>
                 <td colspan="2">DATE</td>
-                <td colspan="4">
+                <td colspan="5">
                   {{ pdsPersonalInfo[0].work_experience_date_signed }}
                 </td>
               </tr>
@@ -814,13 +851,32 @@
                 </v-card>
               </v-col>
             </v-row>
-            <v-row>
-              <v-col cols="12" sm="3"> SIGNATURE </v-col>
-              <v-col cols="12" sm="3">
-                {{ pdsPersonalInfo[0].other_info_signature }}</v-col
-              >
-              <v-col cols="12" sm="3"> DATE </v-col>
-              <v-col cols="12" sm="3">
+            <v-row
+              ><v-col
+                cols="12"
+                sm="12"
+                style="background-color: rgb(160, 160, 160)"
+              ></v-col
+            ></v-row>
+            <v-row style="border: solid 1px black">
+              <v-col cols="12" sm="2" style="border: solid 1px black">
+                SIGNATURE
+              </v-col>
+              <v-col sm="4" style="border: solid 1px black">
+                <v-container class="d-flex justify-content-center text-center">
+                  <img
+                    :src="imageUrl.educationalBackgroundSignature"
+                    alt="Base64 encoded image"
+                    style="height: 30%; width: 30%"
+                  />
+                </v-container>
+
+                <!-- <v-spacer></v-spacer> -->
+              </v-col>
+              <v-col cols="12" sm="2" style="border: solid 1px black">
+                DATE
+              </v-col>
+              <v-col cols="12" sm="4" style="border: solid 1px black">
                 {{ pdsPersonalInfo[0].other_info_date_signed }}</v-col
               >
             </v-row>
@@ -998,8 +1054,16 @@
                     signature over printed name Computer generated or
                     photocopied picture is not acceptable</v-card-text
                   >
-                  <v-container class="">
-                    {{ addInfo.photo }}
+                  <v-container
+                    class="d-flex justify-content-center text-center pl-12"
+                  >
+                    <img
+                      :src="imageUrl.personalPhoto"
+                      alt="Base64 encoded image"
+                      style="height: 30%; width: 30%"
+                    />
+
+                    <!-- <v-spacer></v-spacer> -->
                   </v-container>
                 </v-card>
               </v-col>
@@ -1053,8 +1117,16 @@
               </v-col>
               <v-col cols="12" sm="4">
                 <v-card>
-                  <v-container>
-                    {{ addInfo.signature }}
+                  <v-container
+                    class="d-flex justify-content-center text-center pl-12"
+                  >
+                    <img
+                      :src="imageUrl.oathSignature"
+                      alt="Base64 encoded image"
+                      style="height: 30%; width: 30%"
+                    />
+
+                    <!-- <v-spacer></v-spacer> -->
                   </v-container>
                   <v-card-subtitle
                     >Signature (Sign inside the box)</v-card-subtitle
@@ -1067,7 +1139,17 @@
               </v-col>
               <v-col cols="12" sm="4">
                 <v-card>
-                  <v-container>{{ addInfo.right_thumbmark }}</v-container>
+                  <v-container
+                    class="d-flex justify-content-center text-center pl-12"
+                  >
+                    <img
+                      :src="imageUrl.rightThumbMark"
+                      alt="Base64 encoded image"
+                      style="height: 30%; width: 30%"
+                    />
+
+                    <!-- <v-spacer></v-spacer> -->
+                  </v-container>
                   <v-card-subtitle>Right Thumbmark</v-card-subtitle>
                 </v-card>
               </v-col>
@@ -1087,25 +1169,51 @@
               justify="center"
               style="margin-left: auto; margin-right: auto"
             >
-              {{ addInfo.person_administering_oath }}
+              <v-container
+                class="d-flex justify-content-center text-center pl-12"
+              >
+                <img
+                  :src="imageUrl.personAdministeringOath"
+                  alt="Base64 encoded image"
+                  style="height: 30%; width: 30%"
+                />
+
+                <!-- <v-spacer></v-spacer> -->
+              </v-container>
               <span>Person Administering Oath</span>
             </v-card>
           </v-container>
           <!-- </tbody>
         
         </v-simple-table> -->
-          <v-btn class="primary" @click="finalizePds('create')"
-            >Print C1-4</v-btn
-          >
+          <v-btn class="primary" v-print="'#tab1'">Print C1-4</v-btn>
         </v-tab-item>
       </v-tabs>
     </v-container>
-    <v-tabs v-if="create == true">
-      <v-tab>Part 1</v-tab>
+    <v-tabs v-if="create == true || edit == true">
+      <v-btn
+        v-if="edit == true"
+        class="float-right"
+        style="float: right"
+        @click="edit = false"
+        >Back</v-btn
+      >
+      <v-tab>C1</v-tab>
       <v-tab-item>
+       
+        <v-form ref="pdsA">
+          <v-simple-table
+            class="pa-0 text-center pdsA"
+            width="80%"
+            dense
+            light
+          >
+            <thead>
+              <tr><th colspan="8" class="pa-0"> <v-card class="ma-0 text-left" style="border:solid 1px;">
         <v-card-title label="Search" single-line hide-details
-          ><span>CS Form N0.212<br />Revised 2017</span>
-          <span>Personal Data Sheet</span>
+          ><span>CS Form N0.212</span>
+          <v-container fluid class="ml-auto mr-auto px-2" >
+           <span> Revised 2017</span><span class="" style="font-size:35px; margin-left:30%;font-weight:bolder;font-family:fantasy">Personal Data Sheet</span></v-container>
         </v-card-title>
         <v-card-subtitle label="Search" single-line hide-details>
           WARNING: Any misrepresentation made in the Personal Data Sheet and the
@@ -1116,25 +1224,23 @@
           READ THE ATTACHED GUIDE TO FILLING OUT THE PERSONAL DATA SHEET (PDS)
           BEFORE ACCOMPLISHING THE PDS FORM.
         </v-card-text>
-
-        <v-simple-table height="auto" class="pa-0 pa-0 ma-12" max-width="60vw">
-          <template v-slot:default>
-            <thead cols="4">
-              <tr clas="pa-0">
-                <th colspan="8">I. PERSONAL INFORMATION</th>
+        </v-card></th></tr>
+              <tr class="pa-0" >
+                <th colspan="8" style="border:solid 1px;background-color:rgb(160, 160, 160);color:white">I. PERSONAL INFORMATION</th>
               </tr>
             </thead>
-            <tbody class="text-center" color="secondary">
-              <tr>
-                <td width="50px" colspan="2" style="text-align: left">
+            <tbody class="text-center" color="primary">
+              <tr >
+                <td  colspan="1" style="text-align: left; font-size:10px;border:solid 1px black;border-bottom:none;background-color:rgb(211,211,211);">
                   2. SURNAME
                 </td>
-                <td colspan="7">
+                <td  colspan="7">
                   <v-text-field
                     placeholder=""
                     solo
+                    dense
                     v-model="personalSurname"
-                    id="personalSurname"
+                    :rules="required"
                     class="text-center pt-6"
                     type="text"
                   >
@@ -1143,7 +1249,7 @@
               </tr>
 
               <tr>
-                <td width="50px" colspan="2" style="text-align: left">
+                <td  colspan="1" style="text-align: left;border:solid 1px black;border-top:none;border-bottom:none;background-color:rgb(211,211,211);">
                   FIRST NAME
                 </td>
                 <td colspan="4">
@@ -1151,6 +1257,7 @@
                     placeholder=""
                     solo
                     dense
+                    :rules="required"
                     v-model="personalFirstName"
                     id="personalFirstName"
                     class="text-center pt-6"
@@ -1158,11 +1265,10 @@
                   >
                   </v-text-field>
                 </td>
-                <td colspan="4">
+                <td colspan="3" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">
                   <v-text-field
                     label="NAME EXTENSION (JR., SR)"
                     v-model="personalSuffix"
-                    id="suffix"
                     dense
                     class="text-center pt-6"
                     type="text"
@@ -1171,13 +1277,14 @@
                 </td>
               </tr>
               <tr>
-                <td width="80px" colspan="2" style="text-align: left">
+                <td  colspan="1" style="text-align: left;border:solid 1px black;border-top:none;background-color:rgb(211,211,211);">
                   MIDDLE NAME
                 </td>
-                <td colspan="8">
+                <td colspan="7">
                   <v-text-field
                     placeholder=""
                     solo
+                    :rules="required"
                     v-model="personalMiddleName"
                     id="personalMiddleName"
                     class="text-center pt-6"
@@ -1188,7 +1295,7 @@
               </tr>
 
               <tr>
-                <td max-width="100px" colspan="2" style="text-align: left">
+                <td max-width="100px" colspan="1" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">
                   DATE OF BIRTH <br />
                   (mm/dd/yyyy)
                 </td>
@@ -1196,10 +1303,12 @@
                   <v-row>
                     <v-col cols="12" sm="8" md="8" class="text-center">
                       <v-menu
-                        ref="personalDialog"
                         v-model="personalDOBMenu"
-                        persistent
-                        width="290px"
+                        :close-on-content-click="false"
+                        :nudge-right="40"
+                        transition="scale-transition"
+                        offset-y
+                        min-width="auto"
                       >
                         <template v-slot:activator="{ on, attrs }">
                           <v-text-field
@@ -1207,6 +1316,7 @@
                             label=""
                             append-icon="mdi-calendar"
                             readonly
+                            :rules="required"
                             v-bind="attrs"
                             v-on="on"
                           ></v-text-field>
@@ -1215,13 +1325,14 @@
                           class="float-right"
                           v-model="personalDateOfBirth"
                           scrollable
+                          @input="personalDOBMenu = false"
                         >
                         </v-date-picker>
                       </v-menu>
                     </v-col>
                   </v-row>
                 </td>
-                <td rowspan="3" colspan="2">
+                <td rowspan="3" colspan="2" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">
                   16.CITIZENSHIP<br />If holder of dual citizenship,<br />please
                   indicate the details.
                 </td>
@@ -1229,6 +1340,7 @@
                   <v-text-field
                     placeholder=""
                     solo
+                    :rules="required"
                     id="personalCitizenship"
                     v-model="personalCitizenship"
                     dense
@@ -1239,11 +1351,12 @@
                 </td>
               </tr>
               <tr>
-                <td colspan="2" style="text-align: left">PLACE OF BIRTH</td>
+                <td colspan="1" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">PLACE OF BIRTH</td>
                 <td colspan="2">
                   <v-text-field
                     placeholder=""
                     solo
+                    :rules="required"
                     v-model="personalPlaceOfBirth"
                     id="personalPOB"
                     dense
@@ -1258,6 +1371,7 @@
                     label="Pls. indicate country:"
                     v-model="countryOfCitizenship"
                     id="countryOfCitizenship"
+                    :rules="required"
                     dense
                     class="text-center pt-6"
                     type="text"
@@ -1266,20 +1380,21 @@
                 </td>
               </tr>
               <tr>
-                <td colspan="2" style="text-align: left">SEX</td>
+                <td colspan="1" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">SEX</td>
                 <td colspan="2">
                   <v-text-field
                     placeholder=""
                     solo
                     id="personalSex"
                     v-model="personalSex"
+                    :rules="required"
                     dense
                     class="text-center pt-6"
                     type="text"
                   >
                   </v-text-field>
                 </td>
-                <td colspan="3">
+                <td colspan="3" >
                   <v-text-field
                     label="Input Dual Citizenship"
                     dense
@@ -1292,7 +1407,7 @@
                 </td>
               </tr>
               <tr>
-                <td colspan="2" style="text-align: left" rowspan="2">
+                <td colspan="1" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);" rowspan="2">
                   CIVIL STATUS
                 </td>
                 <td rowspan="2" colspan="2">
@@ -1301,20 +1416,23 @@
                     solo
                     dense
                     v-model="personalCivilStatus"
+                    :rules="required"
                     id="personalCivilStatus"
                     class="text-center pt-6"
                     type="text"
                   >
                   </v-text-field>
                 </td>
-                <td rowspan="4">
+                <td rowspan="4" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">
                   RESIDENTIAL<br />
-                  ADDRESS<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+                  ADDRESS<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
                   ZIP CODE
                 </td>
-                <td rowspan="1" colspan="2">
+                <td rowspan="1" colspan="2" style="border-right: none">
                   <v-text-field
-                    label="House/Block/Lot No."
+                    
+                    hint="House/Block/Lot No."
+                    persistent-hint
                     id="personalHouseNo"
                     v-model="personalResAddressHouseNo"
                     dense
@@ -1323,11 +1441,12 @@
                   >
                   </v-text-field>
                 </td>
-                <td rowspan="1" colspan="2">
+                <td rowspan="1" colspan="2" style="border-left: none">
                   <v-text-field
-                    label="Street"
+                    hint="Street"
+                    persistent-hint
                     v-model="personalResAddressStreet"
-                    filled
+                    
                     id="personalStreet"
                     dense
                     class="text-center pt-6"
@@ -1338,10 +1457,11 @@
               </tr>
 
               <tr>
-                <td rowspan="1" colspan="2">
+                <td rowspan="1" colspan="2" style="border-right: none">
                   <v-text-field
-                    label="Subdivision/Village"
-                    filled
+                    hint="Subdivision/Village"
+                    persistent-hint
+               
                     v-model="personalResAddressSubdivision"
                     id="personalSubdivision"
                     dense
@@ -1350,10 +1470,12 @@
                   >
                   </v-text-field>
                 </td>
-                <td rowspan="1" colspan="2">
+                <td rowspan="1" colspan="2" style="border-left: none">
                   <v-text-field
-                    label="Barangay"
-                    filled
+                    hint="Barangay"
+                    persistent-hint
+                    :rules="required"
+                
                     v-model="personalResAddressBarangay"
                     id="personalBarangay"
                     dense
@@ -1365,12 +1487,13 @@
               </tr>
 
               <tr>
-                <td colspan="2" style="text-align: left">HEIGHT (m)</td>
+                <td colspan="1" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">HEIGHT (m)</td>
                 <td colspan="2">
                   <v-text-field
                     placeholder=""
                     solo
                     v-model="personalHeight"
+                    :rules="required"
                     dense
                     id="personalHeight"
                     class="text-center pt-6"
@@ -1378,11 +1501,13 @@
                   >
                   </v-text-field>
                 </td>
-                <td colspan="2">
+                <td colspan="2" style="border-right: none">
                   <v-text-field
-                    label="City/Municipality"
-                    filled
+                    hint="City/Municipality"
+                    persistent-hint
+                
                     v-model="personalResAddressCity"
+                    :rules="required"
                     dense
                     id="personalCity"
                     class="text-center pt-6"
@@ -1390,10 +1515,12 @@
                   >
                   </v-text-field>
                 </td>
-                <td colspan="2">
+                <td colspan="2" style="border-left: none">
                   <v-text-field
-                    label="Province"
-                    filled
+                    hint="Province"
+                    persistent-hint
+                    :rules="required"
+                  
                     dense
                     v-model="personalResAddressProvince"
                     id="personalProvince"
@@ -1404,12 +1531,13 @@
                 </td>
               </tr>
               <tr>
-                <td colspan="2" style="text-align: left">WEIGHT (kg)</td>
+                <td colspan="1" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">WEIGHT (kg)</td>
                 <td colspan="2">
                   <v-text-field
                     placeholder=""
                     solo
                     id="personalWeight"
+                    :rules="required"
                     v-model="personalWeight"
                     dense
                     class="text-center pt-6"
@@ -1418,11 +1546,12 @@
                   </v-text-field>
                 </td>
 
-                <td colspan="3">
+                <td colspan="4">
                   <v-text-field
                     placeholder=""
                     solo
                     id="personalZipCode"
+                    :rules="required"
                     dense
                     v-model="personalZipCode"
                     class="text-center pt-6"
@@ -1432,27 +1561,29 @@
                 </td>
               </tr>
               <tr>
-                <td colspan="2" style="text-align: left">BLOOD TYPE</td>
+                <td colspan="1" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">BLOOD TYPE</td>
                 <td colspan="2">
                   <v-text-field
                     placeholder=""
                     solo
                     v-model="personalBloodType"
                     id="personalBloodType"
+                    :rules="required"
                     dense
                     class="text-center pt-6"
                     type="text"
                   >
                   </v-text-field>
                 </td>
-                <td rowspan="4">
-                  PERMANENT ADDRESS<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+                <td rowspan="4" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">
+                  PERMANENT ADDRESS<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
                   ZIP CODE
                 </td>
-                <td colspan="2">
+                <td colspan="2" style="border-right: none">
                   <v-text-field
-                    label="House/Block/Lot No."
-                    filled
+                    hint="House/Block/Lot No."
+                    persistent-hint
+                
                     id="permanentHouseNo"
                     v-model="personalPermanentAddHouseNo"
                     dense
@@ -1461,12 +1592,13 @@
                   >
                   </v-text-field>
                 </td>
-                <td colspan="2">
+                <td colspan="2" style="border-left: none">
                   <v-text-field
-                    label="Street"
-                    filled
+                    
+                    hint="Street"
                     v-model="personalPermanentAddStreet"
                     id="permanentStreet"
+                    persistent-hint
                     dense
                     class="text-center pt-6"
                     type="text"
@@ -1475,12 +1607,13 @@
                 </td>
               </tr>
               <tr>
-                <td colspan="2" style="text-align: left">GSIS ID NO.</td>
+                <td colspan="1" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">GSIS ID NO.</td>
                 <td colspan="2">
                   <v-text-field
                     placeholder=""
                     solo
                     v-model="personalGSISIDNo"
+                    :rules="required"
                     id="personalGsisId"
                     dense
                     class="text-center pt-6"
@@ -1488,10 +1621,11 @@
                   >
                   </v-text-field>
                 </td>
-                <td colspan="2">
+                <td colspan="2" style="border-right: none">
                   <v-text-field
-                    label="Subdivision/Village"
-                    filled
+                    hint="Subdivision/Village"
+                    persistent-hint
+                   
                     v-model="personalPermanentAddSubdivision"
                     dense
                     id="permanentSubdivision"
@@ -1500,11 +1634,13 @@
                   >
                   </v-text-field>
                 </td>
-                <td colspan="2">
+                <td colspan="2" style="border-left: none">
                   <v-text-field
-                    label="Barangay"
-                    filled
+                    hint="Barangay"
+                    persistent-hint
+                    
                     v-model="personalPermanentAddBarangay"
+                    :rules="required"
                     id="permanentBarangay"
                     dense
                     class="text-center pt-6"
@@ -1514,12 +1650,13 @@
                 </td>
               </tr>
               <tr>
-                <td colspan="2" style="text-align: left">PAG-IBIG ID NO.</td>
+                <td colspan="1" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">PAG-IBIG ID NO.</td>
                 <td colspan="2">
                   <v-text-field
                     placeholder=""
                     solo
                     v-model="personalPAGIBIGIDNo"
+                    :rules="required"
                     dense
                     id="personalPagibigIdNo"
                     class="text-center pt-6"
@@ -1527,11 +1664,13 @@
                   >
                   </v-text-field>
                 </td>
-                <td colspan="2">
+                <td colspan="2" style="border-right: none">
                   <v-text-field
-                    label="City/Municipality"
-                    filled
+                    hint="City/Municipality"
+                    persistent-hint
+                
                     v-model="personalPermanentAddCity"
+                    :rules="required"
                     dense
                     id="permanentCity"
                     class="text-center pt-6"
@@ -1539,10 +1678,12 @@
                   >
                   </v-text-field>
                 </td>
-                <td colspan="2">
+                <td colspan="2" style="border-left: none">
                   <v-text-field
-                    label="Province"
-                    filled
+                    hint="Province"
+                    persistent-hint
+                    :rules="required"
+                   
                     v-model="personalPermanentAddProvince"
                     id="permanentProvince"
                     dense
@@ -1553,12 +1694,13 @@
                 </td>
               </tr>
               <tr>
-                <td colspan="2" style="text-align: left">PHILHEALTH NO.</td>
+                <td colspan="1" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">PHILHEALTH NO.</td>
                 <td colspan="2">
                   <v-text-field
                     placeholder=""
                     solo
                     v-model="personalPHILHEALTHNo"
+                    :rules="required"
                     dense
                     id="permanentPhilhealthNo"
                     class="text-center pt-6"
@@ -1566,11 +1708,12 @@
                   >
                   </v-text-field>
                 </td>
-                <td colspan="3">
+                <td colspan="4">
                   <v-text-field
                     placeholder=""
                     v-model="personalPermanentAddZipCode"
                     solo
+                    :rules="required"
                     dense
                     id="permanentZipCode"
                     class="text-center pt-6"
@@ -1580,12 +1723,13 @@
                 </td>
               </tr>
               <tr>
-                <td colspan="2" style="text-align: left">SSS NO.</td>
+                <td colspan="1" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">SSS NO.</td>
                 <td colspan="2">
                   <v-text-field
                     placeholder=""
                     solo
                     v-model="personalSSSNo"
+                    :rules="required"
                     id="personalSssNo"
                     dense
                     class="text-center pt-6"
@@ -1593,11 +1737,12 @@
                   >
                   </v-text-field>
                 </td>
-                <td>19.TELEPHONE NO.</td>
-                <td colspan="3">
+                <td style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">19.TELEPHONE NO.</td>
+                <td colspan="4">
                   <v-text-field
                     v-model="personalTelephoneNo"
                     placeholder=""
+                    :rules="required"
                     solo
                     id="personalTelephoneNo"
                     dense
@@ -1608,10 +1753,11 @@
                 </td>
               </tr>
               <tr>
-                <td colspan="2" style="text-align: left">14.TIN NO.</td>
+                <td colspan="1" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">14.TIN NO.</td>
                 <td colspan="2">
                   <v-text-field
                     placeholder=""
+                    :rules="required"
                     solo
                     v-model="personalTinNo"
                     id="personalTinNo"
@@ -1621,13 +1767,14 @@
                   >
                   </v-text-field>
                 </td>
-                <td>20.MOBILE NO.</td>
-                <td colspan="3">
+                <td style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">20.MOBILE NO.</td>
+                <td colspan="4">
                   <v-text-field
                     v-model="personalMobileNo"
                     placeholder=""
                     solo
                     id="personalMobileNo"
+                    :rules="required"
                     dense
                     class="text-center pt-6"
                     type="text"
@@ -1636,13 +1783,14 @@
                 </td>
               </tr>
               <tr>
-                <td colspan="2" style="text-align: left">
+                <td colspan="1" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">
                   AGENCY EMPLOYEE NO.
                 </td>
                 <td colspan="2">
                   <v-text-field
                     placeholder=""
-                    filled
+                    solo
+                    :rules="required"
                     v-model="personalAgencyEmployeeNo"
                     id="personalAgencyEmpNo"
                     dense
@@ -1651,13 +1799,14 @@
                   >
                   </v-text-field>
                 </td>
-                <td>21. E-MAIL ADDRESS (if any)</td>
+                <td style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">21. E-MAIL ADDRESS (if any)</td>
 
-                <td colspan="3">
+                <td colspan="4">
                   <v-text-field
                     placeholder=""
-                    filled
+                    solo
                     dense
+                    :rules="required"
                     v-model="personalEmailAddress"
                     id="personalEmailAddress"
                     class="text-center pt-6"
@@ -1666,23 +1815,18 @@
                   </v-text-field>
                 </td>
               </tr>
-            </tbody>
-          </template>
-        </v-simple-table>
-        <v-simple-table height="auto" class="pa-0 pa-0 ma-12" width="80vw">
-          <template v-slot:default>
-            <thead>
+
               <tr clas="pa-0">
-                <th colspan="5">II. FAMILY BACKGROUND</th>
+                <td colspan="8" style="border:solid 1px;background-color:rgb(160, 160, 160);color:white" class="text-left">II. FAMILY BACKGROUND</td>
               </tr>
-            </thead>
-            <tbody class="" color="secondary">
+
               <tr>
-                <td width="50px">SPOUSE'S SURNAME</td>
-                <td colspan="4">
+                <td style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">SPOUSE'S SURNAME</td>
+                <td colspan="3">
                   <v-text-field
                     placeholder=""
                     solo
+                    dense
                     v-model="familySpouseSurname"
                     id="spouseSurname"
                     class="text-center pt-6"
@@ -1690,21 +1834,19 @@
                   >
                   </v-text-field>
                 </td>
-                <td>
+                <td colspan="3" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">
                   23. NAME of CHILDREN (Write full name and list all)
-                  <button class="material-icons" @click="addRow('children')">
-                    add_circle
-                  </button>
                 </td>
-                <td>DATE OF BIRTH (mm/dd/yyyy)</td>
+                <td colspan="1" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">DATE OF BIRTH (mm/dd/yyyy)</td>
               </tr>
 
               <tr>
-                <td width="80px">FIRST NAME</td>
-                <td colspan="3">
+                <td style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">FIRST NAME</td>
+                <td colspan="2">
                   <v-text-field
                     placeholder=""
                     solo
+                 
                     v-model="familySpouseFirstName"
                     id="spouseFirstName"
                     dense
@@ -1713,45 +1855,40 @@
                   >
                   </v-text-field>
                 </td>
-                <td colspan="1">
+                <td style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">
                   <v-text-field
-                    label="NAME EXTENSION (JR., SR)"
+                    label="(JR., SR)"
                     filled
+                
                     v-model="familySpouseSuffix"
                     id="spouseSuffix"
                     dense
-                    class="text-center pt-6"
+                    class="text-center pt-1"
                     type="text"
                   >
                   </v-text-field>
                 </td>
-                <td colspan="1" rowspan="6">
-                  <v-container v-for="row in children" :key="row.childName">
-                    <v-text-field
+                <td colspan="3">
+                  <v-text-field
                       solo
-                      v-model="row.childName"
+                      v-model="firstChild"
                       dense
                       class="text-center pt-6 float-left"
                       type="text"
-                      style="width: 70%"
+                      style="width: 100%"
                     >
                     </v-text-field>
-                    <button
-                      class="material-icons float-right pt-10"
-                      @click="removeRow('children', row)"
-                    >
-                      remove_circle
-                    </button>
-                  </v-container>
                 </td>
-                <td colspan="2">
+                <td colspan="1">
                   <v-row>
-                    <v-col cols="12" sm="8" md="8" class="text-center">
+                    <v-col cols="12" sm="12" md="12" class="text-center">
                       <v-menu
-                        ref="personalDialog"
                         v-model="spouseDOBMenu"
-                        persistent
-                        width="290px"
+                        :close-on-content-click="false"
+                        :nudge-right="40"
+                        transition="scale-transition"
+                        offset-y
+                        min-width="auto"
                       >
                         <template v-slot:activator="{ on, attrs }">
                           <v-text-field
@@ -1767,6 +1904,7 @@
                           class="float-right"
                           v-model="dateOfBirthSpouse"
                           scrollable
+                          @input="spouseDOBMenu = false"
                         >
                         </v-date-picker>
                       </v-menu>
@@ -1775,11 +1913,12 @@
                 </td>
               </tr>
               <tr>
-                <td width="80px">MIDDLE NAME</td>
-                <td colspan="4">
+                <td width="80px" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">MIDDLE NAME</td>
+                <td colspan="3">
                   <v-text-field
                     placeholder=""
-                    outlined
+                    solo
+                    dense
                     v-model="familySpouseMiddleName"
                     id="spouseMiddleName"
                     class="text-center pt-6"
@@ -1788,2537 +1927,25 @@
                   </v-text-field>
                 </td>
 
-                <td colspan="1">
-                  <v-text-field
-                    placeholder=""
-                    id="childDOB2"
-                    readonly
-                    solo
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-              </tr>
-
-              <tr>
-                <td max-width="100px">OCCUPATION</td>
-                <td colspan="4">
-                  <v-text-field
-                    placeholder=""
-                    solo
-                    v-model="familySpouseOccupation"
-                    id="spouseOccupation"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-
-                <td colspan="1">
-                  <v-text-field
-                    placeholder=""
-                    id="childDOB3"
-                    solo
-                    readonly
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-              </tr>
-              <tr>
-                <td max-width="100px">EMPLOYER/BUSINESS NAME</td>
-                <td colspan="4">
-                  <v-text-field
-                    placeholder=""
-                    solo
-                    v-model="familyEmployerName"
-                    id="employerNameFamilyBackground"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-
-                <td colspan="1">
-                  <v-text-field
-                    placeholder=""
-                    solo
-                    readonly
-                    id="childDOB4"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-              </tr>
-              <tr>
-                <td max-width="100px">BUSINESS ADDRESS</td>
-                <td colspan="4">
-                  <v-text-field
-                    placeholder=""
-                    solo
-                    v-model="familyBusinessAddress"
-                    id="businessAddressFamilyBackground"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-
-                <td colspan="1">
-                  <v-text-field
-                    placeholder=""
-                    solo
-                    readonly
-                    id="childDOB5"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-              </tr>
-              <tr>
-                <td max-width="100px">TELEPHONE NO.</td>
-                <td colspan="4">
-                  <v-text-field
-                    placeholder=""
-                    solo
-                    v-model="familyTelephoneNo"
-                    id="telephonNumberFamilyBackground"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-                <td colspan="1">
-                  <v-text-field
-                    placeholder=""
-                    solo
-                    readonly
-                    id="childDOB6"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-              </tr>
-
-              <tr>
-                <td>25. FATHER'S SURNAME</td>
-                <td colspan="4">
-                  <v-text-field
-                    placeholder=""
-                    solo
-                    v-model="familyFatherSurname"
-                    id="fatherSurname"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-                <td colspan="1">
-                  <v-text-field
-                    placeholder=""
-                    solo
-                    readonly
-                    id="childFullName7"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-                <td colspan="1">
-                  <v-row>
-                    <v-col cols="12" sm="8" md="8" class="text-center">
-                      <v-menu
-                        ref="personalDialog"
-                        v-model="fatherDOBMenu"
-                        persistent
-                        width="290px"
-                      >
-                        <template v-slot:activator="{ on, attrs }">
-                          <v-text-field
-                            v-model="computedDateFormattedFatherDOB"
-                            label=""
-                            append-icon="mdi-calendar"
-                            readonly
-                            v-bind="attrs"
-                            v-on="on"
-                          ></v-text-field>
-                        </template>
-                        <v-date-picker
-                          class="float-right"
-                          v-model="dateOfBirthFather"
-                          scrollable
-                        >
-                        </v-date-picker>
-                      </v-menu>
-                    </v-col>
-                  </v-row>
-                </td>
-              </tr>
-              <tr>
-                <td width="80px">FIRST NAME</td>
                 <td colspan="3">
                   <v-text-field
-                    placeholder=""
-                    solo
-                    v-model="familyFatherFirstName"
-                    id="fatherFirstName"
-                    dense
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-                <td colspan="1">
-                  <v-text-field
-                    label="NAME EXTENSION (JR., SR)"
-                    filled
-                    id="fatherSuffix"
-                    v-model="familyFatherSuffix"
-                    dense
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-                <td colspan="1">
-                  <v-text-field
-                    placeholder=""
-                    solo
-                    flat
-                    readonly
-                    v-model="nameOfChildrenEight"
-                    id="childFullName8"
-                    dense
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-                <td colspan="1">
-                  <v-text-field
-                    placeholder=""
-                    solo
-                    flat
-                    readonly
-                    id="childDOB8"
-                    dense
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-              </tr>
-              <tr>
-                <td width="80px">MIDDLE NAME</td>
-                <td colspan="4">
-                  <v-text-field
-                    placeholder=""
-                    solo
-                    v-model="familyFatherMiddleName"
-                    id="fatherMiddleName"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-                <td colspan="1">
-                  <v-text-field
-                    placeholder=""
-                    solo
-                    flat
-                    readonly
-                    id="childFullName9"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-                <td colspan="1">
-                  <v-text-field
-                    placeholder=""
-                    solo
-                    flat
-                    readonly
-                    id="childDOB9"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-              </tr>
-              <tr>
-                <td>26. MOTHER'S MAIDEN NAME</td>
-                <td colspan="4">
-                  <v-text-field
-                    placeholder=""
-                    solo
-                    v-model="familyMotherMaidenName"
-                    id="motherMaidenName"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-                <td colspan="1">
-                  <v-text-field
-                    placeholder=""
-                    solo
-                    flat
-                    readonly
-                    id="childFullName10"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-                <td colspan="1">
-                  <v-row>
-                    <v-col cols="12" sm="8" md="8" class="text-center">
-                      <v-menu
-                        ref="personalDialog"
-                        v-model="motherDOBMenu"
-                        persistent
-                        width="290px"
-                      >
-                        <template v-slot:activator="{ on, attrs }">
-                          <v-text-field
-                            v-model="computedDateFormattedMotherDOB"
-                            label=""
-                            append-icon="mdi-calendar"
-                            readonly
-                            v-bind="attrs"
-                            v-on="on"
-                          ></v-text-field>
-                        </template>
-                        <v-date-picker
-                          class="float-right"
-                          v-model="dateOfBirthMother"
-                          scrollable
-                        >
-                        </v-date-picker>
-                      </v-menu>
-                    </v-col>
-                  </v-row>
-                </td>
-              </tr>
-              <tr>
-                <td>SURNAME</td>
-                <td colspan="4">
-                  <v-text-field
-                    placeholder=""
-                    solo
-                    v-model="familyMotherSurname"
-                    id="motherSurname"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-                <td colspan="1">
-                  <v-text-field
-                    placeholder=""
-                    solo
-                    flat
-                    readonly
-                    id="childFullName11"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-                <td colspan="1">
-                  <v-text-field
-                    placeholder=""
-                    solo
-                    flat
-                    readonly
-                    id="childDOB11"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-              </tr>
-              <tr>
-                <td width="80px">FIRST NAME</td>
-                <td colspan="4">
-                  <v-text-field
-                    placeholder=""
-                    solo
-                    v-model="familyMotherFirstName"
-                    id="motherFirstName"
-                    dense
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-
-                <td colspan="1">
-                  <v-text-field
-                    placeholder=""
-                    solo
-                    flat
-                    readonly
-                    id="childFullName12"
-                    dense
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-                <td colspan="1">
-                  <v-text-field
-                    placeholder=""
-                    solo
-                    id="childDOB12"
-                    dense
-                    flat
-                    readonly
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-              </tr>
-              <tr>
-                <td width="80px">MIDDLE NAME</td>
-                <td colspan="4">
-                  <v-text-field
-                    placeholder=""
-                    solo
-                    v-model="familyMotherMiddleName"
-                    id="motherMiddleName"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-                <td colspan="1">
-                  <v-text-field
-                    placeholder=" "
-                    solo
-                    flat
-                    readonly
-                    id="childFullName13"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-                <td colspan="1">
-                  <v-text-field
-                    placeholder=""
-                    solo
-                    flat
-                    readonly
-                    id="childDOB13"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-              </tr>
-            </tbody>
-          </template>
-        </v-simple-table>
-
-        <v-simple-table height="auto" class="pa-0 pa-0 ma-12" width="80vw">
-          <template v-slot:default>
-            <thead cols="4">
-              <tr clas="pa-0">
-                <th colspan="4">III. EDUCATIONAL BACKGROUND</th>
-              </tr>
-            </thead>
-            <tbody class="text-center" color="secondary">
-              <tr>
-                <td rowspan="2">LEVEL</td>
-                <td rowspan="2">NAME OF SCHOOL<br />(Write in full)</td>
-                <td rowspan="2">
-                  BASIC EDUCATION/DEGREE/COURSE<br />(Write in full)
-                </td>
-                <td colspan="2">PERIOD OF ATTENDANCE<br />From To</td>
-                <td rowspan="2">
-                  HIGHEST LEVEL/UNITS EARNED (if not graduated)
-                </td>
-                <td rowspan="2">YEAR GRADUATED</td>
-                <td rowspan="2">SCHOLARSHIP/ ACADEMIC HONORS RECEIVED</td>
-                <td rowspan="2">
-                  <button
-                    class="material-icons"
-                    @click="addRow('educationalBackground')"
-                  >
-                    add_circle
-                  </button>
-                </td>
-              </tr>
-
-              <tr>
-                <td>From</td>
-                <td>To</td>
-              </tr>
-
-              <tr
-                v-for="row in educationalBackground"
-                :key="row.educBackgroundLevel"
-              >
-                <td colspan="1">
-                  <v-text-field
-                    placeholder=""
-                    solo
-                    v-model="row.educBackgroundLevel"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-                <td colspan="1">
-                  <v-text-field
-                    placeholder=""
-                    solo
-                    v-model="row.educBackgroundNameOfSchool"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-                <td colspan="1">
-                  <v-text-field
-                    placeholder=""
-                    v-model="row.educBackgroundBasicEducation"
-                    solo
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-                <td colspan="1">
-                  <v-text-field
-                    placeholder=""
-                    v-model="row.educBackgroundPeriodOfAttendanceFrom"
-                    solo
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-                <td colspan="1">
-                  <v-text-field
-                    placeholder=""
-                    solo
-                    v-model="row.educBackgroundPeriodOfAttendanceTo"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-                <td colspan="1">
-                  <v-text-field
-                    placeholder=""
-                    solo
-                    v-model="row.educBackgroundHighestLevel"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-                <td colspan="1">
-                  <v-text-field
-                    placeholder=""
-                    solo
-                    v-model="row.educBackgroundYearGraduated"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-                <td colspan="1">
-                  <v-text-field
-                    placeholder=""
-                    v-model="row.educBackgroundScholarship"
-                    solo
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-                <td colspan="1">
-                  <button
-                    class="material-icons"
-                    @click="removeRow('educationalBackground', row)"
-                  >
-                    remove_circle
-                  </button>
-                </td>
-              </tr>
-            </tbody>
-            <tfoot>
-              <tr>
-                <td>SIGNATURE</td>
-                <td colspan="4">
-                  <v-file-input
-                    solo
-                    show-size
-                    ref=""
-                    accept="image/png, image/jpeg, image/bmp"
-                    v-model="educBackgroundSignature"
-                    id="signaturePart1"
-                    class="text-center pt-6"
-                    @change="handleFileInput"
-                  >
-                  </v-file-input>
-                </td>
-                <td colspan="1" class="pl-10">DATE</td>
-                <td colspan="4">
-                  <v-row>
-                    <v-col cols="12" sm="8" md="8" class="text-center">
-                      <v-menu
-                        ref="personalDialog"
-                        v-model="educBackgroundDOSMenu"
-                        persistent
-                        width="290px"
-                      >
-                        <template v-slot:activator="{ on, attrs }">
-                          <v-text-field
-                            v-model="computedDateFormattedEducBackgroundDOS"
-                            label=""
-                            append-icon="mdi-calendar"
-                            readonly
-                            v-bind="attrs"
-                            v-on="on"
-                          ></v-text-field>
-                        </template>
-                        <v-date-picker
-                          class="float-right"
-                          v-model="educBackgroundDateOfSignature"
-                          scrollable
-                        >
-                        </v-date-picker>
-                      </v-menu>
-                    </v-col>
-                  </v-row>
-                </td>
-              </tr>
-            </tfoot>
-          </template>
-        </v-simple-table>
-      </v-tab-item>
-      <v-tab>C2</v-tab>
-      <v-tab-item>
-        <v-simple-table height="auto" class="pa-0 pa-0 ma-12" width="80vw">
-          <thead>
-            <tr>
-              <th colspan="8" style="text-align: left">
-                IV. CIVIL SERVICE ELIGIBILITY
-              </th>
-            </tr>
-
-            <tr>
-              <th rowspan="2" colspan="2" style="text-align: left">
-                CAREER SERVICE/ RA 1080 (BOARD/ BAR) UNDER SPECIAL LAWS/ CES/
-                CSEE BARANGAY ELIGIBILITY / DRIVER'S LICENSE
-              </th>
-              <th rowspan="2" colspan="2" style="text-align: left">
-                RATING <br />(If Applicable)
-              </th>
-              <th rowspan="2" colspan="2" style="text-align: left">
-                DATE OF EXAMINATION / CONFERMENT
-              </th>
-              <th rowspan="2" colspan="2" style="text-align: left">
-                PLACE OF EXAMINATION / CONFERMENT
-              </th>
-              <th colspan="2" style="text-align: left">
-                LICENSE (if applicable)
-              </th>
-              <th rowspan="2" colspan="2" style="text-align: left">
-                <button
-                  class="material-icons"
-                  @click="addRow('civilServiceEligibility')"
-                >
-                  add_circle
-                </button>
-              </th>
-            </tr>
-            <tr>
-              <th style="text-align: left">NUMBER</th>
-              <th style="text-align: left">Date of Validity</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="row in civilServiceEligibility" :key="row.careerService">
-              <td colspan="2">
-                <v-text-field
-                  placeholder=""
-                  solo
-                  v-model="row.careerService"
-                  value=""
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="2">
-                <v-text-field
-                  placeholder=""
-                  v-model="row.rating"
-                  solo
-                  dense
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="2">
-                <v-text-field
-                  placeholder=""
-                  solo
-                  dense
-                  v-model="row.dateOfExamination"
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="2">
-                <v-text-field
-                  placeholder=""
-                  solo
-                  v-model="row.placeOfExamination"
-                  dense
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="1">
-                <v-text-field
-                  placeholder=""
-                  v-model="row.licenseNumber"
-                  solo
-                  dense
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="1">
-                <v-text-field
-                  placeholder=""
-                  solo
-                  v-model="row.dateOfValidity"
-                  dense
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="2">
-                <button
-                  class="material-icons"
-                  @click="removeRow('civilServiceEligibility', row)"
-                >
-                  remove_circle
-                </button>
-              </td>
-            </tr>
-          </tbody>
-        </v-simple-table>
-        <v-simple-table height="auto" class="pa-0 pa-0 ma-12" width="80vw">
-          <thead>
-            <tr>
-              <th colspan="8" style="text-align: left">
-                V. WORK EXPERIENCE <br />
-                (Include private employment. Start from your recent work.)
-                Description of duties should be indicated in the attached Work
-                Experience sheet.
-              </th>
-            </tr>
-
-            <tr>
-              <th colspan="2" style="text-align: left">
-                28. INCLUSIVE DATES (mm/dd/yyyy)
-              </th>
-              <th rowspan="2" colspan="2" style="text-align: left">
-                POSITION TITLE (Write in full/Do not abbreviate)
-              </th>
-              <th rowspan="2" colspan="2" style="text-align: left">
-                DEPARTMENT / AGENCY / OFFICE / COMPANY (Write in full/Do not
-                abbreviate)
-              </th>
-              <th rowspan="2" colspan="2" style="text-align: left">
-                MONTHLY SALARY
-              </th>
-              <th colspan="2" style="text-align: left">
-                SALARY/ JOB/ PAY GRADE (if applicable)& STEP (Format "00-0")/
-                INCREMENT
-              </th>
-              <th colspan="2" style="text-align: left">
-                STATUS OF APPOINTMENT
-              </th>
-              <th colspan="2" style="text-align: left">GOV'T SERVICE (Y/ N)</th>
-              <th rowspan="2" colspan="2" style="text-align: left">
-                <button class="material-icons" @click="addRow(workExperience)">
-                  add_circle
-                </button>
-              </th>
-            </tr>
-            <tr>
-              <th style="text-align: left">From</th>
-              <th style="text-align: left">To</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr
-              v-for="row in workExperience"
-              :key="row.inclusiveDateFromWorkExperience"
-            >
-              <td colspan="1">
-                <v-text-field
-                  placeholder=""
-                  solo
-                  v-model="row.inclusiveDateFromWorkExperience"
-                  value=""
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="1">
-                <v-text-field
-                  placeholder=""
-                  solo
-                  v-model="row.inclusiveDateToWorkExperience"
-                  dense
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="2">
-                <v-text-field
-                  placeholder=""
-                  solo
-                  dense
-                  v-model="row.positionTitleWorkExperience"
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="2">
-                <v-text-field
-                  placeholder=""
-                  solo
-                  v-model="row.departmentWorkExperience"
-                  dense
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="2">
-                <v-text-field
-                  placeholder=""
-                  solo
-                  dense
-                  v-model="row.monthlySalaryWorkExperience"
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="2">
-                <v-text-field
-                  placeholder=""
-                  solo
-                  dense
-                  v-model="row.salaryGradeWorkExperience"
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="2">
-                <v-text-field
-                  placeholder=""
-                  solo
-                  dense
-                  v-model="row.statusOfAppointmentWorkExperience"
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="2">
-                <v-text-field
-                  placeholder=""
-                  solo
-                  dense
-                  v-model="row.governmentServiceWorkExperience"
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="2">
-                <button
-                  class="material-icons"
-                  @click="removeRow('workExperience', row)"
-                >
-                  remove_circle
-                </button>
-              </td>
-            </tr>
-          </tbody>
-          <tfoot>
-            <tr>
-              <td>SIGNATURE</td>
-              <td colspan="3">
-                <v-file-input
-                  solo
-                  show-size
-                  accept="image/png, image/jpeg, image/bmp"
-                  v-model="workExperienceSignature"
-                  id="signaturePart1"
-                  class="text-center pt-6"
-                  chips
-                >
-                </v-file-input>
-              </td>
-              <td colspan="1">DATE</td>
-              <td colspan="4">
-                <v-row>
-                  <v-col cols="12" sm="8" md="8" class="text-center">
-                    <v-menu
-                      ref="personalDialog"
-                      v-model="workExpDOSMenu"
-                      persistent
-                      width="290px"
-                    >
-                      <template v-slot:activator="{ on, attrs }">
-                        <v-text-field
-                          v-model="computedDateFormattedWorkExpDOS"
-                          label=""
-                          append-icon="mdi-calendar"
-                          readonly
-                          v-bind="attrs"
-                          v-on="on"
-                        ></v-text-field>
-                      </template>
-                      <v-date-picker
-                        class="float-right"
-                        v-model="workExperienceDateOfSignature"
-                        scrollable
-                      >
-                      </v-date-picker>
-                    </v-menu>
-                  </v-col>
-                </v-row>
-              </td>
-            </tr>
-          </tfoot>
-        </v-simple-table>
-      </v-tab-item>
-      <v-tab>Part 3</v-tab>
-      <v-tab-item>
-        <v-simple-table height="auto" class="pa-0 pa-0 ma-12" width="80vw">
-          <thead>
-            <tr>
-              <th colspan="8" style="text-align: left">
-                VI. VOLUNTARY WORK OR INVOLVEMENT IN CIVIC / NON-GOVERNMENT /
-                PEOPLE / VOLUNTARY ORGANIZATION/S
-              </th>
-            </tr>
-
-            <tr>
-              <th rowspan="2" colspan="2" style="text-align: left">
-                29. NAME & ADDRESS OF ORGANIZATION (Write in full)
-              </th>
-              <th colspan="2" style="text-align: left">
-                INCLUSIVE DATES (mm/dd/yyyy)
-              </th>
-              <th rowspan="2" colspan="2" style="text-align: left">
-                NUMBER OF HOURS
-              </th>
-              <th rowspan="2" colspan="2" style="text-align: left">
-                POSITION / NATURE OF WORK
-              </th>
-              <th rowspan="2" colspan="2" style="text-align: left">
-                <button
-                  class="material-icons"
-                  @click="addRow('voluntaryWorkInvolvement')"
-                >
-                  add_circle
-                </button>
-              </th>
-            </tr>
-            <tr>
-              <th style="text-align: left">From</th>
-              <th style="text-align: left">To</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr
-              v-for="row in voluntaryWorkInvolvement"
-              :key="row.nameAndAddressOfOrgVolWork"
-            >
-              <td colspan="1">
-                <v-text-field
-                  placeholder=""
-                  solo
-                  v-model="row.nameAndAddressOfOrgVolWork"
-                  dense
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="1">
-                <v-text-field
-                  placeholder=""
-                  solo
-                  dense
-                  v-model="row.inclusiveDatesFromVolWork"
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="2">
-                <v-text-field
-                  placeholder=""
-                  solo
-                  dense
-                  v-model="row.inclusiveDatesToVolWork"
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="2">
-                <v-text-field
-                  placeholder=""
-                  solo
-                  v-model="row.numberOfHoursVolWork"
-                  dense
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="2">
-                <v-text-field
-                  placeholder=""
-                  solo
-                  v-model="row.positionOfWorkVolWork"
-                  dense
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-
-              <td colspan="2">
-                <button
-                  class="material-icons"
-                  @click="removeRow('voluntaryWorkInvolvement', row)"
-                >
-                  remove_circle
-                </button>
-              </td>
-            </tr>
-          </tbody>
-        </v-simple-table>
-        <v-simple-table height="auto" class="pa-0 pa-0 ma-12" width="80vw">
-          <thead>
-            <tr>
-              <th colspan="8" style="text-align: left">
-                VII. LEARNING AND DEVELOPMENT (L&D) INTERVENTIONS/TRAINING
-                PROGRAMS ATTENDED<br />(Start from the most recent L&D/training
-                program and include only the relevant L&D/training taken for the
-                last five (5) years for Division Chief/Executive/Managerial
-                positions)
-              </th>
-            </tr>
-
-            <tr>
-              <th rowspan="2" colspan="2" style="text-align: left">
-                30. TITLE OF LEARNING AND DEVELOPMENT INTERVENTIONS/TRAINING
-                PROGRAMS (Write in full)
-              </th>
-              <th colspan="2" style="text-align: left">
-                INCLUSIVE DATES OF ATTENDANCE (mm/dd/yyyy)
-              </th>
-              <th rowspan="2" colspan="2" style="text-align: left">
-                NUMBER OF HOURS
-              </th>
-              <th rowspan="2" colspan="2" style="text-align: left">
-                Type of LD ( Managerial/ Supervisory/ Technical/etc)
-              </th>
-              <th rowspan="2" colspan="2" style="text-align: left">
-                CONDUCTED/ SPONSORED BY (Write in full)
-              </th>
-
-              <th rowspan="2" colspan="2" style="text-align: left">
-                <button
-                  class="material-icons"
-                  @click="addRow(learningAndDevelopment)"
-                >
-                  add_circle
-                </button>
-              </th>
-            </tr>
-            <tr>
-              <th style="text-align: left">From</th>
-              <th style="text-align: left">To</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr
-              v-for="row in learningAndDevelopment"
-              :key="row.learningAndDevelopmentInterventions"
-            >
-              <td colspan="1">
-                <v-text-field
-                  placeholder=""
-                  solo
-                  dense
-                  v-model="row.learningAndDevelopmentInterventions"
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="1">
-                <v-text-field
-                  placeholder=""
-                  solo
-                  v-model="row.learningAndDevelopmentInclusiveDatesFrom"
-                  dense
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="2">
-                <v-text-field
-                  placeholder=""
-                  solo
-                  v-model="row.learningAndDevelopmentInclusiveDatesTo"
-                  dense
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="2">
-                <v-text-field
-                  placeholder=""
-                  solo
-                  dense
-                  v-model="row.learningAndDevelopmentNumberOfHours"
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="2">
-                <v-text-field
-                  placeholder=""
-                  solo
-                  dense
-                  v-model="row.learningAndDevelopmentTypeOfLD"
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="2">
-                <v-text-field
-                  placeholder=""
-                  v-model="row.learningAndDevelopmentConductedBy"
-                  solo
-                  dense
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="2">
-                <button
-                  class="material-icons"
-                  @click="removeRow('learningAndDevelopment', row)"
-                >
-                  remove_circle
-                </button>
-              </td>
-            </tr>
-          </tbody>
-        </v-simple-table>
-
-        <v-container class="grey lighten-5">
-          <v-row
-            ><v-col cols="12" class="sm-12"
-              >VIII. OTHER INFORMATION</v-col
-            ></v-row
-          >
-          <v-row no-gutters>
-            <v-col cols="12" sm="4">
-              <v-card class="pa-2" outlined tile>
-                <v-card-title class="text-caption">
-                  31. SPECIAL SKILLS AND HOBBIES <br />(Write in full)<button
-                    class="material-icons"
-                    @click="addRow('otherInfoSpecialSkills')"
-                  >
-                    add_circle
-                  </button>
-                </v-card-title>
-                <v-card-text>
-                  <v-container>
-                    <v-container
-                      v-for="row in otherInfoSpecialSkills"
-                      :key="row.ID"
-                    >
-                      <v-text-field
-                        filled
-                        dense
-                        v-model="row.otherInformationSpecialSkills"
-                        style="float: left"
-                      ></v-text-field>
-                      <button
-                        class="material-icons"
-                        style="float: right"
-                        @click="removeRow('otherInfoSpecialSkills', row)"
-                      >
-                        remove_circle
-                      </button>
-                    </v-container>
-                  </v-container>
-                </v-card-text>
-              </v-card>
-            </v-col>
-            <v-col cols="12" sm="4">
-              <v-card class="pa-2" outlined tile>
-                <v-card-title class="text-caption">
-                  32. NON-ACADEMIC DISTINCTIONS/RECOGNITION <br />(Write in
-                  full)
-                  <button
-                    class="material-icons"
-                    @click="addRow('otherInfoNonacademicDistinctions')"
-                  >
-                    add_circle
-                  </button>
-                </v-card-title>
-                <v-card-text>
-                  <v-container>
-                    <v-container
-                      v-for="row in otherInfoNonacademicDistinctions"
-                      :key="row.ID"
-                    >
-                      <v-text-field
-                        filled
-                        dense
-                        v-model="row.otherInformationNonacademicDistinctions"
-                        style="float: left"
-                      ></v-text-field>
-                      <button
-                        class="material-icons"
-                        style="float: right"
-                        @click="
-                          removeRow('otherInfoNonacademicDistinctions', row)
-                        "
-                      >
-                        remove_circle
-                      </button>
-                    </v-container>
-                  </v-container>
-                </v-card-text>
-              </v-card>
-            </v-col>
-            <v-col cols="12" sm="4">
-              <v-card class="pa-2" outlined tile>
-                <v-card-title class="text-caption text-wrap">
-                  33. MEMBERSHIP IN ASSOCIATION/ORGANIZATION <br />(Write in
-                  full)
-                  <button
-                    class="material-icons"
-                    @click="addRow('otherInfoAssociationMembers')"
-                  >
-                    add_circle
-                  </button>
-                </v-card-title>
-                <v-card-text class="text-center">
-                  <v-container>
-                    <v-container
-                      v-for="row in otherInfoAssociationMembers"
-                      :key="row.ID"
-                    >
-                      <v-text-field
-                        filled
-                        dense
-                        v-model="row.otherInformationAssociationMembers"
-                        style="float: left"
-                      ></v-text-field>
-                      <button
-                        class="material-icons"
-                        style="float: right"
-                        @click="removeRow('otherInfoAssociationMembers', row)"
-                      >
-                        remove_circle
-                      </button>
-                    </v-container>
-                  </v-container>
-                </v-card-text>
-              </v-card>
-            </v-col>
-          </v-row>
-          <v-row>
-            <v-col cols="12" sm="3"> SIGNATURE </v-col>
-            <v-col cols="12" sm="3">
-              <v-file-input
-                solo
-                show-size
-                accept="image/png, image/jpeg, image/bmp"
-                v-model="otherInfoSignature"
-                id="signaturePart1"
-                class="text-center pt-6"
-                chips
-              >
-              </v-file-input>
-            </v-col>
-            <v-col cols="12" sm="3"> DATE </v-col>
-            <v-col cols="12" sm="3">
-              <v-row>
-                <v-col cols="12" sm="8" md="8" class="text-center">
-                  <v-menu
-                    ref="personalDialog"
-                    v-model="otherInfoDOSMenu"
-                    persistent
-                    width="290px"
-                  >
-                    <template v-slot:activator="{ on, attrs }">
-                      <v-text-field
-                        v-model="computedDateFormattedOtherInfoDOS"
-                        label=""
-                        append-icon="mdi-calendar"
-                        readonly
-                        v-bind="attrs"
-                        v-on="on"
-                      ></v-text-field>
-                    </template>
-                    <v-date-picker
-                      class="float-right"
-                      v-model="otherInfoDateOfSignature"
-                      scrollable
-                    >
-                    </v-date-picker>
-                  </v-menu>
-                </v-col>
-              </v-row>
-            </v-col>
-          </v-row>
-        </v-container>
-      </v-tab-item>
-      <v-tab>C4</v-tab>
-      <v-tab-item>
-        <v-container fluid>
-          <v-row no-gutters>
-            <v-col cols="12" sm="6">
-              <v-card class="pa-6" outlined tile height="200px">
-                34. Are you related by consanguinity or affinity to the
-                appointing or recommending authority, or to the chief of bureau
-                or office or to the person who has immediate supervision over
-                you in the Office, Bureau or Department where you will be
-                apppointed, a. within the third degree? b. within the fourth
-                degree (for Local Government Unit - Career Employees)?</v-card
-              >
-            </v-col>
-            <v-col cols="12" sm="6">
-              <v-card class="pa-3" outlined tile height="200px">
-                <v-textarea
-                  auto-grow
-                  placeholder=""
-                  class="mx-2"
-                  label="If YES, give details:"
-                  dense
-                  v-model="questionThirtyFour"
-                  type="text"
-                >
-                </v-textarea>
-              </v-card>
-            </v-col>
-          </v-row>
-          <v-row no-gutters>
-            <v-col cols="12" sm="6">
-              <v-card class="pa-4" outlined tile height="280px">
-                35. a. Have you ever been found guilty of any administrative
-                offense?<br />
-                b. Have you been criminally charged before any court?</v-card
-              >
-            </v-col>
-            <v-col cols="12" sm="6">
-              <v-card class="pa-4" outlined tile height="280px">
-                <v-textarea
-                  placeholder=""
-                  auto-grow
-                  class="mx-2"
-                  label="If YES, give details:"
-                  dense
-                  v-model="questionThirtyFiveA"
-                  max-width="50px"
-                  type="text"
-                >
-                </v-textarea>
-                <span class="ma-3">If YES, give details: </span><br />
-
-                <v-text-field
-                  label="Date Filed: "
-                  dense
-                  type="text"
-                  v-model="questionThirtyFiveDateFiled"
-                >
-                </v-text-field>
-                <v-text-field
-                  label="Status of Case/s: "
-                  dense
-                  type="text"
-                  v-model="questionThirtyFiveCaseStatus"
-                >
-                </v-text-field>
-              </v-card>
-            </v-col>
-          </v-row>
-          <v-row no-gutters>
-            <v-col cols="12" sm="6">
-              <v-card class="pa-6" outlined tile height="150px">
-                36. Have you ever been convicted of any crime or violation of
-                any law, decree, ordinance or regulation by any court or
-                tribunal?</v-card
-              >
-            </v-col>
-            <v-col cols="12" sm="6">
-              <v-card class="pa-3" outlined tile height="150px">
-                <v-textarea
-                  auto-grow
-                  placeholder=""
-                  class="mx-2"
-                  label="If YES, give details:"
-                  dense
-                  v-model="questionThirtySix"
-                  type="text"
-                >
-                </v-textarea>
-              </v-card>
-            </v-col>
-          </v-row>
-          <v-row no-gutters>
-            <v-col cols="12" sm="6">
-              <v-card class="pa-6" outlined tile height="150px">
-                37. Have you ever been separated from the service in any of the
-                following modes: resignation, retirement, dropped from the
-                rolls, dismissal, termination, end of term, finished contract or
-                phased out (abolition) in the public or private sector?</v-card
-              >
-            </v-col>
-            <v-col cols="12" sm="6">
-              <v-card class="pa-3" outlined tile height="150px">
-                <v-textarea
-                  auto-grow
-                  placeholder=""
-                  class="mx-2"
-                  label="If YES, give details:"
-                  dense
-                  v-model="questionThirtySeven"
-                >
-                </v-textarea>
-              </v-card>
-            </v-col>
-          </v-row>
-          <v-row no-gutters>
-            <v-col cols="12" sm="6">
-              <v-card class="pa-6" outlined tile height="200px">
-                38. a. Have you ever been a candidate in a national or local
-                election held within the last year (except Barangay
-                election)?<br />
-                b. Have you resigned from the government service during the
-                three (3)-month period before the last election to
-                promote/actively campaign for a national or local
-                candidate?</v-card
-              >
-            </v-col>
-            <v-col cols="12" sm="6">
-              <v-card class="pa-3" outlined tile height="200px">
-                <v-textarea
-                  auto-grow
-                  placeholder=""
-                  class="mx-2"
-                  label="If YES, give details:"
-                  dense
-                  v-model="questionThirtyEight"
-                  type="text"
-                >
-                </v-textarea>
-              </v-card>
-            </v-col>
-          </v-row>
-          <v-row no-gutters>
-            <v-col cols="12" sm="6">
-              <v-card class="pa-6" outlined tile height="150px">
-                39. Have you acquired the status of an immigrant or permanent
-                resident of another country?</v-card
-              >
-            </v-col>
-            <v-col cols="12" sm="6">
-              <v-card class="pa-3" outlined tile height="150px">
-                <v-textarea
-                  auto-grow
-                  placeholder=""
-                  class="mx-2"
-                  label="If YES, give details:"
-                  dense
-                  v-model="questionThirtyNine"
-                  type="text"
-                >
-                </v-textarea>
-              </v-card>
-            </v-col>
-          </v-row>
-          <v-row no-gutters>
-            <v-col cols="12" sm="6">
-              <v-card class="pa-6" outlined tile height="330px">
-                40. 100% 10 C41:F42 Pursuant to: (a) Indigenous People's Act (RA
-                8371); (b) Magna Carta for Disabled Persons (RA 7277); and (c)
-                Solo Parents Welfare Act of 2000 (RA 8972), please answer the
-                following items: Screen reader support enabled. Pursuant to: (a)
-                Indigenous People's Act (RA 8371); (b) Magna Carta for Disabled
-                Persons (RA 7277); and (c) Solo Parents Welfare Act of 2000 (RA
-                8972), please answer the following items: Turn on screen reader
-                support a. Are you a member of any indigenous group? b. Are you
-                a person with disability? c. Are you a solo parent?</v-card
-              >
-            </v-col>
-            <v-col cols="12" sm="6">
-              <v-card class="pa-3" outlined tile height="330px">
-                <v-textarea
-                  auto-grow
-                  placeholder=""
-                  class="mx-2"
-                  label=" If YES, give details:"
-                  dense
-                  type="text"
-                  v-model="questionFourtyA"
-                >
-                </v-textarea
-                ><br />
-                <v-text-field
-                  auto-grow
-                  placeholder=""
-                  class="mx-2"
-                  label="If YES, please specify ID No:"
-                  dense
-                  v-model="questionFourtyB"
-                  type="text"
-                >
-                </v-text-field
-                ><br />
-                <v-text-field
-                  auto-grow
-                  placeholder=""
-                  class="mx-2"
-                  v-model="questionFourtyC"
-                  label="If YES, please specify ID No:"
-                  dense
-                  type="text"
-                >
-                </v-text-field
-                ><br />
-              </v-card>
-            </v-col>
-          </v-row>
-          <v-row no-gutters class="ma-0">
-            <v-col cols="12" sm="8">
-              <v-card class="pa-6" outlined tile height="auto">
-                <v-card-text class="text-subtitle-2"
-                  >REFERENCES
-                  <span class="text-body-2" style="color: red"
-                    >(Person not related by consanguinity or affinity to
-                    applicant /appointee)</span
-                  ></v-card-text
-                >
-
-                <v-simple-table>
-                  <thead>
-                    <tr>
-                      <th>NAME</th>
-                      <th>ADDRESS</th>
-                      <th>TEL. NO.</th>
-                      <th rowspan="1" colspan="1" style="text-align: left">
-                        <button
-                          class="material-icons"
-                          @click="addRow('references')"
-                        >
-                          add_circle
-                        </button>
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr height="10px" v-for="row in references" :key="row.name">
-                      <td>
-                        <v-text-field dense v-model="row.name"> </v-text-field>
-                      </td>
-                      <td>
-                        <v-text-field dense v-model="row.address">
-                        </v-text-field>
-                      </td>
-                      <td>
-                        <v-text-field dense v-model="row.telephoneNo">
-                        </v-text-field>
-                      </td>
-                      <td colspan="1">
-                        <button
-                          class="material-icons"
-                          @click="removeRow('references', row)"
-                        >
-                          remove_circle
-                        </button>
-                      </td>
-                    </tr>
-                  </tbody>
-                </v-simple-table>
-              </v-card>
-            </v-col>
-            <v-col cols="12" sm="4">
-              <v-card class="pa-3" outlined tile height="300px">
-                <v-card-text class="ma-5 pa-10 text-wrap"
-                  >ID picture taken within the last 6 months 3.5 cm. X 4.5 cm
-                  (passport size) With full and handwritten name tag and
-                  signature over printed name Computer generated or photocopied
-                  picture is not acceptable</v-card-text
-                >
-                <v-container class="">
-                  <v-file-input
-                    solo
-                    show-size
-                    ref=""
-                    accept="image/png, image/jpeg, image/bmp"
-                    v-model="personalPhotoAttachment"
-                    class="text-center pt-6"
-                    label="Insert Picture"
-                    dense
-                    chips
-                    @change="handleFileInput"
-                  >
-                  </v-file-input>
-                </v-container>
-              </v-card>
-            </v-col>
-          </v-row>
-          <v-row>
-            <v-col cols="12" sm="8">
-              <v-card
-                class=""
-                outlined
-                tile
-                height="auto"
-                style="font-size: 12px"
-              >
-                I declare under oath that I have personally accomplished this
-                Personal Data Sheet which is a true, correct and complete
-                statement pursuant to the provisions of pertinent laws, rules
-                and regulations of the Republic of the Philippines. I authorize
-                the agency head/authorized representative to verify/validate the
-                contents stated herein. I agree that any misrepresentation made
-                in this document and its attachments shall cause the filing of
-                administrative/criminal case/s against me.
-              </v-card>
-            </v-col>
-          </v-row>
-          <v-row>
-            <v-col cols="12" sm="4">
-              <v-card class="pa-1">
-                <v-card-subtitle class="text-center">
-                  Government Issued ID (i.e.Passport, GSIS, SSS, PRC, Driver's
-                  License, etc.) PLEASE INDICATE ID Number and Date of Issuance
-                </v-card-subtitle>
-
-                <v-container
-                  class="text-no-wrap"
-                  height="10px"
-                  style="font-size: 10px"
-                  >Government Issued ID:
-                  <v-text-field
-                    dense
-                    v-model="governmentIssuedID"
-                  ></v-text-field
-                ></v-container>
-                <v-container height="10px" style="font-size: 10px"
-                  >ID/License/Passport No.:
-                  <v-text-field
-                    dense
-                    v-model="governmentIssuedIDNo"
-                  ></v-text-field
-                ></v-container>
-                <v-container height="10px" style="font-size: 10px"
-                  >Date/Place of Issuance:
-                  <v-text-field
-                    dense
-                    width="10px"
-                    v-model="governmentIDDateOrPlaceIssued"
-                  ></v-text-field
-                ></v-container>
-              </v-card>
-            </v-col>
-            <v-col cols="12" sm="4">
-              <v-card>
-                <v-container>
-                  <v-file-input
-                    solo
-                    show-size
-                    ref=""
-                    accept="image/png, image/jpeg, image/bmp"
-                    v-model="oathSignature"
-                    class="text-center pt-6"
-                    label="Insert Picture"
-                    dense
-                    chips
-                    @change="handleFileInput"
-                  >
-                  </v-file-input>
-                </v-container>
-                <v-card-subtitle
-                  >Signature (Sign inside the box)</v-card-subtitle
-                >
-                <v-container>
-                  <v-row>
-                    <v-col cols="12" sm="8" md="8" class="text-center">
-                      <v-menu
-                        ref="personalDialog"
-                        v-model="oathDateMenu"
-                        persistent
-                        width="290px"
-                      >
-                        <template v-slot:activator="{ on, attrs }">
-                          <v-text-field
-                            v-model="computedDateFormattedOathDate"
-                            label=""
-                            append-icon="mdi-calendar"
-                            readonly
-                            v-bind="attrs"
-                            v-on="on"
-                          ></v-text-field>
-                        </template>
-                        <v-date-picker
-                          class="float-right"
-                          v-model="oathDateAccomplished"
-                          scrollable
-                        >
-                        </v-date-picker>
-                      </v-menu>
-                    </v-col>
-                  </v-row>
-                </v-container>
-                <v-card-subtitle>Date Accomplished</v-card-subtitle>
-              </v-card>
-            </v-col>
-            <v-col cols="12" sm="4">
-              <v-card>
-                <v-container>
-                  <v-file-input
-                    solo
-                    show-size
-                    ref=""
-                    accept="image/png, image/jpeg, image/bmp"
-                    v-model="rightThumbMark"
-                    class="text-center pt-6"
-                    label="Insert Picture"
-                    dense
-                    chips
-                    @change="handleFileInput"
-                  >
-                  </v-file-input>
-                </v-container>
-                <v-card-subtitle>Right Thumbmark</v-card-subtitle>
-              </v-card>
-            </v-col>
-          </v-row>
-          <v-row>
-            <v-col cols="12" sm="12" style="border: none">
-              SUBSCRIBED AND SWORN to before me this ,
-              <v-row>
-                <v-col cols="12" sm="8" md="8" class="text-center">
-                  <v-menu
-                    ref="personalDialog"
-                    v-model="swornDateMenu"
-                    persistent
-                    width="290px"
-                  >
-                    <template v-slot:activator="{ on, attrs }">
-                      <v-text-field
-                        v-model="computedDateFormattedSwornDate"
-                        label=""
-                        append-icon="mdi-calendar"
-                        readonly
-                        v-bind="attrs"
-                        v-on="on"
-                      ></v-text-field>
-                    </template>
-                    <v-date-picker
-                      class="float-right"
-                      v-model="subscribedAndSwornDate"
-                      scrollable
-                    >
-                    </v-date-picker>
-                  </v-menu>
-                </v-col>
-              </v-row>
-              exhibiting his/her validly issued government ID as indicated
-              above.
-            </v-col>
-          </v-row>
-          <v-card
-            class="pa-5 text-center"
-            width="400px"
-            align="center"
-            justify="center"
-            style="margin-left: auto; margin-right: auto"
-          >
-            <v-file-input
-              solo
-              show-size
-              ref=""
-              accept="image/png, image/jpeg, image/bmp"
-              v-model="personAdministeringOath"
-              class="text-center pt-6"
-              label="Insert Picture"
-              dense
-              chips
-              @change="handleFileInput"
-            >
-            </v-file-input>
-            <span>Person Administering Oath</span>
-          </v-card>
-        </v-container>
-        <!-- </tbody>
-        
-        </v-simple-table> -->
-        <v-btn class="primary" @click="finalizePds('create')"
-          >Finalize Part 1-4</v-btn
-        >
-        <!-- <button v-print>Print local range</button> -->
-      </v-tab-item>
-    </v-tabs>
-    <v-tabs v-if="edit == true">
-      <v-btn class="float-right" style="float:right" @click="edit = false">Back</v-btn>
-      <v-tab>Part 1</v-tab>
-      <v-tab-item>
-        <v-card-title label="Search" single-line hide-details
-          ><span>CS Form N0.212<br />Revised 2017</span>
-          <span>Personal Data Sheet</span>
-        </v-card-title>
-        <v-card-subtitle label="Search" single-line hide-details>
-          WARNING: Any misrepresentation made in the Personal Data Sheet and the
-          Work Experience Sheet shall cause the filing of
-          administrative/criminal case/s against the person concerned.
-        </v-card-subtitle>
-        <v-card-text label="Search" single-line hide-details>
-          READ THE ATTACHED GUIDE TO FILLING OUT THE PERSONAL DATA SHEET (PDS)
-          BEFORE ACCOMPLISHING THE PDS FORM.
-        </v-card-text>
-
-        <v-simple-table height="auto" class="pa-0 pa-0 ma-12" max-width="60vw">
-          <template v-slot:default>
-            <thead cols="4">
-              <tr clas="pa-0">
-                <th colspan="8">I. PERSONAL INFORMATION</th>
-              </tr>
-            </thead>
-            <tbody class="text-center" color="secondary" >
-              <tr>
-                <td width="50px" colspan="2" style="text-align: left">
-                  2. SURNAME
-                </td>
-                <td colspan="7">
-                  <v-text-field
-                    placeholder=""
-                    solo
-                    v-model="personalSurname"
-                    id="personalSurname"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-              </tr>
-
-              <tr>
-                <td width="50px" colspan="2" style="text-align: left">
-                  FIRST NAME
-                </td>
-                <td colspan="4">
-                  <v-text-field
-                    placeholder=""
-                    solo
-                    dense
-                    v-model="personalFirstName"
-                    id="personalFirstName"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-                <td colspan="4">
-                  <v-text-field
-                    label="NAME EXTENSION (JR., SR)"
-                    v-model="personalSuffix"
-                    id="suffix"
-                    dense
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-              </tr>
-              <tr>
-                <td width="80px" colspan="2" style="text-align: left">
-                  MIDDLE NAME
-                </td>
-                <td colspan="8">
-                  <v-text-field
-                    placeholder=""
-                    solo
-                    v-model="personalMiddleName"
-                    id="personalMiddleName"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-              </tr>
-
-              <tr>
-                <td max-width="100px" colspan="2" style="text-align: left">
-                  DATE OF BIRTH <br />
-                  (mm/dd/yyyy)
-                </td>
-                <td colspan="2">
-                  <v-row>
-                    <v-col cols="12" sm="8" md="8" class="text-center">
-                      <v-menu
-                        ref="personalDialog"
-                        v-model="personalDOBMenu"
-                        persistent
-                        width="290px"
-                      >
-                        <template v-slot:activator="{ on, attrs }">
-                          <v-text-field
-                            v-model="computedDateFormattedPersonalDOB"
-                            label=""
-                            append-icon="mdi-calendar"
-                            readonly
-                            v-bind="attrs"
-                            v-on="on"
-                          ></v-text-field>
-                        </template>
-                        <v-date-picker
-                          class="float-right"
-                          v-model="personalDateOfBirth"
-                          scrollable
-                        >
-                        </v-date-picker>
-                      </v-menu>
-                    </v-col>
-                  </v-row>
-                </td>
-                <td rowspan="3" colspan="2">
-                  16.CITIZENSHIP<br />If holder of dual citizenship,<br />please
-                  indicate the details.
-                </td>
-                <td colspan="3">
-                  <v-text-field
-                    placeholder=""
-                    solo
-                    id="personalCitizenship"
-                    v-model="personalCitizenship"
-                    dense
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-              </tr>
-              <tr>
-                <td colspan="2" style="text-align: left">PLACE OF BIRTH</td>
-                <td colspan="2">
-                  <v-text-field
-                    placeholder=""
-                    solo
-                    v-model="personalPlaceOfBirth"
-                    id="personalPOB"
-                    dense
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-
-                <td colspan="3">
-                  <v-text-field
-                    label="Pls. indicate country:"
-                    v-model="countryOfCitizenship"
-                    id="countryOfCitizenship"
-                    dense
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-              </tr>
-              <tr>
-                <td colspan="2" style="text-align: left">SEX</td>
-                <td colspan="2">
-                  <v-text-field
-                    placeholder=""
-                    solo
-                    id="personalSex"
-                    v-model="personalSex"
-                    dense
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-                <td colspan="3">
-                  <v-text-field
-                    label="Input Dual Citizenship"
-                    dense
-                    id="personalDualCitizenship"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-              </tr>
-              <tr>
-                <td colspan="2" style="text-align: left" rowspan="2">
-                  CIVIL STATUS
-                </td>
-                <td rowspan="2" colspan="2">
-                  <v-text-field
-                    placeholder=""
-                    solo
-                    dense
-                    v-model="personalCivilStatus"
-                    id="personalCivilStatus"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-                <td rowspan="4">
-                  RESIDENTIAL<br />
-                  ADDRESS<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-                  ZIP CODE
-                </td>
-                <td rowspan="1" colspan="2">
-                  <v-text-field
-                    label="House/Block/Lot No."
-                    id="personalHouseNo"
-                    v-model="personalResAddressHouseNo"
-                    dense
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-                <td rowspan="1" colspan="2">
-                  <v-text-field
-                    label="Street"
-                    v-model="personalResAddressStreet"
-                    filled
-                    id="personalStreet"
-                    dense
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-              </tr>
-
-              <tr>
-                <td rowspan="1" colspan="2">
-                  <v-text-field
-                    label="Subdivision/Village"
-                    filled
-                    v-model="personalResAddressSubdivision"
-                    id="personalSubdivision"
-                    dense
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-                <td rowspan="1" colspan="2">
-                  <v-text-field
-                    label="Barangay"
-                    filled
-                    v-model="personalResAddressBarangay"
-                    id="personalBarangay"
-                    dense
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-              </tr>
-
-              <tr>
-                <td colspan="2" style="text-align: left">HEIGHT (m)</td>
-                <td colspan="2">
-                  <v-text-field
-                    placeholder=""
-                    solo
-                    v-model="personalHeight"
-                    dense
-                    id="personalHeight"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-                <td colspan="2">
-                  <v-text-field
-                    label="City/Municipality"
-                    filled
-                    v-model="personalResAddressCity"
-                    dense
-                    id="personalCity"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-                <td colspan="2">
-                  <v-text-field
-                    label="Province"
-                    filled
-                    dense
-                    v-model="personalResAddressProvince"
-                    id="personalProvince"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-              </tr>
-              <tr>
-                <td colspan="2" style="text-align: left">WEIGHT (kg)</td>
-                <td colspan="2">
-                  <v-text-field
-                    placeholder=""
-                    solo
-                    id="personalWeight"
-                    v-model="personalWeight"
-                    dense
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-
-                <td colspan="3">
-                  <v-text-field
-                    placeholder=""
-                    solo
-                    id="personalZipCode"
-                    dense
-                    v-model="personalZipCode"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-              </tr>
-              <tr>
-                <td colspan="2" style="text-align: left">BLOOD TYPE</td>
-                <td colspan="2">
-                  <v-text-field
-                    placeholder=""
-                    solo
-                    v-model="personalBloodType"
-                    id="personalBloodType"
-                    dense
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-                <td rowspan="4">
-                  PERMANENT ADDRESS<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-                  ZIP CODE
-                </td>
-                <td colspan="2">
-                  <v-text-field
-                    label="House/Block/Lot No."
-                    filled
-                    id="permanentHouseNo"
-                    v-model="personalPermanentAddHouseNo"
-                    dense
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-                <td colspan="2">
-                  <v-text-field
-                    label="Street"
-                    filled
-                    v-model="personalPermanentAddStreet"
-                    id="permanentStreet"
-                    dense
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-              </tr>
-              <tr>
-                <td colspan="2" style="text-align: left">GSIS ID NO.</td>
-                <td colspan="2">
-                  <v-text-field
-                    placeholder=""
-                    solo
-                    v-model="personalGSISIDNo"
-                    id="personalGsisId"
-                    dense
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-                <td colspan="2">
-                  <v-text-field
-                    label="Subdivision/Village"
-                    filled
-                    v-model="personalPermanentAddSubdivision"
-                    dense
-                    id="permanentSubdivision"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-                <td colspan="2">
-                  <v-text-field
-                    label="Barangay"
-                    filled
-                    v-model="personalPermanentAddBarangay"
-                    id="permanentBarangay"
-                    dense
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-              </tr>
-              <tr>
-                <td colspan="2" style="text-align: left">PAG-IBIG ID NO.</td>
-                <td colspan="2">
-                  <v-text-field
-                    placeholder=""
-                    solo
-                    v-model="personalPAGIBIGIDNo"
-                    dense
-                    id="personalPagibigIdNo"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-                <td colspan="2">
-                  <v-text-field
-                    label="City/Municipality"
-                    filled
-                    v-model="personalPermanentAddCity"
-                    dense
-                    id="permanentCity"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-                <td colspan="2">
-                  <v-text-field
-                    label="Province"
-                    filled
-                    v-model="personalPermanentAddProvince"
-                    id="permanentProvince"
-                    dense
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-              </tr>
-              <tr>
-                <td colspan="2" style="text-align: left">PHILHEALTH NO.</td>
-                <td colspan="2">
-                  <v-text-field
-                    placeholder=""
-                    solo
-                    v-model="personalPHILHEALTHNo"
-                    dense
-                    id="permanentPhilhealthNo"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-                <td colspan="3">
-                  <v-text-field
-                    placeholder=""
-                    v-model="personalPermanentAddZipCode"
-                    solo
-                    dense
-                    id="permanentZipCode"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-              </tr>
-              <tr>
-                <td colspan="2" style="text-align: left">SSS NO.</td>
-                <td colspan="2">
-                  <v-text-field
-                    placeholder=""
-                    solo
-                    v-model="personalSSSNo"
-                    id="personalSssNo"
-                    dense
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-                <td>19.TELEPHONE NO.</td>
-                <td colspan="3">
-                  <v-text-field
-                    v-model="personalTelephoneNo"
-                    placeholder=""
-                    solo
-                    id="personalTelephoneNo"
-                    dense
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-              </tr>
-              <tr>
-                <td colspan="2" style="text-align: left">14.TIN NO.</td>
-                <td colspan="2">
-                  <v-text-field
-                    placeholder=""
-                    solo
-                    v-model="personalTinNo"
-                    id="personalTinNo"
-                    dense
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-                <td>20.MOBILE NO.</td>
-                <td colspan="3">
-                  <v-text-field
-                    v-model="personalMobileNo"
-                    placeholder=""
-                    solo
-                    id="personalMobileNo"
-                    dense
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-              </tr>
-              <tr>
-                <td colspan="2" style="text-align: left">
-                  AGENCY EMPLOYEE NO.
-                </td>
-                <td colspan="2">
-                  <v-text-field
-                    placeholder=""
-                    filled
-                    v-model="personalAgencyEmployeeNo"
-                    id="personalAgencyEmpNo"
-                    dense
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-                <td>21. E-MAIL ADDRESS (if any)</td>
-
-                <td colspan="3">
-                  <v-text-field
-                    placeholder=""
-                    filled
-                    dense
-                    v-model="personalEmailAddress"
-                    id="personalEmailAddress"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-              </tr>
-            </tbody>
-          </template>
-        </v-simple-table>
-        <v-simple-table height="auto" class="pa-0 pa-0 ma-12" width="80vw">
-          <template v-slot:default>
-            <thead>
-              <tr clas="pa-0">
-                <th colspan="5">II. FAMILY BACKGROUND</th>
-              </tr>
-            </thead>
-            <tbody class="" color="secondary">
-              <tr>
-                <td width="50px">SPOUSE'S SURNAME</td>
-                <td colspan="4">
-                  <v-text-field
-                    placeholder=""
-                    solo
-                    v-model="familySpouseSurname"
-                    id="spouseSurname"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-                <td>
-                  23. NAME of CHILDREN (Write full name and list all)
-                  <button class="material-icons" @click="addRow('children')">
-                    add_circle
-                  </button>
-                </td>
-                <td>DATE OF BIRTH (mm/dd/yyyy)</td>
-              </tr>
-
-              <tr>
-                <td width="80px">FIRST NAME</td>
-                <td colspan="3">
-                  <v-text-field
-                    placeholder=""
-                    solo
-                    v-model="familySpouseFirstName"
-                    id="spouseFirstName"
-                    dense
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-                <td colspan="1">
-                  <v-text-field
-                    label="NAME EXTENSION (JR., SR)"
-                    filled
-                    v-model="familySpouseSuffix"
-                    id="spouseSuffix"
-                    dense
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-                <td colspan="1" rowspan="6">
-                  <v-container v-for="row in children" :key="row.childName">
-                    <v-text-field
                       solo
-                      v-model="row.childName"
+                      v-model="secondChild"
                       dense
                       class="text-center pt-6 float-left"
                       type="text"
-                      style="width: 70%"
+                      style="width: 100%"
                     >
                     </v-text-field>
-                    <button
-                      class="material-icons float-right pt-10"
-                      @click="removeRow('children', row)"
-                    >
-                      remove_circle
-                    </button>
-                  </v-container>
                 </td>
-                <td colspan="2">
-                  <v-row>
-                    <v-col cols="12" sm="8" md="8" class="text-center">
-                      <v-menu
-                        ref="personalDialog"
-                        v-model="spouseDOBMenu"
-                        persistent
-                        width="290px"
-                      >
-                        <template v-slot:activator="{ on, attrs }">
-                          <v-text-field
-                            v-model="computedDateFormattedSpouseDOB"
-                            label=""
-                            append-icon="mdi-calendar"
-                            readonly
-                            v-bind="attrs"
-                            v-on="on"
-                          ></v-text-field>
-                        </template>
-                        <v-date-picker
-                          class="float-right"
-                          v-model="dateOfBirthSpouse"
-                          scrollable
-                        >
-                        </v-date-picker>
-                      </v-menu>
-                    </v-col>
-                  </v-row>
-                </td>
-              </tr>
-              <tr>
-                <td width="80px">MIDDLE NAME</td>
-                <td colspan="4">
-                  <v-text-field
-                    placeholder=""
-                    outlined
-                    v-model="familySpouseMiddleName"
-                    id="spouseMiddleName"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-
-                <td colspan="1">
-                  <v-text-field
-                    placeholder=""
-                    id="childDOB2"
-                    readonly
-                    solo
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
+                <td></td>
               </tr>
 
               <tr>
-                <td max-width="100px">OCCUPATION</td>
-                <td colspan="4">
+                <td style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">OCCUPATION</td>
+                <td colspan="3">
                   <v-text-field
-                    placeholder=""
+                    dense
                     solo
                     v-model="familySpouseOccupation"
                     id="spouseOccupation"
@@ -4327,25 +1954,26 @@
                   >
                   </v-text-field>
                 </td>
-
-                <td colspan="1">
+                <td colspan="3">
                   <v-text-field
-                    placeholder=""
-                    id="childDOB3"
-                    solo
-                    readonly
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
+                      solo
+                      v-model="thirdChild"
+                      dense
+                      class="text-center pt-6"
+                      type="text"
+                   
+                    >
+                    </v-text-field>
                 </td>
+                <td colspan="1"></td>
               </tr>
               <tr>
-                <td max-width="100px">EMPLOYER/BUSINESS NAME</td>
-                <td colspan="4">
+                <td max-width="100px" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">EMPLOYER/BUSINESS NAME</td>
+                <td colspan="3">
                   <v-text-field
                     placeholder=""
                     solo
+                    dense
                     v-model="familyEmployerName"
                     id="employerNameFamilyBackground"
                     class="text-center pt-6"
@@ -4353,25 +1981,26 @@
                   >
                   </v-text-field>
                 </td>
-
-                <td colspan="1">
+                <td colspan="3">
                   <v-text-field
-                    placeholder=""
-                    solo
-                    readonly
-                    id="childDOB4"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
+                      solo
+                      v-model="fourthChild"
+                      dense
+                      class="text-center pt-6"
+                      type="text"
+                      style="width: 100%"
+                    >
+                    </v-text-field>
                 </td>
+                <td colspan="1"></td>
               </tr>
               <tr>
-                <td max-width="100px">BUSINESS ADDRESS</td>
-                <td colspan="4">
+                <td max-width="100px" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">BUSINESS ADDRESS</td>
+                <td colspan="3">
                   <v-text-field
                     placeholder=""
                     solo
+                    dense
                     v-model="familyBusinessAddress"
                     id="businessAddressFamilyBackground"
                     class="text-center pt-6"
@@ -4379,25 +2008,26 @@
                   >
                   </v-text-field>
                 </td>
-
-                <td colspan="1">
+                <td colspan="3">
                   <v-text-field
-                    placeholder=""
-                    solo
-                    readonly
-                    id="childDOB5"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
+                      solo
+                      v-model="fifthChild"
+                      dense
+                      class="text-center pt-6 float-left"
+                      type="text"
+                      style="width: 100%"
+                    >
+                    </v-text-field>
                 </td>
+                <td colspan="1"></td>
               </tr>
               <tr>
-                <td max-width="100px">TELEPHONE NO.</td>
-                <td colspan="4">
+                <td max-width="100px" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">TELEPHONE NO.</td>
+                <td colspan="3">
                   <v-text-field
                     placeholder=""
                     solo
+                    dense
                     v-model="familyTelephoneNo"
                     id="telephonNumberFamilyBackground"
                     class="text-center pt-6"
@@ -4405,25 +2035,28 @@
                   >
                   </v-text-field>
                 </td>
-                <td colspan="1">
+                <td colspan="3">
                   <v-text-field
-                    placeholder=""
-                    solo
-                    readonly
-                    id="childDOB6"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
+                      solo
+                      v-model="sixthChild"
+                      dense
+                      class="text-center pt-6 float-left"
+                      type="text"
+                      style="width: 100%"
+                    >
+                    </v-text-field>
                 </td>
+                <td colspan="1"></td>
               </tr>
 
               <tr>
-                <td>25. FATHER'S SURNAME</td>
-                <td colspan="4">
+                <td style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">25. FATHER'S SURNAME</td>
+                <td colspan="3">
                   <v-text-field
                     placeholder=""
                     solo
+                    dense
+                    :rules="required"
                     v-model="familyFatherSurname"
                     id="fatherSurname"
                     class="text-center pt-6"
@@ -4431,30 +2064,23 @@
                   >
                   </v-text-field>
                 </td>
-                <td colspan="1">
-                  <v-text-field
-                    placeholder=""
-                    solo
-                    readonly
-                    id="childFullName7"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
+                <td colspan="3"></td>
                 <td colspan="1">
                   <v-row>
-                    <v-col cols="12" sm="8" md="8" class="text-center">
+                    <v-col cols="12" sm="12" md="12" class="text-center">
                       <v-menu
-                        ref="personalDialog"
                         v-model="fatherDOBMenu"
-                        persistent
-                        width="290px"
+                        :close-on-content-click="false"
+                        :nudge-right="40"
+                        transition="scale-transition"
+                        offset-y
+                        min-width="auto"
                       >
                         <template v-slot:activator="{ on, attrs }">
                           <v-text-field
                             v-model="computedDateFormattedFatherDOB"
                             label=""
+                            :rules="required"
                             append-icon="mdi-calendar"
                             readonly
                             v-bind="attrs"
@@ -4465,6 +2091,7 @@
                           class="float-right"
                           v-model="dateOfBirthFather"
                           scrollable
+                          @input="fatherDOBMenu = false"
                         >
                         </v-date-picker>
                       </v-menu>
@@ -4473,12 +2100,13 @@
                 </td>
               </tr>
               <tr>
-                <td width="80px">FIRST NAME</td>
-                <td colspan="3">
+                <td width="80px" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">FIRST NAME</td>
+                <td colspan="2">
                   <v-text-field
                     placeholder=""
                     solo
                     v-model="familyFatherFirstName"
+                    :rules="required"
                     id="fatherFirstName"
                     dense
                     class="text-center pt-6"
@@ -4486,9 +2114,9 @@
                   >
                   </v-text-field>
                 </td>
-                <td colspan="1">
+                <td colspan="1" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">
                   <v-text-field
-                    label="NAME EXTENSION (JR., SR)"
+                    label="(JR., SR)"
                     filled
                     id="fatherSuffix"
                     v-model="familyFatherSuffix"
@@ -4498,39 +2126,15 @@
                   >
                   </v-text-field>
                 </td>
-                <td colspan="1">
-                  <v-text-field
-                    placeholder=""
-                    solo
-                    flat
-                    readonly
-                    v-model="nameOfChildrenEight"
-                    id="childFullName8"
-                    dense
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-                <td colspan="1">
-                  <v-text-field
-                    placeholder=""
-                    solo
-                    flat
-                    readonly
-                    id="childDOB8"
-                    dense
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
+                <td colspan="3"></td>
+                <td colspan="1"></td>
               </tr>
               <tr>
-                <td width="80px">MIDDLE NAME</td>
-                <td colspan="4">
+                <td width="80px" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">MIDDLE NAME</td>
+                <td colspan="3">
                   <v-text-field
                     placeholder=""
+                    :rules="required"
                     solo
                     v-model="familyFatherMiddleName"
                     id="fatherMiddleName"
@@ -4539,37 +2143,17 @@
                   >
                   </v-text-field>
                 </td>
-                <td colspan="1">
-                  <v-text-field
-                    placeholder=""
-                    solo
-                    flat
-                    readonly
-                    id="childFullName9"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-                <td colspan="1">
-                  <v-text-field
-                    placeholder=""
-                    solo
-                    flat
-                    readonly
-                    id="childDOB9"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
+                <td colspan="3"></td>
+                <td colspan="1"></td>
               </tr>
               <tr>
-                <td>26. MOTHER'S MAIDEN NAME</td>
-                <td colspan="4">
+                <td style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">26. MOTHER'S MAIDEN NAME</td>
+                <td colspan="3">
                   <v-text-field
                     placeholder=""
                     solo
+                    dense
+                    :rules="required"
                     v-model="familyMotherMaidenName"
                     id="motherMaidenName"
                     class="text-center pt-6"
@@ -4577,26 +2161,17 @@
                   >
                   </v-text-field>
                 </td>
-                <td colspan="1">
-                  <v-text-field
-                    placeholder=""
-                    solo
-                    flat
-                    readonly
-                    id="childFullName10"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
+                <td colspan="3"></td>
                 <td colspan="1">
                   <v-row>
-                    <v-col cols="12" sm="8" md="8" class="text-center">
+                    <v-col cols="12" sm="12" md="12" class="text-center">
                       <v-menu
-                        ref="personalDialog"
                         v-model="motherDOBMenu"
-                        persistent
-                        width="290px"
+                        :close-on-content-click="false"
+                        :nudge-right="40"
+                        transition="scale-transition"
+                        offset-y
+                        min-width="auto"
                       >
                         <template v-slot:activator="{ on, attrs }">
                           <v-text-field
@@ -4604,6 +2179,7 @@
                             label=""
                             append-icon="mdi-calendar"
                             readonly
+                            :rules="required"
                             v-bind="attrs"
                             v-on="on"
                           ></v-text-field>
@@ -4612,6 +2188,7 @@
                           class="float-right"
                           v-model="dateOfBirthMother"
                           scrollable
+                          @input="motherDOBMenu = false"
                         >
                         </v-date-picker>
                       </v-menu>
@@ -4620,49 +2197,30 @@
                 </td>
               </tr>
               <tr>
-                <td>SURNAME</td>
-                <td colspan="4">
+                <td style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">SURNAME</td>
+                <td colspan="3">
                   <v-text-field
                     placeholder=""
                     solo
+                    dense
                     v-model="familyMotherSurname"
+                    :rules="required"
                     id="motherSurname"
                     class="text-center pt-6"
                     type="text"
                   >
                   </v-text-field>
                 </td>
-                <td colspan="1">
-                  <v-text-field
-                    placeholder=""
-                    solo
-                    flat
-                    readonly
-                    id="childFullName11"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-                <td colspan="1">
-                  <v-text-field
-                    placeholder=""
-                    solo
-                    flat
-                    readonly
-                    id="childDOB11"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
+                <td colspan="3"></td>
+                <td colspan="1"></td>
               </tr>
               <tr>
-                <td width="80px">FIRST NAME</td>
-                <td colspan="4">
+                <td style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">FIRST NAME</td>
+                <td colspan="3">
                   <v-text-field
                     placeholder=""
                     solo
+                    :rules="required"
                     v-model="familyMotherFirstName"
                     id="motherFirstName"
                     dense
@@ -4672,108 +2230,55 @@
                   </v-text-field>
                 </td>
 
-                <td colspan="1">
-                  <v-text-field
-                    placeholder=""
-                    solo
-                    flat
-                    readonly
-                    id="childFullName12"
-                    dense
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-                <td colspan="1">
-                  <v-text-field
-                    placeholder=""
-                    solo
-                    id="childDOB12"
-                    dense
-                    flat
-                    readonly
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
+                <td colspan="3"></td>
+                <td colspan="1"></td>
               </tr>
               <tr>
-                <td width="80px">MIDDLE NAME</td>
-                <td colspan="4">
+                <td style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">MIDDLE NAME</td>
+                <td colspan="3">
                   <v-text-field
                     placeholder=""
                     solo
+                    dense
                     v-model="familyMotherMiddleName"
                     id="motherMiddleName"
                     class="text-center pt-6"
+                    :rules="required"
                     type="text"
                   >
                   </v-text-field>
                 </td>
-                <td colspan="1">
-                  <v-text-field
-                    placeholder=" "
-                    solo
-                    flat
-                    readonly
-                    id="childFullName13"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
-                <td colspan="1">
-                  <v-text-field
-                    placeholder=""
-                    solo
-                    flat
-                    readonly
-                    id="childDOB13"
-                    class="text-center pt-6"
-                    type="text"
-                  >
-                  </v-text-field>
-                </td>
+                <td colspan="3"></td>
+                <td colspan="1"></td>
               </tr>
-            </tbody>
-          </template>
-        </v-simple-table>
-
-        <v-simple-table height="auto" class="pa-0 pa-0 ma-12" width="80vw">
-          <template v-slot:default>
-            <thead cols="4">
-              <tr clas="pa-0">
-                <th colspan="4">III. EDUCATIONAL BACKGROUND</th>
+              <tr clas="pa-0 float-left" style="border:solid 1px;background-color:rgb(160, 160, 160)">
+                <td colspan="8" class="text-left" style="border:solid 1px black;color:white">III. EDUCATIONAL BACKGROUND</td>
               </tr>
-            </thead>
-            <tbody class="text-center" color="secondary">
               <tr>
-                <td rowspan="2">LEVEL</td>
-                <td rowspan="2">NAME OF SCHOOL<br />(Write in full)</td>
-                <td rowspan="2">
+                <td rowspan="2" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">LEVEL</td>
+                <td rowspan="2" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">NAME OF SCHOOL<br />(Write in full)</td>
+                <td rowspan="2" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">
                   BASIC EDUCATION/DEGREE/COURSE<br />(Write in full)
                 </td>
-                <td colspan="2">PERIOD OF ATTENDANCE<br />From To</td>
-                <td rowspan="2">
+                <td colspan="2" rowspan="1" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">PERIOD OF ATTENDANCE<br /></td>
+                <td rowspan="2" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">
                   HIGHEST LEVEL/UNITS EARNED (if not graduated)
                 </td>
-                <td rowspan="2">YEAR GRADUATED</td>
-                <td rowspan="2">SCHOLARSHIP/ ACADEMIC HONORS RECEIVED</td>
-                <td rowspan="2">
+                <td rowspan="2" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">YEAR GRADUATED</td>
+                <td rowspan="2" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">SCHOLARSHIP/ ACADEMIC HONORS RECEIVED
                   <button
                     class="material-icons"
-                    @click="addRow('educationalBackground')"
+                    @click.prevent="addRow('educationalBackground')"
                   >
                     add_circle
                   </button>
                 </td>
+               
               </tr>
 
               <tr>
-                <td>From</td>
-                <td>To</td>
+                <td style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">From</td>
+                <td style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">To</td>
               </tr>
 
               <tr
@@ -4784,6 +2289,7 @@
                   <v-text-field
                     placeholder=""
                     solo
+                    dense
                     v-model="row.educBackgroundLevel"
                     class="text-center pt-6"
                     type="text"
@@ -4794,6 +2300,8 @@
                   <v-text-field
                     placeholder=""
                     solo
+                    dense
+                    :rules="required"
                     v-model="row.educBackgroundNameOfSchool"
                     class="text-center pt-6"
                     type="text"
@@ -4802,6 +2310,7 @@
                 </td>
                 <td colspan="1">
                   <v-text-field
+                  dense
                     placeholder=""
                     v-model="row.educBackgroundBasicEducation"
                     solo
@@ -4812,7 +2321,10 @@
                 </td>
                 <td colspan="1">
                   <v-text-field
+                  dense
                     placeholder=""
+                    :rules="required"
+                   
                     v-model="row.educBackgroundPeriodOfAttendanceFrom"
                     solo
                     class="text-center pt-6"
@@ -4822,8 +2334,11 @@
                 </td>
                 <td colspan="1">
                   <v-text-field
+                  dense
                     placeholder=""
+                   
                     solo
+                    :rules="required"
                     v-model="row.educBackgroundPeriodOfAttendanceTo"
                     class="text-center pt-6"
                     type="text"
@@ -4832,6 +2347,7 @@
                 </td>
                 <td colspan="1">
                   <v-text-field
+                  dense
                     placeholder=""
                     solo
                     v-model="row.educBackgroundHighestLevel"
@@ -4842,6 +2358,7 @@
                 </td>
                 <td colspan="1">
                   <v-text-field
+                  dense
                     placeholder=""
                     solo
                     v-model="row.educBackgroundYearGraduated"
@@ -4853,8 +2370,198 @@
                 <td colspan="1">
                   <v-text-field
                     placeholder=""
+                    dense
+                    style="width:80%"
                     v-model="row.educBackgroundScholarship"
                     solo
+                    class="text-center pt-6 float-left"
+                    type="text"
+                  >
+                  </v-text-field>
+                  <button
+                    class="material-icons float-right mt-7"
+                    @click="removeRow('educationalBackground', row)"
+                  >
+                    remove_circle
+                  </button>
+                </td>
+              </tr>
+              <tr style="background-color:rgb(211,211,211)">
+                <td colspan="8"></td>
+              </tr>
+              <tr>
+                <td style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">SIGNATURE</td>
+                <td colspan="2">
+                  <v-file-input
+                     :rules="[(value) => !value || value.size < 5000000 || 'Avatar size should be less than 2 MB!',]"
+                    readonly
+                    dense
+                    counter
+                    show-size
+                    chips
+                    solo
+                    accept="image/png, image/jpeg, image/bmp"
+                    v-model="educBackgroundSignature"
+                    id="signaturePart1"
+                    class="text-center pt-6"
+                    
+                  >
+                  </v-file-input>
+                </td>
+
+                <td colspan="2" class="pl-10" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">DATE</td>
+                <td colspan="3">
+                  <v-row>
+                    <v-col cols="12" sm="8" md="8" class="text-center">
+                      <v-menu
+                        v-model="educBackgroundDOSMenu"
+                        :close-on-content-click="false"
+                        :nudge-right="40"
+                        transition="scale-transition"
+                        offset-y
+                        min-width="auto"
+                      >
+                        <template v-slot:activator="{ on, attrs }">
+                          <v-text-field
+                            v-model="computedDateFormattedEducBackgroundDOS"
+                            append-icon="mdi-calendar"
+                            readonly
+                            :rules="required"
+                            v-bind="attrs"
+                            v-on="on"
+                          ></v-text-field>
+                        </template>
+                        <v-date-picker
+                          v-model="educBackgroundDateOfSignature"
+                          scrollable
+                          @input="educBackgroundDOSMenu = false"
+                        >
+                        </v-date-picker>
+                      </v-menu>
+                    </v-col>
+                  </v-row>
+                </td>
+              </tr>
+              </tbody
+          ></v-simple-table>
+        </v-form>
+      </v-tab-item>
+      <v-tab>C2</v-tab>
+      <v-tab-item>
+        <v-form ref="pdsB">
+          <v-simple-table height="auto" class="pa-0 pa-0 ma-0" >
+            <thead>
+              <tr clas="pa-0 float-left" style="border:solid 1px;background-color:rgb(160, 160, 160)">
+                <td colspan="9" style="text-align: left;border:solid 1px black;color:white">
+                  IV. CIVIL SERVICE ELIGIBILITY
+                </td>
+              </tr>
+
+              <tr style="border: solid 1px black">
+                <th rowspan="2" colspan="2" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">
+                  CAREER SERVICE/ RA 1080 (BOARD/ BAR) UNDER SPECIAL LAWS/ CES/
+                  CSEE BARANGAY ELIGIBILITY / DRIVER'S LICENSE
+                </th>
+                <th rowspan="2" colspan="1" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">
+                  RATING <br />(If Applicable)
+                </th>
+                <th rowspan="2" colspan="1" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">
+                  DATE OF EXAMINATION / CONFERMENT
+                </th>
+                <th rowspan="2" colspan="2" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">
+                  PLACE OF EXAMINATION / CONFERMENT
+                </th>
+                <th colspan="2" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">
+                  LICENSE (if applicable)
+                </th>
+                <th rowspan="2" colspan="1" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">
+                  <button
+                    class="material-icons"
+                    @click.prevent="addRow('civilServiceEligibility')"
+                  >
+                    add_circle
+                  </button>
+                </th>
+              </tr>
+              <tr>
+                <th style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">NUMBER</th>
+                <th style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">Date of Validity</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                v-for="row in civilServiceEligibility"
+                :key="row.careerService"
+              >
+                <td colspan="2">
+                  <v-text-field
+                    placeholder=""
+                    solo
+                    dense
+                    :rules="required"
+                    v-model="row.careerService"
+                    value=""
+                    class="text-center pt-6"
+                    type="text"
+                  >
+                  </v-text-field>
+                </td>
+                <td colspan="1">
+                  <v-text-field
+                    placeholder=""
+                    v-model="row.rating"
+                    solo
+                   
+                    :rules="required"
+                    dense
+                    class="text-center pt-6"
+                    type="text"
+                  >
+                  </v-text-field>
+                </td>
+                <td colspan="1">
+                  <v-text-field
+                    placeholder=""
+                    :rules="required"
+                    solo
+                    dense
+                    v-model="row.dateOfExamination"
+                    class="text-center pt-6"
+                    type="text"
+                  >
+                  </v-text-field>
+                </td>
+                <td colspan="2">
+                  <v-text-field
+                    placeholder=""
+                    :rules="required"
+                    solo
+                    v-model="row.placeOfExamination"
+                    dense
+                    class="text-center pt-6"
+                    type="text"
+                  >
+                  </v-text-field>
+                </td>
+                <td colspan="1">
+                  <v-text-field
+                    placeholder=""
+                    :rules="required"
+                    v-model="row.licenseNumber"
+                    solo
+                    dense
+                    class="text-center pt-6"
+                    type="text"
+                  >
+                  </v-text-field>
+                </td>
+                <td colspan="1">
+                  <v-text-field
+                    placeholder=""
+                    solo
+                    :rules="required"
+                    v-model="row.dateOfValidity"
+                    dense
                     class="text-center pt-6"
                     type="text"
                   >
@@ -4863,7 +2570,166 @@
                 <td colspan="1">
                   <button
                     class="material-icons"
-                    @click="removeRow('educationalBackground', row)"
+                    @click="removeRow('civilServiceEligibility', row)"
+                  >
+                    remove_circle
+                  </button>
+                </td>
+              </tr>
+              <tr style="background-color:rgb(211,211,211); ">
+                <td colspan="9" style="height:25px;"></td>
+              </tr>
+              <tr clas="pa-0 float-left" style="border:solid 1px;background-color:rgb(160, 160, 160)">
+                <th colspan="9" style="text-align: left;border:solid 1px black;color:white">
+                  V. WORK EXPERIENCE <br />
+                  (Include private employment. Start from your recent work.)
+                  Description of duties should be indicated in the attached Work
+                  Experience sheet.
+                </th>
+              </tr>
+
+              <tr>
+                <th colspan="2" style="text-align: left;border:solid 1px black">
+                  28. INCLUSIVE DATES (mm/dd/yyyy)
+                </th>
+                <th rowspan="2" colspan="1" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">
+                  POSITION TITLE (Write in full/Do not abbreviate)
+                </th>
+                <th rowspan="2" colspan="1" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">
+                  DEPARTMENT / AGENCY / OFFICE / COMPANY (Write in full/Do not
+                  abbreviate)
+                </th>
+                <th rowspan="2" colspan="1" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">
+                  MONTHLY SALARY
+                </th>
+                <th colspan="1" rowspan="2" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">
+                  SALARY/ JOB/ PAY GRADE (if applicable)& STEP (Format "00-0")/
+                  INCREMENT
+                </th>
+                <th colspan="1" rowspan="2" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">
+                  STATUS OF APPOINTMENT
+                </th>
+                <th colspan="1" rowspan="2" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">
+                  GOV'T SERVICE (Y/ N)
+                </th>
+                <th rowspan="2" colspan="1" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">
+                  <button
+                    class="material-icons"
+                    @click.prevent="addRow(workExperience)"
+                  >
+                    add_circle
+                  </button>
+                </th>
+              </tr>
+              <tr>
+                <th style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">From</th>
+                <th style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">To</th>
+              </tr>
+          
+              <tr
+                v-for="row in workExperience"
+                :key="row.inclusiveDateFromWorkExperience"
+              >
+                <td colspan="1">
+                  <v-text-field
+                    placeholder=""
+                    solo
+                    :rules="required"
+                    v-model="row.inclusiveDateFromWorkExperience"
+                    value=""
+                    class="text-center pt-6"
+                    type="text"
+                  >
+                  </v-text-field>
+                </td>
+                <td colspan="1">
+                  <v-text-field
+                    placeholder=""
+                    solo
+                    :rules="required"
+                    v-model="row.inclusiveDateToWorkExperience"
+                    dense
+                    class="text-center pt-6"
+                    type="text"
+                  >
+                  </v-text-field>
+                </td>
+                <td colspan="1">
+                  <v-text-field
+                    placeholder=""
+                    solo
+                    :rules="required"
+                    dense
+                    v-model="row.positionTitleWorkExperience"
+                    class="text-center pt-6"
+                    type="text"
+                  >
+                  </v-text-field>
+                </td>
+                <td colspan="1">
+                  <v-text-field
+                    placeholder=""
+                    solo
+                    :rules="required"
+                    v-model="row.departmentWorkExperience"
+                    dense
+                    class="text-center pt-6"
+                    type="text"
+                  >
+                  </v-text-field>
+                </td>
+                <td colspan="1">
+                  <v-text-field
+                    placeholder=""
+                    solo
+                    :rules="required"
+                    dense
+                    v-model="row.monthlySalaryWorkExperience"
+                    class="text-center pt-6"
+                    type="text"
+                  >
+                  </v-text-field>
+                </td>
+                <td colspan="1">
+                  <v-text-field
+                    placeholder=""
+                    solo
+                    dense
+                    :rules="required"
+                    v-model="row.salaryGradeWorkExperience"
+                    class="text-center pt-6"
+                    type="text"
+                  >
+                  </v-text-field>
+                </td>
+                <td colspan="1">
+                  <v-text-field
+                    placeholder=""
+                    solo
+                    dense
+                    :rules="required"
+                    v-model="row.statusOfAppointmentWorkExperience"
+                    class="text-center pt-6"
+                    type="text"
+                  >
+                  </v-text-field>
+                </td>
+                <td colspan="1">
+                  <v-text-field
+                    placeholder=""
+                    solo
+                    dense
+                    :rules="required"
+                    v-model="row.governmentServiceWorkExperience"
+                    class="text-center pt-6"
+                    type="text"
+                  >
+                  </v-text-field>
+                </td>
+                <td colspan="1">
+                  <button
+                    class="material-icons"
+                    @click="removeRow('workExperience', row)"
                   >
                     remove_circle
                   </button>
@@ -4871,36 +2737,41 @@
               </tr>
             </tbody>
             <tfoot>
+              <tr clas="pa-0 float-left" style="border:solid 1px;background-color:rgb(211,211,211);">
+                <td colspan="9" style="height:25px"></td>
               <tr>
-                <td>SIGNATURE</td>
-                <td colspan="4">
+                <td style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">SIGNATURE</td>
+                <td colspan="3">
                   <v-file-input
                     solo
                     show-size
-                    ref=""
+                     counter
+                    :rules="required"
                     accept="image/png, image/jpeg, image/bmp"
-                    v-model="educBackgroundSignature"
+                    v-model="workExperienceSignature"
                     id="signaturePart1"
                     class="text-center pt-6"
                     chips
-                    @change="handleFileInput"
                   >
                   </v-file-input>
                 </td>
-                <td colspan="1" class="pl-10">DATE</td>
+                <td colspan="1" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">DATE</td>
                 <td colspan="4">
                   <v-row>
                     <v-col cols="12" sm="8" md="8" class="text-center">
                       <v-menu
-                        ref="personalDialog"
-                        v-model="educBackgroundDOSMenu"
-                        persistent
-                        width="290px"
+                        v-model="workExpDOSMenu"
+                        :close-on-content-click="false"
+                        :nudge-right="40"
+                        transition="scale-transition"
+                        offset-y
+                        min-width="auto"
                       >
                         <template v-slot:activator="{ on, attrs }">
                           <v-text-field
-                            v-model="computedDateFormattedEducBackgroundDOS"
+                            v-model="computedDateFormattedWorkExpDOS"
                             label=""
+                            :rules="required"
                             append-icon="mdi-calendar"
                             readonly
                             v-bind="attrs"
@@ -4909,8 +2780,9 @@
                         </template>
                         <v-date-picker
                           class="float-right"
-                          v-model="educBackgroundDateOfSignature"
+                          v-model="workExperienceDateOfSignature"
                           scrollable
+                          @input="workExpDOSMenu = false"
                         >
                         </v-date-picker>
                       </v-menu>
@@ -4919,315 +2791,380 @@
                 </td>
               </tr>
             </tfoot>
-          </template>
-        </v-simple-table>
+          </v-simple-table>
+        </v-form>
       </v-tab-item>
-      <v-tab>C2</v-tab>
+      <v-tab>C3</v-tab>
       <v-tab-item>
-        <v-simple-table height="auto" class="pa-0 pa-0 ma-12" width="80vw">
-          <thead>
-            <tr>
-              <th colspan="8" style="text-align: left">
-                IV. CIVIL SERVICE ELIGIBILITY
-              </th>
-            </tr>
+        <v-form ref="pdsC">
+          <v-simple-table height="auto" class="pa-0 pa-0 ma-0">
+            <thead>
+              <tr clas="pa-0 float-left" style="border:solid 1px;background-color:rgb(160, 160, 160);">
+                <th colspan="11"  style="text-align: left;border:solid 1px black;color:white">
+                  VI. VOLUNTARY WORK OR INVOLVEMENT IN CIVIC / NON-GOVERNMENT /
+                  PEOPLE / VOLUNTARY ORGANIZATION/S
+                </th>
+              </tr>
 
-            <tr>
-              <th rowspan="2" colspan="2" style="text-align: left">
-                CAREER SERVICE/ RA 1080 (BOARD/ BAR) UNDER SPECIAL LAWS/ CES/
-                CSEE BARANGAY ELIGIBILITY / DRIVER'S LICENSE
-              </th>
-              <th rowspan="2" colspan="2" style="text-align: left">
-                RATING <br />(If Applicable)
-              </th>
-              <th rowspan="2" colspan="2" style="text-align: left">
-                DATE OF EXAMINATION / CONFERMENT
-              </th>
-              <th rowspan="2" colspan="2" style="text-align: left">
-                PLACE OF EXAMINATION / CONFERMENT
-              </th>
-              <th colspan="2" style="text-align: left">
-                LICENSE (if applicable)
-              </th>
-              <th rowspan="2" colspan="2" style="text-align: left">
-                <button
-                  class="material-icons"
-                  @click="addRow('civilServiceEligibility')"
-                >
-                  add_circle
-                </button>
-              </th>
-            </tr>
-            <tr>
-              <th style="text-align: left">NUMBER</th>
-              <th style="text-align: left">Date of Validity</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="row in civilServiceEligibility" :key="row.careerService">
-              <td colspan="2">
-                <v-text-field
-                  placeholder=""
-                  solo
-                  v-model="row.careerService"
-                  value=""
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="2">
-                <v-text-field
-                  placeholder=""
-                  v-model="row.rating"
-                  solo
-                  dense
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="2">
-                <v-text-field
-                  placeholder=""
-                  solo
-                  dense
-                  v-model="row.dateOfExamination"
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="2">
-                <v-text-field
-                  placeholder=""
-                  solo
-                  v-model="row.placeOfExamination"
-                  dense
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="1">
-                <v-text-field
-                  placeholder=""
-                  v-model="row.licenseNumber"
-                  solo
-                  dense
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="1">
-                <v-text-field
-                  placeholder=""
-                  solo
-                  v-model="row.dateOfValidity"
-                  dense
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="2">
-                <button
-                  class="material-icons"
-                  @click="removeRow('civilServiceEligibility', row)"
-                >
-                  remove_circle
-                </button>
-              </td>
-            </tr>
-          </tbody>
-        </v-simple-table>
-        <v-simple-table height="auto" class="pa-0 pa-0 ma-12" width="80vw">
-          <thead>
-            <tr>
-              <th colspan="8" style="text-align: left">
-                V. WORK EXPERIENCE <br />
-                (Include private employment. Start from your recent work.)
-                Description of duties should be indicated in the attached Work
-                Experience sheet.
-              </th>
-            </tr>
+              <tr>
+                <th rowspan="2" colspan="3" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">
+                  29. NAME & ADDRESS OF ORGANIZATION (Write in full)
+                </th>
+                <th colspan="2" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">
+                  INCLUSIVE DATES (mm/dd/yyyy)
+                </th>
+                <th rowspan="2" colspan="1" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">
+                  NUMBER OF HOURS
+                </th>
+                <th rowspan="2" colspan="4" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">
+                  POSITION / NATURE OF WORK
+                </th>
+                <th rowspan="2" colspan="1" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">
+                  <button
+                    class="material-icons"
+                    @click.prevent="addRow('voluntaryWorkInvolvement')"
+                  >
+                    add_circle
+                  </button>
+                </th>
+              </tr>
+              <tr>
+                <th style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">From</th>
+                <th style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">To</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                v-for="row in voluntaryWorkInvolvement"
+                :key="row.id"
+              >
+                <td colspan="3">
+                  <v-text-field
+                    placeholder=""
+                    solo
+                    :rules="required"
+                    v-model="row.nameAndAddressOfOrgVolWork"
+                    dense
+                    class="text-center pt-6"
+                   
+                  >
+                  </v-text-field>
+                </td>
+                <td colspan="1">
+                  <v-text-field
+                    placeholder=""
+                    solo
+                    :rules="required"
+                    dense
+                    v-model="row.inclusiveDatesFromVolWork"
+                    class="text-center pt-6"
+                    type="text"
+                  >
+                  </v-text-field>
+                </td>
+                <td colspan="1">
+                  <v-text-field
+                    placeholder=""
+                    :rules="required"
+                    solo
+                    dense
+                    v-model="row.inclusiveDatesToVolWork"
+                    class="text-center pt-6"
+                    type="text"
+                  >
+                  </v-text-field>
+                </td>
+                <td colspan="1">
+                  <v-text-field
+                    placeholder=""
+                    :rules="required"
+                    solo
+                    v-model="row.numberOfHoursVolWork"
+                    dense
+                    class="text-center pt-6"
+                    type="text"
+                  >
+                  </v-text-field>
+                </td>
+                <td colspan="4">
+                  <v-text-field
+                    placeholder=""
+                    :rules="required"
+                    solo
+                    v-model="row.positionOfWorkVolWork"
+                    dense
+                    class="text-center pt-6"
+                    type="text"
+                  >
+                  </v-text-field>
+                </td>
 
+                <td colspan="1">
+                  <button
+                    class="material-icons"
+                    @click="removeRow('voluntaryWorkInvolvement', row)"
+                  >
+                    remove_circle
+                  </button>
+                </td>
+              </tr>
+               <tr clas="pa-0 float-left" style="border:solid 1px;background-color:rgb(211,211,211);">
+                <td colspan="11" style="height:25px"></td>
+              <tr>
+               <tr clas="pa-0 float-left" style="border:solid 1px;background-color:rgb(160, 160, 160);">
+                <th colspan="11" style="text-align: left;border:solid 1px black;color:white">
+                  VII. LEARNING AND DEVELOPMENT (L&D) INTERVENTIONS/TRAINING
+                  PROGRAMS ATTENDED<br />(Start from the most recent
+                  L&D/training program and include only the relevant
+                  L&D/training taken for the last five (5) years for Division
+                  Chief/Executive/Managerial positions)
+                </th>
+              </tr>
+
+              <tr>
+                <td rowspan="2" colspan="4" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">
+                  30. TITLE OF LEARNING AND DEVELOPMENT INTERVENTIONS/TRAINING
+                  PROGRAMS (Write in full)
+                </td>
+                <td colspan="2" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">
+                  INCLUSIVE DATES OF ATTENDANCE (mm/dd/yyyy)
+                </td>
+                <td rowspan="2" colspan="1" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">
+                  NUMBER OF HOURS
+                </td>
+                <td rowspan="2" colspan="1" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">
+                  Type of LD ( Managerial/ Supervisory/ Technical/etc)
+                </td>
+                <td rowspan="2" colspan="2" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">
+                  CONDUCTED/ SPONSORED BY (Write in full)
+                </td>
+
+                <td rowspan="2" colspan="1" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">
+                  <button
+                    class="material-icons"
+                    @click.prevent="addRow('learningAndDevelopment')"
+                  >
+                    add_circle
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <th style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">From</th>
+                <th style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">To</th>
+              </tr>
+
+              <tr
+                v-for="row in learningAndDevelopment"
+                :key="row.id"
+              >
+                <td colspan="4">
+                  <v-text-field
+                    :rules="required"
+                    placeholder=""
+                    solo
+                    dense
+                    v-model="row.learningAndDevelopmentInterventions"
+                    class="text-center pt-6"
+                    type="text"
+                  >
+                  </v-text-field>
+                </td>
+                <td colspan="1">
+                  <v-text-field
+                    placeholder=""
+                    :rules="required"
+                    solo
+                    v-model="row.learningAndDevelopmentInclusiveDatesFrom"
+                    dense
+                    class="text-center pt-6"
+                    type="text"
+                  >
+                  </v-text-field>
+                </td>
+                <td colspan="1">
+                  <v-text-field
+                    placeholder=""
+                    :rules="required"
+                    solo
+                    v-model="row.learningAndDevelopmentInclusiveDatesTo"
+                    dense
+                    class="text-center pt-6"
+                    type="text"
+                  >
+                  </v-text-field>
+                </td>
+                <td colspan="1">
+                  <v-text-field
+                    placeholder=""
+                    :rules="required"
+                    solo
+                    dense
+                    v-model="row.learningAndDevelopmentNumberOfHours"
+                    class="text-center pt-6"
+                    type="text"
+                  >
+                  </v-text-field>
+                </td>
+                <td colspan="1">
+                  <v-text-field
+                    placeholder=""
+                    :rules="required"
+                    solo
+                    dense
+                    v-model="row.learningAndDevelopmentTypeOfLD"
+                    class="text-center pt-6"
+                    type="text"
+                  >
+                  </v-text-field>
+                </td>
+                <td colspan="2">
+                  <v-text-field
+                    placeholder=""
+                    :rules="required"
+                    v-model="row.learningAndDevelopmentConductedBy"
+                    solo
+                    dense
+                    class="text-center pt-6"
+                    type="text"
+                  >
+                  </v-text-field>
+                </td>
+                <td colspan="1">
+                  <button
+                    class="material-icons"
+                    @click="removeRow('learningAndDevelopment', row)"
+                  >
+                    remove_circle
+                  </button>
+                </td>
+              </tr>
+               <tr clas="pa-0 float-left" style="border:solid 1px;background-color:rgb(211,211,211);">
+                <td colspan="11" style="height:25px"></td>
+              <tr>
+               <tr clas="pa-0 float-left" style="border:solid 1px;background-color:rgb(160, 160, 160);">
+                <th colspan="11" style="text-align: left;border:solid 1px black;color:white">
+                   VIII. OTHER INFORMATION
+                </th>
+                </tr>
+               <tr>
+                <td  colspan="3" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">
+                  SPECIAL SKILLS AND HOBBIES <br />(Write in full)
+                </td>
+                <td colspan="4" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">
+                 32. NON-ACADEMIC DISTINCTIONS/RECOGNITION <br />(Write in
+                    full)
+                </td>
+                <td  colspan="3" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">
+                  33. MEMBERSHIP IN ASSOCIATION/ORGANIZATION <br />(Write in
+                    full)
+                </td>
+                
+                <td colspan="1" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">
+                  <button
+                    class="material-icons"
+                    @click.prevent="addRow('otherInfo')"
+                  >
+                    add_circle
+                  </button>
+                </td>
+              </tr>
+              <tr
+                v-for="row in otherInfo"
+                :key="row.id"
+              >
+                <td colspan="3">
+                  <v-text-field
+                    :rules="required"
+                    placeholder=""
+                    solo
+                    dense
+                    v-model="row.otherInfoSpecialSkills"
+                    class="text-center pt-6"
+                    type="text"
+                  >
+                  </v-text-field>
+                </td>
+                <td colspan="4">
+                  <v-text-field
+                    placeholder=""
+                    :rules="required"
+                    solo
+                    v-model="row.otherInfoNonacademicDistinctions"
+                    dense
+                    class="text-center pa-6"
+                    type="text"
+                  >
+                  </v-text-field>
+                </td>
+                <td colspan="3">
+                  <v-text-field
+                    placeholder=""
+                    :rules="required"
+                    solo
+                    v-model="row.otherInfoAssociationMembers"
+                    dense
+                    class="text-center pt-6"
+                    type="text"
+                  >
+                  </v-text-field>
+                </td>
+                
+                <td colspan="1">
+                  <button
+                    class="material-icons"
+                    @click.prevent="removeRow('otherInfo', row)"
+                  >
+                    remove_circle
+                  </button>
+                </td>
+              </tr>
+               <tr clas="pa-0 float-left" style="border:solid 1px;background-color:rgb(211,211,211);">
+                <td colspan="11" style="height:25px"></td>
+              <tr>
             <tr>
-              <th colspan="2" style="text-align: left">
-                28. INCLUSIVE DATES (mm/dd/yyyy)
-              </th>
-              <th rowspan="2" colspan="2" style="text-align: left">
-                POSITION TITLE (Write in full/Do not abbreviate)
-              </th>
-              <th rowspan="2" colspan="2" style="text-align: left">
-                DEPARTMENT / AGENCY / OFFICE / COMPANY (Write in full/Do not
-                abbreviate)
-              </th>
-              <th rowspan="2" colspan="2" style="text-align: left">
-                MONTHLY SALARY
-              </th>
-              <th colspan="2" style="text-align: left">
-                SALARY/ JOB/ PAY GRADE (if applicable)& STEP (Format "00-0")/
-                INCREMENT
-              </th>
-              <th colspan="2" style="text-align: left">
-                STATUS OF APPOINTMENT
-              </th>
-              <th colspan="2" style="text-align: left">GOV'T SERVICE (Y/ N)</th>
-              <th rowspan="2" colspan="2" style="text-align: left">
-                <button class="material-icons" @click="addRow(workExperience)">
-                  add_circle
-                </button>
-              </th>
-            </tr>
-            <tr>
-              <th style="text-align: left">From</th>
-              <th style="text-align: left">To</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr
-              v-for="row in workExperience"
-              :key="row.inclusiveDateFromWorkExperience"
-            >
-              <td colspan="1">
-                <v-text-field
-                  placeholder=""
-                  solo
-                  v-model="row.inclusiveDateFromWorkExperience"
-                  value=""
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="1">
-                <v-text-field
-                  placeholder=""
-                  solo
-                  v-model="row.inclusiveDateToWorkExperience"
-                  dense
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="2">
-                <v-text-field
-                  placeholder=""
-                  solo
-                  dense
-                  v-model="row.positionTitleWorkExperience"
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="2">
-                <v-text-field
-                  placeholder=""
-                  solo
-                  v-model="row.departmentWorkExperience"
-                  dense
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="2">
-                <v-text-field
-                  placeholder=""
-                  solo
-                  dense
-                  v-model="row.monthlySalaryWorkExperience"
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="2">
-                <v-text-field
-                  placeholder=""
-                  solo
-                  dense
-                  v-model="row.salaryGradeWorkExperience"
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="2">
-                <v-text-field
-                  placeholder=""
-                  solo
-                  dense
-                  v-model="row.statusOfAppointmentWorkExperience"
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="2">
-                <v-text-field
-                  placeholder=""
-                  solo
-                  dense
-                  v-model="row.governmentServiceWorkExperience"
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="2">
-                <button
-                  class="material-icons"
-                  @click="removeRow('workExperience', row)"
-                >
-                  remove_circle
-                </button>
-              </td>
-            </tr>
-          </tbody>
-          <tfoot>
-            <tr>
-              <td>SIGNATURE</td>
+              <td colspan="3" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);"> SIGNATURE </td>
               <td colspan="3">
                 <v-file-input
                   solo
                   show-size
+                  :rules="required"
+                   counter
                   accept="image/png, image/jpeg, image/bmp"
-                  v-model="workExperienceSignature"
+                  v-model="otherInfoSignature"
                   id="signaturePart1"
                   class="text-center pt-6"
                   chips
                 >
                 </v-file-input>
               </td>
-              <td colspan="1">DATE</td>
+              <td colspan="1" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);"> DATE </td>
               <td colspan="4">
                 <v-row>
                   <v-col cols="12" sm="8" md="8" class="text-center">
                     <v-menu
-                      ref="personalDialog"
-                      v-model="workExpDOSMenu"
-                      persistent
-                      width="290px"
+                      v-model="otherInfoDOSMenu"
+                      :close-on-content-click="false"
+                      :nudge-right="40"
+                      transition="scale-transition"
+                      offset-y
+                      min-width="auto"
                     >
                       <template v-slot:activator="{ on, attrs }">
                         <v-text-field
-                          v-model="computedDateFormattedWorkExpDOS"
+                          v-model="computedDateFormattedOtherInfoDOS"
                           label=""
                           append-icon="mdi-calendar"
                           readonly
+                          :rules="required"
                           v-bind="attrs"
                           v-on="on"
                         ></v-text-field>
                       </template>
                       <v-date-picker
                         class="float-right"
-                        v-model="workExperienceDateOfSignature"
+                        v-model="otherInfoDateOfSignature"
                         scrollable
+                        @input="otherInfoDOSMenu = false"
                       >
                       </v-date-picker>
                     </v-menu>
@@ -5235,904 +3172,582 @@
                 </v-row>
               </td>
             </tr>
-          </tfoot>
-        </v-simple-table>
-      </v-tab-item>
-      <v-tab>Part 3</v-tab>
-      <v-tab-item>
-        <v-simple-table height="auto" class="pa-0 pa-0 ma-12" width="80vw">
-          <thead>
-            <tr>
-              <th colspan="8" style="text-align: left">
-                VI. VOLUNTARY WORK OR INVOLVEMENT IN CIVIC / NON-GOVERNMENT /
-                PEOPLE / VOLUNTARY ORGANIZATION/S
-              </th>
-            </tr>
-
-            <tr>
-              <th rowspan="2" colspan="2" style="text-align: left">
-                29. NAME & ADDRESS OF ORGANIZATION (Write in full)
-              </th>
-              <th colspan="2" style="text-align: left">
-                INCLUSIVE DATES (mm/dd/yyyy)
-              </th>
-              <th rowspan="2" colspan="2" style="text-align: left">
-                NUMBER OF HOURS
-              </th>
-              <th rowspan="2" colspan="2" style="text-align: left">
-                POSITION / NATURE OF WORK
-              </th>
-              <th rowspan="2" colspan="2" style="text-align: left">
-                <button
-                  class="material-icons"
-                  @click="addRow('voluntaryWorkInvolvement')"
-                >
-                  add_circle
-                </button>
-              </th>
-            </tr>
-            <tr>
-              <th style="text-align: left">From</th>
-              <th style="text-align: left">To</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr
-              v-for="row in voluntaryWorkInvolvement"
-              :key="row.nameAndAddressOfOrgVolWork"
-            >
-              <td colspan="1">
-                <v-text-field
-                  placeholder=""
-                  solo
-                  v-model="row.nameAndAddressOfOrgVolWork"
-                  dense
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="1">
-                <v-text-field
-                  placeholder=""
-                  solo
-                  dense
-                  v-model="row.inclusiveDatesFromVolWork"
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="2">
-                <v-text-field
-                  placeholder=""
-                  solo
-                  dense
-                  v-model="row.inclusiveDatesToVolWork"
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="2">
-                <v-text-field
-                  placeholder=""
-                  solo
-                  v-model="row.numberOfHoursVolWork"
-                  dense
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="2">
-                <v-text-field
-                  placeholder=""
-                  solo
-                  v-model="row.positionOfWorkVolWork"
-                  dense
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-
-              <td colspan="2">
-                <button
-                  class="material-icons"
-                  @click="removeRow('voluntaryWorkInvolvement', row)"
-                >
-                  remove_circle
-                </button>
-              </td>
-            </tr>
-          </tbody>
-        </v-simple-table>
-        <v-simple-table height="auto" class="pa-0 pa-0 ma-12" width="80vw">
-          <thead>
-            <tr>
-              <th colspan="8" style="text-align: left">
-                VII. LEARNING AND DEVELOPMENT (L&D) INTERVENTIONS/TRAINING
-                PROGRAMS ATTENDED<br />(Start from the most recent L&D/training
-                program and include only the relevant L&D/training taken for the
-                last five (5) years for Division Chief/Executive/Managerial
-                positions)
-              </th>
-            </tr>
-
-            <tr>
-              <th rowspan="2" colspan="2" style="text-align: left">
-                30. TITLE OF LEARNING AND DEVELOPMENT INTERVENTIONS/TRAINING
-                PROGRAMS (Write in full)
-              </th>
-              <th colspan="2" style="text-align: left">
-                INCLUSIVE DATES OF ATTENDANCE (mm/dd/yyyy)
-              </th>
-              <th rowspan="2" colspan="2" style="text-align: left">
-                NUMBER OF HOURS
-              </th>
-              <th rowspan="2" colspan="2" style="text-align: left">
-                Type of LD ( Managerial/ Supervisory/ Technical/etc)
-              </th>
-              <th rowspan="2" colspan="2" style="text-align: left">
-                CONDUCTED/ SPONSORED BY (Write in full)
-              </th>
-
-              <th rowspan="2" colspan="2" style="text-align: left">
-                <button
-                  class="material-icons"
-                  @click="addRow(learningAndDevelopment)"
-                >
-                  add_circle
-                </button>
-              </th>
-            </tr>
-            <tr>
-              <th style="text-align: left">From</th>
-              <th style="text-align: left">To</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr
-              v-for="row in learningAndDevelopment"
-              :key="row.learningAndDevelopmentInterventions"
-            >
-              <td colspan="1">
-                <v-text-field
-                  placeholder=""
-                  solo
-                  dense
-                  v-model="row.learningAndDevelopmentInterventions"
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="1">
-                <v-text-field
-                  placeholder=""
-                  solo
-                  v-model="row.learningAndDevelopmentInclusiveDatesFrom"
-                  dense
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="2">
-                <v-text-field
-                  placeholder=""
-                  solo
-                  v-model="row.learningAndDevelopmentInclusiveDatesTo"
-                  dense
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="2">
-                <v-text-field
-                  placeholder=""
-                  solo
-                  dense
-                  v-model="row.learningAndDevelopmentNumberOfHours"
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="2">
-                <v-text-field
-                  placeholder=""
-                  solo
-                  dense
-                  v-model="row.learningAndDevelopmentTypeOfLD"
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="2">
-                <v-text-field
-                  placeholder=""
-                  v-model="row.learningAndDevelopmentConductedBy"
-                  solo
-                  dense
-                  class="text-center pt-6"
-                  type="text"
-                >
-                </v-text-field>
-              </td>
-              <td colspan="2">
-                <button
-                  class="material-icons"
-                  @click="removeRow('learningAndDevelopment', row)"
-                >
-                  remove_circle
-                </button>
-              </td>
-            </tr>
-          </tbody>
-        </v-simple-table>
-
-        <v-container class="grey lighten-5">
-          <v-row
-            ><v-col cols="12" class="sm-12"
-              >VIII. OTHER INFORMATION</v-col
-            ></v-row
-          >
-          <v-row no-gutters>
-            <v-col cols="12" sm="4">
-              <v-card class="pa-2" outlined tile>
-                <v-card-title class="text-caption">
-                  31. SPECIAL SKILLS AND HOBBIES <br />(Write in full)<button
-                    class="material-icons"
-                    @click="addRow('otherInfoSpecialSkills')"
-                  >
-                    add_circle
-                  </button>
-                </v-card-title>
-                <v-card-text>
-                  <v-container>
-                    <v-container
-                      v-for="row in otherInfoSpecialSkills"
-                      :key="row.ID"
-                    >
-                      <v-text-field
-                        filled
-                        dense
-                        v-model="row.otherInformationSpecialSkills"
-                        style="float: left"
-                      ></v-text-field>
-                      <button
-                        class="material-icons"
-                        style="float: right"
-                        @click="removeRow('otherInfoSpecialSkills', row)"
-                      >
-                        remove_circle
-                      </button>
-                    </v-container>
-                  </v-container>
-                </v-card-text>
-              </v-card>
-            </v-col>
-            <v-col cols="12" sm="4">
-              <v-card class="pa-2" outlined tile>
-                <v-card-title class="text-caption">
-                  32. NON-ACADEMIC DISTINCTIONS/RECOGNITION <br />(Write in
-                  full)
-                  <button
-                    class="material-icons"
-                    @click="addRow('otherInfoNonacademicDistinctions')"
-                  >
-                    add_circle
-                  </button>
-                </v-card-title>
-                <v-card-text>
-                  <v-container>
-                    <v-container
-                      v-for="row in otherInfoNonacademicDistinctions"
-                      :key="row.ID"
-                    >
-                      <v-text-field
-                        filled
-                        dense
-                        v-model="row.otherInformationNonacademicDistinctions"
-                        style="float: left"
-                      ></v-text-field>
-                      <button
-                        class="material-icons"
-                        style="float: right"
-                        @click="
-                          removeRow('otherInfoNonacademicDistinctions', row)
-                        "
-                      >
-                        remove_circle
-                      </button>
-                    </v-container>
-                  </v-container>
-                </v-card-text>
-              </v-card>
-            </v-col>
-            <v-col cols="12" sm="4">
-              <v-card class="pa-2" outlined tile>
-                <v-card-title class="text-caption text-wrap">
-                  33. MEMBERSHIP IN ASSOCIATION/ORGANIZATION <br />(Write in
-                  full)
-                  <button
-                    class="material-icons"
-                    @click="addRow('otherInfoAssociationMembers')"
-                  >
-                    add_circle
-                  </button>
-                </v-card-title>
-                <v-card-text class="text-center">
-                  <v-container>
-                    <v-container
-                      v-for="row in otherInfoAssociationMembers"
-                      :key="row.ID"
-                    >
-                      <v-text-field
-                        filled
-                        dense
-                        v-model="row.otherInformationAssociationMembers"
-                        style="float: left"
-                      ></v-text-field>
-                      <button
-                        class="material-icons"
-                        style="float: right"
-                        @click="removeRow('otherInfoAssociationMembers', row)"
-                      >
-                        remove_circle
-                      </button>
-                    </v-container>
-                  </v-container>
-                </v-card-text>
-              </v-card>
-            </v-col>
-          </v-row>
-          <v-row>
-            <v-col cols="12" sm="3"> SIGNATURE </v-col>
-            <v-col cols="12" sm="3">
-              <v-file-input
-                solo
-                show-size
-                accept="image/png, image/jpeg, image/bmp"
-                v-model="otherInfoSignature"
-                id="signaturePart1"
-                class="text-center pt-6"
-                chips
-              >
-              </v-file-input>
-            </v-col>
-            <v-col cols="12" sm="3"> DATE </v-col>
-            <v-col cols="12" sm="3">
-              <v-row>
-                <v-col cols="12" sm="8" md="8" class="text-center">
-                  <v-menu
-                    ref="personalDialog"
-                    v-model="otherInfoDOSMenu"
-                    persistent
-                    width="290px"
-                  >
-                    <template v-slot:activator="{ on, attrs }">
-                      <v-text-field
-                        v-model="computedDateFormattedOtherInfoDOS"
-                        label=""
-                        append-icon="mdi-calendar"
-                        readonly
-                        v-bind="attrs"
-                        v-on="on"
-                      ></v-text-field>
-                    </template>
-                    <v-date-picker
-                      class="float-right"
-                      v-model="otherInfoDateOfSignature"
-                      scrollable
-                    >
-                    </v-date-picker>
-                  </v-menu>
-                </v-col>
-              </v-row>
-            </v-col>
-          </v-row>
-        </v-container>
+            </tbody>
+          </v-simple-table>
+        </v-form>
+        
+          <!-- </v-container>
+        </v-form> -->
       </v-tab-item>
       <v-tab>C4</v-tab>
       <v-tab-item>
-        <v-container fluid>
-          <v-row no-gutters>
-            <v-col cols="12" sm="6">
-              <v-card class="pa-6" outlined tile height="200px">
-                34. Are you related by consanguinity or affinity to the
-                appointing or recommending authority, or to the chief of bureau
-                or office or to the person who has immediate supervision over
-                you in the Office, Bureau or Department where you will be
-                apppointed, a. within the third degree? b. within the fourth
-                degree (for Local Government Unit - Career Employees)?</v-card
-              >
-            </v-col>
-            <v-col cols="12" sm="6">
-              <v-card class="pa-3" outlined tile height="200px">
-                <v-textarea
-                  auto-grow
-                  placeholder=""
-                  class="mx-2"
-                  label="If YES, give details:"
-                  dense
-                  v-model="questionThirtyFour"
-                  type="text"
+        <v-container  class="pa-0 ma-0 d-print-block" style="border:solid 1px black">
+          <v-form ref="pds">
+            <v-row no-gutters>
+              <v-col cols="12" sm="6" class="ma-0 mr-0">
+                <v-card class="pa-4" outlined tile height="145px" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">
+                  34. Are you related by consanguinity or affinity to the
+                  appointing or recommending authority, or to the chief of
+                  bureau or office or to the person who has immediate
+                  supervision over you in the Office, Bureau or Department where
+                  you will be apppointed,<br> a. within the third degree? <br>b. within
+                  the fourth degree (for Local Government Unit - Career
+                  Employees)?</v-card
                 >
-                </v-textarea>
-              </v-card>
-            </v-col>
-          </v-row>
-          <v-row no-gutters>
-            <v-col cols="12" sm="6">
-              <v-card class="pa-4" outlined tile height="280px">
-                35. a. Have you ever been found guilty of any administrative
-                offense?<br />
-                b. Have you been criminally charged before any court?</v-card
-              >
-            </v-col>
-            <v-col cols="12" sm="6">
-              <v-card class="pa-4" outlined tile height="280px">
-                <v-textarea
-                  placeholder=""
-                  auto-grow
-                  class="mx-2"
-                  label="If YES, give details:"
-                  dense
-                  v-model="questionThirtyFiveA"
-                  max-width="50px"
-                  type="text"
-                >
-                </v-textarea>
-                <span class="ma-3">If YES, give details: </span><br />
-
-                <v-text-field
-                  label="Date Filed: "
-                  dense
-                  type="text"
-                  v-model="questionThirtyFiveDateFiled"
-                >
-                </v-text-field>
-                <v-text-field
-                  label="Status of Case/s: "
-                  dense
-                  type="text"
-                  v-model="questionThirtyFiveCaseStatus"
-                >
-                </v-text-field>
-              </v-card>
-            </v-col>
-          </v-row>
-          <v-row no-gutters>
-            <v-col cols="12" sm="6">
-              <v-card class="pa-6" outlined tile height="150px">
-                36. Have you ever been convicted of any crime or violation of
-                any law, decree, ordinance or regulation by any court or
-                tribunal?</v-card
-              >
-            </v-col>
-            <v-col cols="12" sm="6">
-              <v-card class="pa-3" outlined tile height="150px">
-                <v-textarea
-                  auto-grow
-                  placeholder=""
-                  class="mx-2"
-                  label="If YES, give details:"
-                  dense
-                  v-model="questionThirtySix"
-                  type="text"
-                >
-                </v-textarea>
-              </v-card>
-            </v-col>
-          </v-row>
-          <v-row no-gutters>
-            <v-col cols="12" sm="6">
-              <v-card class="pa-6" outlined tile height="150px">
-                37. Have you ever been separated from the service in any of the
-                following modes: resignation, retirement, dropped from the
-                rolls, dismissal, termination, end of term, finished contract or
-                phased out (abolition) in the public or private sector?</v-card
-              >
-            </v-col>
-            <v-col cols="12" sm="6">
-              <v-card class="pa-3" outlined tile height="150px">
-                <v-textarea
-                  auto-grow
-                  placeholder=""
-                  class="mx-2"
-                  label="If YES, give details:"
-                  dense
-                  v-model="questionThirtySeven"
-                >
-                </v-textarea>
-              </v-card>
-            </v-col>
-          </v-row>
-          <v-row no-gutters>
-            <v-col cols="12" sm="6">
-              <v-card class="pa-6" outlined tile height="200px">
-                38. a. Have you ever been a candidate in a national or local
-                election held within the last year (except Barangay
-                election)?<br />
-                b. Have you resigned from the government service during the
-                three (3)-month period before the last election to
-                promote/actively campaign for a national or local
-                candidate?</v-card
-              >
-            </v-col>
-            <v-col cols="12" sm="6">
-              <v-card class="pa-3" outlined tile height="200px">
-                <v-textarea
-                  auto-grow
-                  placeholder=""
-                  class="mx-2"
-                  label="If YES, give details:"
-                  dense
-                  v-model="questionThirtyEight"
-                  type="text"
-                >
-                </v-textarea>
-              </v-card>
-            </v-col>
-          </v-row>
-          <v-row no-gutters>
-            <v-col cols="12" sm="6">
-              <v-card class="pa-6" outlined tile height="150px">
-                39. Have you acquired the status of an immigrant or permanent
-                resident of another country?</v-card
-              >
-            </v-col>
-            <v-col cols="12" sm="6">
-              <v-card class="pa-3" outlined tile height="150px">
-                <v-textarea
-                  auto-grow
-                  placeholder=""
-                  class="mx-2"
-                  label="If YES, give details:"
-                  dense
-                  v-model="questionThirtyNine"
-                  type="text"
-                >
-                </v-textarea>
-              </v-card>
-            </v-col>
-          </v-row>
-          <v-row no-gutters>
-            <v-col cols="12" sm="6">
-              <v-card class="pa-6" outlined tile height="330px">
-                40. 100% 10 C41:F42 Pursuant to: (a) Indigenous People's Act (RA
-                8371); (b) Magna Carta for Disabled Persons (RA 7277); and (c)
-                Solo Parents Welfare Act of 2000 (RA 8972), please answer the
-                following items: Screen reader support enabled. Pursuant to: (a)
-                Indigenous People's Act (RA 8371); (b) Magna Carta for Disabled
-                Persons (RA 7277); and (c) Solo Parents Welfare Act of 2000 (RA
-                8972), please answer the following items: Turn on screen reader
-                support a. Are you a member of any indigenous group? b. Are you
-                a person with disability? c. Are you a solo parent?</v-card
-              >
-            </v-col>
-            <v-col cols="12" sm="6">
-              <v-card class="pa-3" outlined tile height="330px">
-                <v-textarea
-                  auto-grow
-                  placeholder=""
-                  class="mx-2"
-                  label=" If YES, give details:"
-                  dense
-                  type="text"
-                  v-model="questionFourtyA"
-                >
-                </v-textarea
-                ><br />
-                <v-text-field
-                  auto-grow
-                  placeholder=""
-                  class="mx-2"
-                  label="If YES, please specify ID No:"
-                  dense
-                  v-model="questionFourtyB"
-                  type="text"
-                >
-                </v-text-field
-                ><br />
-                <v-text-field
-                  auto-grow
-                  placeholder=""
-                  class="mx-2"
-                  v-model="questionFourtyC"
-                  label="If YES, please specify ID No:"
-                  dense
-                  type="text"
-                >
-                </v-text-field
-                ><br />
-              </v-card>
-            </v-col>
-          </v-row>
-          <v-row no-gutters class="ma-0">
-            <v-col cols="12" sm="8">
-              <v-card class="pa-6" outlined tile height="auto">
-                <v-card-text class="text-subtitle-2"
-                  >REFERENCES
-                  <span class="text-body-2" style="color: red"
-                    >(Person not related by consanguinity or affinity to
-                    applicant /appointee)</span
-                  ></v-card-text
-                >
-
-                <v-simple-table>
-                  <thead>
-                    <tr>
-                      <th>NAME</th>
-                      <th>ADDRESS</th>
-                      <th>TEL. NO.</th>
-                      <th rowspan="1" colspan="1" style="text-align: left">
-                        <button
-                          class="material-icons"
-                          @click="addRow('references')"
-                        >
-                          add_circle
-                        </button>
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr height="10px" v-for="row in references" :key="row.name">
-                      <td>
-                        <v-text-field dense v-model="row.name"> </v-text-field>
-                      </td>
-                      <td>
-                        <v-text-field dense v-model="row.address">
-                        </v-text-field>
-                      </td>
-                      <td>
-                        <v-text-field dense v-model="row.telephoneNo">
-                        </v-text-field>
-                      </td>
-                      <td colspan="1">
-                        <button
-                          class="material-icons"
-                          @click="removeRow('references', row)"
-                        >
-                          remove_circle
-                        </button>
-                      </td>
-                    </tr>
-                  </tbody>
-                </v-simple-table>
-              </v-card>
-            </v-col>
-            <v-col cols="12" sm="4">
-              <v-card class="pa-3" outlined tile height="300px">
-                <v-card-text class="ma-5 pa-10 text-wrap"
-                  >ID picture taken within the last 6 months 3.5 cm. X 4.5 cm
-                  (passport size) With full and handwritten name tag and
-                  signature over printed name Computer generated or photocopied
-                  picture is not acceptable</v-card-text
-                >
-                <v-container class="">
-                  <v-file-input
-                    solo
-                    show-size
-                    ref=""
-                    accept="image/png, image/jpeg, image/bmp"
-                    v-model="personalPhotoAttachment"
-                    class="text-center pt-6"
-                    label="Insert Picture"
+              </v-col>
+              <v-col cols="12" sm="6">
+                <v-card class="pa-3" outlined tile height="fit-content">
+                  <v-textarea
+                    auto-grow
+                    rows="4"
+                    placeholder=""
+                    class=""
+                    label="If YES, give details:"
                     dense
-                    chips
-                    @change="handleFileInput"
+                    v-model="questionThirtyFour"
+                    type="text"
                   >
-                  </v-file-input>
-                </v-container>
-              </v-card>
-            </v-col>
-          </v-row>
-          <v-row>
-            <v-col cols="12" sm="8">
-              <v-card
-                class=""
-                outlined
-                tile
-                height="auto"
-                style="font-size: 12px"
-              >
-                I declare under oath that I have personally accomplished this
-                Personal Data Sheet which is a true, correct and complete
-                statement pursuant to the provisions of pertinent laws, rules
-                and regulations of the Republic of the Philippines. I authorize
-                the agency head/authorized representative to verify/validate the
-                contents stated herein. I agree that any misrepresentation made
-                in this document and its attachments shall cause the filing of
-                administrative/criminal case/s against me.
-              </v-card>
-            </v-col>
-          </v-row>
-          <v-row>
-            <v-col cols="12" sm="4">
-              <v-card class="pa-1">
-                <v-card-subtitle class="text-center">
-                  Government Issued ID (i.e.Passport, GSIS, SSS, PRC, Driver's
-                  License, etc.) PLEASE INDICATE ID Number and Date of Issuance
-                </v-card-subtitle>
-
-                <v-container
-                  class="text-no-wrap"
-                  height="10px"
-                  style="font-size: 10px"
-                  >Government Issued ID:
-                  <v-text-field
-                    dense
-                    v-model="governmentIssuedID"
-                  ></v-text-field
-                ></v-container>
-                <v-container height="10px" style="font-size: 10px"
-                  >ID/License/Passport No.:
-                  <v-text-field
-                    dense
-                    v-model="governmentIssuedIDNo"
-                  ></v-text-field
-                ></v-container>
-                <v-container height="10px" style="font-size: 10px"
-                  >Date/Place of Issuance:
-                  <v-text-field
-                    dense
-                    width="10px"
-                    v-model="governmentIDDateOrPlaceIssued"
-                  ></v-text-field
-                ></v-container>
-              </v-card>
-            </v-col>
-            <v-col cols="12" sm="4">
-              <v-card>
-                <v-container>
-                  <v-file-input
-                    solo
-                    show-size
-                    ref=""
-                    accept="image/png, image/jpeg, image/bmp"
-                    v-model="oathSignature"
-                    class="text-center pt-6"
-                    label="Insert Picture"
-                    dense
-                    chips
-                    @change="handleFileInput"
-                  >
-                  </v-file-input>
-                </v-container>
-                <v-card-subtitle
-                  >Signature (Sign inside the box)</v-card-subtitle
+                  </v-textarea>
+                </v-card>
+              </v-col>
+            </v-row>
+            <v-row no-gutters >
+              <v-col cols="12" sm="6" class="ma-0">
+                <v-card class="pa-4" outlined tile height="220px" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">
+                  35. a. Have you ever been found guilty of any administrative
+                  offense?<br /><br /><br /><br /><br />
+                  b. Have you been criminally charged before any court?</v-card
                 >
-                <v-container>
-                  <v-row>
-                    <v-col cols="12" sm="8" md="8" class="text-center">
-                      <v-menu
-                        ref="personalDialog"
-                        v-model="oathDateMenu"
-                        persistent
-                        width="290px"
+          
+              
+              </v-col>
+              <v-col cols="12" sm="6">
+                <v-card class="pa-2" outlined tile height="auto">
+                  <v-textarea
+                    placeholder=""
+                    auto-grow
+                    rows="2"
+                    class="mx-1"
+                    label="If YES, give details:"
+                    dense
+                    v-model="questionThirtyFiveA"
+                    max-width="50px"
+                    type="text"
+                  >
+                  </v-textarea>
+                  <span class="ma-3">If YES, give details: </span><br /><br>
+
+                  <v-text-field
+                    label="Date Filed: "
+                    dense
+                    type="text"
+                    v-model="questionThirtyFiveDateFiled"
+                  >
+                  </v-text-field>
+                  <v-text-field
+                    label="Status of Case/s: "
+                    dense
+                    type="text"
+                    v-model="questionThirtyFiveCaseStatus"
+                  >
+                  </v-text-field>
+                </v-card>
+              </v-col>
+            </v-row>
+            <v-row no-gutters>
+              <v-col cols="12" sm="6">
+                <v-card class="pa-6" outlined tile height="88px" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">
+                  36. Have you ever been convicted of any crime or violation of
+                  any law, decree, ordinance or regulation by any court or
+                  tribunal?</v-card
+                >
+              </v-col>
+              <v-col cols="12" sm="6">
+                <v-card class="pa-2" outlined tile height="fit-content">
+                  <v-textarea
+                    auto-grow
+                    placeholder=""
+                    rows="2"
+                    class="mx-2"
+                    label="If YES, give details:"
+                    dense
+                    v-model="questionThirtySix"
+                    type="text"
+                  >
+                  </v-textarea>
+                </v-card>
+              </v-col>
+            </v-row>
+            <v-row no-gutters>
+              <v-col cols="12" sm="6">
+                <v-card class="pa-6" outlined tile height="96px" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">
+                  37. Have you ever been separated from the service in any of
+                  the following modes: resignation, retirement, dropped from the
+                  rolls, dismissal, termination, end of term, finished contract
+                  or phased out (abolition) in the public or private
+                  sector?</v-card
+                >
+              </v-col>
+              <v-col cols="12" sm="6">
+                <v-card class="pa-3" outlined tile height="fit-content">
+                  <v-textarea
+                    auto-grow
+                    rows="2"
+                    placeholder=""
+                    class="mx-2"
+                    label="If YES, give details:"
+                    dense
+                    v-model="questionThirtySeven"
+                  >
+                  </v-textarea>
+                </v-card>
+              </v-col>
+            </v-row>
+            <v-row no-gutters>
+              <v-col cols="12" sm="6">
+                <v-card class="pa-6" outlined tile height="176px" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">
+                  38. a. Have you ever been a candidate in a national or local
+                  election held within the last year (except Barangay
+                  election)?<br /><br /><br />
+                  b. Have you resigned from the government service during the
+                  three (3)-month period before the last election to
+                  promote/actively campaign for a national or local
+                  candidate?</v-card
+                >
+              </v-col>
+              <v-col cols="12" sm="6">
+                <v-card class="pa-2" outlined tile height="fit-content">
+                  <v-textarea
+                    auto-grow
+                    rows="2"
+                    placeholder=""
+                    class="mx-2"
+                    label="If YES, give details:"
+                    dense
+                    v-model="questionThirtyEightA"
+                    type="text"
+                  >
+                  </v-textarea>
+                  <br>
+                   <v-textarea
+                    auto-grow
+                    rows="2"
+                    placeholder=""
+                    class="mx-2"
+                    label="If YES, give details:"
+                    dense
+                    v-model="questionThirtyEightB"
+                    type="text"
+                  >
+                  </v-textarea>
+                </v-card>
+              </v-col>
+            </v-row>
+            <v-row no-gutters>
+              <v-col cols="12" sm="6">
+                <v-card class="pa-6" outlined tile height="96px" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">
+                  39. Have you acquired the status of an immigrant or permanent
+                  resident of another country?</v-card
+                >
+              </v-col>
+              <v-col cols="12" sm="6">
+                <v-card class="pa-3" outlined tile height="fit-content">
+                  <v-textarea
+                    auto-grow
+                    rows="2"
+                    placeholder=""
+                    class="mx-2"
+                    label="If YES, give details:"
+                    dense
+                    v-model="questionThirtyNine"
+                    type="text"
+                  >
+                  </v-textarea>
+                </v-card>
+              </v-col>
+            </v-row>
+            <v-row no-gutters>
+              <v-col cols="12" sm="6">
+                <v-card class="pa-6" outlined tile height="242px" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">
+                  40. 100% 10 C41:F42 Pursuant to: (a) Indigenous People's Act
+                  (RA 8371); (b) Magna Carta for Disabled Persons (RA 7277); and
+                  (c) Solo Parents Welfare Act of 2000 (RA 8972), please answer
+                  the following items: Screen reader support enabled. <br><br>a. Are you a member of any indigenous
+                  group?<br><br><br> b. Are you a person with disability? <br><br><br>c. Are you a solo
+                  parent?</v-card
+                >
+              </v-col>
+              <v-col cols="12" sm="6">
+                <v-card class="pa-3" outlined tile height="fit-content">
+                  <v-textarea
+                    auto-grow
+                    placeholder=""
+                    rows="2"
+                    class="mx-2"
+                    label=" If YES, give details:"
+                    dense
+                    type="text"
+                    v-model="questionFourtyA"
+                  >
+                  </v-textarea
+                  ><br />
+                  <v-textarea
+                    auto-grow
+                    rows="1"
+                    placeholder=""
+                    class="mx-2"
+                    label="If YES, please specify ID No:"
+                    dense
+                    v-model="questionFourtyB"
+                    type="text"
+                  >
+                  </v-textarea
+                  ><br />
+                  <v-textarea
+                    auto-grow
+                    rows="1"
+                    placeholder=""
+                    class="mx-2"
+                    v-model="questionFourtyC"
+                    label="If YES, please specify ID No:"
+                    dense
+                    type="text"
+                  >
+                  </v-textarea
+                  >
+                </v-card>
+              </v-col>
+            </v-row>
+            <v-row no-gutters class="ma-0" >
+              <v-col cols="12" sm="8">
+                <v-card class="pa-0" outlined tile height="auto">
+                  <v-card-text class="text-subtitle-2" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);"
+                    >REFERENCES
+                    <span class="text-body-2" 
+                      >(Person not related by consanguinity or affinity to
+                      applicant /appointee)</span
+                    ></v-card-text
+                  >
+
+                  <v-simple-table>
+                    <thead>
+                      <tr>
+                        <th style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">NAME</th>
+                        <th style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">ADDRESS</th>
+                        <th style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">TEL. NO.</th>
+                        <th rowspan="1" colspan="1" style="text-align: left">
+                          <button
+                            class="material-icons"
+                            @click.prevent="addRow('references')"
+                          >
+                            add_circle
+                          </button>
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr
+                        height="10px"
+                        v-for="row in references"
+                        :key="row.name"
                       >
-                        <template v-slot:activator="{ on, attrs }">
+                        <td>
                           <v-text-field
-                            v-model="computedDateFormattedOathDate"
-                            label=""
-                            append-icon="mdi-calendar"
-                            readonly
-                            v-bind="attrs"
-                            v-on="on"
-                          ></v-text-field>
-                        </template>
-                        <v-date-picker
-                          class="float-right"
-                          v-model="oathDateAccomplished"
-                          scrollable
-                        >
-                        </v-date-picker>
-                      </v-menu>
-                    </v-col>
-                  </v-row>
-                </v-container>
-                <v-card-subtitle>Date Accomplished</v-card-subtitle>
-              </v-card>
-            </v-col>
-            <v-col cols="12" sm="4">
-              <v-card>
-                <v-container>
-                  <v-file-input
-                    solo
-                    show-size
-                    ref=""
-                    accept="image/png, image/jpeg, image/bmp"
-                    v-model="rightThumbMark"
-                    class="text-center pt-6"
-                    label="Insert Picture"
-                    dense
-                    chips
-                    @change="handleFileInput"
+                            dense
+                            v-model="row.name"
+                            :rules="required"
+                          >
+                          </v-text-field>
+                        </td>
+                        <td>
+                          <v-text-field
+                            dense
+                            v-model="row.address"
+                            :rules="required"
+                          >
+                          </v-text-field>
+                        </td>
+                        <td>
+                          <v-text-field
+                            dense
+                            v-model="row.telephoneNo"
+                            :rules="required"
+                          >
+                          </v-text-field>
+                        </td>
+                        <td colspan="1">
+                          <button
+                            class="material-icons"
+                            @click="removeRow('references', row)"
+                          >
+                            remove_circle
+                          </button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </v-simple-table>
+             
+                <v-card
+                  class=""
+                  outlined
+                  tile
+                  height="auto"
+                  style="font-size: 12px;text-align: left;border:solid 1px black;background-color:rgb(211,211,211);"
+                >
+                  42. I declare under oath that I have personally accomplished this
+                  Personal Data Sheet which is a true, correct and complete
+                  statement pursuant to the provisions of pertinent laws, rules
+                  and regulations of the Republic of the Philippines. I
+                  authorize the agency head/authorized representative to
+                  verify/validate the contents stated herein. I agree that any
+                  misrepresentation made in this document and its attachments
+                  shall cause the filing of administrative/criminal case/s
+                  against me.
+                </v-card>
+              
+                </v-card>
+              </v-col>
+              <v-col cols="12" sm="4">
+                <v-container class="pa-3 text-center" height="300px">
+                  <v-container class="mt-5 ml-auto mr-auto pa-0 text-center"  style="border: solid 1px black;width:150px;height:150px"
+                    >ID picture taken within the last 6 months 3.5 cm. X 4.5 cm
+                    (passport size) With full and handwritten name tag and
+                    signature over printed name Computer generated or
+                    photocopied picture is not acceptable</v-container
                   >
-                  </v-file-input>
-                </v-container>
-                <v-card-subtitle>Right Thumbmark</v-card-subtitle>
-              </v-card>
-            </v-col>
-          </v-row>
-          <v-row>
-            <v-col cols="12" sm="12" style="border: none">
-              SUBSCRIBED AND SWORN to before me this ,
-              <v-row>
-                <v-col cols="12" sm="8" md="8" class="text-center">
-                  <v-menu
-                    ref="personalDialog"
-                    v-model="swornDateMenu"
-                    persistent
-                    width="290px"
-                  >
-                    <template v-slot:activator="{ on, attrs }">
-                      <v-text-field
-                        v-model="computedDateFormattedSwornDate"
-                        label=""
-                        append-icon="mdi-calendar"
-                        readonly
-                        v-bind="attrs"
-                        v-on="on"
-                      ></v-text-field>
-                    </template>
-                    <v-date-picker
-                      class="float-right"
-                      v-model="subscribedAndSwornDate"
-                      scrollable
+                  <v-container class="">
+                    <v-file-input
+                      solo
+                      show-size
+                       counter
+                      accept="image/png, image/jpeg, image/bmp"
+                      v-model="personalPhotoAttachment"
+                      class="text-center pt-6"
+                      label="Insert Picture"
+                      :rules="required"
+                      dense
+                     
+                      chips
+                      @change="handleFileInput"
                     >
-                    </v-date-picker>
-                  </v-menu>
-                </v-col>
-              </v-row>
-              exhibiting his/her validly issued government ID as indicated
-              above.
-            </v-col>
-          </v-row>
-          <v-card
-            class="pa-5 text-center"
-            width="400px"
-            align="center"
-            justify="center"
-            style="margin-left: auto; margin-right: auto"
-          >
-            <v-file-input
-              solo
-              show-size
-              ref=""
-              accept="image/png, image/jpeg, image/bmp"
-              v-model="personAdministeringOath"
-              class="text-center pt-6"
-              label="Insert Picture"
-              dense
-              chips
-              @change="handleFileInput"
+                    </v-file-input>
+                  </v-container>
+                  <span class="text-center ma-0" >PHOTO</span>
+                </v-container>
+              </v-col>
+            </v-row>
+           
+            <v-row class="pa-0">
+              <v-col cols="12" sm="4" style="font-size:10px">
+                <v-card class="pa-0" style="border:solid 1px black;">
+                  <v-container fluid class="text-center" style="font-size:11px;text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">
+                    Government Issued ID <small style="font-size: 8px">(i.e.Passport, GSIS, SSS, PRC, Driver's
+                    License, etc.)</small> PLEASE INDICATE ID Number and Date of
+                    Issuance
+                  </v-container>
+
+                  <v-container
+                  fluid
+                    class="text-no-wrap text-left pa-0 ma-0 "
+                    height="50px"
+                    style="font-size: 10px;border-left: solid 1px black; border-right: solid 1px black;"
+                    >
+                    <!-- <label class="float-left" >
+                    
+                    </label> -->
+                    <v-text-field
+                      dense
+                      filled
+                      label="Government Issued ID:"
+                      class="ma-0"
+                      v-model="governmentIssuedID"
+                      :rules="required"
+                    ></v-text-field
+                  ></v-container>
+                  <v-container   class="text-no-wrap text-left pa-0 ma-0 "  style="font-size: 10px;border: solid 1px black; border-right: solid 1px black;"
+                    >
+                    <v-text-field
+                      dense
+                      filled
+                      class="ma-0"
+                      label="ID/License/Passport No.:"
+                      :rules="required"
+                      v-model="governmentIssuedIDNo"
+                    ></v-text-field
+                  ></v-container>
+                  <v-container   class="text-no-wrap text-left pa-0 ma-0 "  style="font-size: 10px;border: solid 1px black; border-right: solid 1px black;"
+                    >
+                    <v-text-field
+                      dense
+                      filled
+                      class="ma-0"
+                      label="Date/Place of Issuance:"
+                      :rules="required"
+                      
+                      v-model="governmentIDDateOrPlaceIssued"
+                    ></v-text-field
+                  ></v-container>
+                </v-card>
+              </v-col>
+              <v-col cols="12" sm="4" >
+                <v-card style="border:solid 1px black">
+                  <v-container style="height:95px;border:solid 1px black" class="px-2 " fluid>
+                    <v-file-input
+                      solo
+                      show-size
+                      :rules="required"
+                       counter
+                      accept="image/png, image/jpeg, image/bmp"
+                      v-model="oathSignature"
+                      class="text-center pt-6"
+                      label="Insert Picture"
+                      style=""
+                      dense
+                      chips
+                      @change="handleFileInput"
+                    >
+                    </v-file-input>
+                  </v-container>
+                  <v-card-subtitle class="text-center" style="font-size: 10px;border: solid 1px black; border-right: solid 1px black;black;background-color:rgb(211,211,211);"
+                    >Signature (Sign inside the box)</v-card-subtitle
+                  >
+                  <v-container style="border:solid 1px black">
+                    <v-row>
+                      <v-col cols="12" sm="12" md="12" class="text-center">
+                        <v-menu
+                          v-model="oathDateMenu"
+                          :close-on-content-click="false"
+                          :nudge-right="40"
+                          transition="scale-transition"
+                          offset-y
+                          min-width="auto"
+                        >
+                          <template v-slot:activator="{ on, attrs }">
+                            <v-text-field
+                              v-model="computedDateFormattedOathDate"
+                   
+                              append-icon="mdi-calendar"
+                              readonly
+                              :rules="required"
+                              v-bind="attrs"
+                              v-on="on"
+                            ></v-text-field>
+                          </template>
+                          <v-date-picker
+                            class="float-right"
+                            v-model="oathDateAccomplished"
+                            scrollable
+                            @input="oathDateMenu = false"
+                          >
+                          </v-date-picker>
+                        </v-menu>
+                      </v-col>
+                    </v-row>
+
+                  </v-container>
+                  <v-card-subtitle class="text-center" style="font-size: 10px;border: solid 1px black; border-right: solid 1px black;black;background-color:rgb(211,211,211);"
+                    >Date Accomplished</v-card-subtitle
+                  >
+                </v-card>
+              </v-col>
+              <v-col cols="12" sm="4">
+                <v-card style="border:solid 1px black">
+                  <v-container style="height:248px;border:solid 1px black" class="px-2 " fluid>
+                    <v-file-input
+                      solo
+                      :rules="required"
+                      show-size
+                       counter
+                      accept="image/png, image/jpeg, image/bmp"
+                      v-model="rightThumbMark"
+                      class="text-center pt-6"
+                      label="Insert Picture"
+                      dense
+                      chips
+                      @change="handleFileInput"
+                    >
+                    </v-file-input>
+                  </v-container>
+                  <v-card-subtitle class="text-center" style="font-size: 10px;border: solid 1px black; border-right: solid 1px black;black;background-color:rgb(211,211,211);">Right Thumbmark</v-card-subtitle>
+                </v-card>
+              </v-col>
+            </v-row>
+            <v-row style="border-top:solid 1px black;width:100%" fluid class="mr-0 ml-0 mt-2">
+              <v-col cols="12" sm="4" style="border: none" class="text-right">
+                SUBSCRIBED AND SWORN to before me this ,
+              </v-col>
+                  <v-col cols="12" sm="4" md="4" class="text-center d-inline pt-2">
+                    <v-menu
+                      v-model="swornDateMenu"
+                      :close-on-content-click="false"
+                      :nudge-right="40"
+                      transition="scale-transition"
+                      offset-y
+                      min-width="auto"
+                    >
+                      <template v-slot:activator="{ on, attrs }">
+                        <v-text-field
+                          v-model="computedDateFormattedSwornDate"
+                          label=""
+                          append-icon="mdi-calendar"
+                          readonly
+                          class="d-inline"
+                          :rules="required"
+                          v-bind="attrs"
+                          v-on="on"
+                        ></v-text-field>
+                      </template>
+                      <v-date-picker
+                        class="float-right"
+                        v-model="subscribedAndSwornDate"
+                        scrollable
+                        @input="swornDateMenu = false"
+                      >
+                      </v-date-picker>
+                    </v-menu>
+                  </v-col>
+            <v-col sm="4" md="4" >
+                exhibiting his/her validly issued government ID as indicated
+                above.
+              </v-col>
+            </v-row>
+            <v-card
+              class="pa-0 text-center mb-6"
+              width="400px"
+              align="center"
+              justify="center"
+              style="margin-left: auto; margin-right: auto;border:solid 1px black"
             >
-            </v-file-input>
-            <span>Person Administering Oath</span>
-          </v-card>
+              <v-file-input
+                solo
+                 counter
+                show-size
+                :rules="required"
+                accept="image/png, image/jpeg, image/bmp"
+                v-model="personAdministeringOath"
+                class="text-center pt-6"
+                label="Insert Picture"
+                dense
+                chips
+                @change="handleFileInput"
+              >
+              </v-file-input>
+              <v-card-subtitle class="text-center ma-0" style="font-size: 10px;border: solid 1px black; border-right: solid 1px black;black;background-color:rgb(211,211,211);">Person Administering Oath</v-card-subtitle>
+            </v-card>
+          </v-form>
         </v-container>
         <!-- </tbody>
         
         </v-simple-table> -->
-        <v-btn class="primary" @click="finalizePds('edit')"
-          >Finalize Part 1-4</v-btn
-        >
-        <!-- <button v-print>Print local range</button> -->
+        <v-btn class="primary ma-4" @click="finalizePds">Finalize C1-4</v-btn>
       </v-tab-item>
     </v-tabs>
-  </v-main>
+  </v-container>
 </template>
 
 <script>
 //local instruction
-//import print from 'vue-print-nb'
+//  import print from 'vue-print-nb'
 // directives: {
 //     print
 // }
@@ -6144,6 +3759,7 @@ export default {
       oathDateMenu: false,
       swornDateMenu: false,
       workExpDOSMenu: false,
+
       date: new Date(Date.now() - new Date().getTimezoneOffset() * 60000)
         .toISOString()
         .substr(0, 10),
@@ -6240,11 +3856,7 @@ export default {
       familyMotherSurname: "",
       familyMotherFirstName: "",
       familyMotherMiddleName: "",
-      dateOfBirthSpouse: new Date(
-        Date.now() - new Date().getTimezoneOffset() * 60000
-      )
-        .toISOString()
-        .substr(0, 10),
+      dateOfBirthSpouse: "",
       dateOfBirthFather: new Date(
         Date.now() - new Date().getTimezoneOffset() * 60000
       )
@@ -6264,7 +3876,7 @@ export default {
       educBackgroundHighestLevel: "",
       educBackgroundYearGraduated: "",
       educBackgroundScholarship: "",
-      educBackgroundSignature: "",
+      educBackgroundSignature: new Blob(),
       educBackgroundDateOfSignature: new Date(
         Date.now() - new Date().getTimezoneOffset() * 60000
       )
@@ -6316,7 +3928,8 @@ export default {
       questionThirtyFiveCaseStatus: "",
       questionThirtySix: "",
       questionThirtySeven: "",
-      questionThirtyEight: "",
+      questionThirtyEightA: "",
+      questionThirtyEightB: "",
       questionThirtyNine: "",
       questionFourtyA: "",
       questionFourtyB: "",
@@ -6403,21 +4016,15 @@ export default {
           educBackgroundScholarship: "",
         },
       ],
-      otherInfoSpecialSkills: [
+      otherInfo: [
         {
+          id:"",
           otherInformationSpecialSkills: "",
+           otherInformationNonacademicDistinctions: "",
+           otherInformationAssociationMembers: ""
         },
       ],
-      otherInfoNonacademicDistinctions: [
-        {
-          otherInformationNonacademicDistinctions: "",
-        },
-      ],
-      otherInfoAssociationMembers: [
-        {
-          otherInformationSpecialSkills: "",
-        },
-      ],
+
       references: [
         {
           name: "",
@@ -6436,30 +4043,36 @@ export default {
       pdsWorkExperience: [],
       pdsVoluntaryWorkInvolvement: [],
       pdsLearningAndDevelopment: [],
-      pdsOtherInfoSpecialSkills: [],
-      pdsOtherInfoNonacademicDistinctions: [],
-      pdsOtherInfoAssociationMembers: [],
+      pdsOtherInfo: [],
+      // pdsOtherInfoNonacademicDistinctions: [],
+      // pdsOtherInfoAssociationMembers: [],
       pdsQuestions: [],
       pdsAdditionalInfo: [],
       pdsReferences: [],
       pdsChildren: [],
       editedIndex: "",
-      childName: "",
-      children: [
-        {
-          childName: "",
-        },
-      ],
-
-      
+      firstChild: "",
+      secondChild: "",
+      thirdChild: "",
+      fourthChild: "",
+      fifthChild: "",
+      sixthChild: "",
+      // childName: "",
+      // children: [
+      //   {
+      //     childName: "",
+      //   },
+      // ],
 
       user: JSON.parse(sessionStorage.getItem("user_session")).role,
-      imageUrl:[],
-      imageData: '',
-      personalInfoId: '',
-      pdsAdditionalInfoId: '',
+      imageUrl: [],
+      imageData: "",
+      personalInfoId: "",
+      pdsAdditionalInfoId: "",
+      required: [(v) => !!v || "Field is required"],
     };
   },
+
   computed: {
     computedDateFormattedPersonalDOB() {
       return this.formatDate(this.personalDateOfBirth);
@@ -6488,6 +4101,15 @@ export default {
     computedDateFormattedSwornDate() {
       return this.formatDate(this.subscribedAndSwornDate);
     },
+    // height () {
+    //     switch (this.$vuetify.breakpoint.name) {
+    //       case 'xs': return '220px'
+    //       case 'sm': return '400px'
+    //       case 'md': return '500px'
+    //       case 'lg': return '600px'
+    //       case 'xl': return '800px'
+    //     }
+    // }
   },
   watch: {
     date(val) {
@@ -6502,9 +4124,20 @@ export default {
   created() {
     this.retrievePds();
     console.log(this.editedItem);
-    if(this.edit == true){
-      console.log(this.edit)
+    if (this.edit == true) {
+      console.log(this.edit);
     }
+    const reader = new FileReader();
+
+    reader.addEventListener(
+      "load",
+      () => {
+        this.educBackgroundSignature = reader.result;
+      },
+      false
+    );
+
+    reader.readAsDataURL(this.educBackgroundSignature);
   },
   methods: {
     viewItem(item) {
@@ -6623,31 +4256,30 @@ export default {
         //this.$store.getters.pdsInfosAll = returnedAllData.data
         this.pds = returnedAllData.data[0][0].personalInfo;
         this.loading = false;
-        console.log(this.loading);
       } else if (this.user == "Teacher") {
         const returnedData = await this.$store.dispatch("retrievePdsInfoById");
-        const imageUrl = await this.$store.dispatch('getImageUrl')
+        const imageUrl = await this.$store.dispatch("getImageUrl");
         this.pds = returnedData.data;
         this.imageUrl = imageUrl.data;
-        // console.log(JSON.parse(this.pds[0][0].pdsPersonalInfo));
+        console.log(this.imageUrl);
         if (this.pds[0][0].personalInfo[0] == undefined) {
           this.create = true;
         } else {
           this.create = false;
-          this.pdsPersonalInfo = []
-          this.pdsFamilyBackground = []
-          this.pdsEducationalBackground = []
-          this.pdsCivilServiceEligibility = []
-          this.pdsWorkExperience = []
-          this.pdsVoluntaryWorkInvolvement = []
-          this.pdsLearningAndDevelopment = []
-          this.pdsOtherInfoSpecialSkills = []
-          this.pdsOtherInfoNonacademicDistinctions = []
-          this.pdsOtherInfoAssociationMembers = []
-          this.references = []
-          this.pdsQuestions = []
-          this.pdsAdditionalInfo = []
-          this.pdsChildren = []
+          this.pdsPersonalInfo = [];
+          this.pdsFamilyBackground = [];
+          this.pdsEducationalBackground = [];
+          this.pdsCivilServiceEligibility = [];
+          this.pdsWorkExperience = [];
+          this.pdsVoluntaryWorkInvolvement = [];
+          this.pdsLearningAndDevelopment = [];
+          this.pdsOtherInfoSpecialSkills = [];
+          this.pdsOtherInfoNonacademicDistinctions = [];
+          this.pdsOtherInfoAssociationMembers = [];
+          this.references = [];
+          this.pdsQuestions = [];
+          this.pdsAdditionalInfo = [];
+          this.pdsChildren = [];
           this.pdsPersonalInfo.push(this.pds[0][0].personalInfo[0]);
           console.log(this.imageUrl);
           // console.log(this.pdsPersonalInfo);
@@ -6688,7 +4320,6 @@ export default {
           for (const child of this.pds[13][0].children) {
             this.pdsChildren.push(child);
           }
-        
         }
       } else {
         this.pds = [];
@@ -6718,39 +4349,39 @@ export default {
         case "civilServiceEligibility":
           newRow = {
             id: "",
-            careerService: this.careerService,
-            rating: this.rating,
-            dateOfExamination: this.dateOfExamination,
-            placeOfExamination: this.placeOfExamination,
-            licenseNumber: this.licenseNumber,
-            dateOfValidity: this.dateOfValidity,
+            careerService: "",
+            rating: "",
+            dateOfExamination: "",
+            placeOfExamination: "",
+            licenseNumber: "",
+            dateOfValidity: "",
           };
           this.civilServiceEligibility.push(newRow);
           break;
         case "voluntaryWorkInvolvement":
           newRow = {
             id: "",
-            nameAdAddressOfOrgVolWork: this.nameAdAddressOfOrgVolWork,
-            inclusiveDatesFromVolWork: this.inclusiveDatesFromVolWork,
-            inclusiveDatesToVolWork: this.inclusiveDatesToVolWork,
-            numberOfHoursVolWork: this.numberOfHoursVolWork,
-            positionOfWorkVolWork: this.positionOfWorkVolWork,
+            nameAdAddressOfOrgVolWork: "",
+            inclusiveDatesFromVolWork: "",
+            inclusiveDatesToVolWork: "",
+            numberOfHoursVolWork:"",
+            positionOfWorkVolWork: "",
           };
           this.voluntaryWorkInvolvement.push(newRow);
           break;
         case "educationalBackground":
           newRow = {
             id: "",
-            educBackgroundLevel: this.educBackgroundLevel,
-            educBackgroundNameOfSchool: this.educBackgroundNameOfSchool,
-            educBackgroundBasicEducation: this.educBackgroundBasicEducation,
+            educBackgroundLevel: "",
+            educBackgroundNameOfSchool: "",
+            educBackgroundBasicEducation: "",
             educBackgroundPeriodOfAttendanceFrom:
-              this.educBackgroundPeriodOfAttendanceFrom,
+              "",
             educBackgroundPeriodOfAttendanceTo:
-              this.educBackgroundPeriodOfAttendanceTo,
-            educBackgroundHighestLevel: this.educBackgroundHighestLevel,
-            educBackgroundYearGraduated: this.educBackgroundYearGraduated,
-            educBackgroundScholarship: this.educBackgroundScholarship,
+              "",
+            educBackgroundHighestLevel: "",
+            educBackgroundYearGraduated: "",
+            educBackgroundScholarship: "",
           };
           this.educationalBackground.push(newRow);
           break;
@@ -6758,55 +4389,44 @@ export default {
           newRow = {
             id: "",
             learningAndDevelopmentInterventions:
-              this.learningAndDevelopmentInterventions,
+              "",
             learningAndDevelopmentInclusiveDatesFrom:
-              this.learningAndDevelopmentInclusiveDatesFrom,
+              "",
             learningAndDevelopmentInclusiveDatesTo:
-              this.learningAndDevelopmentInclusiveDatesTo,
+              "",
             learningAndDevelopmentNumberOfHours:
-              this.learningAndDevelopmentNumberOfHours,
-            learningAndDevelopmentTypeOfLD: this.learningAndDevelopmentTypeOfLD,
+              "",
+            learningAndDevelopmentTypeOfLD: "",
             learningAndDevelopmentConductedBy:
-              this.learningAndDevelopmentConductedBy,
+              "",
           };
           this.learningAndDevelopment.push(newRow);
           break;
-        case "otherInfoSpecialSkills":
+        case "otherInfo":
           newRow = {
             id: "",
-            otherInformationSpecialSkills: this.otherInformationSpecialSkills,
+            otherInfoSpecialSkills:"",
+              otherInfoNonacademicDistinctions:
+              "",
+              otherInfoAssociationMembers: "",
           };
-          this.otherInfoSpecialSkills.push(newRow);
+          this.otherInfo.push(newRow);
           break;
-        case "otherInfoNonacademicDistinctions":
-          newRow = {
-            id: "",
-            otherInfoNonacademicDistinctions:
-              this.otherInfoNonacademicDistinctions,
-          };
-          this.otherInfoNonacademicDistinctions.push(newRow);
-          break;
-        case "otherInfoAssociationMembers":
-          newRow = {
-            id: "",
-            otherInfoAssociationMembers: this.otherInfoAssociationMembers,
-          };
-          this.otherInfoAssociationMembers.push(newRow);
-          break;
+      
         case "workExperience":
           newRow = {
             id: "",
             inclusiveDateFromWorkExperience:
-              this.inclusiveDateFromWorkExperience,
-            inclusiveDateToWorkExperience: this.inclusiveDateToWorkExperience,
-            positionTitleWorkExperience: this.positionTitleWorkExperience,
-            departmentWorkExperience: this.departmentWorkExperience,
-            monthlySalaryWorkExperience: this.monthlySalaryWorkExperience,
-            salaryGradeWorkExperience: this.salaryGradeWorkExperience,
+              "",
+            inclusiveDateToWorkExperience: "",
+            positionTitleWorkExperience: "",
+            departmentWorkExperience: "",
+            monthlySalaryWorkExperience: "",
+            salaryGradeWorkExperience: "",
             statusOfAppointmentWorkExperience:
-              this.statusOfAppointmentWorkExperience,
+              "",
             governmentServiceWorkExperience:
-              this.governmentServiceWorkExperience,
+              "",
           };
           this.workExperience.push(newRow);
           break;
@@ -6814,9 +4434,9 @@ export default {
           console.log("reached");
           newRow = {
             id: "",
-            name: this.name,
-            address: this.address,
-            telephoneNo: this.telephoneNo,
+            name: "",
+            address: "",
+            telephoneNo: "",
           };
           this.references.push(newRow);
           break;
@@ -6824,7 +4444,7 @@ export default {
           console.log("reached");
           newRow = {
             id: "",
-            childName: this.childName,
+            childName:"",
           };
           this.children.push(newRow);
           break;
@@ -6850,15 +4470,15 @@ export default {
         case "learningAndDevelopment":
           this.learningAndDevelopment.splice(row, 1);
           break;
-        case "otherInfoSpecialSkills":
-          this.otherInfoSpecialSkills.splice(row, 1);
+        case "otherInfo":
+          this.otherInfo.splice(row, 1);
           break;
-        case "otherInfoNonacademicDistinctions":
-          this.otherInfoNonacademicDistinctions.splice(row, 1);
-          break;
-        case "otherInfoAssociationMembers":
-          this.otherInfoAssociationMembers.splice(row, 1);
-          break;
+        // case "otherInfoNonacademicDistinctions":
+        //   this.otherInfoNonacademicDistinctions.splice(row, 1);
+        //   break;
+        // case "otherInfoAssociationMembers":
+        //   this.otherInfoAssociationMembers.splice(row, 1);
+        //   break;
         case "references":
           this.references.splice(row, 1);
           break;
@@ -6875,473 +4495,532 @@ export default {
       this.edit = true;
       //pass the value from backend to individual variables in data
       console.log(this.pdsPersonalInfo);
-      this.personalSurname = this.pdsPersonalInfo[0].last_name,
-      this.personalFirstName = this.pdsPersonalInfo[0].first_name
-      this.personalMiddleName = this.pdsPersonalInfo[0].middle_name
-      this.personalSuffix = this.pdsPersonalInfo[0].last_name
-      this.personalDateOfBirth = this.pdsPersonalInfo[0].date_of_birth
-      this.personalPlaceOfBirth = this.pdsPersonalInfo[0].place_of_birth
-      this.personalCitizenship = this.pdsPersonalInfo[0].citizenship
-      this.personalDualCitizenship = this.pdsPersonalInfo[0].dual_citizenship
-      this.countryOfCitizenship = this.pdsPersonalInfo[0].country_of_citizenship
-      this.personalSex = this.pdsPersonalInfo[0].sex
-      this.personalCivilStatus = this.pdsPersonalInfo[0].civil_status
-      this.personalHeight = this.pdsPersonalInfo[0].height
-      this.personalWeight = this.pdsPersonalInfo[0].weight
-      this.personalBloodType = this.pdsPersonalInfo[0].blood_type
-      this.personalGSISIDNo = this.pdsPersonalInfo[0].gsis_id_no
-      this.personalResAddressHouseNo = this.pdsPersonalInfo[0].residential_address_house_no
-      this.personalResAddressStreet = this.pdsPersonalInfo[0].residential_address_street
-      this.personalResAddressSubdivision = this.pdsPersonalInfo[0].residential_address_subdivison
-      this.personalResAddressBarangay = this.pdsPersonalInfo[0].residential_address_barangay
-      this.personalResAddressCity = this.pdsPersonalInfo[0].residential_address_city
-      this.personalResAddressProvince = this.pdsPersonalInfo[0].residential_address_province
-      this.personalZipCode = this.pdsPersonalInfo[0].residential_address_zip_code
-      this.personalPAGIBIGIDNo = this.pdsPersonalInfo[0].pag_ibig_id_no
-      this.personalPHILHEALTHNo = this.pdsPersonalInfo[0].philhealth_no
-      this.personalPermanentAddHouseNo = this.pdsPersonalInfo[0].permanent_address_house_no
-      this.personalPermanentAddStreet = this.pdsPersonalInfo[0].permanent_address_street
-      this.personalPermanentAddSubdivision = this.pdsPersonalInfo[0].permanent_address_subdivison
-      this.personalPermanentAddBarangay = this.pdsPersonalInfo[0].permanent_address_barangay
-      this.personalPermanentAddCity = this.pdsPersonalInfo[0].permanent_address_city
-      this.personalPermanentAddProvince = this.pdsPersonalInfo[0].permanent_address_province
-      this.personalPermanentAddZipCode = this.pdsPersonalInfo[0].permanent_address_zip_code
-      this.personalSSSNo = this.pdsPersonalInfo[0].sss_no
-      this.personalTelephoneNo = this.pdsPersonalInfo[0].telephone_no
-      this.personalTinNo = this.pdsPersonalInfo[0].tin_no
-      this.personalMobileNo = this.pdsPersonalInfo[0].mobile_no
-      this.personalAgencyEmployeeNo = this.pdsPersonalInfo[0].agency_employee_no
-      this.personalEmailAddress = this.pdsPersonalInfo[0].email_address
-      console.log(this.pdsFamilyBackground)
-      this.familySpouseSurname = this.pdsFamilyBackground[0].spouse_last_name
-      this.familySpouseFirstName = this.pdsFamilyBackground[0].spouse_first_name
-      this.familySpouseMiddleName = this.pdsFamilyBackground[0].spouse_middle_name
-      this.familySpouseSuffix = this.pdsFamilyBackground[0].spouse_suffix
-      this.familySpouseOccupation = this.pdsFamilyBackground[0].spouse_occupation
-      this.familyEmployerName = this.pdsFamilyBackground[0].spouse_employer
-      this.familyBusinessAddress = this.pdsFamilyBackground[0].spouse_business_address
-      this.familyTelephoneNo = this.pdsFamilyBackground[0].spouse_telephone_no
-      this.familyFatherSurname = this.pdsFamilyBackground[0].father_last_name
-      this.familyFatherFirstName = this.pdsFamilyBackground[0].father_first_name
-      this.familyFatherMiddleName = this.pdsFamilyBackground[0].father_middle_name
-      this.familyFatherSuffix = this.pdsFamilyBackground[0].father_suffix
-      this.familyMotherMaidenName = this.pdsFamilyBackground[0].mother_maiden_name
-      this.familyMotherSurname = this.pdsFamilyBackground[0].mother_last_name
-      this.familyMotherFirstName = this.pdsFamilyBackground[0].mother_first_name
-      this.familyMotherMiddleName = this.pdsFamilyBackground[0].mother_middle_name
-      this.dateOfBirthSpouse = this.pdsFamilyBackground[0].spouse_date_of_birth
-      this.dateOfBirthFather = this.pdsFamilyBackground[0].father_date_of_birth
-      this.dateOfBirthMother = this.pdsFamilyBackground[0].mother_date_of_birth
+      (this.personalSurname = this.pdsPersonalInfo[0].last_name),
+        (this.personalFirstName = this.pdsPersonalInfo[0].first_name);
+      this.personalMiddleName = this.pdsPersonalInfo[0].middle_name;
+      this.personalSuffix = this.pdsPersonalInfo[0].last_name;
+      this.personalDateOfBirth = this.pdsPersonalInfo[0].date_of_birth;
+      this.personalPlaceOfBirth = this.pdsPersonalInfo[0].place_of_birth;
+      this.personalCitizenship = this.pdsPersonalInfo[0].citizenship;
+      this.personalDualCitizenship = this.pdsPersonalInfo[0].dual_citizenship;
+      this.countryOfCitizenship =
+        this.pdsPersonalInfo[0].country_of_citizenship;
+      this.personalSex = this.pdsPersonalInfo[0].sex;
+      this.personalCivilStatus = this.pdsPersonalInfo[0].civil_status;
+      this.personalHeight = this.pdsPersonalInfo[0].height;
+      this.personalWeight = this.pdsPersonalInfo[0].weight;
+      this.personalBloodType = this.pdsPersonalInfo[0].blood_type;
+      this.personalGSISIDNo = this.pdsPersonalInfo[0].gsis_id_no;
+      this.personalResAddressHouseNo =
+        this.pdsPersonalInfo[0].residential_address_house_no;
+      this.personalResAddressStreet =
+        this.pdsPersonalInfo[0].residential_address_street;
+      this.personalResAddressSubdivision =
+        this.pdsPersonalInfo[0].residential_address_subdivision;
+      this.personalResAddressBarangay =
+        this.pdsPersonalInfo[0].residential_address_barangay;
+      this.personalResAddressCity =
+        this.pdsPersonalInfo[0].residential_address_city;
+      this.personalResAddressProvince =
+        this.pdsPersonalInfo[0].residential_address_province;
+      this.personalZipCode =
+        this.pdsPersonalInfo[0].residential_address_zip_code;
+      this.personalPAGIBIGIDNo = this.pdsPersonalInfo[0].pag_ibig_id_no;
+      this.personalPHILHEALTHNo = this.pdsPersonalInfo[0].philhealth_no;
+      this.personalPermanentAddHouseNo =
+        this.pdsPersonalInfo[0].permanent_address_house_no;
+      this.personalPermanentAddStreet =
+        this.pdsPersonalInfo[0].permanent_address_street;
+      this.personalPermanentAddSubdivision =
+        this.pdsPersonalInfo[0].permanent_address_subdivison;
+      this.personalPermanentAddBarangay =
+        this.pdsPersonalInfo[0].permanent_address_barangay;
+      this.personalPermanentAddCity =
+        this.pdsPersonalInfo[0].permanent_address_city;
+      this.personalPermanentAddProvince =
+        this.pdsPersonalInfo[0].permanent_address_province;
+      this.personalPermanentAddZipCode =
+        this.pdsPersonalInfo[0].permanent_address_zip_code;
+      this.personalSSSNo = this.pdsPersonalInfo[0].sss_no;
+      this.personalTelephoneNo = this.pdsPersonalInfo[0].telephone_no;
+      this.personalTinNo = this.pdsPersonalInfo[0].tin_no;
+      this.personalMobileNo = this.pdsPersonalInfo[0].mobile_no;
+      this.personalAgencyEmployeeNo =
+        this.pdsPersonalInfo[0].agency_employee_no;
+      this.personalEmailAddress = this.pdsPersonalInfo[0].email_address;
+
+      this.familySpouseSurname = this.pdsFamilyBackground[0].spouse_last_name;
+      this.familySpouseFirstName =
+        this.pdsFamilyBackground[0].spouse_first_name;
+      this.familySpouseMiddleName =
+        this.pdsFamilyBackground[0].spouse_middle_name;
+      this.familySpouseSuffix = this.pdsFamilyBackground[0].spouse_suffix;
+      this.familySpouseOccupation =
+        this.pdsFamilyBackground[0].spouse_occupation;
+      this.familyEmployerName = this.pdsFamilyBackground[0].spouse_employer;
+      this.familyBusinessAddress =
+        this.pdsFamilyBackground[0].spouse_business_address;
+      this.familyTelephoneNo = this.pdsFamilyBackground[0].spouse_telephone_no;
+      this.familyFatherSurname = this.pdsFamilyBackground[0].father_last_name;
+      this.familyFatherFirstName =
+        this.pdsFamilyBackground[0].father_first_name;
+      this.familyFatherMiddleName =
+        this.pdsFamilyBackground[0].father_middle_name;
+      this.familyFatherSuffix = this.pdsFamilyBackground[0].father_suffix;
+      this.familyMotherMaidenName =
+        this.pdsFamilyBackground[0].mother_maiden_name;
+      this.familyMotherSurname = this.pdsFamilyBackground[0].mother_last_name;
+      this.familyMotherFirstName =
+        this.pdsFamilyBackground[0].mother_first_name;
+      this.familyMotherMiddleName =
+        this.pdsFamilyBackground[0].mother_middle_name;
+      this.dateOfBirthSpouse = this.pdsFamilyBackground[0].spouse_date_of_birth;
+      this.dateOfBirthFather = this.pdsFamilyBackground[0].father_date_of_birth;
+      this.dateOfBirthMother = this.pdsFamilyBackground[0].mother_date_of_birth;
       console.log(this.pdsEducationalBackground);
-      this.educationalBackground = []
-      for(const [index, item] of this.pdsEducationalBackground.entries()){
-        console.log(index)
-        const newRow ={
-        id: item.id,
-        educBackgroundLevel : item.level,
-        educBackgroundNameOfSchool : item.name_of_school,
-        educBackgroundBasicEducation : item.basic_education_course,
-        educBackgroundPeriodOfAttendanceFrom : item.period_of_attendance_from,
-        educBackgroundPeriodOfAttendanceTo : item.period_of_attendance_to,
-        educBackgroundHighestLevel : item.highest_level_units_earned,
-        educBackgroundYearGraduated : item.year_graduated,
-        educBackgroundScholarship : item.academic_honors_received
+      this.educationalBackground = [];
+      for (const [index, item] of this.pdsEducationalBackground.entries()) {
+        console.log(index);
+        const newRow = {
+          id: item.id,
+          educBackgroundLevel: item.level,
+          educBackgroundNameOfSchool: item.name_of_school,
+          educBackgroundBasicEducation: item.basic_education_course,
+          educBackgroundPeriodOfAttendanceFrom: item.period_of_attendance_from,
+          educBackgroundPeriodOfAttendanceTo: item.period_of_attendance_to,
+          educBackgroundHighestLevel: item.highest_level_units_earned,
+          educBackgroundYearGraduated: item.year_graduated,
+          educBackgroundScholarship: item.academic_honors_received,
+        };
+        this.educationalBackground.push(newRow);
       }
-      this.educationalBackground.push(newRow)
-      }
-      console.log(this.educationalBackground)
-      this.civilServiceEligibility = []
+      console.log(this.educationalBackground);
+      this.civilServiceEligibility = [];
       console.log(this.pdsCivilServiceEligibility);
-      for(const [index, item] of this.pdsCivilServiceEligibility.entries()){
-        console.log(index)
-      const newRow = {
-        id: item.id,
-            careerService: item.career_service,
-            rating: item.rating,
-            dateOfExamination: item.date_of_examination,
-            placeOfExamination: item.place_of_examination,
-            licenseNumber: item.license_number,
-            dateOfValidity: item.license_date_of_validity,
-          };
-          this.civilServiceEligibility.push(newRow);
+      for (const [index, item] of this.pdsCivilServiceEligibility.entries()) {
+        console.log(index);
+        const newRow = {
+          id: item.id,
+          careerService: item.career_service,
+          rating: item.rating,
+          dateOfExamination: item.date_of_examination,
+          placeOfExamination: item.place_of_examination,
+          licenseNumber: item.license_number,
+          dateOfValidity: item.license_date_of_validity,
+        };
+        this.civilServiceEligibility.push(newRow);
       }
       console.log(this.pdsWorkExperience);
-      this.workExperience = []
-      for(const [index, item] of this.pdsWorkExperience.entries()){
-        console.log(index)
-      const newRow = {
-        id: item.id,
-            inclusiveDateFromWorkExperience: 
-              item.work_inclusive_dates_from,
-            inclusiveDateToWorkExperience: item.work_inclusive_dates_to,
-            positionTitleWorkExperience: item.position,
-            departmentWorkExperience: item.department,
-            monthlySalaryWorkExperience: item.monthly_salary,
-            salaryGradeWorkExperience: item.salar_grade,
-            statusOfAppointmentWorkExperience:
-              item.status_of_appointment,
-            governmentServiceWorkExperience:
-              item.government_service,
-          };
-          this.workExperience.push(newRow);
+      this.workExperience = [];
+      for (const [index, item] of this.pdsWorkExperience.entries()) {
+        console.log(index);
+        const newRow = {
+          id: item.id,
+          inclusiveDateFromWorkExperience: item.work_inclusive_dates_from,
+          inclusiveDateToWorkExperience: item.work_inclusive_dates_to,
+          positionTitleWorkExperience: item.position,
+          departmentWorkExperience: item.department,
+          monthlySalaryWorkExperience: item.monthly_salary,
+          salaryGradeWorkExperience: item.salar_grade,
+          statusOfAppointmentWorkExperience: item.status_of_appointment,
+          governmentServiceWorkExperience: item.government_service,
+        };
+        this.workExperience.push(newRow);
       }
       console.log(this.pdsVoluntaryWorkInvolvement);
-      this.voluntaryWorkInvolvement = []
-       for(const [index, item] of this.pdsVoluntaryWorkInvolvement.entries()){
-        console.log(index)
-       const newRow = {
-         id: item.id,
-            nameAdAddressOfOrgVolWork: item.organization_name_and_address,
-            inclusiveDatesFromVolWork: item.voluntary_inclusive_dates_from,
-            inclusiveDatesToVolWork: item.voluntary_inclusive_dates_to,
-            numberOfHoursVolWork: item.number_of_hours,
-            positionOfWorkVolWork: item.position,
-          };
-          this.voluntaryWorkInvolvement.push(newRow);
-       }
+      this.voluntaryWorkInvolvement = [];
+      for (const [index, item] of this.pdsVoluntaryWorkInvolvement.entries()) {
+        console.log(index);
+        const newRow = {
+          id: item.id,
+          nameAdAddressOfOrgVolWork: item.organization_name_and_address,
+          inclusiveDatesFromVolWork: item.voluntary_inclusive_dates_from,
+          inclusiveDatesToVolWork: item.voluntary_inclusive_dates_to,
+          numberOfHoursVolWork: item.number_of_hours,
+          positionOfWorkVolWork: item.position,
+        };
+        this.voluntaryWorkInvolvement.push(newRow);
+      }
       console.log(this.pdsLearningAndDevelopment);
-      this.learningAndDevelopment = []
-       for(const [index, item] of this.pdsLearningAndDevelopment.entries()){
-        console.log(index)
-      const newRow = {
-            id: item.id,
-            learningAndDevelopmentInterventions:
-              item.learning_and_development_interventions,
-            learningAndDevelopmentInclusiveDatesFrom:
-              item.learning_inclusive_dates_from,
-            learningAndDevelopmentInclusiveDatesTo:
-              item.learning_inclusive_dates_to,
-            learningAndDevelopmentNumberOfHours:
-              item.number_of_hours,
-            learningAndDevelopmentTypeOfLD: item.type_of_ld,
-            learningAndDevelopmentConductedBy:
-              item.conducted_by,
-          };
-          this.learningAndDevelopment.push(newRow);
-       }
+      this.learningAndDevelopment = [];
+      for (const [index, item] of this.pdsLearningAndDevelopment.entries()) {
+        console.log(index);
+        const newRow = {
+          id: item.id,
+          learningAndDevelopmentInterventions:
+            item.learning_and_development_interventions,
+          learningAndDevelopmentInclusiveDatesFrom:
+            item.learning_inclusive_dates_from,
+          learningAndDevelopmentInclusiveDatesTo:
+            item.learning_inclusive_dates_to,
+          learningAndDevelopmentNumberOfHours: item.number_of_hours,
+          learningAndDevelopmentTypeOfLD: item.type_of_ld,
+          learningAndDevelopmentConductedBy: item.conducted_by,
+        };
+        this.learningAndDevelopment.push(newRow);
+      }
       console.log(this.pdsOtherInfoSpecialSkills);
-      this.otherInfoSpecialSkills = []
-       for(const [index, item] of this.pdsOtherInfoSpecialSkills.entries()){
-        console.log(index)
-      const  newRow = {
-            id: item.id,
-            otherInformationSpecialSkills: item.special_skills_and_hobbies,
-          };
-          this.otherInfoSpecialSkills.push(newRow);
-       }
+      this.otherInfoSpecialSkills = [];
+      for (const [index, item] of this.pdsOtherInfoSpecialSkills.entries()) {
+        console.log(index);
+        const newRow = {
+          id: item.id,
+          otherInformationSpecialSkills: item.special_skills_and_hobbies,
+        };
+        this.otherInfoSpecialSkills.push(newRow);
+      }
       console.log(this.pdsOtherInfoNonacademicDistinctions);
-      this.otherInfoNonacademicDistinctions = []
-      for(const [index, item] of this.pdsOtherInfoNonacademicDistinctions.entries()){
-        console.log(index)
-      const  newRow = {
-            id: item.id,
-            otherInfoNonacademicDistinctions: item.non_academic_distinctions,
-          };
-          this.otherInfoNonacademicDistinctions.push(newRow);
-       }
+      this.otherInfoNonacademicDistinctions = [];
+      for (const [
+        index,
+        item,
+      ] of this.pdsOtherInfoNonacademicDistinctions.entries()) {
+        console.log(index);
+        const newRow = {
+          id: item.id,
+          otherInfoNonacademicDistinctions: item.non_academic_distinctions,
+        };
+        this.otherInfoNonacademicDistinctions.push(newRow);
+      }
       console.log(this.pdsOtherInfoAssociationMembers);
-      this.otherInfoAssociationMembers = []
-      for(const [index, item] of this.pdsOtherInfoAssociationMembers.entries()){
-        console.log(index)
-      const  newRow = {
-            id: item.id,
-            otherInfoAssociationMembers: item.association_members,
-          };
-          this.otherInfoAssociationMembers.push(newRow);
-       }
+      this.otherInfoAssociationMembers = [];
+      for (const [
+        index,
+        item,
+      ] of this.pdsOtherInfoAssociationMembers.entries()) {
+        console.log(index);
+        const newRow = {
+          id: item.id,
+          otherInfoAssociationMembers: item.association_members,
+        };
+        this.otherInfoAssociationMembers.push(newRow);
+      }
       console.log(this.pdsQuestions);
-      this.questionThirtyFour = this.pdsQuestions[0].question_thirty_four
-      this.questionThirtyFiveA = this.pdsQuestions[0].question_thirty_five_a
-      this.questionThirtyFiveDateFiled = this.pdsQuestions[0].question_thirty_five_b_date_filed
-      this.questionThirtyFiveCaseStatus = this.pdsQuestions[0].question_thirty_five_B_status_of_case
-      this.questionThirtySix = this.pdsQuestions[0].question_thirty_six
-      this.questionThirtySeven = this.pdsQuestions[0].question_thirty_seven
-      this.questionThirtyEight = this.pdsQuestions[0].question_thirty_eight
-      this.questionThirtyNine = this.pdsQuestions[0].question_thirty_nine
-      this.questionFourtyA = this.pdsQuestions[0].question_fourty_a
-      this.questionFourtyB = this.pdsQuestions[0].question_fourty_b
-      this.questionFourtyB = this.pdsQuestions[0].question_fourty_b
+      this.questionThirtyFour = this.pdsQuestions[0].question_thirty_four;
+      this.questionThirtyFiveA = this.pdsQuestions[0].question_thirty_five_a;
+      this.questionThirtyFiveDateFiled =
+        this.pdsQuestions[0].question_thirty_five_b_date_filed;
+      this.questionThirtyFiveCaseStatus =
+        this.pdsQuestions[0].question_thirty_five_B_status_of_case;
+      this.questionThirtySix = this.pdsQuestions[0].question_thirty_six;
+      this.questionThirtySeven = this.pdsQuestions[0].question_thirty_seven;
+      this.questionThirtyEight = this.pdsQuestions[0].question_thirty_eight;
+      this.questionThirtyNine = this.pdsQuestions[0].question_thirty_nine;
+      this.questionFourtyA = this.pdsQuestions[0].question_fourty_a;
+      this.questionFourtyB = this.pdsQuestions[0].question_fourty_b;
+      this.questionFourtyB = this.pdsQuestions[0].question_fourty_b;
       console.log(this.pdsReferences);
-      this.references = []
-      for(const [index, item] of this.pdsReferences.entries()){
-        console.log(index)
-      const newRow = {
-            id: item.id,
-            name: this.reference_name,
-            address: this.reference_address,
-            telephoneNo: this.reference_tel_no,
-          };
-          this.references.push(newRow);
-       }
+      this.references = [];
+      for (const [index, item] of this.pdsReferences.entries()) {
+        console.log(index);
+        const newRow = {
+          id: item.id,
+          name: item.reference_name,
+          address: item.reference_address,
+          telephoneNo: item.reference_tel_no,
+        };
+        this.references.push(newRow);
+      }
       console.log(this.pdsChildren);
-      this.children = []
-      for(const [index, item] of this.pdsChildren.entries()){
-        console.log(index)
-      const newRow = {
-            id: item.id,
-            childName: item.child_name,
-          };
-          this.children.push(newRow);
-       }
-       console.log(this.pdsAdditionalInfo)
-      
-      this.personalInfoId = this.pdsPersonalInfo[0].id
-      this.pdsAdditionalInfoId = this.pdsAdditionalInfo[0].id
-      this.personalPhotoAttachment = this.pdsAdditionalInfo[0].photo
-      this.governmentIssuedID = this.pdsAdditionalInfo[0].government_id
-        this.governmentIssuedIDNo = this.pdsAdditionalInfo[0].id_no
-      this.governmentIDDateOrPlaceIssued = this.pdsAdditionalInfo[0].date_place_of_issuance
-      this.oathSignature = this.pdsAdditionalInfo[0].signature
-      this.oathDateAccomplished = this.pdsAdditionalInfo[0].oath_date_accomplished
-      this.rightThumbMark = this.pdsAdditionalInfo[0].right_thumbmark
-      this.personAdministeringOath = this.pdsAdditionalInfo[0].person_administering_oath
-      this.subscribedAndSwornDate = this.pdsAdditionalInfo[0].sworn_date
+      this.children = [];
+      for (const [index, item] of this.pdsChildren.entries()) {
+        console.log(index);
+        const newRow = {
+          id: item.id,
+          childName: item.child_name,
+        };
+        this.children.push(newRow);
+      }
+      console.log(this.pdsAdditionalInfo);
 
+      this.personalInfoId = this.pdsPersonalInfo[0].id;
+      this.pdsAdditionalInfoId = this.pdsAdditionalInfo[0].id;
+      this.personalPhotoAttachment = this.pdsAdditionalInfo[0].photo;
+      this.governmentIssuedID = this.pdsAdditionalInfo[0].government_id;
+      this.governmentIssuedIDNo = this.pdsAdditionalInfo[0].id_no;
+      this.governmentIDDateOrPlaceIssued =
+        this.pdsAdditionalInfo[0].date_place_of_issuance;
+      this.oathSignature = this.pdsAdditionalInfo[0].signature;
+      this.oathDateAccomplished =
+        this.pdsAdditionalInfo[0].oath_date_accomplished;
+      this.rightThumbMark = this.pdsAdditionalInfo[0].right_thumbmark;
+      this.personAdministeringOath =
+        this.pdsAdditionalInfo[0].person_administering_oath;
+      this.subscribedAndSwornDate = this.pdsAdditionalInfo[0].sworn_date;
+      console.log(this.pdsPersonalInfo);
+      this.educBackgroundSignature =
+        this.imageUrl.educationalBackgroundSignature;
+      this.workExperienceSignature =
+        this.pdsPersonalInfo[0].work_experience_signature;
+      this.otherInfoSignature = this.pdsPersonalInfo[0].other_info_signature;
       this.idList = {
         personalInfoId: this.pdsPersonalInfo[0].id,
         familyBackgroundId: this.pdsFamilyBackground[0].id,
         pdsQuestionsId: this.pdsQuestions[0].id,
-        pdsAdditionalInfo: this.pdsAdditionalInfoId
-      }
-    },
-    finalizePds: async function (method) {
-      console.log(method);
-      const personalSurname = this.personalSurname;
-      const personalFirstName = this.personalFirstName;
-      const personalMiddleName = this.personalMiddleName;
-      const personalSuffix = this.personalSuffix;
-      const personalDateOfBirth = this.personalDateOfBirth;
-      const personalPlaceOfBirth = this.personalPlaceOfBirth;
-      const personalCitizenship = this.personalCitizenship;
-      const personalDualCitizenship = this.personalDualCitizenship;
-      const countryOfCitizenship = this.countryOfCitizenship;
-      const personalSex = this.personalSex;
-      const personalCivilStatus = this.personalCivilStatus;
-      const personalHeight = this.personalHeight;
-      const personalWeight = this.personalWeight;
-      const personalBloodType = this.personalBloodType;
-      const personalGSISIDNo = this.personalGSISIDNo;
-      const personalResAddressHouseNo = this.personalResAddressHouseNo;
-      const personalResAddressStreet = this.personalResAddressStreet;
-      const personalResAddressSubdivision = this.personalResAddressSubdivision;
-      const personalResAddressBarangay = this.personalResAddressBarangay;
-      const personalResAddressCity = this.personalResAddressCity;
-      const personalResAddressProvince = this.personalResAddressProvince;
-      const personalZipCode = this.personalZipCode;
-      const personalPAGIBIGIDNo = this.personalPAGIBIGIDNo;
-      const personalPHILHEALTHNo = this.personalPHILHEALTHNo;
-      const personalPermanentAddHouseNo = this.personalPermanentAddHouseNo;
-      const personalPermanentAddStreet = this.personalPermanentAddStreet;
-      const personalPermanentAddSubdivision =
-        this.personalPermanentAddSubdivision;
-      const personalPermanentAddBarangay = this.personalPermanentAddBarangay;
-      const personalPermanentAddCity = this.personalPermanentAddCity;
-      const personalPermanentAddProvince = this.personalPermanentAddProvince;
-      const personalPermanentAddZipCode = this.personalPermanentAddZipCode;
-      const personalSSSNo = this.personalSSSNo;
-      const personalTelephoneNo = this.personalTelephoneNo;
-      const personalTinNo = this.personalTinNo;
-      const personalMobileNo = this.personalMobileNo;
-      const personalAgencyEmployeeNo = this.personalAgencyEmployeeNo;
-      const personalEmailAddress = this.personalEmailAddress;
-      const familySpouseSurname = this.familySpouseSurname;
-      const familySpouseFirstName = this.familySpouseFirstName;
-      const familySpouseMiddleName = this.familySpouseMiddleName;
-      const familySpouseSuffix = this.familySpouseSuffix;
-      const familySpouseOccupation = this.familySpouseOccupation;
-      const familyEmployerName = this.familyEmployerName;
-      const familyBusinessAddress = this.familyBusinessAddress;
-      const familyTelephoneNo = this.familyTelephoneNo;
-      const familyFatherSurname = this.familyFatherSurname;
-      const familyFatherFirstName = this.familyFatherFirstName;
-      const familyFatherMiddleName = this.familyFatherMiddleName;
-      const familyFatherSuffix = this.familyFatherSuffix;
-      const familyMotherMaidenName = this.familyMotherMaidenName;
-      const familyMotherSurname = this.familyMotherSurname;
-      const familyMotherFirstName = this.familyMotherFirstName;
-      const familyMotherMiddleName = this.familyMotherMiddleName;
-      const children = this.children;
-      const dateOfBirthSpouse = this.dateOfBirthSpouse;
-      const dateOfBirthFather = this.dateOfBirthFather;
-      const dateOfBirthMother = this.dateOfBirthMother;
-      const educationalBackground = this.educationalBackground;
-      const educBackgroundSignature = this.educBackgroundSignature;
-      const educBackgroundDateOfSignature = this.educBackgroundDateOfSignature;
-      const civilServiceEligibility = this.civilServiceEligibility;
-      const workExperience = this.workExperience;
-      const workExperienceSignature = this.workExperienceSignature;
-      const workExperienceDateOfSignature = this.workExperienceDateOfSignature;
-      const voluntaryWorkInvolvement = this.voluntaryWorkInvolvement;
-      const learningAndDevelopment = this.learningAndDevelopment;
-      const otherInfoSpecialSkills = this.otherInfoSpecialSkills;
-      const otherInfoNonacademicDistinctions =
-        this.otherInfoNonacademicDistinctions;
-      const otherInfoAssociationMembers = this.otherInfoAssociationMembers;
-      const otherInfoSignature = this.otherInfoSignature;
-      const otherInfoDateOfSignature = this.otherInfoDateOfSignature;
-      const questionThirtyFour = this.questionThirtyFour;
-      const questionThirtyFiveA = this.questionThirtyFiveA;
-      const questionThirtyFiveBDateFiled = this.questionThirtyFiveDateFiled;
-      const questionThirtyFiveBStatusOfCase = this.questionThirtyFiveCaseStatus;
-      const questionThirtySix = this.questionThirtySix;
-      const questionThirtySeven = this.questionThirtySeven;
-      const questionThirtyEight = this.questionThirtyEight;
-      const questionThirtyNine = this.questionThirtyNine;
-      const questionFourtyA = this.questionFourtyA;
-      const questionFourtyB = this.questionFourtyB;
-      const questionFourtyC = this.questionFourtyC;
-      const references = this.references;
-      const personalPhotoAttachment = this.personalPhotoAttachment;
-      const governmentIssuedID = this.governmentIssuedID;
-      const governmentIssuedIDNo = this.governmentIssuedIDNo;
-      const governmentIDDateOrPlaceIssued = this.governmentIDDateOrPlaceIssued;
-      const oathSignature = this.oathSignature;
-      const oathDateAccomplished = this.oathDateAccomplished;
-      const rightThumbMark = this.rightThumbMark;
-      const subscribedAndSwornDate = this.subscribedAndSwornDate;
-      const personAdministeringOath = this.personAdministeringOath;
-      //const user = JSON.parse(sessionStorage.getItem('user_session')).id
-      const user = JSON.parse(sessionStorage.user_session).id;
-      const idList = this.idList;
-      let formData = new FormData();
-      formData.append("fileEducBackgroundSignature", educBackgroundSignature);
-      formData.append("fileWorkExperienceSignature", workExperienceSignature);
-      formData.append("fileOtherInfoSignature", otherInfoSignature);
-      formData.append("personalPhotoAttachment", personalPhotoAttachment);
-      formData.append("oathSignature", oathSignature);
-      formData.append("rightThumbMark", rightThumbMark);
-      formData.append("personAdministeringOath", personAdministeringOath);
-      formData.append("user", user);
-      const data = {
-        user,
-        idList,
-        personalSurname,
-        personalFirstName,
-        personalMiddleName,
-        personalSuffix,
-        personalDateOfBirth,
-        personalPlaceOfBirth,
-        personalCitizenship,
-        countryOfCitizenship,
-        personalDualCitizenship,
-        personalSex,
-        personalCivilStatus,
-        personalHeight,
-        personalWeight,
-        personalBloodType,
-        personalGSISIDNo,
-        personalResAddressHouseNo,
-        personalResAddressStreet,
-        personalResAddressSubdivision,
-        personalResAddressBarangay,
-        personalResAddressCity,
-        personalResAddressProvince,
-        personalZipCode,
-        personalPAGIBIGIDNo,
-        personalPHILHEALTHNo,
-        personalPermanentAddHouseNo,
-        personalPermanentAddStreet,
-        personalPermanentAddSubdivision,
-        personalPermanentAddBarangay,
-        personalPermanentAddCity,
-        personalPermanentAddProvince,
-        personalPermanentAddZipCode,
-        personalSSSNo,
-        personalTelephoneNo,
-        personalTinNo,
-        personalMobileNo,
-        personalAgencyEmployeeNo,
-        personalEmailAddress,
-        familySpouseSurname,
-        familySpouseFirstName,
-        familySpouseMiddleName,
-        familySpouseSuffix,
-        familySpouseOccupation,
-        familyEmployerName,
-        familyBusinessAddress,
-        familyTelephoneNo,
-        familyFatherSurname,
-        familyFatherFirstName,
-        familyFatherMiddleName,
-        familyFatherSuffix,
-        familyMotherMaidenName,
-        familyMotherSurname,
-        familyMotherFirstName,
-        familyMotherMiddleName,
-        children,
-        dateOfBirthSpouse,
-        dateOfBirthFather,
-        dateOfBirthMother,
-        educationalBackground,
-        educBackgroundDateOfSignature,
-        civilServiceEligibility,
-        workExperience,
-
-        workExperienceDateOfSignature,
-        voluntaryWorkInvolvement,
-        learningAndDevelopment,
-        otherInfoSpecialSkills,
-        otherInfoNonacademicDistinctions,
-        otherInfoAssociationMembers,
-
-        otherInfoDateOfSignature,
-        questionThirtyFour,
-        questionThirtyFiveA,
-        questionThirtyFiveBDateFiled,
-        questionThirtyFiveBStatusOfCase,
-        questionThirtySix,
-        questionThirtySeven,
-        questionThirtyEight,
-        questionThirtyNine,
-        questionFourtyA,
-        questionFourtyB,
-        questionFourtyC,
-        references,
-
-        governmentIssuedID,
-        governmentIssuedIDNo,
-        governmentIDDateOrPlaceIssued,
-
-        oathDateAccomplished,
-        rightThumbMark,
-        subscribedAndSwornDate,
+        pdsAdditionalInfo: this.pdsAdditionalInfoId,
       };
-      if(method == 'create'){
-        /*formDataEducationalBackground,workExperienceSignature,otherInfoSignature,personalPhotoAttachment,oathSignature,personAdministeringOath,*/
-      const returnedData = await this.$store.dispatch("createPds", data);
-      console.log(returnedData);
-      let personalInfoId = returnedData[0][0].personalInfoId[0].id;
-      let pdsAdditionalInfoId = returnedData[1][0].pdsAdditionalInfoId[0].id;
-      let message = returnedData[2][0].message[0];
-      console.log(personalInfoId, pdsAdditionalInfoId, message);
-      formData.append(
-        "personalInfoId",
-        personalInfoId,
-        "pdsAdditionalInfoId",
-        pdsAdditionalInfoId
-      );
-      if (message == "success") {
-        const fileUpload = await this.$store.dispatch("uploadFile", formData);
-        if (fileUpload == "success") {
-          this.pds = this.$store.getters.pdsInfosAll;
-          this.retrievePds();
+      console.log(this.educBackgroundSignature);
+    },
+    finalizePds: async function () {
+      console.log(this.$refs);
+      if (
+        this.$refs.pds.validate() == true ||
+        this.$refs.pdsA.validate() == true ||
+        this.$refs.pdsB.validate() == true ||
+        this.$refs.pdsC.validate() == true ||
+        this.$refs.pdsD.validate() == true ||
+        this.$refs.pdsE.validate() == true ||
+        this.$refs.pdsF.validate() == true
+      ) {
+        const personalSurname = this.personalSurname;
+        const personalFirstName = this.personalFirstName;
+        const personalMiddleName = this.personalMiddleName;
+        const personalSuffix = this.personalSuffix;
+        const personalDateOfBirth = this.personalDateOfBirth;
+        const personalPlaceOfBirth = this.personalPlaceOfBirth;
+        const personalCitizenship = this.personalCitizenship;
+        const personalDualCitizenship = this.personalDualCitizenship;
+        const countryOfCitizenship = this.countryOfCitizenship;
+        const personalSex = this.personalSex;
+        const personalCivilStatus = this.personalCivilStatus;
+        const personalHeight = this.personalHeight;
+        const personalWeight = this.personalWeight;
+        const personalBloodType = this.personalBloodType;
+        const personalGSISIDNo = this.personalGSISIDNo;
+        const personalResAddressHouseNo = this.personalResAddressHouseNo;
+        const personalResAddressStreet = this.personalResAddressStreet;
+        const personalResAddressSubdivision =
+          this.personalResAddressSubdivision;
+        const personalResAddressBarangay = this.personalResAddressBarangay;
+        const personalResAddressCity = this.personalResAddressCity;
+        const personalResAddressProvince = this.personalResAddressProvince;
+        const personalZipCode = this.personalZipCode;
+        const personalPAGIBIGIDNo = this.personalPAGIBIGIDNo;
+        const personalPHILHEALTHNo = this.personalPHILHEALTHNo;
+        const personalPermanentAddHouseNo = this.personalPermanentAddHouseNo;
+        const personalPermanentAddStreet = this.personalPermanentAddStreet;
+        const personalPermanentAddSubdivision =
+          this.personalPermanentAddSubdivision;
+        const personalPermanentAddBarangay = this.personalPermanentAddBarangay;
+        const personalPermanentAddCity = this.personalPermanentAddCity;
+        const personalPermanentAddProvince = this.personalPermanentAddProvince;
+        const personalPermanentAddZipCode = this.personalPermanentAddZipCode;
+        const personalSSSNo = this.personalSSSNo;
+        const personalTelephoneNo = this.personalTelephoneNo;
+        const personalTinNo = this.personalTinNo;
+        const personalMobileNo = this.personalMobileNo;
+        const personalAgencyEmployeeNo = this.personalAgencyEmployeeNo;
+        const personalEmailAddress = this.personalEmailAddress;
+        const familySpouseSurname = this.familySpouseSurname;
+        const familySpouseFirstName = this.familySpouseFirstName;
+        const familySpouseMiddleName = this.familySpouseMiddleName;
+        const familySpouseSuffix = this.familySpouseSuffix;
+        const familySpouseOccupation = this.familySpouseOccupation;
+        const familyEmployerName = this.familyEmployerName;
+        const familyBusinessAddress = this.familyBusinessAddress;
+        const familyTelephoneNo = this.familyTelephoneNo;
+        const familyFatherSurname = this.familyFatherSurname;
+        const familyFatherFirstName = this.familyFatherFirstName;
+        const familyFatherMiddleName = this.familyFatherMiddleName;
+        const familyFatherSuffix = this.familyFatherSuffix;
+        const familyMotherMaidenName = this.familyMotherMaidenName;
+        const familyMotherSurname = this.familyMotherSurname;
+        const familyMotherFirstName = this.familyMotherFirstName;
+        const familyMotherMiddleName = this.familyMotherMiddleName;
+        const firstChild = this.firstChild
+        const secondChild = this.secondChild
+        const thirdChild = this.thirdChild
+        const fourthChild = this.fourthChild
+        const fifthChild = this.fifthChild
+        const sixthChild = this.sixthChild
+        const dateOfBirthSpouse = this.dateOfBirthSpouse;
+        const dateOfBirthFather = this.dateOfBirthFather;
+        const dateOfBirthMother = this.dateOfBirthMother;
+        const educationalBackground = this.educationalBackground;
+        const educBackgroundSignature = this.educBackgroundSignature;
+        const educBackgroundDateOfSignature =
+          this.educBackgroundDateOfSignature;
+        const civilServiceEligibility = this.civilServiceEligibility;
+        const workExperience = this.workExperience;
+        const workExperienceSignature = this.workExperienceSignature;
+        const workExperienceDateOfSignature =
+          this.workExperienceDateOfSignature;
+        const voluntaryWorkInvolvement = this.voluntaryWorkInvolvement;
+        const learningAndDevelopment = this.learningAndDevelopment;
+        const otherInfo = this.otherInfo;
+        const otherInfoSignature = this.otherInfoSignature;
+        const otherInfoDateOfSignature = this.otherInfoDateOfSignature;
+        const questionThirtyFour = this.questionThirtyFour;
+        const questionThirtyFiveA = this.questionThirtyFiveA;
+        const questionThirtyFiveBDateFiled = this.questionThirtyFiveDateFiled;
+        const questionThirtyFiveBStatusOfCase =
+          this.questionThirtyFiveCaseStatus;
+        const questionThirtySix = this.questionThirtySix;
+        const questionThirtySeven = this.questionThirtySeven;
+        const questionThirtyEightA = this.questionThirtyEightA;
+        const questionThirtyEightB = this.questionThirtyEightB;
+        const questionThirtyNine = this.questionThirtyNine;
+        const questionFourtyA = this.questionFourtyA;
+        const questionFourtyB = this.questionFourtyB;
+        const questionFourtyC = this.questionFourtyC;
+        const references = this.references;
+        const personalPhotoAttachment = this.personalPhotoAttachment;
+        const governmentIssuedID = this.governmentIssuedID;
+        const governmentIssuedIDNo = this.governmentIssuedIDNo;
+        const governmentIDDateOrPlaceIssued =
+          this.governmentIDDateOrPlaceIssued;
+        const oathSignature = this.oathSignature;
+        const oathDateAccomplished = this.oathDateAccomplished;
+        const rightThumbMark = this.rightThumbMark;
+        const subscribedAndSwornDate = this.subscribedAndSwornDate;
+        const personAdministeringOath = this.personAdministeringOath;
+        //const user = JSON.parse(sessionStorage.getItem('user_session')).id
+        const user = JSON.parse(sessionStorage.user_session).id;
+        const idList = this.idList;
+        let formData = new FormData();
+        formData.append("educBackgroundSignature", educBackgroundSignature);
+        formData.append("workExperienceSignature", workExperienceSignature);
+        formData.append("otherInfoSignature", otherInfoSignature);
+        formData.append("personalPhotoAttachment", personalPhotoAttachment);
+        formData.append("oathSignature", oathSignature);
+        formData.append("rightThumbMark", rightThumbMark);
+        formData.append("personAdministeringOath", personAdministeringOath);
+        formData.append("user", user);
+        const data = {
+          user,
+          idList,
+          personalSurname,
+          personalFirstName,
+          personalMiddleName,
+          personalSuffix,
+          personalDateOfBirth,
+          personalPlaceOfBirth,
+          personalCitizenship,
+          countryOfCitizenship,
+          personalDualCitizenship,
+          personalSex,
+          personalCivilStatus,
+          personalHeight,
+          personalWeight,
+          personalBloodType,
+          personalGSISIDNo,
+          personalResAddressHouseNo,
+          personalResAddressStreet,
+          personalResAddressSubdivision,
+          personalResAddressBarangay,
+          personalResAddressCity,
+          personalResAddressProvince,
+          personalZipCode,
+          personalPAGIBIGIDNo,
+          personalPHILHEALTHNo,
+          personalPermanentAddHouseNo,
+          personalPermanentAddStreet,
+          personalPermanentAddSubdivision,
+          personalPermanentAddBarangay,
+          personalPermanentAddCity,
+          personalPermanentAddProvince,
+          personalPermanentAddZipCode,
+          personalSSSNo,
+          personalTelephoneNo,
+          personalTinNo,
+          personalMobileNo,
+          personalAgencyEmployeeNo,
+          personalEmailAddress,
+          familySpouseSurname,
+          familySpouseFirstName,
+          familySpouseMiddleName,
+          familySpouseSuffix,
+          familySpouseOccupation,
+          familyEmployerName,
+          familyBusinessAddress,
+          familyTelephoneNo,
+          familyFatherSurname,
+          familyFatherFirstName,
+          familyFatherMiddleName,
+          familyFatherSuffix,
+          familyMotherMaidenName,
+          familyMotherSurname,
+          familyMotherFirstName,
+          familyMotherMiddleName,
+          firstChild,
+          secondChild,
+          thirdChild,
+          fourthChild,
+          fifthChild,
+          sixthChild,
+          dateOfBirthSpouse,
+          dateOfBirthFather,
+          dateOfBirthMother,
+          educationalBackground,
+          educBackgroundDateOfSignature,
+          civilServiceEligibility,
+          workExperience,
+
+          workExperienceDateOfSignature,
+          voluntaryWorkInvolvement,
+          learningAndDevelopment,
+          otherInfo,
+
+          otherInfoDateOfSignature,
+          questionThirtyFour,
+          questionThirtyFiveA,
+          questionThirtyFiveBDateFiled,
+          questionThirtyFiveBStatusOfCase,
+          questionThirtySix,
+          questionThirtySeven,
+          questionThirtyEightA,
+          questionThirtyEightB,
+          questionThirtyNine,
+          questionFourtyA,
+          questionFourtyB,
+          questionFourtyC,
+          references,
+
+          governmentIssuedID,
+          governmentIssuedIDNo,
+          governmentIDDateOrPlaceIssued,
+
+          oathDateAccomplished,
+          rightThumbMark,
+          subscribedAndSwornDate,
+        };
+        if (this.create == true) {
+          /*formDataEducationalBackground,workExperienceSignature,otherInfoSignature,personalPhotoAttachment,oathSignature,personAdministeringOath,*/
+          const returnedData = await this.$store.dispatch("createPds", data);
+          console.log(returnedData);
+          let personalInfoId = returnedData[0][0].personalInfoId[0].id;
+          let pdsAdditionalInfoId =
+            returnedData[1][0].pdsAdditionalInfoId[0].id;
+          let message = returnedData[2][0].message[0];
+          console.log(personalInfoId, pdsAdditionalInfoId, message);
+          formData.append("personalInfoId", personalInfoId);
+
+          formData.append("pdsAdditionalInfoId", pdsAdditionalInfoId);
+          if (message == "success") {
+            const fileUpload = await this.$store.dispatch(
+              "uploadFile",
+              formData
+            );
+            if (fileUpload == "success") {
+              this.pds = this.$store.getters.pdsInfosAll;
+              this.retrievePds();
+            }
+            //this.pds = this.$store.getters.pdsInfosAll;
+            //this.retrievePds()
+          }
+        } else if (this.edit == true) {
+          formData.append("personalInfoId", this.personalInfoId);
+
+          formData.append("pdsAdditionalInfoId", this.pdsAdditionalInfoId);
+          const returnedData = await this.$store.dispatch(
+            "updatePdsInfo",
+            data
+          );
+
+          const fileUpload = await this.$store.dispatch("uploadFile", formData);
+          console.log(returnedData, fileUpload);
         }
-        //this.pds = this.$store.getters.pdsInfosAll;
-        //this.retrievePds()
       }
-      }
-      else if(method == 'edit'){
-         formData.append(
-        "personalInfoId",
-        this.personalInfoId,
-        "pdsAdditionalInfoId",
-        this.pdsAdditionalInfoId
-      );
-        const returnedData = await this.$store.dispatch("updatePdsInfo", data);
-        const fileUpload = await this.$store.dispatch("uploadFile", formData);
-        console.log(returnedData, fileUpload)
-      }
-      
     },
     download: async function () {
       let formData = new FormData();
@@ -7356,17 +5035,17 @@ export default {
       // formDataEducationalBackground.append("fileName", event.name);
       formData.append("fileEducBackgroundSignature", event);
       formData.append("user", 1);
-      
-      if(event){
-         var reader = new FileReader();
-                // Define a callback function to run, when FileReader finishes its job
-                reader.onload = (e) => {
-                    // Note: arrow function used here, so that "this.imageData" refers to the imageData of Vue component
-                    // Read image as base64 and set to imageData
-                    this.imageData = e.target.result;
-                }
-                // Start the reader job - read file as a data url (base64 format)
-                reader.readAsDataURL(event);
+
+      if (event) {
+        var reader = new FileReader();
+        // Define a callback function to run, when FileReader finishes its job
+        reader.onload = (e) => {
+          // Note: arrow function used here, so that "this.imageData" refers to the imageData of Vue component
+          // Read image as base64 and set to imageData
+          this.imageData = e.target.result;
+        };
+        // Start the reader job - read file as a data url (base64 format)
+        reader.readAsDataURL(event);
       }
       // console.log(formDataEducationalBackground);
       //  this.$store.dispatch("uploadFile", formData);
@@ -7383,4 +5062,13 @@ export default {
 };
 </script>
 
-<style scoped src="../../assets/css/main.css"></style>
+<style scoped src="../../assets/css/main.css" crossorigin="anonymous">
+* {
+  font-size: 10px;
+  
+}
+.pdsA, td, th, tr{
+    font-size:10px
+  }
+
+</style>
