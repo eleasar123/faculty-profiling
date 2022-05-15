@@ -36,40 +36,6 @@ class EsatController extends Controller
         // return $request;
         // return $request->coreBehavioralCompetencies;
         $request->validate([
-            // //demographic profile
-            // 'user_id' => 'required',
-            // 'name_of_employee' => 'required',
-            // 'employee_id' => 'required',
-            // 'position' => 'required',
-            // 'employment_status' => 'required',
-            // 'age' => 'required',
-            // 'sex' => 'required',
-
-            // 'years_in_teaching' => 'required',
-            // 'highest_degree_obtained' => 'required',
-            // 'specified_highest_degree_obtained' => 'required',
-            // 'level_taught' => 'required',
-            // 'grade_level_taught' => 'required',
-
-            // 'region' => 'required',
-            // 'division' => 'required',
-            // 'employee_municipality' => 'required',
-            // 'school_id' => 'required',
-            // 'school_name' => 'required',
-            // 'school_type' => 'required',
-            // 'school_size' => 'required',
-            // 'curricular_classification' => 'required',
-            // 'area_of_specialization' => 'required',
-            // 'subjects_taught' => 'required',
-
-            // //core behavioral competencies
-            // 'objectives_no' => 'required',
-            // 'check_status' => 'required',
-
-            // //functional objectives
-            // 'objectives_no' => 'required',
-            // 'level_of_capability' => 'required',
-            // 'priority_for_development' => 'required',
 
             //demographic profile
             'userId' => 'required',
