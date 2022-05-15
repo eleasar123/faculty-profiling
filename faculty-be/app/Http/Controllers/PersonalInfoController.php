@@ -113,7 +113,7 @@ class PersonalInfoController extends Controller
    } catch (Throwable $e) {
     return $e;
    }
-  
+
  }
 
  //get all the pds of the teachers
@@ -162,16 +162,16 @@ class PersonalInfoController extends Controller
  }
 
  public function getImage($id){
-  
+
   $imageNameEducBackground = DB::table('personal_data_sheet_personal_information')->where('user_id', $id)->value('educational_signature');
   $imageNameworkExp = DB::table('personal_data_sheet_personal_information')->where('user_id', $id)->value('work_experience_signature');
   $imageNameOtherInfo = DB::table('personal_data_sheet_personal_information')->where('user_id', $id)->value('other_info_signature');
   $imageNamePersonalPhoto = DB::table('pds_additional_infos')->where('user_id', $id)->value('photo');
   $imageNameOathSignature = DB::table('pds_additional_infos')->where('user_id', $id)->value('oath');
   $imageNameRightThumbMark = DB::table('pds_additional_infos')->where('user_id', $id)->value('right_thumbmark');
-  $imageNamePersonAdministeringOath = DB::table('pds_additional_infos')->where('user_id', $id)->value('person_administering_oath');  
+  $imageNamePersonAdministeringOath = DB::table('pds_additional_infos')->where('user_id', $id)->value('person_administering_oath');
 
-  
+
 
   return[
   'educationalBackgroundSignature' =>asset('storage/signatures/educational-background/'.$imageNameEducBackground),
@@ -376,7 +376,7 @@ class PersonalInfoController extends Controller
    try {
     $educationalBackground->save();
    } catch (Throwable $e) {
-    return e;
+    return $e;
    }
   }
   foreach ($request->children as $child) {
@@ -388,7 +388,7 @@ class PersonalInfoController extends Controller
    try {
     $children->save();
    } catch (Throwable $e) {
-    return e;
+    return $e;
    }
 
   }
@@ -475,7 +475,7 @@ class PersonalInfoController extends Controller
     return $e;
    }
   }
-  
+
   foreach ($request->references as $reference) {
    $references = new References([
     'user_id'           => $request->user,
@@ -596,18 +596,18 @@ class PersonalInfoController extends Controller
     'dateOfBirthFather'                => 'required',
     'dateOfBirthMother'                => 'required',
     'educationalBackground'            => 'required',
- 
+
     'educBackgroundDateOfSignature'    => 'required',
     'civilServiceEligibility'          => 'required',
     'workExperience'                   => 'required',
- 
+
     'workExperienceDateOfSignature'    => 'required',
     'voluntaryWorkInvolvement'         => 'required',
     'learningAndDevelopment'           => 'required',
    //  'otherInfoSpecialSkills'           => 'required',
    //  'otherInfoNonacademicDistinctions' => 'required',
    //  'otherInfoAssociationMembers'      => 'required',
- 
+
     'otherInfoDateOfSignature'         => 'required',
     'otherInfoAssociationMembers'      => 'required',
    //  'questionThirtyFour'               => 'required',
@@ -622,17 +622,17 @@ class PersonalInfoController extends Controller
    //  'questionFourtyB'                  => 'required',
    //  'questionFourtyC'                  => 'required',
     'references'                       => 'required',
- 
+
     'governmentIssuedID'               => 'required',
     'governmentIssuedIDNo'             => 'required',
     'governmentIDDateOrPlaceIssued'    => 'required',
- 
+
     'oathDateAccomplished'             => 'required',
- 
+
     'subscribedAndSwornDate'           => 'required',
- 
+
    //  'children'                         => 'required',
- 
+
    ]);
 
    $personalInfo = DB::table('personal_data_sheet_personal_information')
@@ -729,9 +729,9 @@ class PersonalInfoController extends Controller
     if($deleted>0){
       $educationalBackground->save();
     }
-   
+
    } catch (Throwable $e) {
-    return e;
+    return $e;
    }
   }
   // foreach ($request->children as $child) {
@@ -744,7 +744,7 @@ class PersonalInfoController extends Controller
   //   DB::table('childrens')->where('user_id', $request->user)->delete();
   //   $children->save();
   //  } catch (Throwable $e) {
-  //   return e;
+  //   return $e;
   //  }
 
   // }
@@ -844,7 +844,7 @@ class PersonalInfoController extends Controller
     return $e;
    }
   }
-  
+
   foreach ($request->references as $reference) {
    $references = new References([
     'user_id'           => $request->user,
@@ -895,7 +895,7 @@ class PersonalInfoController extends Controller
 
   try {
     if($personalInfo > 0  && $familyBackground >0 && $pdsQuestions>0 && $pdsAdditionalInfo > 0){
-        
+
       return 'success';
     }
 

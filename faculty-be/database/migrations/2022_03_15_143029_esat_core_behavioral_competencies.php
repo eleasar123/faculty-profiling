@@ -18,8 +18,7 @@ return new class extends Migration
             $table->increments('id');
             $table->string('user_id');
             $table->string('objectives_no');
-            $table->string('objectives_details');
-            $table->string('check_status');
+            $table->string('check_status')->nullable();
             $table->timestamp('created_at') ->useCurrent();
             $table->timestamp('updated_at') -> nullable() -> useCurrentOnUpdate();
             $table->softDeletesTz();

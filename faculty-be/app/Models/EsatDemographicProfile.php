@@ -22,6 +22,7 @@ use App\Models\Division;
 use App\Models\SchoolType;
 use App\Models\SchoolSize;
 use App\Models\CurricularClassification;
+
 class EsatDemographicProfile extends Model
 {
 
@@ -33,21 +34,31 @@ class EsatDemographicProfile extends Model
      */
     protected $fillable = [
 
-        'user',
+        'user_id',
         'name_of_employee',
+        'employee_id',
         'position',
         'employment_status',
         'age',
         'sex',
+
         'years_in_teaching',
         'highest_degree_obtained',
+        'specified_highest_degree_obtained',
+        'level_taught',
+        'grade_level_taught',
+
         'region',
         'division',
-        'school',
+        'employee_municipality',
+        'school_id',
+        'school_name',
+        'school_type',
+        'school_size',
         'curricular_classification',
-        'grade_level_taught',
         'area_of_specialization',
         'subjects_taught',
+        'personal_comments',
     ];
 
     public function user()

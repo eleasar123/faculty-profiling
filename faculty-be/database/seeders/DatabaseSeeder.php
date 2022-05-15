@@ -17,10 +17,10 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
         DB::table('users')->insert([
-            'name' => "Eleasar Y. Patot",
-            'email' => 'patoteleasar@gmail.com',
-            'password' => '09358778896',
-            'role' => 'Admin',
+            'name' => "Dexter Tampioc",
+            'email' => 'dexter@gmail.com',
+            'password' => 'abc123',
+            'role' => 'Teacher',
             'profile' => 'sample.jpeg'
         ]);
     }

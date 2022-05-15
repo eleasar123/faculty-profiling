@@ -18,19 +18,29 @@ return new class extends Migration
             $table->increments('id');
             $table->string('user_id');
             $table->string('name_of_employee');
+            $table->string('employee_id');
             $table->string('position');
             $table->string('employment_status');
             $table->string('age');
             $table->string('sex');
+
             $table->string('years_in_teaching');
             $table->string('highest_degree_obtained');
+            $table->string('specified_highest_degree_obtained');
+            $table->string('level_taught');
+            $table->string('grade_level_taught');
+
             $table->string('region');
             $table->string('division');
-            $table->string('school');
+            $table->string('employee_municipality');
+            $table->string('school_id');
+            $table->string('school_name');
+            $table->string('school_type');
+            $table->string('school_size');
             $table->string('curricular_classification');
-            $table->string('grade_level_taught');
             $table->string('area_of_specialization');
             $table->string('subjects_taught');
+            $table->string('personal_comments')-> nullable();
             $table->timestamp('created_at') ->useCurrent();
             $table->timestamp('updated_at') -> nullable() -> useCurrentOnUpdate();
             $table->softDeletesTz();
