@@ -18,9 +18,8 @@ class EsatFunctionalObjectives extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'user',
+        'user_id',
         'objectives_no',
-        'objectives_details',
         'level_of_capability',
         'priority_for_development',
     ];

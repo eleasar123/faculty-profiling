@@ -13,89 +13,125 @@ class EsatController extends Controller
     public function index()
     {
         //another option is to use a loop
+
         $esat = collect();
         $esat->push([['esatDemographicProfile' => EsatDemographicProfile::all()]]);
         $esat->push([['esatCoreBehavioralCompetencies' => EsatCoreBehavioralCompetencies::all()]]);
         $esat->push([['esatFunctionalObjectives' => EsatFunctionalObjectives::all()]]);
+        return $esat;
     }
 
     public function getEsat(Request $request)
     {
+
         $esat = collect();
         $esat->push([['esatDemographicProfile' => EsatDemographicProfile::all()]]);
         $esat->push([['esatCoreBehavioralCompetencies' => EsatCoreBehavioralCompetencies::all()]]);
         $esat->push([['esatFunctionalObjectives' => EsatFunctionalObjectives::all()]]);
+        return $esat;
     }
 
     public function createEsat(Request $request)
     {
+        // return $request;
+        // return $request->coreBehavioralCompetencies;
         $request->validate([
+
             //demographic profile
-            'user' => 'required',
-            'name_of_employee' => 'required',
+            'userId' => 'required',
+            'employeeName' => 'required',
+            'employeeId' => 'required',
             'position' => 'required',
-            'employment_status' => 'required',
-            'age' => 'required',
-            'sex' => 'required',
-            'years_in_teaching' => 'required',
-            'highest_degree_obtained' => 'required',
+            'employmentStatus' => 'required',
+            'employeeAge' => 'required',
+            'employeeSex' => 'required',
+
+            'yearsInTeaching' => 'required',
+            'highestDegreeObtained' => 'required',
+            'specifiedHighestDegreeObtained' => 'required',
+            'levelTaught' => 'required',
+            'gradeLevelTaught' => 'required',
+
             'region' => 'required',
             'division' => 'required',
-            'school' => 'required',
-            'curricular_classification' => 'required',
-            'grade_level_taught' => 'required',
-            'area_of_specialization' => 'required',
-            'subjects_taught' => 'required',
+            'employeeMunicipality' => 'required',
+            'schoolId' => 'required',
+            'schoolName' => 'required',
+            'schoolType' => 'required',
+            'schoolSize' => 'required',
+            'curricularClassification' => 'required',
+            'specifyAreaofSpecialization' => 'required',
+            'specifySubjectsTaught' => 'required',
 
             //core behavioral competencies
-            'objectives_no' => 'required',
-            'objectives_details' => 'required',
-            'check_status' => 'required',
+            // 'objectiveNo',
+            // 'value',
+            // 'functionalObjectives' => 'required',
+            // 'coreBehavioralCompetencies' => 'required',
 
-            //functional objectives
-            'objectives_no' => 'required',
-            'objectives_details' => 'required',
-            'level_of_capability' => 'required',
-            'priority_for_development' => 'required',
+            // //functional objectives
+            // 'objectiveNo',
+            // 'capability',
+            // 'priority',
         ]);
 
         $esatDemographicProfile = new EsatDemographicProfile([
-            'user' => $request->user,
-            'name_of_employee' => $request->name_of_employee,
+            'user_id' => $request->userId,
+            'name_of_employee' => $request->employeeName,
+            'employee_id' => $request->employeeId,
             'position' => $request->position,
-            'employment_status' => $request->employment_status,
-            'age' => $request->age,
-            'sex' => $request->sex,
-            'years_in_teaching' => $request->years_in_teaching,
-            'highest_degree_obtained' => $request->highest_degree_obtained,
+            'employment_status' => $request->employmentStatus,
+            'age' => $request->employeeAge,
+            'sex' => $request->employeeSex,
+
+            'years_in_teaching' => $request->yearsInTeaching,
+            'highest_degree_obtained' => $request->highestDegreeObtained,
+            'specified_highest_degree_obtained' => $request->specifiedHighestDegreeObtained,
+            'level_taught' => $request->levelTaught,
+            'grade_level_taught' => $request->gradeLevelTaught,
+
             'region' => $request->region,
             'division' => $request->division,
-            'school' => $request->school,
-            'curricular_classification' => $request->curricular_classification,
-            'grade_level_taught' => $request->grade_level_taught,
-            'area_of_specialization' => $request->area_of_specialization,
-            'subjects_taught' => $request->subjects_taught,
+            'employee_municipality' => $request->employeeMunicipality,
+            'school_id' => $request->schoolId,
+            'school_name' => $request->schoolName,
+            'school_type' => $request->schoolType,
+            'school_size' => $request->schoolSize,
+            'curricular_classification' => $request->curricularClassification,
+            'area_of_specialization' => $request->specifyAreaofSpecialization,
+            'subjects_taught' => $request->specifySubjectsTaught,
+            'personal_comments' => $request->personalComments,
         ]);
 
-        $esatCoreBehavioralCompetencies = new EsatCoreBehavioralCompetencies([
-            'user' => $request->user,
-            'objectives_no' => $request->objectives_no,
-            'objectives_details' => $request->objectives_details,
-            'check_status' => $request->check_status,
-        ]);
+        foreach ($request->coreBehavioralCompetencies as $coreBehavioral) {
+            $esatCoreBehavioralCompetencies = new EsatCoreBehavioralCompetencies([
+                'user_id' => $request->userId,
+                'objectives_no' => $coreBehavioral['objectiveNo'],
+                'check_status' => $coreBehavioral['value'],
+            ]);
+            try {
+                $esatCoreBehavioralCompetencies->save();
+            } catch (Throwable $e) {
+                return $e;
+            }
+        }
 
-        $esatFunctionalObjectives = new EsatFunctionalObjectives([
-            'user' => $request->user,
-            'objectives_no' => $request->objectives_no,
-            'objectives_details' => $request->objectives_details,
-            'level_of_capability' => $request->level_of_capability,
-            'priority_for_development' => $request->priority_for_development,
-        ]);
+        foreach ($request->functionalObjectives as $funcObj) {
+            $esatFunctionalObjectives = new EsatFunctionalObjectives([
+                'user_id' => $request->userId,
+                'objectives_no' => $funcObj['objectiveNo'],
+                'level_of_capability' => $funcObj['capability'],
+                'priority_for_development' => $funcObj['priority'],
+            ]);
+            try {
+                $esatFunctionalObjectives->save();
+            } catch (Throwable $e) {
+                return $e;
+            }
+        }
 
         try {
             $esatDemographicProfile->save();
-            $esatCoreBehavioralCompetencies->save();
-            $esatFunctionalObjectives->save();
         } catch (Throwable $error) {
             return $error;
         }

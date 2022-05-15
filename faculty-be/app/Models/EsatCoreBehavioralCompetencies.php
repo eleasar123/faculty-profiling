@@ -19,9 +19,8 @@ class EsatCoreBehavioralCompetencies extends Model
      */
     protected $fillable = [
 
-        'user',
+        'user_id',
         'objectives_no',
-        'objectives_details',
         'check_status',
     ];
 
