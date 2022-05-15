@@ -1,5 +1,6 @@
 <template>
-  <v-container class="pa-0 ma-0 mr-0" fluid style="">
+  <v-container class="pa-0 ma-0 mr-0 pt-2 ">
+ 
     <v-container v-if="user == 'Admin' && edit == false">
       <v-card>
         <v-card-title>
@@ -30,558 +31,1117 @@
         </v-data-table>
       </v-card>
     </v-container>
-    <!-- <v-container class="d-print-inline">Hello World</v-container> -->
+    <v-btn @click="editPds" class="float-right ma-4">Edit</v-btn>
     <v-container
-      class="d-print-inline-flex"
+
       v-if="create == false && user == 'Teacher' && edit == false"
-      id="tab1"
+      style=""
+       id="printMe"
+       class="mt-6"
     >
-      <v-btn @click="editPds" class="float-right">Edit</v-btn>
-      <v-tabs>
-        <v-tab>C1</v-tab>
-        <v-tab-item>
-         
-          <v-simple-table
-            height="auto"
-            class="pa-0 pa-0 ma-12"
-            max-width="60vw"
-          >
-            <template v-slot:default>
-              <thead cols="4">
-                <tr> <v-card-title label="Search" single-line hide-details
-            ><span>CS Form N0.212<br />Revised 2017</span>
-            <span>Personal Data Sheet</span>
-          </v-card-title>
-          <v-card-subtitle label="Search" single-line hide-details>
-            WARNING: Any misrepresentation made in the Personal Data Sheet and
-            the Work Experience Sheet shall cause the filing of
-            administrative/criminal case/s against the person concerned.
-          </v-card-subtitle>
-          <v-card-text label="Search" single-line hide-details>
-            READ THE ATTACHED GUIDE TO FILLING OUT THE PERSONAL DATA SHEET (PDS)
-            BEFORE ACCOMPLISHING THE PDS FORM.
-          </v-card-text>
-          </tr>
-                <tr clas="pa-0">
-                  <th colspan="8">I. PERSONAL INFORMATION</th>
-                </tr>
-              </thead>
-              <tbody
-                class="text-center"
-                color="secondary"
-                v-for="row in pdsPersonalInfo"
+      <v-simple-table class="pa-0 text-center pdsA" width="80%" light>
+            <thead>
+              <tr>
+                <th colspan="8" class="pa-0">
+                  <v-card class="ma-0 text-left" style="border: solid 1px">
+                    <v-card-title label="Search" single-line hide-details
+                      ><span>CS Form N0.212</span>
+                      <v-container fluid class="ml-auto mr-auto px-2">
+                        <span> Revised 2017</span
+                        ><span
+                          class=""
+                          style="
+                            font-size: 35px;
+                            margin-left: 30%;
+                            font-weight: bolder;
+                            font-family: fantasy;
+                          "
+                          >Personal Data Sheet</span
+                        ></v-container
+                      >
+                    </v-card-title>
+                    <v-card-subtitle label="Search" single-line hide-details>
+                      WARNING: Any misrepresentation made in the Personal Data
+                      Sheet and the Work Experience Sheet shall cause the filing
+                      of administrative/criminal case/s against the person
+                      concerned.
+                    </v-card-subtitle>
+                    <v-card-text label="Search" single-line hide-details>
+                      READ THE ATTACHED GUIDE TO FILLING OUT THE PERSONAL DATA
+                      SHEET (PDS) BEFORE ACCOMPLISHING THE PDS FORM.
+                    </v-card-text>
+                  </v-card>
+                </th>
+              </tr>
+              <tr class="pa-0">
+                <th
+                  colspan="8"
+                  style="
+                    border: solid 1px;
+                    background-color: rgb(160, 160, 160);
+                    color: white;
+                  "
+                >
+                  I. PERSONAL INFORMATION
+                </th>
+              </tr>
+            </thead>
+            <tbody class="text-center" color="secondary" v-for="row in pdsPersonalInfo"
                 :key="row.id"
+>
+              <tr>
+                <td
+                  colspan="1"
+                  style="
+                    text-align: left;
+                    font-size: 10px;
+                    border: solid 1px black;
+                    border-bottom: none;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  2. SURNAME
+                </td>
+                <td colspan="7">
+                 {{row.last_name}}
+                </td>
+              </tr>
+
+              <tr>
+                <td
+                  colspan="1"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    border-top: none;
+                    border-bottom: none;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  FIRST NAME
+                </td>
+                <td colspan="4">
+                  {{row.first_name}}
+                </td>
+                <td
+                  colspan="3"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                 {{row.suffix}}
+                </td>
+              </tr>
+              <tr>
+                <td
+                  colspan="1"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    border-top: none;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  MIDDLE NAME
+                </td>
+                <td colspan="7">
+                  {{row.middle_name}}
+                </td>
+              </tr>
+
+              <tr>
+                <td
+                  max-width="100px"
+                  colspan="1"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  DATE OF BIRTH <br />
+                  (mm/dd/yyyy)
+                </td>
+                <td colspan="2">
+                  {{row.date_of_birth}}
+                </td>
+                <td
+                  rowspan="3"
+                  colspan="2"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  16.CITIZENSHIP<br />If holder of dual citizenship,<br />please
+                  indicate the details.
+                </td>
+                <td colspan="3">
+                 {{row.citizenship}}
+                </td>
+              </tr>
+              <tr>
+                <td
+                  colspan="1"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  PLACE OF BIRTH
+                </td>
+                <td colspan="2">
+                  {{row.place_of_birth}}
+                </td>
+
+                <td colspan="3">
+                  {{row.country_of_citizenship}}
+                </td>
+              </tr>
+              <tr>
+                <td
+                  colspan="1"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  SEX
+                </td>
+                <td colspan="2">
+                 {{row.sex}}
+                </td>
+                <td colspan="3">
+                  {{row.dual_citizenship}}
+                </td>
+              </tr>
+              <tr>
+                <td
+                  colspan="1"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                  rowspan="2"
+                >
+                  CIVIL STATUS
+                </td>
+                <td rowspan="2" colspan="2">
+                  {{row.civil_status}}
+                </td>
+                <td
+                  rowspan="4"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  RESIDENTIAL<br />
+                  ADDRESS<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+                  ZIP CODE
+                </td>
+                <td rowspan="1" colspan="2" style="border-right: none" class="pa-2"><br>
+                 {{ row.residential_address_house_no }}
+                   <v-divider></v-divider>
+                  <span class="text-center">House/Block/Lot No.
+</span>
+                </td>
+                <td rowspan="1" colspan="2" style="border-left: none">
+                  {{ row.residential_address_street }}
+                  <v-divider></v-divider>
+                  <span class="text-center">Street
+</span>
+                </td>
+              </tr>
+
+              <tr>
+                <td rowspan="1" colspan="2" style="border-right: none">
+                  {{ row.residential_address_subdivision }}<br>
+                  <v-divider></v-divider>
+                  <span class="text-center">Subdivision/Village</span>
+                </td>
+                <td rowspan="1" colspan="2" style="border-left: none">
+                  {{ row.residential_address_barangay }}<br>
+                  <v-divider></v-divider>
+                  <span class="text-center">Barangay</span>
+                </td>
+              </tr>
+
+              <tr>
+                <td
+                  colspan="1"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  HEIGHT (m)
+                </td>
+                <td colspan="2">
+                  {{ row.height }}
+                </td>
+                <td colspan="2" style="border-right: none">
+                  {{ row.residential_address_city }}<br>
+                  <v-divider></v-divider>
+                  <span class="text-center">City/Municipality</span>
+                <td colspan="2" style="border-left: none">
+                  {{ row.residential_address_province }}<br>
+                  <v-divider></v-divider>
+                  
+                  <span class="text-center">Province</span>
+                </td>
+              </tr>
+              <tr>
+                <td
+                  colspan="1"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  WEIGHT (kg)
+                </td>
+                <td colspan="2">
+                 {{ row.weight }}
+                </td>
+
+                <td colspan="4">
+                  {{ row.residential_address_zip_code }}
+
+                </td>
+              </tr>
+              <tr>
+                <td
+                  colspan="1"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  BLOOD TYPE
+                </td>
+                <td colspan="2">
+                  {{ row.blood_type }}
+                </td>
+                <td
+                  rowspan="4"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  PERMANENT ADDRESS<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+                  ZIP CODE
+                </td>
+                <td rowspan="1" colspan="2" style="border-right: none" class="pa-2"><br>
+                 {{ row.permanent_address_house_no }}
+                   <v-divider></v-divider>
+                  <span class="text-center">House/Block/Lot No.
+</span>
+                </td>
+                <td rowspan="1" colspan="2" style="border-left: none">
+                  {{ row.permanent_address_street }}
+                  <v-divider></v-divider>
+                  <span class="text-center">Street
+</span>
+                </td>
+              </tr>
+
+              <tr>
+                <td
+                  colspan="1"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  GSIS ID NO.
+                </td>
+                <td colspan="2">
+                  {{ row.gsis_id_no }}
+
+                </td>
+                <td colspan="2" style="border-right: none">
+                  {{ row.permanent_address_subdivision }}
+                </td>
+                <td colspan="2" style="border-left: none">
+                 {{ row.permanent_address_barangay }}
+                </td>
+              </tr>
+              <tr>
+                <td
+                  colspan="1"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  PAG-IBIG ID NO.
+                </td>
+                <td colspan="2">
+                 {{ row.pag_ibig_id_no }}
+
+                </td>
+                <td colspan="2" style="border-right: none">
+                 {{ row.permanent_address_city }}
+                </td>
+                <td colspan="2" style="border-left: none">
+                  {{ row.permanent_address_province }}
+
+                </td>
+              </tr>
+              <tr>
+                <td
+                  colspan="1"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  PHILHEALTH NO.
+                </td>
+                <td colspan="2">
+                  {{ row.philhealth_no }}
+
+                </td>
+                <td colspan="4">
+                  {{ row.permanent_zip_code }}
+                </td>
+              </tr>
+              <tr>
+                <td
+                  colspan="1"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  SSS NO.
+                </td>
+                <td colspan="2">
+                  {{ row.sss_no }}
+
+                </td>
+                <td
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  19.TELEPHONE NO.
+                </td>
+                <td colspan="4">
+                  {{ row.telephone_no }}
+                </td>
+              </tr>
+              <tr>
+                <td
+                  colspan="1"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  14.TIN NO.
+                </td>
+                <td colspan="2">
+                   {{ row.tin_no }}
+                </td>
+                <td
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  20.MOBILE NO.
+                </td>
+                <td colspan="4">
+                  {{ row.mobile_no }}
+                </td>
+              </tr>
+              <tr>
+                <td
+                  colspan="1"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  AGENCY EMPLOYEE NO.
+                </td>
+                <td colspan="2">
+                  {{ row.agency_employee_no }}
+
+                </td>
+                <td
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  21. E-MAIL ADDRESS (if any)
+                </td>
+
+                <td colspan="4">
+                  {{ row.email_address }}
+                </td>
+              </tr>
+            </tbody>
+              </v-simple-table>
+               <v-simple-table fluid class="ma-0 pa-0"  v-for="row in pdsFamilyBackground"
+                :key="row.id">
+              <tr clas="pa-0">
+                <td
+                  colspan="8"
+                  style="
+                    border: solid 1px;
+                    background-color: rgb(160, 160, 160);
+                    color: white;
+                  "
+                  class="text-left"
+                >
+                  II. FAMILY BACKGROUND
+                </td>
+              </tr>
+           
+
+              <tr>
+                <td
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  SPOUSE'S SURNAME
+                </td>
+                <td colspan="3">
+                 {{ row.spouse_last_name }}
+                </td>
+                <td
+                  colspan="3"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  23. NAME of CHILDREN (Write full name and list all)
+                </td>
+                <td
+                  colspan="1"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  DATE OF BIRTH (mm/dd/yyyy)
+                </td>
+              </tr>
+
+              <tr>
+                <td
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  FIRST NAME
+                </td>
+                <td colspan="2">
+                  {{ row.spouse_first_name }}
+                </td>
+                <td
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  {{ row.spouse_suffix }}
+
+                </td>
+                <td colspan="3">
+                  {{ row.first_child }}
+                </td>
+                <td colspan="1">
+                  {{ row.spouse_date_of_birth }}
+                </td>
+              </tr>
+              <tr>
+                <td
+                  width="80px"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  MIDDLE NAME
+                </td>
+                <td colspan="3">
+                 {{ row.spouse_middle_name }}
+                </td>
+
+                <td colspan="3">
+                  {{ row.second_child }}
+                </td>
+                <td></td>
+              </tr>
+
+              <tr>
+                <td
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  OCCUPATION
+                </td>
+                <td colspan="3">
+                  {{ row.spouse_occupation }}
+                </td>
+                <td colspan="3">
+                  {{ row.third_child }}
+                </td>
+                <td colspan="1"></td>
+              </tr>
+              <tr>
+                <td
+                  max-width="100px"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  EMPLOYER/BUSINESS NAME
+                </td>
+                <td colspan="3">
+                 {{ row.spouse_employer }}
+
+                </td>
+                <td colspan="3">
+                  {{ row.fourth_child }}
+
+                </td>
+                <td colspan="1"></td>
+              </tr>
+              <tr>
+                <td
+                  max-width="100px"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  BUSINESS ADDRESS
+                </td>
+                <td colspan="3">
+                  {{ row.spouse_business_address }}
+                </td>
+                <td colspan="3">
+                  {{ row.fifth_child }}
+                </td>
+                <td colspan="1"></td>
+              </tr>
+              <tr>
+                <td
+                  max-width="100px"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  TELEPHONE NO.
+                </td>
+                <td colspan="3">
+                  {{ row.spouse_telephone_no }}
+                </td>
+                <td colspan="3">
+                  {{ row.sixth_child }}
+                </td>
+                <td colspan="1"></td>
+              </tr>
+
+              <tr>
+                <td
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  25. FATHER'S SURNAME
+                </td>
+                <td colspan="3">
+                   {{ row.father_last_name }}
+
+                </td>
+                <td colspan="3"></td>
+                <td colspan="1">
+                  {{ row.father_date_of_birth }}
+                </td>
+              </tr>
+              <tr>
+                <td
+                  width="80px"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  FIRST NAME
+                </td>
+                <td colspan="2">
+                 {{ row.father_first_name }}
+                </td>
+                <td
+                  colspan="1"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                   {{ row.father_suffix }}
+                </td>
+                <td colspan="3"></td>
+                <td colspan="1"></td>
+              </tr>
+              <tr>
+                <td
+                  width="80px"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  MIDDLE NAME
+                </td>
+                <td colspan="3">
+                   {{ row.father_middle_name }}
+                </td>
+                <td colspan="3"></td>
+                <td colspan="1"></td>
+              </tr>
+              <tr>
+                <td
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  26. MOTHER'S MAIDEN NAME
+                </td>
+                <td colspan="3">
+                  {{ row.mother_maiden_name }}
+                </td>
+                <td colspan="3"></td>
+                <td colspan="1">
+                  {{ row.mother_date_of_birth }}
+                </td>
+              </tr>
+              <tr>
+                <td
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  SURNAME
+                </td>
+                <td colspan="3">
+                  {{ row.mother_last_name }}
+                </td>
+                <td colspan="3"></td>
+                <td colspan="1"></td>
+              </tr>
+              <tr>
+                <td
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  FIRST NAME
+                </td>
+                <td colspan="3">
+                  {{ row.mother_first_name }}
+                </td>
+
+                <td colspan="3"></td>
+                <td colspan="1"></td>
+              </tr>
+              <tr>
+                <td
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  MIDDLE NAME
+                </td>
+                <td colspan="3">
+                 {{row.mother_middle_name}}
+                </td>
+                <td colspan="3"></td>
+                <td colspan="1"></td>
+              </tr>
+        
+               </v-simple-table>
+               <v-simple-table>
+               
+              <tr
+                clas="pa-0 float-left"
+                style="border: solid 1px; background-color: rgb(160, 160, 160)"
               >
-                <tr>
-                  <td width="50px" colspan="2" style="text-align: left">
-                    2. SURNAME
-                  </td>
-                  <td colspan="8">
-                    {{ row.last_name }}
-                  </td>
-                </tr>
+                <td
+                  colspan="8"
+                  class="text-left"
+                  style="border: solid 1px black; color: white"
+                >
+                  III. EDUCATIONAL BACKGROUND
+                </td>
+              </tr>
+              <tr>
+                <td
+                  rowspan="2"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  LEVEL
+                </td>
+                <td
+                  rowspan="2"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  NAME OF SCHOOL<br />(Write in full)
+                </td>
+                <td
+                  rowspan="2"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  BASIC EDUCATION/DEGREE/COURSE<br />(Write in full)
+                </td>
+                <td
+                  colspan="2"
+                  rowspan="1"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  PERIOD OF ATTENDANCE<br />
+                </td>
+                <td
+                  rowspan="2"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  HIGHEST LEVEL/UNITS EARNED (if not graduated)
+                </td>
+                <td
+                  rowspan="2"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  YEAR GRADUATED
+                </td>
+                <td
+                  rowspan="2"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  SCHOLARSHIP/ ACADEMIC HONORS RECEIVED
+                </td>
+              </tr>
 
-                <tr>
-                  <td width="50px" colspan="2" style="text-align: left">
-                    FIRST NAME
-                  </td>
-                  <td colspan="4">
-                    {{ row.first_name }}
-                  </td>
-                  <td colspan="4">
-                    {{ row.suffix }}
-                  </td>
-                </tr>
-                <tr>
-                  <td width="80px" colspan="2" style="text-align: left">
-                    MIDDLE NAME
-                  </td>
-                  <td colspan="8">
-                    {{ row.middle_name }}
-                  </td>
-                </tr>
-
-                <tr>
-                  <td  colspan="1" style="text-align: left">
-                    DATE OF BIRTH <br />
-                    (mm/dd/yyyy)
-                  </td>
-                  <td colspan="2">
-                    {{ row.date_of_birth }}
-                  </td>
-                  <td rowspan="3" colspan="2">
-                    16.CITIZENSHIP<br />If holder of dual citizenship,<br />please
-                    indicate the details.
-                  </td>
-                  <td colspan="2">
-                    {{ row.citizenship }}
-                  </td>
-                </tr>
-                <tr>
-                  <td colspan="2" style="text-align: left">PLACE OF BIRTH</td>
-                  <td colspan="2">
-                    {{ row.place_of_birth }}
-                  </td>
-
-                  <td colspan="4">
-                    {{ row.dual_citizenship }}
-                  </td>
-                </tr>
-                <tr>
-                  <td colspan="2" style="text-align: left">SEX</td>
-                  <td colspan="2">
-                    {{ row.sex }}
-                  </td>
-                  <td colspan="4">
-                    {{ row.dual_citizenship }}
-                  </td>
-                </tr>
-                <tr>
-                  <td colspan="2" style="text-align: left" rowspan="2">
-                    CIVIL STATUS
-                  </td>
-                  <td rowspan="2" colspan="2">
-                    {{ row.civil_status }}
-                  </td>
-                  <td rowspan="4" colspan="2">
-                    RESIDENTIAL<br />
-                    ADDRESS<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-                    ZIP CODE
-                  </td>
-                  <td rowspan="1" colspan="2">
-                    {{ row.residential_address_house_no }}
-                  </td>
-                  <td rowspan="1" colspan="2">
-                    {{ row.residential_address_street }}
-                  </td>
-                </tr>
-
-                <tr>
-                  <td rowspan="1" colspan="2">
-                    {{ row.residential_address_subdivision }}
-                  </td>
-                  <td rowspan="1" colspan="2">
-                    {{ row.residential_address_barangay }}
-                  </td>
-                </tr>
-
-                <tr>
-                  <td colspan="2" style="text-align: left">HEIGHT (m)</td>
-                  <td colspan="2">
-                    {{ row.height }}
-                  </td>
-                  <td colspan="2">
-                    {{ row.residential_address_city }}
-                  </td>
-                  <td colspan="2">
-                    {{ row.residential_address_province }}
-                  </td>
-                </tr>
-                <tr>
-                  <td colspan="2" style="text-align: left">WEIGHT (kg)</td>
-                  <td colspan="2">
-                    {{ row.weight }}
-                  </td>
-
-                  <td colspan="4">
-                    {{ row.residential_address_zip_code }}
-                  </td>
-                </tr>
-                <tr>
-                  <td colspan="2" style="text-align: left">BLOOD TYPE</td>
-                  <td rowspan="1" colspan="2">
-                    {{ row.blood_type }}
-                  </td>
-                  <td rowspan="4" colspan="2">
-                    PERMANENT ADDRESS<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-                    ZIP CODE
-                  </td>
-                  <td colspan="2">
-                    {{ row.permanent_address_house_no }}
-                  </td>
-                  <td colspan="2">
-                    {{ row.permanent_address_street }}
-                  </td>
-                </tr>
-                <tr>
-                  <td colspan="2" style="text-align: left">GSIS ID NO.</td>
-                  <td colspan="2">
-                    {{ row.gsis_id_no }}
-                  </td>
-                  <td colspan="2">
-                    {{ row.permanent_address_subdivision }}
-                  </td>
-                  <td colspan="2">
-                    {{ row.permanent_address_barangay }}
-                  </td>
-                </tr>
-                <tr>
-                  <td colspan="2" style="text-align: left">PAG-IBIG ID NO.</td>
-                  <td colspan="2">
-                    {{ row.pag_ibig_id_no }}
-                  </td>
-                  <td colspan="2">
-                    {{ row.permanent_address_city }}
-                  </td>
-                  <td colspan="2">
-                    {{ row.permanent_address_province }}
-                  </td>
-                </tr>
-                <tr>
-                  <td colspan="2" style="text-align: left">PHILHEALTH NO.</td>
-                  <td colspan="2">
-                    {{ row.philhealth_no }}
-                  </td>
-                  <td colspan="3">
-                    {{ row.permanent_zip_code }}
-                  </td>
-                </tr>
-                <tr>
-                  <td colspan="2" style="text-align: left">SSS NO.</td>
-                  <td colspan="2">
-                    {{ row.sss_no }}
-                  </td>
-                  <td>19.TELEPHONE NO.</td>
-                  <td colspan="4">
-                    {{ row.telephone_no }}
-                  </td>
-                </tr>
-                <tr>
-                  <td colspan="2" style="text-align: left">14.TIN NO.</td>
-                  <td colspan="2">
-                    {{ row.tin_no }}
-                  </td>
-                  <td>20.MOBILE NO.</td>
-                  <td colspan="4">
-                    {{ row.mobile_no }}
-                  </td>
-                </tr>
-                <tr>
-                  <td colspan="2" style="text-align: left">
-                    AGENCY EMPLOYEE NO.
-                  </td>
-                  <td colspan="2">
-                    {{ row.agency_employee_no }}
-                  </td>
-                  <td>21. E-MAIL ADDRESS (if any)</td>
-
-                  <td colspan="4">
-                    {{ row.email_address }}
-                  </td>
-                </tr>
-              </tbody>
-            </template>
-          </v-simple-table>
-
-          <v-simple-table height="auto" class="pa-0 pa-0 ma-12" width="80vw">
-            <template v-slot:default>
-              <thead>
-                <tr clas="pa-0">
-                  <th colspan="5">II. FAMILY BACKGROUND</th>
-                </tr>
-              </thead>
-              <tbody
-                class=""
-                color="secondary"
-                v-for="row in pdsFamilyBackground"
-                :key="row.id"
+              <tr>
+                <td
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  From
+                </td>
+                <td
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  To
+                </td>
+              </tr>
+                <tbody v-for="row in pdsEducationalBackground"
+                :key="row.id">
+              <tr
+               
               >
-                <tr>
-                  <td width="50px">SPOUSE'S SURNAME</td>
-                  <td colspan="4">
-                    {{ row.spouse_last_name }}
-                  </td>
-                  <td>
-                    23. NAME of CHILDREN <br />(Write full name and list all)
-                  </td>
-                  <td>DATE OF BIRTH (mm/dd/yyyy)</td>
-                </tr>
+                <td colspan="1">
+                  {{ row.level }}
+                </td>
+                <td colspan="1">
+                  {{ row.name_of_school }}
 
-                <tr>
-                  <td width="80px">FIRST NAME</td>
-                  <td colspan="3">
-                    {{ row.spouse_first_name }}
-                  </td>
-                  <td colspan="1">
-                    {{ row.spouse_suffix }}
-                  </td>
-                  <td rowspan="6">
-                    <v-container
-                      v-for="child in pdsChildren"
-                      :key="child.id"
-                      class="grey lighten-5"
-                    >
-                      <v-col cols="12" sm="8">{{ child.child_name }} </v-col>
-                    </v-container>
-                  </td>
-                  <td colspan="2">
-                    {{ row.spouse_date_of_birth }}
-                  </td>
-                </tr>
-                <tr>
-                  <td width="80px">MIDDLE NAME</td>
-                  <td colspan="4">
-                    {{ row.spouse_middle_name }}
-                  </td>
-
-                  <td colspan="1"></td>
-                </tr>
-
-                <tr>
-                  <td max-width="100px">OCCUPATION</td>
-                  <td colspan="4">
-                    {{ row.spouse_occupation }}
-                  </td>
-
-                  <td colspan="1"></td>
-                </tr>
-                <tr>
-                  <td max-width="100px">EMPLOYER/BUSINESS NAME</td>
-                  <td colspan="4">
-                    {{ row.spouse_employer }}
-                  </td>
-
-                  <td colspan="1"></td>
-                </tr>
-                <tr>
-                  <td max-width="100px">BUSINESS ADDRESS</td>
-                  <td colspan="4">
-                    {{ row.spouse_business_address }}
-                  </td>
-
-                  <td colspan="1"></td>
-                </tr>
-                <tr>
-                  <td max-width="100px">TELEPHONE NO.</td>
-                  <td colspan="4">
-                    {{ row.spouse_telephone_no }}
-                  </td>
-                  <td colspan="1"></td>
-                </tr>
-
-                <tr>
-                  <td>25. FATHER'S SURNAME</td>
-                  <td colspan="4">
-                    {{ row.father_last_name }}
-                  </td>
-                  <td colspan="1"></td>
-                  <td colspan="1">
-                    {{ row.father_date_of_birth }}
-                  </td>
-                </tr>
-                <tr>
-                  <td width="80px">FIRST NAME</td>
-                  <td colspan="3">
-                    {{ row.father_first_name }}
-                  </td>
-                  <td colspan="1">
-                    {{ row.father_suffix }}
-                  </td>
-                  <td colspan="1"></td>
-                  <td colspan="1"></td>
-                </tr>
-                <tr>
-                  <td width="80px">MIDDLE NAME</td>
-                  <td colspan="4">
-                    {{ row.father_middle_name }}
-                  </td>
-                  <td colspan="1"></td>
-                  <td colspan="1"></td>
-                </tr>
-                <tr>
-                  <td>26. MOTHER'S MAIDEN NAME</td>
-                  <td colspan="4">
-                    {{ row.mother_maiden_name }}
-                  </td>
-                  <td colspan="1"></td>
-                  <td colspan="1">
-                    {{ row.mother_date_of_birth }}
-                  </td>
-                </tr>
-                <!--Hello World -->
-                <tr>
-                  <td>SURNAME</td>
-                  <td colspan="4">
-                    {{ row.mother_last_name }}
-                  </td>
-                  <td colspan="1"></td>
-                  <td colspan="1"></td>
-                </tr>
-                <tr>
-                  <td width="80px">FIRST NAME</td>
-                  <td colspan="4">
-                    {{ row.mother_first_name }}
-                  </td>
-
-                  <td colspan="1"></td>
-                  <td colspan="1"></td>
-                </tr>
-                <tr>
-                  <td width="80px">MIDDLE NAME</td>
-                  <td colspan="4">
-                    {{ row.mother_middle_name }}
-                  </td>
-                  <td colspan="1"></td>
-                  <td colspan="1"></td>
-                </tr>
+                </td>
+                <td colspan="1">
+                  {{ row.basic_education_course }}
+                </td>
+                <td colspan="1">
+                  {{ row.period_of_attendance_from }}
+                </td>
+                <td colspan="1">
+                 {{ row.period_of_attendance_to }}
+                </td>
+                <td colspan="1">
+                  {{ row.highest_level_units_earned }}
+                </td>
+                <td colspan="1">
+                  {{ row.year_graduated }}
+                </td>
+                <td colspan="1">
+                  {{ row.academic_honors_received }}
+                </td>
+              </tr>
               </tbody>
-            </template>
-          </v-simple-table>
-
-          <v-simple-table height="auto" class="pa-0 pa-0 ma-12" width="80vw">
-            <template v-slot:default>
-              <thead cols="4">
-                <tr clas="pa-0">
-                  <th colspan="4">III. EDUCATIONAL BACKGROUND</th>
-                </tr>
-                <tr>
-                  <td rowspan="2">LEVEL</td>
-                  <td rowspan="2">NAME OF SCHOOL<br />(Write in full)</td>
-                  <td rowspan="2">
-                    BASIC EDUCATION/DEGREE/COURSE<br />(Write in full)
-                  </td>
-                  <td colspan="2">PERIOD OF ATTENDANCE<br />From To</td>
-                  <td rowspan="2">
-                    HIGHEST LEVEL/UNITS EARNED (if not graduated)
-                  </td>
-                  <td rowspan="2">YEAR GRADUATED</td>
-                  <td rowspan="2">SCHOLARSHIP/ ACADEMIC HONORS RECEIVED</td>
-                </tr>
-
-                <tr>
-                  <td>From</td>
-                  <td>To</td>
-                </tr>
-              </thead>
-              <tbody
-                class="text-center"
-                color="secondary"
-                v-for="row in pdsEducationalBackground"
-                :key="row.id"
-              >
-                <tr>
-                  <td colspan="1">
-                    {{ row.level }}
-                  </td>
-                  <td colspan="1">
-                    {{ row.name_of_school }}
-                  </td>
-                  <td colspan="1">
-                    {{ row.basic_education_course }}
-                  </td>
-                  <td colspan="1">
-                    {{ row.period_of_attendance_from }}
-                  </td>
-                  <td colspan="1">
-                    {{ row.period_of_attendance_to }}
-                  </td>
-                  <td colspan="1">
-                    {{ row.highest_level_units_earned }}
-                  </td>
-                  <td colspan="1">
-                    {{ row.year_graduated }}
-                  </td>
-                  <td colspan="1">
-                    {{ row.academic_honors_received }}
-                  </td>
-                </tr>
-              </tbody>
-              <tfoot>
-                <tr>
-                  <td
-                    colspan="10"
-                    style="background-color: rgb(160, 160, 160)"
-                  ></td>
-                </tr>
-                <tr>
-                  <td>SIGNATURE</td>
-                  <td
-                    colspan="4"
-                    class="d-flex justify-content-center text-center"
-                    style="margin: 20px 177px 20px 177px"
-                  >
-                    <img
+              <tfoot >
+              <tr style="background-color: rgb(211, 211, 211)">
+                <td colspan="8"></td>
+              </tr>
+              <tr>
+                <td
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  SIGNATURE
+                </td>
+                <td colspan="2">
+                  <img
                       :src="imageUrl.educationalBackgroundSignature"
                       alt="Base64 encoded image"
                       style="border: none"
                     />
 
-                    <!-- <v-spacer></v-spacer> -->
-                  </td>
-                  <td colspan="1" class="pl-10">DATE</td>
-                  <td colspan="4">
-                    {{ pdsPersonalInfo[0].educational_date_signed }}
-                  </td>
-                </tr>
+                </td>
+
+                <td
+                  colspan="2"
+                  class="pl-10"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  DATE
+                </td>
+                <td colspan="3">
+                  {{ pdsPersonalInfo[0].educational_date_signed }}
+                </td>
+              </tr>
               </tfoot>
-            </template>
           </v-simple-table>
-        </v-tab-item>
-        <v-tab>C2</v-tab>
-        <v-tab-item>
-          <v-simple-table height="auto" class="pa-0 pa-0 ma-12" width="80vw">
+          <v-simple-table height="auto" class="pa-0 pa-0 ma-0">
             <thead>
-              <tr>
-                <th colspan="8" style="text-align: left">
+              <tr
+                clas="pa-0 float-left"
+                style="border: solid 1px; background-color: rgb(160, 160, 160)"
+              >
+                <td
+                  colspan="9"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    color: white;
+                  "
+                >
                   IV. CIVIL SERVICE ELIGIBILITY
-                </th>
+                </td>
               </tr>
 
-              <tr>
+              <tr style="border: solid 1px black">
                 <th
                   rowspan="2"
                   colspan="2"
-                  style="text-align: left"
-                  class="text-wrap"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
                 >
                   CAREER SERVICE/ RA 1080 (BOARD/ BAR) UNDER SPECIAL LAWS/ CES/
                   CSEE BARANGAY ELIGIBILITY / DRIVER'S LICENSE
                 </th>
-                <th rowspan="2" colspan="2" style="text-align: left">
+                <th
+                  rowspan="2"
+                  colspan="1"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
                   RATING <br />(If Applicable)
                 </th>
-                <th rowspan="2" colspan="2" style="text-align: left">
+                <th
+                  rowspan="2"
+                  colspan="1"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
                   DATE OF EXAMINATION / CONFERMENT
                 </th>
-                <th rowspan="2" colspan="2" style="text-align: left">
+                <th
+                  rowspan="2"
+                  colspan="2"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
                   PLACE OF EXAMINATION / CONFERMENT
                 </th>
-                <th colspan="2" style="text-align: left">
+                <th
+                  colspan="2"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
                   LICENSE (if applicable)
                 </th>
+                
               </tr>
               <tr>
-                <th style="text-align: left">NUMBER</th>
-                <th style="text-align: left">Date of Validity</th>
+                <th
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  NUMBER
+                </th>
+                <th
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  Date of Validity
+                </th>
               </tr>
             </thead>
-            <tbody v-for="row in pdsCivilServiceEligibility" :key="row.id">
-              <tr>
+            <tbody  v-for="row in pdsCivilServiceEligibility"
+                :key="row.id">
+              <tr
+               
+              >
                 <td colspan="2">
                   {{ row.career_service }}
                 </td>
-                <td colspan="2">
-                  {{ row.rating }}
+                <td colspan="1">
+                 {{ row.rating }}
                 </td>
-                <td colspan="2">
+                <td colspan="1">
                   {{ row.date_of_examination }}
+
                 </td>
                 <td colspan="2">
                   {{ row.place_of_examination }}
                 </td>
                 <td colspan="1">
-                  {{ row.license_number }}
+                   {{ row.license_number }}
+
                 </td>
                 <td colspan="1">
-                  {{ row.license_date_of_validity }}
+                 {{ row.license_date_of_validity }}
                 </td>
+              </tr>
+              <tr style="background-color: rgb(211, 211, 211)">
+                <td colspan="9" style="height: 25px"></td>
               </tr>
             </tbody>
           </v-simple-table>
-          <v-simple-table height="auto" class="pa-0 pa-0 ma-12" width="80vw">
-            <thead>
-              <tr>
-                <th colspan="8" style="text-align: left">
+          <v-simple-table>
+              <tr
+                clas="pa-0 float-left"
+                style="border: solid 1px; background-color: rgb(160, 160, 160)"
+              >
+                <th
+                  colspan="9"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    color: white;
+                  "
+                >
                   V. WORK EXPERIENCE <br />
                   (Include private employment. Start from your recent work.)
                   Description of duties should be indicated in the attached Work
@@ -590,72 +1150,156 @@
               </tr>
 
               <tr>
-                <th colspan="2" style="text-align: left">
+                <th
+                  colspan="2"
+                  style="text-align: left; border: solid 1px black"
+                >
                   28. INCLUSIVE DATES (mm/dd/yyyy)
                 </th>
-                <th rowspan="2" colspan="2" style="text-align: left">
+                <th
+                  rowspan="2"
+                  colspan="1"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
                   POSITION TITLE (Write in full/Do not abbreviate)
                 </th>
-                <th rowspan="2" colspan="2" style="text-align: left">
+                <th
+                  rowspan="2"
+                  colspan="1"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
                   DEPARTMENT / AGENCY / OFFICE / COMPANY (Write in full/Do not
                   abbreviate)
                 </th>
-                <th rowspan="2" colspan="2" style="text-align: left">
+                <th
+                  rowspan="2"
+                  colspan="1"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
                   MONTHLY SALARY
                 </th>
-                <th colspan="2" style="text-align: left">
+                <th
+                  colspan="1"
+                  rowspan="2"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
                   SALARY/ JOB/ PAY GRADE (if applicable)& STEP (Format "00-0")/
                   INCREMENT
                 </th>
-                <th colspan="2" style="text-align: left">
+                <th
+                  colspan="1"
+                  rowspan="2"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
                   STATUS OF APPOINTMENT
                 </th>
-                <th colspan="2" style="text-align: left">
+                <th
+                  colspan="1"
+                  rowspan="2"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
                   GOV'T SERVICE (Y/ N)
                 </th>
+                
               </tr>
               <tr>
-                <th style="text-align: left">From</th>
-                <th style="text-align: left">To</th>
+                <th
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  From
+                </th>
+                <th
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  To
+                </th>
               </tr>
-            </thead>
-            <tbody v-for="row in pdsWorkExperience" :key="row.id">
-              <tr>
+              <tbody  v-for="row in pdsWorkExperience"
+                :key="row.id">
+              <tr
+               
+              >
                 <td colspan="1">
                   {{ row.work_inclusive_dates_from }}
                 </td>
                 <td colspan="1">
                   {{ row.work_inclusive_dates_to }}
                 </td>
-                <td colspan="2">
+                <td colspan="1">
                   {{ row.position }}
+
                 </td>
-                <td colspan="2">
+                <td colspan="1">
                   {{ row.department }}
+
                 </td>
-                <td colspan="2">
+                <td colspan="1">
                   {{ row.monthly_salary }}
                 </td>
-                <td colspan="2">
+                <td colspan="1">
                   {{ row.salary_grade }}
                 </td>
-                <td colspan="2">
+                <td colspan="1">
                   {{ row.status_of_appointment }}
+
                 </td>
-                <td colspan="2">
+                <td colspan="1">
                   {{ row.government_service }}
+
                 </td>
+                
               </tr>
             </tbody>
             <tfoot>
+              <tr
+                clas="pa-0 float-left"
+                style="border: solid 1px; background-color: rgb(211, 211, 211)"
+              >
+                <td colspan="9" style="height: 25px"></td>
+              </tr>
+
               <tr>
                 <td
-                  colspan="12"
-                  style="background-color: rgb(160, 160, 160)"
-                ></td>
-              </tr>
-              <tr>
-                <td>SIGNATURE</td>
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  SIGNATURE
+                </td>
                 <td
                   colspan="5"
                   class="d-flex justify-content-center text-center"
@@ -666,71 +1310,158 @@
                     alt="Base64 encoded image"
                     style="border: none"
                   />
-
+ 
                   <!-- <v-spacer></v-spacer> -->
                 </td>
-                <td colspan="2">DATE</td>
-                <td colspan="5">
-                  {{ pdsPersonalInfo[0].work_experience_date_signed }}
+
+                <td
+                  colspan="1"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  DATE
+                </td>
+                <td colspan="4">
+                   {{ pdsPersonalInfo[0].work_experience_date_signed }}
                 </td>
               </tr>
             </tfoot>
           </v-simple-table>
-        </v-tab-item>
-        <v-tab>C3</v-tab>
-        <v-tab-item>
-          <v-simple-table height="auto" class="pa-0 pa-0 ma-12" width="80vw">
+   
+          <v-simple-table height="auto" class="pa-0 pa-0 ma-0">
             <thead>
-              <tr>
-                <th colspan="8" style="text-align: left">
+              <tr
+                clas="pa-0 float-left"
+                style="border: solid 1px; background-color: rgb(160, 160, 160)"
+              >
+                <th
+                  colspan="11"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    color: white;
+                  "
+                >
                   VI. VOLUNTARY WORK OR INVOLVEMENT IN CIVIC / NON-GOVERNMENT /
                   PEOPLE / VOLUNTARY ORGANIZATION/S
                 </th>
               </tr>
 
               <tr>
-                <th rowspan="2" colspan="2" style="text-align: left">
+                <th
+                  rowspan="2"
+                  colspan="3"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
                   29. NAME & ADDRESS OF ORGANIZATION (Write in full)
                 </th>
-                <th colspan="2" style="text-align: left">
+                <th
+                  colspan="2"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
                   INCLUSIVE DATES (mm/dd/yyyy)
                 </th>
-                <th rowspan="2" colspan="2" style="text-align: left">
+                <th
+                  rowspan="2"
+                  colspan="1"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
                   NUMBER OF HOURS
                 </th>
-                <th rowspan="2" colspan="2" style="text-align: left">
+                <th
+                  rowspan="2"
+                  colspan="4"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
                   POSITION / NATURE OF WORK
                 </th>
+                
               </tr>
               <tr>
-                <th style="text-align: left">From</th>
-                <th style="text-align: left">To</th>
+                <th
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  From
+                </th>
+                <th
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  To
+                </th>
               </tr>
             </thead>
-            <tbody v-for="row in pdsVoluntaryWorkInvolvement" :key="row.id">
+            <tbody  v-for="row in pdsVoluntaryWorkInvolvement" :key="row.id">
               <tr>
-                <td colspan="2">
-                  {{ row.organization_name_and_address }}
+                <td colspan="3">
+                   {{ row.organization_name_and_address }}
                 </td>
                 <td colspan="1">
                   {{ row.voluntary_inclusive_dates_from }}
                 </td>
                 <td colspan="1">
-                  {{ row.voluntary_inclusive_dates_to }}
+                   {{ row.voluntary_inclusive_dates_to }}
+
                 </td>
-                <td colspan="2">
+                <td colspan="1">
                   {{ row.number_of_hours }}
+
                 </td>
-                <td colspan="2">
+                <td colspan="4">
                   {{ row.position }}
+
                 </td>
+
+                
               </tr>
+              <tr
+                clas="pa-0 float-left"
+                style="border: solid 1px; background-color: rgb(211, 211, 211)"
+              >
+                <td colspan="11" style="height: 25px"></td>
+              </tr>
+
             </tbody>
           </v-simple-table>
-          <v-simple-table height="auto" class="pa-0 pa-0 ma-12" width="80vw">
-            <thead>
-              <tr>
-                <th colspan="8" style="text-align: left">
+          <v-simple-table>
+              <tr
+                clas="pa-0 float-left"
+                style="border: solid 1px; background-color: rgb(160, 160, 160)"
+              >
+                <th
+                  colspan="11"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    color: white;
+                  "
+                >
                   VII. LEARNING AND DEVELOPMENT (L&D) INTERVENTIONS/TRAINING
                   PROGRAMS ATTENDED<br />(Start from the most recent
                   L&D/training program and include only the relevant
@@ -740,206 +1471,332 @@
               </tr>
 
               <tr>
-                <th rowspan="2" colspan="2" style="text-align: left">
+                <td
+                  rowspan="2"
+                  colspan="4"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
                   30. TITLE OF LEARNING AND DEVELOPMENT INTERVENTIONS/TRAINING
                   PROGRAMS (Write in full)
-                </th>
-                <th colspan="2" style="text-align: left">
+                </td>
+                <td
+                  colspan="2"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
                   INCLUSIVE DATES OF ATTENDANCE (mm/dd/yyyy)
-                </th>
-                <th rowspan="2" colspan="2" style="text-align: left">
+                </td>
+                <td
+                  rowspan="2"
+                  colspan="1"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
                   NUMBER OF HOURS
-                </th>
-                <th rowspan="2" colspan="2" style="text-align: left">
+                </td>
+                <td
+                  rowspan="2"
+                  colspan="1"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
                   Type of LD ( Managerial/ Supervisory/ Technical/etc)
-                </th>
-                <th rowspan="2" colspan="2" style="text-align: left">
+                </td>
+                <td
+                  rowspan="2"
+                  colspan="2"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
                   CONDUCTED/ SPONSORED BY (Write in full)
+                </td>
+
+              </tr>
+              <tr>
+                <th
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  From
+                </th>
+                <th
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  To
                 </th>
               </tr>
-              <tr>
-                <th style="text-align: left">From</th>
-                <th style="text-align: left">To</th>
-              </tr>
-            </thead>
             <tbody v-for="row in pdsLearningAndDevelopment" :key="row.id">
-              <tr>
-                <td colspan="2">
-                  {{ row.learning_and_development_interventions }}
+              <tr >
+                <td colspan="4">
+                   {{ row.learning_and_development_interventions }}
+
                 </td>
                 <td colspan="1">
-                  {{ row.learning_inclusive_dates_from }}
+                   {{ row.learning_inclusive_dates_from }}
                 </td>
                 <td colspan="1">
                   {{ row.learning_inclusive_dates_to }}
                 </td>
-                <td colspan="2">
+                <td colspan="1">
                   {{ row.number_of_hours }}
                 </td>
-                <td colspan="2">
+                <td colspan="1">
                   {{ row.type_of_ld }}
+
                 </td>
                 <td colspan="2">
-                  {{ row.conducted_by }}
+                   {{ row.conducted_by }}
+
                 </td>
+                
               </tr>
+              <tr
+                clas="pa-0 float-left"
+                style="border: solid 1px; background-color: rgb(211, 211, 211)"
+              >
+                <td colspan="11" style="height: 25px"></td>
+              </tr>
+
             </tbody>
           </v-simple-table>
+          <v-simple-table>
+              <tr
+                clas="pa-0 float-left"
+                style="border: solid 1px; background-color: rgb(160, 160, 160)"
+              >
+                <th
+                  colspan="11"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    color: white;
+                  "
+                >
+                  VIII. OTHER INFORMATION
+                </th>
+              </tr>
+              <tr>
+                <td
+                  colspan="3"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  SPECIAL SKILLS AND HOBBIES <br />(Write in full)
+                </td>
+                <td
+                  colspan="4"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  32. NON-ACADEMIC DISTINCTIONS/RECOGNITION <br />(Write in
+                  full)
+                </td>
+                <td
+                  colspan="3"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  33. MEMBERSHIP IN ASSOCIATION/ORGANIZATION <br />(Write in
+                  full)
+                </td>
 
-          <v-container class="grey lighten-5">
-            <v-row
-              ><v-col cols="12" class="sm-12"
-                >VIII. OTHER INFORMATION</v-col
-              ></v-row
-            >
-            <v-row no-gutters>
-              <v-col cols="12" sm="4">
-                <v-card class="pa-2" outlined tile width="500px">
-                  <v-card-title class="text-caption">
-                    31. SPECIAL SKILLS AND HOBBIES <br />(Write in full)
-                  </v-card-title>
-                  <v-card-text>
-                    <v-container width="500px">
-                      <v-container
-                        v-for="row in pdsOtherInfoSpecialSkills"
-                        :key="row.id"
-                      >
-                        <v-container>
-                          {{ row.special_skills_and_hobbies }}</v-container
-                        >
-                      </v-container>
-                    </v-container>
-                  </v-card-text>
-                </v-card>
-              </v-col>
-              <v-col cols="12" sm="4" width="500px">
-                <v-card class="pa-2" outlined tile>
-                  <v-card-title class="text-caption">
-                    32. NON-ACADEMIC DISTINCTIONS/RECOGNITION <br />(Write in
-                    full)
-                  </v-card-title>
-                  <v-card-text>
-                    <v-container width="500px">
-                      <v-container
-                        v-for="row in pdsOtherInfoNonacademicDistinctions"
-                        :key="row.id"
-                      >
-                        <v-container>{{
-                          row.non_academic_distinctions
-                        }}</v-container>
-                      </v-container>
-                    </v-container>
-                  </v-card-text>
-                </v-card>
-              </v-col>
-              <v-col cols="12" sm="4" width="500px">
-                <v-card class="pa-2" outlined tile>
-                  <v-card-title class="text-caption text-wrap">
-                    33. MEMBERSHIP IN ASSOCIATION/ORGANIZATION <br />(Write in
-                    full)
-                  </v-card-title>
-                  <v-card-text class="text-center">
-                    <v-container width="500px">
-                      <v-container
-                        v-for="row in pdsOtherInfoAssociationMembers"
-                        :key="row.id"
-                      >
-                        <v-container>{{ row.association_members }}</v-container>
-                      </v-container>
-                    </v-container>
-                  </v-card-text>
-                </v-card>
-              </v-col>
-            </v-row>
-            <v-row
-              ><v-col
-                cols="12"
-                sm="12"
-                style="background-color: rgb(160, 160, 160)"
-              ></v-col
-            ></v-row>
-            <v-row style="border: solid 1px black">
-              <v-col cols="12" sm="2" style="border: solid 1px black">
-                SIGNATURE
-              </v-col>
-              <v-col sm="4" style="border: solid 1px black">
-                <v-container class="d-flex justify-content-center text-center">
+                
+              </tr>
+              <tbody v-for="row in pdsOtherInfo" :key="row.id">
+              <tr >
+                <td colspan="3">
+                  {{row.special_skills_and_hobbies}}
+                </td>
+                <td colspan="4">
+                 {{row.nonacademic_distinctions}}
+                </td>
+                <td colspan="3">
+                 {{row.association_members}}
+                </td>
+
+              </tr>
+              </tbody>
+              <tfoot>
+              <tr
+                clas="pa-0 float-left"
+                style="border: solid 1px; background-color: rgb(211, 211, 211)"
+              >
+                <td colspan="11" style="height: 25px"></td>
+              </tr>
+
+              <tr></tr>
+              <tr>
+                <td
+                  colspan="3"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  SIGNATURE
+                </td>
+                <td colspan="3" class="d-flex justify-content-center text-center">>
                   <img
                     :src="imageUrl.educationalBackgroundSignature"
                     alt="Base64 encoded image"
                     style="height: 30%; width: 30%"
                   />
-                </v-container>
 
-                <!-- <v-spacer></v-spacer> -->
-              </v-col>
-              <v-col cols="12" sm="2" style="border: solid 1px black">
-                DATE
-              </v-col>
-              <v-col cols="12" sm="4" style="border: solid 1px black">
-                {{ pdsPersonalInfo[0].other_info_date_signed }}</v-col
-              >
-            </v-row>
-          </v-container>
-        </v-tab-item>
-        <v-tab>C4</v-tab>
-        <v-tab-item v-for="addInfo in pdsAdditionalInfo" :key="addInfo.id">
-          <v-container fluid v-for="row in pdsQuestions" :key="row.id">
+                </td>
+                <td
+                  colspan="1"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  DATE
+                </td>
+                <td colspan="4">
+                  {{ pdsPersonalInfo[0].other_info_date_signed }}
+                </td>
+              </tr>
+            </tfoot>
+          </v-simple-table>
+
+        <v-container
+          class="pa-0 ma-0"
+          style="border: solid 1px black;width:70% max-width:80vw"
+        
+        v-for="row in pdsQuestions" :key="row.id"
+        >
             <v-row no-gutters>
-              <v-col cols="12" sm="6">
-                <v-card class="pa-6" outlined tile height="200px">
+              <v-col cols="12" sm="6" class="ma-0 mr-0">
+                <v-card
+                  class="pa-4"
+                  outlined
+                  tile
+                  height="auto"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
                   34. Are you related by consanguinity or affinity to the
                   appointing or recommending authority, or to the chief of
                   bureau or office or to the person who has immediate
                   supervision over you in the Office, Bureau or Department where
-                  you will be apppointed, a. within the third degree? b. within
-                  the fourth degree (for Local Government Unit - Career
-                  Employees)?</v-card
+                  you will be apppointed,<br />
+                  a. within the third degree? <br />b. within the fourth degree
+                  (for Local Government Unit - Career Employees)?</v-card
                 >
               </v-col>
               <v-col cols="12" sm="6">
-                <v-card class="pa-3" outlined tile height="200px">
+                <v-card class="pa-3" outlined tile height="fit-content">
                   <span>If YES, give details:</span><br />
                   {{ row.question_thirty_four }}
+
                 </v-card>
               </v-col>
             </v-row>
             <v-row no-gutters>
-              <v-col cols="12" sm="6">
-                <v-card class="pa-4" outlined tile height="auto">
+              <v-col cols="12" sm="6" class="ma-0">
+                <v-card
+                  class="pa-4"
+                  outlined
+                  tile
+                  height="220px"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
                   35. a. Have you ever been found guilty of any administrative
-                  offense?<br />
+                  offense?<br /><br /><br /><br /><br />
                   b. Have you been criminally charged before any court?</v-card
                 >
               </v-col>
               <v-col cols="12" sm="6">
-                <v-card class="pa-4" outlined tile height="auto">
-                  {{ row.question_thirty_five_a }}
+                <v-card class="pa-2" outlined tile height="auto">
+                 {{ row.question_thirty_five_a }}
                   <span class="ma-3">If YES, give details: </span><br />
                   <label>Date Filed:</label>
                   {{ row.question_thirty_five_b_date_filed }}<br />
                   <label>Status of Case/s:</label>
                   {{ row.question_thirty_five_B_status_of_case }}
+
                 </v-card>
               </v-col>
             </v-row>
             <v-row no-gutters>
               <v-col cols="12" sm="6">
-                <v-card class="pa-6" outlined tile height="150px">
+                <v-card
+                  class="pa-6"
+                  outlined
+                  tile
+                  height="88px"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
                   36. Have you ever been convicted of any crime or violation of
                   any law, decree, ordinance or regulation by any court or
                   tribunal?</v-card
                 >
               </v-col>
               <v-col cols="12" sm="6">
-                <v-card class="pa-3" outlined tile height="150px">
+                <v-card class="pa-2" outlined tile height="fit-content">
+                  <span class="ma-3">If YES, give details: </span><br />
                   {{ row.question_thirty_six }}
                 </v-card>
               </v-col>
             </v-row>
             <v-row no-gutters>
               <v-col cols="12" sm="6">
-                <v-card class="pa-6" outlined tile height="150px">
+                <v-card
+                  class="pa-6"
+                  outlined
+                  tile
+                  height="96px"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
                   37. Have you ever been separated from the service in any of
                   the following modes: resignation, retirement, dropped from the
                   rolls, dismissal, termination, end of term, finished contract
@@ -948,17 +1805,28 @@
                 >
               </v-col>
               <v-col cols="12" sm="6">
-                <v-card class="pa-3" outlined tile height="150px">
+                <v-card class="pa-3" outlined tile height="fit-content">
+                   <span class="ma-3">If YES, give details: </span><br />
                   {{ row.question_thirty_seven }}
                 </v-card>
               </v-col>
             </v-row>
             <v-row no-gutters>
               <v-col cols="12" sm="6">
-                <v-card class="pa-6" outlined tile height="200px">
+                <v-card
+                  class="pa-6"
+                  outlined
+                  tile
+                  height="176px"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
                   38. a. Have you ever been a candidate in a national or local
                   election held within the last year (except Barangay
-                  election)?<br />
+                  election)?<br /><br /><br />
                   b. Have you resigned from the government service during the
                   three (3)-month period before the last election to
                   promote/actively campaign for a national or local
@@ -966,53 +1834,92 @@
                 >
               </v-col>
               <v-col cols="12" sm="6">
-                <v-card class="pa-3" outlined tile height="200px">
-                  {{ row.question_thirty_eight }}
+                <v-card class="pa-2" outlined tile height="fit-content">
+                   <span class="ma-3">If YES, give details: </span><br />
+                     {{ row.question_thirty_eight_a }}
+                      <span class="ma-3">If YES, give details: </span><br />
+                      {{ row.question_thirty_eight_a }}
+
                 </v-card>
               </v-col>
             </v-row>
             <v-row no-gutters>
               <v-col cols="12" sm="6">
-                <v-card class="pa-6" outlined tile height="150px">
+                <v-card
+                  class="pa-6"
+                  outlined
+                  tile
+                  height="96px"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
                   39. Have you acquired the status of an immigrant or permanent
                   resident of another country?</v-card
                 >
               </v-col>
               <v-col cols="12" sm="6">
-                <v-card class="pa-3" outlined tile height="150px">
-                  {{ row.question_thirty_nine }}
+                <v-card class="pa-3" outlined tile height="fit-content">
+                   <span class="ma-3">If YES, give details: </span><br />
+                   {{ row.question_thirty_nine }}
+
                 </v-card>
               </v-col>
             </v-row>
             <v-row no-gutters>
               <v-col cols="12" sm="6">
-                <v-card class="pa-6" outlined tile height="330px">
+                <v-card
+                  class="pa-6"
+                  outlined
+                  tile
+                  height="242px"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
                   40. 100% 10 C41:F42 Pursuant to: (a) Indigenous People's Act
                   (RA 8371); (b) Magna Carta for Disabled Persons (RA 7277); and
                   (c) Solo Parents Welfare Act of 2000 (RA 8972), please answer
-                  the following items: Screen reader support enabled. Pursuant
-                  to: (a) Indigenous People's Act (RA 8371); (b) Magna Carta for
-                  Disabled Persons (RA 7277); and (c) Solo Parents Welfare Act
-                  of 2000 (RA 8972), please answer the following items: Turn on
-                  screen reader support a. Are you a member of any indigenous
-                  group? b. Are you a person with disability? c. Are you a solo
-                  parent?</v-card
+                  the following items: Screen reader support enabled.
+                  <br /><br />a. Are you a member of any indigenous group?<br /><br /><br />
+                  b. Are you a person with disability? <br /><br /><br />c. Are
+                  you a solo parent?</v-card
                 >
               </v-col>
               <v-col cols="12" sm="6">
-                <v-card class="pa-3" outlined tile height="330px">
+                <v-card class="pa-3" outlined tile height="fit-content">
+                   <span class="ma-3">If YES, give details: </span><br />
                   {{ row.question_forty_a }}<br />
+                   <span class="ma-3">If YES, give details: </span><br />
+
                   {{ row.question_forty_b }}<br />
+                   <span class="ma-3">If YES, give details: </span><br />
                   {{ row.question_forty_c }}<br />
+
                 </v-card>
               </v-col>
             </v-row>
+        </v-container>
+        <v-container
+          class="pa-0 ma-0"
+          style="border: solid 1px black;width:70% max-width:80vw"
+           v-for="addInfo in pdsAdditionalInfo" :key="addInfo.id">
             <v-row no-gutters class="ma-0">
               <v-col cols="12" sm="8">
-                <v-card class="pa-6" outlined tile height="auto">
-                  <v-card-text class="text-subtitle-2"
+                <v-card class="pa-0" outlined tile height="auto">
+                  <v-card-text
+                    class="text-subtitle-2"
+                    style="
+                      text-align: left;
+                      border: solid 1px black;
+                      background-color: rgb(211, 211, 211);
+                    "
                     >REFERENCES
-                    <span class="text-body-2" style="color: red"
+                    <span class="text-body-2"
                       >(Person not related by consanguinity or affinity to
                       applicant /appointee)</span
                     ></v-card-text
@@ -1021,175 +1928,264 @@
                   <v-simple-table>
                     <thead>
                       <tr>
-                        <th>NAME</th>
-                        <th>ADDRESS</th>
-                        <th>TEL. NO.</th>
+                        <th
+                          style="
+                            text-align: left;
+                            border: solid 1px black;
+                            background-color: rgb(211, 211, 211);
+                          "
+                        >
+                          NAME
+                        </th>
+                        <th
+                          style="
+                            text-align: left;
+                            border: solid 1px black;
+                            background-color: rgb(211, 211, 211);
+                          "
+                        >
+                          ADDRESS
+                        </th>
+                        <th
+                          style="
+                            text-align: left;
+                            border: solid 1px black;
+                            background-color: rgb(211, 211, 211);
+                          "
+                        >
+                          TEL. NO.
+                        </th> 
                       </tr>
                     </thead>
-                    <tbody>
+                    <tbody v-for="row in pdsReferences"
+                        :key="row.name">
                       <tr
                         height="10px"
-                        v-for="row in pdsReferences"
-                        :key="row.id"
+                        
                       >
                         <td>
-                          {{ row.reference_name }}
+                           {{ row.reference_name }}
+
                         </td>
                         <td>
                           {{ row.reference_address }}
+
                         </td>
                         <td>
-                          {{ row.reference_tel_no }}
+                         {{ row.reference_tel_no }}
                         </td>
+                        
                       </tr>
                     </tbody>
                   </v-simple-table>
+
+                  <v-card
+                    class=""
+                    outlined
+                    tile
+                    height="auto"
+                    style="
+                      font-size: 12px;
+                      text-align: left;
+                      border: solid 1px black;
+                      background-color: rgb(211, 211, 211);
+                    "
+                  >
+                    42. I declare under oath that I have personally accomplished
+                    this Personal Data Sheet which is a true, correct and
+                    complete statement pursuant to the provisions of pertinent
+                    laws, rules and regulations of the Republic of the
+                    Philippines. I authorize the agency head/authorized
+                    representative to verify/validate the contents stated
+                    herein. I agree that any misrepresentation made in this
+                    document and its attachments shall cause the filing of
+                    administrative/criminal case/s against me.
+                  </v-card>
                 </v-card>
               </v-col>
               <v-col cols="12" sm="4">
-                <v-card class="pa-3" outlined tile height="300px">
-                  <v-card-text class="ma-5 pa-10 text-wrap"
+                <v-container class="pa-3 text-center" height="300px">
+                  <v-container
+                    class="mt-5 ml-auto mr-auto pa-0 text-center"
+                    style="border: solid 1px black; width: 150px; height: 150px"
                     >ID picture taken within the last 6 months 3.5 cm. X 4.5 cm
                     (passport size) With full and handwritten name tag and
                     signature over printed name Computer generated or
-                    photocopied picture is not acceptable</v-card-text
+                    photocopied picture is not acceptable</v-container
                   >
-                  <v-container
-                    class="d-flex justify-content-center text-center pl-12"
-                  >
-                    <img
-                      :src="imageUrl.personalPhoto"
-                      alt="Base64 encoded image"
-                      style="height: 30%; width: 30%"
-                    />
+                  <v-container class="d-flex justify-content-center text-center">>
+                  <img
+                    :src="imageUrl.personalPhoto"
+                    alt="Base64 encoded image"
+                    style="height: 30%; width: 30%"
+                  />
 
-                    <!-- <v-spacer></v-spacer> -->
                   </v-container>
-                </v-card>
+                  <span class="text-center ma-0">PHOTO</span>
+                </v-container>
               </v-col>
             </v-row>
-            <v-row>
-              <v-col cols="12" sm="8">
-                <v-card
-                  class=""
-                  outlined
-                  tile
-                  height="auto"
-                  style="font-size: 12px"
-                >
-                  I declare under oath that I have personally accomplished this
-                  Personal Data Sheet which is a true, correct and complete
-                  statement pursuant to the provisions of pertinent laws, rules
-                  and regulations of the Republic of the Philippines. I
-                  authorize the agency head/authorized representative to
-                  verify/validate the contents stated herein. I agree that any
-                  misrepresentation made in this document and its attachments
-                  shall cause the filing of administrative/criminal case/s
-                  against me.
-                </v-card>
-              </v-col>
-            </v-row>
-            <v-row>
-              <v-col cols="12" sm="4">
-                <v-card class="pa-1">
-                  <v-card-subtitle class="text-center">
-                    Government Issued ID (i.e.Passport, GSIS, SSS, PRC, Driver's
-                    License, etc.) PLEASE INDICATE ID Number and Date of
-                    Issuance
-                  </v-card-subtitle>
+
+            <v-row class="pa-0">
+              <v-col cols="12" sm="4" style="font-size: 10px">
+                <v-card class="pa-0" style="border: solid 1px black">
+                  <v-container
+                    fluid
+                    class="text-center"
+                    style="
+                      font-size: 11px;
+                      text-align: left;
+                      border: solid 1px black;
+                      background-color: rgb(211, 211, 211);
+                    "
+                  >
+                    Government Issued ID
+                    <small style="font-size: 8px"
+                      >(i.e.Passport, GSIS, SSS, PRC, Driver's License,
+                      etc.)</small
+                    >
+                    PLEASE INDICATE ID Number and Date of Issuance
+                  </v-container>
 
                   <v-container
-                    class="text-no-wrap"
-                    height="10px"
-                    style="font-size: 10px"
-                    >Government Issued ID:
+                    fluid
+                    class="text-no-wrap text-left pa-0 ma-0"
+                    height="50px"
+                    style="
+                      font-size: 10px;
+                      border-left: solid 1px black;
+                      border-right: solid 1px black;
+                    "
+                  >
+                    <!-- <label class="float-left" >
+                    
+                    </label> -->
+                    Government Issued ID:
                     {{ addInfo.government_id }}
                   </v-container>
-                  <v-container height="10px" style="font-size: 10px"
-                    >ID/License/Passport No.:
-                    {{ addInfo.id_no }}
-                  </v-container>
-                  <v-container height="10px" style="font-size: 10px"
-                    >Date/Place of Issuance:
-                    {{ addInfo.date_place_of_issuance }}</v-container
+                  <v-container
+                    class="text-no-wrap text-left pa-0 ma-0"
+                    style="
+                      font-size: 10px;
+                      border: solid 1px black;
+                      border-right: solid 1px black;
+                    "
                   >
+                    ID/License/Passport No.:
+                    {{ addInfo.id_no }}
+</v-container>
+                  <v-container
+                    class="text-no-wrap text-left pa-0 ma-0"
+                    style="
+                      font-size: 10px;
+                      border: solid 1px black;
+                      border-right: solid 1px black;
+                    "
+                  >
+                    Date/Place of Issuance:
+                    {{ addInfo.date_place_of_issuance }}</v-container>
                 </v-card>
               </v-col>
               <v-col cols="12" sm="4">
-                <v-card>
+                <v-card style="border: solid 1px black">
                   <v-container
-                    class="d-flex justify-content-center text-center pl-12"
+                    style="height: 95px; border: solid 1px black"
+                 
+                    class="d-flex justify-content-center text-center px-2"
                   >
                     <img
                       :src="imageUrl.oathSignature"
                       alt="Base64 encoded image"
                       style="height: 30%; width: 30%"
                     />
-
+ 
                     <!-- <v-spacer></v-spacer> -->
                   </v-container>
+
                   <v-card-subtitle
+                    class="text-center"
+                    style="font-size: 10px;border: solid 1px black; border-right: solid 1px black;black;background-color:rgb(211,211,211);"
                     >Signature (Sign inside the box)</v-card-subtitle
                   >
-                  <v-container>{{
+                  <v-container style="border: solid 1px black">
+                    {{
                     addInfo.oath_date_accomplished
-                  }}</v-container>
-                  <v-card-subtitle>Date Accomplished</v-card-subtitle>
+                  }}
+
+                  </v-container>
+                  <v-card-subtitle
+                    class="text-center"
+                    style="font-size: 10px;border: solid 1px black; border-right: solid 1px black;black;background-color:rgb(211,211,211);"
+                    >Date Accomplished</v-card-subtitle
+                  >
                 </v-card>
               </v-col>
               <v-col cols="12" sm="4">
-                <v-card>
+                <v-card style="border: solid 1px black">
                   <v-container
-                    class="d-flex justify-content-center text-center pl-12"
+                    style="height: 248px; border: solid 1px black"
+                    class="px-2 d-flex justify-content-center text-center"
+                    fluid
                   >
-                    <img
+                  <img
                       :src="imageUrl.rightThumbMark"
                       alt="Base64 encoded image"
                       style="height: 30%; width: 30%"
                     />
 
-                    <!-- <v-spacer></v-spacer> -->
                   </v-container>
-                  <v-card-subtitle>Right Thumbmark</v-card-subtitle>
+                  <v-card-subtitle
+                    class="text-center"
+                    style="font-size: 10px;border: solid 1px black; border-right: solid 1px black;black;background-color:rgb(211,211,211);"
+                    >Right Thumbmark</v-card-subtitle
+                  >
                 </v-card>
               </v-col>
             </v-row>
-            <v-row>
-              <v-col cols="12" sm="12" style="border: none">
+            <v-row
+              style="border-top: solid 1px black; width: 100%"
+              fluid
+              class="mr-0 ml-0 mt-2"
+            >
+              <v-col cols="12" sm="4" style="border: none" class="text-right">
                 SUBSCRIBED AND SWORN to before me this ,
-                <span width="200px">{{ addInfo.sworn_date }}</span>
+              </v-col>
+              <v-col cols="12" sm="4" md="4" class="text-center d-inline pt-2">
+               {{ addInfo.sworn_date }}
+              </v-col>
+              <v-col sm="4" md="4">
                 exhibiting his/her validly issued government ID as indicated
                 above.
               </v-col>
             </v-row>
             <v-card
-              class="pa-5 text-center"
+              class="pa-0 text-center mb-6 d-flex justify-content-center text-center"
               width="400px"
               align="center"
               justify="center"
-              style="margin-left: auto; margin-right: auto"
+              style="
+                margin-left: auto;
+                margin-right: auto;
+                border: solid 1px black;
+              "
             >
-              <v-container
-                class="d-flex justify-content-center text-center pl-12"
-              >
-                <img
+             <img
                   :src="imageUrl.personAdministeringOath"
                   alt="Base64 encoded image"
                   style="height: 30%; width: 30%"
                 />
 
-                <!-- <v-spacer></v-spacer> -->
-              </v-container>
-              <span>Person Administering Oath</span>
+              <v-card-subtitle
+                class="text-center ma-0"
+                style="font-size: 10px;border: solid 1px black; border-right: solid 1px black;black;background-color:rgb(211,211,211);"
+                >Person Administering Oath</v-card-subtitle
+              >
             </v-card>
-          </v-container>
-          <!-- </tbody>
-        
-        </v-simple-table> -->
-          <v-btn class="primary" v-print="'#tab1'">Print C1-4</v-btn>
-        </v-tab-item>
-      </v-tabs>
+        </v-container>
+
+
     </v-container>
+     <v-btn v-if="create==false && edit == false" class="mt-5" v-print="printObj">Print</v-btn><div id="loading" v-show="printLoading"></div>
     <v-tabs v-if="create == true || edit == true">
       <v-btn
         v-if="edit == true"
@@ -1200,41 +2196,69 @@
       >
       <v-tab>C1</v-tab>
       <v-tab-item>
-       
         <v-form ref="pdsA">
-          <v-simple-table
-            class="pa-0 text-center pdsA"
-            width="80%"
-            dense
-            light
-          >
+          <v-simple-table class="pa-0 text-center pdsA" width="80%" light>
             <thead>
-              <tr><th colspan="8" class="pa-0"> <v-card class="ma-0 text-left" style="border:solid 1px;">
-        <v-card-title label="Search" single-line hide-details
-          ><span>CS Form N0.212</span>
-          <v-container fluid class="ml-auto mr-auto px-2" >
-           <span> Revised 2017</span><span class="" style="font-size:35px; margin-left:30%;font-weight:bolder;font-family:fantasy">Personal Data Sheet</span></v-container>
-        </v-card-title>
-        <v-card-subtitle label="Search" single-line hide-details>
-          WARNING: Any misrepresentation made in the Personal Data Sheet and the
-          Work Experience Sheet shall cause the filing of
-          administrative/criminal case/s against the person concerned.
-        </v-card-subtitle>
-        <v-card-text label="Search" single-line hide-details>
-          READ THE ATTACHED GUIDE TO FILLING OUT THE PERSONAL DATA SHEET (PDS)
-          BEFORE ACCOMPLISHING THE PDS FORM.
-        </v-card-text>
-        </v-card></th></tr>
-              <tr class="pa-0" >
-                <th colspan="8" style="border:solid 1px;background-color:rgb(160, 160, 160);color:white">I. PERSONAL INFORMATION</th>
+              <tr>
+                <th colspan="8" class="pa-0">
+                  <v-card class="ma-0 text-left" style="border: solid 1px">
+                    <v-card-title label="Search" single-line hide-details
+                      ><span>CS Form N0.212</span>
+                      <v-container fluid class="ml-auto mr-auto px-2">
+                        <span> Revised 2017</span
+                        ><span
+                          class=""
+                          style="
+                            font-size: 35px;
+                            margin-left: 30%;
+                            font-weight: bolder;
+                            font-family: fantasy;
+                          "
+                          >Personal Data Sheet</span
+                        ></v-container
+                      >
+                    </v-card-title>
+                    <v-card-subtitle label="Search" single-line hide-details>
+                      WARNING: Any misrepresentation made in the Personal Data
+                      Sheet and the Work Experience Sheet shall cause the filing
+                      of administrative/criminal case/s against the person
+                      concerned.
+                    </v-card-subtitle>
+                    <v-card-text label="Search" single-line hide-details>
+                      READ THE ATTACHED GUIDE TO FILLING OUT THE PERSONAL DATA
+                      SHEET (PDS) BEFORE ACCOMPLISHING THE PDS FORM.
+                    </v-card-text>
+                  </v-card>
+                </th>
+              </tr>
+              <tr class="pa-0">
+                <th
+                  colspan="8"
+                  style="
+                    border: solid 1px;
+                    background-color: rgb(160, 160, 160);
+                    color: white;
+                  "
+                >
+                  I. PERSONAL INFORMATION
+                </th>
               </tr>
             </thead>
             <tbody class="text-center" color="primary">
-              <tr >
-                <td  colspan="1" style="text-align: left; font-size:10px;border:solid 1px black;border-bottom:none;background-color:rgb(211,211,211);">
+              <tr>
+                <td
+                  colspan="1"
+                  style="
+                    text-align: left;
+                    font-size: 10px;
+                    border: solid 1px black;
+                    border-bottom: none;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
                   2. SURNAME
                 </td>
-                <td  colspan="7">
+                <td colspan="7">
                   <v-text-field
                     placeholder=""
                     solo
@@ -1249,7 +2273,16 @@
               </tr>
 
               <tr>
-                <td  colspan="1" style="text-align: left;border:solid 1px black;border-top:none;border-bottom:none;background-color:rgb(211,211,211);">
+                <td
+                  colspan="1"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    border-top: none;
+                    border-bottom: none;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
                   FIRST NAME
                 </td>
                 <td colspan="4">
@@ -1265,7 +2298,14 @@
                   >
                   </v-text-field>
                 </td>
-                <td colspan="3" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">
+                <td
+                  colspan="3"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
                   <v-text-field
                     label="NAME EXTENSION (JR., SR)"
                     v-model="personalSuffix"
@@ -1277,7 +2317,15 @@
                 </td>
               </tr>
               <tr>
-                <td  colspan="1" style="text-align: left;border:solid 1px black;border-top:none;background-color:rgb(211,211,211);">
+                <td
+                  colspan="1"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    border-top: none;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
                   MIDDLE NAME
                 </td>
                 <td colspan="7">
@@ -1295,7 +2343,15 @@
               </tr>
 
               <tr>
-                <td max-width="100px" colspan="1" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">
+                <td
+                  max-width="100px"
+                  colspan="1"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
                   DATE OF BIRTH <br />
                   (mm/dd/yyyy)
                 </td>
@@ -1305,7 +2361,7 @@
                       <v-menu
                         v-model="personalDOBMenu"
                         :close-on-content-click="false"
-                        :nudge-right="40"
+                        :nudge-left="40"
                         transition="scale-transition"
                         offset-y
                         min-width="auto"
@@ -1322,7 +2378,7 @@
                           ></v-text-field>
                         </template>
                         <v-date-picker
-                          class="float-right"
+                          style="border:none"
                           v-model="personalDateOfBirth"
                           scrollable
                           @input="personalDOBMenu = false"
@@ -1332,7 +2388,15 @@
                     </v-col>
                   </v-row>
                 </td>
-                <td rowspan="3" colspan="2" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">
+                <td
+                  rowspan="3"
+                  colspan="2"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
                   16.CITIZENSHIP<br />If holder of dual citizenship,<br />please
                   indicate the details.
                 </td>
@@ -1351,7 +2415,16 @@
                 </td>
               </tr>
               <tr>
-                <td colspan="1" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">PLACE OF BIRTH</td>
+                <td
+                  colspan="1"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  PLACE OF BIRTH
+                </td>
                 <td colspan="2">
                   <v-text-field
                     placeholder=""
@@ -1380,7 +2453,16 @@
                 </td>
               </tr>
               <tr>
-                <td colspan="1" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">SEX</td>
+                <td
+                  colspan="1"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  SEX
+                </td>
                 <td colspan="2">
                   <v-text-field
                     placeholder=""
@@ -1394,7 +2476,7 @@
                   >
                   </v-text-field>
                 </td>
-                <td colspan="3" >
+                <td colspan="3">
                   <v-text-field
                     label="Input Dual Citizenship"
                     dense
@@ -1407,7 +2489,15 @@
                 </td>
               </tr>
               <tr>
-                <td colspan="1" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);" rowspan="2">
+                <td
+                  colspan="1"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                  rowspan="2"
+                >
                   CIVIL STATUS
                 </td>
                 <td rowspan="2" colspan="2">
@@ -1423,14 +2513,19 @@
                   >
                   </v-text-field>
                 </td>
-                <td rowspan="4" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">
-                  RESIDENTIAL<br />
+                <td
+                  rowspan="4"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >permanent<br />
                   ADDRESS<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
                   ZIP CODE
                 </td>
                 <td rowspan="1" colspan="2" style="border-right: none">
                   <v-text-field
-                    
                     hint="House/Block/Lot No."
                     persistent-hint
                     id="personalHouseNo"
@@ -1446,7 +2541,6 @@
                     hint="Street"
                     persistent-hint
                     v-model="personalResAddressStreet"
-                    
                     id="personalStreet"
                     dense
                     class="text-center pt-6"
@@ -1461,7 +2555,6 @@
                   <v-text-field
                     hint="Subdivision/Village"
                     persistent-hint
-               
                     v-model="personalResAddressSubdivision"
                     id="personalSubdivision"
                     dense
@@ -1475,7 +2568,6 @@
                     hint="Barangay"
                     persistent-hint
                     :rules="required"
-                
                     v-model="personalResAddressBarangay"
                     id="personalBarangay"
                     dense
@@ -1487,7 +2579,16 @@
               </tr>
 
               <tr>
-                <td colspan="1" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">HEIGHT (m)</td>
+                <td
+                  colspan="1"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  HEIGHT (m)
+                </td>
                 <td colspan="2">
                   <v-text-field
                     placeholder=""
@@ -1505,7 +2606,6 @@
                   <v-text-field
                     hint="City/Municipality"
                     persistent-hint
-                
                     v-model="personalResAddressCity"
                     :rules="required"
                     dense
@@ -1520,7 +2620,6 @@
                     hint="Province"
                     persistent-hint
                     :rules="required"
-                  
                     dense
                     v-model="personalResAddressProvince"
                     id="personalProvince"
@@ -1531,7 +2630,16 @@
                 </td>
               </tr>
               <tr>
-                <td colspan="1" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">WEIGHT (kg)</td>
+                <td
+                  colspan="1"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  WEIGHT (kg)
+                </td>
                 <td colspan="2">
                   <v-text-field
                     placeholder=""
@@ -1561,7 +2669,16 @@
                 </td>
               </tr>
               <tr>
-                <td colspan="1" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">BLOOD TYPE</td>
+                <td
+                  colspan="1"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  BLOOD TYPE
+                </td>
                 <td colspan="2">
                   <v-text-field
                     placeholder=""
@@ -1575,7 +2692,14 @@
                   >
                   </v-text-field>
                 </td>
-                <td rowspan="4" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">
+                <td
+                  rowspan="4"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
                   PERMANENT ADDRESS<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
                   ZIP CODE
                 </td>
@@ -1583,7 +2707,6 @@
                   <v-text-field
                     hint="House/Block/Lot No."
                     persistent-hint
-                
                     id="permanentHouseNo"
                     v-model="personalPermanentAddHouseNo"
                     dense
@@ -1594,7 +2717,6 @@
                 </td>
                 <td colspan="2" style="border-left: none">
                   <v-text-field
-                    
                     hint="Street"
                     v-model="personalPermanentAddStreet"
                     id="permanentStreet"
@@ -1607,7 +2729,16 @@
                 </td>
               </tr>
               <tr>
-                <td colspan="1" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">GSIS ID NO.</td>
+                <td
+                  colspan="1"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  GSIS ID NO.
+                </td>
                 <td colspan="2">
                   <v-text-field
                     placeholder=""
@@ -1625,7 +2756,6 @@
                   <v-text-field
                     hint="Subdivision/Village"
                     persistent-hint
-                   
                     v-model="personalPermanentAddSubdivision"
                     dense
                     id="permanentSubdivision"
@@ -1638,7 +2768,6 @@
                   <v-text-field
                     hint="Barangay"
                     persistent-hint
-                    
                     v-model="personalPermanentAddBarangay"
                     :rules="required"
                     id="permanentBarangay"
@@ -1650,7 +2779,16 @@
                 </td>
               </tr>
               <tr>
-                <td colspan="1" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">PAG-IBIG ID NO.</td>
+                <td
+                  colspan="1"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  PAG-IBIG ID NO.
+                </td>
                 <td colspan="2">
                   <v-text-field
                     placeholder=""
@@ -1668,7 +2806,6 @@
                   <v-text-field
                     hint="City/Municipality"
                     persistent-hint
-                
                     v-model="personalPermanentAddCity"
                     :rules="required"
                     dense
@@ -1683,7 +2820,6 @@
                     hint="Province"
                     persistent-hint
                     :rules="required"
-                   
                     v-model="personalPermanentAddProvince"
                     id="permanentProvince"
                     dense
@@ -1694,7 +2830,16 @@
                 </td>
               </tr>
               <tr>
-                <td colspan="1" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">PHILHEALTH NO.</td>
+                <td
+                  colspan="1"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  PHILHEALTH NO.
+                </td>
                 <td colspan="2">
                   <v-text-field
                     placeholder=""
@@ -1723,7 +2868,16 @@
                 </td>
               </tr>
               <tr>
-                <td colspan="1" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">SSS NO.</td>
+                <td
+                  colspan="1"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  SSS NO.
+                </td>
                 <td colspan="2">
                   <v-text-field
                     placeholder=""
@@ -1737,7 +2891,15 @@
                   >
                   </v-text-field>
                 </td>
-                <td style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">19.TELEPHONE NO.</td>
+                <td
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  19.TELEPHONE NO.
+                </td>
                 <td colspan="4">
                   <v-text-field
                     v-model="personalTelephoneNo"
@@ -1753,7 +2915,16 @@
                 </td>
               </tr>
               <tr>
-                <td colspan="1" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">14.TIN NO.</td>
+                <td
+                  colspan="1"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  14.TIN NO.
+                </td>
                 <td colspan="2">
                   <v-text-field
                     placeholder=""
@@ -1767,7 +2938,15 @@
                   >
                   </v-text-field>
                 </td>
-                <td style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">20.MOBILE NO.</td>
+                <td
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  20.MOBILE NO.
+                </td>
                 <td colspan="4">
                   <v-text-field
                     v-model="personalMobileNo"
@@ -1783,7 +2962,14 @@
                 </td>
               </tr>
               <tr>
-                <td colspan="1" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">
+                <td
+                  colspan="1"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
                   AGENCY EMPLOYEE NO.
                 </td>
                 <td colspan="2">
@@ -1799,7 +2985,15 @@
                   >
                   </v-text-field>
                 </td>
-                <td style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">21. E-MAIL ADDRESS (if any)</td>
+                <td
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  21. E-MAIL ADDRESS (if any)
+                </td>
 
                 <td colspan="4">
                   <v-text-field
@@ -1817,11 +3011,29 @@
               </tr>
 
               <tr clas="pa-0">
-                <td colspan="8" style="border:solid 1px;background-color:rgb(160, 160, 160);color:white" class="text-left">II. FAMILY BACKGROUND</td>
+                <td
+                  colspan="8"
+                  style="
+                    border: solid 1px;
+                    background-color: rgb(160, 160, 160);
+                    color: white;
+                  "
+                  class="text-left"
+                >
+                  II. FAMILY BACKGROUND
+                </td>
               </tr>
 
               <tr>
-                <td style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">SPOUSE'S SURNAME</td>
+                <td
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  SPOUSE'S SURNAME
+                </td>
                 <td colspan="3">
                   <v-text-field
                     placeholder=""
@@ -1834,19 +3046,42 @@
                   >
                   </v-text-field>
                 </td>
-                <td colspan="3" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">
+                <td
+                  colspan="3"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
                   23. NAME of CHILDREN (Write full name and list all)
                 </td>
-                <td colspan="1" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">DATE OF BIRTH (mm/dd/yyyy)</td>
+                <td
+                  colspan="1"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  DATE OF BIRTH (mm/dd/yyyy)
+                </td>
               </tr>
 
               <tr>
-                <td style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">FIRST NAME</td>
+                <td
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  FIRST NAME
+                </td>
                 <td colspan="2">
                   <v-text-field
                     placeholder=""
                     solo
-                 
                     v-model="familySpouseFirstName"
                     id="spouseFirstName"
                     dense
@@ -1855,11 +3090,16 @@
                   >
                   </v-text-field>
                 </td>
-                <td style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">
+                <td
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
                   <v-text-field
                     label="(JR., SR)"
                     filled
-                
                     v-model="familySpouseSuffix"
                     id="spouseSuffix"
                     dense
@@ -1870,24 +3110,32 @@
                 </td>
                 <td colspan="3">
                   <v-text-field
-                      solo
-                      v-model="firstChild"
-                      dense
-                      class="text-center pt-6 float-left"
-                      type="text"
-                      style="width: 100%"
-                    >
-                    </v-text-field>
+                    solo
+                    v-model="firstChild"
+                    dense
+                    class="text-center pt-6 float-left"
+                    type="text"
+                    style="width: 100%"
+                  >
+                  </v-text-field>
                 </td>
                 <td colspan="1">
-                  <v-row>
-                    <v-col cols="12" sm="12" md="12" class="text-center">
+                  <v-row align="center">
+                    <v-col
+                      cols="12"
+                      sm="12"
+                      md="12"
+                      class="text-left"
+                      justify="space-around"
+                    >
                       <v-menu
+                        class=""
                         v-model="spouseDOBMenu"
                         :close-on-content-click="false"
-                        :nudge-right="40"
+                        :nudge-right="-120"
                         transition="scale-transition"
                         offset-y
+                        justify="left"
                         min-width="auto"
                       >
                         <template v-slot:activator="{ on, attrs }">
@@ -1901,7 +3149,6 @@
                           ></v-text-field>
                         </template>
                         <v-date-picker
-                          class="float-right"
                           v-model="dateOfBirthSpouse"
                           scrollable
                           @input="spouseDOBMenu = false"
@@ -1913,7 +3160,16 @@
                 </td>
               </tr>
               <tr>
-                <td width="80px" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">MIDDLE NAME</td>
+                <td
+                  width="80px"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  MIDDLE NAME
+                </td>
                 <td colspan="3">
                   <v-text-field
                     placeholder=""
@@ -1929,20 +3185,28 @@
 
                 <td colspan="3">
                   <v-text-field
-                      solo
-                      v-model="secondChild"
-                      dense
-                      class="text-center pt-6 float-left"
-                      type="text"
-                      style="width: 100%"
-                    >
-                    </v-text-field>
+                    solo
+                    v-model="secondChild"
+                    dense
+                    class="text-center pt-6 float-left"
+                    type="text"
+                    style="width: 100%"
+                  >
+                  </v-text-field>
                 </td>
                 <td></td>
               </tr>
 
               <tr>
-                <td style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">OCCUPATION</td>
+                <td
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  OCCUPATION
+                </td>
                 <td colspan="3">
                   <v-text-field
                     dense
@@ -1956,19 +3220,27 @@
                 </td>
                 <td colspan="3">
                   <v-text-field
-                      solo
-                      v-model="thirdChild"
-                      dense
-                      class="text-center pt-6"
-                      type="text"
-                   
-                    >
-                    </v-text-field>
+                    solo
+                    v-model="thirdChild"
+                    dense
+                    class="text-center pt-6"
+                    type="text"
+                  >
+                  </v-text-field>
                 </td>
                 <td colspan="1"></td>
               </tr>
               <tr>
-                <td max-width="100px" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">EMPLOYER/BUSINESS NAME</td>
+                <td
+                  max-width="100px"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  EMPLOYER/BUSINESS NAME
+                </td>
                 <td colspan="3">
                   <v-text-field
                     placeholder=""
@@ -1983,19 +3255,28 @@
                 </td>
                 <td colspan="3">
                   <v-text-field
-                      solo
-                      v-model="fourthChild"
-                      dense
-                      class="text-center pt-6"
-                      type="text"
-                      style="width: 100%"
-                    >
-                    </v-text-field>
+                    solo
+                    v-model="fourthChild"
+                    dense
+                    class="text-center pt-6"
+                    type="text"
+                    style="width: 100%"
+                  >
+                  </v-text-field>
                 </td>
                 <td colspan="1"></td>
               </tr>
               <tr>
-                <td max-width="100px" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">BUSINESS ADDRESS</td>
+                <td
+                  max-width="100px"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  BUSINESS ADDRESS
+                </td>
                 <td colspan="3">
                   <v-text-field
                     placeholder=""
@@ -2010,19 +3291,28 @@
                 </td>
                 <td colspan="3">
                   <v-text-field
-                      solo
-                      v-model="fifthChild"
-                      dense
-                      class="text-center pt-6 float-left"
-                      type="text"
-                      style="width: 100%"
-                    >
-                    </v-text-field>
+                    solo
+                    v-model="fifthChild"
+                    dense
+                    class="text-center pt-6 float-left"
+                    type="text"
+                    style="width: 100%"
+                  >
+                  </v-text-field>
                 </td>
                 <td colspan="1"></td>
               </tr>
               <tr>
-                <td max-width="100px" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">TELEPHONE NO.</td>
+                <td
+                  max-width="100px"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  TELEPHONE NO.
+                </td>
                 <td colspan="3">
                   <v-text-field
                     placeholder=""
@@ -2037,20 +3327,28 @@
                 </td>
                 <td colspan="3">
                   <v-text-field
-                      solo
-                      v-model="sixthChild"
-                      dense
-                      class="text-center pt-6 float-left"
-                      type="text"
-                      style="width: 100%"
-                    >
-                    </v-text-field>
+                    solo
+                    v-model="sixthChild"
+                    dense
+                    class="text-center pt-6 float-left"
+                    type="text"
+                    style="width: 100%"
+                  >
+                  </v-text-field>
                 </td>
                 <td colspan="1"></td>
               </tr>
 
               <tr>
-                <td style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">25. FATHER'S SURNAME</td>
+                <td
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  25. FATHER'S SURNAME
+                </td>
                 <td colspan="3">
                   <v-text-field
                     placeholder=""
@@ -2071,7 +3369,7 @@
                       <v-menu
                         v-model="fatherDOBMenu"
                         :close-on-content-click="false"
-                        :nudge-right="40"
+                        :nudge-right="-120"
                         transition="scale-transition"
                         offset-y
                         min-width="auto"
@@ -2100,7 +3398,16 @@
                 </td>
               </tr>
               <tr>
-                <td width="80px" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">FIRST NAME</td>
+                <td
+                  width="80px"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  FIRST NAME
+                </td>
                 <td colspan="2">
                   <v-text-field
                     placeholder=""
@@ -2114,7 +3421,14 @@
                   >
                   </v-text-field>
                 </td>
-                <td colspan="1" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">
+                <td
+                  colspan="1"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
                   <v-text-field
                     label="(JR., SR)"
                     filled
@@ -2130,7 +3444,16 @@
                 <td colspan="1"></td>
               </tr>
               <tr>
-                <td width="80px" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">MIDDLE NAME</td>
+                <td
+                  width="80px"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  MIDDLE NAME
+                </td>
                 <td colspan="3">
                   <v-text-field
                     placeholder=""
@@ -2147,7 +3470,15 @@
                 <td colspan="1"></td>
               </tr>
               <tr>
-                <td style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">26. MOTHER'S MAIDEN NAME</td>
+                <td
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  26. MOTHER'S MAIDEN NAME
+                </td>
                 <td colspan="3">
                   <v-text-field
                     placeholder=""
@@ -2168,7 +3499,7 @@
                       <v-menu
                         v-model="motherDOBMenu"
                         :close-on-content-click="false"
-                        :nudge-right="40"
+                        :nudge-right="-120"
                         transition="scale-transition"
                         offset-y
                         min-width="auto"
@@ -2197,7 +3528,15 @@
                 </td>
               </tr>
               <tr>
-                <td style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">SURNAME</td>
+                <td
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  SURNAME
+                </td>
                 <td colspan="3">
                   <v-text-field
                     placeholder=""
@@ -2215,7 +3554,15 @@
                 <td colspan="1"></td>
               </tr>
               <tr>
-                <td style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">FIRST NAME</td>
+                <td
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  FIRST NAME
+                </td>
                 <td colspan="3">
                   <v-text-field
                     placeholder=""
@@ -2234,7 +3581,15 @@
                 <td colspan="1"></td>
               </tr>
               <tr>
-                <td style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">MIDDLE NAME</td>
+                <td
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  MIDDLE NAME
+                </td>
                 <td colspan="3">
                   <v-text-field
                     placeholder=""
@@ -2251,21 +3606,89 @@
                 <td colspan="3"></td>
                 <td colspan="1"></td>
               </tr>
-              <tr clas="pa-0 float-left" style="border:solid 1px;background-color:rgb(160, 160, 160)">
-                <td colspan="8" class="text-left" style="border:solid 1px black;color:white">III. EDUCATIONAL BACKGROUND</td>
+              <tr
+                clas="pa-0 float-left"
+                style="border: solid 1px; background-color: rgb(160, 160, 160)"
+              >
+                <td
+                  colspan="8"
+                  class="text-left"
+                  style="border: solid 1px black; color: white"
+                >
+                  III. EDUCATIONAL BACKGROUND
+                </td>
               </tr>
               <tr>
-                <td rowspan="2" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">LEVEL</td>
-                <td rowspan="2" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">NAME OF SCHOOL<br />(Write in full)</td>
-                <td rowspan="2" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">
+                <td
+                  rowspan="2"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  LEVEL
+                </td>
+                <td
+                  rowspan="2"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  NAME OF SCHOOL<br />(Write in full)
+                </td>
+                <td
+                  rowspan="2"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
                   BASIC EDUCATION/DEGREE/COURSE<br />(Write in full)
                 </td>
-                <td colspan="2" rowspan="1" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">PERIOD OF ATTENDANCE<br /></td>
-                <td rowspan="2" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">
+                <td
+                  colspan="2"
+                  rowspan="1"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  PERIOD OF ATTENDANCE<br />
+                </td>
+                <td
+                  rowspan="2"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
                   HIGHEST LEVEL/UNITS EARNED (if not graduated)
                 </td>
-                <td rowspan="2" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">YEAR GRADUATED</td>
-                <td rowspan="2" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">SCHOLARSHIP/ ACADEMIC HONORS RECEIVED
+                <td
+                  rowspan="2"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  YEAR GRADUATED
+                </td>
+                <td
+                  rowspan="2"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  SCHOLARSHIP/ ACADEMIC HONORS RECEIVED
                   <button
                     class="material-icons"
                     @click.prevent="addRow('educationalBackground')"
@@ -2273,17 +3696,32 @@
                     add_circle
                   </button>
                 </td>
-               
               </tr>
 
               <tr>
-                <td style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">From</td>
-                <td style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">To</td>
+                <td
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  From
+                </td>
+                <td
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  To
+                </td>
               </tr>
 
               <tr
                 v-for="row in educationalBackground"
-                :key="row.educBackgroundLevel"
+                :key="row.id"
               >
                 <td colspan="1">
                   <v-text-field
@@ -2310,7 +3748,7 @@
                 </td>
                 <td colspan="1">
                   <v-text-field
-                  dense
+                    dense
                     placeholder=""
                     v-model="row.educBackgroundBasicEducation"
                     solo
@@ -2321,10 +3759,9 @@
                 </td>
                 <td colspan="1">
                   <v-text-field
-                  dense
+                    dense
                     placeholder=""
                     :rules="required"
-                   
                     v-model="row.educBackgroundPeriodOfAttendanceFrom"
                     solo
                     class="text-center pt-6"
@@ -2334,9 +3771,8 @@
                 </td>
                 <td colspan="1">
                   <v-text-field
-                  dense
+                    dense
                     placeholder=""
-                   
                     solo
                     :rules="required"
                     v-model="row.educBackgroundPeriodOfAttendanceTo"
@@ -2347,7 +3783,7 @@
                 </td>
                 <td colspan="1">
                   <v-text-field
-                  dense
+                    dense
                     placeholder=""
                     solo
                     v-model="row.educBackgroundHighestLevel"
@@ -2358,7 +3794,7 @@
                 </td>
                 <td colspan="1">
                   <v-text-field
-                  dense
+                    dense
                     placeholder=""
                     solo
                     v-model="row.educBackgroundYearGraduated"
@@ -2371,7 +3807,7 @@
                   <v-text-field
                     placeholder=""
                     dense
-                    style="width:80%"
+                    style="width: 80%"
                     v-model="row.educBackgroundScholarship"
                     solo
                     class="text-center pt-6 float-left"
@@ -2380,21 +3816,34 @@
                   </v-text-field>
                   <button
                     class="material-icons float-right mt-7"
-                    @click="removeRow('educationalBackground', row)"
+                    @click.prevent="removeRow('educationalBackground', row)"
                   >
                     remove_circle
                   </button>
                 </td>
               </tr>
-              <tr style="background-color:rgb(211,211,211)">
+              <tr style="background-color: rgb(211, 211, 211)">
                 <td colspan="8"></td>
               </tr>
               <tr>
-                <td style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">SIGNATURE</td>
+                <td
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  SIGNATURE
+                </td>
                 <td colspan="2">
                   <v-file-input
-                     :rules="[(value) => !value || value.size < 5000000 || 'Avatar size should be less than 2 MB!',]"
-                    readonly
+                    :rules="[
+                      (value) =>
+                        !value ||
+                        value.size < 5000000 ||
+                        'Avatar size should be less than 5 MB!',
+                    ]"
+                    
                     dense
                     counter
                     show-size
@@ -2404,12 +3853,21 @@
                     v-model="educBackgroundSignature"
                     id="signaturePart1"
                     class="text-center pt-6"
-                    
                   >
                   </v-file-input>
                 </td>
 
-                <td colspan="2" class="pl-10" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">DATE</td>
+                <td
+                  colspan="2"
+                  class="pl-10"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  DATE
+                </td>
                 <td colspan="3">
                   <v-row>
                     <v-col cols="12" sm="8" md="8" class="text-center">
@@ -2441,40 +3899,96 @@
                     </v-col>
                   </v-row>
                 </td>
-              </tr>
-              </tbody
+              </tr></tbody
           ></v-simple-table>
         </v-form>
       </v-tab-item>
       <v-tab>C2</v-tab>
       <v-tab-item>
         <v-form ref="pdsB">
-          <v-simple-table height="auto" class="pa-0 pa-0 ma-0" >
+          <v-simple-table height="auto" class="pa-0 pa-0 ma-0">
             <thead>
-              <tr clas="pa-0 float-left" style="border:solid 1px;background-color:rgb(160, 160, 160)">
-                <td colspan="9" style="text-align: left;border:solid 1px black;color:white">
+              <tr
+                clas="pa-0 float-left"
+                style="border: solid 1px; background-color: rgb(160, 160, 160)"
+              >
+                <td
+                  colspan="9"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    color: white;
+                  "
+                >
                   IV. CIVIL SERVICE ELIGIBILITY
                 </td>
               </tr>
 
               <tr style="border: solid 1px black">
-                <th rowspan="2" colspan="2" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">
+                <th
+                  rowspan="2"
+                  colspan="2"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
                   CAREER SERVICE/ RA 1080 (BOARD/ BAR) UNDER SPECIAL LAWS/ CES/
                   CSEE BARANGAY ELIGIBILITY / DRIVER'S LICENSE
                 </th>
-                <th rowspan="2" colspan="1" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">
+                <th
+                  rowspan="2"
+                  colspan="1"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
                   RATING <br />(If Applicable)
                 </th>
-                <th rowspan="2" colspan="1" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">
+                <th
+                  rowspan="2"
+                  colspan="1"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
                   DATE OF EXAMINATION / CONFERMENT
                 </th>
-                <th rowspan="2" colspan="2" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">
+                <th
+                  rowspan="2"
+                  colspan="2"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
                   PLACE OF EXAMINATION / CONFERMENT
                 </th>
-                <th colspan="2" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">
+                <th
+                  colspan="2"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
                   LICENSE (if applicable)
                 </th>
-                <th rowspan="2" colspan="1" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">
+                <th
+                  rowspan="2"
+                  colspan="1"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
                   <button
                     class="material-icons"
                     @click.prevent="addRow('civilServiceEligibility')"
@@ -2484,14 +3998,30 @@
                 </th>
               </tr>
               <tr>
-                <th style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">NUMBER</th>
-                <th style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">Date of Validity</th>
+                <th
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  NUMBER
+                </th>
+                <th
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  Date of Validity
+                </th>
               </tr>
             </thead>
             <tbody>
               <tr
                 v-for="row in civilServiceEligibility"
-                :key="row.careerService"
+                :key="row.id"
               >
                 <td colspan="2">
                   <v-text-field
@@ -2511,7 +4041,6 @@
                     placeholder=""
                     v-model="row.rating"
                     solo
-                   
                     :rules="required"
                     dense
                     class="text-center pt-6"
@@ -2570,17 +4099,27 @@
                 <td colspan="1">
                   <button
                     class="material-icons"
-                    @click="removeRow('civilServiceEligibility', row)"
+                    @click.prevent="removeRow('civilServiceEligibility', row)"
                   >
                     remove_circle
                   </button>
                 </td>
               </tr>
-              <tr style="background-color:rgb(211,211,211); ">
-                <td colspan="9" style="height:25px;"></td>
+              <tr style="background-color: rgb(211, 211, 211)">
+                <td colspan="9" style="height: 25px"></td>
               </tr>
-              <tr clas="pa-0 float-left" style="border:solid 1px;background-color:rgb(160, 160, 160)">
-                <th colspan="9" style="text-align: left;border:solid 1px black;color:white">
+              <tr
+                clas="pa-0 float-left"
+                style="border: solid 1px; background-color: rgb(160, 160, 160)"
+              >
+                <th
+                  colspan="9"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    color: white;
+                  "
+                >
                   V. WORK EXPERIENCE <br />
                   (Include private employment. Start from your recent work.)
                   Description of duties should be indicated in the attached Work
@@ -2589,46 +4128,121 @@
               </tr>
 
               <tr>
-                <th colspan="2" style="text-align: left;border:solid 1px black">
+                <th
+                  colspan="2"
+                  style="text-align: left; border: solid 1px black"
+                >
                   28. INCLUSIVE DATES (mm/dd/yyyy)
                 </th>
-                <th rowspan="2" colspan="1" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">
+                <th
+                  rowspan="2"
+                  colspan="1"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
                   POSITION TITLE (Write in full/Do not abbreviate)
                 </th>
-                <th rowspan="2" colspan="1" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">
+                <th
+                  rowspan="2"
+                  colspan="1"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
                   DEPARTMENT / AGENCY / OFFICE / COMPANY (Write in full/Do not
                   abbreviate)
                 </th>
-                <th rowspan="2" colspan="1" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">
+                <th
+                  rowspan="2"
+                  colspan="1"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
                   MONTHLY SALARY
                 </th>
-                <th colspan="1" rowspan="2" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">
+                <th
+                  colspan="1"
+                  rowspan="2"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
                   SALARY/ JOB/ PAY GRADE (if applicable)& STEP (Format "00-0")/
                   INCREMENT
                 </th>
-                <th colspan="1" rowspan="2" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">
+                <th
+                  colspan="1"
+                  rowspan="2"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
                   STATUS OF APPOINTMENT
                 </th>
-                <th colspan="1" rowspan="2" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">
+                <th
+                  colspan="1"
+                  rowspan="2"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
                   GOV'T SERVICE (Y/ N)
                 </th>
-                <th rowspan="2" colspan="1" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">
+                <th
+                  rowspan="2"
+                  colspan="1"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
                   <button
                     class="material-icons"
-                    @click.prevent="addRow(workExperience)"
+                    @click.prevent="addRow('workExperience')"
                   >
                     add_circle
                   </button>
                 </th>
               </tr>
               <tr>
-                <th style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">From</th>
-                <th style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">To</th>
+                <th
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  From
+                </th>
+                <th
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  To
+                </th>
               </tr>
-          
+
               <tr
                 v-for="row in workExperience"
-                :key="row.inclusiveDateFromWorkExperience"
+                :key="row.id"
               >
                 <td colspan="1">
                   <v-text-field
@@ -2729,7 +4343,7 @@
                 <td colspan="1">
                   <button
                     class="material-icons"
-                    @click="removeRow('workExperience', row)"
+                    @click.prevent="removeRow('workExperience', row)"
                   >
                     remove_circle
                   </button>
@@ -2737,15 +4351,28 @@
               </tr>
             </tbody>
             <tfoot>
-              <tr clas="pa-0 float-left" style="border:solid 1px;background-color:rgb(211,211,211);">
-                <td colspan="9" style="height:25px"></td>
+              <tr
+                clas="pa-0 float-left"
+                style="border: solid 1px; background-color: rgb(211, 211, 211)"
+              >
+                <td colspan="9" style="height: 25px"></td>
+              </tr>
+
               <tr>
-                <td style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">SIGNATURE</td>
+                <td
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  SIGNATURE
+                </td>
                 <td colspan="3">
                   <v-file-input
                     solo
                     show-size
-                     counter
+                    counter
                     :rules="required"
                     accept="image/png, image/jpeg, image/bmp"
                     v-model="workExperienceSignature"
@@ -2755,7 +4382,16 @@
                   >
                   </v-file-input>
                 </td>
-                <td colspan="1" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">DATE</td>
+                <td
+                  colspan="1"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  DATE
+                </td>
                 <td colspan="4">
                   <v-row>
                     <v-col cols="12" sm="8" md="8" class="text-center">
@@ -2796,30 +4432,79 @@
       </v-tab-item>
       <v-tab>C3</v-tab>
       <v-tab-item>
-        <v-form ref="pdsC">
+        <v-form ref="pdsC3">
           <v-simple-table height="auto" class="pa-0 pa-0 ma-0">
             <thead>
-              <tr clas="pa-0 float-left" style="border:solid 1px;background-color:rgb(160, 160, 160);">
-                <th colspan="11"  style="text-align: left;border:solid 1px black;color:white">
+              <tr
+                clas="pa-0 float-left"
+                style="border: solid 1px; background-color: rgb(160, 160, 160)"
+              >
+                <th
+                  colspan="11"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    color: white;
+                  "
+                >
                   VI. VOLUNTARY WORK OR INVOLVEMENT IN CIVIC / NON-GOVERNMENT /
                   PEOPLE / VOLUNTARY ORGANIZATION/S
                 </th>
               </tr>
 
               <tr>
-                <th rowspan="2" colspan="3" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">
+                <th
+                  rowspan="2"
+                  colspan="3"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
                   29. NAME & ADDRESS OF ORGANIZATION (Write in full)
                 </th>
-                <th colspan="2" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">
+                <th
+                  colspan="2"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
                   INCLUSIVE DATES (mm/dd/yyyy)
                 </th>
-                <th rowspan="2" colspan="1" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">
+                <th
+                  rowspan="2"
+                  colspan="1"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
                   NUMBER OF HOURS
                 </th>
-                <th rowspan="2" colspan="4" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">
+                <th
+                  rowspan="2"
+                  colspan="4"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
                   POSITION / NATURE OF WORK
                 </th>
-                <th rowspan="2" colspan="1" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">
+                <th
+                  rowspan="2"
+                  colspan="1"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
                   <button
                     class="material-icons"
                     @click.prevent="addRow('voluntaryWorkInvolvement')"
@@ -2829,15 +4514,28 @@
                 </th>
               </tr>
               <tr>
-                <th style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">From</th>
-                <th style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">To</th>
+                <th
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  From
+                </th>
+                <th
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  To
+                </th>
               </tr>
             </thead>
             <tbody>
-              <tr
-                v-for="row in voluntaryWorkInvolvement"
-                :key="row.id"
-              >
+              <tr v-for="row in voluntaryWorkInvolvement" :key="row.id">
                 <td colspan="3">
                   <v-text-field
                     placeholder=""
@@ -2846,7 +4544,6 @@
                     v-model="row.nameAndAddressOfOrgVolWork"
                     dense
                     class="text-center pt-6"
-                   
                   >
                   </v-text-field>
                 </td>
@@ -2902,17 +4599,32 @@
                 <td colspan="1">
                   <button
                     class="material-icons"
-                    @click="removeRow('voluntaryWorkInvolvement', row)"
+                    @click.prevent="removeRow('voluntaryWorkInvolvement', row)"
                   >
                     remove_circle
                   </button>
                 </td>
               </tr>
-               <tr clas="pa-0 float-left" style="border:solid 1px;background-color:rgb(211,211,211);">
-                <td colspan="11" style="height:25px"></td>
-              <tr>
-               <tr clas="pa-0 float-left" style="border:solid 1px;background-color:rgb(160, 160, 160);">
-                <th colspan="11" style="text-align: left;border:solid 1px black;color:white">
+              <tr
+                clas="pa-0 float-left"
+                style="border: solid 1px; background-color: rgb(211, 211, 211)"
+              >
+                <td colspan="11" style="height: 25px"></td>
+              </tr>
+
+              <tr></tr>
+              <tr
+                clas="pa-0 float-left"
+                style="border: solid 1px; background-color: rgb(160, 160, 160)"
+              >
+                <th
+                  colspan="11"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    color: white;
+                  "
+                >
                   VII. LEARNING AND DEVELOPMENT (L&D) INTERVENTIONS/TRAINING
                   PROGRAMS ATTENDED<br />(Start from the most recent
                   L&D/training program and include only the relevant
@@ -2922,24 +4634,71 @@
               </tr>
 
               <tr>
-                <td rowspan="2" colspan="4" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">
+                <td
+                  rowspan="2"
+                  colspan="4"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
                   30. TITLE OF LEARNING AND DEVELOPMENT INTERVENTIONS/TRAINING
                   PROGRAMS (Write in full)
                 </td>
-                <td colspan="2" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">
+                <td
+                  colspan="2"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
                   INCLUSIVE DATES OF ATTENDANCE (mm/dd/yyyy)
                 </td>
-                <td rowspan="2" colspan="1" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">
+                <td
+                  rowspan="2"
+                  colspan="1"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
                   NUMBER OF HOURS
                 </td>
-                <td rowspan="2" colspan="1" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">
+                <td
+                  rowspan="2"
+                  colspan="1"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
                   Type of LD ( Managerial/ Supervisory/ Technical/etc)
                 </td>
-                <td rowspan="2" colspan="2" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">
+                <td
+                  rowspan="2"
+                  colspan="2"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
                   CONDUCTED/ SPONSORED BY (Write in full)
                 </td>
 
-                <td rowspan="2" colspan="1" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">
+                <td
+                  rowspan="2"
+                  colspan="1"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
                   <button
                     class="material-icons"
                     @click.prevent="addRow('learningAndDevelopment')"
@@ -2949,14 +4708,27 @@
                 </td>
               </tr>
               <tr>
-                <th style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">From</th>
-                <th style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">To</th>
+                <th
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  From
+                </th>
+                <th
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  To
+                </th>
               </tr>
 
-              <tr
-                v-for="row in learningAndDevelopment"
-                :key="row.id"
-              >
+              <tr v-for="row in learningAndDevelopment" :key="row.id">
                 <td colspan="4">
                   <v-text-field
                     :rules="required"
@@ -3032,34 +4804,77 @@
                 <td colspan="1">
                   <button
                     class="material-icons"
-                    @click="removeRow('learningAndDevelopment', row)"
+                    @click.prevent="removeRow('learningAndDevelopment', row)"
                   >
                     remove_circle
                   </button>
                 </td>
               </tr>
-               <tr clas="pa-0 float-left" style="border:solid 1px;background-color:rgb(211,211,211);">
-                <td colspan="11" style="height:25px"></td>
-              <tr>
-               <tr clas="pa-0 float-left" style="border:solid 1px;background-color:rgb(160, 160, 160);">
-                <th colspan="11" style="text-align: left;border:solid 1px black;color:white">
-                   VIII. OTHER INFORMATION
+              <tr
+                clas="pa-0 float-left"
+                style="border: solid 1px; background-color: rgb(211, 211, 211)"
+              >
+                <td colspan="11" style="height: 25px"></td>
+              </tr>
+
+              <tr></tr>
+              <tr
+                clas="pa-0 float-left"
+                style="border: solid 1px; background-color: rgb(160, 160, 160)"
+              >
+                <th
+                  colspan="11"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    color: white;
+                  "
+                >
+                  VIII. OTHER INFORMATION
                 </th>
-                </tr>
-               <tr>
-                <td  colspan="3" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">
+              </tr>
+              <tr>
+                <td
+                  colspan="3"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
                   SPECIAL SKILLS AND HOBBIES <br />(Write in full)
                 </td>
-                <td colspan="4" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">
-                 32. NON-ACADEMIC DISTINCTIONS/RECOGNITION <br />(Write in
-                    full)
+                <td
+                  colspan="4"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  32. NON-ACADEMIC DISTINCTIONS/RECOGNITION <br />(Write in
+                  full)
                 </td>
-                <td  colspan="3" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">
+                <td
+                  colspan="3"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
                   33. MEMBERSHIP IN ASSOCIATION/ORGANIZATION <br />(Write in
-                    full)
+                  full)
                 </td>
-                
-                <td colspan="1" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">
+
+                <td
+                  colspan="1"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
                   <button
                     class="material-icons"
                     @click.prevent="addRow('otherInfo')"
@@ -3068,10 +4883,7 @@
                   </button>
                 </td>
               </tr>
-              <tr
-                v-for="row in otherInfo"
-                :key="row.id"
-              >
+              <tr v-for="row in otherInfo" :key="row.id">
                 <td colspan="3">
                   <v-text-field
                     :rules="required"
@@ -3108,7 +4920,7 @@
                   >
                   </v-text-field>
                 </td>
-                
+
                 <td colspan="1">
                   <button
                     class="material-icons"
@@ -3118,81 +4930,117 @@
                   </button>
                 </td>
               </tr>
-               <tr clas="pa-0 float-left" style="border:solid 1px;background-color:rgb(211,211,211);">
-                <td colspan="11" style="height:25px"></td>
+              <tr
+                clas="pa-0 float-left"
+                style="border: solid 1px; background-color: rgb(211, 211, 211)"
+              >
+                <td colspan="11" style="height: 25px"></td>
+              </tr>
+
+              <tr></tr>
               <tr>
-            <tr>
-              <td colspan="3" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);"> SIGNATURE </td>
-              <td colspan="3">
-                <v-file-input
-                  solo
-                  show-size
-                  :rules="required"
-                   counter
-                  accept="image/png, image/jpeg, image/bmp"
-                  v-model="otherInfoSignature"
-                  id="signaturePart1"
-                  class="text-center pt-6"
-                  chips
+                <td
+                  colspan="3"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
                 >
-                </v-file-input>
-              </td>
-              <td colspan="1" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);"> DATE </td>
-              <td colspan="4">
-                <v-row>
-                  <v-col cols="12" sm="8" md="8" class="text-center">
-                    <v-menu
-                      v-model="otherInfoDOSMenu"
-                      :close-on-content-click="false"
-                      :nudge-right="40"
-                      transition="scale-transition"
-                      offset-y
-                      min-width="auto"
-                    >
-                      <template v-slot:activator="{ on, attrs }">
-                        <v-text-field
-                          v-model="computedDateFormattedOtherInfoDOS"
-                          label=""
-                          append-icon="mdi-calendar"
-                          readonly
-                          :rules="required"
-                          v-bind="attrs"
-                          v-on="on"
-                        ></v-text-field>
-                      </template>
-                      <v-date-picker
-                        class="float-right"
-                        v-model="otherInfoDateOfSignature"
-                        scrollable
-                        @input="otherInfoDOSMenu = false"
+                  SIGNATURE
+                </td>
+                <td colspan="3">
+                  <v-file-input
+                    solo
+                    show-size
+                    :rules="required"
+                    counter
+                    accept="image/png, image/jpeg, image/bmp"
+                    v-model="otherInfoSignature"
+                    id="signaturePart1"
+                    class="text-center pt-6"
+                    chips
+                  >
+                  </v-file-input>
+                </td>
+                <td
+                  colspan="1"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
+                  DATE
+                </td>
+                <td colspan="4">
+                  <v-row>
+                    <v-col cols="12" sm="8" md="8" class="text-center">
+                      <v-menu
+                        v-model="otherInfoDOSMenu"
+                        :close-on-content-click="false"
+                        :nudge-right="40"
+                        transition="scale-transition"
+                        offset-y
+                        min-width="auto"
                       >
-                      </v-date-picker>
-                    </v-menu>
-                  </v-col>
-                </v-row>
-              </td>
-            </tr>
+                        <template v-slot:activator="{ on, attrs }">
+                          <v-text-field
+                            v-model="computedDateFormattedOtherInfoDOS"
+                            label=""
+                            append-icon="mdi-calendar"
+                            readonly
+                            :rules="required"
+                            v-bind="attrs"
+                            v-on="on"
+                          ></v-text-field>
+                        </template>
+                        <v-date-picker
+                          class="float-right"
+                          v-model="otherInfoDateOfSignature"
+                          scrollable
+                          @input="otherInfoDOSMenu = false"
+                        >
+                        </v-date-picker>
+                      </v-menu>
+                    </v-col>
+                  </v-row>
+                </td>
+              </tr>
             </tbody>
           </v-simple-table>
         </v-form>
-        
-          <!-- </v-container>
+
+        <!-- </v-container>
         </v-form> -->
       </v-tab-item>
       <v-tab>C4</v-tab>
       <v-tab-item>
-        <v-container  class="pa-0 ma-0 d-print-block" style="border:solid 1px black">
+        <v-container
+          class="pa-0 ma-0 d-print-block"
+          style="border: solid 1px black"
+        >
           <v-form ref="pds">
             <v-row no-gutters>
               <v-col cols="12" sm="6" class="ma-0 mr-0">
-                <v-card class="pa-4" outlined tile height="145px" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">
+                <v-card
+                  class="pa-4"
+                  outlined
+                  tile
+                  height="145px"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
                   34. Are you related by consanguinity or affinity to the
                   appointing or recommending authority, or to the chief of
                   bureau or office or to the person who has immediate
                   supervision over you in the Office, Bureau or Department where
-                  you will be apppointed,<br> a. within the third degree? <br>b. within
-                  the fourth degree (for Local Government Unit - Career
-                  Employees)?</v-card
+                  you will be apppointed,<br />
+                  a. within the third degree? <br />b. within the fourth degree
+                  (for Local Government Unit - Career Employees)?</v-card
                 >
               </v-col>
               <v-col cols="12" sm="6">
@@ -3211,15 +5059,23 @@
                 </v-card>
               </v-col>
             </v-row>
-            <v-row no-gutters >
+            <v-row no-gutters>
               <v-col cols="12" sm="6" class="ma-0">
-                <v-card class="pa-4" outlined tile height="220px" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">
+                <v-card
+                  class="pa-4"
+                  outlined
+                  tile
+                  height="220px"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
                   35. a. Have you ever been found guilty of any administrative
                   offense?<br /><br /><br /><br /><br />
                   b. Have you been criminally charged before any court?</v-card
                 >
-          
-              
               </v-col>
               <v-col cols="12" sm="6">
                 <v-card class="pa-2" outlined tile height="auto">
@@ -3235,7 +5091,7 @@
                     type="text"
                   >
                   </v-textarea>
-                  <span class="ma-3">If YES, give details: </span><br /><br>
+                  <span class="ma-3">If YES, give details: </span><br /><br />
 
                   <v-text-field
                     label="Date Filed: "
@@ -3256,7 +5112,17 @@
             </v-row>
             <v-row no-gutters>
               <v-col cols="12" sm="6">
-                <v-card class="pa-6" outlined tile height="88px" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">
+                <v-card
+                  class="pa-6"
+                  outlined
+                  tile
+                  height="88px"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
                   36. Have you ever been convicted of any crime or violation of
                   any law, decree, ordinance or regulation by any court or
                   tribunal?</v-card
@@ -3280,7 +5146,17 @@
             </v-row>
             <v-row no-gutters>
               <v-col cols="12" sm="6">
-                <v-card class="pa-6" outlined tile height="96px" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">
+                <v-card
+                  class="pa-6"
+                  outlined
+                  tile
+                  height="96px"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
                   37. Have you ever been separated from the service in any of
                   the following modes: resignation, retirement, dropped from the
                   rolls, dismissal, termination, end of term, finished contract
@@ -3305,7 +5181,17 @@
             </v-row>
             <v-row no-gutters>
               <v-col cols="12" sm="6">
-                <v-card class="pa-6" outlined tile height="176px" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">
+                <v-card
+                  class="pa-6"
+                  outlined
+                  tile
+                  height="176px"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
                   38. a. Have you ever been a candidate in a national or local
                   election held within the last year (except Barangay
                   election)?<br /><br /><br />
@@ -3328,8 +5214,8 @@
                     type="text"
                   >
                   </v-textarea>
-                  <br>
-                   <v-textarea
+                  <br />
+                  <v-textarea
                     auto-grow
                     rows="2"
                     placeholder=""
@@ -3345,7 +5231,17 @@
             </v-row>
             <v-row no-gutters>
               <v-col cols="12" sm="6">
-                <v-card class="pa-6" outlined tile height="96px" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">
+                <v-card
+                  class="pa-6"
+                  outlined
+                  tile
+                  height="96px"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
                   39. Have you acquired the status of an immigrant or permanent
                   resident of another country?</v-card
                 >
@@ -3368,13 +5264,24 @@
             </v-row>
             <v-row no-gutters>
               <v-col cols="12" sm="6">
-                <v-card class="pa-6" outlined tile height="242px" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">
+                <v-card
+                  class="pa-6"
+                  outlined
+                  tile
+                  height="242px"
+                  style="
+                    text-align: left;
+                    border: solid 1px black;
+                    background-color: rgb(211, 211, 211);
+                  "
+                >
                   40. 100% 10 C41:F42 Pursuant to: (a) Indigenous People's Act
                   (RA 8371); (b) Magna Carta for Disabled Persons (RA 7277); and
                   (c) Solo Parents Welfare Act of 2000 (RA 8972), please answer
-                  the following items: Screen reader support enabled. <br><br>a. Are you a member of any indigenous
-                  group?<br><br><br> b. Are you a person with disability? <br><br><br>c. Are you a solo
-                  parent?</v-card
+                  the following items: Screen reader support enabled.
+                  <br /><br />a. Are you a member of any indigenous group?<br /><br /><br />
+                  b. Are you a person with disability? <br /><br /><br />c. Are
+                  you a solo parent?</v-card
                 >
               </v-col>
               <v-col cols="12" sm="6">
@@ -3413,17 +5320,22 @@
                     dense
                     type="text"
                   >
-                  </v-textarea
-                  >
+                  </v-textarea>
                 </v-card>
               </v-col>
             </v-row>
-            <v-row no-gutters class="ma-0" >
+            <v-row no-gutters class="ma-0">
               <v-col cols="12" sm="8">
                 <v-card class="pa-0" outlined tile height="auto">
-                  <v-card-text class="text-subtitle-2" style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);"
+                  <v-card-text
+                    class="text-subtitle-2"
+                    style="
+                      text-align: left;
+                      border: solid 1px black;
+                      background-color: rgb(211, 211, 211);
+                    "
                     >REFERENCES
-                    <span class="text-body-2" 
+                    <span class="text-body-2"
                       >(Person not related by consanguinity or affinity to
                       applicant /appointee)</span
                     ></v-card-text
@@ -3432,9 +5344,33 @@
                   <v-simple-table>
                     <thead>
                       <tr>
-                        <th style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">NAME</th>
-                        <th style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">ADDRESS</th>
-                        <th style="text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">TEL. NO.</th>
+                        <th
+                          style="
+                            text-align: left;
+                            border: solid 1px black;
+                            background-color: rgb(211, 211, 211);
+                          "
+                        >
+                          NAME
+                        </th>
+                        <th
+                          style="
+                            text-align: left;
+                            border: solid 1px black;
+                            background-color: rgb(211, 211, 211);
+                          "
+                        >
+                          ADDRESS
+                        </th>
+                        <th
+                          style="
+                            text-align: left;
+                            border: solid 1px black;
+                            background-color: rgb(211, 211, 211);
+                          "
+                        >
+                          TEL. NO.
+                        </th>
                         <th rowspan="1" colspan="1" style="text-align: left">
                           <button
                             class="material-icons"
@@ -3478,7 +5414,7 @@
                         <td colspan="1">
                           <button
                             class="material-icons"
-                            @click="removeRow('references', row)"
+                            @click.prevent="removeRow('references', row)"
                           >
                             remove_circle
                           </button>
@@ -3486,30 +5422,36 @@
                       </tr>
                     </tbody>
                   </v-simple-table>
-             
-                <v-card
-                  class=""
-                  outlined
-                  tile
-                  height="auto"
-                  style="font-size: 12px;text-align: left;border:solid 1px black;background-color:rgb(211,211,211);"
-                >
-                  42. I declare under oath that I have personally accomplished this
-                  Personal Data Sheet which is a true, correct and complete
-                  statement pursuant to the provisions of pertinent laws, rules
-                  and regulations of the Republic of the Philippines. I
-                  authorize the agency head/authorized representative to
-                  verify/validate the contents stated herein. I agree that any
-                  misrepresentation made in this document and its attachments
-                  shall cause the filing of administrative/criminal case/s
-                  against me.
-                </v-card>
-              
+
+                  <v-card
+                    class=""
+                    outlined
+                    tile
+                    height="auto"
+                    style="
+                      font-size: 12px;
+                      text-align: left;
+                      border: solid 1px black;
+                      background-color: rgb(211, 211, 211);
+                    "
+                  >
+                    42. I declare under oath that I have personally accomplished
+                    this Personal Data Sheet which is a true, correct and
+                    complete statement pursuant to the provisions of pertinent
+                    laws, rules and regulations of the Republic of the
+                    Philippines. I authorize the agency head/authorized
+                    representative to verify/validate the contents stated
+                    herein. I agree that any misrepresentation made in this
+                    document and its attachments shall cause the filing of
+                    administrative/criminal case/s against me.
+                  </v-card>
                 </v-card>
               </v-col>
               <v-col cols="12" sm="4">
                 <v-container class="pa-3 text-center" height="300px">
-                  <v-container class="mt-5 ml-auto mr-auto pa-0 text-center"  style="border: solid 1px black;width:150px;height:150px"
+                  <v-container
+                    class="mt-5 ml-auto mr-auto pa-0 text-center"
+                    style="border: solid 1px black; width: 150px; height: 150px"
                     >ID picture taken within the last 6 months 3.5 cm. X 4.5 cm
                     (passport size) With full and handwritten name tag and
                     signature over printed name Computer generated or
@@ -3519,39 +5461,54 @@
                     <v-file-input
                       solo
                       show-size
-                       counter
+                      counter
                       accept="image/png, image/jpeg, image/bmp"
                       v-model="personalPhotoAttachment"
                       class="text-center pt-6"
                       label="Insert Picture"
                       :rules="required"
                       dense
-                     
                       chips
                       @change="handleFileInput"
                     >
                     </v-file-input>
                   </v-container>
-                  <span class="text-center ma-0" >PHOTO</span>
+                  <span class="text-center ma-0">PHOTO</span>
                 </v-container>
               </v-col>
             </v-row>
-           
+
             <v-row class="pa-0">
-              <v-col cols="12" sm="4" style="font-size:10px">
-                <v-card class="pa-0" style="border:solid 1px black;">
-                  <v-container fluid class="text-center" style="font-size:11px;text-align: left;border:solid 1px black;background-color:rgb(211,211,211);">
-                    Government Issued ID <small style="font-size: 8px">(i.e.Passport, GSIS, SSS, PRC, Driver's
-                    License, etc.)</small> PLEASE INDICATE ID Number and Date of
-                    Issuance
+              <v-col cols="12" sm="4" style="font-size: 10px">
+                <v-card class="pa-0" style="border: solid 1px black">
+                  <v-container
+                    fluid
+                    class="text-center"
+                    style="
+                      font-size: 11px;
+                      text-align: left;
+                      border: solid 1px black;
+                      background-color: rgb(211, 211, 211);
+                    "
+                  >
+                    Government Issued ID
+                    <small style="font-size: 8px"
+                      >(i.e.Passport, GSIS, SSS, PRC, Driver's License,
+                      etc.)</small
+                    >
+                    PLEASE INDICATE ID Number and Date of Issuance
                   </v-container>
 
                   <v-container
-                  fluid
-                    class="text-no-wrap text-left pa-0 ma-0 "
+                    fluid
+                    class="text-no-wrap text-left pa-0 ma-0"
                     height="50px"
-                    style="font-size: 10px;border-left: solid 1px black; border-right: solid 1px black;"
-                    >
+                    style="
+                      font-size: 10px;
+                      border-left: solid 1px black;
+                      border-right: solid 1px black;
+                    "
+                  >
                     <!-- <label class="float-left" >
                     
                     </label> -->
@@ -3564,8 +5521,14 @@
                       :rules="required"
                     ></v-text-field
                   ></v-container>
-                  <v-container   class="text-no-wrap text-left pa-0 ma-0 "  style="font-size: 10px;border: solid 1px black; border-right: solid 1px black;"
-                    >
+                  <v-container
+                    class="text-no-wrap text-left pa-0 ma-0"
+                    style="
+                      font-size: 10px;
+                      border: solid 1px black;
+                      border-right: solid 1px black;
+                    "
+                  >
                     <v-text-field
                       dense
                       filled
@@ -3575,28 +5538,37 @@
                       v-model="governmentIssuedIDNo"
                     ></v-text-field
                   ></v-container>
-                  <v-container   class="text-no-wrap text-left pa-0 ma-0 "  style="font-size: 10px;border: solid 1px black; border-right: solid 1px black;"
-                    >
+                  <v-container
+                    class="text-no-wrap text-left pa-0 ma-0"
+                    style="
+                      font-size: 10px;
+                      border: solid 1px black;
+                      border-right: solid 1px black;
+                    "
+                  >
                     <v-text-field
                       dense
                       filled
                       class="ma-0"
                       label="Date/Place of Issuance:"
                       :rules="required"
-                      
                       v-model="governmentIDDateOrPlaceIssued"
                     ></v-text-field
                   ></v-container>
                 </v-card>
               </v-col>
-              <v-col cols="12" sm="4" >
-                <v-card style="border:solid 1px black">
-                  <v-container style="height:95px;border:solid 1px black" class="px-2 " fluid>
+              <v-col cols="12" sm="4">
+                <v-card style="border: solid 1px black">
+                  <v-container
+                    style="height: 95px; border: solid 1px black"
+                    class="px-2"
+                    fluid
+                  >
                     <v-file-input
                       solo
                       show-size
                       :rules="required"
-                       counter
+                      counter
                       accept="image/png, image/jpeg, image/bmp"
                       v-model="oathSignature"
                       class="text-center pt-6"
@@ -3608,10 +5580,12 @@
                     >
                     </v-file-input>
                   </v-container>
-                  <v-card-subtitle class="text-center" style="font-size: 10px;border: solid 1px black; border-right: solid 1px black;black;background-color:rgb(211,211,211);"
+                  <v-card-subtitle
+                    class="text-center"
+                    style="font-size: 10px;border: solid 1px black; border-right: solid 1px black;black;background-color:rgb(211,211,211);"
                     >Signature (Sign inside the box)</v-card-subtitle
                   >
-                  <v-container style="border:solid 1px black">
+                  <v-container style="border: solid 1px black">
                     <v-row>
                       <v-col cols="12" sm="12" md="12" class="text-center">
                         <v-menu
@@ -3625,7 +5599,6 @@
                           <template v-slot:activator="{ on, attrs }">
                             <v-text-field
                               v-model="computedDateFormattedOathDate"
-                   
                               append-icon="mdi-calendar"
                               readonly
                               :rules="required"
@@ -3643,21 +5616,26 @@
                         </v-menu>
                       </v-col>
                     </v-row>
-
                   </v-container>
-                  <v-card-subtitle class="text-center" style="font-size: 10px;border: solid 1px black; border-right: solid 1px black;black;background-color:rgb(211,211,211);"
+                  <v-card-subtitle
+                    class="text-center"
+                    style="font-size: 10px;border: solid 1px black; border-right: solid 1px black;black;background-color:rgb(211,211,211);"
                     >Date Accomplished</v-card-subtitle
                   >
                 </v-card>
               </v-col>
               <v-col cols="12" sm="4">
-                <v-card style="border:solid 1px black">
-                  <v-container style="height:248px;border:solid 1px black" class="px-2 " fluid>
+                <v-card style="border: solid 1px black">
+                  <v-container
+                    style="height: 248px; border: solid 1px black"
+                    class="px-2"
+                    fluid
+                  >
                     <v-file-input
                       solo
                       :rules="required"
                       show-size
-                       counter
+                      counter
                       accept="image/png, image/jpeg, image/bmp"
                       v-model="rightThumbMark"
                       class="text-center pt-6"
@@ -3668,45 +5646,53 @@
                     >
                     </v-file-input>
                   </v-container>
-                  <v-card-subtitle class="text-center" style="font-size: 10px;border: solid 1px black; border-right: solid 1px black;black;background-color:rgb(211,211,211);">Right Thumbmark</v-card-subtitle>
+                  <v-card-subtitle
+                    class="text-center"
+                    style="font-size: 10px;border: solid 1px black; border-right: solid 1px black;black;background-color:rgb(211,211,211);"
+                    >Right Thumbmark</v-card-subtitle
+                  >
                 </v-card>
               </v-col>
             </v-row>
-            <v-row style="border-top:solid 1px black;width:100%" fluid class="mr-0 ml-0 mt-2">
+            <v-row
+              style="border-top: solid 1px black; width: 100%"
+              fluid
+              class="mr-0 ml-0 mt-2"
+            >
               <v-col cols="12" sm="4" style="border: none" class="text-right">
                 SUBSCRIBED AND SWORN to before me this ,
               </v-col>
-                  <v-col cols="12" sm="4" md="4" class="text-center d-inline pt-2">
-                    <v-menu
-                      v-model="swornDateMenu"
-                      :close-on-content-click="false"
-                      :nudge-right="40"
-                      transition="scale-transition"
-                      offset-y
-                      min-width="auto"
-                    >
-                      <template v-slot:activator="{ on, attrs }">
-                        <v-text-field
-                          v-model="computedDateFormattedSwornDate"
-                          label=""
-                          append-icon="mdi-calendar"
-                          readonly
-                          class="d-inline"
-                          :rules="required"
-                          v-bind="attrs"
-                          v-on="on"
-                        ></v-text-field>
-                      </template>
-                      <v-date-picker
-                        class="float-right"
-                        v-model="subscribedAndSwornDate"
-                        scrollable
-                        @input="swornDateMenu = false"
-                      >
-                      </v-date-picker>
-                    </v-menu>
-                  </v-col>
-            <v-col sm="4" md="4" >
+              <v-col cols="12" sm="4" md="4" class="text-center d-inline pt-2">
+                <v-menu
+                  v-model="swornDateMenu"
+                  :close-on-content-click="false"
+                  :nudge-right="40"
+                  transition="scale-transition"
+                  offset-y
+                  min-width="auto"
+                >
+                  <template v-slot:activator="{ on, attrs }">
+                    <v-text-field
+                      v-model="computedDateFormattedSwornDate"
+                      label=""
+                      append-icon="mdi-calendar"
+                      readonly
+                      class="d-inline"
+                      :rules="required"
+                      v-bind="attrs"
+                      v-on="on"
+                    ></v-text-field>
+                  </template>
+                  <v-date-picker
+                    class="float-right"
+                    v-model="subscribedAndSwornDate"
+                    scrollable
+                    @input="swornDateMenu = false"
+                  >
+                  </v-date-picker>
+                </v-menu>
+              </v-col>
+              <v-col sm="4" md="4">
                 exhibiting his/her validly issued government ID as indicated
                 above.
               </v-col>
@@ -3716,11 +5702,15 @@
               width="400px"
               align="center"
               justify="center"
-              style="margin-left: auto; margin-right: auto;border:solid 1px black"
+              style="
+                margin-left: auto;
+                margin-right: auto;
+                border: solid 1px black;
+              "
             >
               <v-file-input
                 solo
-                 counter
+                counter
                 show-size
                 :rules="required"
                 accept="image/png, image/jpeg, image/bmp"
@@ -3732,14 +5722,18 @@
                 @change="handleFileInput"
               >
               </v-file-input>
-              <v-card-subtitle class="text-center ma-0" style="font-size: 10px;border: solid 1px black; border-right: solid 1px black;black;background-color:rgb(211,211,211);">Person Administering Oath</v-card-subtitle>
+              <v-card-subtitle
+                class="text-center ma-0"
+                style="font-size: 10px;border: solid 1px black; border-right: solid 1px black;black;background-color:rgb(211,211,211);"
+                >Person Administering Oath</v-card-subtitle
+              >
             </v-card>
           </v-form>
         </v-container>
         <!-- </tbody>
         
         </v-simple-table> -->
-        <v-btn class="primary ma-4" @click="finalizePds">Finalize C1-4</v-btn>
+        <v-btn class="primary ma-4" @click.prevent="finalizePds">Finalize C1-4</v-btn>
       </v-tab-item>
     </v-tabs>
   </v-container>
@@ -3751,10 +5745,39 @@
 // directives: {
 //     print
 // }
-// import moment from
+import moment from 'moment';
+// import vue from 'vue';
 export default {
   data() {
     return {
+       printLoading: true,
+            printObj: {
+              id: "printMe",
+              preview: false,
+              previewPrintBtnLabel: "Print",
+              previewTitle: 'Printing Preview', // The title of the preview window. The default is 打印预览
+              popTitle: 'good print',
+              extraCss: "https://cdn.bootcdn.net/ajax/libs/animate.css/4.1.1/animate.compat.css, https://cdn.bootcdn.net/ajax/libs/hover.css/2.3.1/css/hover-min.css",
+              
+              extraHead: '<meta http-equiv="Content-Language"content="en-us"/>',
+              previewBeforeOpenCallback () {
+                console.log('正在加载预览窗口')
+              },
+              previewOpenCallback () {
+                console.log('已经加载完预览窗口')
+              },
+              beforeOpenCallback () {
+                //.printLoading = true
+                console.log('打开之前')
+              },
+              openCallback () {
+               // .printLoading = false
+                console.log('执行了打印')
+              },
+              closeCallback () {
+                console.log('关闭了打印工具')
+              }
+            },
       educBackgroundDOSMenu: false,
       oathDateMenu: false,
       swornDateMenu: false,
@@ -4018,10 +6041,10 @@ export default {
       ],
       otherInfo: [
         {
-          id:"",
+          id: "",
           otherInformationSpecialSkills: "",
-           otherInformationNonacademicDistinctions: "",
-           otherInformationAssociationMembers: ""
+          otherInformationNonacademicDistinctions: "",
+          otherInformationAssociationMembers: "",
         },
       ],
 
@@ -4246,6 +6269,8 @@ export default {
       sessionStorage.setItem("children", JSON.stringify(children));
       this.$router.push({ path: "/viewPds", query: { pdsData: data } }); // -> /user
     },
+
+    //retrieve
     async retrievePds() {
       console.log(this.user);
       this.loading = true;
@@ -4254,14 +6279,14 @@ export default {
         const returnedAllData = await this.$store.dispatch("retrievePdsInfo");
         console.log("reached");
         //this.$store.getters.pdsInfosAll = returnedAllData.data
-        this.pds = returnedAllData.data[0][0].personalInfo;
+        this.pds = returnedAllData.data[0][0].personalInfo!=undefined?returnedAllData.data[0][0].personalInfo:[];
         this.loading = false;
       } else if (this.user == "Teacher") {
         const returnedData = await this.$store.dispatch("retrievePdsInfoById");
         const imageUrl = await this.$store.dispatch("getImageUrl");
         this.pds = returnedData.data;
         this.imageUrl = imageUrl.data;
-        console.log(this.imageUrl);
+        console.log(returnedData);
         if (this.pds[0][0].personalInfo[0] == undefined) {
           this.create = true;
         } else {
@@ -4273,15 +6298,13 @@ export default {
           this.pdsWorkExperience = [];
           this.pdsVoluntaryWorkInvolvement = [];
           this.pdsLearningAndDevelopment = [];
-          this.pdsOtherInfoSpecialSkills = [];
-          this.pdsOtherInfoNonacademicDistinctions = [];
-          this.pdsOtherInfoAssociationMembers = [];
+          this.pdsOtherInfo= [];
+
           this.references = [];
           this.pdsQuestions = [];
           this.pdsAdditionalInfo = [];
-          this.pdsChildren = [];
           this.pdsPersonalInfo.push(this.pds[0][0].personalInfo[0]);
-          console.log(this.imageUrl);
+         
           // console.log(this.pdsPersonalInfo);
           this.pdsFamilyBackground.push(this.pds[1][0].familyBackground[0]);
 
@@ -4301,25 +6324,19 @@ export default {
           for (let learning of this.pds[6][0].learningAndDevelopment) {
             this.pdsLearningAndDevelopment.push(learning);
           }
-          for (let other of this.pds[7][0].otherInfoSpecialSkills) {
-            this.pdsOtherInfoSpecialSkills.push(other);
-          }
-          for (let other of this.pds[8][0].otherInfoNonacademicDistinctions) {
-            this.pdsOtherInfoNonacademicDistinctions.push(other);
-          }
-          for (let other of this.pds[9][0].otherInfoAssociationMembers) {
-            this.pdsOtherInfoAssociationMembers.push(other);
+          for (let other of this.pds[7][0].otherInfo) {
+            this.pdsOtherInfo.push(other);
           }
 
-          for (let references of this.pds[10][0].references) {
+          for (let references of this.pds[8][0].references) {
             this.pdsReferences.push(references);
           }
 
-          this.pdsQuestions.push(this.pds[11][0].pdsQuestions[0]);
-          this.pdsAdditionalInfo.push(this.pds[12][0].pdsAdditionalInfo[0]);
-          for (const child of this.pds[13][0].children) {
-            this.pdsChildren.push(child);
-          }
+          this.pdsQuestions.push(this.pds[9][0].pdsQuestions[0]);
+          this.pdsAdditionalInfo.push(this.pds[10][0].pdsAdditionalInfo[0]);
+          // for (const child of this.pds[10][0].children) {
+          //   this.pdsChildren.push(child);
+          // }
         }
       } else {
         this.pds = [];
@@ -4364,7 +6381,7 @@ export default {
             nameAdAddressOfOrgVolWork: "",
             inclusiveDatesFromVolWork: "",
             inclusiveDatesToVolWork: "",
-            numberOfHoursVolWork:"",
+            numberOfHoursVolWork: "",
             positionOfWorkVolWork: "",
           };
           this.voluntaryWorkInvolvement.push(newRow);
@@ -4375,10 +6392,8 @@ export default {
             educBackgroundLevel: "",
             educBackgroundNameOfSchool: "",
             educBackgroundBasicEducation: "",
-            educBackgroundPeriodOfAttendanceFrom:
-              "",
-            educBackgroundPeriodOfAttendanceTo:
-              "",
+            educBackgroundPeriodOfAttendanceFrom: "",
+            educBackgroundPeriodOfAttendanceTo: "",
             educBackgroundHighestLevel: "",
             educBackgroundYearGraduated: "",
             educBackgroundScholarship: "",
@@ -4388,45 +6403,36 @@ export default {
         case "learningAndDevelopment":
           newRow = {
             id: "",
-            learningAndDevelopmentInterventions:
-              "",
-            learningAndDevelopmentInclusiveDatesFrom:
-              "",
-            learningAndDevelopmentInclusiveDatesTo:
-              "",
-            learningAndDevelopmentNumberOfHours:
-              "",
+            learningAndDevelopmentInterventions: "",
+            learningAndDevelopmentInclusiveDatesFrom: "",
+            learningAndDevelopmentInclusiveDatesTo: "",
+            learningAndDevelopmentNumberOfHours: "",
             learningAndDevelopmentTypeOfLD: "",
-            learningAndDevelopmentConductedBy:
-              "",
+            learningAndDevelopmentConductedBy: "",
           };
           this.learningAndDevelopment.push(newRow);
           break;
         case "otherInfo":
           newRow = {
             id: "",
-            otherInfoSpecialSkills:"",
-              otherInfoNonacademicDistinctions:
-              "",
-              otherInfoAssociationMembers: "",
+            otherInfoSpecialSkills: "",
+            otherInfoNonacademicDistinctions: "",
+            otherInfoAssociationMembers: "",
           };
           this.otherInfo.push(newRow);
           break;
-      
+
         case "workExperience":
           newRow = {
             id: "",
-            inclusiveDateFromWorkExperience:
-              "",
+            inclusiveDateFromWorkExperience: "",
             inclusiveDateToWorkExperience: "",
             positionTitleWorkExperience: "",
             departmentWorkExperience: "",
             monthlySalaryWorkExperience: "",
             salaryGradeWorkExperience: "",
-            statusOfAppointmentWorkExperience:
-              "",
-            governmentServiceWorkExperience:
-              "",
+            statusOfAppointmentWorkExperience: "",
+            governmentServiceWorkExperience: "",
           };
           this.workExperience.push(newRow);
           break;
@@ -4444,7 +6450,7 @@ export default {
           console.log("reached");
           newRow = {
             id: "",
-            childName:"",
+            childName: "",
           };
           this.children.push(newRow);
           break;
@@ -4558,6 +6564,12 @@ export default {
       this.familySpouseOccupation =
         this.pdsFamilyBackground[0].spouse_occupation;
       this.familyEmployerName = this.pdsFamilyBackground[0].spouse_employer;
+      this.firstChild = this.pdsFamilyBackground[0].first_child;
+      this.secondChild = this.pdsFamilyBackground[0].second_child;
+      this.thirdChild = this.pdsFamilyBackground[0].third_child;
+      this.fourthChild = this.pdsFamilyBackground[0].fourth_child;
+      this.fifthChild = this.pdsFamilyBackground[0].fifth_child;
+      this.sixthChild = this.pdsFamilyBackground[0].sixth_child;
       this.familyBusinessAddress =
         this.pdsFamilyBackground[0].spouse_business_address;
       this.familyTelephoneNo = this.pdsFamilyBackground[0].spouse_telephone_no;
@@ -4660,41 +6672,18 @@ export default {
         this.learningAndDevelopment.push(newRow);
       }
       console.log(this.pdsOtherInfoSpecialSkills);
-      this.otherInfoSpecialSkills = [];
-      for (const [index, item] of this.pdsOtherInfoSpecialSkills.entries()) {
+      this.otherInfo = [];
+      for (const [index, item] of this.pdsOtherInfo.entries()) {
         console.log(index);
         const newRow = {
           id: item.id,
-          otherInformationSpecialSkills: item.special_skills_and_hobbies,
+          otherInfoSpecialSkills: item.special_skills_and_hobbies,
+          otherInfoNonacademicDistinctions: item.nonacademic_distinctions,
+          otherInfoAssocationMembers: item.association_members,
         };
-        this.otherInfoSpecialSkills.push(newRow);
+        this.otherInfo.push(newRow);
       }
-      console.log(this.pdsOtherInfoNonacademicDistinctions);
-      this.otherInfoNonacademicDistinctions = [];
-      for (const [
-        index,
-        item,
-      ] of this.pdsOtherInfoNonacademicDistinctions.entries()) {
-        console.log(index);
-        const newRow = {
-          id: item.id,
-          otherInfoNonacademicDistinctions: item.non_academic_distinctions,
-        };
-        this.otherInfoNonacademicDistinctions.push(newRow);
-      }
-      console.log(this.pdsOtherInfoAssociationMembers);
-      this.otherInfoAssociationMembers = [];
-      for (const [
-        index,
-        item,
-      ] of this.pdsOtherInfoAssociationMembers.entries()) {
-        console.log(index);
-        const newRow = {
-          id: item.id,
-          otherInfoAssociationMembers: item.association_members,
-        };
-        this.otherInfoAssociationMembers.push(newRow);
-      }
+      
       console.log(this.pdsQuestions);
       this.questionThirtyFour = this.pdsQuestions[0].question_thirty_four;
       this.questionThirtyFiveA = this.pdsQuestions[0].question_thirty_five_a;
@@ -4704,7 +6693,8 @@ export default {
         this.pdsQuestions[0].question_thirty_five_B_status_of_case;
       this.questionThirtySix = this.pdsQuestions[0].question_thirty_six;
       this.questionThirtySeven = this.pdsQuestions[0].question_thirty_seven;
-      this.questionThirtyEight = this.pdsQuestions[0].question_thirty_eight;
+      this.questionThirtyEightA = this.pdsQuestions[0].question_thirty_eight_a;
+      this.questionThirtyEightB = this.pdsQuestions[0].question_thirty_eight_b;
       this.questionThirtyNine = this.pdsQuestions[0].question_thirty_nine;
       this.questionFourtyA = this.pdsQuestions[0].question_fourty_a;
       this.questionFourtyB = this.pdsQuestions[0].question_fourty_b;
@@ -4721,16 +6711,16 @@ export default {
         };
         this.references.push(newRow);
       }
-      console.log(this.pdsChildren);
-      this.children = [];
-      for (const [index, item] of this.pdsChildren.entries()) {
-        console.log(index);
-        const newRow = {
-          id: item.id,
-          childName: item.child_name,
-        };
-        this.children.push(newRow);
-      }
+      //console.log(this.pdsChildren);
+      //this.children = [];
+      // for (const [index, item] of this.pdsChildren.entries()) {
+      //   console.log(index);
+      //   const newRow = {
+      //     id: item.id,
+      //     childName: item.child_name,
+      //   };
+      //   this.children.push(newRow);
+      // }
       console.log(this.pdsAdditionalInfo);
 
       this.personalInfoId = this.pdsPersonalInfo[0].id;
@@ -4762,21 +6752,19 @@ export default {
       console.log(this.educBackgroundSignature);
     },
     finalizePds: async function () {
-      console.log(this.$refs);
+      console.log(moment(this.personalDateOfBirth).format('YYYY-MM-DD'));
       if (
-        this.$refs.pds.validate() == true ||
-        this.$refs.pdsA.validate() == true ||
-        this.$refs.pdsB.validate() == true ||
-        this.$refs.pdsC.validate() == true ||
-        this.$refs.pdsD.validate() == true ||
-        this.$refs.pdsE.validate() == true ||
-        this.$refs.pdsF.validate() == true
+        this.$refs.pds.validate() ||
+        this.$refs.pdsA.validate()  ||
+        this.$refs.pdsB.validate() ||
+        this.$refs.pdsC3.validate()  
+        
       ) {
         const personalSurname = this.personalSurname;
         const personalFirstName = this.personalFirstName;
         const personalMiddleName = this.personalMiddleName;
         const personalSuffix = this.personalSuffix;
-        const personalDateOfBirth = this.personalDateOfBirth;
+        const personalDateOfBirth = moment(this.personalDateOfBirth).format('YYYY-MM-DD');
         const personalPlaceOfBirth = this.personalPlaceOfBirth;
         const personalCitizenship = this.personalCitizenship;
         const personalDualCitizenship = this.personalDualCitizenship;
@@ -4827,29 +6815,50 @@ export default {
         const familyMotherSurname = this.familyMotherSurname;
         const familyMotherFirstName = this.familyMotherFirstName;
         const familyMotherMiddleName = this.familyMotherMiddleName;
-        const firstChild = this.firstChild
-        const secondChild = this.secondChild
-        const thirdChild = this.thirdChild
-        const fourthChild = this.fourthChild
-        const fifthChild = this.fifthChild
-        const sixthChild = this.sixthChild
-        const dateOfBirthSpouse = this.dateOfBirthSpouse;
-        const dateOfBirthFather = this.dateOfBirthFather;
-        const dateOfBirthMother = this.dateOfBirthMother;
+        const firstChild = this.firstChild;
+        const secondChild = this.secondChild;
+        const thirdChild = this.thirdChild;
+        const fourthChild = this.fourthChild;
+        const fifthChild = this.fifthChild;
+        const sixthChild = this.sixthChild;
+        const dateOfBirthSpouse = this.dateOfBirthSpouse == ''? '' : moment(this.dateOfBirthSpouse).format('YYYY-MM-DD');
+        const dateOfBirthFather = moment(this.dateOfBirthFather).format('YYYY-MM-DD');
+        const dateOfBirthMother = moment(this.dateOfBirthMother).format('YYYY-MM-DD');
+        for(let date of this.educationalBackground){
+          date.educBackgroundPeriodOfAttendanceFrom=moment(date.educBackgroundPeriodOfAttendanceFrom).format('YYYY-MM-DD')
+          date.educBackgroundPeriodOfAttendanceTo=moment(date.educBackgroundPeriodOfAttendanceTo).format('YYYY-MM-DD')
+        }
         const educationalBackground = this.educationalBackground;
         const educBackgroundSignature = this.educBackgroundSignature;
         const educBackgroundDateOfSignature =
-          this.educBackgroundDateOfSignature;
+          moment(this.educBackgroundDateOfSignature).format('YYYY-MM-DD');
+          for(let date of this.civilServiceEligibility){
+          date.dateOfExamination=moment(date.dateOfExamination).format('YYYY-MM-DD')
+        
+        }
         const civilServiceEligibility = this.civilServiceEligibility;
+         for(let date of this.workExperience){
+          date.inclusiveDateFromWorkExperience=moment(date.inclusiveDateFromWorkExperience).format('YYYY-MM-DD')
+          date.inclusiveDateToWorkExperience=moment(date.inclusiveDateToWorkExperience).format('YYYY-MM-DD')
+        }
         const workExperience = this.workExperience;
-        const workExperienceSignature = this.workExperienceSignature;
+        const workExperienceSignature = workExperienceSignature;
         const workExperienceDateOfSignature =
-          this.workExperienceDateOfSignature;
+          moment(this.workExperienceDateOfSignature).format('YYYY-MM-DD');
+            for(let date of this.voluntaryWorkInvolvement){
+          date.inclusiveDatesFromVolWork=moment(date.inclusiveDatesFromVolWork).format('YYYY-MM-DD')
+          date.inclusiveDatesToVolWork=moment(date.inclusiveDatesToVolWork).format('YYYY-MM-DD')
+        }
         const voluntaryWorkInvolvement = this.voluntaryWorkInvolvement;
+          for(let date of this.learningAndDevelopment){
+          date.learningAndDevelopmentInclusiveDatesFrom=moment(date.learningAndDevelopmentInclusiveDatesFrom).format('YYYY-MM-DD')
+          date.learningAndDevelopmentInclusiveDatesTo=moment(date.learningAndDevelopmentInclusiveDatesTo).format('YYYY-MM-DD')
+        }
         const learningAndDevelopment = this.learningAndDevelopment;
+
         const otherInfo = this.otherInfo;
         const otherInfoSignature = this.otherInfoSignature;
-        const otherInfoDateOfSignature = this.otherInfoDateOfSignature;
+        const otherInfoDateOfSignature = moment(this.otherInfoDateOfSignature).format('YYYY-MM-DD');
         const questionThirtyFour = this.questionThirtyFour;
         const questionThirtyFiveA = this.questionThirtyFiveA;
         const questionThirtyFiveBDateFiled = this.questionThirtyFiveDateFiled;
@@ -4870,9 +6879,9 @@ export default {
         const governmentIDDateOrPlaceIssued =
           this.governmentIDDateOrPlaceIssued;
         const oathSignature = this.oathSignature;
-        const oathDateAccomplished = this.oathDateAccomplished;
+        const oathDateAccomplished = moment(this.oathDateAccomplished).format('YYYY-MM-DD');
         const rightThumbMark = this.rightThumbMark;
-        const subscribedAndSwornDate = this.subscribedAndSwornDate;
+        const subscribedAndSwornDate = moment(this.subscribedAndSwornDate).format('YYYY-MM-DD');
         const personAdministeringOath = this.personAdministeringOath;
         //const user = JSON.parse(sessionStorage.getItem('user_session')).id
         const user = JSON.parse(sessionStorage.user_session).id;
@@ -4988,10 +6997,10 @@ export default {
           /*formDataEducationalBackground,workExperienceSignature,otherInfoSignature,personalPhotoAttachment,oathSignature,personAdministeringOath,*/
           const returnedData = await this.$store.dispatch("createPds", data);
           console.log(returnedData);
-          let personalInfoId = returnedData[0][0].personalInfoId[0].id;
+          let personalInfoId = returnedData.data[0][0].personalInfoId[0].id;
           let pdsAdditionalInfoId =
-            returnedData[1][0].pdsAdditionalInfoId[0].id;
-          let message = returnedData[2][0].message[0];
+            returnedData.data[1][0].pdsAdditionalInfoId[0].id;
+          let message = returnedData.data[2][0].message;
           console.log(personalInfoId, pdsAdditionalInfoId, message);
           formData.append("personalInfoId", personalInfoId);
 
@@ -5065,10 +7074,11 @@ export default {
 <style scoped src="../../assets/css/main.css" crossorigin="anonymous">
 * {
   font-size: 10px;
-  
 }
-.pdsA, td, th, tr{
-    font-size:10px
-  }
-
+.pdsA,
+td,
+th,
+tr {
+  font-size: 10px;
+}
 </style>
