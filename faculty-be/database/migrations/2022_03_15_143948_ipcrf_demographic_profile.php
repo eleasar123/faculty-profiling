@@ -40,6 +40,7 @@ return new class extends Migration
             $table->string('school_type');
             $table->string('school_size');
             $table->string('curricular_classification');
+            $table->string('school_year');
             $table->timestamp('created_at') ->useCurrent();
             $table->timestamp('updated_at') -> nullable() -> useCurrentOnUpdate();
             $table->softDeletesTz();

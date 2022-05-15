@@ -18,7 +18,7 @@ class IpcrfEncodingPart2 extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'user',
+        'user_id',
         'self_management',
         'teamwork',
         'professional_and_ethics',

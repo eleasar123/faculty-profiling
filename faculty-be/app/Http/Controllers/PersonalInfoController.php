@@ -34,15 +34,15 @@ class PersonalInfoController extends Controller
  public function handleImage(Request $request)
  {
   //  return $request->all();
-  $request->validate([
-   'educBackgroundSignature' => 'required|mimes:jpg,jpeg,png,csv,txt,xlx,xls,pdf',
-   'workExperienceSignature' => 'required|mimes:jpg,jpeg,png,csv,txt,xlx,xls,pdf',
-   'otherInfoSignature' => 'required|mimes:jpg,jpeg,png,csv,txt,xlx,xls,pdf',
-   'personalPhotoAttachment' => 'required|mimes:jpg,jpeg,png,csv,txt,xlx,xls,pdf',
-   'oathSignature' => 'required|mimes:jpg,jpeg,png,csv,txt,xlx,xls,pdf',
-   'rightThumbMark' => 'required|mimes:jpg,jpeg,png,csv,txt,xlx,xls,pdf',
-   'personAdministeringOath' => 'required|mimes:jpg,jpeg,png,csv,txt,xlx,xls,pdf',
-  ]);
+  // $request->validate([
+  //  'educBackgroundSignature' => 'required|mimes:jpg,jpeg,png,csv,txt,xlx,xls,pdf',
+  //  'workExperienceSignature' => 'required|mimes:jpg,jpeg,png,csv,txt,xlx,xls,pdf',
+  //  'otherInfoSignature' => 'required|mimes:jpg,jpeg,png,csv,txt,xlx,xls,pdf',
+  //  'personalPhotoAttachment' => 'required|mimes:jpg,jpeg,png,csv,txt,xlx,xls,pdf',
+  //  'oathSignature' => 'required|mimes:jpg,jpeg,png,csv,txt,xlx,xls,pdf',
+  //  'rightThumbMark' => 'required|mimes:jpg,jpeg,png,csv,txt,xlx,xls,pdf',
+  //  'personAdministeringOath' => 'required|mimes:jpg,jpeg,png,csv,txt,xlx,xls,pdf',
+  // ]);
   // return $request;
   if ($request->hasFile('educBackgroundSignature')) {
   $image           = $request->file('educBackgroundSignature');
@@ -127,13 +127,10 @@ class PersonalInfoController extends Controller
   $pds->push([['workExperience' => WorkExperience::all()]]);
   $pds->push([['voluntaryWorkInvolvement' => VoluntaryWorkInvolvement::all()]]);
   $pds->push([['learningAndDevelopment' => learningAndDevelopment::all()]]);
-  $pds->push([['otherInfoSpecialSkills' => OtherInfoSpecialSkills::all()]]);
-  $pds->push([['otherInfoNonacademicDistinctions' => OtherInfoNonacademicDistinctions::all()]]);
-  $pds->push([['otherInfoAssociationMembers' => OtherInfoAssociationMembers::all()]]);
+  $pds->push([['otherInfo' => OtherInfo::all()]]);
   $pds->push([['references' => References::all()]]);
   $pds->push([['pdsQuestions' => PdsQuestions::all()]]);
   $pds->push([['pdsAdditionalInfo' => PdsAdditionalInfo::all()]]);
-  $pds->push([['children' => Children::all()]]);
   return $pds;
   // return [
   //   'id' => $id,
@@ -235,7 +232,7 @@ class PersonalInfoController extends Controller
    'familyFatherSurname'              => 'required',
    'familyFatherFirstName'            => 'required',
    'familyFatherMiddleName'           => 'required',
-   'familyFatherSuffix'               => 'required',
+  //  'familyFatherSuffix'               => 'required',
    'familyMotherMaidenName'           => 'required',
    'familyMotherSurname'              => 'required',
    'familyMotherFirstName'            => 'required',
@@ -257,7 +254,7 @@ class PersonalInfoController extends Controller
   //  'otherInfoAssociationMembers'      => 'required',
 
    'otherInfoDateOfSignature'         => 'required',
-   'otherInfoAssociationMembers'      => 'required',
+   'otherInfo'      => 'required',
   //  'questionThirtyFour'               => 'required',
   //  'questionThirtyFiveA'              => 'required',
   //  'questionThirtyFiveBDateFiled'     => 'required',
@@ -379,19 +376,19 @@ class PersonalInfoController extends Controller
     return e;
    }
   }
-  foreach ($request->children as $child) {
-   // return $educBackground['educBackgroundLevel'];
-   $children = new Children([
-    'user_id'    => $request->user,
-    'child_name' => $child['childName'],
-   ]);
-   try {
-    $children->save();
-   } catch (Throwable $e) {
-    return e;
-   }
+  // foreach ($request->children as $child) {
+  //  // return $educBackground['educBackgroundLevel'];
+  //  $children = new Children([
+  //   'user_id'    => $request->user,
+  //   'child_name' => $child['childName'],
+  //  ]);
+  //  try {
+  //   $children->save();
+  //  } catch (Throwable $e) {
+  //   return e;
+  //  }
 
-  }
+  // }
 
   foreach ($request->civilServiceEligibility as $civilServ) {
    $civilServiceEligibility = new CivilServiceEligibility([
@@ -466,7 +463,7 @@ class PersonalInfoController extends Controller
    $otherInfo = new OtherInfo([
     'user_id'                    => $request->user,
     'special_skills_and_hobbies' => $otherInfo['otherInfoSpecialSkills'],
-    'nonacademic_distinctions' => $otherInfo['otherInformationNonacademicDistinctions'],
+    'nonacademic_distinctions' => $otherInfo['otherInfoNonacademicDistinctions'],
     'association_members' => $otherInfo['otherInfoAssociationMembers'],
    ]);
    try {
@@ -587,7 +584,7 @@ class PersonalInfoController extends Controller
     'familyFatherSurname'              => 'required',
     'familyFatherFirstName'            => 'required',
     'familyFatherMiddleName'           => 'required',
-    'familyFatherSuffix'               => 'required',
+    // 'familyFatherSuffix'               => 'required',
     'familyMotherMaidenName'           => 'required',
     'familyMotherSurname'              => 'required',
     'familyMotherFirstName'            => 'required',
@@ -609,7 +606,7 @@ class PersonalInfoController extends Controller
    //  'otherInfoAssociationMembers'      => 'required',
  
     'otherInfoDateOfSignature'         => 'required',
-    'otherInfoAssociationMembers'      => 'required',
+    'otherInfo'      => 'required',
    //  'questionThirtyFour'               => 'required',
    //  'questionThirtyFiveA'              => 'required',
    //  'questionThirtyFiveBDateFiled'     => 'required',

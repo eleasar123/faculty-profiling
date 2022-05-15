@@ -34,7 +34,7 @@ class IpcrfDemographicProfile extends Model
      */
     protected $fillable = [
 
-        'user',
+        'user_id',
         'name_of_employee',
         'position',
         'employment_status',
@@ -58,6 +58,7 @@ class IpcrfDemographicProfile extends Model
         'school_type',
         'school_size',
         'curricular_classification',
+        'school_year'
     ];
 
     public function user()

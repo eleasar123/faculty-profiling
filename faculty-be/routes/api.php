@@ -69,7 +69,7 @@ Route::middleware(['cors'])->group(function () {
     Route::get('esat/', 'App\Http\Controllers\EsatController@index');
     Route::get('esat/{id}', 'App\Http\Controllers\EsatController@getEsat');
     Route::post('esat/create', 'App\Http\Controllers\EsatController@createEsat');
-    Route::patch('esat/edit', 'App\Http\Controllers\EsatController@editEsat');
+    Route::post('esat/edit', 'App\Http\Controllers\EsatController@editEsat');
 
     // Route::apiResource('ipcrf', App\Http\Controllers\IpcrfController::class);
     //routes for ipcrf

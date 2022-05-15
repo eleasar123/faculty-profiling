@@ -110,7 +110,7 @@ class IpcrfController extends Controller
         ]);
 
         $ipcrfDemographicProfile = new IpcrfDemographicProfile([
-            'user' => $request->user,
+            'user_id' => $request->user,
             'name_of_employee' => $request->name_of_employee,
             'position' => $request->position,
             'employment_status' => $request->position,
@@ -134,23 +134,25 @@ class IpcrfController extends Controller
             'school_type' => $request->school_type,
             'school_size' => $request->user,
             'curricular_classification' => $request->curricular_classification,
+            'school_year' => $request -> schoolYear
         ]);
 
         $ipcrfEncodingPart1 = new IpcrfEncodingPart1([
-            'user' => $request->user,
-            'objective1' => $request->objective1,
-            'objective2' => $request->objective2,
-            'objective3' => $request->objective3,
-            'objective4' => $request->objective4,
-            'objective5' => $request->objective5,
-            'subject' => $request->subject,
-            'objective6' => $request->object6,
-            'objective7' => $request->objective7,
-            'objective8' => $request->objective8,
-            'objective9' => $request->objective9,
-            'objective10' => $request->objective10,
+            'user_id' => $request->user,
+            'subject_cot1' => $request->subject_cot1,
+            'objective_no' => $request->objective_no,
+            'cot_indicator_no' => $request->cot_indicator_no,
+            'rating_cot1' => $request->rating_cot1,
+            'rpms_5pt_scale_cot1' => $request->rpms_5pt_scale_cot2,
+            'cot3' => $request->cot4,
+            'cot4' => $request->cot4,
+            'average_cot' => $request->average_cot,
+            'ipcrf_numerical_ratings_q' => $request->ipcrf_numerical_ratings_q,
+            'ipcrf_numerical_ratings_e' => $request->ipcrf_numerical_ratings_e,
+            'ipcrf_numerical_ratings_average' => $request->ipcrf_numerical_ratings_average,
+            'ipcrf_numerical_ratings_score' => $request->ipcrf_numerical_ratings_average,
+            'ipcrf_numerical_ratings_adjectival_rating' => $request->ipcrf_numerical_ratings_adjectival_rating,
             'school_year' => $request->school_year,
-            'personnel' => $request->personnel,
             'date_observed' => $request->date_observed,
             'final_rating' => $request->final_rating,
             'adjectival_rating' => $request->adjectival_rating,
@@ -159,7 +161,7 @@ class IpcrfController extends Controller
         ]);
 
         $ipcrfEncodingPart2 = new IpcrfEncodingPart2([
-            'user' => $request->user,
+            'user_id' => $request->user,
             'self_management' => $request->self_management,
             'teamwork' => $request->teamwork,
             'professional_and_ethics' => $request->professional_and_ethics,
@@ -169,7 +171,7 @@ class IpcrfController extends Controller
         ]);
 
         $ipcrfDevelopmentPlan = new IpcrfDevelopmentPlan([
-            'user' => $request->user,
+            'user_id' => $request->user,
             'ratee' => $request->ratee,
             'competency_type' => $request->competency_type,
             'rater' => $request->rater,
@@ -177,6 +179,7 @@ class IpcrfController extends Controller
             'development_needs' => $request->development_needs,
             'learning_objectives' => $request->learning_objectives,
             'timeline' => $request->timeline,
+            'intervention' => $request->intervention,
             'resources_needed' => $request->resources_needed,
             'approving_authority' => $request->approving_authority,
         ]);

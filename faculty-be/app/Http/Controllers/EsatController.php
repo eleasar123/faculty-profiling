@@ -101,8 +101,10 @@ class EsatController extends Controller
         }
     }
 
-    public function editEsat(Request $request, $user_id)
+    public function editEsat(Request $request)
+   
     {
+        return $request;
         $request->validate([
             //demographic profile
             'user' => 'required',

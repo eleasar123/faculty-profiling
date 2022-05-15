@@ -37,6 +37,6 @@ return new class extends Migration
     public function down()
     {
         //
-        Schema::dropIfExists('ipcrf_encoding_part2');
+        Schema::dropIfExists('ipcrf_encoding_part2s');
     }
 };

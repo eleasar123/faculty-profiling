@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('strengths');
             $table->string('development_needs');
             $table->string('learning_objectives');
+            $table->string('intervention');
             $table->string('timeline');
             $table->string('resources_needed');
             $table->string('approving_authority');
