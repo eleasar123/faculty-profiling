@@ -62,6 +62,7 @@
                   </td>
                   <td colspan="2">
                     <v-text-field
+                      v-model="empName"
                       placeholder="Name"
                       solo
                       dense
@@ -73,6 +74,7 @@
                   <td colspan="3" style="text-align: left">Rater:</td>
                   <td colspan="3">
                     <v-text-field
+                      v-model="empRater"
                       placeholder="Rater"
                       solo
                       dense
@@ -84,6 +86,7 @@
                   <td colspan="1" style="text-align: left">Region:</td>
                   <td colspan="1">
                     <v-text-field
+                      v-model="empRegion"
                       placeholder="Region"
                       solo
                       dense
@@ -99,6 +102,7 @@
                   <v-col class="d-flex" cols="12" sm="20">
                     <v-select
                       :items="items"
+                      v-model="empPosition"
                       label="Position"
                       dense
                       solo
@@ -109,7 +113,8 @@
 
                   <td colspan="3">
                     <v-text-field
-                      placeholder="Position"
+                      v-model="raterPosition"
+                      placeholder="Rater Position"
                       solo
                       dense
                       class="text-center pt-5"
@@ -120,6 +125,7 @@
                   <td colspan="3" style="text-align: center">Division:</td>
                   <td colspan="2">
                     <v-text-field
+                      v-model="empDivision"
                       placeholder="Division"
                       solo
                       dense
@@ -134,6 +140,7 @@
                   <td colspan="3" style="text-align: left">Employee ID#:</td>
                   <td colspan="2">
                     <v-text-field
+                      v-model="empId"
                       placeholder="Employee ID#"
                       solo
                       dense
@@ -145,6 +152,7 @@
                   <td colspan="3" style="text-align: left">Date of Review:</td>
                   <td colspan="3">
                     <v-text-field
+                      v-model="empDateReview"
                       placeholder="Date of Review"
                       solo
                       dense
@@ -158,6 +166,7 @@
                   </td>
                   <td colspan="1">
                     <v-text-field
+                      v-model="empDistrict"
                       placeholder="District"
                       solo
                       dense
@@ -174,7 +183,8 @@
                   </td>
                   <td colspan="2">
                     <v-text-field
-                      placeholder="Position"
+                      v-model="empStatus"
+                      placeholder="Status"
                       solo
                       dense
                       class="text-center pt-5"
@@ -185,7 +195,8 @@
                   <td colspan="3" style="text-align: left">Rating Period:</td>
                   <td colspan="3">
                     <v-text-field
-                      placeholder="Position"
+                      v-model="empRatingPeriod"
+                      placeholder="Rating Period"
                       solo
                       dense
                       class="text-center pt-5"
@@ -196,6 +207,7 @@
                   <td colspan="1" style="text-align: left">School ID:</td>
                   <td colspan="1">
                     <v-text-field
+                      v-model="smpSchoolId"
                       placeholder="School ID"
                       solo
                       dense
@@ -210,6 +222,7 @@
                   <td colspan="3" style="text-align: left">Age :</td>
                   <td colspan="2">
                     <v-text-field
+                      v-model="empAge"
                       placeholder="Age"
                       solo
                       dense
@@ -221,6 +234,7 @@
                   <td colspan="3" style="text-align: left">School Name:</td>
                   <td colspan="3">
                     <v-text-field
+                      v-model="empSchoolName"
                       placeholder="School Name"
                       solo
                       dense
@@ -232,6 +246,7 @@
                   <td colspan="1" style="text-align: left">Sex:</td>
                   <td colspan="1">
                     <v-text-field
+                      v-model="empSex"
                       placeholder="Sex"
                       solo
                       dense
@@ -247,6 +262,7 @@
                   <td colspan="3" style="text-align: left">Level Taught:</td>
                   <td colspan="2">
                     <v-text-field
+                      v-model="empLevelTaught"
                       placeholder="Level "
                       solo
                       dense
@@ -260,6 +276,7 @@
                   </td>
                   <td colspan="3">
                     <v-text-field
+                      v-model="empYearsOfTeaching"
                       placeholder="Years of Teaching"
                       solo
                       dense
@@ -271,6 +288,7 @@
                   <td colspan="1" style="text-align: left">School Type:</td>
                   <td colspan="1">
                     <v-text-field
+                      v-model="empSchoolType"
                       placeholder="School Type"
                       solo
                       dense
@@ -287,6 +305,7 @@
                   </td>
                   <td colspan="2">
                     <v-text-field
+                      v-model="empLevelTaught"
                       placeholder="Grade Level "
                       solo
                       dense
@@ -300,6 +319,7 @@
                   </td>
                   <td colspan="3">
                     <v-text-field
+                      v-model="empDegree"
                       placeholder="Degree Obtained"
                       solo
                       dense
@@ -311,6 +331,7 @@
                   <td colspan="1" style="text-align: left">School Size:</td>
                   <td colspan="1">
                     <v-text-field
+                      v-model="empSchoolSize"
                       placeholder="School Size"
                       solo
                       dense
@@ -326,7 +347,8 @@
                   <td colspan="3" style="text-align: left">Subject Taught:</td>
                   <td colspan="2">
                     <v-text-field
-                      placeholder="Subject "
+                      v-model="empSubTaught"
+                      placeholder="Subject Taught"
                       solo
                       dense
                       class="text-center pt-5"
@@ -340,6 +362,7 @@
                   </td>
                   <td colspan="3">
                     <v-text-field
+                      v-model="empSpecialization"
                       placeholder=" Area of Specialization"
                       solo
                       dense
@@ -353,6 +376,7 @@
                   </td>
                   <td colspan="1">
                     <v-text-field
+                      v-model="empCurricular"
                       placeholder="Curricular "
                       solo
                       dense
@@ -366,93 +390,96 @@
             </template>
           </v-simple-table>
           <!-- first row -->
+
           <v-row no-gutters class="text-center">
-            <template v-for="n in 14">
-              <v-col :key="n" v-if="n === 1">
-                <v-card class="pa-2 pt-4" outlined tile>
-                  KRA <br /><br
-                /></v-card>
-              </v-col>
+            <div class="encodingDiv">
+              <template v-for="n in 14">
+                <v-col :key="n" v-if="n === 1">
+                  <v-card class="pa-2 pt-4" outlined tile>
+                    KRA <br /><br
+                  /></v-card>
+                </v-col>
 
-              <v-col :key="n" v-else-if="n === 2">
-                <v-card class="pa-2 pt-4" outlined tile
-                  >Weight per <br />
-                  KRA
-                </v-card>
-              </v-col>
+                <v-col :key="n" v-else-if="n === 2">
+                  <v-card class="pa-2 pt-4" outlined tile
+                    >Weight per <br />
+                    KRA
+                  </v-card>
+                </v-col>
 
-              <v-col :key="n" v-else-if="n === 3">
-                <v-card class="pa-2 pt-4" outlined tile>
-                  Objectives <br />
-                  <br
-                /></v-card>
-              </v-col>
-              <v-col :key="n" v-else-if="n === 4">
-                <v-card class="pa-2 pt-4" outlined tile>
-                  Weight per Objective
-                </v-card>
-              </v-col>
-              <v-col :key="n" v-else-if="n === 5">
-                <v-card class="pa-2 pt-4" outlined tile>
-                  Numerical Ratings
-                </v-card>
-              </v-col>
+                <v-col :key="n" v-else-if="n === 3">
+                  <v-card class="pa-2 pt-4" outlined tile>
+                    Objectives <br />
+                    <br
+                  /></v-card>
+                </v-col>
+                <v-col :key="n" v-else-if="n === 4">
+                  <v-card class="pa-2 pt-4" outlined tile>
+                    Weight per Objective
+                  </v-card>
+                </v-col>
+                <v-col :key="n" v-else-if="n === 5">
+                  <v-card class="pa-2 pt-4" outlined tile>
+                    Numerical Ratings
+                  </v-card>
+                </v-col>
 
-              <v-col :key="n" v-else-if="n === 6">
-                <v-card class="pa-2 pt-4" outlined tile>
-                  Score <br />
-                  <br
-                /></v-card>
-              </v-col>
-              <v-col :key="n" v-else-if="n === 7">
-                <v-card class="pa-2 pt-4" outlined tile>
-                  Adjectival <br />
-                  Rating
-                </v-card>
-              </v-col>
-              <v-col :key="n" v-if="n === 8">
-                <v-card class="pa-2 pt-4" outlined tile>
-                  KRA <br /><br
-                /></v-card>
-              </v-col>
+                <v-col :key="n" v-else-if="n === 6">
+                  <v-card class="pa-2 pt-4" outlined tile>
+                    Score <br />
+                    <br
+                  /></v-card>
+                </v-col>
+                <v-col :key="n" v-else-if="n === 7">
+                  <v-card class="pa-2 pt-4" outlined tile>
+                    Adjectival <br />
+                    Rating
+                  </v-card>
+                </v-col>
+                <v-col :key="n" v-if="n === 8">
+                  <v-card class="pa-2 pt-4" outlined tile>
+                    KRA <br /><br
+                  /></v-card>
+                </v-col>
 
-              <v-col :key="n" v-else-if="n === 9">
-                <v-card class="pa-2 pt-4" outlined tile
-                  >Weight per <br />
-                  KRA
-                </v-card>
-              </v-col>
+                <v-col :key="n" v-else-if="n === 9">
+                  <v-card class="pa-2 pt-4" outlined tile
+                    >Weight per <br />
+                    KRA
+                  </v-card>
+                </v-col>
 
-              <v-col :key="n" v-else-if="n === 10">
-                <v-card class="pa-2 pt-4" outlined tile>
-                  Objectives <br />
-                  <br
-                /></v-card>
-              </v-col>
-              <v-col :key="n" v-else-if="n === 11">
-                <v-card class="pa-2 pt-4" outlined tile>
-                  Weight per Objective
-                </v-card>
-              </v-col>
-              <v-col :key="n" v-else-if="n === 12">
-                <v-card class="pa-2 pt-4" outlined tile>
-                  Numerical Ratings
-                </v-card>
-              </v-col>
+                <v-col :key="n" v-else-if="n === 10">
+                  <v-card class="pa-2 pt-4" outlined tile>
+                    Objectives <br />
+                    <br
+                  /></v-card>
+                </v-col>
+                <v-col :key="n" v-else-if="n === 11">
+                  <v-card class="pa-2 pt-4" outlined tile>
+                    Weight per Objective
+                  </v-card>
+                </v-col>
+                <v-col :key="n" v-else-if="n === 12">
+                  <v-card class="pa-2 pt-4" outlined tile>
+                    Numerical Ratings
+                  </v-card>
+                </v-col>
 
-              <v-col :key="n" v-else-if="n === 13">
-                <v-card class="pa-2 pt-4" outlined tile>
-                  Score <br />
-                  <br
-                /></v-card>
-              </v-col>
-              <v-col :key="n" v-else-if="n === 14">
-                <v-card class="pa-2 pt-4" outlined tile>
-                  Adjectival <br />
-                  Rating
-                </v-card>
-              </v-col>
-            </template>
+                <v-col :key="n" v-else-if="n === 13">
+                  <v-card class="pa-2 pt-4" outlined tile>
+                    Score <br />
+                    <br
+                  /></v-card>
+                </v-col>
+                <v-col :key="n" v-else-if="n === 14">
+                  <v-card class="pa-2 pt-4" outlined tile>
+                    Adjectival <br />
+                    Rating
+                  </v-card>
+                </v-col>
+              </template>
+            </div>
           </v-row>
         </v-card>
       </v-tab-item>
@@ -460,7 +487,7 @@
       <!-- Encoding Part 2 -->
       <v-tab>Encoding Part 2</v-tab>
       <v-tab-item>
-        <div id="app">
+        <div id="encoding2">
           <v-app>
             <v-container class="grey lighten-5">
               <v-card
@@ -664,11 +691,13 @@
         </div>
       </v-tab-item>
 
-      <!-- Part 1 Content -->
+      <!-- START OF Part 1 Content -->
+
       <v-tab>Part 1 - Proficient</v-tab>
+
       <v-tab-item>
-        <div id="app">
-          <v-app>
+        <div id=" encodingPart1 ">
+          <v-app id="encodingContent">
             <v-container class="grey lighten-5" style="height: 100%">
               <v-card
                 class="pa-2 text-center"
@@ -693,7 +722,10 @@
                   >
                     <tr>
                       <td colspan="3" style="text-align: left">
-                        <v-subheader> Name of Employee: </v-subheader>
+                        <v-subheader>
+                          Name of Employee :
+                          <b class="ml-10">&nbsp;{{ empName }} </b>
+                        </v-subheader>
                       </td>
                     </tr>
                     <tr>
@@ -755,12 +787,12 @@
                 <template v-for="n in 15">
                   <v-row :key="n" v-if="n === 1">
                     <v-card class="pa-2 pt-4" outlined tile>
-                      <h6>MFOs</h6></v-card
+                      <h5>MFOs</h5></v-card
                     >
                   </v-row>
                   <v-row :key="n" v-if="n === 2">
                     <v-card class="pa-2 pt-4" outlined tile>
-                      <h6>MFOs</h6></v-card
+                      <h5>MFOs</h5></v-card
                     >
                   </v-row>
                 </template>
@@ -769,850 +801,2276 @@
                -->
 
               <!-- first row -->
-              <v-row no-gutters class="text-center">
-                <template v-for="n in 15">
-                  <v-col :key="n" v-if="n === 1">
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h6>
-                        MFOs <br />
-                        <br /><br /></h6
-                    ></v-card>
-                    <v-card
-                      class="pa-2 pt-4"
-                      style="height: 500px"
-                      outlined
-                      tile
-                    >
-                      <h6>Basic Education Services</h6></v-card
-                    >
-                  </v-col>
 
-                  <v-col :key="n" v-else-if="n === 2">
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h6>
-                        KRAs <br />
-                        <br /><br />
-                      </h6>
-                    </v-card>
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h6>1. Content Knowledge and Pedagogy</h6>
-                    </v-card>
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h6>
-                        2. Diversity of Learners and Assessment and Reporting
-                      </h6>
-                    </v-card>
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h6>3. Curriculum and Planning</h6>
-                    </v-card>
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h6>
-                        4. Community Linkages and Professional Engagement and
-                        Personal Growth and Professional Development
-                      </h6>
-                    </v-card>
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h6>5. Plus Factor</h6>
-                    </v-card>
-                  </v-col>
+              <!-- START OF MFO COLUMN -->
+              <v-row class="text-center">
+                <div class="ePart1">
+                  <template v-for="n in 15">
+                    <v-col :key="n" v-if="n === 1" class="ePartCol1">
+                      <v-card class="pa-2 pt-4" outlined tile>
+                        <h5>
+                          MFOs <br />
+                          <br /></h5
+                      ></v-card>
 
-                  <v-col :key="n" v-else-if="n === 3">
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h6>
-                        Objectives<br />
-                        <br /><br />
-                      </h6>
-                    </v-card>
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h6>
-                        1. Applied knowledge of content within and across
-                        curriculum teaching areas.
-                      </h6>
-                      <br />
-                    </v-card>
+                      <!-- END OF MFO COLUMN -->
 
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h6>
-                        2. Ensured the positive use of ICT to facilitate the
-                        teaching and learning process
-                      </h6>
-                      <br />
-                    </v-card>
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h6>
-                        3. Applied a range of teaching strategies to develop
-                        critical and creative thinking, as well as other
-                        higher-order thinking skills.
-                      </h6>
-                      <br />
-                    </v-card>
-                  </v-col>
+                      <!-- START OF BASIC EDUCATION COLUMN -->
+                      <v-card
+                        class="pa-2 pt-4"
+                        style="height: 97.05%; width: 100px"
+                        outlined
+                        tile
+                      >
+                        <h5>Basic Education Services</h5></v-card
+                      >
+                    </v-col>
 
-                  <v-col :key="n" v-else-if="n === 4">
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h6>
-                        Timeline <br />
-                        <br /><br />
-                      </h6>
-                    </v-card>
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h6><br /><br /><br /><br /><br /></h6>
-                    </v-card>
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h6><br /><br /><br /><br /><br /></h6>
-                    </v-card>
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h6><br /><br /><br /><br /><br /></h6>
-                    </v-card>
-                  </v-col>
-                  <v-col :key="n" v-else-if="n === 5">
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h6>
-                        Weight per KRA<br />
-                        <br />
-                      </h6>
-                    </v-card>
-                    <v-card class="pa-2 pt-4" v-model="kra1" outlined tile>
-                      <h6><br /><br />24.00%<br /><br /><br /></h6>
-                    </v-card>
-                    <v-card class="pa-2 pt-4" v-model="kra2" outlined tile>
-                      <h6><br /><br />24.00%<br /><br /><br /></h6>
-                    </v-card>
-                    <v-card class="pa-2 pt-4" v-model="kra3" outlined tile>
-                      <h6><br /><br />16.00%<br /><br /><br /></h6>
-                    </v-card>
-                    <v-card class="pa-2 pt-4" v-model="kra4" outlined tile>
-                      <h6><br /><br />24.00%<br /><br /><br /></h6>
-                    </v-card>
-                    <v-card class="pa-2 pt-4" v-model="kra5" outlined tile>
-                      <h6><br /><br />12.00%<br /><br /><br /></h6>
-                    </v-card>
-                  </v-col>
+                    <v-col
+                      :key="n"
+                      v-else-if="n === 2"
+                      class="ePartCol2"
+                      style="margin-left: -25px"
+                    >
+                      <v-card
+                        class="pa-2 pt-4"
+                        style="width: 180px"
+                        outlined
+                        tile
+                      >
+                        <h5>
+                          KRAs <br />
+                          <br />
+                        </h5>
+                      </v-card>
+                      <div style="text-align: left">
+                        <v-card
+                          class="pa-2 pt-4"
+                          style="height: 520px"
+                          outlined
+                          tile
+                        >
+                          <h5>1. Content Knowledge and Pedagogy</h5>
+                        </v-card>
+                        <v-card
+                          class="pa-2 pt-4"
+                          style="height: 503px"
+                          outlined
+                          tile
+                        >
+                          <h5>
+                            2. Diversity of Learners and Assessment and
+                            Reporting
+                          </h5>
+                        </v-card>
+                        <v-card
+                          class="pa-2 pt-4"
+                          style="height: 291px"
+                          outlined
+                          tile
+                        >
+                          <h5>3. Curriculum and Planning</h5>
+                        </v-card>
+                        <v-card
+                          class="pa-2 pt-4"
+                          style="height: 661px"
+                          outlined
+                          tile
+                        >
+                          <h5>
+                            4. Community Linkages and Professional Engagement
+                            and Personal Growth and Professional Development
+                          </h5>
+                        </v-card>
+                        <v-card
+                          class="pa-2 pt-4"
+                          style="height: 217px"
+                          outlined
+                          tile
+                        >
+                          <h5>5. Plus Factor</h5>
+                        </v-card>
+                      </div>
+                    </v-col>
 
-                  <v-col :key="n" v-else-if="n === 6">
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h6>
-                        QET <br />
-                        <br />
-                        <br /></h6
-                    ></v-card>
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h6>
-                        Quality <br /><br />
-                        <br /></h6></v-card
-                    ><v-card class="pa-1" outlined tile>
-                      <h6>Efficiency</h6></v-card
-                    ><v-card class="pa-1" outlined tile>
-                      <h6>Timeliness</h6></v-card
-                    >
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h6>
-                        Quality <br /><br />
-                        <br /></h6
-                    ></v-card>
-                    <v-card class="pa-1" outlined tile>
-                      <h6>Efficiency</h6></v-card
-                    >
-                    <v-card class="pa-1" outlined tile>
-                      <h6>Timeliness</h6></v-card
-                    >
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h6>
-                        Quality <br /><br />
-                        <br /></h6
-                    ></v-card>
-                    <v-card class="pa-1" outlined tile>
-                      <h6>Efficiency</h6></v-card
-                    >
-                    <v-card class="pa-1" outlined tile>
-                      <h6>Timeliness</h6></v-card
-                    >
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h6>
-                        Quality <br /><br />
-                        <br /></h6></v-card
-                    ><v-card class="pa-1" outlined tile>
-                      <h6>Efficiency</h6></v-card
-                    ><v-card class="pa-1" outlined tile>
-                      <h6>Timeliness</h6></v-card
-                    >
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h6>
-                        Quality <br /><br />
-                        <br /></h6
-                    ></v-card>
-                    <v-card class="pa-1" outlined tile>
-                      <h6>Efficiency</h6></v-card
-                    >
-                    <v-card class="pa-1" outlined tile>
-                      <h6>Timeliness</h6></v-card
-                    >
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h6>
-                        Quality <br /><br />
-                        <br /></h6
-                    ></v-card>
-                    <v-card class="pa-1" outlined tile>
-                      <h6>Efficiency</h6></v-card
-                    >
-                    <v-card class="pa-1" outlined tile>
-                      <h6>Timeliness</h6></v-card
-                    >
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h6>
-                        Quality <br /><br />
-                        <br /></h6></v-card
-                    ><v-card class="pa-1" outlined tile>
-                      <h6>Efficiency</h6></v-card
-                    ><v-card class="pa-1" outlined tile>
-                      <h6>Timeliness</h6></v-card
-                    >
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h6>
-                        Quality <br /><br />
-                        <br /></h6
-                    ></v-card>
-                    <v-card class="pa-1" outlined tile>
-                      <h6>Efficiency</h6></v-card
-                    >
-                    <v-card class="pa-1" outlined tile>
-                      <h6>Timeliness</h6></v-card
-                    >
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h6>
-                        Quality <br /><br />
-                        <br /></h6
-                    ></v-card>
-                    <v-card class="pa-1" outlined tile>
-                      <h6>Efficiency</h6></v-card
-                    >
-                    <v-card class="pa-1" outlined tile>
-                      <h6>Timeliness</h6></v-card
-                    >
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h6>
-                        Quality <br /><br />
-                        <br /></h6></v-card
-                    ><v-card class="pa-1" outlined tile>
-                      <h6>Efficiency</h6></v-card
-                    ><v-card class="pa-1" outlined tile>
-                      <h6>Timeliness</h6></v-card
-                    >
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h6>
-                        Quality <br /><br />
-                        <br /></h6
-                    ></v-card>
-                    <v-card class="pa-1" outlined tile>
-                      <h6>Efficiency</h6></v-card
-                    >
-                    <v-card class="pa-1" outlined tile>
-                      <h6>Timeliness</h6></v-card
-                    >
-                  </v-col>
+                    <!-- END OF BASIC EDUCATION COLUMN -->
+                    <!-- START OF OBJECTIVES COLUMN -->
 
-                  <v-col :key="n" v-else-if="n === 7">
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h6>
-                        Outstanding <br /> <br> 5
-                        <br />
-                      </h6>
-                    </v-card>
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h6>
-                        Demonstrated Level 7 in Objective 1 as shown in COT
-                        rating sheets/interobserver agreement forms <br />
-                      </h6>
-                    </v-card>
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h6>2 blank <br /></h6>
-                    </v-card>
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h6>
-                        Ensured that the ICT used redefine and transform
-                        learning experiences and are documented properly and
-                        consistently using any referencing style as shown in the
-                        submitted learning material <br />
-                      </h6>
-                    </v-card>
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h6>2 black <br /></h6>
-                    </v-card>
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h6>
-                        Applied teaching strategies that challenge learners to
-                        draw conclusions and justify their thinking or put parts
-                        together to promote deeper understanding of ideas
-                        learned as shown in the submitted learning material
-                        <br />
-                      </h6>
-                    </v-card>
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h6>2black <br /></h6>
-                    </v-card>
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h6>
-                        Utilized effective teaching strategies that are
-                        appropriate in responding to learners’ linguistic,
-                        cultural, socioeconomic, or religious backgrounds at an
-                        individual level* as shown in the submitted learning
-                        material <br />
-                      </h6>
-                    </v-card>
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h6>2 black <br /></h6>
-                    </v-card>
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h6>
-                        Demonstrated Level 7 in Objective 5 as shown in COT
-                        rating sheets/interobserver agreement forms <br />
-                      </h6>
-                    </v-card>
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h6>2black <br /></h6>
-                    </v-card>
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h6>
-                        Provided learners with accurate, and specific and
-                        directed constructive feedback* as shown in the evidence
-                        submitted <br />
-                      </h6>
-                    </v-card>
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h6>efficiency black <br /></h6>
-                    </v-card>
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h6>
-                        MOV submitted shows feedback given within 5 working days
-                        from submission** <br />
-                      </h6>
-                    </v-card>
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h6>
-                        Demonstrated Level 7 in Objective 7 as shown in COT
-                        rating sheets/interobserver agreement forms <br />
-                      </h6>
-                    </v-card>
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h6>2 black <br /></h6>
-                    </v-card>
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h6>
-                        All of the learning outcomes set are aligned with the
-                        learning competencies as shown in the MOV submitted
-                        <br />
-                      </h6>
-                    </v-card>
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h6>2 black <br /></h6>
-                    </v-card>
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h6>
-                        Sustained engagement with parents/ guardians and/ or
-                        wider school community to facilitate involvement in the
-                        educative process as evidenced by 2 or more of MOV no. 1
-                        or 2 <br />
-                      </h6>
-                    </v-card>
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h6>Submitted any 4 of the acceptable MOV*<br /></h6>
-                    </v-card>
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h6>#4 1 Timeliness black <br /></h6>
-                    </v-card>
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h6>
-                        Participated in any professional network/ activity that
-                        requires output* and proof of implementation ** within
-                        the school to share knowledge and to enhance practice as
-                        evidenced by the submitted MOV <br />
-                      </h6>
-                    </v-card>
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h6>
-                        Submitted 4 different kinds of acceptable MOV***<br />
-                      </h6>
-                    </v-card>
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h6>#4.2 1 Timeliness black <br /></h6>
-                    </v-card>
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h6>
-                        Updated the Development Plan and approved by the rater
-                        during Phase II of the RPMS cycle <br />
-                      </h6>
-                    </v-card>
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h6>
-                        Submitted the IPCRF-DP with any 4 of the acceptable
-                        Supporting MOV* <br />
-                      </h6>
-                    </v-card>
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h6>#4.3 1 Timeliness black <br /></h6>
-                    </v-card>
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h6>
-                        Performed at least 1 related work/activity that
-                        contributed to the teaching-learning process beyond the
-                        school/ Community Learning Center (CLC) as evidenced by
-                        submitted MOV <br />
-                      </h6>
-                    </v-card>
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h6>Submitted any 4 of the acceptable MOV* <br /></h6>
-                    </v-card>
+                    <v-col
+                      :key="n"
+                      v-else-if="n === 3"
+                      class="ePartCol3"
+                      style="margin-left: -25px"
+                    >
+                      <v-card
+                        class="pa-2 pt-4"
+                        outlined
+                        tile
+                        style="width: 300px"
+                      >
+                        <h5>
+                          Objectives<br />
+                          <br />
+                        </h5>
+                      </v-card>
+                      <div style="text-align: center">
+                        <v-card
+                          class="pa-2 pt-4"
+                          style="height: 150px"
+                          outlined
+                          tile
+                        >
+                          <h5 class="font-weight-regular">
+                            1. Applied knowledge of content within <br />
+                            and across curriculum teaching areas.
+                          </h5>
+                          <br />
+                        </v-card>
 
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h6>5.1 Timeliness Black<br /></h6>
-                    </v-card>
-                  </v-col>
+                        <v-card
+                          class="pa-2 pt-4"
+                          style="height: 180px"
+                          outlined
+                          tile
+                        >
+                          <h5 class="font-weight-regular">
+                            2. Ensured the positive use of ICT to facilitate the
+                            teaching and learning process
+                          </h5>
+                          <br />
+                        </v-card>
+                        <v-card
+                          class="pa-2 pt-4"
+                          style="height: 190px"
+                          outlined
+                          tile
+                        >
+                          <h5 class="font-weight-regular">
+                            3. Applied a range of teaching strategies to develop
+                            critical and creative thinking, as well as other
+                            higher-order thinking skills.
+                          </h5>
+                          <br />
+                        </v-card>
+                        <v-card
+                          class="pa-2 pt-8"
+                          style="height: 185px"
+                          outlined
+                          tile
+                        >
+                          <h5 class="font-weight-regular">
+                            4. Established a learnercentered culture by using
+                            teaching strategies that respond to their
+                            linguistic, cultural, socioeconomic and religious
+                            backgrounds
+                          </h5>
+                          <br />
+                        </v-card>
 
+                        <v-card
+                          class="pa-2"
+                          style="height: 146px"
+                          outlined
+                          tile
+                        >
+                          <h5 class="font-weight-regular">
+                            5. Planned and delivered teaching strategies that
+                            are responsive to the special educational needs of
+                            learners in difficult circumstances*, including:
+                            geographic isolation; chronic illness; displacement
+                            due to armed conflict, urban resettlement or
+                            disasters; child abuse and child labor practices
+                          </h5>
+                          <br />
+                        </v-card>
+                        <v-card
+                          class="pa-2 pt-4"
+                          style="height: 172px"
+                          outlined
+                          tile
+                        >
+                          <h5 class="font-weight-regular">
+                            6. Used strategies for providing timely, accurate
+                            and constructive feedback to improve learner
+                            performance
+                          </h5>
+                          <br />
+                        </v-card>
+                        <v-card
+                          class="pa-1"
+                          style="height: 145px"
+                          outlined
+                          tile
+                        >
+                          <h5 class="font-weight-regular">
+                            7. Selected, developed, organized and used
+                            appropriate teaching and learning resources,
+                            including ICT, to address learning goals
+                          </h5>
+                          <br />
+                        </v-card>
+                        <v-card
+                          class="pa-2 pt-4"
+                          style="height: 146px"
+                          outlined
+                          tile
+                        >
+                          <h5 class="font-weight-regular">
+                            8. Set achievable and appropriate learning outcomes
+                            that are aligned with learning competencies
+                          </h5>
+                          <br />
+                        </v-card>
 
- <!-- START OF Very Satisfactory  -->
+                        <v-card
+                          class="pa-2 pt-4"
+                          style="height: 217px"
+                          outlined
+                          tile
+                        >
+                          <h5 class="font-weight-regular">
+                            9. Built relationships with parents/ guardians and
+                            the wider school community to facilitate involvement
+                            in the educative process
+                          </h5>
+                          <br />
+                        </v-card>
+                        <v-card
+                          class="pa-2 pt-4"
+                          style="height: 247px"
+                          outlined
+                          tile
+                        >
+                          <h5 class="font-weight-regular">
+                            10. Participated in professional networks to share
+                            knowledge and to enhance practice
+                          </h5>
+                          <br />
+                        </v-card>
+                        <v-card
+                          class="pa-2 pt-4"
+                          style="height: 197px"
+                          outlined
+                          tile
+                        >
+                          <h5 class="font-weight-regular">
+                            11. Developed a personal improvement plan based on
+                            reflection of one’s practice and ongoing
+                            professional learning
+                          </h5>
+                          <br />
+                        </v-card>
+                        <v-card
+                          class="pa-2 pt-4"
+                          style="height: 217px"
+                          outlined
+                          tile
+                        >
+                          <h5 class="font-weight-regular">
+                            12. Performed various related works/ activities that
+                            contribute to the teaching-learning process
+                          </h5>
+                          <br />
+                        </v-card>
+                      </div>
+                    </v-col>
+                    <!-- END OF OBJECTIVES COLUMN -->
+                    <!-- START OF TIMELINE COLUMN -->
 
-                  <v-col :key="n" v-if="n === 8">
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h6>
-                        Very Satisfactory <br />
-                        <br>
-                        4
-                        <br>
-                      </h6>
-                    </v-card>
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h6>
-                        Demonstrated Level 6 in Objective 1 as shown in COT rating sheets/interobserver agreement forms <br />
-                      </h6>
-                    </v-card>
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h6>2 blank <br /></h6>
-                    </v-card>
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h6>
-                       Ensured that the ICT used augment and enrich learning experiences and are documented properly and consistently using any referencing style as shown in the submitted learning material<br />
-                      </h6>
-                    </v-card>
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h6>2 black <br /></h6>
-                    </v-card>
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h6>
-                        Applied teaching strategies that require learners to make connections using ideas learned as shown in the submitted learning material
-                        <br />
-                      </h6>
-                    </v-card>
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h6>2black <br /></h6>
-                    </v-card>
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h6>
-                        Utilized effective teaching strategies that are appropriate in responding to learners’ linguistic, cultural, socioeconomic, or religious backgrounds at a group level* as shown in the submitted learning material <br />
-                      </h6>
-                    </v-card>
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h6>2 black <br /></h6>
-                    </v-card>
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h6>
-                        Demonstrated Level 6 in Objective 5 as shown in COT rating sheets/interobserver agreement forms<br />
-                      </h6>
-                    </v-card>
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h6>2black <br /></h6>
-                    </v-card>
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h6>
-                     Provided learners with accurate, and specific constructive feedback as shown in the evidence submitted <br />
-                      </h6>
-                    </v-card>
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h6>efficiency black <br /></h6>
-                    </v-card>
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h6>
-                       MOV submitted shows feedback given within 6-10 working days from submission**<br />
-                      </h6>
-                    </v-card>
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h6>
-                      Demonstrated Level 6 in Objective 7 as shown in COT rating sheets/interobserver agreement forms <br />
-                      </h6>
-                    </v-card>
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h6>2 black <br /></h6>
-                    </v-card>
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h6>
-                       Majority of the learning outcomes set are aligned with the learning competencies as shown in the MOV submitted
-                        <br />
-                      </h6>
-                    </v-card>
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h6>2 black <br /></h6>
-                    </v-card>
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h6>
-                        Secured collaboration with parents/ guardians and/ or wider school community to facilitate involvement in the educative process as evidenced by one MOV no. 1 or 2 <br />
-                      </h6>
-                    </v-card>
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h6>Submitted any 3 of the acceptable MOV*<br /></h6>
-                    </v-card>
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h6>#4 1 Timeliness black <br /></h6>
-                    </v-card>
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h6>
-                       Participated in any professional network/ activity that requires output* and proof of implementation ** within the department/grade level to share knowledge and to enhance practice as evidenced by the submitted MOV<br />
-                      </h6>
-                    </v-card>
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h6>
-                        Submitted 3 different kinds of acceptable MOV***<br />
-                      </h6>
-                    </v-card>
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h6>#4.2 1 Timeliness black <br /></h6>
-                    </v-card>
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h6>
-                        Discussed progress on the Development Plan with the rater to check whether Development Needs were addressed <br />
-                      </h6>
-                    </v-card>
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h6>
-                       Submitted the IPCRF-DP with any 3 of the acceptable Supporting MOV* <br />
-                      </h6>
-                    </v-card>
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h6>#4.3 1 Timeliness black <br /></h6>
-                    </v-card>
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h6>
-                       Performed at least 1 related work/activity that contributed to the teaching-learning process within the school/ Community Learning Center (CLC) as evidenced by submitted MOV <br />
-                      </h6>
-                    </v-card>
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h6>Submitted any 3 of the acceptable MOV* <br /></h6>
-                    </v-card>
+                    <v-col
+                      :key="n"
+                      v-else-if="n === 4"
+                      class="ePartCol4"
+                      style="margin-left: -25px"
+                    >
+                      <v-card
+                        class="pa-2 pt-4"
+                        style="width: 100px"
+                        outlined
+                        tile
+                      >
+                        <h5>
+                          Timeline <br />
+                          <br />
+                        </h5>
+                      </v-card>
+                      <v-card
+                        class="pa-2 pt-4 timeline"
+                        style="height: 150px"
+                        v-model="timeline1"
+                        outlined
+                        tile
+                      >
+                        <h5 class="timeline01"></h5>
+                      </v-card>
+                      <v-card
+                        class="pa-2 pt-4 timeline"
+                        style="height: 180px"
+                        v-model="timeline2"
+                        outlined
+                        tile
+                      >
+                        <h5 class="timeline02"></h5>
+                      </v-card>
+                      <v-card
+                        class="pa-2 pt-4 timeline"
+                        style="height: 190px"
+                        v-model="timeline3"
+                        outlined
+                        tile
+                      >
+                        <h5 class="timeline03"></h5>
+                      </v-card>
+                      <v-card
+                        class="pa-2 pt-4 timeline"
+                        style="height: 185px"
+                        v-model="timeline4"
+                        outlined
+                        tile
+                      >
+                        <h5 class="timeline04"></h5>
+                      </v-card>
 
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h6>5.1 Timeliness Black<br /></h6>
-                    </v-card>
-                  </v-col>
-                  <!-- END OF VERY Satisfactory -->
+                      <v-card
+                        class="pa-2 pt-4 timeline"
+                        style="height: 146px"
+                        v-model="timeline5"
+                        outlined
+                        tile
+                      >
+                        <h5 class="timeline05"></h5>
+                      </v-card>
 
-<!-- START OF  Satisfactory -->
-                  <v-col :key="n" v-else-if="n === 9">
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h6>
-                        Satisfactory <br />
-                        <br />
-                        3 <br />
-                      </h6>
-                    </v-card>
-                    <v-card class="pa-2 pt-4" outlined tile>
-                        <h6>
+                      <v-card
+                        class="pa-2 pt-4 timeline"
+                        style="height: 172px"
+                        v-model="timeline6"
+                        outlined
+                        tile
+                      >
+                        <h5 class="timeline06"></h5>
+                      </v-card>
+                      <v-card
+                        class="pa-2 pt-4 timeline"
+                        style="height: 145px"
+                        v-model="timeline7"
+                        outlined
+                        tile
+                      >
+                        <h5 class="timeline07"></h5>
+                      </v-card>
+                      <v-card
+                        class="pa-2 pt-4 timeline"
+                        style="height: 146px"
+                        v-model="timeline8"
+                        outlined
+                        tile
+                      >
+                        <h5 class="timeline08"></h5>
+                      </v-card>
+                      <v-card
+                        class="pa-2 pt-4 timeline"
+                        style="height: 217px"
+                        v-model="timeline9"
+                        outlined
+                        tile
+                      >
+                        <h5 class="timeline09"></h5>
+                      </v-card>
+                      <v-card
+                        class="pa-2 pt-4 timeline"
+                        style="height: 247px"
+                        v-model="timeline10"
+                        outlined
+                        tile
+                      >
+                        <h5 class="timeline010"></h5>
+                      </v-card>
+                      <v-card
+                        class="pa-2 pt-4 timeline"
+                        style="height: 197px"
+                        v-model="timeline11"
+                        outlined
+                        tile
+                      >
+                        <h5 class="timeline11"></h5>
+                      </v-card>
+                      <v-card
+                        class="pa-2 pt-4 timeline"
+                        style="height: 217px"
+                        v-model="timeline12"
+                        outlined
+                        tile
+                      >
+                        <h5 class="timeline12"></h5>
+                      </v-card>
+                    </v-col>
+                    <v-col
+                      :key="n"
+                      v-else-if="n === 5"
+                      class="ePartCol5"
+                      style="margin-left: -25px"
+                    >
+                      <v-card
+                        class="pa-2 pt-4"
+                        style="width: 140px"
+                        outlined
+                        tile
+                      >
+                        <h5>
+                          Weight per KRA<br />
+                          <br />
+                        </h5>
+                      </v-card>
+                      <v-card
+                        class="pa-2 pt-4 kra1"
+                        style="height: 520px"
+                        v-model="kra1"
+                        outlined
+                        tile
+                      >
+                        <h5 class="font-weight-regular">
+                          <br />24.00%<br /><br />
+                        </h5>
+                      </v-card>
+                      <v-card
+                        class="pa-2 pt-4 kra2"
+                        style="height: 503px"
+                        v-model="kra2"
+                        outlined
+                        tile
+                      >
+                        <h5 class="font-weight-regular">
+                          <br />24.00%<br /><br /><br />
+                        </h5>
+                      </v-card>
+                      <v-card
+                        class="pa-2 pt-4 kra3"
+                        style="height: 291px"
+                        v-model="kra3"
+                        outlined
+                        tile
+                      >
+                        <h5 class="font-weight-regular">
+                          <br />16.00%<br /><br /><br />
+                        </h5>
+                      </v-card>
+                      <v-card
+                        class="pa-2 pt-4 kra4"
+                        style="height: 661px"
+                        v-model="kra4"
+                        outlined
+                        tile
+                      >
+                        <h5 class="font-weight-regular">
+                          <br /><br />24.00%<br /><br /><br />
+                        </h5>
+                      </v-card>
+                      <v-card
+                        class="pa-2 pt-4 kra5"
+                        style="height: 217px"
+                        v-model="kra5"
+                        outlined
+                        tile
+                      >
+                        <h5 class="font-weight-regular">
+                          <br />12.00%<br /><br /><br />
+                        </h5>
+                      </v-card>
+                    </v-col>
+
+                    <v-col
+                      :key="n"
+                      v-else-if="n === 6"
+                      class="ePartCol6"
+                      style="margin-left: -25px"
+                    >
+                      <v-card
+                        class="pa-2 pt-4"
+                        style="width: 100px"
+                        outlined
+                        tile
+                      >
+                        <h5>
+                          QET <br />
+                          <br /></h5
+                      ></v-card>
+                      <v-card
+                        class="pa-2 pt-4 qet"
+                        style="height: 86px"
+                        outlined
+                        tile
+                      >
+                        <h5 class="font-weight-regular">
+                          <br />
+                          Quality<br />
+                          <br /></h5></v-card
+                      ><v-card class="pa-1" outlined tile>
+                        <h5 class="font-weight-regular">Efficiency</h5></v-card
+                      ><v-card class="pa-1 pb-2" outlined tile>
+                        <h5 class="font-weight-regular">Timeliness</h5></v-card
+                      >
+                      <v-card
+                        class="pa-2 pt-4 qet"
+                        style="height: 125px"
+                        outlined
+                        tile
+                      >
+                        <h5 class="font-weight-regular">
+                          Quality <br /><br />
+                          <br /></h5
+                      ></v-card>
+                      <v-card class="pa-1" outlined tile>
+                        <h5 class="font-weight-regular">Efficiency</h5></v-card
+                      >
+                      <v-card class="pa-1" outlined tile>
+                        <h5 class="font-weight-regular">Timeliness</h5></v-card
+                      >
+                      <v-card
+                        class="pa-2 pt-4 qet"
+                        style="height: 126px"
+                        outlined
+                        tile
+                      >
+                        <h5 class="font-weight-regular">
+                          Quality <br /><br />
+                          <br /></h5
+                      ></v-card>
+                      <v-card class="pa-1" outlined tile>
+                        <h5 class="font-weight-regular">Efficiency</h5></v-card
+                      >
+                      <v-card class="pa-1" outlined tile>
+                        <h5 class="font-weight-regular">Timeliness</h5></v-card
+                      >
+                      <v-card
+                        class="pa-2 pt-4 qet"
+                        style="height: 125px"
+                        outlined
+                        tile
+                      >
+                        <h5 class="font-weight-regular">
+                          Quality <br /><br />
+                          <br /></h5></v-card
+                      ><v-card class="pa-1" outlined tile>
+                        <h5 class="font-weight-regular">Efficiency</h5></v-card
+                      ><v-card class="pa-1" outlined tile>
+                        <h5 class="font-weight-regular">Timeliness</h5></v-card
+                      >
+                      <v-card class="pa-2 pt-4 qet" outlined tile>
+                        <h5 class="font-weight-regular">
+                          Quality <br /><br />
+                          <br /></h5
+                      ></v-card>
+                      <v-card class="pa-1" outlined tile>
+                        <h5 class="font-weight-regular">Efficiency</h5></v-card
+                      >
+                      <v-card class="pa-1" outlined tile>
+                        <h5 class="font-weight-regular">Timeliness</h5></v-card
+                      >
+                      <v-card class="pa-2 pt-4 qet" outlined tile>
+                        <h5 class="font-weight-regular">
+                          Quality <br /><br />
+                          <br /></h5
+                      ></v-card>
+                      <v-card class="pa-1" outlined tile>
+                        <h5 class="font-weight-regular">Efficiency</h5></v-card
+                      >
+                      <v-card class="pa-1" style="height: 56px" outlined tile>
+                        <h5 class="font-weight-regular">Timeliness</h5></v-card
+                      >
+                      <v-card
+                        class="pa-2 pt-4 qet"
+                        style="height: 86px"
+                        outlined
+                        tile
+                      >
+                        <h5 class="font-weight-regular">
+                          Quality <br /><br />
+                          <br /></h5></v-card
+                      ><v-card class="pa-1" outlined tile>
+                        <h5 class="font-weight-regular">Efficiency</h5></v-card
+                      ><v-card class="pa-1" outlined tile>
+                        <h5 class="font-weight-regular">Timeliness</h5></v-card
+                      >
+                      <v-card class="pa-2 pt-4 qet" outlined tile>
+                        <h5 class="font-weight-regular">
+                          Quality <br /><br />
+                          <br /></h5
+                      ></v-card>
+                      <v-card class="pa-1" outlined tile>
+                        <h5 class="font-weight-regular">Efficiency</h5></v-card
+                      >
+                      <v-card class="pa-1" outlined tile>
+                        <h5 class="font-weight-regular">Timeliness</h5></v-card
+                      >
+                      <v-card
+                        class="pa-6 pt-4 qet"
+                        style="height: 125px"
+                        outlined
+                        tile
+                      >
+                        <h5 class="font-weight-regular">
+                          Quality <br /><br />
+                          <br /></h5
+                      ></v-card>
+                      <v-card class="pa-4" style="height: 46px" outlined tile>
+                        <h5 class="font-weight-regular">Efficiency</h5></v-card
+                      >
+                      <v-card class="pa-2" style="height: 46px" outlined tile>
+                        <h5 class="font-weight-regular">Timeliness</h5></v-card
+                      >
+                      <v-card
+                        class="pa-2 pt-4 qet"
+                        style="height: 136px"
+                        outlined
+                        tile
+                      >
+                        <h5 class="font-weight-regular">
+                          Quality <br /><br />
+                          <br /></h5></v-card
+                      ><v-card class="pa-4" style="height: 65px" outlined tile>
+                        <h5 class="font-weight-regular">Efficiency</h5></v-card
+                      ><v-card class="pa-3" style="height: 46px" outlined tile>
+                        <h5 class="font-weight-regular">Timeliness</h5></v-card
+                      >
+                      <v-card class="pa-2 pt-4 qet" outlined tile>
+                        <h5 class="font-weight-regular">
+                          Quality <br /><br />
+                          <br /></h5
+                      ></v-card>
+                      <v-card class="pa-4" style="height: 65px" outlined tile>
+                        <h5 class="font-weight-regular">Efficiency</h5></v-card
+                      >
+                      <v-card class="pa-4" style="height: 46px" outlined tile>
+                        <h5 class="font-weight-regular">Timeliness</h5></v-card
+                      >
+                      <v-card
+                        class="pa-6 qet"
+                        style="height: 125px"
+                        outlined
+                        tile
+                      >
+                        <h5 class="font-weight-regular">
+                          Quality <br /><br />
+                          <br /></h5
+                      ></v-card>
+                      <v-card class="pa-4" style="height: 46px" outlined tile>
+                        <h5 class="font-weight-regular">Efficiency</h5></v-card
+                      >
+                      <v-card class="pa-4" style="height: 46px" outlined tile>
+                        <h5 class="font-weight-regular">Timeliness</h5></v-card
+                      >
+                    </v-col>
+                    <!-- START OF OUTSTANDING -->
+                    <v-col
+                      :key="n"
+                      v-else-if="n === 7"
+                      class="ePartCol7"
+                      style="margin-left: -25px"
+                    >
+                      <v-card
+                        class="pa-2 pt-4 part1Outstanding"
+                        style="width: 290px"
+                        outlined
+                        tile
+                      >
+                        <h5>
+                          Outstanding <br />
+                          5
+                          <br />
+                        </h5>
+                      </v-card>
+                      <v-card class="pa-2 pt-4 part1Outstanding" outlined tile>
+                        <h5>
+                          Demonstrated Level 7 in Objective 1 as shown in COT
+                          rating sheets/interobserver agreement forms <br />
+                        </h5>
+                      </v-card>
+                      <v-card class="pa-4" style="height: 64px" outlined tile>
+                        <h5>2 blank</h5>
+                      </v-card>
+                      <v-card class="pa-2 pt-4 part1Outstanding" outlined tile>
+                        <h5>
+                          Ensured that the ICT used redefine and transform
+                          learning experiences and are documented properly and
+                          consistently using any referencing style as shown in
+                          the submitted learning material <br />
+                        </h5>
+                      </v-card>
+                      <v-card
+                        class="pa-2 pt-4"
+                        style="height: 60px"
+                        outlined
+                        tile
+                      >
+                        <h5>2 black <br /></h5>
+                      </v-card>
+                      <v-card class="pa-2 pt-4 part1Outstanding" outlined tile>
+                        <h5>
+                          Applied teaching strategies that challenge learners to
+                          draw conclusions and justify their thinking or put
+                          parts together to promote deeper understanding of
+                          ideas learned as shown in the submitted learning
+                          material
+                          <br />
+                        </h5>
+                      </v-card>
+                      <v-card
+                        class="pa-2 pt-4"
+                        style="height: 59px"
+                        outlined
+                        tile
+                      >
+                        <h5>2black <br /></h5>
+                      </v-card>
+
+                      <v-card class="pa-2 pt-4 part1Outstanding" outlined tile>
+                        <h5>
+                          Utilized effective teaching strategies that are
+                          appropriate in responding to learners’ linguistic,
+                          cultural, socioeconomic, or religious backgrounds at
+                          an individual level* as shown in the submitted
+                          learning material <br />
+                        </h5>
+                      </v-card>
+                      <v-card
+                        class="pa-2 pt-4"
+                        style="height: 60px"
+                        outlined
+                        tile
+                      >
+                        <h5>2 black <br /></h5>
+                      </v-card>
+                      <v-card class="pa-2 pt-4 part1Outstanding" outlined tile>
+                        <h5>
+                          Demonstrated Level 7 in Objective 5 as shown in COT
+                          rating sheets/interobserver agreement forms <br />
+                        </h5>
+                      </v-card>
+                      <v-card
+                        class="pa-2 pt-4"
+                        style="height: 60px"
+                        outlined
+                        tile
+                      >
+                        <h5>2black <br /></h5>
+                      </v-card>
+                      <v-card class="pa-2 pt-4 part1Outstanding" outlined tile>
+                        <h5>
+                          Provided learners with accurate, and specific and
+                          directed constructive feedback* as shown in the
+                          evidence submitted <br />
+                        </h5>
+                      </v-card>
+                      <v-card class="pa-1" style="height: 30px" outlined tile>
+                        <h5>efficiency black <br /></h5>
+                      </v-card>
+                      <v-card
+                        class="pa-2 part1Outstanding"
+                        style="height: 56px"
+                        outlined
+                        tile
+                      >
+                        <h5>
+                          MOV submitted shows feedback given within 5 working
+                          days from submission** <br />
+                        </h5>
+                      </v-card>
+                      <v-card class="pa-2 pt-4 part1Outstanding" outlined tile>
+                        <h5>
+                          Demonstrated Level 7 in Objective 7 as shown in COT
+                          rating sheets/interobserver agreement forms <br />
+                        </h5>
+                      </v-card>
+                      <v-card
+                        class="pa-2 pt-4"
+                        style="height: 59px"
+                        outlined
+                        tile
+                      >
+                        <h5>2 black <br /></h5>
+                      </v-card>
+                      <v-card class="pa-2 pt-4 part1Outstanding" outlined tile>
+                        <h5>
+                          All of the learning outcomes set are aligned with the
+                          learning competencies as shown in the MOV submitted
+                          <br />
+                        </h5>
+                      </v-card>
+                      <v-card
+                        class="pa-2 pt-4"
+                        style="height: 60px"
+                        outlined
+                        tile
+                      >
+                        <h5>2 black <br /></h5>
+                      </v-card>
+                      <v-card class="pa-2 pt-4 part1Outstanding" outlined tile>
+                        <h5>
+                          Sustained engagement with parents/ guardians and/ or
+                          wider school community to facilitate involvement in
+                          the educative process as evidenced by 2 or more of MOV
+                          no. 1 or 2 <br />
+                        </h5>
+                      </v-card>
+                      <v-card class="pa-2 pt-4 part1Outstanding" outlined tile>
+                        <h5>Submitted any 4 of the acceptable MOV*<br /></h5>
+                      </v-card>
+
+                      <v-card class="pa-2 pt-4" outlined tile>
+                        <h5>#4 1 Timeliness black <br /></h5>
+                      </v-card>
+
+                      <v-card
+                        class="pa-2 part1Outstanding"
+                        style="height: 136px"
+                        outlined
+                        tile
+                      >
+                        <h5>
+                          Participated in any professional network/ activity
+                          that requires output* and proof of implementation **
+                          within the school to share knowledge and to enhance
+                          practice as evidenced by the submitted MOV <br />
+                        </h5>
+                      </v-card>
+                      <v-card
+                        class="pa-2 pt-4 part1Outstanding"
+                        style="height: 65px"
+                        outlined
+                        tile
+                      >
+                        <h5>
+                          Submitted 4 different kinds of acceptable MOV***<br />
+                        </h5>
+                      </v-card>
+                      <v-card class="pa-2 pt-4" outlined tile>
+                        <h5>#4.2 1 Timeliness black <br /></h5>
+                      </v-card>
+                      <v-card class="pa-2 pt-4 part1Outstanding" outlined tile>
+                        <h5>
+                          Updated the Development Plan and approved by the rater
+                          during Phase II of the RPMS cycle <br />
+                        </h5>
+                      </v-card>
+                      <v-card class="pa-2 pt-4 part1Outstanding" outlined tile>
+                        <h5>
+                          Submitted the IPCRF-DP with any 4 of the acceptable
+                          Supporting MOV* <br />
+                        </h5>
+                      </v-card>
+                      <v-card class="pa-2 pt-4" outlined tile>
+                        <h5>#4.3 1 Timeliness black <br /></h5>
+                      </v-card>
+                      <v-card
+                        class="pa-2 pt-4 part1Outstanding"
+                        style="height: 125px"
+                        outlined
+                        tile
+                      >
+                        <h5>
+                          Performed at least 1 related work/activity that
+                          contributed to the teaching-learning process beyond
+                          the school/ Community Learning Center (CLC) as
+                          evidenced by submitted MOV <br />
+                        </h5>
+                      </v-card>
+                      <v-card class="pa-2 pt-4 part1Outstanding" outlined tile>
+                        <h5>Submitted any 4 of the acceptable MOV* <br /></h5>
+                      </v-card>
+
+                      <v-card class="pa-2 pt-4" outlined tile>
+                        <h5>5.1 Timeliness Black<br /></h5>
+                      </v-card>
+                    </v-col>
+
+                    <!-- START OF Very Satisfactory  -->
+
+                    <v-col
+                      :key="n"
+                      v-if="n === 8"
+                      class="ePart8"
+                      style="margin-left: -25px"
+                    >
+                      <v-card
+                        class="pa-2 pt-4"
+                        style="width: 290px"
+                        outlined
+                        tile
+                      >
+                        <h5>
+                          Very Satisfactory <br />
+
+                          4
+                          <br />
+                        </h5>
+                      </v-card>
+                      <v-card class="pa-2 pt-4" outlined tile>
+                        <h5>
                           Demonstrated Level 6 in Objective 1 as shown in COT
                           rating sheets/interobserver agreement forms <br />
-                        </h6>
+                        </h5>
+                      </v-card>
+                      <v-card
+                        class="pa-2 pt-4"
+                        style="height: 64px"
+                        outlined
+                        tile
+                      >
+                        <h5>2 blank <br /></h5>
                       </v-card>
                       <v-card class="pa-2 pt-4" outlined tile>
-                        <h6>2 blank <br /></h6>
-                      </v-card>
-                      <v-card class="pa-2 pt-4" outlined tile>
-                        <h6>
+                        <h5>
                           Ensured that the ICT used augment and enrich learning
                           experiences and are documented properly and
                           consistently using any referencing style as shown in
                           the submitted learning material<br />
-                        </h6>
+                        </h5>
                       </v-card>
-                      <v-card class="pa-2 pt-4" outlined tile>
-                        <h6>2 black <br /></h6>
+                      <v-card
+                        class="pa-2 pt-4"
+                        style="height: 60px"
+                        outlined
+                        tile
+                      >
+                        <h5>2 black <br /></h5>
                       </v-card>
-                      <v-card class="pa-2 pt-4" outlined tile>
-                        <h6>
+                      <v-card
+                        class="pa-2 pt-4"
+                        style="height: 126px"
+                        outlined
+                        tile
+                      >
+                        <h5>
                           Applied teaching strategies that require learners to
                           make connections using ideas learned as shown in the
                           submitted learning material
                           <br />
-                        </h6>
+                        </h5>
                       </v-card>
-                      <v-card class="pa-2 pt-4" outlined tile>
-                        <h6>2black <br /></h6>
+                      <v-card
+                        class="pa-2 pt-4"
+                        style="height: 59px"
+                        outlined
+                        tile
+                      >
+                        <h5>2black <br /></h5>
                       </v-card>
-                      <v-card class="pa-2 pt-4" outlined tile>
-                        <h6>
+                      <v-card
+                        class="pa-2 pt-4"
+                        style="height: 125px"
+                        outlined
+                        tile
+                      >
+                        <h5>
                           Utilized effective teaching strategies that are
                           appropriate in responding to learners’ linguistic,
                           cultural, socioeconomic, or religious backgrounds at a
                           group level* as shown in the submitted learning
-                          material <br />
-                        </h6>
+                          material
+                          <br />
+                        </h5>
+                      </v-card>
+                      <v-card
+                        class="pa-2 pt-4"
+                        style="height: 60px"
+                        outlined
+                        tile
+                      >
+                        <h5>2 black <br /></h5>
                       </v-card>
                       <v-card class="pa-2 pt-4" outlined tile>
-                        <h6>2 black <br /></h6>
-                      </v-card>
-                      <v-card class="pa-2 pt-4" outlined tile>
-                        <h6>
+                        <h5>
                           Demonstrated Level 6 in Objective 5 as shown in COT
                           rating sheets/interobserver agreement forms<br />
-                        </h6>
+                        </h5>
+                      </v-card>
+                      <v-card
+                        class="pa-2 pt-4"
+                        style="height: 60px"
+                        outlined
+                        tile
+                      >
+                        <h5>2black <br /></h5>
                       </v-card>
                       <v-card class="pa-2 pt-4" outlined tile>
-                        <h6>2black <br /></h6>
-                      </v-card>
-                      <v-card class="pa-2 pt-4" outlined tile>
-                        <h6>
+                        <h5>
                           Provided learners with accurate, and specific
                           constructive feedback as shown in the evidence
-                          submitted <br />
-                        </h6>
+                          submitted
+                          <br />
+                        </h5>
                       </v-card>
-                      <v-card class="pa-2 pt-4" outlined tile>
-                        <h6>efficiency black <br /></h6>
+                      <v-card class="pa-1" style="height: 30px" outlined tile>
+                        <h5>efficiency black <br /></h5>
                       </v-card>
-                      <v-card class="pa-2 pt-4" outlined tile>
-                        <h6>
+                      <v-card class="pa-2" style="height: 56px" outlined tile>
+                        <h5>
                           MOV submitted shows feedback given within 6-10 working
                           days from submission**<br />
-                        </h6>
+                        </h5>
                       </v-card>
                       <v-card class="pa-2 pt-4" outlined tile>
-                        <h6>
+                        <h5>
                           Demonstrated Level 6 in Objective 7 as shown in COT
                           rating sheets/interobserver agreement forms <br />
-                        </h6>
+                        </h5>
                       </v-card>
-                      <v-card class="pa-2 pt-4" outlined tile>
-                        <h6>2 black <br /></h6>
+                      <v-card
+                        class="pa-2 pt-4"
+                        style="height: 59px"
+                        outlined
+                        tile
+                      >
+                        <h5>2 black <br /></h5>
                       </v-card>
-                      <v-card class="pa-2 pt-4" outlined tile>
-                        <h6>
+                      <v-card
+                        class="pa-2 pt-4"
+                        style="height: 86px"
+                        outlined
+                        tile
+                      >
+                        <h5>
                           Majority of the learning outcomes set are aligned with
                           the learning competencies as shown in the MOV
                           submitted
                           <br />
-                        </h6>
+                        </h5>
                       </v-card>
-                      <v-card class="pa-2 pt-4" outlined tile>
-                        <h6>2 black <br /></h6>
+                      <v-card
+                        class="pa-2 pt-4"
+                        style="height: 60px"
+                        outlined
+                        tile
+                      >
+                        <h5>2 black <br /></h5>
                       </v-card>
-                      <v-card class="pa-2 pt-4" outlined tile>
-                        <h6>
+                      <v-card
+                        class="pa-2 pt-4"
+                        style="height: 125px"
+                        outlined
+                        tile
+                      >
+                        <h5>
                           Secured collaboration with parents/ guardians and/ or
                           wider school community to facilitate involvement in
                           the educative process as evidenced by one MOV no. 1 or
-                          2 <br />
-                        </h6>
+                          2
+                          <br />
+                        </h5>
                       </v-card>
-                      <v-card class="pa-2 pt-4" outlined tile>
-                        <h6>Submitted any 3 of the acceptable MOV*<br /></h6>
+                      <v-card
+                        class="pa-2 pt-4"
+                        style="height: 46px"
+                        outlined
+                        tile
+                      >
+                        <h5>Submitted any 3 of the acceptable MOV*<br /></h5>
                       </v-card>
-                      <v-card class="pa-2 pt-4" outlined tile>
-                        <h6>#4 1 Timeliness black <br /></h6>
+                      <v-card
+                        class="pa-2 pt-4"
+                        style="height: 46px"
+                        outlined
+                        tile
+                      >
+                        <h5>#4 1 Timeliness black <br /></h5>
                       </v-card>
-                      <v-card class="pa-2 pt-4" outlined tile>
-                        <h6>
+                      <v-card class="pa-2" style="height: 136px" outlined tile>
+                        <h5>
                           Participated in any professional network/ activity
                           that requires output* and proof of implementation **
                           within the department/grade level to share knowledge
                           and to enhance practice as evidenced by the submitted
                           MOV<br />
-                        </h6>
+                        </h5>
                       </v-card>
-                      <v-card class="pa-2 pt-4" outlined tile>
-                        <h6>
+                      <v-card
+                        class="pa-2 pt-4"
+                        style="height: 65px"
+                        outlined
+                        tile
+                      >
+                        <h5>
                           Submitted 3 different kinds of acceptable MOV***<br />
-                        </h6>
+                        </h5>
                       </v-card>
-                      <v-card class="pa-2 pt-4" outlined tile>
-                        <h6>#4.2 1 Timeliness black <br /></h6>
+                      <v-card
+                        class="pa-2 pt-4"
+                        style="height: 46px"
+                        outlined
+                        tile
+                      >
+                        <h5>#4.2 1 Timeliness black <br /></h5>
                       </v-card>
-                      <v-card class="pa-2 pt-4" outlined tile>
-                        <h6>
+                      <v-card
+                        class="pa-2 pt-4"
+                        style="height: 86px"
+                        outlined
+                        tile
+                      >
+                        <h5>
                           Discussed progress on the Development Plan with the
                           rater to check whether Development Needs were
-                          addressed <br />
-                        </h6>
+                          addressed
+                          <br />
+                        </h5>
                       </v-card>
                       <v-card class="pa-2 pt-4" outlined tile>
-                        <h6>
+                        <h5>
                           Submitted the IPCRF-DP with any 3 of the acceptable
                           Supporting MOV* <br />
-                        </h6>
+                        </h5>
                       </v-card>
                       <v-card class="pa-2 pt-4" outlined tile>
-                        <h6>#4.3 1 Timeliness black <br /></h6>
+                        <h5>#4.3 1 Timeliness black <br /></h5>
                       </v-card>
-                      <v-card class="pa-2 pt-4" outlined tile>
-                        <h6>
+                      <v-card
+                        class="pa-2 pt-4"
+                        style="height: 125px"
+                        outlined
+                        tile
+                      >
+                        <h5>
                           Performed at least 1 related work/activity that
                           contributed to the teaching-learning process within
                           the school/ Community Learning Center (CLC) as
                           evidenced by submitted MOV <br />
-                        </h6>
+                        </h5>
                       </v-card>
                       <v-card class="pa-2 pt-4" outlined tile>
-                        <h6>Submitted any 3 of the acceptable MOV* <br /></h6>
+                        <h5>Submitted any 3 of the acceptable MOV* <br /></h5>
                       </v-card>
 
                       <v-card class="pa-2 pt-4" outlined tile>
-                        <h6>5.1 Timeliness Black<br /></h6>
+                        <h5>5.1 Timeliness Black<br /></h5>
                       </v-card>
-                  </v-col>
+                    </v-col>
+                    <!-- END OF VERY Satisfactory -->
 
-                  <v-col :key="n" v-else-if="n === 10">
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h6>
-                        Unsatisfactory <br /><br />
-                        2 <br />
-                      </h6>
-                    </v-card>
-                  </v-col>
-                  <v-col :key="n" v-else-if="n === 11">
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h6>
-                        Poor <br />
+                    <!-- START OF  Satisfactory -->
+                    <v-col
+                      :key="n"
+                      v-else-if="n === 9"
+                      class="ePartCol9"
+                      style="margin-left: -25px"
+                    >
+                      <v-card
+                        class="pa-2 pt-4"
+                        style="width: 290px"
+                        outlined
+                        tile
+                      >
+                        <h5>
+                          Satisfactory <br />
 
-                        <br />
-                        1 <br />
-                      </h6>
-                    </v-card>
-                  </v-col>
-                  <v-col :key="n" v-else-if="n === 12">
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h6>
-                        Actual <br />
-                        Results <br />
-                        <br />
-                      </h6>
-                    </v-card>
-                  </v-col>
+                          3 <br />
+                        </h5>
+                      </v-card>
+                      <v-card class="pa-2 pt-4" outlined tile>
+                        <h5>
+                          Demonstrated Level 5 in Objective 1 as shown in COT
+                          rating sheets/interobserver agreement forms <br />
+                        </h5>
+                      </v-card>
+                      <v-card
+                        class="pa-2 pt-4"
+                        style="height: 64px"
+                        outlined
+                        tile
+                      >
+                        <h5>2 blank <br /></h5>
+                      </v-card>
+                      <v-card class="pa-2 pt-4" outlined tile>
+                        <h5>
+                          Ensured that the ICT used modify processes and improve
+                          learning experiences and are documented properly and
+                          consistently using any referencing style as shown in
+                          the submitted learning material<br />
+                        </h5>
+                      </v-card>
+                      <v-card
+                        class="pa-2 pt-4"
+                        style="height: 60px"
+                        outlined
+                        tile
+                      >
+                        <h5>2 black <br /></h5>
+                      </v-card>
+                      <v-card
+                        class="pa-2 pt-4"
+                        style="height: 126px"
+                        outlined
+                        tile
+                      >
+                        <h5>
+                          Applied teaching strategies that require learners to
+                          describe and explain ideas learned as shown in the
+                          submitted learning material
+                          <br />
+                        </h5>
+                      </v-card>
+                      <v-card
+                        class="pa-2 pt-4"
+                        style="height: 59px"
+                        outlined
+                        tile
+                      >
+                        <h5>2black <br /></h5>
+                      </v-card>
+                      <v-card
+                        class="pa-2 pt-4"
+                        style="height: 125px"
+                        outlined
+                        tile
+                      >
+                        <h5>
+                          Utilized an effective teaching strategy that is
+                          appropriate in responding to learners’ linguistic,
+                          cultural, socioeconomic, or religious backgrounds as
+                          shown in the submitted learning material<br />
+                        </h5>
+                      </v-card>
+                      <v-card
+                        class="pa-2 pt-4"
+                        style="height: 60px"
+                        outlined
+                        tile
+                      >
+                        <h5>2 black <br /></h5>
+                      </v-card>
+                      <v-card class="pa-2 pt-4" outlined tile>
+                        <h5>
+                          Demonstrated Level 5 in Objective 5 as shown in COT
+                          rating sheets/interobserver agreement forms<br />
+                        </h5>
+                      </v-card>
+                      <v-card
+                        class="pa-2 pt-4"
+                        style="height: 60px"
+                        outlined
+                        tile
+                      >
+                        <h5>2black <br /></h5>
+                      </v-card>
+                      <v-card class="pa-2 pt-4" outlined tile>
+                        <h5>
+                          Provided learners with accurate, and general
+                          constructive feedback as shown in the evidence
+                          submitted
+                          <br />
+                        </h5>
+                      </v-card>
+                      <v-card class="pa-1" outlined tile>
+                        <h5>efficiency black <br /></h5>
+                      </v-card>
+                      <v-card class="pa-2" style="height: 56px" outlined tile>
+                        <h5>
+                          MOV submitted shows feedback given within 11-20
+                          working days from submission**<br />
+                        </h5>
+                      </v-card>
+                      <v-card
+                        class="pa-2 pt-4"
+                        style="height: 86px"
+                        outlined
+                        tile
+                      >
+                        <h5>
+                          Demonstrated Level 5 in Objective 7 as shown in COT
+                          rating sheets/interobserver agreement forms <br />
+                        </h5>
+                      </v-card>
+                      <v-card
+                        class="pa-2 pt-4"
+                        style="height: 59px"
+                        outlined
+                        tile
+                      >
+                        <h5>2 black <br /></h5>
+                      </v-card>
+                      <v-card
+                        class="pa-2 pt-4"
+                        style="height: 86px"
+                        outlined
+                        tile
+                      >
+                        <h5>
+                          Half of the learning outcomes set are aligned with the
+                          learning competencies as shown in the MOV submitted
+                          <br />
+                        </h5>
+                      </v-card>
+                      <v-card
+                        class="pa-2 pt-4"
+                        style="height: 60px"
+                        outlined
+                        tile
+                      >
+                        <h5>2 black <br /></h5>
+                      </v-card>
+                      <v-card class="pa-2 pt-4" outlined tile>
+                        <h5>
+                          Communicated with and obtained response from parents/
+                          guardians and/ or wider school community to facilitate
+                          involvement in the educative process as evidenced by
+                          MOV No. 3 <br />
+                        </h5>
+                      </v-card>
+                      <v-card class="pa-2 pt-4" outlined tile>
+                        <h5>Submitted any 2 of the acceptable MOV*<br /></h5>
+                      </v-card>
+                      <v-card class="pa-2 pt-4" outlined tile>
+                        <h5>#4 1 Timeliness black <br /></h5>
+                      </v-card>
+                      <v-card
+                        class="pa-2 pt-4"
+                        style="height: 136px"
+                        outlined
+                        tile
+                      >
+                        <h5>
+                          Participated in any professional network/ activity
+                          that requires output* to share knowledge and to
+                          enhance practice as evidenced by the submitted MOV<br />
+                        </h5>
+                      </v-card>
+                      <v-card
+                        class="pa-2 pt-4"
+                        style="height: 65px"
+                        outlined
+                        tile
+                      >
+                        <h5>
+                          Submitted 2 different kinds of acceptable MOV***<br />
+                        </h5>
+                      </v-card>
+                      <v-card
+                        class="pa-2 pt-4"
+                        style="height: 46px"
+                        outlined
+                        tile
+                      >
+                        <h5>#4.2 1 Timeliness black <br /></h5>
+                      </v-card>
+                      <v-card class="pa-1" style="height: 86px" outlined tile>
+                        <h5>
+                          Accomplished the Development Plan from learning
+                          objectives up to resources needed to address
+                          Development Needs during Phase I of the RPMS cycle<br />
+                        </h5>
+                      </v-card>
+                      <v-card
+                        class="pa-2 pt-4"
+                        style="height: 65px"
+                        outlined
+                        tile
+                      >
+                        <h5>
+                          Submitted the IPCRF-DP with any 2 of the acceptable
+                          Supporting MOV* <br />
+                        </h5>
+                      </v-card>
+                      <v-card class="pa-2 pt-4" outlined tile>
+                        <h5>#4.3 1 Timeliness black <br /></h5>
+                      </v-card>
+                      <v-card
+                        class="pa-2 pt-4"
+                        style="height: 125px"
+                        outlined
+                        tile
+                      >
+                        <h5>
+                          Performed at least 1 related work/activity that
+                          contributed to the teaching-learning process within
+                          the learning area/ department as evidenced by
+                          submitted MOV<br />
+                        </h5>
+                      </v-card>
+                      <v-card class="pa-2 pt-4" outlined tile>
+                        <h5>Submitted any 2 of the acceptable MOV* <br /></h5>
+                      </v-card>
 
-                  <v-col :key="n" v-else-if="n === 13">
-                    <v-card class="pa-10 pt-4" outlined tile>
-                      <h6>Rating</h6>
-                    </v-card>
-                  </v-col>
-                  <v-col :key="n" v-else-if="n === 14">
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h6>
-                        Score <br />
-                        <br />
-                        <br />
-                      </h6>
-                    </v-card>
-                  </v-col>
-                </template>
+                      <v-card class="pa-2 pt-4" outlined tile>
+                        <h5>5.1 Timeliness Black<br /></h5>
+                      </v-card>
+                    </v-col>
+
+                    <!-- END OF Satisfactory  -->
+                    <!-- START OF Unsatisfactory  -->
+                    <v-col
+                      :key="n"
+                      v-else-if="n === 10"
+                      class="ePartCol10"
+                      style="margin-left: -25px"
+                    >
+                      <v-card
+                        class="pa-2 pt-4"
+                        style="width: 290px"
+                        outlined
+                        tile
+                      >
+                        <h5>
+                          Unsatisfactory <br />
+                          2 <br />
+                        </h5>
+                      </v-card>
+
+                      <v-card class="pa-2 pt-4" outlined tile>
+                        <h5>
+                          Demonstrated Level 4 in Objective 1 as shown in COT
+                          rating sheets/interobserver agreement forms<br />
+                        </h5>
+                      </v-card>
+                      <v-card
+                        class="pa-2 pt-4"
+                        style="height: 64px"
+                        outlined
+                        tile
+                      >
+                        <h5>2 blank <br /></h5>
+                      </v-card>
+                      <v-card class="pa-2 pt-4" outlined tile>
+                        <h5>
+                          Ensured that ICT are used but do not create a new
+                          learning experience and/or are documented but not
+                          consistent with one referencing style as shown in the
+                          submitted learning material<br />
+                        </h5>
+                      </v-card>
+                      <v-card
+                        class="pa-2 pt-4"
+                        style="height: 60px"
+                        outlined
+                        tile
+                      >
+                        <h5>2 black <br /></h5>
+                      </v-card>
+                      <v-card class="pa-2 pt-4" outlined tile>
+                        <h5>
+                          Applied teaching strategies that lead learners along a
+                          single path of inquiry and/or to simple recall and
+                          rote memorization of concepts as shown in the
+                          submitted learning material
+                          <br />
+                        </h5>
+                      </v-card>
+                      <v-card
+                        class="pa-2 pt-4"
+                        style="height: 59px"
+                        outlined
+                        tile
+                      >
+                        <h5>2black <br /></h5>
+                      </v-card>
+                      <v-card class="pa-2 pt-4" outlined tile>
+                        <h5>
+                          Utilized a teaching strategy or strategies that
+                          partially respond to learners’ linguistic, cultural,
+                          socioeconomic, or religious backgrounds as shown in
+                          the submitted learning material<br />
+                        </h5>
+                      </v-card>
+                      <v-card
+                        class="pa-2 pt-4"
+                        style="height: 60px"
+                        outlined
+                        tile
+                      >
+                        <h5>2 black <br /></h5>
+                      </v-card>
+                      <v-card class="pa-2 pt-4" outlined tile>
+                        <h5>
+                          Demonstrated Level 4 in Objective 5 as shown in COT
+                          rating sheets/interobserver agreement forms<br />
+                        </h5>
+                      </v-card>
+                      <v-card
+                        class="pa-2 pt-4"
+                        style="height: 60px"
+                        outlined
+                        tile
+                      >
+                        <h5>2black <br /></h5>
+                      </v-card>
+                      <v-card class="pa-2 pt-4" outlined tile>
+                        <h5>
+                          Provided learners with inaccurate and/or destructive
+                          feedback as shown in the evidence submitted
+                          <br />
+                        </h5>
+                      </v-card>
+                      <v-card class="pa-1" outlined tile>
+                        <h5>efficiency black <br /></h5>
+                      </v-card>
+                      <v-card class="pa-2" style="height: 56px" outlined tile>
+                        <h5>
+                          MOV submitted shows feedback given beyond 20 working
+                          days from submission**<br />
+                        </h5>
+                      </v-card>
+                      <v-card class="pa-2 pt-4" outlined tile>
+                        <h5>
+                          Demonstrated Level 4 in Objective 7 as shown in COT
+                          rating sheets/interobserver agreement forms <br />
+                        </h5>
+                      </v-card>
+                      <v-card
+                        class="pa-2 pt-4"
+                        style="height: 59px"
+                        outlined
+                        tile
+                      >
+                        <h5>2 black <br /></h5>
+                      </v-card>
+                      <v-card
+                        class="pa-2 pt-4"
+                        style="height: 86px"
+                        outlined
+                        tile
+                      >
+                        <h5>
+                          Less than half of the learning outcomes set are
+                          aligned with the learning competencies as shown in the
+                          MOV submitted
+                          <br />
+                        </h5>
+                      </v-card>
+                      <v-card
+                        class="pa-2 pt-4"
+                        style="height: 60px"
+                        outlined
+                        tile
+                      >
+                        <h5>2 black <br /></h5>
+                      </v-card>
+                      <v-card class="pa-2 pt-4" outlined tile>
+                        <h5>
+                          Communicated with parents/ guardians and/or wider
+                          school community to facilitate involvement in the
+                          educative process but received no response/reply as
+                          evidenced by MOV No. 3 <br />
+                        </h5>
+                      </v-card>
+                      <v-card class="pa-2 pt-4" outlined tile>
+                        <h5>Submitted any 1 of the acceptable MOV<br /></h5>
+                      </v-card>
+                      <v-card class="pa-2 pt-4" outlined tile>
+                        <h5>#4 1 Timeliness black <br /></h5>
+                      </v-card>
+                      <v-card
+                        class="pa-2 pt-4"
+                        style="height: 136px"
+                        outlined
+                        tile
+                      >
+                        <h5>
+                          Participated in any professional network/ activity
+                          that does not require output to share knowledge and to
+                          enhance practice as evidenced by the submitted MOV<br />
+                        </h5>
+                      </v-card>
+                      <v-card
+                        class="pa-2 pt-4"
+                        style="height: 65px"
+                        outlined
+                        tile
+                      >
+                        <h5>Submitted 1 of the acceptable MOV<br /></h5>
+                      </v-card>
+                      <v-card class="pa-2 pt-4" outlined tile>
+                        <h5>#4.2 1 Timeliness black <br /></h5>
+                      </v-card>
+                      <v-card class="pa-1" style="height: 86px" outlined tile>
+                        <h5>
+                          Accomplished the Strengths and Development Needs
+                          portion of the Development Plan after self-assessment
+                          at the beginning of the school year<br />
+                        </h5>
+                      </v-card>
+                      <v-card
+                        class="pa-2 pt-4"
+                        style="height: 65px"
+                        outlined
+                        tile
+                      >
+                        <h5>
+                          Submitted the IPCRF-DP with any 1 of the acceptable
+                          Supporting MOV <br />
+                        </h5>
+                      </v-card>
+                      <v-card class="pa-2 pt-4" outlined tile>
+                        <h5>#4.3 1 Timeliness black <br /></h5>
+                      </v-card>
+                      <v-card
+                        class="pa-2 pt-4"
+                        style="height: 125px"
+                        outlined
+                        tile
+                      >
+                        <h5>
+                          Performed at least 1 related work/activity that
+                          contributed to the teaching-learning process within
+                          the class as evidenced by submitted MOV<br />
+                        </h5>
+                      </v-card>
+                      <v-card class="pa-2 pt-4" outlined tile>
+                        <h5>Submitted any 1 of the acceptable MOV <br /></h5>
+                      </v-card>
+
+                      <v-card class="pa-2 pt-4" outlined tile>
+                        <h5>5.1 Timeliness Black<br /></h5>
+                      </v-card>
+                    </v-col>
+
+                    <!-- END Unsatisfactory HERE -->
+                    <!-- START POOR STATUS HERE -->
+                    <v-col
+                      :key="n"
+                      v-else-if="n === 11"
+                      class="ePartCol"
+                      style="margin-left: -25px"
+                    >
+                      <v-card
+                        class="pa-2 pt-4"
+                        style="width: 295px"
+                        outlined
+                        tile
+                      >
+                        <h5>
+                          Poor <br />
+
+                          1 <br />
+                        </h5>
+                      </v-card>
+
+                      <v-card class="pa-2 pt-4" outlined tile>
+                        <h5>
+                          Demonstrated Level 3 in Objective 1 as shown in COT
+                          rating sheets/interobserver agreement forms or No
+                          acceptable evidence was shown<br />
+                        </h5>
+                      </v-card>
+                      <v-card
+                        class="pa-2 pt-4"
+                        style="height: 64px"
+                        outlined
+                        tile
+                      >
+                        <h5>2 blank <br /></h5>
+                      </v-card>
+                      <v-card
+                        class="pa-2 pt-10"
+                        style="height: 125px"
+                        outlined
+                        tile
+                      >
+                        <h5>No acceptable evidence was shown<br /></h5>
+                      </v-card>
+                      <v-card
+                        class="pa-2 pt-4"
+                        style="height: 60px"
+                        outlined
+                        tile
+                      >
+                        <h5>2 black <br /></h5>
+                      </v-card>
+                      <v-card
+                        class="pa-2 pt-10"
+                        style="height: 126px"
+                        outlined
+                        tile
+                      >
+                        <h5>
+                          No acceptable evidence was shown
+                          <br />
+                        </h5>
+                      </v-card>
+                      <v-card
+                        class="pa-2 pt-4"
+                        style="height: 59px"
+                        outlined
+                        tile
+                      >
+                        <h5>2black <br /></h5>
+                      </v-card>
+                      <v-card
+                        class="pa-2 pt-10"
+                        style="height: 125px"
+                        outlined
+                        tile
+                      >
+                        <h5>No acceptable evidence was shown<br /></h5>
+                      </v-card>
+                      <v-card
+                        class="pa-2 pt-4"
+                        style="height: 60px"
+                        outlined
+                        tile
+                      >
+                        <h5>2 black <br /></h5>
+                      </v-card>
+                      <v-card
+                        class="pa-2 pt-4"
+                        style="height: 86px"
+                        outlined
+                        tile
+                      >
+                        <h5>
+                          Demonstrated Level 3 in Objective 5 as shown in COT
+                          rating sheets/interobserver agreement forms or No
+                          acceptable evidence was shown<br />
+                        </h5>
+                      </v-card>
+                      <v-card
+                        class="pa-2 pt-4"
+                        style="height: 60px"
+                        outlined
+                        tile
+                      >
+                        <h5>2black <br /></h5>
+                      </v-card>
+                      <v-card
+                        class="pa-2 pt-4"
+                        style="height: 86px"
+                        outlined
+                        tile
+                      >
+                        <h5>
+                          No acceptable evidence was shown
+                          <br />
+                        </h5>
+                      </v-card>
+                      <v-card class="pa-1" outlined tile>
+                        <h5>efficiency black <br /></h5>
+                      </v-card>
+                      <v-card
+                        class="pa-2 pt-4"
+                        style="height: 56px"
+                        outlined
+                        tile
+                      >
+                        <h5>No acceptable evidence was shown<br /></h5>
+                      </v-card>
+                      <v-card
+                        class="pa-2 pt-4"
+                        style="height: 86px"
+                        outlined
+                        tile
+                      >
+                        <h5>
+                          Demonstrated Level 3 in Objective 7 as shown in COT
+                          rating sheets/interobserver agreement forms or No
+                          acceptable evidence was shown <br />
+                        </h5>
+                      </v-card>
+                      <v-card
+                        class="pa-2 pt-4"
+                        style="height: 59px"
+                        outlined
+                        tile
+                      >
+                        <h5>2 black <br /></h5>
+                      </v-card>
+                      <v-card
+                        class="pa-2 pt-4"
+                        style="height: 86px"
+                        outlined
+                        tile
+                      >
+                        <h5>
+                          No acceptable evidence was shown
+                          <br />
+                        </h5>
+                      </v-card>
+                      <v-card
+                        class="pa-2 pt-4"
+                        style="height: 60px"
+                        outlined
+                        tile
+                      >
+                        <h5>2 black <br /></h5>
+                      </v-card>
+                      <v-card
+                        class="pa-2 pt-4"
+                        style="height: 125px"
+                        outlined
+                        tile
+                      >
+                        <h5>No acceptable evidence was shown <br /></h5>
+                      </v-card>
+                      <v-card
+                        class="pa-2 pt-4"
+                        style="height: 46px"
+                        outlined
+                        tile
+                      >
+                        <h5>No acceptable evidence was shown<br /></h5>
+                      </v-card>
+                      <v-card
+                        class="pa-2 pt-4"
+                        style="height: 46px"
+                        outlined
+                        tile
+                      >
+                        <h5>#4 1 Timeliness black <br /></h5>
+                      </v-card>
+                      <v-card
+                        class="pa-2 pt-8"
+                        style="height: 136px"
+                        outlined
+                        tile
+                      >
+                        <h5>No acceptable evidence was shown<br /></h5>
+                      </v-card>
+                      <v-card
+                        class="pa-2 pt-4"
+                        style="height: 65px"
+                        outlined
+                        tile
+                      >
+                        <h5>No acceptable evidence was shown<br /></h5>
+                      </v-card>
+                      <v-card
+                        class="pa-2 pt-4"
+                        style="height: 46px"
+                        outlined
+                        tile
+                      >
+                        <h5>#4.2 1 Timeliness black <br /></h5>
+                      </v-card>
+                      <v-card
+                        class="pa-2 pt-4"
+                        style="height: 86px"
+                        outlined
+                        tile
+                      >
+                        <h5>No acceptable evidence was shown<br /></h5>
+                      </v-card>
+                      <v-card
+                        class="pa-2 pt-4"
+                        style="height: 66px"
+                        outlined
+                        tile
+                      >
+                        <h5>No acceptable evidence was shown <br /></h5>
+                      </v-card>
+                      <v-card class="pa-2 pt-4" outlined tile>
+                        <h5>#4.3 1 Timeliness black <br /></h5>
+                      </v-card>
+                      <v-card
+                        class="pa-2 pt-4"
+                        style="height: 125px"
+                        outlined
+                        tile
+                      >
+                        <h5>No acceptable evidence was shown<br /></h5>
+                      </v-card>
+                      <v-card class="pa-2 pt-4" outlined tile>
+                        <h5>No acceptable evidence was shown <br /></h5>
+                      </v-card>
+
+                      <v-card class="pa-2 pt-4" outlined tile>
+                        <h5>5.1 Timeliness Black<br /></h5>
+                      </v-card>
+                    </v-col>
+
+                    <!-- END OF POOR HERE -->
+                    <!-- START OF ACTUAL RESULTS HERE -->
+
+                    <v-col
+                      :key="n"
+                      v-else-if="n === 12"
+                      class="ePartCol12"
+                      style="margin-left: -25px"
+                    >
+                      <v-card
+                        class="pa-2 pt-4"
+                        style="width: 200px"
+                        outlined
+                        tile
+                      >
+                        <h5>
+                          Actual Results <br />
+                          <br />
+                        </h5>
+                      </v-card>
+                      <v-card class="pa-2 pt-4" v-model="actual1" outlined tile>
+                        <h5 >
+                          <br />
+                        </h5>
+                      </v-card>
+                      <v-card v-model="actual1_blank"
+                        class="pa-2 pt-4"
+                        style="height: 64px"
+                        outlined
+                        tile
+                      >
+                        <h5> <br /></h5>
+                      </v-card>
+                      <v-card v-model="actual2"
+                        class="pa-2 pt-10"
+                        style="height: 125px"
+                        outlined
+                        tile
+                      >
+                        <h5><br /></h5>
+                      </v-card>
+                      <v-card v-model="actual2_blank"
+                        class="pa-2 pt-4"
+                        style="height: 60px"
+                        outlined
+                        tile
+                      >
+                        <h5> <br /></h5>
+                      </v-card>
+                      <v-card
+                      v-model="actual3"
+                        class="pa-2 pt-10"
+                        style="height: 126px"
+                        outlined
+                        tile
+                      >
+                        <h5>
+                        
+                          <br />
+                        </h5>
+                      </v-card>
+                      <v-card
+                      v-model="actual3_blank"
+                        class="pa-2 pt-4"
+                        style="height: 59px"
+                        outlined
+                        tile
+                      >
+                        <h5> <br /></h5>
+                      </v-card>
+                      <v-card
+                      v-model="actual4"
+                        class="pa-2 pt-10"
+                        style="height: 125px"
+                        outlined
+                        tile
+                      >
+                        <h5><br /></h5>
+                      </v-card>
+                      <v-card
+                      v-model="actual4_blank"
+                        class="pa-2 pt-4"
+                        style="height: 60px"
+                        outlined
+                        tile
+                      >
+                        <h5><br /></h5>
+                      </v-card>
+                      <v-card
+                      v-model="actual5"
+                        class="pa-2 pt-4"
+                        style="height: 86px"
+                        outlined
+                        tile
+                      >
+                        <h5>
+                         <br />
+                        </h5>
+                      </v-card>
+                      <v-card
+                      v-model="actual5_blank"
+                        class="pa-2 pt-4"
+                        style="height: 60px"
+                        outlined
+                        tile
+                      >
+                        <h5> <br /></h5>
+                      </v-card>
+                      <v-card
+                      v-model="actual6"
+                        class="pa-2 pt-4"
+                        style="height: 86px"
+                        outlined
+                        tile
+                      >
+                        <h5>
+                          
+                          <br />
+                        </h5>
+                      </v-card>
+                      <v-card  v-model="actual6_blank" class="pa-1" outlined tile>
+                        <h5> <br /></h5>
+                      </v-card>
+                      <v-card
+                        class="pa-2 pt-4"
+                        style="height: 56px"
+                        outlined
+                        tile
+                      >
+                        <h5><br /></h5>
+                      </v-card>
+                      <v-card
+                      v-model="actual6_timeliness"
+                        class="pa-2 pt-4"
+                        style="height: 86px"
+                        outlined
+                        tile
+                      >
+                        <h5>
+                          <br />
+                        </h5>
+                      </v-card>
+                      
+                      <v-card
+                      v-model="actual7"
+                        class="pa-2 pt-4"
+                        style="height: 59px"
+                        outlined
+                        tile
+                      >
+                        <h5> <br /></h5>
+                      </v-card>
+                      <v-card
+                      v-model="actual7_blank"
+                        class="pa-2 pt-4"
+                        style="height: 86px"
+                        outlined
+                        tile
+                      >
+                        <h5>
+                          
+                          <br />
+                        </h5>
+                      </v-card>
+                      <v-card
+                       v-model="actual8"
+                        class="pa-2 pt-4"
+                        style="height: 60px"
+                        outlined
+                        tile
+                      >
+                        <h5> <br /></h5>
+                      </v-card>
+                      <v-card
+                       v-model="actual9"
+                        class="pa-2 pt-4"
+                        style="height: 125px"
+                        outlined
+                        tile
+                      >
+                        <h5><br /></h5>
+                      </v-card>
+                      <v-card
+                       v-model="actual9_efficiency"
+                        class="pa-2 pt-4"
+                        style="height: 46px"
+                        outlined
+                        tile
+                      >
+                        <h5><br /></h5>
+                      </v-card>
+                      <v-card
+                       v-model="actual9_blank"
+                        class="pa-2 pt-4"
+                        style="height: 46px"
+                        outlined
+                        tile
+                      >
+                        <h5> <br /></h5>
+                      </v-card>
+                      <v-card
+                       v-model="actual10"
+                        class="pa-2 pt-8"
+                        style="height: 136px"
+                        outlined
+                        tile
+                      >
+                        <h5><br /></h5>
+                      </v-card>
+                      <v-card
+                       v-model="actual10_efficiency"
+                        class="pa-2 pt-4"
+                        style="height: 65px"
+                        outlined
+                        tile
+                      >
+                        <h5><br /></h5>
+                      </v-card>
+                      <v-card
+                       v-model="actual10_blank"
+                        class="pa-2 pt-4"
+                        style="height: 46px"
+                        outlined
+                        tile
+                      >
+                        <h5><br /></h5>
+                      </v-card>
+                      <v-card
+                       v-model="actual11"
+                        class="pa-2 pt-4"
+                        style="height: 86px"
+                        outlined
+                        tile
+                      >
+                        <h5><br /></h5>
+                      </v-card>
+                      <v-card
+                       v-model="actual11_efficiency"
+                        class="pa-2 pt-4"
+                        style="height: 66px"
+                        outlined
+                        tile
+                      >
+                        <h5> <br /></h5>
+                      </v-card>
+                      <v-card
+                       v-model="actual11_blank" class="pa-2 pt-4" outlined tile>
+                        <h5><br /></h5>
+                      </v-card>
+                      <v-card
+                        class="pa-2 pt-4"
+                        style="height: 125px"
+                        outlined
+                        tile
+                      >
+                        <h5><br /></h5>
+                      </v-card>
+                      <v-card class="pa-2 pt-4" outlined tile>
+                        <h5><br /></h5>
+                      </v-card>
+
+                      <v-card class="pa-2 pt-4" outlined tile>
+                        <h5><br /></h5>
+                      </v-card>
+                    </v-col>
+
+                    <v-col
+                      :key="n"
+                      v-else-if="n === 13"
+                      style="margin-left: -25px"
+                    >
+                      <v-card
+                        class="pa-10 pt-4"
+                        style="width: 260px"
+                        outlined
+                        tile
+                      >
+                        <h5>Rating</h5>
+                      </v-card>
+
+                      <v-card class="pa-2 pt-4" outlined tile> </v-card>
+                      <v-card class="pa-2 pt-4" outlined tile> </v-card>
+                      <v-card class="pa-2 pt-4" outlined tile> </v-card>
+                      <v-card class="pa-2 pt-4" outlined tile> </v-card>
+                      <v-card class="pa-2 pt-4" outlined tile> </v-card>
+                      <v-card class="pa-2 pt-4" outlined tile> </v-card>
+                      <v-card class="pa-2 pt-4" outlined tile> </v-card>
+                      <v-card class="pa-2 pt-4" outlined tile> </v-card>
+                      <v-card class="pa-2 pt-4" outlined tile> </v-card>
+                      <v-card class="pa-2 pt-4" outlined tile> </v-card>
+                      <v-card class="pa-2 pt-4" outlined tile> </v-card>
+                      <v-card class="pa-2 pt-4" outlined tile> </v-card>
+                    </v-col>
+                    <v-col
+                      :key="n"
+                      v-else-if="n === 14"
+                      style="margin-left: -25px"
+                    >
+                      <v-card
+                        class="pa-2 pt-4"
+                        style="width: 200px"
+                        outlined
+                        tile
+                      >
+                        <h5>
+                          Score <br />
+                          <br />
+                          <br />
+                        </h5>
+                      </v-card>
+                      <v-card class="pa-2 pt-4 part1Score" outlined tile>
+                      </v-card>
+                      <v-card class="pa-2 pt-4 part1Score" outlined tile>
+                      </v-card>
+                      <v-card class="pa-2 pt-4 part1Score" outlined tile>
+                      </v-card>
+                      <v-card class="pa-2 pt-4 part1Score" outlined tile>
+                      </v-card>
+                      <v-card class="pa-2 pt-4 part1Score" outlined tile>
+                      </v-card>
+                      <v-card class="pa-2 pt-4 part1Score" outlined tile>
+                      </v-card>
+                      <v-card class="pa-2 pt-4 part1Score" outlined tile>
+                      </v-card>
+                      <v-card class="pa-2 pt-4 part1Score" outlined tile>
+                      </v-card>
+                      <v-card class="pa-2 pt-4 part1Score" outlined tile>
+                      </v-card>
+                      <v-card class="pa-2 pt-4 part1Score" outlined tile>
+                      </v-card>
+                      <v-card class="pa-2 pt-4 part1Score" outlined tile>
+                      </v-card>
+                      <v-card class="pa-2 pt-4 part1Score" outlined tile>
+                      </v-card>
+                    </v-col>
+                  </template>
+                </div>
               </v-row>
-              <!-- <v-row no-gutters>
-                <template v-for="n in 15">
-                  <v-col :key="n" v-if="n === 1">
-                    <v-card class=" pt-2 pr-2 pl-1 pb-10" outlined tile>
-                      <h6>Basic Education Services</h6></v-card
-                    >
-                  </v-col>
+              <br />
 
-                  <v-col :key="n" v-else-if="n === 2">
-                    <v-card class="pt-2 pr-1 pl-2 " outlined tile>
-                      <h6>1. Content Knowledge and Pedagogy</h6>
-                    </v-card>
-                  </v-col>
+              <!-- START OF RATING AREA  -->
+              <div style="width: 600px; margin: auto">
+                <v-card
+                  class="pa-2 text-center"
+                  color="grey lighten-2"
+                  outlined
+                  tile
+                >
+                  <b>ADJECTIVAL RATING EQUIVALENCES</b>
+                </v-card>
+                <v-row no-gutters class="text-center">
+                  <template v-for="n in 2">
+                    <v-col :key="n" v-if="n === 1">
+                      <v-card class="pa-2 pt-4" outlined tile>
+                        <h5>RANGE</h5>
+                      </v-card>
+                      <v-card class="pa-2 pt-4" outlined tile>
+                        <h5>4.500 – 5.000</h5>
+                      </v-card>
+                      <v-card class="pa-2 pt-4" outlined tile>
+                        <h5>3.500 – 4.499</h5>
+                      </v-card>
+                      <v-card class="pa-2 pt-4" outlined tile>
+                        <h5>2.500 – 3.499</h5>
+                      </v-card>
+                      <v-card class="pa-2 pt-4" outlined tile>
+                        <h5>1.500 – 2.499</h5>
+                      </v-card>
+                      <v-card class="pa-2 pt-4" outlined tile>
+                        <h5>below 1.499</h5>
+                      </v-card>
+                    </v-col>
 
-                  <v-col :key="n" v-else-if="n === 3">
-                    <v-card class="pt-2 pr-2 pl-1 pt-4" outlined tile>
-                      <h6>
-                        1. Applied knowledge of content within and across
-                        curriculum teaching areas.
-                      </h6>
-                    </v-card>
-                  </v-col>
-                  <v-col :key="n" v-else-if="n === 4">
-                    <v-card class="pa-4 pt-4" outlined tile>
-                      <h6><br /><br /><br /></h6>
-                    </v-card>
-                  </v-col>
-                  <v-col :key="n" v-else-if="n === 5">
-                    <v-card class="pa-4 pt-4" outlined tile>
-                      <h6>24%</h6>
-                    </v-card>
-                  </v-col>
-
-                  <v-col :key="n" v-else-if="n === 6">
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h6>Quality</h6></v-card
-                    >
-                  </v-col>
-                  <v-col :key="n" v-else-if="n === 7">
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h6>
-                        Demonstrated <br> Level 7 in <br> Objective 1 <br> as shown in <br> COT
-                        rating <br> sheets/<br>interobserver <br> agreement forms <br />
-                      </h6>
-                    </v-card>
-                  </v-col>
-                  <v-col :key="n" v-if="n === 8">
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h6>
-                        Demonstrated <br>Level 6 in<br> Objective 1<br> as shown in<br> COT
-                        rating <br>sheets/<br>interobserver <br>agreement <br>forms
-                      </h6>
-                    </v-card>
-                  </v-col>
-
-                  <v-col :key="n" v-else-if="n === 9">
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h6>
-                        Demonstrated <br />
-                        Level 5 in <br />
-                        Objective 1 <br />
-                        as shown in <br> COT rating <br>sheets/ <br>interobserver<br> agreement<br>
-                        forms<br />
-                      </h6>
-                    </v-card>
-                  </v-col>
-
-                  <v-col :key="n" v-else-if="n === 10">
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h6>
-                        Demonstrated <br>Level 4 in<br> Objective 1<br> as shown in<br> COT
-                        rating <br>sheets/<br>interobserver <br>agreement<br> forms<br />
-                      </h6>
-                    </v-card>
-                  </v-col>
-                  <v-col :key="n" v-else-if="n === 11">
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h6>
-                        Demonstrated<br> Level 3 in<br> Objective 1<br>as shown in<br> COT
-                        rating <br>sheets/<br>interobserver<br> agreement forms or No
-                        acceptable<br> evidence was<br> shown
-                      </h6>
-                    </v-card>
-                  </v-col>
-                  <v-col :key="n" v-else-if="n === 12">
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h6>
-                        Actual <br />
-                        Results
-                      </h6>
-                    </v-card>
-                  </v-col>
-
-                  <v-col :key="n" v-else-if="n === 13">
-                    <v-card class="pa-10 pt-4" outlined tile>
-                      <h6>Rating</h6>
-                    </v-card>
-                  </v-col>
-                  <v-col :key="n" v-else-if="n === 14">
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h6>Score</h6>
-                    </v-card>
-                  </v-col>
-                </template>
-              </v-row> -->
+                    <v-col :key="n" v-else-if="n === 2">
+                      <v-card class="pa-2 pt-4" outlined tile>
+                        <h5>ADJECTIVAL RATING</h5>
+                      </v-card>
+                      <v-card class="pa-2 pt-4" outlined tile>
+                        <h5>Outstanding</h5>
+                      </v-card>
+                      <v-card class="pa-2 pt-4" outlined tile>
+                        <h5>Very Satisfactory</h5>
+                      </v-card>
+                      <v-card class="pa-2 pt-4" outlined tile>
+                        <h5>Satisfactory</h5>
+                      </v-card>
+                      <v-card class="pa-2 pt-4" outlined tile>
+                        <h5>Unsatisfactory</h5>
+                      </v-card>
+                      <v-card class="pa-2 pt-4" outlined tile>
+                        <h5>Poor</h5>
+                      </v-card>
+                    </v-col>
+                  </template>
+                </v-row>
+              </div>
+              <!-- END OF RATING CRITERIA -->
             </v-container>
           </v-app>
         </div>
@@ -2766,14 +4224,37 @@
 }
 .kra {
   text-align: center;
-  width: 200px;
-  height: 150px;
+
+  height: 127px;
+}
+/* FOR TIMELINE */
+.timeline {
+  height: 127px;
+}
+/* FOR THE SCROLLABLE */
+.ePart1 {
+  display: flex;
+  overflow-x: auto;
+}
+.encodingDiv {
+  display: flex;
+  overflow-x: auto;
+}
+/* FOR PART 1 QET */
+
+/* FOR PART 1 SCORE */
+.part1Score {
+  height: 127px;
 }
 </style>
 <script>
 export default {
   data: () => ({
-    items: ["Foo", "Bar", "Fizz", "Buzz"],
+    empName: "",
   }),
+
+  // data: () => ({
+  //   items: ["Foo", "Bar", "Fizz", "Buzz"],
+  // }),
 };
 </script>
