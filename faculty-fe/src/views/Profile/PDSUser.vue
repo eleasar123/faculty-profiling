@@ -32,18 +32,16 @@
       </v-card>
     </v-container>
     <v-btn @click="editPds" class="float-right ma-4">Edit</v-btn>
-    <v-container
+    <!-- <v-btn @click="print">Print</v-btn> -->
+     <v-container
 
       v-if="create == false && user == 'Teacher' && edit == false"
-      style=""
+ 
        id="printMe"
-       class="mt-6"
+       class="ma-0 mt-6 text-center"
+       style=""
     >
-      <v-simple-table class="pa-0 text-center pdsA" width="80%" light>
-            <thead>
-              <tr>
-                <th colspan="8" class="pa-0">
-                  <v-card class="ma-0 text-left" style="border: solid 1px">
+     <v-card class="ma-0 text-left" style="border: solid 1px">
                     <v-card-title label="Search" single-line hide-details
                       ><span>CS Form N0.212</span>
                       <v-container fluid class="ml-auto mr-auto px-2">
@@ -52,7 +50,8 @@
                           class=""
                           style="
                             font-size: 35px;
-                            margin-left: 30%;
+                            margin-left:25%;
+                            
                             font-weight: bolder;
                             font-family: fantasy;
                           "
@@ -70,485 +69,488 @@
                       READ THE ATTACHED GUIDE TO FILLING OUT THE PERSONAL DATA
                       SHEET (PDS) BEFORE ACCOMPLISHING THE PDS FORM.
                     </v-card-text>
+                   
                   </v-card>
-                </th>
-              </tr>
-              <tr class="pa-0">
-                <th
-                  colspan="8"
-                  style="
-                    border: solid 1px;
-                    background-color: rgb(160, 160, 160);
+       <b-container style="
+                    border: solid 1px black;
+                    background-color: rgb(150, 150, 150);
                     color: white;
                   "
+                  class="text-left"
                 >
-                  I. PERSONAL INFORMATION
-                </th>
-              </tr>
-            </thead>
-            <tbody class="text-center" color="secondary" v-for="row in pdsPersonalInfo"
+                  I. PERSONAL INFORMATION</b-container>
+       <!-- <v-btn @click="print">Print</v-btn> -->
+      <b-table-simple class="pa-0 mb-0 text-center pdsA" style="border:solid 1px " responsive >
+            
+            <b-tbody class="text-center" color="secondary" v-for="row in pdsPersonalInfo"
                 :key="row.id"
 >
-              <tr>
-                <td
+              <b-tr>
+                <b-td
                   colspan="1"
+                  class="tableHeader"
                   style="
                     text-align: left;
                     font-size: 10px;
                     border: solid 1px black;
                     border-bottom: none;
-                    background-color: rgb(211, 211, 211);
+                    background-color: rgb(234, 234, 234);
                   "
                 >
                   2. SURNAME
-                </td>
-                <td colspan="7">
+                </b-td>
+                <b-td colspan="7">
                  {{row.last_name}}
-                </td>
-              </tr>
+                </b-td>
+              </b-tr>
 
-              <tr>
-                <td
+              <b-tr>
+                <b-td
                   colspan="1"
                   style="
                     text-align: left;
                     border: solid 1px black;
                     border-top: none;
                     border-bottom: none;
-                    background-color: rgb(211, 211, 211);
+                    background-color: rgb(234, 234, 234);width:100px;
                   "
                 >
                   FIRST NAME
-                </td>
-                <td colspan="4">
+                </b-td>
+                <b-td colspan="4">
                   {{row.first_name}}
-                </td>
-                <td
+                </b-td>
+                <b-td
                   colspan="3"
                   style="
                     text-align: left;
                     border: solid 1px black;
-                    background-color: rgb(211, 211, 211);
+                    background-color: rgb(234, 234, 234);
                   "
                 >
                  {{row.suffix}}
-                </td>
-              </tr>
-              <tr>
-                <td
+                </b-td>
+              </b-tr>
+              <b-tr>
+                <b-td
                   colspan="1"
                   style="
                     text-align: left;
                     border: solid 1px black;
                     border-top: none;
-                    background-color: rgb(211, 211, 211);
+                    background-color: rgb(234, 234, 234);
                   "
                 >
                   MIDDLE NAME
-                </td>
-                <td colspan="7">
+                </b-td>
+                <b-td colspan="7">
                   {{row.middle_name}}
-                </td>
-              </tr>
+                </b-td>
+              </b-tr>
 
-              <tr>
-                <td
+              <b-tr>
+                <b-td
                   max-width="100px"
                   colspan="1"
                   style="
                     text-align: left;
                     border: solid 1px black;
-                    background-color: rgb(211, 211, 211);
+                    background-color: rgb(234, 234, 234);
                   "
                 >
                   DATE OF BIRTH <br />
                   (mm/dd/yyyy)
-                </td>
-                <td colspan="2">
+                </b-td>
+                <b-td colspan="2">
                   {{row.date_of_birth}}
-                </td>
-                <td
+                </b-td>
+                <b-td
+                 colspan="2"
                   rowspan="3"
-                  colspan="2"
+                 
                   style="
                     text-align: left;
                     border: solid 1px black;
-                    background-color: rgb(211, 211, 211);
+                    background-color: rgb(234, 234, 234);
                   "
                 >
                   16.CITIZENSHIP<br />If holder of dual citizenship,<br />please
                   indicate the details.
-                </td>
-                <td colspan="3">
+                </b-td>
+                <b-td colspan="3">
                  {{row.citizenship}}
-                </td>
-              </tr>
-              <tr>
-                <td
+                </b-td>
+              </b-tr>
+              <b-tr>
+                <b-td
                   colspan="1"
                   style="
                     text-align: left;
                     border: solid 1px black;
-                    background-color: rgb(211, 211, 211);
+                    background-color: rgb(234, 234, 234);
                   "
                 >
                   PLACE OF BIRTH
-                </td>
-                <td colspan="2">
+                </b-td>
+                <b-td colspan="2">
                   {{row.place_of_birth}}
-                </td>
+                </b-td>
 
-                <td colspan="3">
+                <b-td colspan="3">
                   {{row.country_of_citizenship}}
-                </td>
-              </tr>
-              <tr>
-                <td
+                </b-td>
+              </b-tr>
+              <b-tr>
+                <b-td
                   colspan="1"
                   style="
                     text-align: left;
                     border: solid 1px black;
-                    background-color: rgb(211, 211, 211);
+                    background-color: rgb(234, 234, 234);
                   "
                 >
                   SEX
-                </td>
-                <td colspan="2">
+                </b-td>
+                <b-td colspan="2">
                  {{row.sex}}
-                </td>
-                <td colspan="3">
+                </b-td>
+                <b-td colspan="3">
                   {{row.dual_citizenship}}
-                </td>
-              </tr>
-              <tr>
-                <td
+                </b-td>
+              </b-tr>
+              <b-tr>
+                <b-td
                   colspan="1"
                   style="
                     text-align: left;
                     border: solid 1px black;
-                    background-color: rgb(211, 211, 211);
+                    background-color: rgb(234, 234, 234);
                   "
                   rowspan="2"
                 >
                   CIVIL STATUS
-                </td>
-                <td rowspan="2" colspan="2">
+                </b-td>
+                <b-td rowspan="2" colspan="2">
                   {{row.civil_status}}
-                </td>
-                <td
+                </b-td>
+                <b-td
                   rowspan="4"
+                  colspan="1"
                   style="
                     text-align: left;
                     border: solid 1px black;
-                    background-color: rgb(211, 211, 211);
+                    background-color: rgb(234, 234, 234);
                   "
                 >
                   RESIDENTIAL<br />
                   ADDRESS<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
                   ZIP CODE
-                </td>
-                <td rowspan="1" colspan="2" style="border-right: none" class="pa-2"><br>
+                </b-td>
+                <b-td rowspan="1" colspan="2" style="border-right: none" class="pa-2"><br>
                  {{ row.residential_address_house_no }}
                    <v-divider></v-divider>
                   <span class="text-center">House/Block/Lot No.
-</span>
-                </td>
-                <td rowspan="1" colspan="2" style="border-left: none">
+              </span>
+                </b-td>
+                <b-td rowspan="1" colspan="2" style="border-left: none">
                   {{ row.residential_address_street }}
                   <v-divider></v-divider>
                   <span class="text-center">Street
-</span>
-                </td>
-              </tr>
+              </span>
+                </b-td>
+              </b-tr>
 
-              <tr>
-                <td rowspan="1" colspan="2" style="border-right: none">
+              <b-tr>
+                <b-td rowspan="1" colspan="2" style="border-right: none">
                   {{ row.residential_address_subdivision }}<br>
                   <v-divider></v-divider>
                   <span class="text-center">Subdivision/Village</span>
-                </td>
-                <td rowspan="1" colspan="2" style="border-left: none">
+                </b-td>
+                <b-td rowspan="1" colspan="2" style="border-left: none">
                   {{ row.residential_address_barangay }}<br>
                   <v-divider></v-divider>
                   <span class="text-center">Barangay</span>
-                </td>
-              </tr>
+                </b-td>
+              </b-tr>
 
-              <tr>
-                <td
+              <b-tr>
+                <b-td
                   colspan="1"
                   style="
                     text-align: left;
                     border: solid 1px black;
-                    background-color: rgb(211, 211, 211);
+                    background-color: rgb(234, 234, 234);
                   "
                 >
                   HEIGHT (m)
-                </td>
-                <td colspan="2">
+                </b-td>
+                <b-td colspan="2">
                   {{ row.height }}
-                </td>
-                <td colspan="2" style="border-right: none">
+                </b-td>
+                <b-td colspan="2" style="border-right: none">
                   {{ row.residential_address_city }}<br>
                   <v-divider></v-divider>
                   <span class="text-center">City/Municipality</span>
-                <td colspan="2" style="border-left: none">
+                </b-td>
+                <b-td colspan="2" style="border-left: none">
                   {{ row.residential_address_province }}<br>
                   <v-divider></v-divider>
                   
                   <span class="text-center">Province</span>
-                </td>
-              </tr>
-              <tr>
-                <td
+                </b-td>
+              </b-tr>
+              <b-tr>
+                <b-td
                   colspan="1"
                   style="
                     text-align: left;
                     border: solid 1px black;
-                    background-color: rgb(211, 211, 211);
+                    background-color: rgb(234, 234, 234);
                   "
                 >
                   WEIGHT (kg)
-                </td>
-                <td colspan="2">
+                </b-td>
+                <b-td colspan="2">
                  {{ row.weight }}
-                </td>
+                </b-td>
 
-                <td colspan="4">
+                <b-td colspan="4">
                   {{ row.residential_address_zip_code }}
 
-                </td>
-              </tr>
-              <tr>
-                <td
+                </b-td>
+              </b-tr>
+              <b-tr>
+                <b-td
                   colspan="1"
                   style="
                     text-align: left;
                     border: solid 1px black;
-                    background-color: rgb(211, 211, 211);
+                    background-color: rgb(234, 234, 234);
                   "
                 >
                   BLOOD TYPE
-                </td>
-                <td colspan="2">
+                </b-td>
+                <b-td colspan="2">
                   {{ row.blood_type }}
-                </td>
-                <td
+                </b-td>
+                <b-td
                   rowspan="4"
                   style="
                     text-align: left;
                     border: solid 1px black;
-                    background-color: rgb(211, 211, 211);
+                    background-color: rgb(234, 234, 234);
                   "
                 >
                   PERMANENT ADDRESS<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
                   ZIP CODE
-                </td>
-                <td rowspan="1" colspan="2" style="border-right: none" class="pa-2"><br>
+                </b-td>
+                <b-td rowspan="1" colspan="2" style="border-right: none" class="pa-2"><br>
                  {{ row.permanent_address_house_no }}
                    <v-divider></v-divider>
                   <span class="text-center">House/Block/Lot No.
 </span>
-                </td>
-                <td rowspan="1" colspan="2" style="border-left: none">
+                </b-td>
+                <b-td rowspan="1" colspan="2" style="border-left: none">
                   {{ row.permanent_address_street }}
                   <v-divider></v-divider>
                   <span class="text-center">Street
 </span>
-                </td>
-              </tr>
+                </b-td>
+              </b-tr>
 
-              <tr>
-                <td
+              <b-tr>
+                <b-td
                   colspan="1"
                   style="
                     text-align: left;
                     border: solid 1px black;
-                    background-color: rgb(211, 211, 211);
+                    background-color: rgb(234, 234, 234);
                   "
                 >
                   GSIS ID NO.
-                </td>
-                <td colspan="2">
+                </b-td>
+                <b-td colspan="2">
                   {{ row.gsis_id_no }}
 
-                </td>
-                <td colspan="2" style="border-right: none">
+                </b-td>
+                <b-td colspan="2" style="border-right: none">
                   {{ row.permanent_address_subdivision }}
-                </td>
-                <td colspan="2" style="border-left: none">
+                </b-td>
+                <b-td colspan="2" style="border-left: none">
                  {{ row.permanent_address_barangay }}
-                </td>
-              </tr>
-              <tr>
-                <td
+                </b-td>
+              </b-tr>
+              <b-tr>
+                <b-td
                   colspan="1"
                   style="
                     text-align: left;
                     border: solid 1px black;
-                    background-color: rgb(211, 211, 211);
+                    background-color: rgb(234, 234, 234);
                   "
                 >
                   PAG-IBIG ID NO.
-                </td>
-                <td colspan="2">
+                </b-td>
+                <b-td colspan="2">
                  {{ row.pag_ibig_id_no }}
 
-                </td>
-                <td colspan="2" style="border-right: none">
+                </b-td>
+                <b-td colspan="2" style="border-right: none">
                  {{ row.permanent_address_city }}
-                </td>
-                <td colspan="2" style="border-left: none">
+                </b-td>
+                <b-td colspan="2" style="border-left: none">
                   {{ row.permanent_address_province }}
 
-                </td>
-              </tr>
-              <tr>
-                <td
+                </b-td>
+              </b-tr>
+              <b-tr>
+                <b-td
                   colspan="1"
                   style="
                     text-align: left;
                     border: solid 1px black;
-                    background-color: rgb(211, 211, 211);
+                    background-color: rgb(234, 234, 234);
                   "
                 >
                   PHILHEALTH NO.
-                </td>
-                <td colspan="2">
+                </b-td>
+                <b-td colspan="2">
                   {{ row.philhealth_no }}
 
-                </td>
-                <td colspan="4">
+                </b-td>
+                <b-td colspan="4">
                   {{ row.permanent_zip_code }}
-                </td>
-              </tr>
-              <tr>
-                <td
+                </b-td>
+              </b-tr>
+              <b-tr>
+                <b-td
                   colspan="1"
                   style="
                     text-align: left;
                     border: solid 1px black;
-                    background-color: rgb(211, 211, 211);
+                    background-color: rgb(234, 234, 234);
                   "
                 >
                   SSS NO.
-                </td>
-                <td colspan="2">
+                </b-td>
+                <b-td colspan="2">
                   {{ row.sss_no }}
 
-                </td>
-                <td
+                </b-td>
+                <b-td
                   style="
                     text-align: left;
                     border: solid 1px black;
-                    background-color: rgb(211, 211, 211);
+                    background-color: rgb(234, 234, 234);
                   "
                 >
                   19.TELEPHONE NO.
-                </td>
-                <td colspan="4">
+                </b-td>
+                <b-td colspan="4">
                   {{ row.telephone_no }}
-                </td>
-              </tr>
-              <tr>
-                <td
+                </b-td>
+              </b-tr>
+              <b-tr>
+                <b-td
                   colspan="1"
                   style="
                     text-align: left;
                     border: solid 1px black;
-                    background-color: rgb(211, 211, 211);
+                    background-color: rgb(234, 234, 234);
                   "
                 >
                   14.TIN NO.
-                </td>
-                <td colspan="2">
+                </b-td>
+                <b-td colspan="2">
                    {{ row.tin_no }}
-                </td>
-                <td
+                </b-td>
+                <b-td
                   style="
                     text-align: left;
                     border: solid 1px black;
-                    background-color: rgb(211, 211, 211);
+                    background-color: rgb(234, 234, 234);
                   "
                 >
                   20.MOBILE NO.
-                </td>
-                <td colspan="4">
+                </b-td>
+                <b-td colspan="4">
                   {{ row.mobile_no }}
-                </td>
-              </tr>
-              <tr>
-                <td
+                </b-td>
+              </b-tr>
+              <b-tr>
+                <b-td
                   colspan="1"
                   style="
                     text-align: left;
                     border: solid 1px black;
-                    background-color: rgb(211, 211, 211);
+                    background-color: rgb(234, 234, 234);
                   "
                 >
                   AGENCY EMPLOYEE NO.
-                </td>
-                <td colspan="2">
+                </b-td>
+                <b-td colspan="2">
                   {{ row.agency_employee_no }}
 
-                </td>
-                <td
+                </b-td>
+                <b-td
                   style="
                     text-align: left;
                     border: solid 1px black;
-                    background-color: rgb(211, 211, 211);
+                    background-color: rgb(234, 234, 234);
                   "
                 >
                   21. E-MAIL ADDRESS (if any)
-                </td>
+                </b-td>
 
-                <td colspan="4">
+                <b-td colspan="4">
                   {{ row.email_address }}
-                </td>
-              </tr>
-            </tbody>
-              </v-simple-table>
-               <v-simple-table fluid class="ma-0 pa-0"  v-for="row in pdsFamilyBackground"
-                :key="row.id">
-              <tr clas="pa-0">
-                <td
-                  colspan="8"
-                  style="
-                    border: solid 1px;
-                    background-color: rgb(160, 160, 160);
+                </b-td>
+              </b-tr>
+            </b-tbody>
+      </b-table-simple>
+         <b-container style="
+                    border: solid 1px black;
+                    background-color: rgb(150, 150, 150);
                     color: white;
                   "
                   class="text-left"
                 >
-                  II. FAMILY BACKGROUND
-                </td>
-              </tr>
-           
+                  II. FAMILY BACKGROUND</b-container>
 
-              <tr>
-                <td
+               <b-table-simple fluid class="ma-0 pa-0"  v-for="row in pdsFamilyBackground"
+                :key="row.id" width="100%" style="border:solid 1px black">
+            
+            <colgroup><col width="150px"><col width="100px"><col width="100px"><col width="100px"> <col width="100px"><col width="100px">
+            <col width="100px"><col width="100px">
+            </colgroup>
+              
+              <b-tr style="height:30px">
+                <b-td
                   style="
+                    font-weight: normal
                     text-align: left;
                     border: solid 1px black;
-                    background-color: rgb(211, 211, 211);
+                    background-color: rgb(234, 234, 234);width:100px;
                   "
+                  class="text-left"
                 >
-                  SPOUSE'S SURNAME
-                </td>
-                <td colspan="3">
+                &nbsp;&nbsp;  SPOUSE'S SURNAME
+                </b-td>
+                <b-td colspan="3" style="">
                  {{ row.spouse_last_name }}
-                </td>
-                <td
+                </b-td>
+                <b-td
                   colspan="3"
                   style="
                     text-align: left;
                     border: solid 1px black;
                     background-color: rgb(211, 211, 211);
+                
                   "
                 >
                   23. NAME of CHILDREN (Write full name and list all)
-                </td>
-                <td
+                </b-td>
+                <b-td
                   colspan="1"
                   style="
                     text-align: left;
@@ -557,11 +559,11 @@
                   "
                 >
                   DATE OF BIRTH (mm/dd/yyyy)
-                </td>
-              </tr>
+                </b-td>
+              </b-tr>
 
-              <tr>
-                <td
+              <b-tr style="height:30px">
+                <b-td
                   style="
                     text-align: left;
                     border: solid 1px black;
@@ -569,11 +571,11 @@
                   "
                 >
                   FIRST NAME
-                </td>
-                <td colspan="2">
+                </b-td>
+                <b-td colspan="2">
                   {{ row.spouse_first_name }}
-                </td>
-                <td
+                </b-td>
+                <b-td
                   style="
                     text-align: left;
                     border: solid 1px black;
@@ -582,16 +584,16 @@
                 >
                   {{ row.spouse_suffix }}
 
-                </td>
-                <td colspan="3">
+                </b-td>
+                <b-td colspan="3">
                   {{ row.first_child }}
-                </td>
-                <td colspan="1">
+                </b-td>
+                <b-td colspan="1">
                   {{ row.spouse_date_of_birth }}
-                </td>
-              </tr>
-              <tr>
-                <td
+                </b-td>
+              </b-tr>
+              <b-tr style="height:30px">
+                <b-td
                   width="80px"
                   style="
                     text-align: left;
@@ -600,19 +602,19 @@
                   "
                 >
                   MIDDLE NAME
-                </td>
-                <td colspan="3">
+                </b-td>
+                <b-td colspan="3">
                  {{ row.spouse_middle_name }}
-                </td>
+                </b-td>
 
-                <td colspan="3">
+                <b-td colspan="3">
                   {{ row.second_child }}
-                </td>
-                <td></td>
-              </tr>
+                </b-td>
+                <b-td></b-td>
+              </b-tr>
 
-              <tr>
-                <td
+              <b-tr style="height:30px">
+                <b-td
                   style="
                     text-align: left;
                     border: solid 1px black;
@@ -620,17 +622,17 @@
                   "
                 >
                   OCCUPATION
-                </td>
-                <td colspan="3">
+                </b-td>
+                <b-td colspan="3">
                   {{ row.spouse_occupation }}
-                </td>
-                <td colspan="3">
+                </b-td>
+                <b-td colspan="3">
                   {{ row.third_child }}
-                </td>
-                <td colspan="1"></td>
-              </tr>
-              <tr>
-                <td
+                </b-td>
+                <b-td colspan="1"></b-td>
+              </b-tr>
+              <b-tr style="height:30px">
+                <b-td
                   max-width="100px"
                   style="
                     text-align: left;
@@ -639,19 +641,19 @@
                   "
                 >
                   EMPLOYER/BUSINESS NAME
-                </td>
-                <td colspan="3">
+                </b-td>
+                <b-td colspan="3">
                  {{ row.spouse_employer }}
 
-                </td>
-                <td colspan="3">
+                </b-td>
+                <b-td colspan="3">
                   {{ row.fourth_child }}
 
-                </td>
-                <td colspan="1"></td>
-              </tr>
-              <tr>
-                <td
+                </b-td>
+                <b-td colspan="1"></b-td>
+              </b-tr>
+              <b-tr style="height:30px">
+                <b-td
                   max-width="100px"
                   style="
                     text-align: left;
@@ -660,17 +662,17 @@
                   "
                 >
                   BUSINESS ADDRESS
-                </td>
-                <td colspan="3">
+                </b-td>
+                <b-td colspan="3">
                   {{ row.spouse_business_address }}
-                </td>
-                <td colspan="3">
+                </b-td>
+                <b-td colspan="3">
                   {{ row.fifth_child }}
-                </td>
-                <td colspan="1"></td>
-              </tr>
-              <tr>
-                <td
+                </b-td>
+                <b-td colspan="1"></b-td>
+              </b-tr>
+              <b-tr style="height:30px">
+                <b-td
                   max-width="100px"
                   style="
                     text-align: left;
@@ -679,18 +681,18 @@
                   "
                 >
                   TELEPHONE NO.
-                </td>
-                <td colspan="3">
+                </b-td>
+                <b-td colspan="3">
                   {{ row.spouse_telephone_no }}
-                </td>
-                <td colspan="3">
+                </b-td>
+                <b-td colspan="3">
                   {{ row.sixth_child }}
-                </td>
-                <td colspan="1"></td>
-              </tr>
+                </b-td>
+                <b-td colspan="1"></b-td>
+              </b-tr>
 
-              <tr>
-                <td
+              <b-tr style="height:30px">
+                <b-td
                   style="
                     text-align: left;
                     border: solid 1px black;
@@ -698,18 +700,18 @@
                   "
                 >
                   25. FATHER'S SURNAME
-                </td>
-                <td colspan="3">
+                </b-td>
+                <b-td colspan="3">
                    {{ row.father_last_name }}
 
-                </td>
-                <td colspan="3"></td>
-                <td colspan="1">
+                </b-td>
+                <b-td colspan="3"></b-td>
+                <b-td colspan="1">
                   {{ row.father_date_of_birth }}
-                </td>
-              </tr>
-              <tr>
-                <td
+                </b-td>
+              </b-tr>
+              <b-tr style="height:30px">
+                <b-td
                   width="80px"
                   style="
                     text-align: left;
@@ -718,11 +720,11 @@
                   "
                 >
                   FIRST NAME
-                </td>
-                <td colspan="2">
+                </b-td>
+                <b-td colspan="2">
                  {{ row.father_first_name }}
-                </td>
-                <td
+                </b-td>
+                <b-td
                   colspan="1"
                   style="
                     text-align: left;
@@ -731,12 +733,12 @@
                   "
                 >
                    {{ row.father_suffix }}
-                </td>
-                <td colspan="3"></td>
-                <td colspan="1"></td>
-              </tr>
-              <tr>
-                <td
+                </b-td>
+                <b-td colspan="3"></b-td>
+                <b-td colspan="1"></b-td>
+              </b-tr>
+              <b-tr style="height:30px">
+                <b-td
                   width="80px"
                   style="
                     text-align: left;
@@ -745,15 +747,15 @@
                   "
                 >
                   MIDDLE NAME
-                </td>
-                <td colspan="3">
+                </b-td>
+                <b-td colspan="3">
                    {{ row.father_middle_name }}
-                </td>
-                <td colspan="3"></td>
-                <td colspan="1"></td>
-              </tr>
-              <tr>
-                <td
+                </b-td>
+                <b-td colspan="3"></b-td>
+                <b-td colspan="1"></b-td>
+              </b-tr>
+              <b-tr style="height:30px">
+                <b-td
                   style="
                     text-align: left;
                     border: solid 1px black;
@@ -761,17 +763,17 @@
                   "
                 >
                   26. MOTHER'S MAIDEN NAME
-                </td>
-                <td colspan="3">
+                </b-td>
+                <b-td colspan="3">
                   {{ row.mother_maiden_name }}
-                </td>
-                <td colspan="3"></td>
-                <td colspan="1">
+                </b-td>
+                <b-td colspan="3"></b-td>
+                <b-td colspan="1">
                   {{ row.mother_date_of_birth }}
-                </td>
-              </tr>
-              <tr>
-                <td
+                </b-td>
+              </b-tr>
+              <b-tr style="height:30px">
+                <b-td
                   style="
                     text-align: left;
                     border: solid 1px black;
@@ -779,15 +781,15 @@
                   "
                 >
                   SURNAME
-                </td>
-                <td colspan="3">
+                </b-td>
+                <b-td colspan="3">
                   {{ row.mother_last_name }}
-                </td>
-                <td colspan="3"></td>
-                <td colspan="1"></td>
-              </tr>
-              <tr>
-                <td
+                </b-td>
+                <b-td colspan="3"></b-td>
+                <b-td colspan="1"></b-td>
+              </b-tr>
+              <b-tr style="height:30px">
+                <b-td
                   style="
                     text-align: left;
                     border: solid 1px black;
@@ -795,16 +797,16 @@
                   "
                 >
                   FIRST NAME
-                </td>
-                <td colspan="3">
+                </b-td>
+                <b-td colspan="3">
                   {{ row.mother_first_name }}
-                </td>
+                </b-td>
 
-                <td colspan="3"></td>
-                <td colspan="1"></td>
-              </tr>
-              <tr>
-                <td
+                <b-td colspan="3"></b-td>
+                <b-td colspan="1"></b-td>
+              </b-tr>
+              <b-tr style="height:30px">
+                <b-td
                   style="
                     text-align: left;
                     border: solid 1px black;
@@ -812,31 +814,30 @@
                   "
                 >
                   MIDDLE NAME
-                </td>
-                <td colspan="3">
+                </b-td>
+                <b-td colspan="3">
                  {{row.mother_middle_name}}
-                </td>
-                <td colspan="3"></td>
-                <td colspan="1"></td>
-              </tr>
+                </b-td>
+                <b-td colspan="3"></b-td>
+                <b-td colspan="1"></b-td>
+              </b-tr>
         
-               </v-simple-table>
-               <v-simple-table>
-               
-              <tr
+               </b-table-simple>
+               <v-container
                 clas="pa-0 float-left"
-                style="border: solid 1px; background-color: rgb(160, 160, 160)"
-              >
-                <td
-                  colspan="8"
-                  class="text-left"
-                  style="border: solid 1px black; color: white"
-                >
+                style="border: solid 1px; background-color: rgb(160, 160, 160);border: solid 1px black; color: white">
+             
+                
                   III. EDUCATIONAL BACKGROUND
-                </td>
-              </tr>
-              <tr>
-                <td
+                
+              </v-container>
+               <b-table-simple>
+              <colgroup><col width="80px"><col width="100px"><col width="100px"><col width="50px"> <col width="50px"><col width="50px"><col width="50px"> <col width="50px">
+            </colgroup>
+            <!-- <colgroup> <col width="50px"><col width="50px"></colgroup> -->
+              <b-thead>
+              <b-tr>
+                <b-th
                   rowspan="2"
                   style="
                     text-align: left;
@@ -845,8 +846,8 @@
                   "
                 >
                   LEVEL
-                </td>
-                <td
+                </b-th>
+                <b-th
                   rowspan="2"
                   style="
                     text-align: left;
@@ -855,8 +856,8 @@
                   "
                 >
                   NAME OF SCHOOL<br />(Write in full)
-                </td>
-                <td
+                </b-th>
+                <b-th
                   rowspan="2"
                   style="
                     text-align: left;
@@ -865,8 +866,8 @@
                   "
                 >
                   BASIC EDUCATION/DEGREE/COURSE<br />(Write in full)
-                </td>
-                <td
+                </b-th>
+                <b-th
                   colspan="2"
                   rowspan="1"
                   style="
@@ -876,8 +877,8 @@
                   "
                 >
                   PERIOD OF ATTENDANCE<br />
-                </td>
-                <td
+                </b-th>
+                <b-th
                   rowspan="2"
                   style="
                     text-align: left;
@@ -886,8 +887,8 @@
                   "
                 >
                   HIGHEST LEVEL/UNITS EARNED (if not graduated)
-                </td>
-                <td
+                </b-th>
+                <b-th
                   rowspan="2"
                   style="
                     text-align: left;
@@ -896,8 +897,8 @@
                   "
                 >
                   YEAR GRADUATED
-                </td>
-                <td
+                </b-th>
+                <b-th
                   rowspan="2"
                   style="
                     text-align: left;
@@ -906,11 +907,11 @@
                   "
                 >
                   SCHOLARSHIP/ ACADEMIC HONORS RECEIVED
-                </td>
-              </tr>
+                </b-th>
+              </b-tr>
 
-              <tr>
-                <td
+              <b-tr>
+                <b-th
                   style="
                     text-align: left;
                     border: solid 1px black;
@@ -918,8 +919,8 @@
                   "
                 >
                   From
-                </td>
-                <td
+                </b-th>
+                <b-th
                   style="
                     text-align: left;
                     border: solid 1px black;
@@ -927,45 +928,46 @@
                   "
                 >
                   To
-                </td>
-              </tr>
-                <tbody v-for="row in pdsEducationalBackground"
+                </b-th>
+              </b-tr>
+              </b-thead>
+                <b-tbody v-for="row in pdsEducationalBackground"
                 :key="row.id">
-              <tr
+              <b-tr
                
               >
-                <td colspan="1">
+                <b-td colspan="1">
                   {{ row.level }}
-                </td>
-                <td colspan="1">
+                </b-td>
+                <b-td colspan="1">
                   {{ row.name_of_school }}
 
-                </td>
-                <td colspan="1">
+                </b-td>
+                <b-td colspan="1">
                   {{ row.basic_education_course }}
-                </td>
-                <td colspan="1">
+                </b-td>
+                <b-td colspan="1" style="font-size:12px;color:#000000;font-weight:bold;text-decoration:none;font-family:'docs-Arial Narrow';font-style:normal;text-decoration-skip-ink:none;">
                   {{ row.period_of_attendance_from }}
-                </td>
-                <td colspan="1">
+                </b-td>
+                <b-td colspan="1" style="font-size:12px;color:#000000;font-weight:bold;text-decoration:none;font-family:'docs-Arial Narrow';font-style:normal;text-decoration-skip-ink:none;">
                  {{ row.period_of_attendance_to }}
-                </td>
-                <td colspan="1">
+                </b-td>
+                <b-td colspan="1">
                   {{ row.highest_level_units_earned }}
-                </td>
-                <td colspan="1">
+                </b-td>
+                <b-td colspan="1">
                   {{ row.year_graduated }}
-                </td>
-                <td colspan="1">
+                </b-td>
+                <b-td colspan="1">
                   {{ row.academic_honors_received }}
-                </td>
-              </tr>
-              </tbody>
-              <tfoot >
-              <tr style="background-color: rgb(211, 211, 211)">
+                </b-td>
+              </b-tr>
+              </b-tbody>
+              <b-tfoot >
+              <b-tr style="background-color: rgb(211, 211, 211)">
                 <td colspan="8"></td>
-              </tr>
-              <tr>
+              </b-tr>
+              <b-tr>
                 <td
                   style="
                     text-align: left;
@@ -975,11 +977,12 @@
                 >
                   SIGNATURE
                 </td>
-                <td colspan="2">
+                <td colspan="2" class="d-flex justify-content-center text-center px-2">
                   <img
+                  style="width:30%;height:30%"
                       :src="imageUrl.educationalBackgroundSignature"
                       alt="Base64 encoded image"
-                      style="border: none"
+                      
                     />
 
                 </td>
@@ -998,9 +1001,9 @@
                 <td colspan="3">
                   {{ pdsPersonalInfo[0].educational_date_signed }}
                 </td>
-              </tr>
-              </tfoot>
-          </v-simple-table>
+              </b-tr>
+              </b-tfoot>
+          </b-table-simple>
           <v-simple-table height="auto" class="pa-0 pa-0 ma-0">
             <thead>
               <tr
@@ -1098,10 +1101,10 @@
                 </th>
               </tr>
             </thead>
-            <tbody  v-for="row in pdsCivilServiceEligibility"
-                :key="row.id">
+            <tbody >
               <tr
-               
+                v-for="row in pdsCivilServiceEligibility"
+                :key="row.id"
               >
                 <td colspan="2">
                   {{ row.career_service }}
@@ -1129,17 +1132,18 @@
               </tr>
             </tbody>
           </v-simple-table>
-          <v-simple-table>
+
+           <v-simple-table width="50%">
               <tr
-                clas="pa-0 float-left"
+                clas="pa-0"
                 style="border: solid 1px; background-color: rgb(160, 160, 160)"
               >
                 <th
-                  colspan="9"
+                  colspan="8"
                   style="
                     text-align: left;
                     border: solid 1px black;
-                    color: white;
+                    color: white;width:500px;
                   "
                 >
                   V. WORK EXPERIENCE <br />
@@ -1152,11 +1156,12 @@
               <tr>
                 <th
                   colspan="2"
-                  style="text-align: left; border: solid 1px black"
+                  class="tableHeader"
+                  style="text-align: left; border: solid 1px black;"
                 >
                   28. INCLUSIVE DATES (mm/dd/yyyy)
                 </th>
-                <th
+                <td
                   rowspan="2"
                   colspan="1"
                   style="
@@ -1166,8 +1171,8 @@
                   "
                 >
                   POSITION TITLE (Write in full/Do not abbreviate)
-                </th>
-                <th
+                </td>
+                <td
                   rowspan="2"
                   colspan="1"
                   style="
@@ -1178,8 +1183,8 @@
                 >
                   DEPARTMENT / AGENCY / OFFICE / COMPANY (Write in full/Do not
                   abbreviate)
-                </th>
-                <th
+                </td>
+                <td
                   rowspan="2"
                   colspan="1"
                   style="
@@ -1189,8 +1194,8 @@
                   "
                 >
                   MONTHLY SALARY
-                </th>
-                <th
+                </td>
+                <td
                   colspan="1"
                   rowspan="2"
                   style="
@@ -1201,8 +1206,8 @@
                 >
                   SALARY/ JOB/ PAY GRADE (if applicable)& STEP (Format "00-0")/
                   INCREMENT
-                </th>
-                <th
+                </td>
+                <td
                   colspan="1"
                   rowspan="2"
                   style="
@@ -1212,8 +1217,8 @@
                   "
                 >
                   STATUS OF APPOINTMENT
-                </th>
-                <th
+                </td>
+                <td
                   colspan="1"
                   rowspan="2"
                   style="
@@ -1223,11 +1228,11 @@
                   "
                 >
                   GOV'T SERVICE (Y/ N)
-                </th>
+                </td>
                 
               </tr>
               <tr>
-                <th
+                <td
                   style="
                     text-align: left;
                     border: solid 1px black;
@@ -1235,8 +1240,8 @@
                   "
                 >
                   From
-                </th>
-                <th
+                </td>
+                <td
                   style="
                     text-align: left;
                     border: solid 1px black;
@@ -1244,12 +1249,12 @@
                   "
                 >
                   To
-                </th>
+                </td>
               </tr>
-              <tbody  v-for="row in pdsWorkExperience"
-                :key="row.id">
+              <tbody >
               <tr
-               
+                v-for="row in pdsWorkExperience"
+                :key="row.id"
               >
                 <td colspan="1">
                   {{ row.work_inclusive_dates_from }}
@@ -1311,7 +1316,7 @@
                     style="border: none"
                   />
  
-                  <!-- <v-spacer></v-spacer> -->
+                   <v-spacer></v-spacer> 
                 </td>
 
                 <td
@@ -1329,8 +1334,8 @@
                 </td>
               </tr>
             </tfoot>
-          </v-simple-table>
-   
+          </v-simple-table> 
+
           <v-simple-table height="auto" class="pa-0 pa-0 ma-0">
             <thead>
               <tr
@@ -6101,7 +6106,10 @@ export default {
       return this.formatDate(this.personalDateOfBirth);
     },
     computedDateFormattedSpouseDOB() {
+     
+     
       return this.formatDate(this.dateOfBirthSpouse);
+      
     },
     computedDateFormattedFatherDOB() {
       return this.formatDate(this.dateOfBirthFather);
@@ -6751,6 +6759,10 @@ export default {
       };
       console.log(this.educBackgroundSignature);
     },
+    async print () {
+      // Pass the element id here
+      await this.$htmlToPaper('printMe');
+    },
     finalizePds: async function () {
       console.log(moment(this.personalDateOfBirth).format('YYYY-MM-DD'));
       if (
@@ -7074,11 +7086,13 @@ export default {
 <style scoped src="../../assets/css/main.css" crossorigin="anonymous">
 * {
   font-size: 10px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 .pdsA,
 td,
 th,
 tr {
   font-size: 10px;
+   word-wrap: none;
 }
 </style>
