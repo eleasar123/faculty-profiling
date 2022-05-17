@@ -2694,20 +2694,28 @@
                           <br />
                         </h5>
                       </v-card>
-                      <v-card class="pa-2 pt-4" v-model="actual1" outlined tile>
-                        <h5 >
+                      <v-card
+                        class="pa-2 pt-4"
+                        style="height: 86px"
+                        v-model="actual1"
+                        outlined
+                        tile
+                      >
+                        <h5>
                           <br />
                         </h5>
                       </v-card>
-                      <v-card v-model="actual1_blank"
+                      <v-card
+                        v-model="actual1_blank"
                         class="pa-2 pt-4"
                         style="height: 64px"
                         outlined
                         tile
                       >
-                        <h5> <br /></h5>
+                        <h5><br /></h5>
                       </v-card>
-                      <v-card v-model="actual2"
+                      <v-card
+                        v-model="actual2"
                         class="pa-2 pt-10"
                         style="height: 125px"
                         outlined
@@ -2715,37 +2723,37 @@
                       >
                         <h5><br /></h5>
                       </v-card>
-                      <v-card v-model="actual2_blank"
+                      <v-card
+                        v-model="actual2_blank"
                         class="pa-2 pt-4"
                         style="height: 60px"
                         outlined
                         tile
                       >
-                        <h5> <br /></h5>
+                        <h5><br /></h5>
                       </v-card>
                       <v-card
-                      v-model="actual3"
+                        v-model="actual3"
                         class="pa-2 pt-10"
                         style="height: 126px"
                         outlined
                         tile
                       >
                         <h5>
-                        
                           <br />
                         </h5>
                       </v-card>
                       <v-card
-                      v-model="actual3_blank"
+                        v-model="actual3_blank"
                         class="pa-2 pt-4"
                         style="height: 59px"
                         outlined
                         tile
                       >
-                        <h5> <br /></h5>
+                        <h5><br /></h5>
                       </v-card>
                       <v-card
-                      v-model="actual4"
+                        v-model="actual4"
                         class="pa-2 pt-10"
                         style="height: 125px"
                         outlined
@@ -2754,7 +2762,7 @@
                         <h5><br /></h5>
                       </v-card>
                       <v-card
-                      v-model="actual4_blank"
+                        v-model="actual4_blank"
                         class="pa-2 pt-4"
                         style="height: 60px"
                         outlined
@@ -2763,39 +2771,43 @@
                         <h5><br /></h5>
                       </v-card>
                       <v-card
-                      v-model="actual5"
+                        v-model="actual5"
                         class="pa-2 pt-4"
                         style="height: 86px"
                         outlined
                         tile
                       >
                         <h5>
-                         <br />
+                          <br />
                         </h5>
                       </v-card>
                       <v-card
-                      v-model="actual5_blank"
+                        v-model="actual5_blank"
                         class="pa-2 pt-4"
                         style="height: 60px"
                         outlined
                         tile
                       >
-                        <h5> <br /></h5>
+                        <h5><br /></h5>
                       </v-card>
                       <v-card
-                      v-model="actual6"
+                        v-model="actual6"
                         class="pa-2 pt-4"
                         style="height: 86px"
                         outlined
                         tile
                       >
                         <h5>
-                          
                           <br />
                         </h5>
                       </v-card>
-                      <v-card  v-model="actual6_blank" class="pa-1" outlined tile>
-                        <h5> <br /></h5>
+                      <v-card
+                        v-model="actual6_blank"
+                        class="pa-1"
+                        outlined
+                        tile
+                      >
+                        <h5><br /></h5>
                       </v-card>
                       <v-card
                         class="pa-2 pt-4"
@@ -2806,7 +2818,7 @@
                         <h5><br /></h5>
                       </v-card>
                       <v-card
-                      v-model="actual6_timeliness"
+                        v-model="actual6_timeliness"
                         class="pa-2 pt-4"
                         style="height: 86px"
                         outlined
@@ -2816,39 +2828,38 @@
                           <br />
                         </h5>
                       </v-card>
-                      
+
                       <v-card
-                      v-model="actual7"
+                        v-model="actual7"
                         class="pa-2 pt-4"
                         style="height: 59px"
                         outlined
                         tile
                       >
-                        <h5> <br /></h5>
+                        <h5><br /></h5>
                       </v-card>
                       <v-card
-                      v-model="actual7_blank"
+                        v-model="actual7_blank"
                         class="pa-2 pt-4"
                         style="height: 86px"
                         outlined
                         tile
                       >
                         <h5>
-                          
                           <br />
                         </h5>
                       </v-card>
                       <v-card
-                       v-model="actual8"
+                        v-model="actual8"
                         class="pa-2 pt-4"
                         style="height: 60px"
                         outlined
                         tile
                       >
-                        <h5> <br /></h5>
+                        <h5><br /></h5>
                       </v-card>
                       <v-card
-                       v-model="actual9"
+                        v-model="actual9"
                         class="pa-2 pt-4"
                         style="height: 125px"
                         outlined
@@ -2857,7 +2868,7 @@
                         <h5><br /></h5>
                       </v-card>
                       <v-card
-                       v-model="actual9_efficiency"
+                        v-model="actual9_efficiency"
                         class="pa-2 pt-4"
                         style="height: 46px"
                         outlined
@@ -2866,16 +2877,16 @@
                         <h5><br /></h5>
                       </v-card>
                       <v-card
-                       v-model="actual9_blank"
+                        v-model="actual9_blank"
                         class="pa-2 pt-4"
                         style="height: 46px"
                         outlined
                         tile
                       >
-                        <h5> <br /></h5>
+                        <h5><br /></h5>
                       </v-card>
                       <v-card
-                       v-model="actual10"
+                        v-model="actual10"
                         class="pa-2 pt-8"
                         style="height: 136px"
                         outlined
@@ -2884,7 +2895,7 @@
                         <h5><br /></h5>
                       </v-card>
                       <v-card
-                       v-model="actual10_efficiency"
+                        v-model="actual10_efficiency"
                         class="pa-2 pt-4"
                         style="height: 65px"
                         outlined
@@ -2893,7 +2904,7 @@
                         <h5><br /></h5>
                       </v-card>
                       <v-card
-                       v-model="actual10_blank"
+                        v-model="actual10_blank"
                         class="pa-2 pt-4"
                         style="height: 46px"
                         outlined
@@ -2902,7 +2913,7 @@
                         <h5><br /></h5>
                       </v-card>
                       <v-card
-                       v-model="actual11"
+                        v-model="actual11"
                         class="pa-2 pt-4"
                         style="height: 86px"
                         outlined
@@ -2911,16 +2922,20 @@
                         <h5><br /></h5>
                       </v-card>
                       <v-card
-                       v-model="actual11_efficiency"
+                        v-model="actual11_efficiency"
                         class="pa-2 pt-4"
                         style="height: 66px"
                         outlined
                         tile
                       >
-                        <h5> <br /></h5>
+                        <h5><br /></h5>
                       </v-card>
                       <v-card
-                       v-model="actual11_blank" class="pa-2 pt-4" outlined tile>
+                        v-model="actual11_blank"
+                        class="pa-2 pt-4"
+                        outlined
+                        tile
+                      >
                         <h5><br /></h5>
                       </v-card>
                       <v-card
@@ -2947,25 +2962,256 @@
                     >
                       <v-card
                         class="pa-10 pt-4"
-                        style="width: 260px"
+                        style="width: 260px; height: 66px"
                         outlined
                         tile
                       >
-                        <h5>Rating</h5>
+                        <h5>
+                          Rating <br />
+                          <br />
+
+                          <v-row>
+                           
+                            <v-spacer class="ml-n4 pr-4"><p >Q</p></v-spacer>
+                          <v-divider class=" mx-4" vertical></v-divider>
+                            <v-spacer  class="ml-4 mr-2"><p>E</p></v-spacer>
+                            <v-divider class="mx-4" vertical></v-divider>
+                            <v-spacer  class="ml-4 mr-2"><p>T</p></v-spacer>
+                          <v-divider class="mx-4" vertical></v-divider>
+                            <v-spacer><p>AVE</p></v-spacer>
+                          </v-row>
+                        </h5>
                       </v-card>
 
-                      <v-card class="pa-2 pt-4" outlined tile> </v-card>
-                      <v-card class="pa-2 pt-4" outlined tile> </v-card>
-                      <v-card class="pa-2 pt-4" outlined tile> </v-card>
-                      <v-card class="pa-2 pt-4" outlined tile> </v-card>
-                      <v-card class="pa-2 pt-4" outlined tile> </v-card>
-                      <v-card class="pa-2 pt-4" outlined tile> </v-card>
-                      <v-card class="pa-2 pt-4" outlined tile> </v-card>
-                      <v-card class="pa-2 pt-4" outlined tile> </v-card>
-                      <v-card class="pa-2 pt-4" outlined tile> </v-card>
-                      <v-card class="pa-2 pt-4" outlined tile> </v-card>
-                      <v-card class="pa-2 pt-4" outlined tile> </v-card>
-                      <v-card class="pa-2 pt-4" outlined tile> </v-card>
+                      <v-card class="pa-2 pt-4" outlined tile>
+                        <v-row>
+                          <v-spacer
+                            ><p>{{ empRater }}</p></v-spacer
+                          >
+                          <v-divider class="mx-4 pa-0"  style="height:148px" vertical></v-divider>
+                          <v-spacer
+                            ><p>{{ empRater }}</p></v-spacer
+                          >
+                          <v-divider class="mx-4" vertical></v-divider>
+                          <v-spacer
+                            ><p>{{ empRater }}</p></v-spacer
+                          >
+                          <v-divider class="mx-4" vertical></v-divider>
+                          <v-spacer
+                            ><p>{{ empRater }}</p></v-spacer
+                          >
+                        </v-row>
+                      </v-card>
+                      <v-card class="pa-2 pt-4" outlined tile>
+                        <v-row>
+                          <v-spacer
+                            ><p>{{ empRater }}</p></v-spacer
+                          >
+                       <v-divider class="mx-4 pa-0"  style="height:183px" vertical></v-divider>
+                          <v-spacer
+                            ><p>{{ empRater }}</p></v-spacer
+                          >
+                          <v-divider class="mx-4" vertical></v-divider>
+                          <v-spacer
+                            ><p>{{ empRater }}</p></v-spacer
+                          >
+                          <v-divider class="mx-4" vertical></v-divider>
+                          <v-spacer
+                            ><p>{{ empRater }}</p></v-spacer
+                          >
+                        </v-row>
+                      </v-card>
+                      <v-card class="pa-2 pt-4" outlined tile>
+                        <v-row>
+                          <v-spacer
+                            ><p>{{ empRater }}</p></v-spacer
+                          >
+                         <v-divider class="mx-4 pa-0"  style="height:183px" vertical></v-divider>
+                          <v-spacer
+                            ><p>{{ empRater }}</p></v-spacer
+                          >
+                          <v-divider class="mx-4" vertical></v-divider>
+                          <v-spacer
+                            ><p>{{ empRater }}</p></v-spacer
+                          >
+                          <v-divider class="mx-4" vertical></v-divider>
+                          <v-spacer
+                            ><p>{{ empRater }}</p></v-spacer
+                          >
+                        </v-row>
+                      </v-card>
+
+                      <v-card class="pa-2 pt-4" outlined tile>
+                        <v-row>
+                          <v-spacer
+                            ><p>{{ empRater }}</p></v-spacer
+                          >
+                        <v-divider class="mx-4 pa-0"  style="height:183px" vertical></v-divider>
+                          <v-spacer
+                            ><p>{{ empRater }}</p></v-spacer
+                          >
+                          <v-divider class="mx-4" vertical></v-divider>
+                          <v-spacer
+                            ><p>{{ empRater }}</p></v-spacer
+                          >
+                          <v-divider class="mx-4" vertical></v-divider>
+                          <v-spacer
+                            ><p>{{ empRater }}</p></v-spacer
+                          >
+                        </v-row>
+                      </v-card>
+                      <v-card class="pa-2 pt-4"   outlined tile>
+                        <v-row>
+                          <v-spacer
+                            ><p>{{ empRater }}</p></v-spacer
+                          >
+                          <v-divider class="mx-4"  style="height:144px"  vertical></v-divider>
+                          <v-spacer
+                            ><p>{{ empRater }}</p></v-spacer
+                          >
+                          <v-divider class="mx-4"  vertical></v-divider>
+                          <v-spacer
+                            ><p>{{ empRater }}</p></v-spacer
+                          >
+                          <v-divider class="mx-4" vertical></v-divider>
+                          <v-spacer
+                            ><p>{{ empRater }}</p></v-spacer
+                          >
+                        </v-row>
+                      </v-card>
+                      <v-card class="pa-2 pt-4"  outlined tile>
+                        <v-row>
+                          <v-spacer
+                            ><p>{{ empRater }}</p></v-spacer
+                          >
+                          <v-divider class="mx-4"  style="height:170px"  vertical></v-divider>
+                          <v-spacer
+                            ><p>{{ empRater }}</p></v-spacer
+                          >
+                          <v-divider class="mx-4" vertical></v-divider>
+                          <v-spacer
+                            ><p>{{ empRater }}</p></v-spacer
+                          >
+                          <v-divider class="mx-4" vertical></v-divider>
+                          <v-spacer
+                            ><p>{{ empRater }}</p></v-spacer
+                          >
+                        </v-row>
+                      </v-card>
+                      <v-card class="pa-2 pt-4" outlined tile>
+                        <v-row>
+                          <v-spacer
+                            ><p>{{ empRater }}</p></v-spacer
+                          >
+                          <v-divider class="mx-4" style="height:143px" vertical></v-divider>
+                          <v-spacer
+                            ><p>{{ empRater }}</p></v-spacer
+                          >
+                          <v-divider class="mx-4" vertical></v-divider>
+                          <v-spacer
+                            ><p>{{ empRater }}</p></v-spacer
+                          >
+                          <v-divider class="mx-4" vertical></v-divider>
+                          <v-spacer
+                            ><p>{{ empRater }}</p></v-spacer
+                          >
+                        </v-row>
+                      </v-card>
+                      <v-card class="pa-2 pt-4" outlined tile>
+                        <v-row>
+                          <v-spacer
+                            ><p>{{ empRater }}</p></v-spacer
+                          >
+                          <v-divider class="mx-4" style="height:144px" vertical></v-divider>
+                          <v-spacer
+                            ><p>{{ empRater }}</p></v-spacer
+                          >
+                          <v-divider class="mx-4" vertical></v-divider>
+                          <v-spacer
+                            ><p>{{ empRater }}</p></v-spacer
+                          >
+                          <v-divider class="mx-4" vertical></v-divider>
+                          <v-spacer
+                            ><p>{{ empRater }}</p></v-spacer
+                          >
+                        </v-row>
+                      </v-card>
+                      <v-card class="pa-2 pt-4" outlined tile>
+                        <v-row>
+                          <v-spacer
+                            ><p>{{ empRater }}</p></v-spacer
+                          >
+                          <v-divider class="mx-4"  style="height:215px" vertical></v-divider>
+                          <v-spacer
+                            ><p>{{ empRater }}</p></v-spacer
+                          >
+                          <v-divider class="mx-4" vertical></v-divider>
+                          <v-spacer
+                            ><p>{{ empRater }}</p></v-spacer
+                          >
+                          <v-divider class="mx-4" vertical></v-divider>
+                          <v-spacer
+                            ><p>{{ empRater }}</p></v-spacer
+                          >
+                        </v-row>
+                      </v-card>
+                      <v-card class="pa-2 pt-4" outlined tile>
+                        <v-row>
+                          <v-spacer
+                            ><p>{{ empRater }}</p></v-spacer
+                          >
+                          <v-divider class="mx-4"  style="height:245px" vertical></v-divider>
+                          <v-spacer
+                            ><p>{{ empRater }}</p></v-spacer
+                          >
+                          <v-divider class="mx-4" vertical></v-divider>
+                          <v-spacer
+                            ><p>{{ empRater }}</p></v-spacer
+                          >
+                          <v-divider class="mx-4" vertical></v-divider>
+                          <v-spacer
+                            ><p>{{ empRater }}</p></v-spacer
+                          >
+                        </v-row>
+                      </v-card>
+                      <v-card class="pa-2 pt-4" outlined tile>
+                        <v-row>
+                          <v-spacer
+                            ><p>{{ empRater }}</p></v-spacer
+                          >
+                          <v-divider class="mx-4" style="height:195px" vertical></v-divider>
+                          <v-spacer
+                            ><p>{{ empRater }}</p></v-spacer
+                          >
+                          <v-divider class="mx-4" vertical></v-divider>
+                          <v-spacer
+                            ><p>{{ empRater }}</p></v-spacer
+                          >
+                          <v-divider class="mx-4" vertical></v-divider>
+                          <v-spacer
+                            ><p>{{ empRater }}</p></v-spacer
+                          >
+                        </v-row>
+                      </v-card>
+                      <v-card class="pa-2 pt-4" outlined tile>
+                        <v-row>
+                          <v-spacer
+                            ><p>{{ empRater }}</p></v-spacer
+                          >
+                          <v-divider class="mx-4" style="height:215px" vertical></v-divider>
+                          <v-spacer
+                            ><p>{{ empRater }}</p></v-spacer
+                          >
+                          <v-divider class="mx-4" vertical></v-divider>
+                          <v-spacer
+                            ><p>{{ empRater }}</p></v-spacer
+                          >
+                          <v-divider class="mx-4" vertical></v-divider>
+                          <v-spacer
+                            ><p>{{ empRater }}</p></v-spacer
+                          >
+                        </v-row>
+                      </v-card>
                     </v-col>
                     <v-col
                       :key="n"
@@ -2974,7 +3220,7 @@
                     >
                       <v-card
                         class="pa-2 pt-4"
-                        style="width: 200px"
+                        style="width: 200px; height:66px"
                         outlined
                         tile
                       >
@@ -2984,37 +3230,49 @@
                           <br />
                         </h5>
                       </v-card>
-                      <v-card class="pa-2 pt-4 part1Score" outlined tile>
+                      <v-card class="pa-2 pt-4 part1Score"  style="height:150px" outlined tile>
+                        <h5></h5>
                       </v-card>
-                      <v-card class="pa-2 pt-4 part1Score" outlined tile>
+                      <v-card class="pa-2 pt-4 part1Score"  style="height:185px" outlined tile>
+                        <h5></h5>
+                      </v-card> 
+                      <v-card class="pa-2 pt-4 part1Score"  style="height:185px" outlined tile>
+                        <h5></h5>
                       </v-card>
-                      <v-card class="pa-2 pt-4 part1Score" outlined tile>
+                      <v-card class="pa-2 pt-4 part1Score"  style="height:185px" outlined tile>
+                        <h5></h5>
                       </v-card>
-                      <v-card class="pa-2 pt-4 part1Score" outlined tile>
+                      <v-card class="pa-2 pt-4 part1Score" style="height:146px" outlined tile>
+                        <h5></h5>
                       </v-card>
-                      <v-card class="pa-2 pt-4 part1Score" outlined tile>
+                      <v-card class="pa-2 pt-4 part1Score"  style="height:172px" outlined tile>
+                        <h5></h5>
                       </v-card>
-                      <v-card class="pa-2 pt-4 part1Score" outlined tile>
+                      <v-card class="pa-2 pt-4 part1Score" style="height:145px"  outlined tile>
+                        <h5></h5>
                       </v-card>
-                      <v-card class="pa-2 pt-4 part1Score" outlined tile>
+                      <v-card class="pa-2 pt-4 part1Score" style="height:146px" outlined tile>
+                        <h5></h5>
                       </v-card>
-                      <v-card class="pa-2 pt-4 part1Score" outlined tile>
+                      <v-card class="pa-2 pt-4 part1Score" style="height:217px" outlined tile>
+                        <h5></h5>
                       </v-card>
-                      <v-card class="pa-2 pt-4 part1Score" outlined tile>
+                      <v-card class="pa-2 pt-4 part1Score" style="height:247px" outlined tile>
+                        <h5></h5>
                       </v-card>
-                      <v-card class="pa-2 pt-4 part1Score" outlined tile>
+                      <v-card class="pa-2 pt-4 part1Score" style="height:197px" outlined tile>
+                        <h5></h5>
                       </v-card>
-                      <v-card class="pa-2 pt-4 part1Score" outlined tile>
-                      </v-card>
-                      <v-card class="pa-2 pt-4 part1Score" outlined tile>
+                      <v-card class="pa-2 pt-4 part1Score" style="height:217px" outlined tile>
+                        <h5></h5>
                       </v-card>
                     </v-col>
                   </template>
                 </div>
               </v-row>
-              <br />
+              <br /> <br>
 
-              <!-- START OF RATING AREA  -->
+              <!-- START OF Adjrcectival RATING AREA  -->
               <div style="width: 600px; margin: auto">
                 <v-card
                   class="pa-2 text-center"
@@ -3070,7 +3328,28 @@
                   </template>
                 </v-row>
               </div>
-              <!-- END OF RATING CRITERIA -->
+              <br>
+              <!-- END OF Adjective RATING CRITERIA -->
+
+              <!-- START OF PART 1 SIGNATURES -->
+               <div class="pa-10 ml-9">
+                  ________________________________________
+                  ________________________________________
+                  ________________________________________
+                </div>
+              <!-- <v-row  v-for="n in 3" :key="n" style="width:400px">
+                <v-row   v-if="n === 1">
+                  <v-card>  <v-divider class="mx-4" horizontal></v-divider> </v-card>
+                </v-row>
+                <v-row   v-if="n === 2">
+                  <v-card><v-divider class="mx-4" horizontal></v-divider>  </v-card>
+                </v-row>
+                <v-row   v-if="n === 3">
+                  <v-card> <v-divider class="mx-4" horizontal></v-divider>  </v-card>
+                </v-row>
+
+              </v-row> -->
+                <!-- END OF PART 1 SIGNATURES -->
             </v-container>
           </v-app>
         </div>
@@ -4251,6 +4530,7 @@
 export default {
   data: () => ({
     empName: "",
+    items: ["Foo", "Bar", "Fizz", "Buzz"],
   }),
 
   // data: () => ({
