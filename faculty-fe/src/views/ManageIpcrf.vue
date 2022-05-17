@@ -4230,12 +4230,13 @@
                   >
                     Action Plan <br />
                     (Recommended Developmental Intervention) <br />
-                    <v-card class="d-inline pa-2" outlined tile>
+                         Learning Objectives |    Intervention 
+                    <!-- <v-card class="d-inline pa-2" outlined tile>
                       Learning Objectives
                     </v-card>
                     <v-card class="d-inline pa-2" outlined tile>
                       Intervention
-                    </v-card>
+                    </v-card> -->
                   </v-card>
                   <v-card v-else-if="n === 4" class="pa-8" outlined tile>
                     Timeline
