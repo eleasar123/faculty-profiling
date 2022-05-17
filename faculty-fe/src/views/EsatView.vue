@@ -1422,7 +1422,10 @@
                       @click="finalizeEsat"
                       >SAVE</v-btn
                     >
-                    <v-btn class="float-right mb-4 me-4 mt-5" v-if="updateInfos"
+                    <v-btn
+                      class="float-right mb-4 me-4 mt-5"
+                      v-if="updateInfos"
+                      @click="updateInfo"
                       >UPDATE</v-btn
                     >
                     <v-btn
@@ -1439,7 +1442,7 @@
           </v-container>
         </v-tab-item>
 
-        <v-tab-item :key="5" value="show_print">
+        <v-tab-item :key="5" value="show_print" v-if="showPrint">
           <v-card flat>
             <v-container class="mt-5">
               <h2 class="heading text-center">
@@ -1821,7 +1824,7 @@
                       <tr>
                         <td>
                           {{
-                            coreBehavioralCompetencies[0].check_status == "1"
+                            coreBehavioralCompetencies[0].check_status === "1"
                               ? "✔"
                               : ""
                           }}
@@ -1836,7 +1839,7 @@
                       <tr>
                         <td>
                           {{
-                            coreBehavioralCompetencies[1].check_status == "1"
+                            coreBehavioralCompetencies[1].check_status === "1"
                               ? "✔"
                               : ""
                           }}
@@ -1852,7 +1855,7 @@
                       <tr>
                         <td>
                           {{
-                            coreBehavioralCompetencies[2].check_status == "1"
+                            coreBehavioralCompetencies[2].check_status === "1"
                               ? "✔"
                               : ""
                           }}
@@ -1866,7 +1869,7 @@
                       <tr>
                         <td>
                           {{
-                            coreBehavioralCompetencies[3].check_status == "1"
+                            coreBehavioralCompetencies[3].check_status === "1"
                               ? "✔"
                               : ""
                           }}
@@ -1880,7 +1883,8 @@
                       <tr>
                         <td>
                           {{
-                            coreBehavioralCompetencies[4].check_status === "1"
+                            this.coreBehavioralCompetencies[4].check_status ===
+                            "1"
                               ? "✔"
                               : ""
                           }}
@@ -1901,7 +1905,8 @@
                       <tr>
                         <td>
                           {{
-                            coreBehavioralCompetencies[5].check_status === "1"
+                            this.coreBehavioralCompetencies[5].check_status ===
+                            "1"
                               ? "✔"
                               : ""
                           }}
@@ -1916,7 +1921,8 @@
                       <tr>
                         <td>
                           {{
-                            coreBehavioralCompetencies[6].check_status === "1"
+                            this.coreBehavioralCompetencies[6].check_status ===
+                            "1"
                               ? "✔"
                               : ""
                           }}
@@ -1931,7 +1937,8 @@
                       <tr>
                         <td>
                           {{
-                            coreBehavioralCompetencies[7].check_status === "1"
+                            this.coreBehavioralCompetencies[7].check_status ===
+                            "1"
                               ? "✔"
                               : ""
                           }}
@@ -1946,7 +1953,8 @@
                       <tr>
                         <td>
                           {{
-                            coreBehavioralCompetencies[8].check_status === "1"
+                            this.coreBehavioralCompetencies[8].check_status ===
+                            "1"
                               ? "✔"
                               : ""
                           }}
@@ -1960,7 +1968,8 @@
                       <tr>
                         <td>
                           {{
-                            coreBehavioralCompetencies[9].check_status === "1"
+                            this.coreBehavioralCompetencies[9].check_status ===
+                            "1"
                               ? "✔"
                               : ""
                           }}
@@ -1980,7 +1989,8 @@
                       <tr>
                         <td>
                           {{
-                            coreBehavioralCompetencies[10].check_status === "1"
+                            this.coreBehavioralCompetencies[10].check_status ===
+                            "1"
                               ? "✔"
                               : ""
                           }}
@@ -1994,7 +2004,8 @@
                       <tr>
                         <td>
                           {{
-                            coreBehavioralCompetencies[11].check_status === "1"
+                            this.coreBehavioralCompetencies[11].check_status ===
+                            "1"
                               ? "✔"
                               : ""
                           }}
@@ -2009,7 +2020,8 @@
                       <tr>
                         <td>
                           {{
-                            coreBehavioralCompetencies[12].check_status === "1"
+                            this.coreBehavioralCompetencies[12].check_status ===
+                            "1"
                               ? "✔"
                               : ""
                           }}
@@ -2026,7 +2038,8 @@
                       <tr>
                         <td>
                           {{
-                            coreBehavioralCompetencies[13].check_status === "1"
+                            this.coreBehavioralCompetencies[13].check_status ===
+                            "1"
                               ? "✔"
                               : ""
                           }}
@@ -2041,7 +2054,8 @@
                       <tr>
                         <td>
                           {{
-                            coreBehavioralCompetencies[14].check_status === "1"
+                            this.coreBehavioralCompetencies[14].check_status ===
+                            "1"
                               ? "✔"
                               : ""
                           }}
@@ -2066,7 +2080,8 @@
                       <tr>
                         <td>
                           {{
-                            coreBehavioralCompetencies[15].check_status === "1"
+                            this.coreBehavioralCompetencies[15].check_status ===
+                            "1"
                               ? "✔"
                               : ""
                           }}
@@ -2077,7 +2092,8 @@
                       <tr>
                         <td>
                           {{
-                            coreBehavioralCompetencies[16].check_status === "1"
+                            this.coreBehavioralCompetencies[16].check_status ===
+                            "1"
                               ? "✔"
                               : ""
                           }}
@@ -2092,7 +2108,8 @@
                       <tr>
                         <td>
                           {{
-                            coreBehavioralCompetencies[17].check_status === "1"
+                            this.coreBehavioralCompetencies[17].check_status ===
+                            "1"
                               ? "✔"
                               : ""
                           }}
@@ -2106,7 +2123,8 @@
                       <tr>
                         <td>
                           {{
-                            coreBehavioralCompetencies[18].check_status === "1"
+                            this.coreBehavioralCompetencies[18].check_status ===
+                            "1"
                               ? "✔"
                               : ""
                           }}
@@ -2119,7 +2137,8 @@
                       <tr>
                         <td>
                           {{
-                            coreBehavioralCompetencies[19].check_status === "1"
+                            this.coreBehavioralCompetencies[19].check_status ===
+                            "1"
                               ? "✔"
                               : ""
                           }}
@@ -2141,7 +2160,8 @@
                       <tr>
                         <td>
                           {{
-                            coreBehavioralCompetencies[20].check_status === "1"
+                            this.coreBehavioralCompetencies[20].check_status ===
+                            "1"
                               ? "✔"
                               : ""
                           }}
@@ -2155,7 +2175,8 @@
                       <tr>
                         <td>
                           {{
-                            coreBehavioralCompetencies[21].check_status === "1"
+                            this.coreBehavioralCompetencies[21].check_status ===
+                            "1"
                               ? "✔"
                               : ""
                           }}
@@ -2169,7 +2190,8 @@
                       <tr>
                         <td>
                           {{
-                            coreBehavioralCompetencies[22].check_status === "1"
+                            this.coreBehavioralCompetencies[22].check_status ===
+                            "1"
                               ? "✔"
                               : ""
                           }}
@@ -2183,7 +2205,8 @@
                       <tr>
                         <td>
                           {{
-                            coreBehavioralCompetencies[23].check_status === "1"
+                            this.coreBehavioralCompetencies[23].check_status ===
+                            "1"
                               ? "✔"
                               : ""
                           }}
@@ -2198,7 +2221,8 @@
                       <tr>
                         <td>
                           {{
-                            coreBehavioralCompetencies[24].check_status === "1"
+                            this.coreBehavioralCompetencies[24].check_status ===
+                            "1"
                               ? "✔"
                               : ""
                           }}
@@ -2220,7 +2244,8 @@
                       <tr>
                         <td>
                           {{
-                            coreBehavioralCompetencies[25].check_status === "1"
+                            this.coreBehavioralCompetencies[25].check_status ===
+                            "1"
                               ? "✔"
                               : ""
                           }}
@@ -2236,7 +2261,8 @@
                       <tr>
                         <td>
                           {{
-                            coreBehavioralCompetencies[26].check_status === "1"
+                            this.coreBehavioralCompetencies[26].check_status ===
+                            "1"
                               ? "✔"
                               : ""
                           }}
@@ -2251,7 +2277,8 @@
                       <tr>
                         <td>
                           {{
-                            coreBehavioralCompetencies[27].check_status === "1"
+                            this.coreBehavioralCompetencies[27].check_status ===
+                            "1"
                               ? "✔"
                               : ""
                           }}
@@ -2265,7 +2292,8 @@
                       <tr>
                         <td>
                           {{
-                            coreBehavioralCompetencies[28].check_status === "1"
+                            this.coreBehavioralCompetencies[28].check_status ===
+                            "1"
                               ? "✔"
                               : ""
                           }}
@@ -2279,7 +2307,8 @@
                       <tr>
                         <td>
                           {{
-                            coreBehavioralCompetencies[29].check_status === "1"
+                            this.coreBehavioralCompetencies[29].check_status ===
+                            "1"
                               ? "✔"
                               : ""
                           }}
@@ -2300,7 +2329,9 @@
                     <v-btn class="float-right mb-4 me-4 mt-5">PRINT</v-btn>
                     <v-btn
                       class="float-right mb-4 me-4 mt-5"
-                      @click="goToEsatCard(), (esatCard = true)"
+                      @click="
+                        goToEsatCard(), (esatCard = true), (showPrint = false)
+                      "
                       >FINISH</v-btn
                     >
                     <v-btn class="float-right mb-4 me-4 mt-5" @click="editInfo"
@@ -2316,7 +2347,7 @@
           </v-card>
         </v-tab-item>
 
-        <v-tab-item :key="6" value="esat_card" v-if="esatCard">
+        <v-tab-item :key="6" value="esat_card">
           <v-container class="mt-5 mb-5 p-5">
             <v-card class="bgCard pa-2" id="cardEsat">
               <h2 class="heading ml-5">ELECTRONIC SELF-ASSESMENT TOOL</h2>
@@ -2417,15 +2448,7 @@ export default {
       returnPart3() {
         this.tab = "part3";
       },
-      // goToShowPrint() {
-      //   this.tab = "show_print";
-      // },
-      // editInfoInfo() {
-      //   this.tab = "part1";
-      // },
-      // returnShowPrint() {
-      //   this.tab = "show_print";
-      // },
+
       goToEsatCard() {
         this.tab = "esat_card";
       },
@@ -2438,8 +2461,8 @@ export default {
       showPart1: false,
       showPart2: false,
       showPart3: false,
-      // showPrint: false,
-      esatCard: true,
+      showPrint: false,
+      // esatCard: false,
       saveInfos: true,
       updateInfos: false,
       positionItems: [
@@ -2689,7 +2712,17 @@ export default {
     };
   },
   created() {
+    // if (
+    //   this.esatDemographicProfile.length == 0 &&
+    //   this.coreBehavioralCompetencies.length == 0 &&
+    //   this.functionalObjectives.length == 0
+    // ) {
+    //   this.tab = "subscribe";
+    // } else {
     this.retrieveEsat();
+    //   this.tab = "esat_card";
+    //   this.esatCard = true;
+    // }
   },
 
   methods: {
@@ -2699,7 +2732,6 @@ export default {
       this.esatDemographicProfile = [];
       this.coreBehavioralCompetencies = [];
       this.functionalObjectives = [];
-      console.log(returnedData.data);
 
       for (let value of returnedData.data[0][0].esatDemographicProfile) {
         this.esatDemographicProfile.push(value);
@@ -2714,7 +2746,7 @@ export default {
       }
     },
     finalizeEsat: async function () {
-      // (this.showPart3 = false), (this.tab = "esat_card");
+      (this.tab = "esat_card"), (this.esatCard = true);
       const employeeName = this.employeeName;
       const employeeId = this.employeeId;
       const position = this.position;
@@ -2857,55 +2889,72 @@ export default {
 
       const capability1 = this.capability1;
       const development1 = this.development1;
-      const capability2 = this.capability2;
 
+      const capability2 = this.capability2;
       const development2 = this.development2;
+
       const capability3 = this.capability3;
       const development3 = this.development3;
+
       const capability4 = this.capability4;
       const development4 = this.development4;
+
       const capability5 = this.capability5;
       const development5 = this.development5;
+
       const capability6 = this.capability6;
       const development6 = this.development6;
+
       const capability7 = this.capability7;
       const development7 = this.development7;
+
       const capability8 = this.capability8;
       const development8 = this.development8;
+
       const capability9 = this.capability9;
       const development9 = this.development9;
+
       const capability10 = this.capability10;
       const development10 = this.development10;
+
       const capability11 = this.capability11;
       const development11 = this.development11;
+
       const capability12 = this.capability12;
       const development12 = this.development12;
+
       const personalComments = this.personalComments;
+
       const selfManagement1 = this.selfManagement1;
       const selfManagement2 = this.selfManagement2;
       const selfManagement3 = this.selfManagement3;
       const selfManagement4 = this.selfManagement4;
       const selfManagement5 = this.selfManagement5;
+
       const professionalAndEthics1 = this.professionalAndEthics1;
       const professionalAndEthics2 = this.professionalAndEthics2;
       const professionalAndEthics3 = this.professionalAndEthics3;
       const professionalAndEthics4 = this.professionalAndEthics4;
       const professionalAndEthics5 = this.professionalAndEthics5;
+
       const resultsFocus1 = this.resultsFocus1;
       const resultsFocus2 = this.resultsFocus2;
       const resultsFocus3 = this.resultsFocus3;
       const resultsFocus4 = this.resultsFocus4;
       const resultsFocus5 = this.resultsFocus5;
+
       const teamwork1 = this.teamwork1;
       const teamwork2 = this.teamwork2;
       const teamwork3 = this.teamwork3;
       const teamwork4 = this.teamwork4;
       const teamwork5 = this.teamwork5;
+
       const serviceOrientation1 = this.serviceOrientation1;
       const serviceOrientation2 = this.serviceOrientation2;
       const serviceOrientation3 = this.serviceOrientation3;
       const serviceOrientation4 = this.serviceOrientation4;
       const serviceOrientation5 = this.serviceOrientation5;
+
       const innovation1 = this.innovation1;
       const innovation2 = this.innovation2;
       const innovation3 = this.innovation3;
@@ -3212,7 +3261,7 @@ export default {
       this.showPart1 = true;
       this.updateInfos = true;
       this.saveInfos = false;
-      console.log("Edit");
+      // console.log("Edit");
 
       (this.employeeName = this.esatDemographicProfile[0].name_of_employee),
         (this.employeeId = this.esatDemographicProfile[0].employee_id),
@@ -3247,30 +3296,686 @@ export default {
         this.esatDemographicProfile[0].area_of_specialization.split(",").length;
       let splitSpecialize =
         this.esatDemographicProfile[0].area_of_specialization.split(
-          ",",
+          ", ",
           splitSpecializedLen
         );
-      for (let a in splitSpecialize) {
-        console.log(splitSpecialize[a]);
+
+      for (let sub in splitSpecialize) {
+        splitSpecialize[sub] == "English"
+          ? (this.english = splitSpecialize[sub])
+          : splitSpecialize[sub] == "Filipino"
+          ? (this.filipino = splitSpecialize[sub])
+          : splitSpecialize[sub] == "Mathematics"
+          ? (this.mathematics = splitSpecialize[sub])
+          : splitSpecialize[sub] == "General Science"
+          ? (this.generalScience = splitSpecialize[sub])
+          : splitSpecialize[sub] == "Biology"
+          ? (this.biology = splitSpecialize[sub])
+          : splitSpecialize[sub] == "Chemistry"
+          ? (this.chemistry = splitSpecialize[sub])
+          : splitSpecialize[sub] == "Physics"
+          ? (this.physics = splitSpecialize[sub])
+          : splitSpecialize[sub] == "Social Science"
+          ? (this.socialScience = splitSpecialize[sub])
+          : splitSpecialize[sub] == "Early Childhood Education"
+          ? (this.earlyChildhoodEducation = splitSpecialize[sub])
+          : splitSpecialize[sub] == "Values Education"
+          ? (this.valuesEducation = splitSpecialize[sub])
+          : splitSpecialize[sub] == "SPED"
+          ? (this.sped = splitSpecialize[sub])
+          : splitSpecialize[sub] == "Music"
+          ? (this.music = splitSpecialize[sub])
+          : splitSpecialize[sub] == "Arts"
+          ? (this.arts = splitSpecialize[sub])
+          : splitSpecialize[sub] == "Physical Education"
+          ? (this.physicalEducation = splitSpecialize[sub])
+          : splitSpecialize[sub] == "Health"
+          ? (this.health = splitSpecialize[sub])
+          : splitSpecialize[sub] == "TLE/HE/TVL"
+          ? (this.TLE_HE_TVL = splitSpecialize[sub])
+          : (this.otherSpecialized = splitSpecialize[sub]),
+          (this.selected = "Others");
+      }
+
+      let splitSubTaughtLen =
+        this.esatDemographicProfile[0].subjects_taught.split(",").length;
+      let splitSubTaught = this.esatDemographicProfile[0].subjects_taught.split(
+        ",",
+        splitSubTaughtLen
+      );
+
+      for (let subTaught in splitSubTaught) {
+        splitSubTaught[subTaught] == "Mother Tongue"
+          ? (this.MotherTongue = splitSubTaught[subTaught])
+          : splitSubTaught[subTaught] == "Filipino"
+          ? (this.Filipino = splitSubTaught[subTaught])
+          : splitSubTaught[subTaught] == "English"
+          ? (this.English = splitSubTaught[subTaught])
+          : splitSubTaught[subTaught] == "Mathematics"
+          ? (this.Mathematics = splitSubTaught[subTaught])
+          : splitSubTaught[subTaught] == "Science"
+          ? (this.Science = splitSubTaught[subTaught])
+          : splitSubTaught[subTaught] == "Araling Panlipunan"
+          ? (this.AralingPanlipunan = splitSubTaught[subTaught])
+          : splitSubTaught[subTaught] == "Edukasyoon sa Pagpapakatao"
+          ? (this.EdukasyonSaPagpapakatao = splitSubTaught[subTaught])
+          : splitSubTaught[subTaught] == "MAPEH"
+          ? (this.Mapeh = splitSubTaught[subTaught])
+          : splitSubTaught[subTaught] == "TLE/HE"
+          ? (this.TLE_HE = splitSubTaught[subTaught])
+          : splitSubTaught[subTaught] == "EPP-LE/HE"
+          ? (this.EPP_LE_HE = splitSubTaught[subTaught])
+          : splitSubTaught[subTaught] == "Special Programs"
+          ? (this.specialPrograms = splitSubTaught[subTaught])
+          : (this.otherSubTaught = splitSubTaught[subTaught]),
+          (this.selected1 = "Others");
+      }
+
+      this.capability1 = this.functionalObjectives[0].level_of_capability;
+      this.development1 = this.functionalObjectives[0].priority_for_development;
+
+      this.capability2 = this.functionalObjectives[1].level_of_capability;
+      this.development2 = this.functionalObjectives[1].priority_for_development;
+
+      this.capability3 = this.functionalObjectives[2].level_of_capability;
+      this.development3 = this.functionalObjectives[2].priority_for_development;
+
+      this.capability4 = this.functionalObjectives[3].level_of_capability;
+      this.development4 = this.functionalObjectives[3].priority_for_development;
+
+      this.capability5 = this.functionalObjectives[4].level_of_capability;
+      this.development5 = this.functionalObjectives[4].priority_for_development;
+
+      this.capability6 = this.functionalObjectives[5].level_of_capability;
+      this.development6 = this.functionalObjectives[5].priority_for_development;
+
+      this.capability7 = this.functionalObjectives[6].level_of_capability;
+      this.development7 = this.functionalObjectives[6].priority_for_development;
+
+      this.capability8 = this.functionalObjectives[7].level_of_capability;
+      this.development8 = this.functionalObjectives[7].priority_for_development;
+
+      this.capability9 = this.functionalObjectives[8].level_of_capability;
+      this.development9 = this.functionalObjectives[8].priority_for_development;
+
+      this.capability10 = this.functionalObjectives[9].level_of_capability;
+      this.development10 =
+        this.functionalObjectives[9].priority_for_development;
+
+      this.capability11 = this.functionalObjectives[10].level_of_capability;
+      this.development11 =
+        this.functionalObjectives[10].priority_for_development;
+
+      this.capability12 = this.functionalObjectives[11].level_of_capability;
+      this.development12 =
+        this.functionalObjectives[11].priority_for_development;
+
+      this.selfManagement1 = this.coreBehavioralCompetencies[0].check_status;
+      this.selfManagement2 = this.coreBehavioralCompetencies[1].check_status;
+      this.selfManagement3 = this.coreBehavioralCompetencies[2].check_status;
+      this.selfManagement4 = this.coreBehavioralCompetencies[3].check_status;
+      this.selfManagement5 = this.coreBehavioralCompetencies[4].check_status;
+
+      this.professionalAndEthics1 =
+        this.coreBehavioralCompetencies[5].check_status;
+      this.professionalAndEthics2 =
+        this.coreBehavioralCompetencies[6].check_status;
+      this.professionalAndEthics3 =
+        this.coreBehavioralCompetencies[7].check_status;
+      this.professionalAndEthics4 =
+        this.coreBehavioralCompetencies[8].check_status;
+      this.professionalAndEthics5 =
+        this.coreBehavioralCompetencies[9].check_status;
+
+      this.resultsFocus1 = this.coreBehavioralCompetencies[10].check_status;
+      this.resultsFocus2 = this.coreBehavioralCompetencies[11].check_status;
+      this.resultsFocus3 = this.coreBehavioralCompetencies[12].check_status;
+      this.resultsFocus4 = this.coreBehavioralCompetencies[13].check_status;
+      this.resultsFocus5 = this.coreBehavioralCompetencies[14].check_status;
+
+      this.teamwork1 = this.coreBehavioralCompetencies[15].check_status;
+      this.teamwork2 = this.coreBehavioralCompetencies[16].check_status;
+      this.teamwork3 = this.coreBehavioralCompetencies[17].check_status;
+      this.teamwork4 = this.coreBehavioralCompetencies[18].check_status;
+      this.teamwork5 = this.coreBehavioralCompetencies[19].check_status;
+
+      this.serviceOrientation1 =
+        this.coreBehavioralCompetencies[20].check_status;
+      this.serviceOrientation2 =
+        this.coreBehavioralCompetencies[21].check_status;
+      this.serviceOrientation3 =
+        this.coreBehavioralCompetencies[22].check_status;
+      this.serviceOrientation4 =
+        this.coreBehavioralCompetencies[23].check_status;
+      this.serviceOrientation5 =
+        this.coreBehavioralCompetencies[24].check_status;
+
+      this.innovation1 = this.coreBehavioralCompetencies[25].check_status;
+      this.innovation2 = this.coreBehavioralCompetencies[26].check_status;
+      this.innovation3 = this.coreBehavioralCompetencies[27].check_status;
+      this.innovation4 = this.coreBehavioralCompetencies[28].check_status;
+      this.innovation5 = this.coreBehavioralCompetencies[29].check_status;
+    },
+    updateInfo: async function () {
+      // console.log("Update")((this.tab = "esat_card")), (this.esatCard = true);
+      const employeeName = this.employeeName;
+      console.log(employeeName);
+      const employeeId = this.employeeId;
+      const position = this.position;
+      const employmentStatus = this.employmentStatus;
+      const employeeAge = this.employeeAge;
+      const employeeSex = this.employeeSex;
+
+      const yearsInTeaching = this.yearsInTeaching;
+      const highestDegreeObtained = this.highestDegreeObtained;
+      const specifiedHighestDegreeObtained = this.highestDegreeObtained;
+      const levelTaught = this.levelTaught;
+      const gradeLevelTaught = this.gradeLevelTaught;
+
+      const region = this.region;
+      const division = this.division;
+      const employeeMunicipality = this.employeeMunicipality;
+      const schoolId = this.schoolId;
+      const schoolName = this.schoolName;
+      const schoolType = this.schoolType;
+      const schoolSize = this.schoolSize;
+      const curricularClassification = this.curricularClassification;
+      const openComments = this.openComments;
+      //  const highestDegreeObtained = this.highestDegreeObtained;
+      const english = this.english == null ? "" : this.english;
+      const filipino = this.filipino == null ? "" : this.filipino;
+      const mathematics = this.mathematics == null ? "" : this.mathematics;
+      const generalScience =
+        this.generalScience == null ? "" : this.generalScience;
+      const biology = this.biology == null ? "" : this.biology;
+      const chemistry = this.chemistry == null ? "" : this.chemistry;
+      const physics = this.physics == null ? "" : this.physics;
+      const socialScience =
+        this.socialScience == null ? "" : this.socialScience;
+      const earlyChildhoodEducation =
+        this.earlyChildhoodEducation == null
+          ? ""
+          : this.earlyChildhoodEducation;
+      const valuesEducation =
+        this.valuesEducation == null ? "" : this.valuesEducation;
+      const sped = this.sped == null ? "" : this.sped;
+      const music = this.music == null ? "" : this.music;
+      const arts = this.arts == null ? "" : this.arts;
+      const physicalEducation =
+        this.physicalEducation == null ? "" : this.physicalEducation;
+      const health = this.health == null ? "" : this.health;
+      const TLE_HE_TVL = this.TLE_HE_TVL == null ? "" : this.TLE_HE_TVL;
+      const selected = this.selected;
+      const otherSpecializedSub =
+        this.otherSpecialized == null ? "" : this.otherSpecialized;
+
+      let specifyAreaofSpecialization = "";
+      let specialization = [
+        english,
+        filipino,
+        mathematics,
+        generalScience,
+        biology,
+        chemistry,
+        physics,
+        socialScience,
+        earlyChildhoodEducation,
+        valuesEducation,
+        sped,
+        music,
+        arts,
+        physicalEducation,
+        health,
+        TLE_HE_TVL,
+        otherSpecializedSub,
+      ];
+
+      for (let sub of specialization) {
+        if (sub == "") {
+          continue;
+        } else {
+          specifyAreaofSpecialization += sub + ", ";
+        }
+      }
+
+      let specializeSplitLen =
+        specifyAreaofSpecialization.split(",").length - 1;
+      let specializeSubSplit = specifyAreaofSpecialization.split(
+        ",",
+        specializeSplitLen
+      );
+      let specializeSubSplitJoin = specializeSubSplit.join();
+      specifyAreaofSpecialization = specializeSubSplitJoin;
+
+      const MotherTongue = this.MotherTongue == null ? "" : this.MotherTongue;
+      const Filipino = this.Filipino == null ? "" : this.Filipino;
+      const English = this.English == null ? "" : this.English;
+      const Mathematics = this.Mathematics == null ? "" : this.Mathematics;
+      const Science = this.Science == null ? "" : this.Science;
+      const AralingPanlipunan =
+        this.AralingPanlipunan == null ? "" : this.AralingPanlipunan;
+      const EdukasyonSaPagpapakatao =
+        this.EdukasyonSaPagpapakatao == null
+          ? ""
+          : this.EdukasyonSaPagpapakatao;
+      const Mapeh = this.Mapeh == null ? "" : this.Mapeh;
+      const TLE_HE = this.TLE_HE == null ? "" : this.TLE_HE;
+      const EPP_LE_HE = this.EPP_LE_HE == null ? "" : this.EPP_LE_HE;
+      const specialPrograms =
+        this.specialPrograms == null ? "" : this.specialPrograms;
+      const selected1 = this.selected1;
+      const otherSubjectTaught =
+        this.otherSubTaught == null ? "" : this.otherSubTaught;
+
+      let specifySubjectsTaught = "";
+      let subjectTaught = [
+        MotherTongue,
+        Filipino,
+        English,
+        Mathematics,
+        Science,
+        AralingPanlipunan,
+        EdukasyonSaPagpapakatao,
+        Mapeh,
+        TLE_HE,
+        EPP_LE_HE,
+        specialPrograms,
+        otherSubjectTaught,
+      ];
+
+      for (let subTaught of subjectTaught) {
+        if (subTaught == "") {
+          continue;
+        } else {
+          specifySubjectsTaught += subTaught + ",";
+        }
+      }
+
+      let splitSpecifiedSubLen = specifySubjectsTaught.split(",").length - 1;
+      let specifiedSubSplit = specifySubjectsTaught.split(
+        ",",
+        splitSpecifiedSubLen
+      );
+      let specifiedSubSplitJoin = specifiedSubSplit.join();
+      specifySubjectsTaught = specifiedSubSplitJoin;
+
+      const capability1 = this.capability1;
+      const development1 = this.development1;
+
+      const capability2 = this.capability2;
+      const development2 = this.development2;
+
+      const capability3 = this.capability3;
+      const development3 = this.development3;
+
+      const capability4 = this.capability4;
+      const development4 = this.development4;
+
+      const capability5 = this.capability5;
+      const development5 = this.development5;
+
+      const capability6 = this.capability6;
+      const development6 = this.development6;
+
+      const capability7 = this.capability7;
+      const development7 = this.development7;
+
+      const capability8 = this.capability8;
+      const development8 = this.development8;
+
+      const capability9 = this.capability9;
+      const development9 = this.development9;
+
+      const capability10 = this.capability10;
+      const development10 = this.development10;
+
+      const capability11 = this.capability11;
+      const development11 = this.development11;
+
+      const capability12 = this.capability12;
+      const development12 = this.development12;
+
+      const personalComments = this.personalComments;
+
+      const selfManagement1 = this.selfManagement1;
+      const selfManagement2 = this.selfManagement2;
+      const selfManagement3 = this.selfManagement3;
+      const selfManagement4 = this.selfManagement4;
+      const selfManagement5 = this.selfManagement5;
+
+      const professionalAndEthics1 = this.professionalAndEthics1;
+      const professionalAndEthics2 = this.professionalAndEthics2;
+      const professionalAndEthics3 = this.professionalAndEthics3;
+      const professionalAndEthics4 = this.professionalAndEthics4;
+      const professionalAndEthics5 = this.professionalAndEthics5;
+
+      const resultsFocus1 = this.resultsFocus1;
+      const resultsFocus2 = this.resultsFocus2;
+      const resultsFocus3 = this.resultsFocus3;
+      const resultsFocus4 = this.resultsFocus4;
+      const resultsFocus5 = this.resultsFocus5;
+
+      const teamwork1 = this.teamwork1;
+      const teamwork2 = this.teamwork2;
+      const teamwork3 = this.teamwork3;
+      const teamwork4 = this.teamwork4;
+      const teamwork5 = this.teamwork5;
+
+      const serviceOrientation1 = this.serviceOrientation1;
+      const serviceOrientation2 = this.serviceOrientation2;
+      const serviceOrientation3 = this.serviceOrientation3;
+      const serviceOrientation4 = this.serviceOrientation4;
+      const serviceOrientation5 = this.serviceOrientation5;
+
+      const innovation1 = this.innovation1;
+      const innovation2 = this.innovation2;
+      const innovation3 = this.innovation3;
+      const innovation4 = this.innovation4;
+      const innovation5 = this.innovation5;
+
+      const userId = 1;
+      const functionalObjectives = [
+        {
+          userID: userId,
+          objectiveNo: "1.1",
+          capability: capability1,
+          priority: development1,
+        },
+        {
+          userID: userId,
+          objectiveNo: "1.2",
+          capability: capability2,
+          priority: development2,
+        },
+        {
+          userID: userId,
+          objectiveNo: "1.3",
+          capability: capability3,
+          priority: development3,
+        },
+        {
+          userID: userId,
+          objectiveNo: "2.1",
+          capability: capability4,
+          priority: development4,
+        },
+        {
+          userID: userId,
+          objectiveNo: "2.2",
+          capability: capability5,
+          priority: development5,
+        },
+        {
+          userID: userId,
+          objectiveNo: "2.3",
+          capability: capability6,
+          priority: development6,
+        },
+        {
+          userID: userId,
+          objectiveNo: "3.1",
+          capability: capability7,
+          priority: development7,
+        },
+        {
+          userID: userId,
+          objectiveNo: "3.2",
+          capability: capability8,
+          priority: development8,
+        },
+        {
+          userID: userId,
+          objectiveNo: "4.1",
+          capability: capability9,
+          priority: development9,
+        },
+        {
+          userID: userId,
+          objectiveNo: "4.2",
+          capability: capability10,
+          priority: development10,
+        },
+        {
+          userID: userId,
+          objectiveNo: "4.3",
+          capability: capability11,
+          priority: development11,
+        },
+        {
+          userID: userId,
+          objectiveNo: "5.1",
+          capability: capability12,
+          priority: development12,
+        },
+      ];
+      const coreBehavioralCompetencies = [
+        {
+          userID: userId,
+          objectiveNo: "1.1",
+          value: selfManagement1,
+        },
+        {
+          userID: userId,
+          objectiveNo: "1.2",
+          value: selfManagement2,
+        },
+        {
+          userID: userId,
+          objectiveNo: "1.3",
+          value: selfManagement3,
+        },
+        {
+          userID: userId,
+          objectiveNo: "1.4",
+          value: selfManagement4,
+        },
+        {
+          userID: userId,
+          objectiveNo: "1.5",
+          value: selfManagement5,
+        },
+        {
+          userID: userId,
+          objectiveNo: "2.1",
+          value: professionalAndEthics1,
+        },
+        {
+          userID: userId,
+          objectiveNo: "2.2",
+          value: professionalAndEthics2,
+        },
+        {
+          userID: userId,
+          objectiveNo: "2.3",
+          value: professionalAndEthics3,
+        },
+        {
+          userID: userId,
+          objectiveNo: "2.4",
+          value: professionalAndEthics4,
+        },
+        {
+          userID: userId,
+          objectiveNo: "2.5",
+          value: professionalAndEthics5,
+        },
+        {
+          userID: userId,
+          objectiveNo: "3.1",
+          value: resultsFocus1,
+        },
+        {
+          userID: userId,
+          objectiveNo: "3.2",
+          value: resultsFocus2,
+        },
+        {
+          userID: userId,
+          objectiveNo: "3.3",
+          value: resultsFocus3,
+        },
+        {
+          userID: userId,
+          objectiveNo: "3.4",
+          value: resultsFocus4,
+        },
+        {
+          userID: userId,
+          objectiveNo: "3.5",
+          value: resultsFocus5,
+        },
+        {
+          userID: userId,
+          objectiveNo: "4.1",
+          value: teamwork1,
+        },
+        {
+          userID: userId,
+          objectiveNo: "4.2",
+          value: teamwork2,
+        },
+        {
+          userID: userId,
+          objectiveNo: "4.3",
+          value: teamwork3,
+        },
+        {
+          userID: userId,
+          objectiveNo: "4.4",
+          value: teamwork4,
+        },
+        {
+          userID: userId,
+          objectiveNo: "4.5",
+          value: teamwork5,
+        },
+        {
+          userID: userId,
+          objectiveNo: "5.1",
+          value: serviceOrientation1,
+        },
+        {
+          userID: userId,
+          objectiveNo: "5.2",
+          value: serviceOrientation2,
+        },
+        {
+          userID: userId,
+          objectiveNo: "5.3",
+          value: serviceOrientation3,
+        },
+        {
+          userID: userId,
+          objectiveNo: "5.4",
+          value: serviceOrientation4,
+        },
+        {
+          userID: userId,
+          objectiveNo: "5.5",
+          value: serviceOrientation5,
+        },
+        {
+          userID: userId,
+          objectiveNo: "6.1",
+          value: innovation1,
+        },
+        {
+          userID: userId,
+          objectiveNo: "6.2",
+          value: innovation2,
+        },
+        {
+          userID: userId,
+          objectiveNo: "6.3",
+          value: innovation3,
+        },
+        {
+          userID: userId,
+          objectiveNo: "6.4",
+          value: innovation4,
+        },
+        {
+          userID: userId,
+          objectiveNo: "6.5",
+          value: innovation5,
+        },
+      ];
+      const data = {
+        userId,
+        employeeName,
+        employeeId,
+        position,
+        employmentStatus,
+        employeeAge,
+        employeeSex,
+
+        yearsInTeaching,
+        highestDegreeObtained,
+        specifiedHighestDegreeObtained,
+        levelTaught,
+        gradeLevelTaught,
+
+        region,
+        division,
+        employeeMunicipality,
+        schoolId,
+        schoolName,
+        schoolType,
+        schoolSize,
+        curricularClassification,
+        openComments,
+        functionalObjectives,
+        coreBehavioralCompetencies,
+
+        english,
+        filipino,
+        mathematics,
+        generalScience,
+        biology,
+        chemistry,
+        physics,
+        socialScience,
+        earlyChildhoodEducation,
+        valuesEducation,
+        sped,
+        music,
+        arts,
+        physicalEducation,
+        health,
+        TLE_HE_TVL,
+        selected,
+        specifyAreaofSpecialization,
+        MotherTongue,
+        Filipino,
+        English,
+        Mathematics,
+        Science,
+        AralingPanlipunan,
+        EdukasyonSaPagpapakatao,
+        Mapeh,
+        TLE_HE,
+        EPP_LE_HE,
+        specialPrograms,
+        selected1,
+        specifySubjectsTaught,
+        personalComments,
+      };
+      const returnedData = await this.$store.dispatch("updateEsatInfo", data);
+      // const returnedData = await this.post("createEsat", data);
+      console.log(returnedData);
+      if (returnedData.statusText == "OK") {
+        console.log("success");
       }
     },
     viewPrint: async function () {
-      // (this.tab = "show_print"), (this.showPrint = true);
-      // console.log("View Card")
-      // const returnedData = await this.$store.dispatch("retrieveEsatInfoById");
-      // this.esatDemographicProfile = [];
-      // this.coreBehavioralCompetencies = [];
-      // this.functionalObjectives = [];
-      // console.log(returnedData.data);
-      // for (let value of returnedData.data[0][0].esatDemographicProfile) {
-      //   this.esatDemographicProfile.push(value);
-      // }
-      // for (let core of returnedData.data[1][0].esatCoreBehavioralCompetencies) {
-      //   this.coreBehavioralCompetencies.push(core);
-      // }
-      // for (let func of returnedData.data[2][0].esatFunctionalObjectives) {
-      //   this.functionalObjectives.push(func);
-      // }
+      if (this.coreBehavioralCompetencies.length == 0) {
+        alert("No Records Yet!");
+        this.tab = "subscribe";
+        this.showPrint = false;
+      } else {
+        this.tab = "show_print";
+        this.showPrint = true;
+      }
     },
   },
 };
