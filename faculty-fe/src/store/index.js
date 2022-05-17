@@ -46,6 +46,60 @@ export default new Vuex.Store({
     //   },
     // },
     actions: {
+
+        getArticles(){
+            return axios.get('articles/')
+            .then((response) => {
+                console.log(response)
+                return response;
+            }).catch((error) => {
+                console.log(error)
+            })
+        },
+
+        getArticlesById(props){
+            return axios.get('articles/'+ props.id )
+            .then((response) => {
+                console.log(response)
+                return response;
+            }).catch((error) => {
+                console.log(error)
+            })
+        },
+        
+        createArticle({commit},props) {
+            return axios.post('articles/create', props) 
+            .then((response) => {
+             console.log(response)
+             commit;
+             return response;
+         }).catch((error) => {
+             console.log(error)
+         })
+         },
+
+        editArticles(props) {
+           return axios.post('articles/edit', props) 
+           .then((response) => {
+            console.log(response)
+            return response;
+        }).catch((error) => {
+            console.log(error)
+        })
+        },
+
+        deleteArticles({commit},id){
+            return axios.delete('articles/delete/'+ id)
+            .then((response) => {
+                console.log(response)
+                commit;
+                return response;
+            }).catch((error) => {
+                console.log(error)
+            })
+            },
+
+
         uploadFile(context, file) {
             console.log([...file]);
             return axios

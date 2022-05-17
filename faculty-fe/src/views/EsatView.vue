@@ -1467,7 +1467,7 @@
                       </th>
                     </tr>
                   </thead>
-                  <tbody
+                  <!-- <tbody
                     style="color: black"
                     v-for="row in esatDemographicProfile"
                     :key="row.id"
@@ -1524,7 +1524,7 @@
                         {{ row.specified_highest_degree_obtained }}
                       </td>
                     </tr>
-                  </tbody>
+                  </tbody> -->
                 </template>
               </v-simple-table>
 
@@ -1570,7 +1570,7 @@
                       </tr>
                     </thead>
 
-                    <tbody>
+                    <!-- <tbody>
                       <tr>
                         <td colspan="4">
                           <h3>
@@ -1790,7 +1790,7 @@
                       <tr v-for="row in esatDemographicProfile" :key="row.id">
                         <td colspan="4">{{ row.personal_comments }}</td>
                       </tr>
-                    </tbody>
+                    </tbody> -->
                   </template>
                 </v-simple-table>
               </v-container>
@@ -1817,7 +1817,7 @@
                         </td>
                       </tr>
                     </thead>
-                    <tbody>
+                    <!-- <tbody>
                       <tr>
                         <td>
                           {{
@@ -2291,7 +2291,7 @@
                           succeed with minimal resources.
                         </td>
                       </tr>
-                    </tbody>
+                    </tbody> -->
                   </template>
                 </v-simple-table>
                 <v-row no-gutters>
@@ -2344,7 +2344,7 @@
                 <v-col>
                   <v-simple-table class="table ml-5">
                     <template>
-                      <tbody>
+                      <!-- <tbody>
                         <tr>
                           <td class="esatCard">Name:</td>
                           <td colspan="2">
@@ -2370,7 +2370,7 @@
                           <td class="esatCard">Date:</td>
                           <td>12/8/2021</td>
                         </tr>
-                      </tbody>
+                      </tbody> -->
                     </template>
                   </v-simple-table>
                 </v-col>

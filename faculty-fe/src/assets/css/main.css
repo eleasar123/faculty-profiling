@@ -1,16 +1,21 @@
 *{
     color: black;
-    word-wrap: none;
+    word-wrap: break-word;
     font-size: 10px;
     
     /* color:red;
     
     background-color: aqua; */
 }
-table,td, th,tr{
-    word-wrap:normal;
+.civilHeader{
+    font-size: 5px;
+    font-weight: bold;
+}
+table,td, th,tr, thead, tbody{
+    word-wrap:break-word;
    border: solid 1px black;
    font-size: 10px;
+   border-radius: 0%;
 }
 /* table{
     
@@ -23,9 +28,9 @@ table,td, th,tr{
 }
 
 @media print {
-    *{
+    *, td, th, table{
         /* color: white !important; */
-        font-size: 10px;
+        font-size: 8px;
     }
 }
  /*.tableHeader{
