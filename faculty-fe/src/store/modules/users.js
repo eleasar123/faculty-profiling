@@ -64,12 +64,14 @@ const actions = {
             });
     },
 
-    deleteUser({ state }, props) {
-        const index = state.users.indexOf(props);
+    deleteUser({commit}, props) {
+        console.log(props)
+        //const index = state.users.indexOf(props);
         return axios
-        .delete("user/delete/" + props.id)
+        .delete("user/delete/" + props)
         .then((result) => {
-            state.users.splice(index, 1);
+          //  state.users.splice(index, 1);
+          commit;
             return result;
         })
         .catch((err) => {

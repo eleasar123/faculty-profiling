@@ -2,10 +2,8 @@
   <v-container fluid>
   <v-app v-if="userData!==null">
     <Navbar></Navbar>
-    <v-content class="ma-4">
-      <v-layout>
+    <v-content class="ma-6 pa-2">
         <router-view></router-view>
-      </v-layout>
     </v-content>
    
   </v-app>
