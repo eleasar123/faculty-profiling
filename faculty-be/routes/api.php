@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Http\Request;
+use Illuminate\Http\Request;    
 use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +18,18 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 Route::middleware(['cors'])->group(function () {
     //Route::post('/hogehoge', 'Controller@hogehoge');
+
+    Route::get('articles/', "App\Http\Controllers\ArticlesController@index");
+    Route::get('articles/{id}', "App\Http\Controllers\ArticlesController@getArticle");
+    Route::post('articles/create', "App\Http\Controllers\ArticlesController@createArticle");
+    Route::post('articles/edit', "App\Http\Controllers\ArticlesController@editArticle");
+    Route::delete('articles/delete/{id}', "App\Http\Controllers\ArticlesController@deleteArticle");
+    // Route::get('articles/', "App\Http\Controllers\Controller\ArticleController@index");
+
+
+
+
+
 
     // MasterfileController
     //routes for masterfile

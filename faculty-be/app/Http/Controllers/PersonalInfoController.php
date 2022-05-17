@@ -174,7 +174,7 @@ class PersonalInfoController extends Controller
   'educationalBackgroundSignature' =>asset('storage/signatures/educational-background/'.$imageNameEducBackground),
   'workExperienceSignature' => asset('storage/signatures/work-experience/'.$imageNameworkExp),
   'otherInfoSignature' => asset('storage/signatures/other-info/'.$imageNameOtherInfo),
-  'personalPhoto' => asset('storage/profiles/'.$imageNamePersonalPhoto),
+  'personalPhoto' => asset('storage/profiles/personal-photo/'.$imageNamePersonalPhoto),
   'oathSignature' => asset('storage/signatures/oath-signature/'.$imageNameOathSignature),
   'rightThumbMark' => asset('storage/signatures/right-thumbmark/'.$imageNameRightThumbMark),
   'personAdministeringOath' => asset('storage/signatures/person-administering-oath/'.$imageNamePersonAdministeringOath),
@@ -835,7 +835,7 @@ class PersonalInfoController extends Controller
     'association_members' => $otherInfo['otherInfoAssociationMembers'],
    ]);
    try {
-    DB::table('other_info')->where('user_id', $request->user)->delete();
+    DB::table('other_infos')->where('user_id', $request->user)->delete();
     $otherInfo->save();
    } catch (Throwable $e) {
     return $e;
@@ -875,7 +875,7 @@ class PersonalInfoController extends Controller
    'question_forty_c'                      => $request->questionFourtyC,
   ]);
 
-  $pdsQuestions = DB::table('pds_additonal_infos')
+  $pdsAdditionalInfo = DB::table('pds_additional_infos')
   ->where('user_id', $request->user)
     ->update([
    //  'oath'                      => $request->oathSignature,
