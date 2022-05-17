@@ -22,16 +22,6 @@ const actions = {
         });
     },
 
-    // retrieveEsatInfoById({ state, commit }) {
-    //     return axios.get(`esat/${JSON.parse(state.userToken).ID}`).then((result) => {
-
-    //         commit('setEsatInfos', JSON.stringify(result.data));
-    //         return result;
-    //     }).catch((err) => {
-    //         return err.response;
-    //     });
-    // },
-
     retrieveEsatInfoById() {
         // console.log(JSON.parse(sessionStorage.getItem("user_session")))
         //state.basicInfoData = []
@@ -50,7 +40,7 @@ const actions = {
             .post("esat/create", data)
             .then(async(result) => {
                 try {
-                    await dispatch("retrieveEsatInfos");
+                    await dispatch("retrieveEsatInfoById");
                     return result;
                 } catch (error) {
                     return error;
@@ -61,17 +51,36 @@ const actions = {
             });
     },
 
-    updateEsatInfo({ state }, props) {
+    updateEsatInfo({dispatch}, props) {
         return axios
-            .post(`esat/edit/${props.ID}`, props)
-            .then((result) => {
-                state.esatInfos[props.index] = props.editedData;
-                return result;
+            .post(`esat/edit`, props)
+            .then(async(result) => {
+               try {
+              await dispatch('retrieveEsatInfoById');
+              return result;
+            } catch (error) {
+              return error;
+            }
             })
             .catch((err) => {
                 return err.response;
             });
     },
+    // updateEsatInfo({dispatch}, props) {
+    //     return axios
+    //         .post(`esat/edit`, props)
+    //         .then((result) => {
+    //             try {
+    //                 await dispatch('retrievePdsInfoById');
+    //                 return result;
+    //               } catch (error) {
+    //                 return error;
+    //               }
+    //               })
+    //               .catch((err) => {
+    //                   return err.response;
+    //               });
+    // },
 
     deleteEsatInfo({ state }, props) {
         const index = state.esatInfos.indexOf(props.item);

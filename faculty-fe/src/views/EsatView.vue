@@ -9,7 +9,6 @@
         dark
         icons-and-text
       >
-        <!-- <v-tabs-slider></v-tabs-slider> -->
 
         <v-tab href="#subscribe"> Home </v-tab>
         <v-tab href="#privacy"> Privacy Note </v-tab>
@@ -141,7 +140,7 @@
               <tr class="infoDetails">
                 <td>Name of Employee:</td>
                 <td>
-                  <v-text-field
+                  <v-text-field 
                     class="textField mt-5"
                     solo
                     dense
@@ -150,7 +149,7 @@
                   ></v-text-field>
                 </td>
                 <td rowspan="8"></td>
-                <td>Number of Years in Teaching:</td>
+                <!-- <td>Number of Years in Teaching:</td>
                 <td>
                   <v-select
                     solo
@@ -158,6 +157,14 @@
                     v-model="yearsInTeaching"
                     :items="yearsItems"
                   ></v-select>
+                </td> -->
+                 <td>School Year:</td>
+                <td>
+                  <v-text-field
+                    solo
+                    class="mt-6"
+                    v-model="schoolYear"
+                  ></v-text-field>
                 </td>
                 <td rowspan="8"></td>
                 <td>Region:</td>
@@ -180,7 +187,16 @@
                     dense
                   ></v-text-field>
                 </td>
-                <td rowspan="2">Highest Degree Obtained:</td>
+                 <td>Number of Years in Teaching:</td>
+                <td>
+                  <v-select
+                    solo
+                    class="mt-6"
+                    v-model="yearsInTeaching"
+                    :items="yearsItems"
+                  ></v-select>
+                </td>
+                <!-- <td rowspan="2">Highest Degree Obtained:</td>
                 <td>
                   <v-select
                     solo
@@ -188,7 +204,7 @@
                     v-model="highestDegreeObtained"
                     :items="highestDegreeItems"
                   ></v-select>
-                </td>
+                </td> -->
                 <td>Division:</td>
                 <td>
                   <v-select
@@ -209,7 +225,16 @@
                     v-model="position"
                   ></v-select>
                 </td>
+                   <td rowspan="2">Highest Degree Obtained:</td>
                 <td>
+                  <v-select
+                    solo
+                    class="mt-6"
+                    v-model="highestDegreeObtained"
+                    :items="highestDegreeItems"
+                  ></v-select>
+                </td>
+                <!-- <td>
                   <v-select
                     v-model="specifiedHighestDegreeObtained"
                     :items="highestDegreeItems"
@@ -217,7 +242,7 @@
                     solo
                     dense
                   ></v-select>
-                </td>
+                </td> -->
                 <td>District/Municipality:</td>
                 <td>
                   <v-text-field
@@ -238,7 +263,16 @@
                     :items="statusItems"
                   ></v-select>
                 </td>
-                <td>Level Taught:</td>
+                 <td>
+                  <v-select
+                    v-model="specifiedHighestDegreeObtained"
+                    :items="highestDegreeItems"
+                    class="mt-6"
+                    solo
+                    dense
+                  ></v-select>
+                </td>
+                <!-- <td>Level Taught:</td>
                 <td>
                   <v-select
                     solo
@@ -246,7 +280,7 @@
                     v-model="levelTaught"
                     :items="levelTaughtItems"
                   ></v-select>
-                </td>
+                </td> -->
                 <td>School ID:</td>
                 <td>
                   <v-text-field
@@ -267,13 +301,22 @@
                     v-model="employeeAge"
                   ></v-select>
                 </td>
-                <td>Grade Level taught:</td>
+                <!-- <td>Grade Level taught:</td>
                 <td>
                   <v-select
                     solo
                     class="mt-6"
                     v-model="gradeLevelTaught"
                     :items="gLevelTaughtItems"
+                  ></v-select>
+                </td> -->
+                <td>Level Taught:</td>
+                <td>
+                  <v-select
+                    solo
+                    class="mt-6"
+                    v-model="levelTaught"
+                    :items="levelTaughtItems"
                   ></v-select>
                 </td>
                 <td>School Name:</td>
@@ -296,7 +339,16 @@
                     :items="sexItems"
                   ></v-select>
                 </td>
-                <td colspan="2"></td>
+                <!-- <td colspan="2"></td> -->
+                 <td>Grade Level taught:</td>
+                <td>
+                  <v-select
+                    solo
+                    class="mt-6"
+                    v-model="gradeLevelTaught"
+                    :items="gLevelTaughtItems"
+                  ></v-select>
+                </td>
                 <td>School Type:</td>
                 <td>
                   <v-select
@@ -999,7 +1051,7 @@
                     <td class="checkBox">
                       <v-checkbox
                         v-model="selfManagement1"
-                        hide-details
+                        hide-details value="true" 
                       ></v-checkbox>
                     </td>
                     <td>1</td>
@@ -1011,7 +1063,7 @@
                     <td class="checkBox">
                       <v-checkbox
                         v-model="selfManagement2"
-                        hide-details
+                        hide-details value="true"
                       ></v-checkbox>
                     </td>
                     <td>2</td>
@@ -1025,7 +1077,7 @@
                     <td class="checkBox">
                       <v-checkbox
                         v-model="selfManagement3"
-                        hide-details
+                        hide-details value="true"
                       ></v-checkbox>
                     </td>
                     <td>3</td>
@@ -1038,7 +1090,7 @@
                     <td class="checkBox">
                       <v-checkbox
                         v-model="selfManagement4"
-                        hide-details
+                        hide-details value="true"
                       ></v-checkbox>
                     </td>
                     <td>4</td>
@@ -1051,7 +1103,7 @@
                     <td class="checkBox">
                       <v-checkbox
                         v-model="selfManagement5"
-                        hide-details
+                        hide-details value="true"
                       ></v-checkbox>
                     </td>
                     <td>5</td>
@@ -1070,7 +1122,7 @@
                     <td class="checkBox">
                       <v-checkbox
                         v-model="professionalAndEthics1"
-                        hide-details
+                        hide-details value="true"
                       ></v-checkbox>
                     </td>
                     <td>1</td>
@@ -1084,7 +1136,7 @@
                     <td class="checkBox">
                       <v-checkbox
                         v-model="professionalAndEthics2"
-                        hide-details
+                        hide-details value="true"
                       ></v-checkbox>
                     </td>
                     <td>2</td>
@@ -1098,7 +1150,7 @@
                     <td class="checkBox">
                       <v-checkbox
                         v-model="professionalAndEthics3"
-                        hide-details
+                        hide-details value="true"
                       ></v-checkbox>
                     </td>
                     <td>3</td>
@@ -1112,7 +1164,7 @@
                     <td class="checkBox">
                       <v-checkbox
                         v-model="professionalAndEthics4"
-                        hide-details
+                        hide-details value="true"
                       ></v-checkbox>
                     </td>
                     <td>4</td>
@@ -1125,7 +1177,7 @@
                     <td class="checkBox">
                       <v-checkbox
                         v-model="professionalAndEthics5"
-                        hide-details
+                        hide-details value="true"
                       ></v-checkbox>
                     </td>
                     <td>5</td>
@@ -1143,7 +1195,7 @@
                     <td class="checkBox">
                       <v-checkbox
                         v-model="resultsFocus1"
-                        hide-details
+                        hide-details value="true"
                       ></v-checkbox>
                     </td>
                     <td>1</td>
@@ -1156,7 +1208,7 @@
                     <td class="checkBox">
                       <v-checkbox
                         v-model="resultsFocus2"
-                        hide-details
+                        hide-details value="true"
                       ></v-checkbox>
                     </td>
                     <td>2</td>
@@ -1170,7 +1222,7 @@
                     <td class="checkBox">
                       <v-checkbox
                         v-model="resultsFocus3"
-                        hide-details
+                        hide-details value="true"
                       ></v-checkbox>
                     </td>
                     <td>3</td>
@@ -1186,7 +1238,7 @@
                     <td class="checkBox">
                       <v-checkbox
                         v-model="resultsFocus4"
-                        hide-details
+                        hide-details value="true"
                       ></v-checkbox>
                     </td>
                     <td>4</td>
@@ -1200,7 +1252,7 @@
                     <td class="checkBox">
                       <v-checkbox
                         v-model="resultsFocus5"
-                        hide-details
+                        hide-details value="true"
                       ></v-checkbox>
                     </td>
                     <td>5</td>
@@ -1220,15 +1272,15 @@
                 <v-simple-table class="table">
                   <tr>
                     <td class="checkBox">
-                      <v-checkbox v-model="teamwork1" hide-details></v-checkbox>
-                      <!-- <v-checkbox v-model="teamwork1" hide-details></v-checkbox> -->
+                      <v-checkbox v-model="teamwork1" hide-details value="true"></v-checkbox>
+                      <!-- <v-checkbox v-model="teamwork1" hide-details value="true"></v-checkbox> -->
                     </td>
                     <td>1</td>
                     <td>Willingly does his/her share of responsibility.</td>
                   </tr>
                   <tr>
                     <td class="checkBox">
-                      <v-checkbox v-model="teamwork2" hide-details></v-checkbox>
+                      <v-checkbox v-model="teamwork2" hide-details value="true"></v-checkbox>
                     </td>
                     <td>2</td>
                     <td>
@@ -1238,7 +1290,7 @@
                   </tr>
                   <tr>
                     <td class="checkBox">
-                      <v-checkbox v-model="teamwork3" hide-details></v-checkbox>
+                      <v-checkbox v-model="teamwork3" hide-details value="true"></v-checkbox>
                     </td>
                     <td>3</td>
                     <td>
@@ -1248,14 +1300,14 @@
                   </tr>
                   <tr>
                     <td class="checkBox">
-                      <v-checkbox v-model="teamwork4" hide-details></v-checkbox>
+                      <v-checkbox v-model="teamwork4" hide-details value="true"></v-checkbox>
                     </td>
                     <td>4</td>
                     <td>Drives consensus and team ownership of decisions.</td>
                   </tr>
                   <tr>
                     <td class="checkBox">
-                      <v-checkbox v-model="teamwork5" hide-details></v-checkbox>
+                      <v-checkbox v-model="teamwork5" hide-details value="true"></v-checkbox>
                     </td>
                     <td>5</td>
                     <td>
@@ -1275,7 +1327,7 @@
                     <td class="checkBox">
                       <v-checkbox
                         v-model="serviceOrientation1"
-                        hide-details
+                        hide-details value="true"
                       ></v-checkbox>
                     </td>
                     <td>1</td>
@@ -1288,7 +1340,7 @@
                     <td class="checkBox">
                       <v-checkbox
                         v-model="serviceOrientation2"
-                        hide-details
+                        hide-details value="true"
                       ></v-checkbox>
                     </td>
                     <td>2</td>
@@ -1301,7 +1353,7 @@
                     <td class="checkBox">
                       <v-checkbox
                         v-model="serviceOrientation3"
-                        hide-details
+                        hide-details value="true"
                       ></v-checkbox>
                     </td>
                     <td>3</td>
@@ -1314,7 +1366,7 @@
                     <td class="checkBox">
                       <v-checkbox
                         v-model="serviceOrientation4"
-                        hide-details
+                        hide-details value="true"
                       ></v-checkbox>
                     </td>
                     <td>4</td>
@@ -1327,7 +1379,7 @@
                     <td class="checkBox">
                       <v-checkbox
                         v-model="serviceOrientation5"
-                        hide-details
+                        hide-details value="true"
                       ></v-checkbox>
                     </td>
                     <td>5</td>
@@ -1348,7 +1400,7 @@
                     <td class="checkBox">
                       <v-checkbox
                         v-model="innovation1"
-                        hide-details
+                        hide-details value="true"
                       ></v-checkbox>
                     </td>
                     <td>1</td>
@@ -1362,7 +1414,7 @@
                     <td class="checkBox">
                       <v-checkbox
                         v-model="innovation2"
-                        hide-details
+                        hide-details value="true"
                       ></v-checkbox>
                     </td>
                     <td>2</td>
@@ -1376,7 +1428,7 @@
                     <td class="checkBox">
                       <v-checkbox
                         v-model="innovation3"
-                        hide-details
+                        hide-details value="true"
                       ></v-checkbox>
                     </td>
                     <td>3</td>
@@ -1389,7 +1441,7 @@
                     <td class="checkBox">
                       <v-checkbox
                         v-model="innovation4"
-                        hide-details
+                        hide-details value="true"
                       ></v-checkbox>
                     </td>
                     <td>4</td>
@@ -1402,7 +1454,7 @@
                     <td class="checkBox">
                       <v-checkbox
                         v-model="innovation5"
-                        hide-details
+                        hide-details value="true"
                       ></v-checkbox>
                     </td>
                     <td>5</td>
@@ -1423,7 +1475,7 @@
                       >SAVE</v-btn
                     >
                     <v-btn class="float-right mb-4 me-4 mt-5" v-if="updateInfos"
-                      >UPDATE</v-btn
+                      @click="updateEsat">UPDATE</v-btn
                     >
                     <v-btn
                       class="float-right mb-4 me-4 mt-5"
@@ -1821,7 +1873,7 @@
                       <tr>
                         <td>
                           {{
-                            coreBehavioralCompetencies[0].check_status == "1"
+                            coreBehavioralCompetencies[0].check_status == "true"
                               ? "✔"
                               : ""
                           }}
@@ -1836,7 +1888,7 @@
                       <tr>
                         <td>
                           {{
-                            coreBehavioralCompetencies[1].check_status == "1"
+                            coreBehavioralCompetencies[1].check_status == "true"
                               ? "✔"
                               : ""
                           }}
@@ -1852,7 +1904,7 @@
                       <tr>
                         <td>
                           {{
-                            coreBehavioralCompetencies[2].check_status == "1"
+                            coreBehavioralCompetencies[2].check_status == "true"
                               ? "✔"
                               : ""
                           }}
@@ -1866,7 +1918,7 @@
                       <tr>
                         <td>
                           {{
-                            coreBehavioralCompetencies[3].check_status == "1"
+                            coreBehavioralCompetencies[3].check_status == "true"
                               ? "✔"
                               : ""
                           }}
@@ -1880,7 +1932,7 @@
                       <tr>
                         <td>
                           {{
-                            coreBehavioralCompetencies[4].check_status === "1"
+                            coreBehavioralCompetencies[4].check_status == "true"
                               ? "✔"
                               : ""
                           }}
@@ -1901,7 +1953,7 @@
                       <tr>
                         <td>
                           {{
-                            coreBehavioralCompetencies[5].check_status === "1"
+                            coreBehavioralCompetencies[5].check_status == "true"
                               ? "✔"
                               : ""
                           }}
@@ -1916,7 +1968,7 @@
                       <tr>
                         <td>
                           {{
-                            coreBehavioralCompetencies[6].check_status === "1"
+                            coreBehavioralCompetencies[6].check_status == "true"
                               ? "✔"
                               : ""
                           }}
@@ -1931,7 +1983,7 @@
                       <tr>
                         <td>
                           {{
-                            coreBehavioralCompetencies[7].check_status === "1"
+                            coreBehavioralCompetencies[7].check_status == "true"
                               ? "✔"
                               : ""
                           }}
@@ -1946,7 +1998,7 @@
                       <tr>
                         <td>
                           {{
-                            coreBehavioralCompetencies[8].check_status === "1"
+                            coreBehavioralCompetencies[8].check_status == "true"
                               ? "✔"
                               : ""
                           }}
@@ -1960,7 +2012,7 @@
                       <tr>
                         <td>
                           {{
-                            coreBehavioralCompetencies[9].check_status === "1"
+                            coreBehavioralCompetencies[9].check_status == "true"
                               ? "✔"
                               : ""
                           }}
@@ -1980,7 +2032,7 @@
                       <tr>
                         <td>
                           {{
-                            coreBehavioralCompetencies[10].check_status === "1"
+                            coreBehavioralCompetencies[10].check_status == "true"
                               ? "✔"
                               : ""
                           }}
@@ -1994,7 +2046,7 @@
                       <tr>
                         <td>
                           {{
-                            coreBehavioralCompetencies[11].check_status === "1"
+                            coreBehavioralCompetencies[11].check_status == "true"
                               ? "✔"
                               : ""
                           }}
@@ -2009,7 +2061,7 @@
                       <tr>
                         <td>
                           {{
-                            coreBehavioralCompetencies[12].check_status === "1"
+                            coreBehavioralCompetencies[12].check_status == "true"
                               ? "✔"
                               : ""
                           }}
@@ -2026,7 +2078,7 @@
                       <tr>
                         <td>
                           {{
-                            coreBehavioralCompetencies[13].check_status === "1"
+                            coreBehavioralCompetencies[13].check_status == "true"
                               ? "✔"
                               : ""
                           }}
@@ -2041,7 +2093,7 @@
                       <tr>
                         <td>
                           {{
-                            coreBehavioralCompetencies[14].check_status === "1"
+                            coreBehavioralCompetencies[14].check_status == "true"
                               ? "✔"
                               : ""
                           }}
@@ -2066,7 +2118,7 @@
                       <tr>
                         <td>
                           {{
-                            coreBehavioralCompetencies[15].check_status === "1"
+                            coreBehavioralCompetencies[15].check_status == "true"
                               ? "✔"
                               : ""
                           }}
@@ -2077,7 +2129,7 @@
                       <tr>
                         <td>
                           {{
-                            coreBehavioralCompetencies[16].check_status === "1"
+                            coreBehavioralCompetencies[16].check_status == "true"
                               ? "✔"
                               : ""
                           }}
@@ -2092,7 +2144,7 @@
                       <tr>
                         <td>
                           {{
-                            coreBehavioralCompetencies[17].check_status === "1"
+                            coreBehavioralCompetencies[17].check_status == "true"
                               ? "✔"
                               : ""
                           }}
@@ -2106,7 +2158,7 @@
                       <tr>
                         <td>
                           {{
-                            coreBehavioralCompetencies[18].check_status === "1"
+                            coreBehavioralCompetencies[18].check_status == "true"
                               ? "✔"
                               : ""
                           }}
@@ -2119,7 +2171,7 @@
                       <tr>
                         <td>
                           {{
-                            coreBehavioralCompetencies[19].check_status === "1"
+                            coreBehavioralCompetencies[19].check_status == "true"
                               ? "✔"
                               : ""
                           }}
@@ -2141,7 +2193,7 @@
                       <tr>
                         <td>
                           {{
-                            coreBehavioralCompetencies[20].check_status === "1"
+                            coreBehavioralCompetencies[20].check_status == "true"
                               ? "✔"
                               : ""
                           }}
@@ -2155,7 +2207,7 @@
                       <tr>
                         <td>
                           {{
-                            coreBehavioralCompetencies[21].check_status === "1"
+                            coreBehavioralCompetencies[21].check_status == "true"
                               ? "✔"
                               : ""
                           }}
@@ -2169,7 +2221,7 @@
                       <tr>
                         <td>
                           {{
-                            coreBehavioralCompetencies[22].check_status === "1"
+                            coreBehavioralCompetencies[22].check_status == "true"
                               ? "✔"
                               : ""
                           }}
@@ -2183,7 +2235,7 @@
                       <tr>
                         <td>
                           {{
-                            coreBehavioralCompetencies[23].check_status === "1"
+                            coreBehavioralCompetencies[23].check_status == "true"
                               ? "✔"
                               : ""
                           }}
@@ -2198,7 +2250,7 @@
                       <tr>
                         <td>
                           {{
-                            coreBehavioralCompetencies[24].check_status === "1"
+                            coreBehavioralCompetencies[24].check_status == "true"
                               ? "✔"
                               : ""
                           }}
@@ -2220,7 +2272,7 @@
                       <tr>
                         <td>
                           {{
-                            coreBehavioralCompetencies[25].check_status === "1"
+                            coreBehavioralCompetencies[25].check_status == "true"
                               ? "✔"
                               : ""
                           }}
@@ -2236,7 +2288,7 @@
                       <tr>
                         <td>
                           {{
-                            coreBehavioralCompetencies[26].check_status === "1"
+                            coreBehavioralCompetencies[26].check_status == "true"
                               ? "✔"
                               : ""
                           }}
@@ -2251,7 +2303,7 @@
                       <tr>
                         <td>
                           {{
-                            coreBehavioralCompetencies[27].check_status === "1"
+                            coreBehavioralCompetencies[27].check_status == "true"
                               ? "✔"
                               : ""
                           }}
@@ -2265,7 +2317,7 @@
                       <tr>
                         <td>
                           {{
-                            coreBehavioralCompetencies[28].check_status === "1"
+                            coreBehavioralCompetencies[28].check_status == "true"
                               ? "✔"
                               : ""
                           }}
@@ -2279,7 +2331,7 @@
                       <tr>
                         <td>
                           {{
-                            coreBehavioralCompetencies[29].check_status === "1"
+                            coreBehavioralCompetencies[29].check_status == "true"
                               ? "✔"
                               : ""
                           }}
@@ -2361,7 +2413,7 @@
                         </tr>
                         <tr>
                           <td class="esatCard">School Year:</td>
-                          <td>SY 2021-2022</td>
+                          <td>SY {{this.esatDemographicProfile[0].school_year}}</td>
                           <td rowspan="2" class="text-center">
                             <v-btn dense @click="viewPrint"> View </v-btn>
                           </td>
@@ -2426,9 +2478,9 @@ export default {
       // returnShowPrint() {
       //   this.tab = "show_print";
       // },
-      goToEsatCard() {
-        this.tab = "esat_card";
-      },
+      // goToEsatCard() {
+      //   this.tab = "esat_card";
+      // },
       // returnEsatCard() {
       //   this.tab = "esat_card";
       // },
@@ -2572,6 +2624,7 @@ export default {
       employeeAge: "",
       employeeSex: "",
 
+      schoolYear: "",
       yearsInTeaching: "",
       highestDegreeObtained: "",
       specifiedHighestDegreeObtained: "",
@@ -2712,9 +2765,13 @@ export default {
       for (let func of returnedData.data[2][0].esatFunctionalObjectives) {
         this.functionalObjectives.push(func);
       }
+      this.employeeName = JSON.parse(sessionStorage.user_session).name;
     },
-    finalizeEsat: async function () {
-      // (this.showPart3 = false), (this.tab = "esat_card");
+    finalizeEsat: async function (){
+      console.log("created")
+      // (this.showPart3 = false),
+      // (this.tab = "esat_card");
+      
       const employeeName = this.employeeName;
       const employeeId = this.employeeId;
       const position = this.position;
@@ -2722,6 +2779,7 @@ export default {
       const employeeAge = this.employeeAge;
       const employeeSex = this.employeeSex;
 
+      const schoolYear = this.schoolYear;
       const yearsInTeaching = this.yearsInTeaching;
       const highestDegreeObtained = this.highestDegreeObtained;
       const specifiedHighestDegreeObtained = this.highestDegreeObtained;
@@ -2857,62 +2915,79 @@ export default {
 
       const capability1 = this.capability1;
       const development1 = this.development1;
-      const capability2 = this.capability2;
 
+      const capability2 = this.capability2;
       const development2 = this.development2;
+
       const capability3 = this.capability3;
       const development3 = this.development3;
+
       const capability4 = this.capability4;
       const development4 = this.development4;
+
       const capability5 = this.capability5;
       const development5 = this.development5;
+
       const capability6 = this.capability6;
       const development6 = this.development6;
+
       const capability7 = this.capability7;
       const development7 = this.development7;
+
       const capability8 = this.capability8;
       const development8 = this.development8;
+
       const capability9 = this.capability9;
       const development9 = this.development9;
+
       const capability10 = this.capability10;
       const development10 = this.development10;
+
       const capability11 = this.capability11;
       const development11 = this.development11;
+
       const capability12 = this.capability12;
       const development12 = this.development12;
-      const personalComments = this.personalComments;
-      const selfManagement1 = this.selfManagement1;
-      const selfManagement2 = this.selfManagement2;
-      const selfManagement3 = this.selfManagement3;
-      const selfManagement4 = this.selfManagement4;
-      const selfManagement5 = this.selfManagement5;
-      const professionalAndEthics1 = this.professionalAndEthics1;
-      const professionalAndEthics2 = this.professionalAndEthics2;
-      const professionalAndEthics3 = this.professionalAndEthics3;
-      const professionalAndEthics4 = this.professionalAndEthics4;
-      const professionalAndEthics5 = this.professionalAndEthics5;
-      const resultsFocus1 = this.resultsFocus1;
-      const resultsFocus2 = this.resultsFocus2;
-      const resultsFocus3 = this.resultsFocus3;
-      const resultsFocus4 = this.resultsFocus4;
-      const resultsFocus5 = this.resultsFocus5;
-      const teamwork1 = this.teamwork1;
-      const teamwork2 = this.teamwork2;
-      const teamwork3 = this.teamwork3;
-      const teamwork4 = this.teamwork4;
-      const teamwork5 = this.teamwork5;
-      const serviceOrientation1 = this.serviceOrientation1;
-      const serviceOrientation2 = this.serviceOrientation2;
-      const serviceOrientation3 = this.serviceOrientation3;
-      const serviceOrientation4 = this.serviceOrientation4;
-      const serviceOrientation5 = this.serviceOrientation5;
-      const innovation1 = this.innovation1;
-      const innovation2 = this.innovation2;
-      const innovation3 = this.innovation3;
-      const innovation4 = this.innovation4;
-      const innovation5 = this.innovation5;
 
-      const userId = 1;
+      const personalComments = this.personalComments;
+
+      const selfManagement1 = this.selfManagement1 == null ? "" : this.selfManagement1;
+      const selfManagement2 = this.selfManagement2 == null ? "" : this.selfManagement2;
+      const selfManagement3 = this.selfManagement3 == null ? "" : this.selfManagement3;
+      const selfManagement4 = this.selfManagement4 == null ? "" : this.selfManagement4;
+      const selfManagement5 = this.selfManagement5 == null ? "" : this.selfManagement5;
+
+      const professionalAndEthics1 = this.professionalAndEthics1 == null ? "" : this.professionalAndEthics1;
+      const professionalAndEthics2 = this.professionalAndEthics2 == null ? "" : this.professionalAndEthics2;
+      const professionalAndEthics3 = this.professionalAndEthics3 == null ? "" : this.professionalAndEthics3;
+      const professionalAndEthics4 = this.professionalAndEthics4 == null ? "" : this.professionalAndEthics4;
+      const professionalAndEthics5 = this.professionalAndEthics5 == null ? "" : this.professionalAndEthics5;
+
+      const resultsFocus1 = this.resultsFocus1 == null ? "" : this.resultsFocus1;
+      const resultsFocus2 = this.resultsFocus2 == null ? "" : this.resultsFocus2;
+      const resultsFocus3 = this.resultsFocus3 == null ? "" : this.resultsFocus3;
+      const resultsFocus4 = this.resultsFocus4 == null ? "" : this.resultsFocus4;
+      const resultsFocus5 = this.resultsFocus5 == null ? "" : this.resultsFocus5;
+
+      const teamwork1 = this.teamwork1 == null ? "" : this.teamwork1;
+      const teamwork2 = this.teamwork2 == null ? "" : this.teamwork2;
+      const teamwork3 = this.teamwork3 == null ? "" : this.teamwork3;
+      const teamwork4 = this.teamwork4 == null ? "" : this.teamwork4;
+      const teamwork5 = this.teamwork5 == null ? "" : this.teamwork5;
+
+      const serviceOrientation1 = this.serviceOrientation1 == null ? "" : this.serviceOrientation1;
+      const serviceOrientation2 = this.serviceOrientation2 == null ? "" : this.serviceOrientation2;
+      const serviceOrientation3 = this.serviceOrientation3 == null ? "" : this.serviceOrientation3;
+      const serviceOrientation4 = this.serviceOrientation4 == null ? "" : this.serviceOrientation4;
+      const serviceOrientation5 = this.serviceOrientation5 == null ? "" : this.serviceOrientation5;
+
+      const innovation1 = this.innovation1 == null ? "" : this.innovation1;
+      const innovation2 = this.innovation2 == null ? "" : this.innovation2;
+      const innovation3 = this.innovation3 == null ? "" : this.innovation3;
+      const innovation4 = this.innovation4 == null ? "" : this.innovation4;
+      const innovation5 = this.innovation5 == null ? "" : this.innovation5;
+
+      const userId = JSON.parse(sessionStorage.user_session).id;
       const functionalObjectives = [
         {
           userID: userId,
@@ -2987,6 +3062,7 @@ export default {
           priority: development12,
         },
       ];
+      console.log(functionalObjectives);
       const coreBehavioralCompetencies = [
         {
           userID: userId,
@@ -3139,6 +3215,7 @@ export default {
           value: innovation5,
         },
       ];
+      console.log(coreBehavioralCompetencies);
       const data = {
         userId,
         employeeName,
@@ -3148,6 +3225,7 @@ export default {
         employeeAge,
         employeeSex,
 
+        schoolYear,
         yearsInTeaching,
         highestDegreeObtained,
         specifiedHighestDegreeObtained,
@@ -3221,6 +3299,7 @@ export default {
           this.esatDemographicProfile[0].employment_status),
         (this.employeeAge = this.esatDemographicProfile[0].age),
         (this.employeeSex = this.esatDemographicProfile[0].sex),
+        (this.schoolYear = this.esatDemographicProfile[0].school_year),
         (this.yearsInTeaching =
           this.esatDemographicProfile[0].years_in_teaching),
         (this.highestDegreeObtained =
@@ -3230,7 +3309,7 @@ export default {
         (this.region = this.esatDemographicProfile[0].region),
         (this.division = this.esatDemographicProfile[0].division),
         (this.employeeMunicipality =
-          this.esatDemographicProfile[0].employee_Municipality),
+          this.esatDemographicProfile[0].employee_municipality),
         (this.schoolId = this.esatDemographicProfile[0].school_id),
         (this.schoolName = this.esatDemographicProfile[0].school_name),
         (this.schoolType = this.esatDemographicProfile[0].school_type),
@@ -3247,14 +3326,672 @@ export default {
         this.esatDemographicProfile[0].area_of_specialization.split(",").length;
       let splitSpecialize =
         this.esatDemographicProfile[0].area_of_specialization.split(
-          ",",
+          ", ",
           splitSpecializedLen
         );
-      for (let a in splitSpecialize) {
-        console.log(splitSpecialize[a]);
+      for (let specializeSub in splitSpecialize) {
+        splitSpecialize[specializeSub] == "English"
+          ? (this.english = splitSpecialize[specializeSub])
+          : splitSpecialize[specializeSub] == "Filipino"
+          ? (this.Filipino = splitSpecialize[specializeSub])
+          : splitSpecialize[specializeSub] == "Mathematics"
+          ? (this.mathematics = splitSpecialize[specializeSub])
+          : splitSpecialize[specializeSub] == "General Science"
+          ? (this.generalScience = splitSpecialize[specializeSub])
+          : splitSpecialize[specializeSub] == "Biology"
+          ? (this.biology = splitSpecialize[specializeSub])
+          : splitSpecialize[specializeSub] == "Chemistry"
+          ? (this.chemistry = splitSpecialize[specializeSub])
+          : splitSpecialize[specializeSub] == "Social Science"
+          ? (this.socialScience = splitSpecialize[specializeSub])
+          : splitSpecialize[specializeSub] == "Early Childhood Education"
+          ? (this.earlyChildhoodEducation = splitSpecialize[specializeSub])
+          : splitSpecialize[specializeSub] == "Values Education"
+          ? (this.valuesEducation = splitSpecialize[specializeSub])
+          : splitSpecialize[specializeSub] == "SPED"
+          ? (this.sped = splitSpecialize[specializeSub])
+          : splitSpecialize[specializeSub] == "Music"
+          ? (this.music = splitSpecialize[specializeSub])
+          : splitSpecialize[specializeSub] == "Arts"
+          ? (this.arts = splitSpecialize[specializeSub])
+          : splitSpecialize[specializeSub] == "Physical Education"
+          ? (this.physicalEducation = splitSpecialize[specializeSub])
+          : splitSpecialize[specializeSub] == "Health"
+          ? (this.health = splitSpecialize[specializeSub])
+          : splitSpecialize[specializeSub] == "TLE/HE/TVL"
+          ? (this.TLE_HE_TVL = splitSpecialize[specializeSub])
+          : ((this.selected = "Others"),
+            (this.otherSpecialized = splitSpecialize[specializeSub]));
       }
+      let splitSubjectTaughtLen =
+        this.esatDemographicProfile[0].subjects_taught.split(",").length;
+      let splitSubjectTaught =
+        this.esatDemographicProfile[0].subjects_taught.split(
+          ",",
+          splitSubjectTaughtLen
+        );
+
+      for (let subTaught in splitSubjectTaught) {
+        splitSubjectTaught[subTaught] == "Mother Tongue"
+          ? (this.MotherTongue = splitSubjectTaught[subTaught])
+          : splitSubjectTaught[subTaught] == "Filipino"
+          ? (this.Filipino = splitSubjectTaught[subTaught])
+          : splitSubjectTaught[subTaught] == "English"
+          ? (this.English = splitSubjectTaught[subTaught])
+          : splitSubjectTaught[subTaught] == "Mathematics"
+          ? (this.Mathematics = splitSubjectTaught[subTaught])
+          : splitSubjectTaught[subTaught] == "Science"
+          ? (this.Science = splitSubjectTaught[subTaught])
+          : splitSubjectTaught[subTaught] == "Araling Panlipunan"
+          ? (this.AralingPanlipunan = splitSubjectTaught[subTaught])
+          : splitSubjectTaught[subTaught] == "Edukasyon sa Pagpapakatao"
+          ? (this.EdukasyonSaPagpapakatao = splitSubjectTaught[subTaught])
+          : splitSubjectTaught[subTaught] == "MAPEH"
+          ? (this.Mapeh = splitSubjectTaught[subTaught])
+          : splitSubjectTaught[subTaught] == "TLE/HE"
+          ? (this.TLE_HE = splitSubjectTaught[subTaught])
+          : splitSubjectTaught[subTaught] == "EPP-LE/HE"
+          ? (this.EPP_LE_HE = splitSubjectTaught[subTaught])
+          : splitSubjectTaught[subTaught] == "Special Programs"
+          ? (this.specialPrograms = splitSubjectTaught[subTaught])
+          : ((this.selected1 = "Others"),
+            (this.otherSubTaught = splitSubjectTaught[subTaught]));
+      }
+
+      this.capability1 = this.functionalObjectives[0].level_of_capability;
+      this.development1 = this.functionalObjectives[0].priority_for_development;
+
+      this.capability2 = this.functionalObjectives[1].level_of_capability;
+      this.development2 = this.functionalObjectives[1].priority_for_development;
+
+      this.capability3 = this.functionalObjectives[2].level_of_capability;
+      this.development3 = this.functionalObjectives[2].priority_for_development;
+
+      this.capability4 = this.functionalObjectives[3].level_of_capability;
+      this.development4 = this.functionalObjectives[3].priority_for_development;
+
+      this.capability5 = this.functionalObjectives[4].level_of_capability;
+      this.development5 = this.functionalObjectives[4].priority_for_development;
+
+      this.capability6 = this.functionalObjectives[5].level_of_capability;
+      this.development6 = this.functionalObjectives[5].priority_for_development;
+
+      this.capability7 = this.functionalObjectives[6].level_of_capability;
+      this.development7 = this.functionalObjectives[6].priority_for_development;
+
+      this.capability8 = this.functionalObjectives[7].level_of_capability;
+      this.development8 = this.functionalObjectives[7].priority_for_development;
+
+      this.capability9 = this.functionalObjectives[8].level_of_capability;
+      this.development9 = this.functionalObjectives[8].priority_for_development;
+
+      this.capability10 = this.functionalObjectives[9].level_of_capability;
+      this.development10 = this.functionalObjectives[9].priority_for_development;
+
+      this.capability11 = this.functionalObjectives[10].level_of_capability;
+      this.development11 = this.functionalObjectives[10].priority_for_development;
+
+      this.capability12 = this.functionalObjectives[11].level_of_capability;
+      this.development12 = this.functionalObjectives[11].priority_for_development;
+
+
+      this.selfManagement1 = this.coreBehavioralCompetencies[0].check_status;
+      this.selfManagement2 = this.coreBehavioralCompetencies[1].check_status;
+      this.selfManagement3 = this.coreBehavioralCompetencies[2].check_status;
+      this.selfManagement4 = this.coreBehavioralCompetencies[3].check_status;
+      this.selfManagement5 = this.coreBehavioralCompetencies[4].check_status;
+
+      this.professionalAndEthics1 = this.coreBehavioralCompetencies[5].check_status;
+      this.professionalAndEthics2 = this.coreBehavioralCompetencies[6].check_status;
+      this.professionalAndEthics3 = this.coreBehavioralCompetencies[7].check_status;
+      this.professionalAndEthics4 = this.coreBehavioralCompetencies[8].check_status;
+      this.professionalAndEthics5 = this.coreBehavioralCompetencies[9].check_status;
+
+      this.resultsFocus1 = this.coreBehavioralCompetencies[10].check_status;
+      this.resultsFocus2 = this.coreBehavioralCompetencies[11].check_status;
+      this.resultsFocus3 = this.coreBehavioralCompetencies[12].check_status;
+      this.resultsFocus4 = this.coreBehavioralCompetencies[13].check_status;
+      this.resultsFocus5 = this.coreBehavioralCompetencies[14].check_status;
+
+      this.teamwork1 = this.coreBehavioralCompetencies[15].check_status;
+      this.teamwork2 = this.coreBehavioralCompetencies[16].check_status;
+      this.teamwork3 = this.coreBehavioralCompetencies[17].check_status;
+      this.teamwork4 = this.coreBehavioralCompetencies[18].check_status;
+      this.teamwork5 = this.coreBehavioralCompetencies[19].check_status;
+
+      this.serviceOrientation1 = this.coreBehavioralCompetencies[20].check_status;
+      this.serviceOrientation2 = this.coreBehavioralCompetencies[21].check_status;
+      this.serviceOrientation3 = this.coreBehavioralCompetencies[22].check_status;
+      this.serviceOrientation4 = this.coreBehavioralCompetencies[23].check_status;
+      this.serviceOrientation5 = this.coreBehavioralCompetencies[24].check_status;
+
+      this.innovation1 = this.coreBehavioralCompetencies[25].check_status;
+      this.innovation2 = this.coreBehavioralCompetencies[26].check_status;
+      this.innovation3 = this.coreBehavioralCompetencies[27].check_status;
+      this.innovation4 = this.coreBehavioralCompetencies[28].check_status;
+      this.innovation5 = this.coreBehavioralCompetencies[29].check_status;
+    },
+
+    updateEsat: async function () {
+      console.log("Update")
+      // (this.showPart3 = false),
+      // (this.tab = "esat_card");
+      const employeeName = this.employeeName;
+      const employeeId = this.employeeId;
+      const position = this.position;
+      const employmentStatus = this.employmentStatus;
+      const employeeAge = this.employeeAge;
+      const employeeSex = this.employeeSex;
+
+      const schoolYear = this.schoolYear;
+      const yearsInTeaching = this.yearsInTeaching;
+      const highestDegreeObtained = this.highestDegreeObtained;
+      const specifiedHighestDegreeObtained = this.highestDegreeObtained;
+      const levelTaught = this.levelTaught;
+      const gradeLevelTaught = this.gradeLevelTaught;
+
+      const region = this.region;
+      const division = this.division;
+      const employeeMunicipality = this.employeeMunicipality;
+      const schoolId = this.schoolId;
+      const schoolName = this.schoolName;
+      const schoolType = this.schoolType;
+      const schoolSize = this.schoolSize;
+      const curricularClassification = this.curricularClassification;
+      const openComments = this.openComments;
+      //  const highestDegreeObtained = this.highestDegreeObtained;
+      const english = this.english == null ? "" : this.english;
+      const filipino = this.filipino == null ? "" : this.filipino;
+      const mathematics = this.mathematics == null ? "" : this.mathematics;
+      const generalScience =
+        this.generalScience == null ? "" : this.generalScience;
+      const biology = this.biology == null ? "" : this.biology;
+      const chemistry = this.chemistry == null ? "" : this.chemistry;
+      const physics = this.physics == null ? "" : this.physics;
+      const socialScience =
+        this.socialScience == null ? "" : this.socialScience;
+      const earlyChildhoodEducation =
+        this.earlyChildhoodEducation == null
+          ? ""
+          : this.earlyChildhoodEducation;
+      const valuesEducation =
+        this.valuesEducation == null ? "" : this.valuesEducation;
+      const sped = this.sped == null ? "" : this.sped;
+      const music = this.music == null ? "" : this.music;
+      const arts = this.arts == null ? "" : this.arts;
+      const physicalEducation =
+        this.physicalEducation == null ? "" : this.physicalEducation;
+      const health = this.health == null ? "" : this.health;
+      const TLE_HE_TVL = this.TLE_HE_TVL == null ? "" : this.TLE_HE_TVL;
+      const selected = this.selected;
+      const otherSpecializedSub =
+        this.otherSpecialized == null ? "" : this.otherSpecialized;
+
+      let specifyAreaofSpecialization = "";
+      let specialization = [
+        english,
+        filipino,
+        mathematics,
+        generalScience,
+        biology,
+        chemistry,
+        physics,
+        socialScience,
+        earlyChildhoodEducation,
+        valuesEducation,
+        sped,
+        music,
+        arts,
+        physicalEducation,
+        health,
+        TLE_HE_TVL,
+        otherSpecializedSub,
+      ];
+
+      for (let sub of specialization) {
+        if (sub == "") {
+          continue;
+        } else {
+          specifyAreaofSpecialization += sub + ", ";
+        }
+      }
+
+      let specializeSplitLen =
+        specifyAreaofSpecialization.split(",").length - 1;
+      let specializeSubSplit = specifyAreaofSpecialization.split(
+        ",",
+        specializeSplitLen
+      );
+      let specializeSubSplitJoin = specializeSubSplit.join();
+      specifyAreaofSpecialization = specializeSubSplitJoin;
+
+      const MotherTongue = this.MotherTongue == null ? "" : this.MotherTongue;
+      const Filipino = this.Filipino == null ? "" : this.Filipino;
+      const English = this.English == null ? "" : this.English;
+      const Mathematics = this.Mathematics == null ? "" : this.Mathematics;
+      const Science = this.Science == null ? "" : this.Science;
+      const AralingPanlipunan =
+        this.AralingPanlipunan == null ? "" : this.AralingPanlipunan;
+      const EdukasyonSaPagpapakatao =
+        this.EdukasyonSaPagpapakatao == null
+          ? ""
+          : this.EdukasyonSaPagpapakatao;
+      const Mapeh = this.Mapeh == null ? "" : this.Mapeh;
+      const TLE_HE = this.TLE_HE == null ? "" : this.TLE_HE;
+      const EPP_LE_HE = this.EPP_LE_HE == null ? "" : this.EPP_LE_HE;
+      const specialPrograms =
+        this.specialPrograms == null ? "" : this.specialPrograms;
+      const selected1 = this.selected1;
+      const otherSubjectTaught =
+        this.otherSubTaught == null ? "" : this.otherSubTaught;
+
+      let specifySubjectsTaught = "";
+      let subjectTaught = [
+        MotherTongue,
+        Filipino,
+        English,
+        Mathematics,
+        Science,
+        AralingPanlipunan,
+        EdukasyonSaPagpapakatao,
+        Mapeh,
+        TLE_HE,
+        EPP_LE_HE,
+        specialPrograms,
+        otherSubjectTaught,
+      ];
+
+      for (let subTaught of subjectTaught) {
+        if (subTaught == "") {
+          continue;
+        } else {
+          specifySubjectsTaught += subTaught + ",";
+        }
+      }
+
+      let splitSpecifiedSubLen = specifySubjectsTaught.split(",").length - 1;
+      let specifiedSubSplit = specifySubjectsTaught.split(
+        ",",
+        splitSpecifiedSubLen
+      );
+      let specifiedSubSplitJoin = specifiedSubSplit.join();
+      specifySubjectsTaught = specifiedSubSplitJoin;
+
+      const capability1 = this.capability1;
+      const development1 = this.development1;
+
+      const capability2 = this.capability2;
+      const development2 = this.development2;
+
+      const capability3 = this.capability3;
+      const development3 = this.development3;
+
+      const capability4 = this.capability4;
+      const development4 = this.development4;
+
+      const capability5 = this.capability5;
+      const development5 = this.development5;
+
+      const capability6 = this.capability6;
+      const development6 = this.development6;
+
+      const capability7 = this.capability7;
+      const development7 = this.development7;
+
+      const capability8 = this.capability8;
+      const development8 = this.development8;
+
+      const capability9 = this.capability9;
+      const development9 = this.development9;
+
+      const capability10 = this.capability10;
+      const development10 = this.development10;
+
+      const capability11 = this.capability11;
+      const development11 = this.development11;
+
+      const capability12 = this.capability12;
+      const development12 = this.development12;
+
+      const personalComments = this.personalComments;
+
+//  == "1" ? this.selfManagement : this.selfManagement1 == "1" ? this.selfManagement
+      const selfManagement1 = this.selfManagement1; 
+      const selfManagement2 = this.selfManagement2;
+      const selfManagement3 = this.selfManagement3;
+      const selfManagement4 = this.selfManagement4;
+      const selfManagement5 = this.selfManagement5;
+
+      const professionalAndEthics1 = this.professionalAndEthics1;
+      const professionalAndEthics2 = this.professionalAndEthics2;
+      const professionalAndEthics3 = this.professionalAndEthics3;
+      const professionalAndEthics4 = this.professionalAndEthics4;
+      const professionalAndEthics5 = this.professionalAndEthics5;
+
+      const resultsFocus1 = this.resultsFocus1;
+      const resultsFocus2 = this.resultsFocus2;
+      const resultsFocus3 = this.resultsFocus3;
+      const resultsFocus4 = this.resultsFocus4;
+      const resultsFocus5 = this.resultsFocus5;
+
+      const teamwork1 = this.teamwork1;
+      const teamwork2 = this.teamwork2;
+      const teamwork3 = this.teamwork3;
+      const teamwork4 = this.teamwork4;
+      const teamwork5 = this.teamwork5;
+
+      const serviceOrientation1 = this.serviceOrientation1;
+      const serviceOrientation2 = this.serviceOrientation2;
+      const serviceOrientation3 = this.serviceOrientation3;
+      const serviceOrientation4 = this.serviceOrientation4;
+      const serviceOrientation5 = this.serviceOrientation5;
+
+      const innovation1 = this.innovation1;
+      const innovation2 = this.innovation2;
+      const innovation3 = this.innovation3;
+      const innovation4 = this.innovation4;
+      const innovation5 = this.innovation5;
+
+      const userId = JSON.parse(sessionStorage.user_session).id;
+      const functionalObjectives = [
+        {
+          userID: userId,
+          objectiveNo: "1.1",
+          capability: capability1,
+          priority: development1,
+        },
+        {
+          userID: userId,
+          objectiveNo: "1.2",
+          capability: capability2,
+          priority: development2,
+        },
+        {
+          userID: userId,
+          objectiveNo: "1.3",
+          capability: capability3,
+          priority: development3,
+        },
+        {
+          userID: userId,
+          objectiveNo: "2.1",
+          capability: capability4,
+          priority: development4,
+        },
+        {
+          userID: userId,
+          objectiveNo: "2.2",
+          capability: capability5,
+          priority: development5,
+        },
+        {
+          userID: userId,
+          objectiveNo: "2.3",
+          capability: capability6,
+          priority: development6,
+        },
+        {
+          userID: userId,
+          objectiveNo: "3.1",
+          capability: capability7,
+          priority: development7,
+        },
+        {
+          userID: userId,
+          objectiveNo: "3.2",
+          capability: capability8,
+          priority: development8,
+        },
+        {
+          userID: userId,
+          objectiveNo: "4.1",
+          capability: capability9,
+          priority: development9,
+        },
+        {
+          userID: userId,
+          objectiveNo: "4.2",
+          capability: capability10,
+          priority: development10,
+        },
+        {
+          userID: userId,
+          objectiveNo: "4.3",
+          capability: capability11,
+          priority: development11,
+        },
+        {
+          userID: userId,
+          objectiveNo: "5.1",
+          capability: capability12,
+          priority: development12,
+        },
+      ];
+      console.log(functionalObjectives);
+      const coreBehavioralCompetencies = [
+        {
+          userID: userId,
+          objectiveNo: "1.1",
+          value: selfManagement1,
+        },
+        {
+          userID: userId,
+          objectiveNo: "1.2",
+          value: selfManagement2,
+        },
+        {
+          userID: userId,
+          objectiveNo: "1.3",
+          value: selfManagement3,
+        },
+        {
+          userID: userId,
+          objectiveNo: "1.4",
+          value: selfManagement4,
+        },
+        {
+          userID: userId,
+          objectiveNo: "1.5",
+          value: selfManagement5,
+        },
+        {
+          userID: userId,
+          objectiveNo: "2.1",
+          value: professionalAndEthics1,
+        },
+        {
+          userID: userId,
+          objectiveNo: "2.2",
+          value: professionalAndEthics2,
+        },
+        {
+          userID: userId,
+          objectiveNo: "2.3",
+          value: professionalAndEthics3,
+        },
+        {
+          userID: userId,
+          objectiveNo: "2.4",
+          value: professionalAndEthics4,
+        },
+        {
+          userID: userId,
+          objectiveNo: "2.5",
+          value: professionalAndEthics5,
+        },
+        {
+          userID: userId,
+          objectiveNo: "3.1",
+          value: resultsFocus1,
+        },
+        {
+          userID: userId,
+          objectiveNo: "3.2",
+          value: resultsFocus2,
+        },
+        {
+          userID: userId,
+          objectiveNo: "3.3",
+          value: resultsFocus3,
+        },
+        {
+          userID: userId,
+          objectiveNo: "3.4",
+          value: resultsFocus4,
+        },
+        {
+          userID: userId,
+          objectiveNo: "3.5",
+          value: resultsFocus5,
+        },
+        {
+          userID: userId,
+          objectiveNo: "4.1",
+          value: teamwork1,
+        },
+        {
+          userID: userId,
+          objectiveNo: "4.2",
+          value: teamwork2,
+        },
+        {
+          userID: userId,
+          objectiveNo: "4.3",
+          value: teamwork3,
+        },
+        {
+          userID: userId,
+          objectiveNo: "4.4",
+          value: teamwork4,
+        },
+        {
+          userID: userId,
+          objectiveNo: "4.5",
+          value: teamwork5,
+        },
+        {
+          userID: userId,
+          objectiveNo: "5.1",
+          value: serviceOrientation1,
+        },
+        {
+          userID: userId,
+          objectiveNo: "5.2",
+          value: serviceOrientation2,
+        },
+        {
+          userID: userId,
+          objectiveNo: "5.3",
+          value: serviceOrientation3,
+        },
+        {
+          userID: userId,
+          objectiveNo: "5.4",
+          value: serviceOrientation4,
+        },
+        {
+          userID: userId,
+          objectiveNo: "5.5",
+          value: serviceOrientation5,
+        },
+        {
+          userID: userId,
+          objectiveNo: "6.1",
+          value: innovation1,
+        },
+        {
+          userID: userId,
+          objectiveNo: "6.2",
+          value: innovation2,
+        },
+        {
+          userID: userId,
+          objectiveNo: "6.3",
+          value: innovation3,
+        },
+        {
+          userID: userId,
+          objectiveNo: "6.4",
+          value: innovation4,
+        },
+        {
+          userID: userId,
+          objectiveNo: "6.5",
+          value: innovation5,
+        },
+      ];
+      console.log(coreBehavioralCompetencies);
+      const data = {
+        userId,
+        employeeName,
+        employeeId,
+        position,
+        employmentStatus,
+        employeeAge,
+        employeeSex,
+
+        schoolYear,
+        yearsInTeaching,
+        highestDegreeObtained,
+        specifiedHighestDegreeObtained,
+        levelTaught,
+        gradeLevelTaught,
+
+        region,
+        division,
+        employeeMunicipality,
+        schoolId,
+        schoolName,
+        schoolType,
+        schoolSize,
+        curricularClassification,
+        openComments,
+        functionalObjectives,
+        coreBehavioralCompetencies,
+
+        english,
+        filipino,
+        mathematics,
+        generalScience,
+        biology,
+        chemistry,
+        physics,
+        socialScience,
+        earlyChildhoodEducation,
+        valuesEducation,
+        sped,
+        music,
+        arts,
+        physicalEducation,
+        health,
+        TLE_HE_TVL,
+        selected,
+        specifyAreaofSpecialization,
+        MotherTongue,
+        Filipino,
+        English,
+        Mathematics,
+        Science,
+        AralingPanlipunan,
+        EdukasyonSaPagpapakatao,
+        Mapeh,
+        TLE_HE,
+        EPP_LE_HE,
+        specialPrograms,
+        selected1,
+        specifySubjectsTaught,
+        personalComments,
+      };
+      const returnedData = await this.$store.dispatch("updateEsatInfo", data);
+      // const returnedData = await this.post("createEsat", data);
+      console.log(data);
+      console.log(returnedData);
+      // if (returnedData.status ==200) {
+      //   console.log("success");
+      // }
     },
     viewPrint: async function () {
+      
       // (this.tab = "show_print"), (this.showPrint = true);
       // console.log("View Card")
       // const returnedData = await this.$store.dispatch("retrieveEsatInfoById");

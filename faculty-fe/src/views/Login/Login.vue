@@ -74,6 +74,7 @@ export default {
       };
       console.log(data)
       const returnedData = await this.$store.dispatch("loginLocally", data);
+      console.log("Login")
       console.log(returnedData);
       if (returnedData.data[0].message === "Credentials matched!") {
         // localStorage.setItem("userData", data);

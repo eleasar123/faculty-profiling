@@ -2,9 +2,9 @@
   <v-container fluid>
   <v-app v-if="userData!==null">
     <Navbar></Navbar>
-    <v-content class="ma-6 pa-2">
+    <v-main class="ma-6 pa-2">
         <router-view></router-view>
-    </v-content>
+    </v-main>
    
   </v-app>
  <v-app v-else>
