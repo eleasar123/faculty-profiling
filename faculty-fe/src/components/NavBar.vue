@@ -56,7 +56,6 @@ export default {
       drawer: true,
       links :[
           {icon: 'person', text:'ESAT',  route: '/esat'},
-          {icon: 'dashboard', text:'Manage User', route: '/manageUser'},
           {icon: 'folder', text:'Personal Data Sheet', route: '/personalDataSheet'},
           {icon: 'folder', text:'Manage IPCRF', route: '/manageIpcrf' ,items: [
             { title: 'List Item' }
@@ -65,6 +64,11 @@ export default {
       ]
      
     }),
+    created(){
+      if(JSON.parse(sessionStorage.getItem("user_session")).role == 'Admin'){
+        this.links.push({icon: 'dashboard', text:'Manage User', route: '/manageUser'},)
+      }
+    },
     methods: {
       logOut(){
         this.$store.dispatch('logout')

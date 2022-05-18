@@ -9,6 +9,7 @@ import Login from "../views/Login/Login.vue";
 import PersonalDataSheet from "../views/Profile/PDSUser.vue";
 import ViewPds from "../views/Profile/ViewPdsAdmin.vue"
 import ProductsInventory from '../views/Test/ProductsInventory'
+import ArticlesPage from '../views/CodingInterview/ArticlesPage'
 Vue.use(VueRouter);
 
 const routes = [{
@@ -17,6 +18,12 @@ const routes = [{
         component: PersonalData
     },
 
+    //routes for article page
+{
+  path: "/articles",
+  name: "ArticlesPage",
+  component: ArticlesPage
+},
   {
     path: "/personalData",
     name: "personalData",

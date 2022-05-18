@@ -11,7 +11,11 @@ import user from "./modules/users"
 Vue.use(Vuex);
 
 const AUTH_TOKEN = sessionStorage.getItem('user_token')
+<<<<<<< HEAD
 axios.defaults.baseURL = "http://localhost:8000/api";
+=======
+axios.defaults.baseURL = "http://localhost:8000/api/";
+>>>>>>> 51395e41a452ca7692a4571456f565e087b52798
 axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
 axios.defaults.headers.common["Content-Type"] = "application/json";
 
@@ -46,6 +50,60 @@ export default new Vuex.Store({
     //   },
     // },
     actions: {
+
+        getArticles(){
+            return axios.get('articles/')
+            .then((response) => {
+                console.log(response)
+                return response;
+            }).catch((error) => {
+                console.log(error)
+            })
+        },
+
+        getArticlesById(props){
+            return axios.get('articles/'+ props.id )
+            .then((response) => {
+                console.log(response)
+                return response;
+            }).catch((error) => {
+                console.log(error)
+            })
+        },
+        
+        createArticle({commit},props) {
+            return axios.post('articles/create', props) 
+            .then((response) => {
+             console.log(response)
+             commit;
+             return response;
+         }).catch((error) => {
+             console.log(error)
+         })
+         },
+
+        editArticles(props) {
+           return axios.post('articles/edit', props) 
+           .then((response) => {
+            console.log(response)
+            return response;
+        }).catch((error) => {
+            console.log(error)
+        })
+        },
+
+        deleteArticles({commit},id){
+            return axios.delete('articles/delete/'+ id)
+            .then((response) => {
+                console.log(response)
+                commit;
+                return response;
+            }).catch((error) => {
+                console.log(error)
+            })
+            },
+
+
         uploadFile(context, file) {
             console.log([...file]);
             return axios
