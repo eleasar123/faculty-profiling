@@ -35,7 +35,7 @@ return new class extends Migration
             $table->string('father_last_name');
             $table->string('father_first_name');
             $table->string('father_middle_name');
-            $table->string('father_suffix');
+            $table->string('father_suffix')-> nullable();
             $table->date('father_date_of_birth');
             $table->string('mother_maiden_name');
             $table->string('mother_last_name');

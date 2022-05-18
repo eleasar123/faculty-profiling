@@ -18,13 +18,14 @@ class IpcrfDevelopmentPlan extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'user',
+        'user_id',
         'ratee',
         'competency_type',
         'rater',
         'strengths',
         'development_needs',
         'learning_objectives',
+        'intervention',
         'timeline',
         'resources_needed',
         'approving_authority',
