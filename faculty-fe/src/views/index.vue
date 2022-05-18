@@ -6433,328 +6433,294 @@
         </v-card>
         <!-- START OF Part 3 KRA COLUMN -->
         <v-row class="text-center">
-          <div class="ePart1">
-            <template v-for="n in 13">
-              <v-col :key="n" v-if="n === 1" class="ePartCol2" style="margin-left: -25px">
-                <v-card
-                  class="pa-2 pt-4"
-                  style="width: 140px; height: 120px"
-                  outlined
-                  tile
-                >
-                  <h5>
-                    KRA <br />
-                    <br />
-                  </h5>
+          <template v-for="n in 15">
+            <v-col :key="n" v-if="n === 1" class="ePartCol2" style="margin-left: -25px">
+              <v-card class="pa-2 pt-4" style="width: 140px; height: 120px" outlined tile>
+                <h5>
+                  KRA <br />
+                  <br />
+                </h5>
+              </v-card>
+              <div style="text-align: center">
+                <v-card class="pa-2 pt-6" style="height: 150px" outlined tile>
+                  <h5>KRA 1</h5>
                 </v-card>
-                <div style="text-align: center">
-                  <v-card class="pa-2 pt-6" style="height: 150px" outlined tile>
-                    <h5>KRA 1</h5>
-                  </v-card>
-                  <v-card class="pa-2 pt-6" style="height: 150px" outlined tile>
-                    <h5>KRA 2</h5>
-                  </v-card>
-                  <v-card class="pa-2 pt-6" style="height: 100px" outlined tile>
-                    <h5>KRA 3</h5>
-                  </v-card>
-                  <v-card class="pa-2 pt-6" style="height: 150px" outlined tile>
-                    <h5>KRA 4</h5>
-                  </v-card>
-                  <v-card class="pa-2 pt-4" style="height: 51px" outlined tile>
-                    <h5>Plus Factor</h5>
-                  </v-card>
-                  <v-card class="pa-2 pt-4 pl-4" style="height: 54px" outlined tile>
-                    <h5>Date Observed</h5>
-                  </v-card>
-                </div>
-              </v-col>
+                <v-card class="pa-2 pt-6" style="height: 150px" outlined tile>
+                  <h5>KRA 2</h5>
+                </v-card>
+                <v-card class="pa-2 pt-6" style="height: 100px" outlined tile>
+                  <h5>KRA 3</h5>
+                </v-card>
+                <v-card class="pa-2 pt-6" style="height: 150px" outlined tile>
+                  <h5>KRA 4</h5>
+                </v-card>
+                <v-card class="pa-2 pt-4" style="height: 51px" outlined tile>
+                  <h5>Plus Factor</h5>
+                </v-card>
+                <v-card class="pa-2 pt-4 pl-4" style="height: 54px" outlined tile>
+                  <h5>Date Observed</h5>
+                </v-card>
+              </div>
+            </v-col>
 
-              <!-- END OF BASIC EDUCATION COLUMN -->
-              <!-- Start of encoding weighted per kra -->
-              <v-col
-                :key="n"
-                v-else-if="n === 2"
-                class="ePartCol5"
-                style="margin-left: -25px"
+            <!-- END OF BASIC EDUCATION COLUMN -->
+            <!-- Start of encoding weighted per kra -->
+            <v-col
+              :key="n"
+              v-else-if="n === 2"
+              class="ePartCol5"
+              style="margin-left: -25px"
+            >
+              <v-card class="pa-2 pt-4" style="width: 140px; height: 120px" outlined tile>
+                <h5>
+                  Weight per KRA<br />
+                  <br />
+                </h5>
+              </v-card>
+              <v-card
+                class="pa-2 pt-4 kra1"
+                style="height: 150px"
+                v-model="kra1"
+                outlined
+                tile
               >
-                <v-card
-                  class="pa-2 pt-4"
-                  style="width: 140px; height: 120px"
-                  outlined
-                  tile
-                >
-                  <h5>
-                    Weight per KRA<br />
-                    <br />
-                  </h5>
-                </v-card>
-                <v-card
-                  class="pa-2 pt-4 kra1"
-                  style="height: 150px"
-                  v-model="kra1"
-                  outlined
-                  tile
-                >
-                  <h5 class="font-weight-regular"><br />24.00%<br /><br /></h5>
-                </v-card>
-                <v-card
-                  class="pa-2 pt-4 kra2"
-                  style="height: 150px"
-                  v-model="kra2"
-                  outlined
-                  tile
-                >
-                  <h5 class="font-weight-regular"><br />24.00%<br /><br /><br /></h5>
-                </v-card>
-                <v-card
-                  class="pa-2 pt-4 kra3"
-                  style="height: 100px"
-                  v-model="kra3"
-                  outlined
-                  tile
-                >
-                  <h5 class="font-weight-regular"><br />16.00%<br /><br /><br /></h5>
-                </v-card>
-                <v-card
-                  class="pa-2 pt-4 kra4"
-                  style="height: 150px"
-                  v-model="kra4"
-                  outlined
-                  tile
-                >
-                  <h5 class="font-weight-regular">
-                    <br /><br />24.00%<br /><br /><br />
-                  </h5>
-                </v-card>
-                <v-card
-                  class="pa-4 kra5"
-                  style="height: 51px"
-                  v-model="kra5"
-                  outlined
-                  tile
-                >
-                  <h5 class="font-weight-regular">12.00%<br /><br /><br /></h5>
-                </v-card>
-                <v-card class="pa-1" style="height: 54px" v-model="kra5" outlined tile>
-                  <v-text-field style="mb-8"></v-text-field>
-                </v-card>
-              </v-col>
-              <!-- START OF OBJECTIVES COLUMN -->
-
-              <v-col
-                :key="n"
-                v-else-if="n === 3"
-                class="ePartCol3"
-                style="margin-left: -25px"
+                <h5 class="font-weight-regular"><br />24.00%<br /><br /></h5>
+              </v-card>
+              <v-card
+                class="pa-2 pt-4 kra2"
+                style="height: 150px"
+                v-model="kra2"
+                outlined
+                tile
               >
-                <v-card
-                  class="pa-2 pt-4"
-                  outlined
-                  tile
-                  style="width: 120px; height: 120px"
-                >
-                  <h5>
-                    Objectives<br />
-                    <br />
-                  </h5>
-                </v-card>
-                <div style="text-align: center">
-                  <v-card class="pa-2 pt-4" style="height: 50px" outlined tile>
-                    <h5 class="font-weight-regular">Objective 1</h5>
-                    <br />
-                  </v-card>
-
-                  <v-card class="pa-2 pt-4" style="height: 50px" outlined tile>
-                    <h5 class="font-weight-regular">Objective 2</h5>
-                    <br />
-                  </v-card>
-                  <v-card class="pa-2 pt-4" style="height: 50px" outlined tile>
-                    <h5 class="font-weight-regular">Objective 3</h5>
-                    <br />
-                  </v-card>
-                  <v-card class="pa-2" style="height: 50px" outlined tile>
-                    <h5 class="font-weight-regular">Objective 4</h5>
-                    <br />
-                  </v-card>
-
-                  <v-card class="pa-2" style="height: 50px" outlined tile>
-                    <h5 class="font-weight-regular">Objective 5</h5>
-                    <br />
-                  </v-card>
-                  <v-card class="pa-2 pt-4" style="height: 50px" outlined tile>
-                    <h5 class="font-weight-regular">Objective 6</h5>
-                    <br />
-                  </v-card>
-                  <v-card class="pa-2 pt-4" style="height: 50px" outlined tile>
-                    <h5 class="font-weight-regular">Objective 7</h5>
-                    <br />
-                  </v-card>
-                  <v-card class="pa-2 pt-4" style="height: 50px" outlined tile>
-                    <h5 class="font-weight-regular">Objective 8</h5>
-                    <br />
-                  </v-card>
-
-                  <v-card class="pa-2 pt-4" style="height: 50px" outlined tile>
-                    <h5 class="font-weight-regular">Objective 9</h5>
-                    <br />
-                  </v-card>
-                  <v-card class="pa-2 pt-4" style="height: 50px" outlined tile>
-                    <h5 class="font-weight-regular">Objective 10</h5>
-                    <br />
-                  </v-card>
-                  <v-card class="pa-2 pt-4" style="height: 50px" outlined tile>
-                    <h5 class="font-weight-regular">Objective 11</h5>
-                    <br />
-                  </v-card>
-                  <v-card class="pa-2 pt-4" style="height: 50px" outlined tile>
-                    <h5 class="font-weight-regular">Objective 12</h5>
-                    <br />
-                  </v-card>
-                </div>
-              </v-col>
-              <!-- END OF OBJECTIVES COLUMN -->
-              <!-- START OF OBJECTIVES COLUMN -->
-
-              <v-col
-                :key="n"
-                v-else-if="n === 4"
-                class="ePartCol3"
-                style="margin-left: -25px"
+                <h5 class="font-weight-regular"><br />24.00%<br /><br /><br /></h5>
+              </v-card>
+              <v-card
+                class="pa-2 pt-4 kra3"
+                style="height: 100px"
+                v-model="kra3"
+                outlined
+                tile
               >
-                <v-card
-                  class="pa-2 pt-4"
-                  outlined
-                  tile
-                  style="width: 120px; height: 120px"
-                >
-                  <h5>
-                    Weight per <br />
-                    Objectives
-                    <br />
-                  </h5>
-                </v-card>
-                <div style="text-align: center">
-                  <v-card class="pa-2 pt-4" style="height: 50px" outlined tile>
-                    <h5 class="font-weight-regular">8 %</h5>
-                    <br />
-                  </v-card>
-
-                  <v-card class="pa-2 pt-4" style="height: 50px" outlined tile>
-                    <h5 class="font-weight-regular">8 %</h5>
-                    <br />
-                  </v-card>
-                  <v-card class="pa-2 pt-4" style="height: 50px" outlined tile>
-                    <h5 class="font-weight-regular">8 %</h5>
-                    <br />
-                  </v-card>
-                  <v-card class="pa-2" style="height: 50px" outlined tile>
-                    <h5 class="font-weight-regular">8 %</h5>
-                    <br />
-                  </v-card>
-
-                  <v-card class="pa-2" style="height: 50px" outlined tile>
-                    <h5 class="font-weight-regular">8 %</h5>
-                    <br />
-                  </v-card>
-                  <v-card class="pa-2 pt-4" style="height: 50px" outlined tile>
-                    <h5 class="font-weight-regular">8 %</h5>
-                    <br />
-                  </v-card>
-                  <v-card class="pa-2 pt-4" style="height: 50px" outlined tile>
-                    <h5 class="font-weight-regular">8 %</h5>
-                    <br />
-                  </v-card>
-                  <v-card class="pa-2 pt-4" style="height: 50px" outlined tile>
-                    <h5 class="font-weight-regular">8 %</h5>
-                    <br />
-                  </v-card>
-
-                  <v-card class="pa-2 pt-4" style="height: 50px" outlined tile>
-                    <h5 class="font-weight-regular">8 %</h5>
-                    <br />
-                  </v-card>
-                  <v-card class="pa-2 pt-4" style="height: 50px" outlined tile>
-                    <h5 class="font-weight-regular">8 %</h5>
-                    <br />
-                  </v-card>
-                  <v-card class="pa-2 pt-4" style="height: 50px" outlined tile>
-                    <h5 class="font-weight-regular">8 %</h5>
-                    <br />
-                  </v-card>
-                  <v-card class="pa-2 pt-4" style="height: 50px" outlined tile>
-                    <h5 class="font-weight-regular">8 %</h5>
-                    <br />
-                  </v-card>
-                </div>
-              </v-col>
-              <!-- END OF encoding weighted per OBJECTIVE - -->
-              <!-- Start of IPCRF  NUMERICAL RATING -->
-              <v-col
-                :key="n"
-                v-else-if="n === 5"
-                class="ePartCol3"
-                style="margin-left: -25px"
+                <h5 class="font-weight-regular"><br />16.00%<br /><br /><br /></h5>
+              </v-card>
+              <v-card
+                class="pa-2 pt-4 kra4"
+                style="height: 150px"
+                v-model="kra4"
+                outlined
+                tile
               >
-                <v-card
-                  class="pa-2 pt-4"
-                  outlined
-                  tile
-                  style="width: 260px; height: 120px"
-                >
-                  <h5>
-                    IPCRF NUMERICAL RATING
-                    <br />
-                  </h5>
-                  <v-card
-                    no-gutters
-                    style="
-                      width: 57px;
-                      height: 20px;
-                      border-radius: 0;
-                      margin-top: 62px;
-                      margin-left: -7px;
-                    "
-                    >Q
-                  </v-card>
-                  <v-card
-                    no-gutters
-                    style="
-                      width: 57px;
-                      height: 20px;
-                      border-radius: 0;
-                      margin-top: -20px;
-                      margin-left: 57px;
-                    "
-                    >E
-                  </v-card>
-                  <v-card
-                    no-gutters
-                    style="
-                      width: 57px;
-                      height: 20px;
-                      border-radius: 0;
-                      margin-top: -20px;
-                      margin-left: 120px;
-                    "
-                    >T
-                  </v-card>
-                  <v-card
-                    no-gutters
-                    style="
-                      width: 65px;
-                      height: 20px;
-                      border-radius: 0;
-                      margin-top: -20px;
-                      margin-left: 185px;
-                    "
-                  >
-                    AVE
-                  </v-card>
+                <h5 class="font-weight-regular"><br /><br />24.00%<br /><br /><br /></h5>
+              </v-card>
+              <v-card class="pa-4 kra5" style="height: 51px" v-model="kra5" outlined tile>
+                <h5 class="font-weight-regular">12.00%<br /><br /><br /></h5>
+              </v-card>
+              <v-card class="pa-1" style="height: 54px" v-model="kra5" outlined tile>
+                <v-text-field style="mb-8"></v-text-field>
+              </v-card>
+            </v-col>
+            <!-- START OF OBJECTIVES COLUMN -->
+
+            <v-col
+              :key="n"
+              v-else-if="n === 3"
+              class="ePartCol3"
+              style="margin-left: -25px"
+            >
+              <v-card class="pa-2 pt-4" outlined tile style="width: 135px; height: 120px">
+                <h5>
+                  Objectives<br />
+                  <br />
+                </h5>
+              </v-card>
+              <div style="text-align: center">
+                <v-card class="pa-2 pt-4" style="height: 50px" outlined tile>
+                  <h5 class="font-weight-regular">Objective 1</h5>
+                  <br />
                 </v-card>
-                <div style="text-align: center; width: 60px">
-                  <v-card class="pa-1" style="height: 50px" outlined tile>
-                    <h5 class="font-weight-regular">{{ encoding_ipcrfNumericalQ1 }}</h5>
-                    <!-- <v-text-field
+
+                <v-card class="pa-2 pt-4" style="height: 50px" outlined tile>
+                  <h5 class="font-weight-regular">Objective 2</h5>
+                  <br />
+                </v-card>
+                <v-card class="pa-2 pt-4" style="height: 50px" outlined tile>
+                  <h5 class="font-weight-regular">Objective 3</h5>
+                  <br />
+                </v-card>
+                <v-card class="pa-2" style="height: 50px" outlined tile>
+                  <h5 class="font-weight-regular">Objective 4</h5>
+                  <br />
+                </v-card>
+
+                <v-card class="pa-2" style="height: 50px" outlined tile>
+                  <h5 class="font-weight-regular">Objective 5</h5>
+                  <br />
+                </v-card>
+                <v-card class="pa-2 pt-4" style="height: 50px" outlined tile>
+                  <h5 class="font-weight-regular">Objective 6</h5>
+                  <br />
+                </v-card>
+                <v-card class="pa-2 pt-4" style="height: 50px" outlined tile>
+                  <h5 class="font-weight-regular">Objective 7</h5>
+                  <br />
+                </v-card>
+                <v-card class="pa-2 pt-4" style="height: 50px" outlined tile>
+                  <h5 class="font-weight-regular">Objective 8</h5>
+                  <br />
+                </v-card>
+
+                <v-card class="pa-2 pt-4" style="height: 50px" outlined tile>
+                  <h5 class="font-weight-regular">Objective 9</h5>
+                  <br />
+                </v-card>
+                <v-card class="pa-2 pt-4" style="height: 50px" outlined tile>
+                  <h5 class="font-weight-regular">Objective 10</h5>
+                  <br />
+                </v-card>
+                <v-card class="pa-2 pt-4" style="height: 50px" outlined tile>
+                  <h5 class="font-weight-regular">Objective 11</h5>
+                  <br />
+                </v-card>
+                <v-card class="pa-2 pt-4" style="height: 50px" outlined tile>
+                  <h5 class="font-weight-regular">Objective 12</h5>
+                  <br />
+                </v-card>
+              </div>
+            </v-col>
+            <!-- END OF OBJECTIVES COLUMN -->
+            <!-- START OF OBJECTIVES COLUMN -->
+
+            <v-col
+              :key="n"
+              v-else-if="n === 4"
+              class="ePartCol3"
+              style="margin-left: -25px"
+            >
+              <v-card class="pa-2 pt-4" outlined tile style="width: 135px; height: 120px">
+                <h5>
+                  Weight per <br />
+                  Objectives
+                  <br />
+                </h5>
+              </v-card>
+              <div style="text-align: center">
+                <v-card class="pa-2 pt-4" style="height: 50px" outlined tile>
+                  <h5 class="font-weight-regular">8 %</h5>
+                  <br />
+                </v-card>
+
+                <v-card class="pa-2 pt-4" style="height: 50px" outlined tile>
+                  <h5 class="font-weight-regular">8 %</h5>
+                  <br />
+                </v-card>
+                <v-card class="pa-2 pt-4" style="height: 50px" outlined tile>
+                  <h5 class="font-weight-regular">8 %</h5>
+                  <br />
+                </v-card>
+                <v-card class="pa-2" style="height: 50px" outlined tile>
+                  <h5 class="font-weight-regular">8 %</h5>
+                  <br />
+                </v-card>
+
+                <v-card class="pa-2" style="height: 50px" outlined tile>
+                  <h5 class="font-weight-regular">8 %</h5>
+                  <br />
+                </v-card>
+                <v-card class="pa-2 pt-4" style="height: 50px" outlined tile>
+                  <h5 class="font-weight-regular">8 %</h5>
+                  <br />
+                </v-card>
+                <v-card class="pa-2 pt-4" style="height: 50px" outlined tile>
+                  <h5 class="font-weight-regular">8 %</h5>
+                  <br />
+                </v-card>
+                <v-card class="pa-2 pt-4" style="height: 50px" outlined tile>
+                  <h5 class="font-weight-regular">8 %</h5>
+                  <br />
+                </v-card>
+
+                <v-card class="pa-2 pt-4" style="height: 50px" outlined tile>
+                  <h5 class="font-weight-regular">8 %</h5>
+                  <br />
+                </v-card>
+                <v-card class="pa-2 pt-4" style="height: 50px" outlined tile>
+                  <h5 class="font-weight-regular">8 %</h5>
+                  <br />
+                </v-card>
+                <v-card class="pa-2 pt-4" style="height: 50px" outlined tile>
+                  <h5 class="font-weight-regular">8 %</h5>
+                  <br />
+                </v-card>
+                <v-card class="pa-2 pt-4" style="height: 50px" outlined tile>
+                  <h5 class="font-weight-regular">8 %</h5>
+                  <br />
+                </v-card>
+              </div>
+            </v-col>
+            <!-- END OF encoding weighted per OBJECTIVE - -->
+            <!-- Start of IPCRF  NUMERICAL RATING -->
+            <v-col
+              :key="n"
+              v-else-if="n === 5"
+              class="ePartCol3"
+              style="margin-left: -25px"
+            >
+              <v-card class="pa-2 pt-4" outlined tile style="width: 260px; height: 120px">
+                <h5>
+                  IPCRF NUMERICAL RATING
+                  <br />
+                </h5>
+                <v-card
+                  no-gutters
+                  style="
+                    width: 57px;
+                    height: 20px;
+                    border-radius: 0;
+                    margin-top: 62px;
+                    margin-left: -7px;
+                  "
+                  >Q
+                </v-card>
+                <v-card
+                  no-gutters
+                  style="
+                    width: 57px;
+                    height: 20px;
+                    border-radius: 0;
+                    margin-top: -20px;
+                    margin-left: 57px;
+                  "
+                  >E
+                </v-card>
+                <v-card
+                  no-gutters
+                  style="
+                    width: 57px;
+                    height: 20px;
+                    border-radius: 0;
+                    margin-top: -20px;
+                    margin-left: 120px;
+                  "
+                  >T
+                </v-card>
+                <v-card
+                  no-gutters
+                  style="
+                    width: 65px;
+                    height: 20px;
+                    border-radius: 0;
+                    margin-top: -20px;
+                    margin-left: 185px;
+                  "
+                >
+                  AVE
+                </v-card>
+              </v-card>
+              <div style="text-align: center; width: 60px">
+                <v-card class="pa-1" style="height: 50px" outlined tile>
+                  <h5 class="font-weight-regular">{{ encoding_ipcrfNumericalQ1 }}</h5>
+                  <!-- <v-text-field
                         v-model="encoding_ipcrfNumericalQ1"
                         placeholder=""
                         solo
@@ -6764,102 +6730,93 @@
                         type="text"
                       >
                       </v-text-field> 
-                      <v-text-field
-                        v-model="encoding_ipcrfNumericalQ1"
-                        placeholder=""
-                        solo
-                        dense
-                        style="width: 100px"
-                        class="text-center"
-                        type="text"
-                      >
-                      </v-text-field>-->
-                    <br />
-                  </v-card>
+                    -->
+                  <br />
+                </v-card>
 
-                  <v-card class="pa-1" style="height: 50px" outlined tile>
-                    <h5 class="font-weight-regular">{{ encoding_ipcrfNumericalQ2 }}</h5>
+                <v-card class="pa-1" style="height: 50px" outlined tile>
+                  <h5 class="font-weight-regular">{{ encoding_ipcrfNumericalQ2 }}</h5>
 
-                    <br />
-                  </v-card>
+                  <br />
+                </v-card>
 
-                  <v-card class="pa-1" style="height: 50px" outlined tile>
-                    <h5 class="font-weight-regular">{{ encoding_ipcrfNumericalQ3 }}</h5>
+                <v-card class="pa-1" style="height: 50px" outlined tile>
+                  <h5 class="font-weight-regular">{{ encoding_ipcrfNumericalQ3 }}</h5>
 
-                    <br />
-                  </v-card>
+                  <br />
+                </v-card>
 
-                  <v-card class="pa-1" style="height: 50px" outlined tile>
-                    <h5 class="font-weight-regular">{{ encoding_ipcrfNumericalQ4 }}</h5>
+                <v-card class="pa-1" style="height: 50px" outlined tile>
+                  <h5 class="font-weight-regular">{{ encoding_ipcrfNumericalQ4 }}</h5>
 
-                    <br />
-                  </v-card>
+                  <br />
+                </v-card>
 
-                  <v-card class="pa-1" style="height: 50px" outlined tile>
-                    <h5 class="font-weight-regular">{{ encoding_ipcrfNumericalQ5 }}</h5>
+                <v-card class="pa-1" style="height: 50px" outlined tile>
+                  <h5 class="font-weight-regular">{{ encoding_ipcrfNumericalQ5 }}</h5>
 
-                    <br />
-                  </v-card>
+                  <br />
+                </v-card>
 
-                  <v-card class="pa-1" style="height: 50px" outlined tile>
-                    <h5 class="font-weight-regular">{{ encoding_ipcrfNumericalQ6 }}</h5>
+                <v-card class="pa-1" style="height: 50px" outlined tile>
+                  <h5 class="font-weight-regular">{{ encoding_ipcrfNumericalQ6 }}</h5>
 
-                    <br />
-                  </v-card>
+                  <br />
+                </v-card>
 
-                  <v-card class="pa-1" style="height: 50px" outlined tile>
-                    <h5 class="font-weight-regular">{{ encoding_ipcrfNumericalQ7 }}</h5>
+                <v-card class="pa-1" style="height: 50px" outlined tile>
+                  <h5 class="font-weight-regular">{{ encoding_ipcrfNumericalQ7 }}</h5>
 
-                    <br />
-                  </v-card>
+                  <br />
+                </v-card>
 
-                  <v-card class="pa-1" style="height: 50px" outlined tile>
-                    <h5 class="font-weight-regular">{{ encoding_ipcrfNumericalQ8 }}</h5>
+                <v-card class="pa-1" style="height: 50px" outlined tile>
+                  <h5 class="font-weight-regular">{{ encoding_ipcrfNumericalQ8 }}</h5>
 
-                    <br />
-                  </v-card>
+                  <br />
+                </v-card>
 
-                  <v-card class="pa-1" style="height: 50px" outlined tile>
-                    <h5 class="font-weight-regular">{{ encoding_ipcrfNumericalQ9 }}</h5>
+                <v-card class="pa-1" style="height: 50px" outlined tile>
+                  <h5 class="font-weight-regular">{{ encoding_ipcrfNumericalQ9 }}</h5>
 
-                    <br />
-                  </v-card>
-                  <v-card class="pa-1" style="height: 50px" outlined tile>
-                    <h5 class="font-weight-regular">{{ encoding_ipcrfNumericalQ10 }}</h5>
+                  <br />
+                </v-card>
+                <v-card class="pa-1" style="height: 50px" outlined tile>
+                  <h5 class="font-weight-regular">{{ encoding_ipcrfNumericalQ10 }}</h5>
 
-                    <br />
-                  </v-card>
+                  <br />
+                </v-card>
 
-                  <v-card class="pa-1" style="height: 50px" outlined tile>
-                    <h5 class="font-weight-regular">{{ encoding_ipcrfNumericalQ11 }}</h5>
+                <v-card class="pa-1" style="height: 50px" outlined tile>
+                  <h5 class="font-weight-regular">{{ encoding_ipcrfNumericalQ11 }}</h5>
 
-                    <br />
-                  </v-card>
+                  <br />
+                </v-card>
 
-                  <v-card class="pa-1" style="height: 50px" outlined tile>
-                    <h5 class="font-weight-regular">{{ encoding_ipcrfNumericalQ12 }}</h5>
+                <v-card class="pa-1" style="height: 50px" outlined tile>
+                  <h5 class="font-weight-regular">{{ encoding_ipcrfNumericalQ12 }}</h5>
 
-                    <br />
-                  </v-card>
-                </div>
-              </v-col>
+                  <br />
+                </v-card>
+              </div>
+            </v-col>
 
-              <!-- End of cot 3 -->
-              <!-- Start of IPCRF (E) -->
+            <!-- End of cot 3 -->
+            <!-- Start of IPCRF (E) -->
 
-              <v-col
-                :key="n"
-                v-else-if="n === 6"
-                class="ePartCol3"
-                style="margin-left: -220px"
-              >
-                <br /><br /><br />
-                <br /><br />
+            <v-col
+              :key="n"
+              v-else-if="n === 6"
+              class="ePartCol3"
+              style="margin-left: -220px"
+            >
+              <br /><br /><br />
+              <br /><br />
 
-                <div style="text-align: center; width: 60px">
-                  <v-card class="pa-1" style="height: 50px" outlined tile>
-                    <h5 class="font-weight-regular">{{ encoding_ipcrfNumerical_E1 }}</h5>
-                    <!-- <v-text-field
+              <div style="text-align: center; width: 60px">
+                <v-card class="pa-1" style="height: 50px" outlined tile>
+                  <h5 class="font-weight-regular">{{ encoding_ipcrfNumerical_E1 }}</h5>
+                  <!-- <v-text-field
                         v-model="encoding_ipcrfNumerical_E1"
                         placeholder=""
                         solo
@@ -6870,591 +6827,669 @@
                       >
                       </v-text-field> -->
 
-                    <br />
-                  </v-card>
-
-                  <v-card class="pa-1" style="height: 50px" outlined tile>
-                    <h5 class="font-weight-regular">{{ encoding_ipcrfNumerical_E2 }}</h5>
-
-                    <br />
-                  </v-card>
-
-                  <v-card class="pa-1" style="height: 50px" outlined tile>
-                    <h5 class="font-weight-regular">{{ encoding_ipcrfNumerical_E3 }}</h5>
-
-                    <br />
-                  </v-card>
-
-                  <v-card class="pa-1" style="height: 50px" outlined tile>
-                    <h5 class="font-weight-regular">{{ encoding_ipcrfNumerical_E4 }}</h5>
-
-                    <br />
-                  </v-card>
-
-                  <v-card class="pa-1" style="height: 50px" outlined tile>
-                    <h5 class="font-weight-regular">{{ encoding_ipcrfNumerical_E5 }}</h5>
-
-                    <br />
-                  </v-card>
-
-                  <v-card class="pa-1" style="height: 50px" outlined tile>
-                    <h5 class="font-weight-regular">{{ encoding_ipcrfNumerical_E6 }}</h5>
-
-                    <br />
-                  </v-card>
-
-                  <v-card class="pa-1" style="height: 50px" outlined tile>
-                    <h5 class="font-weight-regular">{{ encoding_ipcrfNumerical_E7 }}</h5>
-
-                    <br />
-                  </v-card>
-
-                  <v-card class="pa-1" style="height: 50px" outlined tile>
-                    <h5 class="font-weight-regular">{{ encoding_ipcrfNumerical_E8 }}</h5>
-
-                    <br />
-                  </v-card>
-
-                  <v-card class="pa-1" style="height: 50px" outlined tile>
-                    <h5 class="font-weight-regular">{{ encoding_ipcrfNumerical_E9 }}</h5>
-
-                    <br />
-                  </v-card>
-                  <v-card class="pa-1" style="height: 50px" outlined tile>
-                    <h5 class="font-weight-regular">{{ encoding_ipcrfNumerical_E10 }}</h5>
-
-                    <br />
-                  </v-card>
-
-                  <v-card class="pa-1" style="height: 50px" outlined tile>
-                    <h5 class="font-weight-regular">{{ encoding_ipcrfNumerical_E11 }}</h5>
-
-                    <br />
-                  </v-card>
-
-                  <v-card class="pa-1" style="height: 50px" outlined tile>
-                    <h5 class="font-weight-regular">{{ encoding_ipcrfNumerical_E12 }}</h5>
-
-                    <br />
-                  </v-card>
-                </div>
-              </v-col>
-              <!-- END OF IPCRF (E) -->
-              <!-- Start of IPCRF (T) -->
-
-              <v-col
-                :key="n"
-                v-else-if="n === 7"
-                class="ePartCol3"
-                style="margin-left: -40px"
-              >
-                <br /><br /><br />
-                <br /><br />
-
-                <div style="text-align: center; width: 60px">
-                  <v-card class="pa-1" style="height: 50px" outlined tile>
-                    <h5 class="font-weight-regular">{{ encoding_ipcrfNumerical_T1 }}</h5>
-
-                    <br />
-                  </v-card>
-
-                  <v-card class="pa-1" style="height: 50px" outlined tile>
-                    <h5 class="font-weight-regular">{{ encoding_ipcrfNumerical_T2 }}</h5>
-
-                    <br />
-                  </v-card>
-
-                  <v-card class="pa-1" style="height: 50px" outlined tile>
-                    <h5 class="font-weight-regular">{{ encoding_ipcrfNumerical_T3 }}</h5>
-
-                    <br />
-                  </v-card>
-
-                  <v-card class="pa-1" style="height: 50px" outlined tile>
-                    <h5 class="font-weight-regular">{{ encoding_ipcrfNumerical_T4 }}</h5>
-
-                    <br />
-                  </v-card>
-
-                  <v-card class="pa-1" style="height: 50px" outlined tile>
-                    <h5 class="font-weight-regular">{{ encoding_ipcrfNumerical_T5 }}</h5>
-
-                    <br />
-                  </v-card>
-
-                  <v-card class="pa-1" style="height: 50px" outlined tile>
-                    <h5 class="font-weight-regular">{{ encoding_ipcrfNumerical_T6 }}</h5>
-
-                    <br />
-                  </v-card>
-
-                  <v-card class="pa-1" style="height: 50px" outlined tile>
-                    <h5 class="font-weight-regular">{{ encoding_ipcrfNumerical_T7 }}</h5>
-
-                    <br />
-                  </v-card>
-
-                  <v-card class="pa-1" style="height: 50px" outlined tile>
-                    <h5 class="font-weight-regular">{{ encoding_ipcrfNumerical_T8 }}</h5>
-
-                    <br />
-                  </v-card>
-
-                  <v-card class="pa-1" style="height: 50px" outlined tile>
-                    <h5 class="font-weight-regular">{{ encoding_ipcrfNumerical_T9 }}</h5>
-
-                    <br />
-                  </v-card>
-                  <v-card class="pa-1" style="height: 50px" outlined tile>
-                    <h5 class="font-weight-regular">{{ encoding_ipcrfNumerical_T10 }}</h5>
-
-                    <br />
-                  </v-card>
-
-                  <v-card class="pa-1" style="height: 50px" outlined tile>
-                    <h5 class="font-weight-regular">{{ encoding_ipcrfNumerical_T11 }}</h5>
-
-                    <br />
-                  </v-card>
-
-                  <v-card class="pa-1" style="height: 50px" outlined tile>
-                    <h5 class="font-weight-regular">{{ encoding_ipcrfNumerical_T12 }}</h5>
-
-                    <br />
-                  </v-card>
-                </div>
-              </v-col>
-              <!-- END OF IPCRF (T) -->
-              <!-- Start of IPCRF (RATING AVERAGE) -->
-
-              <v-col
-                :key="n"
-                v-else-if="n === 8"
-                class="ePartCol3"
-                style="margin-left: -40px"
-              >
-                <br /><br /><br />
-                <br /><br />
-
-                <div style="text-align: center; width: 68px">
-                  <v-card class="pa-1" style="height: 50px" outlined tile>
-                    <h5 class="font-weight-regular">{{ encoding_ipcrfRatingAve1 }}</h5>
-
-                    <br />
-                  </v-card>
-
-                  <v-card class="pa-1" style="height: 50px" outlined tile>
-                    <h5 class="font-weight-regular">{{ encoding_ipcrfRatingAve2 }}</h5>
-
-                    <br />
-                  </v-card>
-
-                  <v-card class="pa-1" style="height: 50px" outlined tile>
-                    <h5 class="font-weight-regular">{{ encoding_ipcrfRatingAve3 }}</h5>
-
-                    <br />
-                  </v-card>
-
-                  <v-card class="pa-1" style="height: 50px" outlined tile>
-                    <h5 class="font-weight-regular">{{ encoding_ipcrfRatingAve4 }}</h5>
-
-                    <br />
-                  </v-card>
-
-                  <v-card class="pa-1" style="height: 50px" outlined tile>
-                    <h5 class="font-weight-regular">{{ encoding_ipcrfRatingAve5 }}</h5>
-
-                    <br />
-                  </v-card>
-
-                  <v-card class="pa-1" style="height: 50px" outlined tile>
-                    <h5 class="font-weight-regular">{{ encoding_ipcrfRatingAve6 }}</h5>
-
-                    <br />
-                  </v-card>
-
-                  <v-card class="pa-1" style="height: 50px" outlined tile>
-                    <h5 class="font-weight-regular">{{ encoding_ipcrfRatingAve7 }}</h5>
-
-                    <br />
-                  </v-card>
-
-                  <v-card class="pa-1" style="height: 50px" outlined tile>
-                    <h5 class="font-weight-regular">{{ encoding_ipcrfRatingAve8 }}</h5>
-
-                    <br />
-                  </v-card>
-
-                  <v-card class="pa-1" style="height: 50px" outlined tile>
-                    <h5 class="font-weight-regular">{{ encoding_ipcrfRatingAve9 }}</h5>
-
-                    <br />
-                  </v-card>
-                  <v-card class="pa-1" style="height: 50px" outlined tile
-                    ><h5 class="font-weight-regular">{{ encoding_ipcrfRatingAve10 }}</h5>
-
-                    <br />
-                  </v-card>
-
-                  <v-card class="pa-1" style="height: 50px" outlined tile>
-                    <h5 class="font-weight-regular">{{ encoding_ipcrfRatingAve11 }}</h5>
-
-                    <br />
-                  </v-card>
-
-                  <v-card class="pa-1" style="height: 50px" outlined tile>
-                    <h5 class="font-weight-regular">{{ encoding_ipcrfRatingAve12 }}</h5>
-
-                    <br />
-                  </v-card>
-                </div>
-              </v-col>
-              <!-- END OF IPCRF (average) -->
-              <!-- Start of encoding SCORE -->
-              <v-col
-                :key="n"
-                v-else-if="n === 9"
-                class="ePartCol3"
-                style="margin-left: -35px"
-              >
-                <v-card
-                  class="pa-2 pt-4"
-                  outlined
-                  tile
-                  style="width: 120px; height: 120px"
-                >
-                  <h5>
-                    SCORE
-                    <br />
-                  </h5>
-                </v-card>
-                <div style="text-align: center; width: 120px">
-                  <v-card class="pa-4" style="height: 50px" outlined tile>
-                    <h5 class="font-weight-regular">{{ encoding_1 }}</h5>
-
-                    <br />
-                  </v-card>
-
-                  <v-card class="pa-4" style="height: 50px" outlined tile>
-                    <h5 class="font-weight-regular">{{ encoding_2 }}</h5>
-
-                    <br />
-                  </v-card>
-
-                  <v-card class="pa-4" style="height: 50px" outlined tile>
-                    <h5 class="font-weight-regular">{{ encoding_3 }}</h5>
-
-                    <br />
-                  </v-card>
-
-                  <v-card class="pa-4" style="height: 50px" outlined tile>
-                    <h5 class="font-weight-regular">{{ encoding_4 }}</h5>
-
-                    <br />
-                  </v-card>
-
-                  <v-card class="pa-4" style="height: 50px" outlined tile>
-                    <h5 class="font-weight-regular">{{ encoding_5 }}</h5>
-
-                    <br />
-                  </v-card>
-
-                  <v-card class="pa-4" style="height: 50px" outlined tile>
-                    <h5></h5>
-
-                    <br />
-                  </v-card>
-
-                  <v-card
-                    class="pa-4"
-                    style="height: 50px"
-                    v-model="encoding_7"
-                    outlined
-                    tile
-                  >
-                    <h5></h5>
-                    <br />
-                  </v-card>
-
-                  <v-card
-                    class="pa-4"
-                    style="height: 50px"
-                    v-model="encoding_8"
-                    outlined
-                    tile
-                  >
-                    <h5></h5>
-                    <br />
-                  </v-card>
-
-                  <v-card
-                    class="pa-4"
-                    style="height: 50px"
-                    v-model="encoding_9"
-                    outlined
-                    tile
-                  >
-                    <h5></h5>
-                    <br />
-                  </v-card>
-
-                  <v-card
-                    class="pa-4"
-                    style="height: 50px"
-                    v-model="encoding_10"
-                    outlined
-                    tile
-                  >
-                    <h5></h5>
-                    <br />
-                  </v-card>
-
-                  <v-card
-                    class="pa-4"
-                    style="height: 50px"
-                    v-model="encoding_11"
-                    outlined
-                    tile
-                  >
-                    <h5></h5>
-                    <br />
-                  </v-card>
-
-                  <v-card
-                    class="pa-4"
-                    style="height: 50px"
-                    v-model="encoding_12"
-                    outlined
-                    tile
-                  >
-                    <h5></h5>
-                    <br />
-                  </v-card>
-                </div>
-              </v-col>
-
-              <!-- End of encoding SCORE-->
-              <!-- Start of encoding SCORE -->
-              <v-col
-                :key="n"
-                v-else-if="n === 10"
-                class="ePartCol3"
-                style="margin-left: -25px"
-              >
-                <v-card
-                  class="pa-2 pt-4"
-                  outlined
-                  tile
-                  style="width: 150px; height: 120px"
-                >
-                  <h5>
-                    Adjectival Rating
-                    <br />
-                  </h5>
-                </v-card>
-                <div style="text-align: center; width: 150px">
-                  <v-card
-                    class="pa-4"
-                    style="height: 50px"
-                    v-model="encoding_AdjectivalRating1"
-                    outlined
-                    tile
-                  >
-                    <h5></h5>
-
-                    <br />
-                  </v-card>
-
-                  <v-card
-                    class="pa-4"
-                    style="height: 50px"
-                    v-model="encoding_AdjectivalRating2"
-                    outlined
-                    tile
-                  >
-                    <h5></h5>
-                    <br />
-                  </v-card>
-
-                  <v-card
-                    class="pa-4"
-                    style="height: 50px"
-                    v-model="encoding_AdjectivalRating3"
-                    outlined
-                    tile
-                  >
-                    <h5></h5>
-                    <br />
-                  </v-card>
-
-                  <v-card
-                    class="pa-4"
-                    style="height: 50px"
-                    v-model="encoding_AdjectivalRating4"
-                    outlined
-                    tile
-                  >
-                    <h5></h5>
-                    <br />
-                  </v-card>
-
-                  <v-card
-                    class="pa-4"
-                    style="height: 50px"
-                    v-model="encoding_AdjectivalRating5"
-                    outlined
-                    tile
-                  >
-                    <h5></h5>
-                    <br />
-                  </v-card>
-
-                  <v-card
-                    class="pa-4"
-                    style="height: 50px"
-                    v-model="encoding_AdjectivalRating6"
-                    outlined
-                    tile
-                  >
-                    <h5></h5>
-
-                    <br />
-                  </v-card>
-
-                  <v-card
-                    class="pa-4"
-                    style="height: 50px"
-                    v-model="encoding_AdjectivalRating7"
-                    outlined
-                    tile
-                  >
-                    <h5></h5>
-                    <br />
-                  </v-card>
-
-                  <v-card
-                    class="pa-4"
-                    style="height: 50px"
-                    v-model="encoding_AdjectivalRating8"
-                    outlined
-                    tile
-                  >
-                    <h5></h5>
-                    <br />
-                  </v-card>
-
-                  <v-card
-                    class="pa-4"
-                    style="height: 50px"
-                    v-model="encoding_AdjectivalRating9"
-                    outlined
-                    tile
-                  >
-                    <h5></h5>
-                    <br />
-                  </v-card>
-
-                  <v-card
-                    class="pa-4"
-                    style="height: 50px"
-                    v-model="encoding_AdjectivalRating10"
-                    outlined
-                    tile
-                  >
-                    <h5></h5>
-                    <br />
-                  </v-card>
-
-                  <v-card
-                    class="pa-4"
-                    style="height: 50px"
-                    v-model="encoding_AdjectivalRating11"
-                    outlined
-                    tile
-                  >
-                    <h5></h5>
-                    <br />
-                  </v-card>
-
-                  <v-card
-                    class="pa-4"
-                    style="height: 50px"
-                    v-model="encoding_AdjectivalRating12"
-                    outlined
-                    tile
-                  >
-                    <h5></h5>
-                    <br />
-                  </v-card>
-                </div>
-              </v-col>
-              <!-- Start of encoding SCORE -->
-              <v-col
-                :key="n"
-                v-else-if="n === 11"
-                class="ePartCol3"
-                style="margin-left: -641px; margin-top: 720px"
-              >
-                <v-card
-                  class="pa-2 pt-4"
-                  outlined
-                  tile
-                  v-model="empAdjRating1"
-                  style="width: 379px; height: 50px"
-                >
-                  <h5>
-                    Final Rating
-                    <br />
-                  </h5>
-                </v-card>
-                <v-card
-                  class="pa-4"
-                  style="height: 50px"
-                  v-model="empAdjRating12"
-                  outlined
-                  tile
-                >
-                  <h5>Adjectival Rating</h5>
                   <br />
                 </v-card>
-              </v-col>
 
-              <!-- End of encoding bottom ADJECTIVAL RATING-->
-              <!-- Start of encoding SCORE -->
-              <v-col
-                :key="n"
-                v-else-if="n === 12"
-                class="ePartCol3"
-                style="margin-left: -25px; margin-top: 720px"
-              >
-                <v-card
-                  class="pa-2 pt-4"
-                  outlined
-                  tile
-                  v-model="empFinalRating"
-                  style="width: 240px; height: 50px"
-                >
-                  <h5>
-                    <br />
-                  </h5>
-                </v-card>
-                <v-card
-                  class="pa-4"
-                  style="height: 50px"
-                  v-model="empAdjRating"
-                  outlined
-                  tile
-                >
-                  <h5></h5>
+                <v-card class="pa-1" style="height: 50px" outlined tile>
+                  <h5 class="font-weight-regular">{{ encoding_ipcrfNumerical_E2 }}</h5>
+
                   <br />
                 </v-card>
-              </v-col>
 
-              <!-- End of encoding ADJECTIVAL RATING-->
-            </template>
-          </div>
+                <v-card class="pa-1" style="height: 50px" outlined tile>
+                  <h5 class="font-weight-regular">{{ encoding_ipcrfNumerical_E3 }}</h5>
+
+                  <br />
+                </v-card>
+
+                <v-card class="pa-1" style="height: 50px" outlined tile>
+                  <h5 class="font-weight-regular">{{ encoding_ipcrfNumerical_E4 }}</h5>
+
+                  <br />
+                </v-card>
+
+                <v-card class="pa-1" style="height: 50px" outlined tile>
+                  <h5 class="font-weight-regular">{{ encoding_ipcrfNumerical_E5 }}</h5>
+
+                  <br />
+                </v-card>
+
+                <v-card class="pa-1" style="height: 50px" outlined tile>
+                  <h5 class="font-weight-regular">{{ encoding_ipcrfNumerical_E6 }}</h5>
+
+                  <br />
+                </v-card>
+
+                <v-card class="pa-1" style="height: 50px" outlined tile>
+                  <h5 class="font-weight-regular">{{ encoding_ipcrfNumerical_E7 }}</h5>
+
+                  <br />
+                </v-card>
+
+                <v-card class="pa-1" style="height: 50px" outlined tile>
+                  <h5 class="font-weight-regular">{{ encoding_ipcrfNumerical_E8 }}</h5>
+
+                  <br />
+                </v-card>
+
+                <v-card class="pa-1" style="height: 50px" outlined tile>
+                  <h5 class="font-weight-regular">{{ encoding_ipcrfNumerical_E9 }}</h5>
+
+                  <br />
+                </v-card>
+                <v-card class="pa-1" style="height: 50px" outlined tile>
+                  <h5 class="font-weight-regular">{{ encoding_ipcrfNumerical_E10 }}</h5>
+
+                  <br />
+                </v-card>
+
+                <v-card class="pa-1" style="height: 50px" outlined tile>
+                  <h5 class="font-weight-regular">{{ encoding_ipcrfNumerical_E11 }}</h5>
+
+                  <br />
+                </v-card>
+
+                <v-card class="pa-1" style="height: 50px" outlined tile>
+                  <h5 class="font-weight-regular">{{ encoding_ipcrfNumerical_E12 }}</h5>
+
+                  <br />
+                </v-card>
+              </div>
+            </v-col>
+            <!-- END OF IPCRF (E) -->
+            <!-- Start of IPCRF (T) -->
+
+            <v-col
+              :key="n"
+              v-else-if="n === 17"
+              class="ePartCol3"
+              style="margin-left: -20px"
+            >
+              <br /><br /><br />
+              <br /><br />
+
+              <div style="text-align: center; width: 60px">
+                <v-card class="pa-1" style="height: 50px" outlined tile>
+                  <v-text-field
+                    v-model="encoding_ipcrfNumerical_T1"
+                    placeholder=""
+                    solo
+                    dense
+                    style="width: 100px"
+                    class="text-center"
+                    type="text"
+                  >
+                  </v-text-field>
+
+                  <br />
+                </v-card>
+
+                <v-card class="pa-1" style="height: 50px" outlined tile>
+                  <v-text-field
+                    v-model="encoding_ipcrfNumerical_T2"
+                    placeholder=""
+                    solo
+                    dense
+                    style="width: 100px"
+                    class="text-center"
+                    type="text"
+                  >
+                  </v-text-field>
+                  <br />
+                </v-card>
+
+                <v-card class="pa-1" style="height: 50px" outlined tile>
+                  <v-text-field
+                    v-model="encoding_ipcrfNumerical_T3"
+                    placeholder=""
+                    solo
+                    dense
+                    class="text-center"
+                    type="text"
+                    style="width: 100px"
+                  >
+                  </v-text-field>
+                  <br />
+                </v-card>
+
+                <v-card class="pa-1" style="height: 50px" outlined tile>
+                  <v-text-field
+                    v-model="encoding_ipcrfNumerical_T4"
+                    placeholder=""
+                    solo
+                    dense
+                    class="text-center"
+                    type="text"
+                    style="width: 100px"
+                  >
+                  </v-text-field>
+                  <br />
+                </v-card>
+
+                <v-card class="pa-1" style="height: 50px" outlined tile>
+                  <v-text-field
+                    v-model="encoding_ipcrfNumerical_T5"
+                    placeholder=""
+                    solo
+                    dense
+                    class="text-center"
+                    type="text"
+                    style="width: 100px"
+                  >
+                  </v-text-field>
+                  <br />
+                </v-card>
+
+                <v-card class="pa-1" style="height: 50px" outlined tile>
+                  <v-text-field
+                    v-model="encoding_ipcrfNumerical_T6"
+                    placeholder=""
+                    solo
+                    dense
+                    class="text-center"
+                    type="text"
+                    style="width: 100px"
+                  >
+                  </v-text-field>
+                  <br />
+                </v-card>
+
+                <v-card class="pa-1" style="height: 50px" outlined tile>
+                  <v-text-field
+                    v-model="encoding_ipcrfNumerical_T7"
+                    placeholder=""
+                    solo
+                    dense
+                    class="text-center"
+                    type="text"
+                    style="width: 100px"
+                  >
+                  </v-text-field>
+                  <br />
+                </v-card>
+
+                <v-card class="pa-1" style="height: 50px" outlined tile>
+                  <v-text-field
+                    v-model="encoding_ipcrfNumerical_T8"
+                    placeholder=""
+                    solo
+                    dense
+                    class="text-center"
+                    type="text"
+                    style="width: 100px"
+                  >
+                  </v-text-field>
+                  <br />
+                </v-card>
+
+                <v-card class="pa-1" style="height: 50px" outlined tile>
+                  <v-text-field
+                    v-model="encoding_ipcrfNumerical_T9"
+                    placeholder=""
+                    solo
+                    dense
+                    class="text-center"
+                    type="text"
+                    style="width: 100px"
+                  >
+                  </v-text-field>
+                  <br />
+                </v-card>
+                <v-card class="pa-1" style="height: 50px" outlined tile>
+                  <v-text-field
+                    v-model="encoding_ipcrfNumerical_T10"
+                    placeholder=""
+                    solo
+                    dense
+                    class="text-center"
+                    type="text"
+                    style="width: 100px"
+                  >
+                  </v-text-field>
+                  <br />
+                </v-card>
+
+                <v-card class="pa-1" style="height: 50px" outlined tile>
+                  <v-text-field
+                    v-model="encoding_ipcrfNumerical_T11"
+                    placeholder=""
+                    solo
+                    dense
+                    class="text-center"
+                    type="text"
+                    style="width: 100px"
+                  >
+                  </v-text-field>
+                  <br />
+                </v-card>
+
+                <v-card class="pa-1" style="height: 50px" outlined tile>
+                  <v-text-field
+                    v-model="encoding_ipcrfNumerical_T12"
+                    placeholder=""
+                    solo
+                    dense
+                    class="text-center"
+                    type="text"
+                    style="width: 100px"
+                  >
+                  </v-text-field>
+                  <br />
+                </v-card>
+              </div>
+            </v-col>
+            <!-- END OF IPCRF (T) -->
+            <!-- Start of IPCRF (T) -->
+
+            <!-- <v-col
+              :key="n"
+              v-else-if="n === 7"
+              class="ePartCol3"
+              style="margin-left: -112px"
+            >
+              <br /><br /><br />
+              <br /><br />
+
+              <div style="text-align: center; width: 60px">
+                <v-card class="pa-1" style="height: 50px" outlined tile>
+                  <h5 class="font-weight-regular">{{ encoding_ipcrfNumerical_T1 }}</h5>
+
+                  <br />
+                </v-card>
+
+                <v-card class="pa-1" style="height: 50px" outlined tile>
+                  <h5 class="font-weight-regular">{{ encoding_ipcrfNumerical_T2 }}</h5>
+
+                  <br />
+                </v-card>
+
+                <v-card class="pa-1" style="height: 50px" outlined tile>
+                  <h5 class="font-weight-regular">{{ encoding_ipcrfNumerical_T3 }}</h5>
+
+                  <br />
+                </v-card>
+
+                <v-card class="pa-1" style="height: 50px" outlined tile>
+                  <h5 class="font-weight-regular">{{ encoding_ipcrfNumerical_T4 }}</h5>
+
+                  <br />
+                </v-card>
+
+                <v-card class="pa-1" style="height: 50px" outlined tile>
+                  <h5 class="font-weight-regular">{{ encoding_ipcrfNumerical_T5 }}</h5>
+
+                  <br />
+                </v-card>
+
+                <v-card class="pa-1" style="height: 50px" outlined tile>
+                  <h5 class="font-weight-regular">{{ encoding_ipcrfNumerical_T6 }}</h5>
+
+                  <br />
+                </v-card>
+
+                <v-card class="pa-1" style="height: 50px" outlined tile>
+                  <h5 class="font-weight-regular">{{ encoding_ipcrfNumerical_T7 }}</h5>
+
+                  <br />
+                </v-card>
+
+                <v-card class="pa-1" style="height: 50px" outlined tile>
+                  <h5 class="font-weight-regular">{{ encoding_ipcrfNumerical_T8 }}</h5>
+
+                  <br />
+                </v-card>
+
+                <v-card class="pa-1" style="height: 50px" outlined tile>
+                  <h5 class="font-weight-regular">{{ encoding_ipcrfNumerical_T9 }}</h5>
+
+                  <br />
+                </v-card>
+                <v-card class="pa-1" style="height: 50px" outlined tile>
+                  <h5 class="font-weight-regular">{{ encoding_ipcrfNumerical_T10 }}</h5>
+
+                  <br />
+                </v-card>
+
+                <v-card class="pa-1" style="height: 50px" outlined tile>
+                  <h5 class="font-weight-regular">{{ encoding_ipcrfNumerical_T11 }}</h5>
+
+                  <br />
+                </v-card>
+
+                <v-card class="pa-1" style="height: 50px" outlined tile>
+                  <h5 class="font-weight-regular">{{ encoding_ipcrfNumerical_T12 }}</h5>
+
+                  <br />
+                </v-card>
+              </div>
+            </v-col> -->
+            <!-- END OF IPCRF (T) -->
+            <!-- Start of IPCRF (RATING AVERAGE) -->
+
+            <v-col
+              :key="n"
+              v-else-if="n === 8"
+              class="ePartCol3"
+              style="margin-left: -113px"
+            >
+              <br /><br /><br />
+              <br /><br />
+
+              <div style="text-align: center; width: 68px">
+                <v-card class="pa-1" style="height: 50px" outlined tile>
+                  <h5 class="font-weight-regular">{{ encoding_ipcrfRatingAve1 }}</h5>
+
+                  <br />
+                </v-card>
+
+                <v-card class="pa-1" style="height: 50px" outlined tile>
+                  <h5 class="font-weight-regular">{{ encoding_ipcrfRatingAve2 }}</h5>
+
+                  <br />
+                </v-card>
+
+                <v-card class="pa-1" style="height: 50px" outlined tile>
+                  <h5 class="font-weight-regular">{{ encoding_ipcrfRatingAve3 }}</h5>
+
+                  <br />
+                </v-card>
+
+                <v-card class="pa-1" style="height: 50px" outlined tile>
+                  <h5 class="font-weight-regular">{{ encoding_ipcrfRatingAve4 }}</h5>
+
+                  <br />
+                </v-card>
+
+                <v-card class="pa-1" style="height: 50px" outlined tile>
+                  <h5 class="font-weight-regular">{{ encoding_ipcrfRatingAve5 }}</h5>
+
+                  <br />
+                </v-card>
+
+                <v-card class="pa-1" style="height: 50px" outlined tile>
+                  <h5 class="font-weight-regular">{{ encoding_ipcrfRatingAve6 }}</h5>
+
+                  <br />
+                </v-card>
+
+                <v-card class="pa-1" style="height: 50px" outlined tile>
+                  <h5 class="font-weight-regular">{{ encoding_ipcrfRatingAve7 }}</h5>
+
+                  <br />
+                </v-card>
+
+                <v-card class="pa-1" style="height: 50px" outlined tile>
+                  <h5 class="font-weight-regular">{{ encoding_ipcrfRatingAve8 }}</h5>
+
+                  <br />
+                </v-card>
+
+                <v-card class="pa-1" style="height: 50px" outlined tile>
+                  <h5 class="font-weight-regular">{{ encoding_ipcrfRatingAve9 }}</h5>
+
+                  <br />
+                </v-card>
+                <v-card class="pa-1" style="height: 50px" outlined tile
+                  ><h5 class="font-weight-regular">{{ encoding_ipcrfRatingAve10 }}</h5>
+
+                  <br />
+                </v-card>
+
+                <v-card class="pa-1" style="height: 50px" outlined tile>
+                  <h5 class="font-weight-regular">{{ encoding_ipcrfRatingAve11 }}</h5>
+
+                  <br />
+                </v-card>
+
+                <v-card class="pa-1" style="height: 50px" outlined tile>
+                  <h5 class="font-weight-regular">{{ encoding_ipcrfRatingAve12 }}</h5>
+
+                  <br />
+                </v-card>
+              </div>
+            </v-col>
+            <!-- END OF IPCRF (average) -->
+            <!-- Start of encoding SCORE -->
+            <v-col
+              :key="n"
+              v-else-if="n === 9"
+              class="ePartCol3"
+              style="margin-left: -125px"
+            >
+              <v-card class="pa-2 pt-4" outlined tile style="width: 120px; height: 120px">
+                <h5>
+                  SCORE
+                  <br />
+                </h5>
+              </v-card>
+              <div style="text-align: center; width: 120px">
+                <v-card class="pa-4" style="height: 50px" outlined tile>
+                  <h5 class="font-weight-regular">{{ encoding_1 }}</h5>
+
+                  <br />
+                </v-card>
+
+                <v-card class="pa-4" style="height: 50px" outlined tile>
+                  <h5 class="font-weight-regular">{{ encoding_2 }}</h5>
+
+                  <br />
+                </v-card>
+
+                <v-card class="pa-4" style="height: 50px" outlined tile>
+                  <h5 class="font-weight-regular">{{ encoding_3 }}</h5>
+
+                  <br />
+                </v-card>
+
+                <v-card class="pa-4" style="height: 50px" outlined tile>
+                  <h5 class="font-weight-regular">{{ encoding_4 }}</h5>
+
+                  <br />
+                </v-card>
+
+                <v-card class="pa-4" style="height: 50px" outlined tile>
+                  <h5 class="font-weight-regular">{{ encoding_5 }}</h5>
+
+                  <br />
+                </v-card>
+
+                <v-card class="pa-4" style="height: 50px" outlined tile>
+                  <h5 class="font-weight-regular">{{ encoding_6 }}</h5>
+
+                  <br />
+                </v-card>
+
+                <v-card class="pa-4" style="height: 50px" outlined tile>
+                  <h5 class="font-weight-regular">{{ encoding_7 }}</h5>
+
+                  <br />
+                </v-card>
+
+                <v-card class="pa-4" style="height: 50px" outlined tile>
+                  <h5 class="font-weight-regular">{{ encoding_8 }}</h5>
+
+                  <br />
+                </v-card>
+
+                <v-card class="pa-4" style="height: 50px" outlined tile>
+                  <h5 class="font-weight-regular">{{ encoding_9 }}</h5>
+
+                  <br />
+                </v-card>
+
+                <v-card class="pa-4" style="height: 50px" outlined tile>
+                  <h5 class="font-weight-regular">{{ encoding_10 }}</h5>
+
+                  <br />
+                </v-card>
+
+                <v-card class="pa-4" style="height: 50px" outlined tile>
+                  <h5 class="font-weight-regular">{{ encoding_11 }}</h5>
+
+                  <br />
+                </v-card>
+
+                <v-card class="pa-4" style="height: 50px" outlined tile>
+                  <h5 class="font-weight-regular">{{ encoding_12 }}</h5>
+
+                  <br />
+                </v-card>
+              </div>
+            </v-col>
+
+            <!-- End of encoding SCORE-->
+            <!-- Start of encoding SCORE -->
+            <v-col
+              :key="n"
+              v-else-if="n === 10"
+              class="ePartCol3"
+              style="margin-left: -25px"
+            >
+              <v-card class="pa-2 pt-4" outlined tile style="width: 150px; height: 120px">
+                <h5>
+                  Adjectival Rating
+                  <br />
+                </h5>
+              </v-card>
+              <div style="text-align: center; width: 120px">
+                <v-card class="pa-4" style="height: 50px" outlined tile>
+                  <h5 class="font-weight-regular">{{ encoding_AdjectivalRating1 }}</h5>
+
+                  <br />
+                </v-card>
+
+                <v-card class="pa-4" style="height: 50px" outlined tile>
+                  <h5 class="font-weight-regular">{{ encoding_AdjectivalRating2 }}</h5>
+
+                  <br />
+                </v-card>
+
+                <v-card class="pa-4" style="height: 50px" outlined tile>
+                  <h5 class="font-weight-regular">{{ encoding_AdjectivalRating3 }}</h5>
+
+                  <br />
+                </v-card>
+
+                <v-card class="pa-4" style="height: 50px" outlined tile>
+                  <h5 class="font-weight-regular">{{ encoding_AdjectivalRating4 }}</h5>
+
+                  <br />
+                </v-card>
+
+                <v-card class="pa-4" style="height: 50px" outlined tile>
+                  <h5 class="font-weight-regular">{{ encoding_AdjectivalRating5 }}</h5>
+
+                  <br />
+                </v-card>
+
+                <v-card class="pa-4" style="height: 50px" outlined tile>
+                  <h5 class="font-weight-regular">{{ encoding_AdjectivalRating6 }}</h5>
+
+                  <br />
+                </v-card>
+
+                <v-card class="pa-4" style="height: 50px" outlined tile>
+                  <h5 class="font-weight-regular">{{ encoding_AdjectivalRating7 }}</h5>
+
+                  <br />
+                </v-card>
+
+                <v-card class="pa-4" style="height: 50px" outlined tile>
+                  <h5 class="font-weight-regular">{{ encoding_AdjectivalRating8 }}</h5>
+
+                  <br />
+                </v-card>
+
+                <v-card class="pa-4" style="height: 50px" outlined tile>
+                  <h5 class="font-weight-regular">{{ encoding_AdjectivalRating9 }}</h5>
+
+                  <br />
+                </v-card>
+
+                <v-card class="pa-4" style="height: 50px" outlined tile>
+                  <h5 class="font-weight-regular">{{ encoding_AdjectivalRating10 }}</h5>
+
+                  <br />
+                </v-card>
+
+                <v-card class="pa-4" style="height: 50px" outlined tile>
+                  <h5 class="font-weight-regular">{{ encoding_AdjectivalRating11 }}</h5>
+
+                  <br />
+                </v-card>
+
+                <v-card class="pa-4" style="height: 50px" outlined tile>
+                  <h5 class="font-weight-regular">{{ encoding_AdjectivalRating12 }}</h5>
+
+                  <br />
+                </v-card>
+              </div>
+            </v-col>
+            <!-- Start of encoding SCORE -->
+            <v-col
+              :key="n"
+              v-else-if="n === 11"
+              class="ePartCol3"
+              style="margin-left: -641px; margin-top: 720px"
+            >
+              <v-card
+                class="pa-2 pt-4"
+                outlined
+                tile
+                v-model="empAdjRating1"
+                style="width: 279px; height: 50px"
+              >
+                <h5>
+                  Final Rating
+                  <br />
+                </h5>
+              </v-card>
+              <v-card
+                class="pa-4"
+                style="height: 50px"
+                v-model="empAdjRating12"
+                outlined
+                tile
+              >
+                <h5>Adjectival Rating</h5>
+                <br />
+              </v-card>
+            </v-col>
+
+            <!-- End of encoding bottom ADJECTIVAL RATING-->
+            <!-- Start of encoding SCORE -->
+            <v-col
+              :key="n"
+              v-else-if="n === 12"
+              class="ePartCol3"
+              style="margin-left: -25px; margin-top: 720px"
+            >
+              <v-card
+                class="pa-2 pt-4"
+                outlined
+                tile
+                v-model="empFinalRating"
+                style="width: 240px; height: 50px"
+              >
+                <h5>
+                  <br />
+                </h5>
+              </v-card>
+              <v-card
+                class="pa-4"
+                style="height: 50px"
+                v-model="empAdjRating"
+                outlined
+                tile
+              >
+                <h5></h5>
+                <br />
+              </v-card>
+            </v-col>
+
+            <!-- End of encoding ADJECTIVAL RATING-->
+          </template>
         </v-row>
-        <!-- first row -->
       </v-tab-item>
 
       <!-- Part 4 -->
