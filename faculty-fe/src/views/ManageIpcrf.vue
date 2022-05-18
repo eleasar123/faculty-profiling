@@ -52,7 +52,11 @@
           </v-card-text> </v-card
         ><br />
         <v-card>
-          <v-simple-table height="auto" class="pa-0 pa-0 ma-5" max-width="100vw">
+          <v-simple-table
+            height="auto"
+            class="pa-0 pa-0 ma-5"
+            max-width="100vw"
+          >
             <template v-slot:default>
               <tbody class="text-center" color="secondary">
                 <!-- row 1 -->
@@ -85,21 +89,20 @@
                   </td>
                   <td colspan="1" style="text-align: left">Region:</td>
                   <td colspan="1">
-                    <v-text-field
+                    <v-select
+                      :items="items"
                       v-model="empRegion"
-                      placeholder="Region"
-                      solo
+                      label="Position"
                       dense
+                      solo
                       class="text-center pt-5"
-                      type="text"
-                    >
-                    </v-text-field>
+                    ></v-select>
                   </td>
                 </tr>
                 <!-- Row 2 -->
                 <tr>
                   <td colspan="3" style="text-align: left">Position:</td>
-                  <v-col class="d-flex" cols="12" sm="20">
+                
                     <v-select
                       :items="items"
                       v-model="empPosition"
@@ -108,31 +111,32 @@
                       solo
                       class="text-center pt-5"
                     ></v-select>
-                  </v-col>
+               
                   <td colspan="2" style="text-align: left">Position:</td>
 
                   <td colspan="3">
-                    <v-text-field
-                      v-model="raterPosition"
-                      placeholder="Rater Position"
-                      solo
+                   
+                    <v-select
+                      :items="items"
+                      v-model="empRaterPosition"
+                      label="Rater Position"
                       dense
+                      solo
                       class="text-center pt-5"
-                      type="text"
-                    >
-                    </v-text-field>
+                    ></v-select>
+                 
                   </td>
                   <td colspan="3" style="text-align: center">Division:</td>
                   <td colspan="2">
-                    <v-text-field
+                     <v-select
+                      :items="items"
                       v-model="empDivision"
-                      placeholder="Division"
-                      solo
+                      label="Division"
                       dense
+                      solo
                       class="text-center pt-5"
-                      type="text"
-                    >
-                    </v-text-field>
+                    ></v-select>
+                   
                   </td>
                 </tr>
                 <!-- Row 3 -->
@@ -182,18 +186,19 @@
                     Employment Status:
                   </td>
                   <td colspan="2">
-                    <v-text-field
+                     <v-select
+                      :items="items"
                       v-model="empStatus"
-                      placeholder="Status"
-                      solo
+                      label="Status"
                       dense
+                      solo
                       class="text-center pt-5"
-                      type="text"
-                    >
-                    </v-text-field>
+                    ></v-select>
+                   
                   </td>
                   <td colspan="3" style="text-align: left">Rating Period:</td>
                   <td colspan="3">
+                    
                     <v-text-field
                       v-model="empRatingPeriod"
                       placeholder="Rating Period"
@@ -206,21 +211,23 @@
                   </td>
                   <td colspan="1" style="text-align: left">School ID:</td>
                   <td colspan="1">
-                    <v-text-field
-                      v-model="smpSchoolId"
-                      placeholder="School ID"
-                      solo
+                      <v-select
+                      :items="items"
+                      v-model="empSchoolId"
+                      label="School ID"
                       dense
+                      solo
                       class="text-center pt-5"
-                      type="text"
-                    >
-                    </v-text-field>
+                    ></v-select>
+
+                    
                   </td>
                 </tr>
                 <!-- Row 5 -->
                 <tr>
                   <td colspan="3" style="text-align: left">Age :</td>
                   <td colspan="2">
+                    
                     <v-text-field
                       v-model="empAge"
                       placeholder="Age"
@@ -233,6 +240,7 @@
                   </td>
                   <td colspan="3" style="text-align: left">School Name:</td>
                   <td colspan="3">
+                    
                     <v-text-field
                       v-model="empSchoolName"
                       placeholder="School Name"
@@ -245,15 +253,15 @@
                   </td>
                   <td colspan="1" style="text-align: left">Sex:</td>
                   <td colspan="1">
-                    <v-text-field
+                        <v-select
+                      :items="items"
                       v-model="empSex"
-                      placeholder="Sex"
-                      solo
+                      label="Sex"
                       dense
+                      solo
                       class="text-center pt-5"
-                      type="text"
-                    >
-                    </v-text-field>
+                    ></v-select>
+                    
                   </td>
                 </tr>
 
@@ -798,12 +806,11 @@
                       COT Indicator No.
                       <br />
                     </h5>
-                    
                   </v-card>
                   <div style="text-align: center">
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empObj1"
+                        v-model="cotIndicatorNo1"
                         placeholder=""
                         solo
                         dense
@@ -817,7 +824,7 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empObj2"
+                        v-model="cotIndicatorNo2"
                         placeholder=""
                         solo
                         dense
@@ -831,7 +838,7 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empObj3"
+                        v-model="cotIndicatorNo3"
                         placeholder=""
                         solo
                         dense
@@ -845,7 +852,7 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empObj4"
+                        v-model="cotIndicatorNo4"
                         placeholder=""
                         solo
                         dense
@@ -859,7 +866,7 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empObj5"
+                        v-model="cotIndicatorNo5"
                         placeholder=""
                         solo
                         dense
@@ -873,7 +880,7 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empObj6"
+                        v-model="cotIndicatorNo6"
                         placeholder=""
                         solo
                         dense
@@ -887,7 +894,7 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empObj7"
+                        v-model="cotIndicatorNo7"
                         placeholder=""
                         solo
                         dense
@@ -901,7 +908,7 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empObj8"
+                        v-model="cotIndicatorNo8"
                         placeholder=""
                         solo
                         dense
@@ -915,7 +922,7 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empObj9"
+                        v-model="cotIndicatorNo9"
                         placeholder=""
                         solo
                         dense
@@ -928,7 +935,7 @@
                     </v-card>
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empObj10"
+                        v-model="cotIndicatorNo10"
                         placeholder=""
                         solo
                         dense
@@ -942,7 +949,7 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empObj11"
+                        v-model="cotIndicatorNo11"
                         placeholder=""
                         solo
                         dense
@@ -956,7 +963,7 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empObj12"
+                        v-model="cotIndicatorNo12"
                         placeholder=""
                         solo
                         dense
@@ -967,7 +974,6 @@
                       </v-text-field>
                       <br />
                     </v-card>
-                    
                   </div>
                 </v-col>
                 <!-- End of encoding COT indicator -->
@@ -987,22 +993,42 @@
                     <h5>
                       COT 1
                       <br />
+                      <v-select
+                        :items="items"
+                        v-model="kra_cot1Rating1"
+                        label=""
+                        dense
+                        solo
+                        class="text-center"
+                      ></v-select>
+                      <v-card
+                        no-gutters
+                        style="
+                          width: 60px;
+                          height: 20px;
+                          border-radius: 0;
+                          margin-top: -3px;
+                          margin-left: -7px;
+                        "
+                        >Rating
+                      </v-card>
+                      <v-card
+                        no-gutters
+                        style="
+                          width: 65px;
+                          height: 20px;
+                          border-radius: 0;
+                          margin-top: -20px;
+                          margin-left: 55px;
+                        "
+                        >RPMS 5pt
+                      </v-card>
                     </h5>
-                    <v-col class="d-flex" cols="12" sm="20">
-                    <v-select
-                      :items="items"
-                      v-model="empPosition"
-                      label="Position"
-                      dense
-                      solo
-                      class="text-center"
-                    ></v-select>
-                  </v-col>
                   </v-card>
                   <div style="text-align: center; width: 60px">
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empObj1"
+                        v-model="kra_cot1Rating2"
                         placeholder=""
                         solo
                         dense
@@ -1012,21 +1038,7 @@
                       >
                       </v-text-field>
                       <v-text-field
-                        v-model="empObj1"
-                        placeholder=""
-                        solo
-                        dense
-                        style="width: 100px"
-                        class="text-center"
-                        type="text"
-                      >
-                      </v-text-field>
-                      <br />
-                    </v-card>
-
-                    <v-card class="pa-1" style="height: 50px" outlined tile>
-                      <v-text-field
-                        v-model="empObj2"
+                        v-model="kra_cot1Rating3"
                         placeholder=""
                         solo
                         dense
@@ -1040,7 +1052,21 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empObj3"
+                        v-model="kra_cot1Rating4"
+                        placeholder=""
+                        solo
+                        dense
+                        style="width: 100px"
+                        class="text-center"
+                        type="text"
+                      >
+                      </v-text-field>
+                      <br />
+                    </v-card>
+
+                    <v-card class="pa-1" style="height: 50px" outlined tile>
+                      <v-text-field
+                        v-model="kra_cot1Rating5"
                         placeholder=""
                         solo
                         dense
@@ -1054,7 +1080,7 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empObj4"
+                        v-model="kra_cot1Rating6"
                         placeholder=""
                         solo
                         dense
@@ -1068,7 +1094,7 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empObj5"
+                        v-model="kra_cot1Rating7"
                         placeholder=""
                         solo
                         dense
@@ -1082,7 +1108,7 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empObj6"
+                        v-model="kra_cot1Rating8"
                         placeholder=""
                         solo
                         dense
@@ -1096,7 +1122,7 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empObj7"
+                        v-model="kra_cot1Rating9"
                         placeholder=""
                         solo
                         dense
@@ -1110,7 +1136,7 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empObj8"
+                        v-model="kra_cot1Rating10"
                         placeholder=""
                         solo
                         dense
@@ -1124,7 +1150,7 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empObj9"
+                        v-model="kra_cot1Rating11"
                         placeholder=""
                         solo
                         dense
@@ -1137,21 +1163,7 @@
                     </v-card>
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empObj10"
-                        placeholder=""
-                        solo
-                        dense
-                        class="text-center"
-                        type="text"
-                        style="width: 100px"
-                      >
-                      </v-text-field>
-                      <br />
-                    </v-card>
-
-                    <v-card class="pa-1" style="height: 50px" outlined tile>
-                      <v-text-field
-                        v-model="empObj11"
+                        v-model="kra_cot1Rating12"
                         placeholder=""
                         solo
                         dense
@@ -1165,7 +1177,21 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empObj12"
+                        v-model="kra_cot1Rating13"
+                        placeholder=""
+                        solo
+                        dense
+                        class="text-center"
+                        type="text"
+                        style="width: 100px"
+                      >
+                      </v-text-field>
+                      <br />
+                    </v-card>
+
+                    <v-card class="pa-1" style="height: 50px" outlined tile>
+                      <v-text-field
+                        v-model="kra_cot1Rating14"
                         placeholder=""
                         solo
                         dense
@@ -1190,16 +1216,11 @@
                 >
                   <br /><br /><br />
                   <br /><br />
-                  <!-- <v-card class="pa-2 pt-4" outlined tile style="width: 60px;height:120px">
-                    <h5>
-                      COT 1
-                      <br />
-                    </h5>
-                  </v-card> -->
+
                   <div style="text-align: center; width: 60px">
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empRpms1"
+                        v-model="kra_cot1RpmsObj1"
                         placeholder=""
                         solo
                         dense
@@ -1214,7 +1235,7 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empRpms2"
+                        v-model="kra_cot1RpmsObj2"
                         placeholder=""
                         solo
                         dense
@@ -1228,7 +1249,7 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empRpms3"
+                        v-model="kra_cot1RpmsObj3"
                         placeholder=""
                         solo
                         dense
@@ -1242,7 +1263,7 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empRpms4"
+                        v-model="kra_cot1RpmsObj4"
                         placeholder=""
                         solo
                         dense
@@ -1256,7 +1277,7 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empRpms5"
+                        v-model="kra_cot1RpmsObj5"
                         placeholder=""
                         solo
                         dense
@@ -1270,7 +1291,7 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empRpms6"
+                        v-model="kra_cot1RpmsObj6"
                         placeholder=""
                         solo
                         dense
@@ -1284,7 +1305,7 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empRpms7"
+                        v-model="kra_cot1RpmsObj7"
                         placeholder=""
                         solo
                         dense
@@ -1298,7 +1319,7 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empRpms8"
+                        v-model="kra_cot1RpmsObj8"
                         placeholder=""
                         solo
                         dense
@@ -1312,7 +1333,7 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empRpms9"
+                        v-model="kra_cot1RpmsObj9"
                         placeholder=""
                         solo
                         dense
@@ -1325,21 +1346,7 @@
                     </v-card>
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empRpms10"
-                        placeholder=""
-                        solo
-                        dense
-                        class="text-center"
-                        type="text"
-                        style="width: 100px"
-                      >
-                      </v-text-field>
-                      <br />
-                    </v-card>
-
-                    <v-card class="pa-1" style="height: 50px" outlined tile>
-                      <v-text-field
-                        v-model="empRpms11"
+                        v-model="kra_cot1RpmsObj10"
                         placeholder=""
                         solo
                         dense
@@ -1353,7 +1360,21 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empRpms12"
+                        v-model="kra_cot1RpmsObj11"
+                        placeholder=""
+                        solo
+                        dense
+                        class="text-center"
+                        type="text"
+                        style="width: 100px"
+                      >
+                      </v-text-field>
+                      <br />
+                    </v-card>
+
+                    <v-card class="pa-1" style="height: 50px" outlined tile>
+                      <v-text-field
+                        v-model="kra_cot1RpmsObj12"
                         placeholder=""
                         solo
                         dense
@@ -1384,24 +1405,42 @@
                     <h5>
                       COT 2
                       <br />
+                      <v-select
+                        :items="items"
+                        v-model="kra_cot2Rating1"
+                        label=""
+                        dense
+                        solo
+                        class="text-center"
+                      ></v-select>
+                      <v-card
+                        no-gutters
+                        style="
+                          width: 60px;
+                          height: 20px;
+                          border-radius: 0;
+                          margin-top: -3px;
+                          margin-left: -7px;
+                        "
+                        >Rating
+                      </v-card>
+                      <v-card
+                        no-gutters
+                        style="
+                          width: 65px;
+                          height: 20px;
+                          border-radius: 0;
+                          margin-top: -20px;
+                          margin-left: 55px;
+                        "
+                        >RPMS 5pt
+                      </v-card>
                     </h5>
-                    <v-col class="d-flex" cols="12" sm="20">
-                    <v-select
-                      :items="items"
-                      v-model="empCot2"
-                      label="COT2"
-                      dense
-                      solo
-                      class="text-center"
-                    ></v-select>
-                  
-                  </v-col>
-              
                   </v-card>
                   <div style="text-align: center; width: 60px">
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empObj1"
+                        v-model="kra_cot2Rating1"
                         placeholder=""
                         solo
                         dense
@@ -1411,21 +1450,7 @@
                       >
                       </v-text-field>
                       <v-text-field
-                        v-model="empObj1"
-                        placeholder=""
-                        solo
-                        dense
-                        style="width: 100px"
-                        class="text-center"
-                        type="text"
-                      >
-                      </v-text-field>
-                      <br />
-                    </v-card>
-
-                    <v-card class="pa-1" style="height: 50px" outlined tile>
-                      <v-text-field
-                        v-model="empObj2"
+                        v-model="kra_cot2Rating1"
                         placeholder=""
                         solo
                         dense
@@ -1439,7 +1464,21 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empObj3"
+                        v-model="kra_cot2Rating2"
+                        placeholder=""
+                        solo
+                        dense
+                        style="width: 100px"
+                        class="text-center"
+                        type="text"
+                      >
+                      </v-text-field>
+                      <br />
+                    </v-card>
+
+                    <v-card class="pa-1" style="height: 50px" outlined tile>
+                      <v-text-field
+                        v-model="kra_cot2Rating3"
                         placeholder=""
                         solo
                         dense
@@ -1453,7 +1492,7 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empObj4"
+                        v-model="kra_cot2Rating4"
                         placeholder=""
                         solo
                         dense
@@ -1467,7 +1506,7 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empObj5"
+                        v-model="kra_cot2Rating5"
                         placeholder=""
                         solo
                         dense
@@ -1481,7 +1520,7 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empObj6"
+                        v-model="kra_cot2Rating6"
                         placeholder=""
                         solo
                         dense
@@ -1495,7 +1534,7 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empObj7"
+                        v-model="kra_cot2Rating7"
                         placeholder=""
                         solo
                         dense
@@ -1509,7 +1548,7 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empObj8"
+                        v-model="kra_cot2Rating8"
                         placeholder=""
                         solo
                         dense
@@ -1523,7 +1562,7 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empObj9"
+                        v-model="kra_cot2Rating9"
                         placeholder=""
                         solo
                         dense
@@ -1536,21 +1575,7 @@
                     </v-card>
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empObj10"
-                        placeholder=""
-                        solo
-                        dense
-                        class="text-center"
-                        type="text"
-                        style="width: 100px"
-                      >
-                      </v-text-field>
-                      <br />
-                    </v-card>
-
-                    <v-card class="pa-1" style="height: 50px" outlined tile>
-                      <v-text-field
-                        v-model="empObj11"
+                        v-model="kra_cot2Rating10"
                         placeholder=""
                         solo
                         dense
@@ -1564,7 +1589,21 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empObj12"
+                        v-model="kra_cot2Rating11"
+                        placeholder=""
+                        solo
+                        dense
+                        class="text-center"
+                        type="text"
+                        style="width: 100px"
+                      >
+                      </v-text-field>
+                      <br />
+                    </v-card>
+
+                    <v-card class="pa-1" style="height: 50px" outlined tile>
+                      <v-text-field
+                        v-model="kra_cot2Rating12"
                         placeholder=""
                         solo
                         dense
@@ -1598,7 +1637,7 @@
                   <div style="text-align: center; width: 60px">
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empRpms1"
+                        v-model="kra_cot1RpmsObj1"
                         placeholder=""
                         solo
                         dense
@@ -1613,7 +1652,7 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empRpms2"
+                        v-model="kra_cot1RpmsObj2"
                         placeholder=""
                         solo
                         dense
@@ -1627,7 +1666,7 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empRpms3"
+                        v-model="kra_cot1RpmsObj3"
                         placeholder=""
                         solo
                         dense
@@ -1641,7 +1680,7 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empRpms4"
+                        v-model="kra_cot1RpmsObj4"
                         placeholder=""
                         solo
                         dense
@@ -1655,7 +1694,7 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empRpms5"
+                        v-model="kra_cot1RpmsObj5"
                         placeholder=""
                         solo
                         dense
@@ -1669,7 +1708,7 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empRpms6"
+                        v-model="kra_cot1RpmsObj6"
                         placeholder=""
                         solo
                         dense
@@ -1683,7 +1722,7 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empRpms7"
+                        v-model="kra_cot1RpmsObj7"
                         placeholder=""
                         solo
                         dense
@@ -1697,7 +1736,7 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empRpms8"
+                        v-model="kra_cot1RpmsObj8"
                         placeholder=""
                         solo
                         dense
@@ -1711,7 +1750,7 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empRpms9"
+                        v-model="kra_cot1RpmsObj9"
                         placeholder=""
                         solo
                         dense
@@ -1724,21 +1763,7 @@
                     </v-card>
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empRpms10"
-                        placeholder=""
-                        solo
-                        dense
-                        class="text-center"
-                        type="text"
-                        style="width: 100px"
-                      >
-                      </v-text-field>
-                      <br />
-                    </v-card>
-
-                    <v-card class="pa-1" style="height: 50px" outlined tile>
-                      <v-text-field
-                        v-model="empRpms11"
+                        v-model="kra_cot1RpmsObj10"
                         placeholder=""
                         solo
                         dense
@@ -1752,7 +1777,21 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empRpms12"
+                        v-model="kra_cot1RpmsObj11"
+                        placeholder=""
+                        solo
+                        dense
+                        class="text-center"
+                        type="text"
+                        style="width: 100px"
+                      >
+                      </v-text-field>
+                      <br />
+                    </v-card>
+
+                    <v-card class="pa-1" style="height: 50px" outlined tile>
+                      <v-text-field
+                        v-model="kra_cot1RpmsObj12"
                         placeholder=""
                         solo
                         dense
@@ -1767,7 +1806,7 @@
                 </v-col>
                 <!-- End of COT 2 -->
 
-                  <!-- Start of encoding COT 1 -->
+                <!-- Start of encoding COT 3 -->
                 <v-col
                   :key="n"
                   v-else-if="n === 10"
@@ -1783,22 +1822,42 @@
                     <h5>
                       COT 3
                       <br />
+                      <v-select
+                        :items="cot2Rating"
+                        v-model="kra_cot3Rating1"
+                        label=""
+                        dense
+                        solo
+                        class="text-center"
+                      ></v-select>
+                      <v-card
+                        no-gutters
+                        style="
+                          width: 60px;
+                          height: 20px;
+                          border-radius: 0;
+                          margin-top: -3px;
+                          margin-left: -7px;
+                        "
+                        >Rating
+                      </v-card>
+                      <v-card
+                        no-gutters
+                        style="
+                          width: 65px;
+                          height: 20px;
+                          border-radius: 0;
+                          margin-top: -20px;
+                          margin-left: 55px;
+                        "
+                        >RPMS 5pt
+                      </v-card>
                     </h5>
-                    <v-col class="d-flex" cols="12" sm="20">
-                    <v-select
-                      :items="items"
-                      v-model="empPosition"
-                      label="Position"
-                      dense
-                      solo
-                      class="text-center"
-                    ></v-select>
-                  </v-col>
                   </v-card>
                   <div style="text-align: center; width: 60px">
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empObj1"
+                        v-model="kra_cot3Rating1"
                         placeholder=""
                         solo
                         dense
@@ -1808,21 +1867,7 @@
                       >
                       </v-text-field>
                       <v-text-field
-                        v-model="empObj1"
-                        placeholder=""
-                        solo
-                        dense
-                        style="width: 100px"
-                        class="text-center"
-                        type="text"
-                      >
-                      </v-text-field>
-                      <br />
-                    </v-card>
-
-                    <v-card class="pa-1" style="height: 50px" outlined tile>
-                      <v-text-field
-                        v-model="empObj2"
+                        v-model="kra_cot3Rating1"
                         placeholder=""
                         solo
                         dense
@@ -1836,7 +1881,21 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empObj3"
+                        v-model="kra_cot3Rating2"
+                        placeholder=""
+                        solo
+                        dense
+                        style="width: 100px"
+                        class="text-center"
+                        type="text"
+                      >
+                      </v-text-field>
+                      <br />
+                    </v-card>
+
+                    <v-card class="pa-1" style="height: 50px" outlined tile>
+                      <v-text-field
+                        v-model="kra_cot3Rating3"
                         placeholder=""
                         solo
                         dense
@@ -1850,7 +1909,7 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empObj4"
+                        v-model="kra_cot3Rating4"
                         placeholder=""
                         solo
                         dense
@@ -1864,7 +1923,7 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empObj5"
+                        v-model="kra_cot3Rating5"
                         placeholder=""
                         solo
                         dense
@@ -1878,7 +1937,7 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empObj6"
+                        v-model="kra_cot3Rating6"
                         placeholder=""
                         solo
                         dense
@@ -1892,7 +1951,7 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empObj7"
+                        v-model="kra_cot3Rating7"
                         placeholder=""
                         solo
                         dense
@@ -1906,7 +1965,7 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empObj8"
+                        v-model="kra_cot3Rating8"
                         placeholder=""
                         solo
                         dense
@@ -1920,7 +1979,7 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empObj9"
+                        v-model="kra_cot3Rating9"
                         placeholder=""
                         solo
                         dense
@@ -1933,21 +1992,7 @@
                     </v-card>
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empObj10"
-                        placeholder=""
-                        solo
-                        dense
-                        class="text-center"
-                        type="text"
-                        style="width: 100px"
-                      >
-                      </v-text-field>
-                      <br />
-                    </v-card>
-
-                    <v-card class="pa-1" style="height: 50px" outlined tile>
-                      <v-text-field
-                        v-model="empObj11"
+                        v-model="kra_cot3Rating10"
                         placeholder=""
                         solo
                         dense
@@ -1961,7 +2006,21 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empObj12"
+                        v-model="kra_cot3Rating11"
+                        placeholder=""
+                        solo
+                        dense
+                        class="text-center"
+                        type="text"
+                        style="width: 100px"
+                      >
+                      </v-text-field>
+                      <br />
+                    </v-card>
+
+                    <v-card class="pa-1" style="height: 50px" outlined tile>
+                      <v-text-field
+                        v-model="kra_cot3Rating12"
                         placeholder=""
                         solo
                         dense
@@ -1975,8 +2034,8 @@
                   </div>
                 </v-col>
 
-                <!-- End of cot 1 -->
-                <!-- Start of encoding COT 1 Rpms -->
+                <!-- End of cot3 rating -->
+                <!-- Start of encoding COT 3 Rpms -->
 
                 <v-col
                   :key="n"
@@ -1986,16 +2045,11 @@
                 >
                   <br /><br /><br />
                   <br /><br />
-                  <!-- <v-card class="pa-2 pt-4" outlined tile style="width: 60px;height:120px">
-                    <h5>
-                      COT 1
-                      <br />
-                    </h5>
-                  </v-card> -->
+
                   <div style="text-align: center; width: 60px">
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empRpms1"
+                        v-model="kra_cot3Rpms1"
                         placeholder=""
                         solo
                         dense
@@ -2010,7 +2064,7 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empRpms2"
+                        v-model="kra_cot3Rpms2"
                         placeholder=""
                         solo
                         dense
@@ -2024,7 +2078,7 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empRpms3"
+                        v-model="kra_cot3Rpms3"
                         placeholder=""
                         solo
                         dense
@@ -2038,7 +2092,7 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empRpms4"
+                        v-model="kra_cot3Rpms4"
                         placeholder=""
                         solo
                         dense
@@ -2052,7 +2106,7 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empRpms5"
+                        v-model="kra_cot3Rpms5"
                         placeholder=""
                         solo
                         dense
@@ -2066,7 +2120,7 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empRpms6"
+                        v-model="kra_cot3Rpms6"
                         placeholder=""
                         solo
                         dense
@@ -2080,7 +2134,7 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empRpms7"
+                        v-model="kra_cot3Rpms7"
                         placeholder=""
                         solo
                         dense
@@ -2094,7 +2148,7 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empRpms8"
+                        v-model="kra_cot3Rpms8"
                         placeholder=""
                         solo
                         dense
@@ -2108,7 +2162,7 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empRpms9"
+                        v-model="kra_cot3Rpms9"
                         placeholder=""
                         solo
                         dense
@@ -2121,21 +2175,7 @@
                     </v-card>
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empRpms10"
-                        placeholder=""
-                        solo
-                        dense
-                        class="text-center"
-                        type="text"
-                        style="width: 100px"
-                      >
-                      </v-text-field>
-                      <br />
-                    </v-card>
-
-                    <v-card class="pa-1" style="height: 50px" outlined tile>
-                      <v-text-field
-                        v-model="empRpms11"
+                        v-model="kra_cot3Rpms10"
                         placeholder=""
                         solo
                         dense
@@ -2149,7 +2189,21 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empRpms12"
+                        v-model="kra_cot3Rpms11"
+                        placeholder=""
+                        solo
+                        dense
+                        class="text-center"
+                        type="text"
+                        style="width: 100px"
+                      >
+                      </v-text-field>
+                      <br />
+                    </v-card>
+
+                    <v-card class="pa-1" style="height: 50px" outlined tile>
+                      <v-text-field
+                        v-model="kra_cot3Rpms12"
                         placeholder=""
                         solo
                         dense
@@ -2162,7 +2216,7 @@
                     </v-card>
                   </div>
                 </v-col>
-                <!-- End of COT Rpms -->
+                <!-- End of COT  3 Rpms -->
 
                 <!-- Start of encoding COT 4 -->
                 <v-col
@@ -2180,24 +2234,42 @@
                     <h5>
                       COT 4
                       <br />
+                      <v-select
+                        :items="cot4Rating"
+                        v-model="kra_cot4Rating1"
+                        label=""
+                        dense
+                        solo
+                        class="text-center"
+                      ></v-select>
+                      <v-card
+                        no-gutters
+                        style="
+                          width: 60px;
+                          height: 20px;
+                          border-radius: 0;
+                          margin-top: -3px;
+                          margin-left: -7px;
+                        "
+                        >Rating
+                      </v-card>
+                      <v-card
+                        no-gutters
+                        style="
+                          width: 65px;
+                          height: 20px;
+                          border-radius: 0;
+                          margin-top: -20px;
+                          margin-left: 55px;
+                        "
+                        >RPMS 5pt
+                      </v-card>
                     </h5>
-                    <v-col class="d-flex" cols="12" sm="20">
-                    <v-select
-                      :items="items"
-                      v-model="empCot2"
-                      label="COT2"
-                      dense
-                      solo
-                      class="text-center"
-                    ></v-select>
-                  
-                  </v-col>
-              
                   </v-card>
                   <div style="text-align: center; width: 60px">
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empObj1"
+                        v-model="kra_cot4Rating1"
                         placeholder=""
                         solo
                         dense
@@ -2207,21 +2279,7 @@
                       >
                       </v-text-field>
                       <v-text-field
-                        v-model="empObj1"
-                        placeholder=""
-                        solo
-                        dense
-                        style="width: 100px"
-                        class="text-center"
-                        type="text"
-                      >
-                      </v-text-field>
-                      <br />
-                    </v-card>
-
-                    <v-card class="pa-1" style="height: 50px" outlined tile>
-                      <v-text-field
-                        v-model="empObj2"
+                        v-model="kra_cot4Rating1"
                         placeholder=""
                         solo
                         dense
@@ -2235,7 +2293,21 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empObj3"
+                        v-model="kra_cot4Rating2"
+                        placeholder=""
+                        solo
+                        dense
+                        style="width: 100px"
+                        class="text-center"
+                        type="text"
+                      >
+                      </v-text-field>
+                      <br />
+                    </v-card>
+
+                    <v-card class="pa-1" style="height: 50px" outlined tile>
+                      <v-text-field
+                        v-model="kra_cot4Rating3"
                         placeholder=""
                         solo
                         dense
@@ -2249,7 +2321,7 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empObj4"
+                        v-model="kra_cot4Rating4"
                         placeholder=""
                         solo
                         dense
@@ -2263,7 +2335,7 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empObj5"
+                        v-model="kra_cot4Rating5"
                         placeholder=""
                         solo
                         dense
@@ -2277,7 +2349,7 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empObj6"
+                        v-model="kra_cot4Rating6"
                         placeholder=""
                         solo
                         dense
@@ -2291,7 +2363,7 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empObj7"
+                        v-model="kra_cot4Rating7"
                         placeholder=""
                         solo
                         dense
@@ -2305,7 +2377,7 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empObj8"
+                        v-model="kra_cot4Rating8"
                         placeholder=""
                         solo
                         dense
@@ -2319,7 +2391,7 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empObj9"
+                        v-model="kra_cot4Rating9"
                         placeholder=""
                         solo
                         dense
@@ -2332,21 +2404,7 @@
                     </v-card>
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empObj10"
-                        placeholder=""
-                        solo
-                        dense
-                        class="text-center"
-                        type="text"
-                        style="width: 100px"
-                      >
-                      </v-text-field>
-                      <br />
-                    </v-card>
-
-                    <v-card class="pa-1" style="height: 50px" outlined tile>
-                      <v-text-field
-                        v-model="empObj11"
+                        v-model="kra_cot4Rating10"
                         placeholder=""
                         solo
                         dense
@@ -2360,7 +2418,21 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empObj12"
+                        v-model="kra_cot4Rating11"
+                        placeholder=""
+                        solo
+                        dense
+                        class="text-center"
+                        type="text"
+                        style="width: 100px"
+                      >
+                      </v-text-field>
+                      <br />
+                    </v-card>
+
+                    <v-card class="pa-1" style="height: 50px" outlined tile>
+                      <v-text-field
+                        v-model="kra_cot4Rating12"
                         placeholder=""
                         solo
                         dense
@@ -2385,11 +2457,11 @@
                 >
                   <br /><br /><br />
                   <br /><br />
-               
+
                   <div style="text-align: center; width: 60px">
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empRpms1"
+                        v-model="kra_cot4Rpms1"
                         placeholder=""
                         solo
                         dense
@@ -2404,7 +2476,7 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empRpms2"
+                        v-model="kra_cot4Rpms2"
                         placeholder=""
                         solo
                         dense
@@ -2418,7 +2490,7 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empRpms3"
+                        v-model="kra_cot4Rpms3"
                         placeholder=""
                         solo
                         dense
@@ -2432,7 +2504,7 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empRpms4"
+                        v-model="kra_cot4Rpms4"
                         placeholder=""
                         solo
                         dense
@@ -2446,7 +2518,7 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empRpms5"
+                        v-model="kra_cot4Rpms5"
                         placeholder=""
                         solo
                         dense
@@ -2460,7 +2532,7 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empRpms6"
+                        v-model="kra_cot4Rpms6"
                         placeholder=""
                         solo
                         dense
@@ -2474,7 +2546,7 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empRpms7"
+                        v-model="kra_cot4Rpms7"
                         placeholder=""
                         solo
                         dense
@@ -2488,7 +2560,7 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empRpms8"
+                        v-model="kra_cot4Rpms8"
                         placeholder=""
                         solo
                         dense
@@ -2502,7 +2574,7 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empRpms9"
+                        v-model="kra_cot4Rpms9"
                         placeholder=""
                         solo
                         dense
@@ -2515,21 +2587,7 @@
                     </v-card>
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empRpms10"
-                        placeholder=""
-                        solo
-                        dense
-                        class="text-center"
-                        type="text"
-                        style="width: 100px"
-                      >
-                      </v-text-field>
-                      <br />
-                    </v-card>
-
-                    <v-card class="pa-1" style="height: 50px" outlined tile>
-                      <v-text-field
-                        v-model="empRpms11"
+                        v-model="kra_cot4Rpms10"
                         placeholder=""
                         solo
                         dense
@@ -2543,7 +2601,21 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empRpms12"
+                        v-model="kra_cot4Rpms11"
+                        placeholder=""
+                        solo
+                        dense
+                        class="text-center"
+                        type="text"
+                        style="width: 100px"
+                      >
+                      </v-text-field>
+                      <br />
+                    </v-card>
+
+                    <v-card class="pa-1" style="height: 50px" outlined tile>
+                      <v-text-field
+                        v-model="kra_cot4Rpms12"
                         placeholder=""
                         solo
                         dense
@@ -2556,9 +2628,9 @@
                     </v-card>
                   </div>
                 </v-col>
-                <!-- End of COT 4 -->
-                
-  <!-- Start of encoding average -->
+                <!-- End of COT 4  -->
+
+                <!-- Start of encoding average -->
                 <v-col
                   :key="n"
                   v-else-if="n === 14"
@@ -2572,78 +2644,150 @@
                     style="width: 120px; height: 120px"
                   >
                     <h5>
-                     AVE
+                      AVE
                       <br />
                     </h5>
-                    
-              
                   </v-card>
-                  <div style="text-align: center; width: 120px;">
-                    <v-card class="pa-4" style="height: 50px" v-model="empAve1" outlined tile>
-                    
-                       <h5> </h5>
-                     
+                  <div style="text-align: center; width: 120px">
+                    <v-card
+                      class="pa-4"
+                      style="height: 50px"
+                      v-model="encodingAverage1"
+                      outlined
+                      tile
+                    >
+                      <h5></h5>
+
                       <br />
                     </v-card>
 
-                    <v-card class="pa-4" style="height: 50px" v-model="empAve2" outlined tile>
-                        <h5> </h5>
+                    <v-card
+                      class="pa-4"
+                      style="height: 50px"
+                      v-model="encodingAverage2"
+                      outlined
+                      tile
+                    >
+                      <h5></h5>
                       <br />
                     </v-card>
 
-                    <v-card class="pa-4" style="height: 50px"  v-model="empAve3" outlined tile>
-                   <h5> </h5>
+                    <v-card
+                      class="pa-4"
+                      style="height: 50px"
+                      v-model="encodingAverage3"
+                      outlined
+                      tile
+                    >
+                      <h5></h5>
                       <br />
                     </v-card>
 
-                    <v-card class="pa-4" style="height: 50px"  v-model="empAve4" outlined tile>
-                     <h5> </h5> <br />
-                    </v-card>
-
-                    <v-card class="pa-4" style="height: 50px"  v-model="empAve5" outlined tile>
-                       <h5> dsa</h5> <br />
-                    </v-card>
-
-                      <v-card class="pa-4" style="height: 50px" v-model="empAve6" outlined tile>
-                    
-                       <h5> </h5>
-                     
+                    <v-card
+                      class="pa-4"
+                      style="height: 50px"
+                      v-model="encodingAverage4"
+                      outlined
+                      tile
+                    >
+                      <h5></h5>
                       <br />
                     </v-card>
 
-                    <v-card class="pa-4" style="height: 50px" v-model="empAve7" outlined tile>
-                        <h5> </h5>
+                    <v-card
+                      class="pa-4"
+                      style="height: 50px"
+                      v-model="encodingAverage5"
+                      outlined
+                      tile
+                    >
+                      <h5></h5>
                       <br />
                     </v-card>
 
-                    <v-card class="pa-4" style="height: 50px"  v-model="empAve8" outlined tile>
-                   <h5> </h5>
+                    <v-card
+                      class="pa-4"
+                      style="height: 50px"
+                      v-model="encodingAverage6"
+                      outlined
+                      tile
+                    >
+                      <h5></h5>
+
                       <br />
                     </v-card>
 
-                    <v-card class="pa-4" style="height: 50px"  v-model="empAve9" outlined tile>
-                     <h5> </h5> <br />
+                    <v-card
+                      class="pa-4"
+                      style="height: 50px"
+                      v-model="encodingAverage7"
+                      outlined
+                      tile
+                    >
+                      <h5></h5>
+                      <br />
                     </v-card>
 
-                    <v-card class="pa-4" style="height: 50px"  v-model="empAve10" outlined tile>
-                       <h5> </h5> <br />
+                    <v-card
+                      class="pa-4"
+                      style="height: 50px"
+                      v-model="encodingAverage8"
+                      outlined
+                      tile
+                    >
+                      <h5></h5>
+                      <br />
                     </v-card>
 
-                    <v-card class="pa-4" style="height: 50px"  v-model="empAve11" outlined tile>
-                     <h5> </h5> <br />
+                    <v-card
+                      class="pa-4"
+                      style="height: 50px"
+                      v-model="encodingAverage9"
+                      outlined
+                      tile
+                    >
+                      <h5></h5>
+                      <br />
                     </v-card>
 
-                    <v-card class="pa-4" style="height: 50px"  v-model="empAve12" outlined tile>
-                       <h5> </h5> <br />
+                    <v-card
+                      class="pa-4"
+                      style="height: 50px"
+                      v-model="encodingAverage10"
+                      outlined
+                      tile
+                    >
+                      <h5></h5>
+                      <br />
+                    </v-card>
+
+                    <v-card
+                      class="pa-4"
+                      style="height: 50px"
+                      v-model="encodingAverage11"
+                      outlined
+                      tile
+                    >
+                      <h5></h5>
+                      <br />
+                    </v-card>
+
+                    <v-card
+                      class="pa-4"
+                      style="height: 50px"
+                      v-model="encodingAverage12"
+                      outlined
+                      tile
+                    >
+                      <h5></h5>
+                      <br />
                     </v-card>
                   </div>
                 </v-col>
 
                 <!-- End of encoding Average-->
 
-
-<!-- Start of IPCRF Rating -->
-<!-- Start of encoding COT 3 -->
+                <!-- Start of IPCRF  NUMERICAL RATING -->
                 <v-col
                   :key="n"
                   v-else-if="n === 15"
@@ -2660,13 +2804,56 @@
                       IPCRF NUMERICAL RATING
                       <br />
                     </h5>
-                   
-              
+                    <v-card
+                      no-gutters
+                      style="
+                        width: 57px;
+                        height: 20px;
+                        border-radius: 0;
+                        margin-top: 62px;
+                        margin-left: -7px;
+                      "
+                      >Q
+                    </v-card>
+                    <v-card
+                      no-gutters
+                      style="
+                        width: 57px;
+                        height: 20px;
+                        border-radius: 0;
+                        margin-top: -20px;
+                        margin-left: 57px;
+                      "
+                      >E
+                    </v-card>
+                    <v-card
+                      no-gutters
+                      style="
+                        width: 57px;
+                        height: 20px;
+                        border-radius: 0;
+                        margin-top: -20px;
+                        margin-left: 120px;
+                      "
+                      >T
+                    </v-card>
+                    <v-card
+                      no-gutters
+                      style="
+                        width: 65px;
+                        height: 20px;
+                        border-radius: 0;
+                        margin-top: -20px;
+                        margin-left: 185px;
+                      "
+                    >
+                      AVE
+                    </v-card>
                   </v-card>
                   <div style="text-align: center; width: 60px">
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empQ1"
+                        v-model="encoding_ipcrfNumericalQ1"
                         placeholder=""
                         solo
                         dense
@@ -2676,21 +2863,7 @@
                       >
                       </v-text-field>
                       <v-text-field
-                        v-model="empQ1"
-                        placeholder=""
-                        solo
-                        dense
-                        style="width: 100px"
-                        class="text-center"
-                        type="text"
-                      >
-                      </v-text-field>
-                      <br />
-                    </v-card>
-
-                    <v-card class="pa-1" style="height: 50px" outlined tile>
-                      <v-text-field
-                        v-model="empQ2"
+                        v-model="encoding_ipcrfNumericalQ1"
                         placeholder=""
                         solo
                         dense
@@ -2704,7 +2877,21 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empQ3"
+                        v-model="encoding_ipcrfNumericalQ2"
+                        placeholder=""
+                        solo
+                        dense
+                        style="width: 100px"
+                        class="text-center"
+                        type="text"
+                      >
+                      </v-text-field>
+                      <br />
+                    </v-card>
+
+                    <v-card class="pa-1" style="height: 50px" outlined tile>
+                      <v-text-field
+                        v-model="encoding_ipcrfNumericalQ3"
                         placeholder=""
                         solo
                         dense
@@ -2718,7 +2905,7 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empQ4"
+                        v-model="encoding_ipcrfNumericalQ4"
                         placeholder=""
                         solo
                         dense
@@ -2732,7 +2919,7 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empQ5"
+                        v-model="encoding_ipcrfNumericalQ5"
                         placeholder=""
                         solo
                         dense
@@ -2746,7 +2933,7 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empQ6"
+                        v-model="encoding_ipcrfNumericalQ6"
                         placeholder=""
                         solo
                         dense
@@ -2760,7 +2947,7 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empQ7"
+                        v-model="encoding_ipcrfNumericalQ7"
                         placeholder=""
                         solo
                         dense
@@ -2774,7 +2961,7 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empQ8"
+                        v-model="encoding_ipcrfNumericalQ8"
                         placeholder=""
                         solo
                         dense
@@ -2788,7 +2975,7 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empQ9"
+                        v-model="encoding_ipcrfNumericalQ9"
                         placeholder=""
                         solo
                         dense
@@ -2801,21 +2988,7 @@
                     </v-card>
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empQ10"
-                        placeholder=""
-                        solo
-                        dense
-                        class="text-center"
-                        type="text"
-                        style="width: 100px"
-                      >
-                      </v-text-field>
-                      <br />
-                    </v-card>
-
-                    <v-card class="pa-1" style="height: 50px" outlined tile>
-                      <v-text-field
-                        v-model="empQ11"
+                        v-model="encoding_ipcrfNumericalQ10"
                         placeholder=""
                         solo
                         dense
@@ -2829,7 +3002,21 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empQ12"
+                        v-model="encoding_ipcrfNumericalQ11"
+                        placeholder=""
+                        solo
+                        dense
+                        class="text-center"
+                        type="text"
+                        style="width: 100px"
+                      >
+                      </v-text-field>
+                      <br />
+                    </v-card>
+
+                    <v-card class="pa-1" style="height: 50px" outlined tile>
+                      <v-text-field
+                        v-model="encoding_ipcrfNumericalQ12"
                         placeholder=""
                         solo
                         dense
@@ -2854,11 +3041,11 @@
                 >
                   <br /><br /><br />
                   <br /><br />
-               
+
                   <div style="text-align: center; width: 60px">
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empE1"
+                        v-model="encoding_ipcrfNumerical_E1"
                         placeholder=""
                         solo
                         dense
@@ -2873,7 +3060,7 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empE2"
+                        v-model="encoding_ipcrfNumerical_E2"
                         placeholder=""
                         solo
                         dense
@@ -2887,7 +3074,7 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empE3"
+                        v-model="encoding_ipcrfNumerical_E3"
                         placeholder=""
                         solo
                         dense
@@ -2901,7 +3088,7 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empE4"
+                        v-model="encoding_ipcrfNumerical_E4"
                         placeholder=""
                         solo
                         dense
@@ -2915,7 +3102,7 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empE5"
+                        v-model="encoding_ipcrfNumerical_E5"
                         placeholder=""
                         solo
                         dense
@@ -2929,7 +3116,7 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empE6"
+                        v-model="encoding_ipcrfNumerical_E6"
                         placeholder=""
                         solo
                         dense
@@ -2943,7 +3130,7 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empE7"
+                        v-model="encoding_ipcrfNumerical_E7"
                         placeholder=""
                         solo
                         dense
@@ -2957,7 +3144,7 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empE8"
+                        v-model="encoding_ipcrfNumerical_E8"
                         placeholder=""
                         solo
                         dense
@@ -2971,7 +3158,7 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empE9"
+                        v-model="encoding_ipcrfNumerical_E9"
                         placeholder=""
                         solo
                         dense
@@ -2984,21 +3171,7 @@
                     </v-card>
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empE10"
-                        placeholder=""
-                        solo
-                        dense
-                        class="text-center"
-                        type="text"
-                        style="width: 100px"
-                      >
-                      </v-text-field>
-                      <br />
-                    </v-card>
-
-                    <v-card class="pa-1" style="height: 50px" outlined tile>
-                      <v-text-field
-                        v-model="empE11"
+                        v-model="encoding_ipcrfNumerical_E10"
                         placeholder=""
                         solo
                         dense
@@ -3012,7 +3185,21 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empE12"
+                        v-model="encoding_ipcrfNumerical_E11"
+                        placeholder=""
+                        solo
+                        dense
+                        class="text-center"
+                        type="text"
+                        style="width: 100px"
+                      >
+                      </v-text-field>
+                      <br />
+                    </v-card>
+
+                    <v-card class="pa-1" style="height: 50px" outlined tile>
+                      <v-text-field
+                        v-model="encoding_ipcrfNumerical_E12"
                         placeholder=""
                         solo
                         dense
@@ -3026,7 +3213,7 @@
                   </div>
                 </v-col>
                 <!-- END OF IPCRF (E) -->
-              <!-- Start of IPCRF (T) -->
+                <!-- Start of IPCRF (T) -->
 
                 <v-col
                   :key="n"
@@ -3036,11 +3223,11 @@
                 >
                   <br /><br /><br />
                   <br /><br />
-               
+
                   <div style="text-align: center; width: 60px">
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empE1"
+                        v-model="encoding_ipcrfNumerical_T1"
                         placeholder=""
                         solo
                         dense
@@ -3055,7 +3242,7 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empE2"
+                        v-model="encoding_ipcrfNumerical_T2"
                         placeholder=""
                         solo
                         dense
@@ -3069,7 +3256,7 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empE3"
+                        v-model="encoding_ipcrfNumerical_T3"
                         placeholder=""
                         solo
                         dense
@@ -3083,7 +3270,7 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empE4"
+                        v-model="encoding_ipcrfNumerical_T4"
                         placeholder=""
                         solo
                         dense
@@ -3097,7 +3284,7 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empE5"
+                        v-model="encoding_ipcrfNumerical_T5"
                         placeholder=""
                         solo
                         dense
@@ -3111,7 +3298,7 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empE6"
+                        v-model="encoding_ipcrfNumerical_T6"
                         placeholder=""
                         solo
                         dense
@@ -3125,7 +3312,7 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empE7"
+                        v-model="encoding_ipcrfNumerical_T7"
                         placeholder=""
                         solo
                         dense
@@ -3139,7 +3326,7 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empE8"
+                        v-model="encoding_ipcrfNumerical_T8"
                         placeholder=""
                         solo
                         dense
@@ -3153,7 +3340,7 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empE9"
+                        v-model="encoding_ipcrfNumerical_T9"
                         placeholder=""
                         solo
                         dense
@@ -3166,21 +3353,7 @@
                     </v-card>
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empE10"
-                        placeholder=""
-                        solo
-                        dense
-                        class="text-center"
-                        type="text"
-                        style="width: 100px"
-                      >
-                      </v-text-field>
-                      <br />
-                    </v-card>
-
-                    <v-card class="pa-1" style="height: 50px" outlined tile>
-                      <v-text-field
-                        v-model="empE11"
+                        v-model="encoding_ipcrfNumerical_T10"
                         placeholder=""
                         solo
                         dense
@@ -3194,7 +3367,21 @@
 
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
-                        v-model="empE12"
+                        v-model="encoding_ipcrfNumerical_T11"
+                        placeholder=""
+                        solo
+                        dense
+                        class="text-center"
+                        type="text"
+                        style="width: 100px"
+                      >
+                      </v-text-field>
+                      <br />
+                    </v-card>
+
+                    <v-card class="pa-1" style="height: 50px" outlined tile>
+                      <v-text-field
+                        v-model="encoding_ipcrfNumerical_T12"
                         placeholder=""
                         solo
                         dense
@@ -3208,7 +3395,7 @@
                   </div>
                 </v-col>
                 <!-- END OF IPCRF (T) -->
-                   <!-- Start of IPCRF (RATING AVERAGE) -->
+                <!-- Start of IPCRF (RATING AVERAGE) -->
 
                 <v-col
                   :key="n"
@@ -3218,71 +3405,142 @@
                 >
                   <br /><br /><br />
                   <br /><br />
-               
+
                   <div style="text-align: center; width: 68px">
-                    <v-card class="pa-1" style="height: 50px"   v-model="empRatingAve1" outlined tile>
-                     <h5></h5>
+                    <v-card
+                      class="pa-1"
+                      style="height: 50px"
+                      v-model="encoding_ipcrfRatingAve1"
+                      outlined
+                      tile
+                    >
+                      <h5></h5>
 
                       <br />
                     </v-card>
 
-                    <v-card class="pa-1" style="height: 50px"   v-model="empRatingAve2" outlined tile>
-                   <h5></h5>
-                      <br />
-                    </v-card>
-
-                    <v-card class="pa-1" style="height: 50px"   v-model="empRatingAve3" outlined tile>
-                    <h5></h5>
-                      <br />
-                    </v-card>
-
-                    <v-card class="pa-1" style="height: 50px"   v-model="empRatingAve4" outlined tile>
-                     <h5></h5>
-                      <br />
-                    </v-card>
-
-                    <v-card class="pa-1" style="height: 50px"   v-model="empRatingAve5" outlined tile>
+                    <v-card
+                      class="pa-1"
+                      style="height: 50px"
+                      v-model="encoding_ipcrfRatingAve2"
+                      outlined
+                      tile
+                    >
                       <h5></h5>
                       <br />
                     </v-card>
 
-                    <v-card class="pa-1" style="height: 50px"   v-model="empRatingAve6" outlined tile>
-                     <h5></h5>
-                      <br />
-                    </v-card>
-
-                    <v-card class="pa-1" style="height: 50px"  v-model="empRatingAve7" outlined tile>
-                     <h5></h5>
-                      <br />
-                    </v-card>
-
-                    <v-card class="pa-1" style="height: 50px"   v-model="empRatingAve8" outlined tile>
+                    <v-card
+                      class="pa-1"
+                      style="height: 50px"
+                      v-model="encoding_ipcrfRatingAve3"
+                      outlined
+                      tile
+                    >
                       <h5></h5>
                       <br />
                     </v-card>
 
-                    <v-card class="pa-1" style="height: 50px"   v-model="empRatingAve9" outlined tile>
-                     <h5></h5>
-                      <br />
-                    </v-card>
-                    <v-card class="pa-1" style="height: 50px"   v-model="empRatingAve10" outlined tile>
-                      
-                      <br />
-                    </v-card>
-
-                    <v-card class="pa-1" style="height: 50px"   v-model="empRatingAve11" outlined tile>
+                    <v-card
+                      class="pa-1"
+                      style="height: 50px"
+                      v-model="encoding_ipcrfRatingAve4"
+                      outlined
+                      tile
+                    >
                       <h5></h5>
                       <br />
                     </v-card>
 
-                    <v-card class="pa-1" style="height: 50px"  v-model="empRatingAve12" outlined tile>
-                     <h5></h5>
+                    <v-card
+                      class="pa-1"
+                      style="height: 50px"
+                      v-model="encoding_ipcrfRatingAve5"
+                      outlined
+                      tile
+                    >
+                      <h5></h5>
+                      <br />
+                    </v-card>
+
+                    <v-card
+                      class="pa-1"
+                      style="height: 50px"
+                      v-model="encoding_ipcrfRatingAve6"
+                      outlined
+                      tile
+                    >
+                      <h5></h5>
+                      <br />
+                    </v-card>
+
+                    <v-card
+                      class="pa-1"
+                      style="height: 50px"
+                      v-model="encoding_ipcrfRatingAve7"
+                      outlined
+                      tile
+                    >
+                      <h5></h5>
+                      <br />
+                    </v-card>
+
+                    <v-card
+                      class="pa-1"
+                      style="height: 50px"
+                      v-model="encoding_ipcrfRatingAve8"
+                      outlined
+                      tile
+                    >
+                      <h5></h5>
+                      <br />
+                    </v-card>
+
+                    <v-card
+                      class="pa-1"
+                      style="height: 50px"
+                      v-model="encoding_ipcrfRatingAve9"
+                      outlined
+                      tile
+                    >
+                      <h5></h5>
+                      <br />
+                    </v-card>
+                    <v-card
+                      class="pa-1"
+                      style="height: 50px"
+                      v-model="encoding_ipcrfRatingAve10"
+                      outlined
+                      tile
+                    >
+                      <br />
+                    </v-card>
+
+                    <v-card
+                      class="pa-1"
+                      style="height: 50px"
+                      v-model="encoding_ipcrfRatingAve11"
+                      outlined
+                      tile
+                    >
+                      <h5></h5>
+                      <br />
+                    </v-card>
+
+                    <v-card
+                      class="pa-1"
+                      style="height: 50px"
+                      v-model="encoding_ipcrfRatingAve12"
+                      outlined
+                      tile
+                    >
+                      <h5></h5>
                       <br />
                     </v-card>
                   </div>
                 </v-col>
                 <!-- END OF IPCRF (average) -->
-<!-- Start of encoding SCORE -->
+                <!-- Start of encoding SCORE -->
                 <v-col
                   :key="n"
                   v-else-if="n === 19"
@@ -3296,72 +3554,144 @@
                     style="width: 120px; height: 120px"
                   >
                     <h5>
-                     SCORE
+                      SCORE
                       <br />
                     </h5>
-                    
-              
                   </v-card>
-                  <div style="text-align: center; width: 120px;">
-                    <v-card class="pa-4" style="height: 50px" v-model="empScore1" outlined tile>
-                    
-                       <h5> </h5>
-                     
+                  <div style="text-align: center; width: 120px">
+                    <v-card
+                      class="pa-4"
+                      style="height: 50px"
+                      v-model="encoding_1"
+                      outlined
+                      tile
+                    >
+                      <h5></h5>
+
                       <br />
                     </v-card>
 
-                    <v-card class="pa-4" style="height: 50px" v-model="empScore2" outlined tile>
-                        <h5> </h5>
+                    <v-card
+                      class="pa-4"
+                      style="height: 50px"
+                      v-model="encoding_2"
+                      outlined
+                      tile
+                    >
+                      <h5></h5>
                       <br />
                     </v-card>
 
-                    <v-card class="pa-4" style="height: 50px"  v-model="empScore3" outlined tile>
-                   <h5> </h5>
+                    <v-card
+                      class="pa-4"
+                      style="height: 50px"
+                      v-model="encoding_3"
+                      outlined
+                      tile
+                    >
+                      <h5></h5>
                       <br />
                     </v-card>
 
-                    <v-card class="pa-4" style="height: 50px"  v-model="empScore4" outlined tile>
-                     <h5> </h5> <br />
-                    </v-card>
-
-                    <v-card class="pa-4" style="height: 50px"  v-model="empScore5" outlined tile>
-                       <h5> </h5> <br />
-                    </v-card>
-
-                      <v-card class="pa-4" style="height: 50px" v-model="empScore6" outlined tile>
-                    
-                       <h5> </h5>
-                     
+                    <v-card
+                      class="pa-4"
+                      style="height: 50px"
+                      v-model="encoding_4"
+                      outlined
+                      tile
+                    >
+                      <h5></h5>
                       <br />
                     </v-card>
 
-                    <v-card class="pa-4" style="height: 50px" v-model="empScore7" outlined tile>
-                        <h5> </h5>
+                    <v-card
+                      class="pa-4"
+                      style="height: 50px"
+                      v-model="encoding_5"
+                      outlined
+                      tile
+                    >
+                      <h5></h5>
                       <br />
                     </v-card>
 
-                    <v-card class="pa-4" style="height: 50px"  v-model="empScore8" outlined tile>
-                   <h5> </h5>
+                    <v-card
+                      class="pa-4"
+                      style="height: 50px"
+                      v-model="encoding_6"
+                      outlined
+                      tile
+                    >
+                      <h5></h5>
+
                       <br />
                     </v-card>
 
-                    <v-card class="pa-4" style="height: 50px"  v-model="empScore9" outlined tile>
-                     <h5> </h5> <br />
+                    <v-card
+                      class="pa-4"
+                      style="height: 50px"
+                      v-model="encoding_7"
+                      outlined
+                      tile
+                    >
+                      <h5></h5>
+                      <br />
                     </v-card>
 
-                    <v-card class="pa-4" style="height: 50px"  v-model="empScore10" outlined tile>
-                       <h5> </h5> <br />
+                    <v-card
+                      class="pa-4"
+                      style="height: 50px"
+                      v-model="encoding_8"
+                      outlined
+                      tile
+                    >
+                      <h5></h5>
+                      <br />
                     </v-card>
 
-                    <v-card class="pa-4" style="height: 50px"  v-model="empScore11" outlined tile>
-                     <h5> </h5> <br />
+                    <v-card
+                      class="pa-4"
+                      style="height: 50px"
+                      v-model="encoding_9"
+                      outlined
+                      tile
+                    >
+                      <h5></h5>
+                      <br />
                     </v-card>
 
-                    <v-card class="pa-4" style="height: 50px"  v-model="empScore12" outlined tile>
-                       <h5> </h5> <br />
+                    <v-card
+                      class="pa-4"
+                      style="height: 50px"
+                      v-model="encoding_10"
+                      outlined
+                      tile
+                    >
+                      <h5></h5>
+                      <br />
                     </v-card>
-                    
-                    
+
+                    <v-card
+                      class="pa-4"
+                      style="height: 50px"
+                      v-model="encoding_11"
+                      outlined
+                      tile
+                    >
+                      <h5></h5>
+                      <br />
+                    </v-card>
+
+                    <v-card
+                      class="pa-4"
+                      style="height: 50px"
+                      v-model="encoding_12"
+                      outlined
+                      tile
+                    >
+                      <h5></h5>
+                      <br />
+                    </v-card>
                   </div>
                 </v-col>
 
@@ -3380,69 +3710,143 @@
                     style="width: 120px; height: 120px"
                   >
                     <h5>
-                     Adjectival Rating
+                      Adjectival Rating
                       <br />
                     </h5>
-                    
-              
                   </v-card>
-                  <div style="text-align: center; width: 120px;">
-                    <v-card class="pa-4" style="height: 50px" v-model="empAdjRating1" outlined tile>
-                    
-                       <h5> </h5>
-                     
+                  <div style="text-align: center; width: 120px">
+                    <v-card
+                      class="pa-4"
+                      style="height: 50px"
+                      v-model="encoding_AdjectivalRating1"
+                      outlined
+                      tile
+                    >
+                      <h5></h5>
+
                       <br />
                     </v-card>
 
-                    <v-card class="pa-4" style="height: 50px" v-model="empAdjRating2" outlined tile>
-                        <h5> </h5>
+                    <v-card
+                      class="pa-4"
+                      style="height: 50px"
+                      v-model="encoding_AdjectivalRating2"
+                      outlined
+                      tile
+                    >
+                      <h5></h5>
                       <br />
                     </v-card>
 
-                    <v-card class="pa-4" style="height: 50px"  v-model="empAdjRating3" outlined tile>
-                   <h5> </h5>
+                    <v-card
+                      class="pa-4"
+                      style="height: 50px"
+                      v-model="encoding_AdjectivalRating3"
+                      outlined
+                      tile
+                    >
+                      <h5></h5>
                       <br />
                     </v-card>
 
-                    <v-card class="pa-4" style="height: 50px"  v-model="empAdjRating4" outlined tile>
-                     <h5> </h5> <br />
-                    </v-card>
-
-                    <v-card class="pa-4" style="height: 50px"  v-model="empAdjRating5" outlined tile>
-                       <h5> </h5> <br />
-                    </v-card>
-
-                      <v-card class="pa-4" style="height: 50px" v-model="empAdjRating6" outlined tile>
-                    
-                       <h5> </h5>
-                     
+                    <v-card
+                      class="pa-4"
+                      style="height: 50px"
+                      v-model="encoding_AdjectivalRating4"
+                      outlined
+                      tile
+                    >
+                      <h5></h5>
                       <br />
                     </v-card>
 
-                    <v-card class="pa-4" style="height: 50px" v-model="empAdjRating7" outlined tile>
-                        <h5> </h5>
+                    <v-card
+                      class="pa-4"
+                      style="height: 50px"
+                      v-model="encoding_AdjectivalRating5"
+                      outlined
+                      tile
+                    >
+                      <h5></h5>
                       <br />
                     </v-card>
 
-                    <v-card class="pa-4" style="height: 50px"  v-model="empAdjRatin8" outlined tile>
-                   <h5> </h5>
+                    <v-card
+                      class="pa-4"
+                      style="height: 50px"
+                      v-model="encoding_AdjectivalRating6"
+                      outlined
+                      tile
+                    >
+                      <h5></h5>
+
                       <br />
                     </v-card>
 
-                    <v-card class="pa-4" style="height: 50px"  v-model="empAdjRating9" outlined tile>
-                     <h5> </h5> <br />
+                    <v-card
+                      class="pa-4"
+                      style="height: 50px"
+                      v-model="encoding_AdjectivalRating7"
+                      outlined
+                      tile
+                    >
+                      <h5></h5>
+                      <br />
                     </v-card>
 
-                    <v-card class="pa-4" style="height: 50px"  v-model="empAdjRating10" outlined tile>
-                       <h5> </h5> <br />
+                    <v-card
+                      class="pa-4"
+                      style="height: 50px"
+                      v-model="encoding_AdjectivalRating8"
+                      outlined
+                      tile
+                    >
+                      <h5></h5>
+                      <br />
                     </v-card>
 
-                    <v-card class="pa-4" style="height: 50px"  v-model="empAdjRating11" outlined tile>
-                     <h5> </h5> <br />
+                    <v-card
+                      class="pa-4"
+                      style="height: 50px"
+                      v-model="encoding_AdjectivalRating9"
+                      outlined
+                      tile
+                    >
+                      <h5></h5>
+                      <br />
                     </v-card>
 
-                    <v-card class="pa-4" style="height: 50px"  v-model="empAdjRating12" outlined tile>
-                       <h5> </h5> <br />
+                    <v-card
+                      class="pa-4"
+                      style="height: 50px"
+                      v-model="encoding_AdjectivalRating10"
+                      outlined
+                      tile
+                    >
+                      <h5></h5>
+                      <br />
+                    </v-card>
+
+                    <v-card
+                      class="pa-4"
+                      style="height: 50px"
+                      v-model="encoding_AdjectivalRating11"
+                      outlined
+                      tile
+                    >
+                      <h5></h5>
+                      <br />
+                    </v-card>
+
+                    <v-card
+                      class="pa-4"
+                      style="height: 50px"
+                      v-model="encoding_AdjectivalRating12"
+                      outlined
+                      tile
+                    >
+                      <h5></h5>
+                      <br />
                     </v-card>
                   </div>
                 </v-col>
@@ -3453,7 +3857,7 @@
                   :key="n"
                   v-else-if="n === 21"
                   class="ePartCol3"
-                  style="margin-left: -641px; margin-top:720px ;"
+                  style="margin-left: -641px; margin-top: 720px"
                 >
                   <v-card
                     class="pa-2 pt-4"
@@ -3463,17 +3867,20 @@
                     style="width: 379px; height: 50px"
                   >
                     <h5>
-                    Final Rating
+                      Final Rating
                       <br />
                     </h5>
-                    
-              
                   </v-card>
-                   <v-card class="pa-4" style="height: 50px"  v-model="empAdjRating12" outlined tile>
-                       <h5>  Adjectival Rating</h5> <br />
-                    </v-card>
-                 
-                    
+                  <v-card
+                    class="pa-4"
+                    style="height: 50px"
+                    v-model="empAdjRating12"
+                    outlined
+                    tile
+                  >
+                    <h5>Adjectival Rating</h5>
+                    <br />
+                  </v-card>
                 </v-col>
 
                 <!-- End of encoding bottom ADJECTIVAL RATING-->
@@ -3482,7 +3889,7 @@
                   :key="n"
                   v-else-if="n === 22"
                   class="ePartCol3"
-                  style="margin-left: -25px; margin-top:720px ;"
+                  style="margin-left: -25px; margin-top: 720px"
                 >
                   <v-card
                     class="pa-2 pt-4"
@@ -3492,17 +3899,19 @@
                     style="width: 240px; height: 50px"
                   >
                     <h5>
-                   
                       <br />
                     </h5>
-                    
-              
                   </v-card>
-                   <v-card class="pa-4" style="height: 50px"  v-model="empAdjRating" outlined tile>
-                       <h5>  </h5> <br />
-                    </v-card>
-                 
-                    
+                  <v-card
+                    class="pa-4"
+                    style="height: 50px"
+                    v-model="empAdjRating"
+                    outlined
+                    tile
+                  >
+                    <h5></h5>
+                    <br />
+                  </v-card>
                 </v-col>
 
                 <!-- End of encoding ADJECTIVAL RATING-->
@@ -3511,146 +3920,18 @@
           </v-row>
           <br />
           <br />
-          <!-- <v-simple-table>
-            <div class="encodingDiv" >
+          <v-card class="mx-auto" max-width="600">
+            <v-card-text>
+              <div class="text--primary">
+                <b> NOTE:</b><br />
 
-
-           
-            <template>
-              <t-body>
-                <tr >
-                 <td width="50px" colspan="2" class="pa-4" style="text-align:left">
-              KRA
-            </td>
-             <td width="50px" colspan="2" class="pa-4" style="text-align:left">
-              Weight per KRA
-            </td>
-             <td width="50px" colspan="2" class="pa-4" style="text-align:left">
-             Objectives
-            </td>
-             <td width="50px" colspan="2" class="pa-4" style="text-align:left">
-              Weight per Objective
-            </td>
-             <td width="50px" colspan="2" class="pa-4" style="text-align:left">
-             COT indicator No.
-            </td>
-             <td width="150px"  height="50px"  rowspan="4"  colspan="4" class="pa-0" style="text-align:left;">
-           COT 1 <br>
-          
-                    <v-select
-                      :items="items"
-                      v-model="empPosition"
-                      label="Position"
-                      dense
-                      solo
-                      class="text-center"
-                    ></v-select>
-                    <tr class="mt-n5"> Rating 
-                      <v-divider class="mx-4"  style="height:55px" vertical></v-divider>
-                       RPMS 5-pt Scale
-                    </tr>
-                 
-               
-            </td> 
-                  
-                </tr>
-                
-              </t-body>
-
-            </template>
- </div>
-          </v-simple-table> -->
-
-          <!-- <v-row no-gutters class="text-center">
-            <div class="encodingDiv">
-              <template v-for="n in 14">
-                <v-col :key="n" v-if="n === 1">
-                  <v-card class="pa-2 pt-4 " style="width:100px; " outlined tile>
-                    KRA <br /><br
-                  /></v-card>
-                </v-col>
-
-                <v-col :key="n" v-else-if="n === 2">
-                  <v-card class="pa-2 pt-4 ml-n8"  style="width:150px; " outlined tile
-                    >Weight per <br />
-                    KRA
-                  </v-card>
-                </v-col>
-
-                <v-col :key="n" v-else-if="n === 3">
-                  <v-card class="pa-2 pt-4 ml-n15"  style="width:200px;margin-left:50px  "  outlined tile>
-                    Objectives <br />
-                    <br
-                  /></v-card>
-                </v-col>
-                <v-col :key="n" v-else-if="n === 4">
-                  <v-card class="pa-2 pt-4  "  style="width:200px;  " outlined tile>
-                    Weight per Objective
-                  </v-card>
-                </v-col>
-                <v-col :key="n" v-else-if="n === 5">
-                  <v-card class="pa-2 pt-4 ml-n8" outlined tile>
-                    Numerical Ratings
-                  </v-card>
-                </v-col>
-
-                <v-col :key="n" v-else-if="n === 6">
-                  <v-card class="pa-2 pt-4 ml-n8" outlined tile>
-                    Score <br />
-                    <br
-                  /></v-card>
-                </v-col>
-                <v-col :key="n" v-else-if="n === 7">
-                  <v-card class="pa-2 pt-4 ml-n8" outlined tile>
-                    Adjectival <br />
-                    Rating
-                  </v-card>
-                </v-col>
-                <v-col :key="n" v-if="n === 8">
-                  <v-card class="pa-2 pt-4 ml-n8" outlined tile>
-                    KRA <br /><br
-                  /></v-card>
-                </v-col>
-
-                <v-col :key="n" v-else-if="n === 9">
-                  <v-card class="pa-2 pt-4 ml-n8" outlined tile
-                    >Weight per <br />
-                    KRA
-                  </v-card>
-                </v-col>
-         
-                <v-col :key="n" v-else-if="n === 10">
-                  <v-card class="pa-2 pt-4 ml-n8" outlined tile>
-                    Objectives <br />
-                    <br
-                  /></v-card>
-                </v-col>
-                <v-col :key="n" v-else-if="n === 11">
-                  <v-card class="pa-2 pt-4 ml-n8" outlined tile>
-                    Weight per Objective
-                  </v-card>
-                </v-col>
-                <v-col :key="n" v-else-if="n === 12">
-                  <v-card class="pa-2 pt-4 ml-n8" outlined tile>
-                    Numerical Ratings
-                  </v-card>
-                </v-col>
-
-                <v-col :key="n" v-else-if="n === 13">
-                  <v-card class="pa-2 pt-4 ml-n8" outlined tile>
-                    Score <br />
-                    <br
-                  /></v-card>
-                </v-col>
-                <v-col :key="n" v-else-if="n === 14">
-                  <v-card class="pa-2 pt-4 ml-n8" outlined tile>
-                    Adjectival <br />
-                    Rating
-                  </v-card>
-                </v-col>
-              </template>
-            </div>
-          </v-row> -->
+                When COT and QET ratings are encoded, click Finalize Part 1.
+                Give the file copy to the teacher concerned. The teacher shall
+                accomplish Parts 2 & 4.
+              </div>
+            </v-card-text>
+          </v-card>
+          <br /><br />
         </v-card>
       </v-tab-item>
 
@@ -7732,10 +8013,30 @@
                     </v-row>
                   </v-container>
                 </v-card>
-                <div class="pa-10 ml-9">
-                  ________________________________________
-                  ________________________________________
-                  ________________________________________
+
+                <!-- This is the signature part in part 4 -->
+                <div class="pa-10 ml-9 " style="text-align: center;" >
+                 <v-row>
+                   <v-col>
+    <v-card  v-model="part4_ratee" class="pa-2" style="width:200px; height:100px;  margin-left:80px ">
+                  
+                   </v-card>
+                   <h5 class="pa-2" style=" margin-left:80px ">Ratee</h5>
+                   </v-col>
+               <v-col>
+<v-card  v-model="part4_rater" class="pa-2" style="width:200px; height:100px; margin-left:45px">   </v-card>
+                   <h5 class="pa-2" style=" margin-right:10px ">Rater</h5>
+               </v-col>
+                   
+                     <v-col>
+ <v-card  v-model="part4_approvingAuthority" class="pa-2" style="width:200px; height:100px;">
+                       
+                   </v-card>
+                      <h5 class="pa-2" style="margin-left:-70px" >Approving Authority</h5>
+                     </v-col>
+                
+                   
+                 </v-row>
                 </div>
                 <div class="ml-9"></div>
               </div>
