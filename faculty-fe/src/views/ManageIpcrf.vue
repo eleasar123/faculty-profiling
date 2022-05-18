@@ -3618,7 +3618,7 @@
                     KRA
                   </v-card>
                 </v-col>
-
+         
                 <v-col :key="n" v-else-if="n === 10">
                   <v-card class="pa-2 pt-4 ml-n8" outlined tile>
                     Objectives <br />
