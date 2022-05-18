@@ -102,7 +102,7 @@
                 <!-- Row 2 -->
                 <tr>
                   <td colspan="3" style="text-align: left">Position:</td>
-                
+                  <td colspan="2">
                     <v-select
                       :items="items"
                       v-model="empPosition"
@@ -111,11 +111,9 @@
                       solo
                       class="text-center pt-5"
                     ></v-select>
-               
-                  <td colspan="2" style="text-align: left">Position:</td>
-
+                  </td>
+                  <td colspan="3" style="text-align: left">Position:</td>
                   <td colspan="3">
-                   
                     <v-select
                       :items="items"
                       v-model="empRaterPosition"
@@ -124,11 +122,10 @@
                       solo
                       class="text-center pt-5"
                     ></v-select>
-                 
                   </td>
-                  <td colspan="3" style="text-align: center">Division:</td>
-                  <td colspan="2">
-                     <v-select
+                  <td colspan="1" style="text-align: left">Division:</td>
+                  <td colspan="1">
+                    <v-select
                       :items="items"
                       v-model="empDivision"
                       label="Division"
@@ -136,10 +133,9 @@
                       solo
                       class="text-center pt-5"
                     ></v-select>
-                   
                   </td>
                 </tr>
-                <!-- Row 3 -->
+
                 <tr>
                   <td colspan="3" style="text-align: left">Employee ID#:</td>
                   <td colspan="2">
@@ -166,7 +162,7 @@
                     </v-text-field>
                   </td>
                   <td colspan="1" style="text-align: left">
-                    Disttrict/Municipality:
+                    District/Municipality:
                   </td>
                   <td colspan="1">
                     <v-text-field
@@ -186,7 +182,7 @@
                     Employment Status:
                   </td>
                   <td colspan="2">
-                     <v-select
+                    <v-select
                       :items="items"
                       v-model="empStatus"
                       label="Status"
@@ -194,11 +190,9 @@
                       solo
                       class="text-center pt-5"
                     ></v-select>
-                   
                   </td>
                   <td colspan="3" style="text-align: left">Rating Period:</td>
                   <td colspan="3">
-                    
                     <v-text-field
                       v-model="empRatingPeriod"
                       placeholder="Rating Period"
@@ -211,7 +205,7 @@
                   </td>
                   <td colspan="1" style="text-align: left">School ID:</td>
                   <td colspan="1">
-                      <v-select
+                    <v-select
                       :items="items"
                       v-model="empSchoolId"
                       label="School ID"
@@ -219,15 +213,12 @@
                       solo
                       class="text-center pt-5"
                     ></v-select>
-
-                    
                   </td>
                 </tr>
                 <!-- Row 5 -->
                 <tr>
                   <td colspan="3" style="text-align: left">Age :</td>
                   <td colspan="2">
-                    
                     <v-text-field
                       v-model="empAge"
                       placeholder="Age"
@@ -240,7 +231,6 @@
                   </td>
                   <td colspan="3" style="text-align: left">School Name:</td>
                   <td colspan="3">
-                    
                     <v-text-field
                       v-model="empSchoolName"
                       placeholder="School Name"
@@ -253,7 +243,7 @@
                   </td>
                   <td colspan="1" style="text-align: left">Sex:</td>
                   <td colspan="1">
-                        <v-select
+                    <v-select
                       :items="items"
                       v-model="empSex"
                       label="Sex"
@@ -261,7 +251,6 @@
                       solo
                       class="text-center pt-5"
                     ></v-select>
-                    
                   </td>
                 </tr>
 
@@ -269,29 +258,27 @@
                 <tr>
                   <td colspan="3" style="text-align: left">Level Taught:</td>
                   <td colspan="2">
-                    <v-text-field
+                    <v-select
+                      :items="items"
                       v-model="empLevelTaught"
-                      placeholder="Level "
-                      solo
+                      label="Level Taught"
                       dense
+                      solo
                       class="text-center pt-5"
-                      type="text"
-                    >
-                    </v-text-field>
+                    ></v-select>
                   </td>
                   <td colspan="3" style="text-align: left">
                     No. of Years in Teaching:
                   </td>
                   <td colspan="3">
-                    <v-text-field
+                    <v-select
+                      :items="items"
                       v-model="empYearsOfTeaching"
-                      placeholder="Years of Teaching"
-                      solo
+                      label="Years of Teaching"
                       dense
+                      solo
                       class="text-center pt-5"
-                      type="text"
-                    >
-                    </v-text-field>
+                    ></v-select>
                   </td>
                   <td colspan="1" style="text-align: left">School Type:</td>
                   <td colspan="1">
@@ -312,41 +299,38 @@
                     Grade Level Taught:
                   </td>
                   <td colspan="2">
-                    <v-text-field
+                    <v-select
+                      :items="items"
                       v-model="empLevelTaught"
-                      placeholder="Grade Level "
-                      solo
+                      label="Grade Level"
                       dense
+                      solo
                       class="text-center pt-5"
-                      type="text"
-                    >
-                    </v-text-field>
+                    ></v-select>
                   </td>
                   <td colspan="3" style="text-align: left">
                     Highest Degree Obtained:
                   </td>
                   <td colspan="3">
-                    <v-text-field
+                    <v-select
+                      :items="items"
                       v-model="empDegree"
-                      placeholder="Degree Obtained"
-                      solo
+                      label="Grade Level"
                       dense
+                      solo
                       class="text-center pt-5"
-                      type="text"
-                    >
-                    </v-text-field>
+                    ></v-select>
                   </td>
                   <td colspan="1" style="text-align: left">School Size:</td>
                   <td colspan="1">
-                    <v-text-field
+                    <v-select
+                      :items="items"
                       v-model="empSchoolSize"
-                      placeholder="School Size"
-                      solo
+                      label="School Size"
                       dense
+                      solo
                       class="text-center pt-5"
-                      type="text"
-                    >
-                    </v-text-field>
+                    ></v-select>
                   </td>
                 </tr>
 
@@ -354,44 +338,41 @@
                 <tr>
                   <td colspan="3" style="text-align: left">Subject Taught:</td>
                   <td colspan="2">
-                    <v-text-field
-                      v-model="empSubTaught"
-                      placeholder="Subject Taught"
-                      solo
+                    <v-select
+                      :items="items"
+                      v-model="empSubjectTaught"
+                      label="Subject Taught"
                       dense
+                      solo
                       class="text-center pt-5"
-                      type="text"
-                    >
-                    </v-text-field>
+                    ></v-select>
                   </td>
 
                   <td colspan="3" style="text-align: left">
                     Area of Specialization:
                   </td>
                   <td colspan="3">
-                    <v-text-field
+                    <v-select
+                      :items="items"
                       v-model="empSpecialization"
-                      placeholder=" Area of Specialization"
-                      solo
+                      label="Area of Specialization"
                       dense
+                      solo
                       class="text-center pt-5"
-                      type="text"
-                    >
-                    </v-text-field>
+                    ></v-select>
                   </td>
                   <td colspan="1" style="text-align: left">
                     Curricular Classification:
                   </td>
                   <td colspan="1">
-                    <v-text-field
-                      v-model="empCurricular"
-                      placeholder="Curricular "
-                      solo
+                    <v-select
+                      :items="items"
+                      v-model="empCurricularClassification"
+                      label="Curricular"
                       dense
+                      solo
                       class="text-center pt-5"
-                      type="text"
-                    >
-                    </v-text-field>
+                    ></v-select>
                   </td>
                 </tr>
               </tbody>
@@ -461,6 +442,14 @@
                       tile
                     >
                       <h5>Plus Factor</h5>
+                    </v-card>
+                     <v-card
+                      class="pa-2 pt-4 pl-4"
+                      style="height: 54px"
+                      outlined
+                      tile
+                    >
+                      <h5>Date Observed</h5>
                     </v-card>
                   </div>
                 </v-col>
@@ -538,6 +527,16 @@
                     <h5 class="font-weight-regular">
                       12.00%<br /><br /><br />
                     </h5>
+                  </v-card>
+                  <v-card
+                    class="pa-1 "
+                    style="height: 54px"
+                    v-model="kra5"
+                    outlined
+                    tile
+                  >
+                  <v-text-field style="mb-8"></v-text-field>
+                  
                   </v-card>
                 </v-col>
                 <!-- START OF OBJECTIVES COLUMN -->
@@ -1628,12 +1627,7 @@
                 >
                   <br /><br /><br />
                   <br /><br />
-                  <!-- <v-card class="pa-2 pt-4" outlined tile style="width: 60px;height:120px">
-                    <h5>
-                      COT 1
-                      <br />
-                    </h5>
-                  </v-card> -->
+
                   <div style="text-align: center; width: 60px">
                     <v-card class="pa-1" style="height: 50px" outlined tile>
                       <v-text-field
@@ -3919,7 +3913,24 @@
             </div>
           </v-row>
           <br />
-          <br />
+          <div style="margin-left: 350px">
+            <v-col>
+              <h5 class="pa-2" style="margin-left: 70px">
+                Approving Authority
+              </h5>
+
+              <v-text-field
+                v-model="part_approvingAuthority"
+                placeholder="Enter Approving Authority"
+                solo
+                dense
+                type="text"
+                style="width: 300px"
+              >
+              </v-text-field>
+            </v-col>
+          </div>
+
           <v-card class="mx-auto" max-width="600">
             <v-card-text>
               <div class="text--primary">
@@ -6831,7 +6842,7 @@
               <br />
               <br />
 
-              <!-- START OF Adjrcectival RATING AREA  -->
+              <!-- START OF Adjectival RATING AREA  -->
               <div style="width: 600px; margin: auto">
                 <v-card
                   class="pa-2 text-center"
@@ -6891,10 +6902,40 @@
               <!-- END OF Adjective RATING CRITERIA -->
 
               <!-- START OF PART 1 SIGNATURES -->
-              <div class="pa-10 ml-9">
-                ________________________________________
-                ________________________________________
-                ________________________________________
+              <!-- This is the signature part in part 4 -->
+              <div class="pa-10 ml-9" style="text-align: center">
+                <v-row>
+                  <v-col>
+                    <v-text-field
+                      v-model="part_ratee"
+                      style="width: 200px; height: 100px; margin-left: 80px"
+                    >
+                    </v-text-field>
+
+                    <h5 class="pa-2" style="margin-left: 80px">Ratee</h5>
+                  </v-col>
+                  <v-col>
+                    <v-text-field
+                      v-model="part_rater"
+                      style="width: 200px; height: 100px; margin-left: 40px"
+                    >
+                    </v-text-field>
+
+                    <h5 class="pa-2" style="margin-right: 10px">Rater</h5>
+                  </v-col>
+
+                  <v-col>
+                    <v-text-field
+                      style="width: 200px; height: 100px; margin-left: 40px"
+                    >
+                      <p class="mt-6">{{ part_approvingAuthority }}</p>
+                    </v-text-field>
+
+                    <h5 class="pa-2" style="margin-left: -20px">
+                      Approving Authority
+                    </h5>
+                  </v-col>
+                </v-row>
               </div>
             </v-container>
           </v-app>
@@ -8015,28 +8056,39 @@
                 </v-card>
 
                 <!-- This is the signature part in part 4 -->
-                <div class="pa-10 ml-9 " style="text-align: center;" >
-                 <v-row>
-                   <v-col>
-    <v-card  v-model="part4_ratee" class="pa-2" style="width:200px; height:100px;  margin-left:80px ">
-                  
-                   </v-card>
-                   <h5 class="pa-2" style=" margin-left:80px ">Ratee</h5>
-                   </v-col>
-               <v-col>
-<v-card  v-model="part4_rater" class="pa-2" style="width:200px; height:100px; margin-left:45px">   </v-card>
-                   <h5 class="pa-2" style=" margin-right:10px ">Rater</h5>
-               </v-col>
-                   
-                     <v-col>
- <v-card  v-model="part4_approvingAuthority" class="pa-2" style="width:200px; height:100px;">
-                       
-                   </v-card>
-                      <h5 class="pa-2" style="margin-left:-70px" >Approving Authority</h5>
-                     </v-col>
-                
-                   
-                 </v-row>
+                <div class="pa-10 ml-9" style="text-align: center">
+                  <v-row>
+                    <v-col>
+                      <v-card
+                        v-model="part_ratee"
+                        class="pa-2"
+                        style="width: 250px; height: 100px; margin-left: 20px"
+                      >
+                        <p>{{ part_ratee }}</p>
+                      </v-card>
+                      <h5 class="pa-2" style="margin-left: 30px">Rater</h5>
+                    </v-col>
+
+                    <v-col>
+                      <v-card
+                        v-model="part4_rater"
+                        class="pa-2"
+                        style="width: 250px; height: 100px; margin-left: 15px"
+                      >
+                        <p>{{ part_rater }}</p>
+                      </v-card>
+                      <h5 class="pa-2" style="margin-right: 10px">Rater</h5>
+                    </v-col>
+
+                    <v-col>
+                      <v-card class="pa-2" style="width: 250px; height: 100px">
+                        <p class="mt-6">{{ part_approvingAuthority }}</p>
+                      </v-card>
+                      <h5 class="pa-2" style="margin-left: -70px">
+                        Approving Authority
+                      </h5>
+                    </v-col>
+                  </v-row>
                 </div>
                 <div class="ml-9"></div>
               </div>
