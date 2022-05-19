@@ -42,6 +42,7 @@ class EsatDemographicProfile extends Model
         'age',
         'sex',
 
+        'school_year',
         'years_in_teaching',
         'highest_degree_obtained',
         'specified_highest_degree_obtained',

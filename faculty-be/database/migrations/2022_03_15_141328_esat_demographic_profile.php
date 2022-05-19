@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('age');
             $table->string('sex');
 
+            $table->string('school_year');
             $table->string('years_in_teaching');
             $table->string('highest_degree_obtained');
             $table->string('specified_highest_degree_obtained');
