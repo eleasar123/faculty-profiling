@@ -1,5 +1,5 @@
 <template id="body">
-  <v-app>
+  <v-app class="pa-4">
     <!-- start of part 1 display -->
 
     <table id="table" style="width: 100%">
@@ -66,8 +66,8 @@
       </tr>
     </table>
     <br />
-    <table id="table" style="width: 100%">
-      <tr class="row1">
+    <table id="table" style="width: 100%; text-align: center; font-weight: bold">
+      <tr class="row1 mt-2">
         <td id="tdata" colspan="6" style="line-height: 5px">
           <p>TO BE FILLED OUT DURING PLANNING</p>
         </td>
@@ -75,7 +75,10 @@
           <p>TO BE FILLED OUT DURING EVALUATION</p>
         </td>
       </tr>
-      <tr class="row1">
+      <tr
+        class="row1 light-green lighten-2"
+        style="width: 100%; text-align: center; font-weight: bold"
+      >
         <td id="tdata" rowspan="2" style="line-height: 5px">
           <p>MFO's</p>
         </td>
@@ -104,7 +107,10 @@
           <p>Score</p>
         </td>
       </tr>
-      <tr class="row1" style="text-align: center">
+      <tr
+        class="row1 light-green lighten-2"
+        style="text-align: center; font-weight: bold"
+      >
         <td id="tdata" style="line-height: 5px">
           <p>QET</p>
         </td>
@@ -157,7 +163,7 @@
         </td>
       </tr>
       <tr class="row1">
-        <td id="tdata" rowspan="7">
+        <td id="tdata" rowspan="50">
           <p>Basic Education Services</p>
         </td>
         <td id="tdata" rowspan="9">
@@ -171,11 +177,11 @@
         <td id="tdata" class="timelineObj1" rowspan="3">
           <p></p>
         </td>
-        <td id="tdata" class="weightPerKra" rowspan="3">
+        <td id="tdata" class="weightPerKra" rowspan="9">
           <p>24%</p>
         </td>
         <td id="tdata" class="quality1">
-          <p>24%</p>
+          <p>Quality</p>
         </td>
         <td id="tdata" class="outstanding1">
           <p>
@@ -207,7 +213,1183 @@
             sheets/interobserver agreement forms or No acceptable evidence was shown
           </p>
         </td>
-        <td id="tdata" class="actualResult">
+        <td id="tdata" rowspan="1" class="actualResult">
+          <p></p>
+        </td>
+        <td id="tdata" rowspan="3" class="q1">
+          <p></p>
+        </td>
+        <td id="tdata" rowspan="3" class="e1 blue-grey darken-4">
+          <p></p>
+        </td>
+        <td id="tdata" rowspan="3" class="t1 blue-grey darken-4">
+          <p></p>
+        </td>
+        <td id="tdata" rowspan="3" class="ave1">
+          <p></p>
+        </td>
+        <td id="tdata" rowspan="3" class="score1">
+          <p></p>
+        </td>
+      </tr>
+
+      <tr>
+        <td id="tdata" class="eff1 pa-1">
+          <p>Efficiency</p>
+        </td>
+        <td id="tdata" class="eff2 pa-1 blue-grey darken-4">
+          <p></p>
+        </td>
+        <td id="tdata" class="eff2 pa-1 blue-grey darken-4">
+          <p></p>
+        </td>
+        <td id="tdata" class="eff4 pa-1 blue-grey darken-4">
+          <p></p>
+        </td>
+        <td id="tdata" class="eff5 pa-1 blue-grey darken-4">
+          <p></p>
+        </td>
+        <td id="tdata" colspan="2" class="eff6 pa-1 blue-grey darken-4">
+          <p></p>
+        </td>
+      </tr>
+      <tr>
+        <td id="tdata" class="timeline1 pa-1">
+          <p>Timeliness</p>
+        </td>
+        <td id="tdata" class="timeline2 pa-1 blue-grey darken-4">
+          <p></p>
+        </td>
+        <td id="tdata" class="timeline2 pa-1 blue-grey darken-4">
+          <p></p>
+        </td>
+        <td id="tdata" class="timeline4 pa-1 blue-grey darken-4">
+          <p></p>
+        </td>
+        <td id="tdata" class="timeline5 pa-1 blue-grey darken-4">
+          <p></p>
+        </td>
+        <td id="tdata" colspan="2" class="timeline6 blue-grey darken-4">
+          <p></p>
+        </td>
+      </tr>
+      <!-- end of row1 -->
+      <!-- start of row 2 -->
+      <tr>
+        <td id="tdata" rowspan="3">
+          <p>
+            2. Ensured the positive use of ICT to facilitate the teaching and learning
+            process
+          </p>
+        </td>
+        <td id="tdata" class="timelineObj1" rowspan="3">
+          <p></p>
+        </td>
+
+        <td id="tdata" class="quality1">
+          <p>Quality</p>
+        </td>
+        <td id="tdata" class="outstanding1">
+          <p>
+            Ensured that the ICT used redefine and transform learning experiences and are
+            documented properly and consistently using any referencing style as shown in
+            the submitted learning material
+          </p>
+        </td>
+        <td id="tdata" class="verySatisfactory1">
+          <p>
+            Ensured that the ICT used augment and enrich learning experiences and are
+            documented properly and consistently using any referencing style as shown in
+            the submitted learning material
+          </p>
+        </td>
+        <td id="tdata" class="satisfactory1">
+          <p>
+            Ensured that the ICT used modify processes and improve learning experiences
+            and are documented properly and consistently using any referencing style as
+            shown in the submitted learning material
+          </p>
+        </td>
+        <td id="tdata" class="unsatisfactory1">
+          <p>
+            Ensured that ICT are used but do not create a new learning experience and/or
+            are documented but not consistent with one referencing style as shown in the
+            submitted learning material
+          </p>
+        </td>
+        <td id="tdata" class="poor1">
+          <p>No acceptable evidence was shown</p>
+        </td>
+        <td id="tdata" rowspan="1" class="actualResult">
+          <p></p>
+        </td>
+        <td id="tdata" rowspan="3" class="q2">
+          <p></p>
+        </td>
+        <td id="tdata" rowspan="3" class="e2 blue-grey darken-4">
+          <p></p>
+        </td>
+        <td id="tdata" rowspan="3" class="t2 blue-grey darken-4">
+          <p></p>
+        </td>
+        <td id="tdata" rowspan="3" class="ave2">
+          <p></p>
+        </td>
+        <td id="tdata" rowspan="3" class="score2">
+          <p></p>
+        </td>
+      </tr>
+      <tr>
+        <td id="tdata" class="eff1 pa-1">
+          <p>Efficiency</p>
+        </td>
+        <td id="tdata" class="eff2 pa-1 blue-grey darken-4">
+          <p></p>
+        </td>
+        <td id="tdata" class="eff2 pa-1 blue-grey darken-4">
+          <p></p>
+        </td>
+        <td id="tdata" class="eff4 pa-1 blue-grey darken-4">
+          <p></p>
+        </td>
+        <td id="tdata" class="eff5 pa-1 blue-grey darken-4">
+          <p></p>
+        </td>
+        <td id="tdata" colspan="2" class="eff6 pa-1 blue-grey darken-4">
+          <p></p>
+        </td>
+      </tr>
+      <tr>
+        <td id="tdata" class="eff1 pa-1">
+          <p>Timeliness</p>
+        </td>
+        <td id="tdata" class="eff2 pa-1 blue-grey darken-4">
+          <p></p>
+        </td>
+        <td id="tdata" class="eff2 pa-1 blue-grey darken-4">
+          <p></p>
+        </td>
+        <td id="tdata" class="eff4 pa-1 blue-grey darken-4">
+          <p></p>
+        </td>
+        <td id="tdata" class="eff5 pa-1 blue-grey darken-4">
+          <p></p>
+        </td>
+        <td id="tdata" colspan="2" class="eff6 blue-grey darken-4">
+          <p></p>
+        </td>
+      </tr>
+      <!-- end of row 2 -->
+      <tr>
+        <td id="tdata" rowspan="3">
+          <p>
+            3. Applied a range of teaching strategies to develop critical and creative
+            thinking, as well as other higher-order thinking skills.
+          </p>
+        </td>
+        <td id="tdata" class="timelineObj1" rowspan="3">
+          <p></p>
+        </td>
+
+        <td id="tdata" class="quality1">
+          <p>Quality</p>
+        </td>
+        <td id="tdata" class="outstanding1">
+          <p>
+            Ensured that the ICT used redefine and transform learning experiences and are
+            documented properly and consistently using any referencing style as shown in
+            the submitted learning material
+          </p>
+        </td>
+        <td id="tdata" class="verySatisfactory1">
+          <p>
+            Ensured that the ICT used augment and enrich learning experiences and are
+            documented properly and consistently using any referencing style as shown in
+            the submitted learning material
+          </p>
+        </td>
+        <td id="tdata" class="satisfactory1">
+          <p>
+            Ensured that the ICT used modify processes and improve learning experiences
+            and are documented properly and consistently using any referencing style as
+            shown in the submitted learning material
+          </p>
+        </td>
+        <td id="tdata" class="unsatisfactory1">
+          <p>
+            Ensured that ICT are used but do not create a new learning experience and/or
+            are documented but not consistent with one referencing style as shown in the
+            submitted learning material
+          </p>
+        </td>
+        <td id="tdata" class="poor1">
+          <p>No acceptable evidence was shown</p>
+        </td>
+        <td id="tdata" rowspan="1" class="actualResult">
+          <p></p>
+        </td>
+        <td id="tdata" rowspan="3" class="q2">
+          <p></p>
+        </td>
+        <td id="tdata" rowspan="3" class="e2 blue-grey darken-4">
+          <p></p>
+        </td>
+        <td id="tdata" rowspan="3" class="t2 blue-grey darken-4">
+          <p></p>
+        </td>
+        <td id="tdata" rowspan="3" class="ave2">
+          <p></p>
+        </td>
+        <td id="tdata" rowspan="3" class="score3">
+          <p></p>
+        </td>
+      </tr>
+      <tr>
+        <td id="tdata" class="eff1 pa-1">
+          <p>Efficiency</p>
+        </td>
+        <td id="tdata" class="eff2 pa-1 blue-grey darken-4">
+          <p></p>
+        </td>
+        <td id="tdata" class="eff2 pa-1 blue-grey darken-4">
+          <p></p>
+        </td>
+        <td id="tdata" class="eff4 pa-1 blue-grey darken-4">
+          <p></p>
+        </td>
+        <td id="tdata" class="eff5 pa-1 blue-grey darken-4">
+          <p></p>
+        </td>
+        <td id="tdata" colspan="2" class="eff6 pa-1 blue-grey darken-4">
+          <p></p>
+        </td>
+      </tr>
+      <tr>
+        <td id="tdata" class="eff1 pa-1">
+          <p>Timeliness</p>
+        </td>
+        <td id="tdata" class="eff2 pa-1 blue-grey darken-4">
+          <p></p>
+        </td>
+        <td id="tdata" class="eff2 pa-1 blue-grey darken-4">
+          <p></p>
+        </td>
+        <td id="tdata" class="eff4 pa-1 blue-grey darken-4">
+          <p></p>
+        </td>
+        <td id="tdata" class="eff5 pa-1 blue-grey darken-4">
+          <p></p>
+        </td>
+        <td id="tdata" colspan="2" class="eff6 blue-grey darken-4">
+          <p></p>
+        </td>
+      </tr>
+
+      <!-- Start Number 2 -->
+      <tr class="row1">
+        <td id="tdata" rowspan="9">
+          <p>2. Diversity of Learners & Assessment and Reporting</p>
+        </td>
+        <td id="tdata" class="timelineObj1" rowspan="3">
+          <p>
+            4. Established a learnercentered culture by using teaching strategies that
+            respond to their linguistic, cultural, socioeconomic and religious backgrounds
+          </p>
+        </td>
+        <td id="tdata" class="timelineObj1" rowspan="3">
+          <p></p>
+        </td>
+        <td id="tdata" class="weightPerKra" rowspan="9">
+          <p>24%</p>
+        </td>
+        <td id="tdata" class="quality1">
+          <p>Quality</p>
+        </td>
+        <td id="tdata" class="outstanding1">
+          <p>
+            Utilized effective teaching strategies that are appropriate in responding to
+            learners’ linguistic, cultural, socioeconomic, or religious backgrounds at an
+            individual level* as shown in the submitted learning material
+          </p>
+        </td>
+        <td id="tdata" class="verySatisfactory1">
+          <p>
+            Utilized effective teaching strategies that are appropriate in responding to
+            learners’ linguistic, cultural, socioeconomic, or religious backgrounds at a
+            group level* as shown in the submitted learning material
+          </p>
+        </td>
+        <td id="tdata" class="satisfactory1">
+          <p>
+            Utilized an effective teaching strategy that is appropriate in responding to
+            learners’ linguistic, cultural, socioeconomic, or religious backgrounds as
+            shown in the submitted learning material
+          </p>
+        </td>
+        <td id="tdata" class="unsatisfactory1">
+          <p>
+            Utilized a teaching strategy or strategies that partially respond to learners’
+            linguistic, cultural, socioeconomic, or religious backgrounds as shown in the
+            submitted learning material
+          </p>
+        </td>
+        <td id="tdata" class="poor1">
+          <p>No acceptable evidence was shown</p>
+        </td>
+        <td id="tdata" rowspan="1" class="actualResult">
+          <p></p>
+        </td>
+        <td id="tdata" rowspan="3" class="q1">
+          <p></p>
+        </td>
+        <td id="tdata" rowspan="3" class="e1 blue-grey darken-4">
+          <p></p>
+        </td>
+        <td id="tdata" rowspan="3" class="t1 blue-grey darken-4">
+          <p></p>
+        </td>
+        <td id="tdata" rowspan="3" class="ave1">
+          <p></p>
+        </td>
+        <td id="tdata" rowspan="3" class="score4">
+          <p></p>
+        </td>
+      </tr>
+      <tr>
+        <td id="tdata" class="eff1 pa-1">
+          <p>Efficiency</p>
+        </td>
+        <td id="tdata" class="eff2 pa-1 blue-grey darken-4">
+          <p></p>
+        </td>
+        <td id="tdata" class="eff2 pa-1 blue-grey darken-4">
+          <p></p>
+        </td>
+        <td id="tdata" class="eff4 pa-1 blue-grey darken-4">
+          <p></p>
+        </td>
+        <td id="tdata" class="eff5 pa-1 blue-grey darken-4">
+          <p></p>
+        </td>
+        <td id="tdata" colspan="2" class="eff6 pa-1 blue-grey darken-4">
+          <p></p>
+        </td>
+      </tr>
+      <tr>
+        <td id="tdata" class="timeline1 pa-1">
+          <p>Timeliness</p>
+        </td>
+        <td id="tdata" class="timeline2 pa-1 blue-grey darken-4">
+          <p></p>
+        </td>
+        <td id="tdata" class="timeline2 pa-1 blue-grey darken-4">
+          <p></p>
+        </td>
+        <td id="tdata" class="timeline4 pa-1 blue-grey darken-4">
+          <p></p>
+        </td>
+        <td id="tdata" class="timeline5 pa-1 blue-grey darken-4">
+          <p></p>
+        </td>
+        <td id="tdata" colspan="2" class="timeline6 blue-grey darken-4">
+          <p></p>
+        </td>
+      </tr>
+      <tr class="row1">
+        <td id="tdata" class="timelineObj1" rowspan="3">
+          <p>
+            5. Planned and delivered teaching strategies that are responsive to the
+            special educational needs of learners in difficult circumstances*, including:
+            geographic isolation; chronic illness; displacement due to armed conflict,
+            urban resettlement or disasters; child abuse and child labor practices
+          </p>
+        </td>
+
+        <td id="tdata" class="weightPerKra" rowspan="3">
+          <p></p>
+        </td>
+        <td id="tdata" class="quality1">
+          <p>Quality</p>
+        </td>
+        <td id="tdata" class="outstanding1">
+          <p>
+            Demonstrated Level 7 in Objective 5 as shown in COT rating
+            sheets/interobserver a greement forms
+          </p>
+        </td>
+        <td id="tdata" class="verySatisfactory1">
+          <p>
+            Utilized effective teaching strategies that are appropriate in responding to
+            learners’ linguistic, cultural, socioeconomic, or religious backgrounds at a
+            group level* as shown in the submitted learning material
+          </p>
+        </td>
+        <td id="tdata" class="satisfactory1">
+          <p>
+            Utilized an effective teaching strategy that is appropriate in responding to
+            learners’ linguistic, cultural, socioeconomic, or religious backgrounds as
+            shown in the submitted learning material
+          </p>
+        </td>
+        <td id="tdata" class="unsatisfactory1">
+          <p>
+            Utilized a teaching strategy or strategies that partially respond to learners’
+            linguistic, cultural, socioeconomic, or religious backgrounds as shown in the
+            submitted learning material
+          </p>
+        </td>
+        <td id="tdata" class="poor1">
+          <p>No acceptable evidence was shown</p>
+        </td>
+        <td id="tdata" rowspan="1" class="actualResult">
+          <p></p>
+        </td>
+        <td id="tdata" rowspan="3" class="q1">
+          <p></p>
+        </td>
+        <td id="tdata" rowspan="3" class="e1 blue-grey darken-4">
+          <p></p>
+        </td>
+        <td id="tdata" rowspan="3" class="t1 blue-grey darken-4">
+          <p></p>
+        </td>
+        <td id="tdata" rowspan="3" class="ave1">
+          <p></p>
+        </td>
+        <td id="tdata" rowspan="3" class="score6">
+          <p></p>
+        </td>
+      </tr>
+      <tr>
+        <td id="tdata" class="eff1 pa-1">
+          <p>Efficiency</p>
+        </td>
+        <td id="tdata" class="eff2 pa-1 blue-grey darken-4">
+          <p></p>
+        </td>
+        <td id="tdata" class="eff2 pa-1 blue-grey darken-4">
+          <p></p>
+        </td>
+        <td id="tdata" class="eff4 pa-1 blue-grey darken-4">
+          <p></p>
+        </td>
+        <td id="tdata" class="eff5 pa-1 blue-grey darken-4">
+          <p></p>
+        </td>
+        <td id="tdata" colspan="2" class="eff6 pa-1 blue-grey darken-4">
+          <p></p>
+        </td>
+      </tr>
+      <tr>
+        <td id="tdata" class="timeline1 pa-1">
+          <p>Timeliness</p>
+        </td>
+        <td id="tdata" class="timeline2 pa-1 blue-grey darken-4">
+          <p></p>
+        </td>
+        <td id="tdata" class="timeline2 pa-1 blue-grey darken-4">
+          <p></p>
+        </td>
+        <td id="tdata" class="timeline4 pa-1 blue-grey darken-4">
+          <p></p>
+        </td>
+        <td id="tdata" class="timeline5 pa-1 blue-grey darken-4">
+          <p></p>
+        </td>
+        <td id="tdata" colspan="2" class="timeline6 blue-grey darken-4">
+          <p></p>
+        </td>
+      </tr>
+      <tr class="row1">
+        <td id="tdata" class="timelineObj1" rowspan="3">
+          <p>
+            6. Used strategies for providing timely, accurate and constructive feedback to
+            improve learner performance
+          </p>
+        </td>
+        <td id="tdata" class="weightPerKra" rowspan="3">
+          <p></p>
+        </td>
+        <td id="tdata" class="quality1">
+          <p>Quality</p>
+        </td>
+        <td id="tdata" class="outstanding1">
+          <p>
+            Provided learners with accurate, and specific and directed constructive
+            feedback* as shown in the evidence submitted
+          </p>
+        </td>
+        <td id="tdata" class="verySatisfactory1">
+          <p>
+            Provided learners with accurate, and specific constructive feedback as shown
+            in the evidence submitted
+          </p>
+        </td>
+        <td id="tdata" class="satisfactory1">
+          <p>
+            Provided learners with accurate, and general constructive feedback as shown in
+            the evidence submitted
+          </p>
+        </td>
+        <td id="tdata" class="unsatisfactory1">
+          <p>
+            Provided learners with inaccurate and/or destructive feedback as shown in the
+            evidence submitted
+          </p>
+        </td>
+        <td id="tdata" class="poor1">
+          <p>No evidence was shown</p>
+        </td>
+        <td id="tdata" rowspan="1" class="actualResult">
+          <p></p>
+        </td>
+        <td id="tdata" rowspan="3" class="q1">
+          <p></p>
+        </td>
+        <td id="tdata" rowspan="3" class="e1 blue-grey darken-4">
+          <p></p>
+        </td>
+        <td id="tdata" rowspan="3" class="t1">
+          <p></p>
+        </td>
+        <td id="tdata" rowspan="3" class="ave1">
+          <p></p>
+        </td>
+        <td id="tdata" rowspan="3" class="score7">
+          <p></p>
+        </td>
+      </tr>
+      <tr>
+        <td id="tdata" class="eff1 pa-1">
+          <p>Efficiency</p>
+        </td>
+        <td id="tdata" class="eff2 pa-1 blue-grey darken-4">
+          <p></p>
+        </td>
+        <td id="tdata" class="eff2 pa-1 blue-grey darken-4">
+          <p></p>
+        </td>
+        <td id="tdata" class="eff4 pa-1 blue-grey darken-4">
+          <p></p>
+        </td>
+        <td id="tdata" class="eff5 pa-1 blue-grey darken-4">
+          <p></p>
+        </td>
+        <td id="tdata" colspan="2" class="eff6 pa-1 blue-grey darken-4">
+          <p></p>
+        </td>
+      </tr>
+      <tr>
+        <td id="tdata" class="timeline1 pa-1">
+          <p>Timeliness</p>
+        </td>
+        <td id="tdata" class="timeline2 pa-1">
+          <p>
+            MOV submitted shows feedback given within 5 working days from submission**
+          </p>
+        </td>
+        <td id="tdata" class="timeline2 pa-1">
+          <p>
+            MOV submitted shows feedback given within 6-10 working days from submission**
+          </p>
+        </td>
+        <td id="tdata" class="timeline4 pa-1">
+          <p>
+            MOV submitted shows feedback given within 11-20 working days from submission**
+          </p>
+        </td>
+        <td id="tdata" class="timeline5 pa-1">
+          <p>
+            MOV submitted shows feedback given beyond 20 working days from submission**
+          </p>
+        </td>
+        <td id="tdata" class="timeline6">
+          <p>No evidence was shown</p>
+        </td>
+      </tr>
+      <tr class="row1">
+        <td id="tdata" rowspan="6">
+          <p>3. Curriculum and Planning</p>
+        </td>
+        <td id="tdata" class="timelineObj1" rowspan="3">
+          <p>
+            7. Selected, developed, organized and used appropriate teaching and learning
+            resources, including ICT, to address learning goals
+          </p>
+        </td>
+
+        <td id="tdata" class="weightPerKra" rowspan="3">
+          <p></p>
+        </td>
+        <td id="tdata" class="weightPerKra" rowspan="6">
+          <p>16%</p>
+        </td>
+        <td id="tdata" class="quality1">
+          <p>Quality</p>
+        </td>
+        <td id="tdata" class="outstanding1">
+          <p>
+            Demonstrated Level 7 in Objective 7 as shown in COT rating
+            sheets/interobserver agreement forms
+          </p>
+        </td>
+        <td id="tdata" class="verySatisfactory1">
+          <p>
+            Demonstrated Level 6 in Objective 7 as shown in COT rating
+            sheets/interobserver agreement forms
+          </p>
+        </td>
+        <td id="tdata" class="satisfactory1">
+          <p>
+            Demonstrated Level 5 in Objective 7 as shown in COT rating
+            sheets/interobserver agreement forms
+          </p>
+        </td>
+        <td id="tdata" class="unsatisfactory1">
+          <p>
+            Demonstrated Level 4 in Objective 7 as shown in COT rating
+            sheets/interobserver agreement forms
+          </p>
+        </td>
+        <td id="tdata" class="poor1">
+          <p>
+            Demonstrated Level 3 in Objective 7 as shown in COT rating
+            sheets/interobserver agreement forms or No acceptable evidence was shown
+          </p>
+        </td>
+        <td id="tdata" rowspan="1" class="actualResult">
+          <p></p>
+        </td>
+        <td id="tdata" rowspan="3" class="q1">
+          <p></p>
+        </td>
+        <td id="tdata" rowspan="3" class="e1 blue-grey darken-4">
+          <p></p>
+        </td>
+        <td id="tdata" rowspan="3" class="t1 blue-grey darken-4">
+          <p></p>
+        </td>
+        <td id="tdata" colspan="1" rowspan="3" class="ave1">
+          <p></p>
+        </td>
+        <td id="tdata" rowspan="3" class="score8">
+          <p></p>
+        </td>
+      </tr>
+      <tr>
+        <td id="tdata" class="eff1 pa-1">
+          <p>Efficiency</p>
+        </td>
+        <td id="tdata" class="eff2 pa-1 blue-grey darken-4">
+          <p></p>
+        </td>
+        <td id="tdata" class="eff2 pa-1 blue-grey darken-4">
+          <p></p>
+        </td>
+        <td id="tdata" class="eff4 pa-1 blue-grey darken-4">
+          <p></p>
+        </td>
+        <td id="tdata" class="eff5 pa-1 blue-grey darken-4">
+          <p></p>
+        </td>
+        <td id="tdata" colspan="2" class="eff6 pa-1 blue-grey darken-4">
+          <p></p>
+        </td>
+      </tr>
+      <tr>
+        <td id="tdata" class="timeline1 pa-1">
+          <p>Timeliness</p>
+        </td>
+        <td id="tdata" class="timeline2 pa-1 blue-grey darken-4">
+          <p></p>
+        </td>
+        <td id="tdata" class="timeline2 pa-1 blue-grey darken-4">
+          <p></p>
+        </td>
+        <td id="tdata" class="timeline4 pa-1 blue-grey darken-4">
+          <p></p>
+        </td>
+        <td id="tdata" class="timeline5 pa-1 blue-grey darken-4">
+          <p></p>
+        </td>
+        <td id="tdata" colspan="2" class="timeline6 blue-grey darken-4">
+          <p></p>
+        </td>
+      </tr>
+      <!-- End Number7 -->
+
+      <!-- Start Number 8 -->
+      <tr class="row1">
+        <td id="tdata" class="timelineObj1" rowspan="3">
+          <p>
+            8. Set achievable and appropriate learning outcomes that are aligned with
+            learning competencies
+          </p>
+        </td>
+
+        <td id="tdata" class="weightPerKra" rowspan="3">
+          <p></p>
+        </td>
+        <td id="tdata" class="quality1">
+          <p>Quality</p>
+        </td>
+        <td id="tdata" class="outstanding1">
+          <p>
+            All of the learning outcomes set are aligned with the learning competencies as
+            shown in the MOV submitted
+          </p>
+        </td>
+        <td id="tdata" class="verySatisfactory1">
+          <p>
+            Majority of the learning outcomes set are aligned with the learning
+            competencies as shown in the MOV submitted
+          </p>
+        </td>
+        <td id="tdata" class="satisfactory1">
+          <p>
+            Half of the learning outcomes set are aligned with the learning competencies
+            as shown in the MOV submitted
+          </p>
+        </td>
+        <td id="tdata" class="unsatisfactory1">
+          <p>
+            Less than half of the learning outcomes set are aligned with the learning
+            competencies as shown in the MOV submitted
+          </p>
+        </td>
+        <td id="tdata" class="poor1">
+          <p>No acceptable evidence was shown</p>
+        </td>
+        <td id="tdata" rowspan="1" class="actualResult">
+          <p></p>
+        </td>
+        <td id="tdata" rowspan="3" class="q1">
+          <p></p>
+        </td>
+        <td id="tdata" rowspan="3" class="e1 blue-grey darken-4">
+          <p></p>
+        </td>
+        <td id="tdata" rowspan="3" class="t1 blue-grey darken-4">
+          <p></p>
+        </td>
+        <td id="tdata" rowspan="3" class="ave1">
+          <p></p>
+        </td>
+        <td id="tdata" rowspan="3" class="score10">
+          <p></p>
+        </td>
+      </tr>
+      <tr>
+        <td id="tdata" class="eff1 pa-1">
+          <p>Efficiency</p>
+        </td>
+        <td id="tdata" class="eff2 pa-1 blue-grey darken-4">
+          <p></p>
+        </td>
+        <td id="tdata" class="eff2 pa-1 blue-grey darken-4">
+          <p></p>
+        </td>
+        <td id="tdata" class="eff4 pa-1 blue-grey darken-4">
+          <p></p>
+        </td>
+        <td id="tdata" class="eff5 pa-1 blue-grey darken-4">
+          <p></p>
+        </td>
+        <td id="tdata" colspan="2" class="eff6 pa-1 blue-grey darken-4">
+          <p></p>
+        </td>
+      </tr>
+      <tr>
+        <td id="tdata" class="timeline1 pa-1">
+          <p>Timeliness</p>
+        </td>
+        <td id="tdata" class="timeline2 pa-1 blue-grey darken-4">
+          <p></p>
+        </td>
+        <td id="tdata" class="timeline2 pa-1 blue-grey darken-4">
+          <p></p>
+        </td>
+        <td id="tdata" class="timeline4 pa-1 blue-grey darken-4">
+          <p></p>
+        </td>
+        <td id="tdata" class="timeline5 pa-1 blue-grey darken-4">
+          <p></p>
+        </td>
+        <td id="tdata" colspan="2" class="timeline6 blue-grey darken-4">
+          <p></p>
+        </td>
+      </tr>
+      <!-- End Number 3 -->
+      <!-- Start Number 4 -->
+
+      <tr class="row1">
+        <td id="tdata" rowspan="9">
+          <p>
+            4. Community Linkages and Professional Engagement & Personal Growth and
+            Professional Development
+          </p>
+        </td>
+        <td id="tdata" class="timelineObj1" rowspan="3">
+          <p>
+            9. Built relationships with parents/ guardians and the wider school community
+            to facilitate involvement in the educative process
+          </p>
+        </td>
+        <td id="tdata" class="timelineObj1" rowspan="3">
+          <p></p>
+        </td>
+        <td id="tdata" class="weightPerKra" rowspan="9">
+          <p>24%</p>
+        </td>
+        <td id="tdata" class="quality1">
+          <p>Quality</p>
+        </td>
+        <td id="tdata" class="outstanding1">
+          <p>
+            Sustained engagement with parents/ guardians and/ or wider school community to
+            facilitate involvement in the educative process as evidenced by 2 or more of
+            MOV no. 1 or 2
+          </p>
+        </td>
+        <td id="tdata" class="verySatisfactory1">
+          <p>
+            Secured collaboration with parents/ guardians and/ or wider school community
+            to facilitate involvement in the educative process as evidenced by one MOV no.
+            1 or 2
+          </p>
+        </td>
+        <td id="tdata" class="satisfactory1">
+          <p>
+            Communicated with and obtained response from parents/ guardians and/ or wider
+            school community to facilitate involvement in the educative process as
+            evidenced by MOV No. 3
+          </p>
+        </td>
+        <td id="tdata" class="unsatisfactory1">
+          <p>
+            Communicated with parents/ guardians and/or wider school community to
+            facilitate involvement in the educative process but received no response/reply
+            as evidenced by MOV No. 3
+          </p>
+        </td>
+        <td id="tdata" class="poor1">
+          <p>No acceptable evidence was shown</p>
+        </td>
+        <td id="tdata" rowspan="1" class="actualResult">
+          <p></p>
+        </td>
+        <td id="tdata" rowspan="3" class="q1">
+          <p></p>
+        </td>
+        <td id="tdata" rowspan="3">
+          <p></p>
+        </td>
+        <td id="tdata" rowspan="3" class="t1 blue-grey darken-4">
+          <p></p>
+        </td>
+        <td id="tdata" rowspan="3" class="ave1">
+          <p></p>
+        </td>
+        <td id="tdata" rowspan="3" class="score11">
+          <p></p>
+        </td>
+      </tr>
+      <tr>
+        <td id="tdata" class="eff1 pa-1">
+          <p>Efficiency</p>
+        </td>
+        <td id="tdata" class="eff2 pa-1">
+          <p>Submitted any 4 of the acceptable MOV*</p>
+        </td>
+        <td id="tdata" class="eff2 pa-1">
+          <p>Submitted any 3 of the acceptable MOV*</p>
+        </td>
+        <td id="tdata" class="eff4 pa-1">
+          <p>Submitted any 2 of the acceptable MOV*</p>
+        </td>
+        <td id="tdata" class="eff5 pa-1">
+          <p>Submitted any 1 of the acceptable MOV</p>
+        </td>
+        <td id="tdata" class="eff6 pa-1">
+          <p>No acceptable evidence was shown</p>
+        </td>
+      </tr>
+      <tr>
+        <td id="tdata" class="timeline1 pa-1">
+          <p>Timeliness</p>
+        </td>
+        <td id="tdata" class="timeline2 pa-1 blue-grey darken-4">
+          <p></p>
+        </td>
+        <td id="tdata" class="timeline2 pa-1 blue-grey darken-4">
+          <p></p>
+        </td>
+        <td id="tdata" class="timeline4 pa-1 blue-grey darken-4">
+          <p></p>
+        </td>
+        <td id="tdata" class="timeline5 pa-1 blue-grey darken-4">
+          <p></p>
+        </td>
+        <td id="tdata" colspan="2" class="timeline6 blue-grey darken-4">
+          <p></p>
+        </td>
+      </tr>
+      <tr class="row1">
+        <td id="tdata" class="timelineObj1" rowspan="3">
+          <p>
+            10. Participated in professional networks to share knowledge and to enhance
+            practice
+          </p>
+        </td>
+
+        <td id="tdata" class="weightPerKra" rowspan="3">
+          <p></p>
+        </td>
+        <td id="tdata" class="quality1">
+          <p>Quality</p>
+        </td>
+        <td id="tdata" class="outstanding1">
+          <p>
+            Participated in any professional network/ activity that requires output* and
+            proof of implementation ** within the school to share knowledge and to enhance
+            practice as evidenced by the submitted MOV
+          </p>
+        </td>
+        <td id="tdata" class="verySatisfactory1">
+          <p>
+            Participated in any professional network/ activity that requires output* and
+            proof of implementation ** within the department/grade level to share
+            knowledge and to enhance practice as evidenced by the submitted MOV
+          </p>
+        </td>
+        <td id="tdata" class="satisfactory1">
+          <p>
+            Participated in any professional network/ activity that requires output* to
+            share knowledge and to enhance practice as evidenced by the submitted MOV
+          </p>
+        </td>
+        <td id="tdata" class="unsatisfactory1">
+          <p>
+            Participated in any professional network/ activity that does not require
+            output to share knowledge and to enhance practice as evidenced by the
+            submitted MOV
+          </p>
+        </td>
+        <td id="tdata" class="poor1">
+          <p>No acceptable evidence was shown</p>
+        </td>
+        <td id="tdata" rowspan="1" class="actualResult">
+          <p></p>
+        </td>
+        <td id="tdata" rowspan="3" class="q1">
+          <p></p>
+        </td>
+        <td id="tdata" rowspan="3">
+          <p></p>
+        </td>
+        <td id="tdata" rowspan="3" class="t1 blue-grey darken-4">
+          <p></p>
+        </td>
+        <td id="tdata" rowspan="3" class="ave1">
+          <p></p>
+        </td>
+        <td id="tdata" rowspan="3" class="score13">
+          <p></p>
+        </td>
+      </tr>
+      <tr>
+        <td id="tdata" class="eff1 pa-1">
+          <p>Efficiency</p>
+        </td>
+        <td id="tdata" class="eff2 pa-1">
+          <p>Submitted 4 different kinds of acceptable MOV***</p>
+        </td>
+        <td id="tdata" class="eff2 pa-1">
+          <p>Submitted 3 different kinds of acceptable MOV***</p>
+        </td>
+        <td id="tdata" class="eff4 pa-1">
+          <p>Submitted 2 different kinds of acceptable MOV***</p>
+        </td>
+        <td id="tdata" class="eff5 pa-1">
+          <p>Submitted 1 of the acceptable MOV</p>
+        </td>
+        <td id="tdata" class="eff6 pa-1">
+          <p>No acceptable evidence was shown</p>
+        </td>
+      </tr>
+      <tr>
+        <td id="tdata" class="timeline1 pa-1">
+          <p>Timeliness</p>
+        </td>
+        <td id="tdata" class="timeline2 pa-1 blue-grey darken-4">
+          <p></p>
+        </td>
+        <td id="tdata" class="timeline2 pa-1 blue-grey darken-4">
+          <p></p>
+        </td>
+        <td id="tdata" class="timeline4 pa-1 blue-grey darken-4">
+          <p></p>
+        </td>
+        <td id="tdata" class="timeline5 pa-1 blue-grey darken-4">
+          <p></p>
+        </td>
+        <td id="tdata" colspan="2" class="timeline6 blue-grey darken-4">
+          <p></p>
+        </td>
+      </tr>
+      <tr class="row1">
+        <td id="tdata" class="timelineObj1" rowspan="3">
+          <p>
+            11. Developed a personal improvement plan based on reflection of one’s
+            practice and ongoing professional learning
+          </p>
+        </td>
+        <td id="tdata" class="weightPerKra" rowspan="3">
+          <p></p>
+        </td>
+        <td id="tdata" class="quality1">
+          <p>Quality</p>
+        </td>
+        <td id="tdata" class="outstanding1">
+          <p>
+            Updated the Development Plan and approved by the rater during Phase II of the
+            RPMS cycle
+          </p>
+        </td>
+        <td id="tdata" class="verySatisfactory1">
+          <p>
+            Discussed progress on the Development Plan with the rater to check whether
+            Development Needs were addressed
+          </p>
+        </td>
+        <td id="tdata" class="satisfactory1">
+          <p>
+            Accomplished the Development Plan from learning objectives up to resources
+            needed to address Development Needs during Phase I of the RPMS cycle
+          </p>
+        </td>
+        <td id="tdata" class="unsatisfactory1">
+          <p>
+            Accomplished the Strengths and Development Needs portion of the Development
+            Plan after self-assessment at the beginning of the school year
+          </p>
+        </td>
+        <td id="tdata" class="poor1">
+          <p>No acceptable evidence was shown</p>
+        </td>
+        <td id="tdata" rowspan="1" class="actualResult">
+          <p></p>
+        </td>
+        <td id="tdata" rowspan="3" class="q1">
+          <p></p>
+        </td>
+        <td id="tdata" rowspan="3">
+          <p></p>
+        </td>
+        <td id="tdata" rowspan="3" class="t1 blue-grey darken-4">
+          <p></p>
+        </td>
+        <td id="tdata" rowspan="3" class="ave1">
+          <p></p>
+        </td>
+        <td id="tdata" rowspan="3" class="score13">
+          <p></p>
+        </td>
+      </tr>
+      <tr>
+        <td id="tdata" class="eff1 pa-1">
+          <p>Efficiency</p>
+        </td>
+        <td id="tdata" class="eff2 pa-1">
+          <p>Submitted the IPCRF-DP with any 4 of the acceptable Supporting MOV*</p>
+        </td>
+        <td id="tdata" class="eff2 pa-1">
+          <p>Submitted the IPCRF-DP with any 3 of the acceptable Supporting MOV*</p>
+        </td>
+        <td id="tdata" class="eff4 pa-1">
+          <p>Submitted the IPCRF-DP with any 2 of the acceptable Supporting MOV*</p>
+        </td>
+        <td id="tdata" class="eff5 pa-1">
+          <p>Submitted the IPCRF-DP with any 1 of the acceptable Supporting MOV</p>
+        </td>
+        <td id="tdata" class="eff6 pa-1">
+          <p>No acceptable evidence was shown</p>
+        </td>
+      </tr>
+      <tr>
+        <td id="tdata" class="timeline1 pa-1">
+          <p>Timeliness</p>
+        </td>
+        <td id="tdata" class="timeline2 pa-1 blue-grey darken-4">
+          <p></p>
+        </td>
+        <td id="tdata" class="timeline2 pa-1 blue-grey darken-4">
+          <p></p>
+        </td>
+        <td id="tdata" class="timeline4 pa-1 blue-grey darken-4">
+          <p></p>
+        </td>
+        <td id="tdata" class="timeline5 pa-1 blue-grey darken-4">
+          <p></p>
+        </td>
+        <td id="tdata" colspan="2" class="timeline6 blue-grey darken-4">
+          <p></p>
+        </td>
+      </tr>
+      <!-- End Number 4 -->
+
+      <!-- Start Number 5 -->
+      <tr class="row1">
+        <td id="tdata" rowspan="6">
+          <p>5. Plus Factor</p>
+        </td>
+        <td id="tdata" class="timelineObj1" rowspan="3">
+          <p>
+            12. Performed various related works/ activities that contribute to the
+            teaching-learning process
+          </p>
+        </td>
+
+        <td id="tdata" class="weightPerKra" rowspan="3">
+          <p></p>
+        </td>
+        <td id="tdata" class="weightPerKra" rowspan="6">
+          <p>16%</p>
+        </td>
+        <td id="tdata" class="quality1">
+          <p>Quality</p>
+        </td>
+        <td id="tdata" class="outstanding1">
+          <p>
+            Performed at least 1 related work/activity that contributed to the
+            teaching-learning process beyond the school/ Community Learning Center (CLC)
+            as evidenced by submitted MOV
+          </p>
+        </td>
+        <td id="tdata" class="verySatisfactory1">
+          <p>
+            Performed at least 1 related work/activity that contributed to the
+            teaching-learning process within the school/ Community Learning Center (CLC)
+            as evidenced by submitted MOV
+          </p>
+        </td>
+        <td id="tdata" class="satisfactory1">
+          <p>
+            Performed at least 1 related work/activity that contributed to the
+            teaching-learning process within the learning area/ department as evidenced by
+            submitted MOV
+          </p>
+        </td>
+        <td id="tdata" class="unsatisfactory1">
+          <p>
+            Performed at least 1 related work/activity that contributed to the
+            teaching-learning process within the class as evidenced by submitted MOV
+          </p>
+        </td>
+        <td id="tdata" class="poor1">
+          <p>No acceptable evidence was shown</p>
+        </td>
+        <td id="tdata" rowspan="1" class="actualResult">
           <p></p>
         </td>
         <td id="tdata" rowspan="3" class="q1">
@@ -216,10 +1398,60 @@
         <td id="tdata" rowspan="3" class="e1">
           <p></p>
         </td>
-        <td id="tdata" rowspan="3" class="t1">
+        <td id="tdata" rowspan="3" class="t1 blue-grey darken-4">
+          <p></p>
+        </td>
+        <td id="tdata" colspan="1" rowspan="3" class="ave1">
+          <p></p>
+        </td>
+        <td id="tdata" rowspan="3" class="score8">
           <p></p>
         </td>
       </tr>
+      <tr>
+        <td id="tdata" class="eff1 pa-1">
+          <p>Efficiency</p>
+        </td>
+        <td id="tdata" class="eff2 pa-1">
+          <p>Submitted any 4 of the acceptable MOV*</p>
+        </td>
+        <td id="tdata" class="eff2 pa-1">
+          <p>Submitted any 3 of the acceptable MOV*</p>
+        </td>
+        <td id="tdata" class="eff4 pa-1">
+          <p>Submitted any 2 of the acceptable MOV*</p>
+        </td>
+        <td id="tdata" class="eff5 pa-1">
+          <p>Submitted any 1 of the acceptable MOV</p>
+        </td>
+        <td id="tdata" class="eff6 pa-1">
+          <p>No acceptable evidence was shown</p>
+        </td>
+        <td id="tdata" colspan="2" class="eff6 pa-1">
+          <p></p>
+        </td>
+      </tr>
+      <tr>
+        <td id="tdata" class="timeline1 pa-1">
+          <p>Timeliness</p>
+        </td>
+        <td id="tdata" class="timeline2 pa-1 blue-grey darken-4">
+          <p></p>
+        </td>
+        <td id="tdata" class="timeline2 pa-1 blue-grey darken-4">
+          <p></p>
+        </td>
+        <td id="tdata" class="timeline4 pa-1 blue-grey darken-4">
+          <p></p>
+        </td>
+        <td id="tdata" class="timeline5 pa-1 blue-grey darken-4">
+          <p></p>
+        </td>
+        <td id="tdata" class="timeline6">
+          <p></p>
+        </td>
+      </tr>
+      <!-- End Number 5 Obj -->
     </table>
 
     <br /><br />
