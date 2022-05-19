@@ -710,6 +710,7 @@ class PersonalInfoController extends Controller
 
   foreach ($request->educationalBackground as $educBackground) {
    // return $educBackground['educBackgroundLevel'];
+   
    $educationalBackground = new PersonalDataSheetEducationalBackground([
     'user_id'                    => $request->user,
     'level'                      => $educBackground['educBackgroundLevel'],

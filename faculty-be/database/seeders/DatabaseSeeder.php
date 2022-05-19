@@ -22,6 +22,15 @@ class DatabaseSeeder extends Seeder
             'password' => 'abc123',
             'role' => 'Teacher',
             'profile' => 'sample.jpeg'
-        ]);
+        ],
+        [
+            'name' => "Eleasar Patot",
+            'email' => 'eleasar@gmail.com',
+            'password' => 'abc123',
+            'role' => 'Teacher',
+            'profile' => 'sample.jpeg'
+        ],
+
+    );
     }
 }
