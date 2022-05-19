@@ -1,12 +1,12 @@
-*{
+/* *{
     color: black;
     word-wrap: break-word;
-    font-size: 10px;
-    
-    /* color:red;
+    font-size: 10px; */
+
+/* color:red;
     
     background-color: aqua; */
-}
+/* }
 .civilHeader{
     font-size: 5px;
     font-weight: bold;
@@ -16,24 +16,1491 @@ table,td, th,tr, thead, tbody{
    border: solid 1px black;
    font-size: 10px;
    border-radius: 0%;
-}
+} */
 /* table{
     
  } */
- @media print {
+@media print {
     * {
         print-color-adjust: exact;
-        -webkit-print-color-adjust: exact;  
+        -webkit-print-color-adjust: exact;
+        color: black !important;
+    }
+
+    .tableRow {
+        height: 10px !important;
+
+    }
+
+    .tableData {
+        height: 10px !important;
+        font-size: 9px !important;
+        text-align: center !important;
+        color: #000000;
+        font-weight: bold;
+        text-decoration: none;
+        font-family: 'docs-Arial Narrow';
+        font-style: normal;
+        text-decoration-skip-ink: none;
+    }
+
+    .tableHeader {
+        word-break: normal;
+        font-size: 9px !important;
+        height: 10px !important;
+        color: #000000;
+        font-weight: normal;
+        text-decoration: none;
+        font-family: 'docs-Arial Narrow';
+        font-style: normal;
+        text-decoration-skip-ink: none;
+    }
+
+    .header {
+        padding-top: 4px;
+
+        font-size: 12px !important;
+        height: 22px !important;
+        color: #ffffff !important;
+        font-weight: bold;
+        text-decoration: none;
+        font-family: 'docs-Arial Narrow';
+        font-style: italic;
+        text-decoration-skip-ink: none;
+    }
+
+    .headerWork {
+        padding-top: 4px;
+
+        font-size: 12px !important;
+        height: auto !important;
+        color: #ffffff !important;
+        font-weight: bold;
+        text-decoration: none;
+        font-family: 'docs-Arial Narrow';
+        font-style: italic;
+        text-decoration-skip-ink: none;
+    }
+
+    .locationLabel {
+        font-size: 10px !important;
+        color: #000000;
+        font-weight: normal;
+        text-decoration: none;
+        font-family: 'docs-Arial Narrow';
+        font-style: italic;
+        text-decoration-skip-ink: none;
+    }
+
+    #colsPersonalInfoOne {
+        width: 160px !important;
+        background-color: red !important
+    }
+
+    #colsPersonalInfoTwo {
+        width: 180px !important;
+        background-color: orange;
+    }
+
+    #colsPersonalInfoThree {
+        width: 180px !important;
+        background-color: blue;
+    }
+
+    #colsPersonalInfoFour {
+        width: 160px !important;
+        background-color: pink;
+    }
+
+    #colsPersonalInfoFive {
+        width: 40px !important;
+        background-color: green;
+    }
+
+    #colsPersonalInfoSix {
+        width: 80px !important;
+        background-color: yellowgreen;
+    }
+
+    #colsPersonalInfoSeven {
+        width: 120px !important;
+        background-color: violet;
+    }
+
+    .pdsContainer {
+        height: fit-content !important;
+
+    }
+
+    .spanPdsOne {
+        font-size: 8px !important;
+        color: #000000;
+        font-weight: bold;
+        text-decoration: none;
+        font-family: 'Arial';
+        font-style: italic;
+        text-decoration-skip-ink: none;
+    }
+
+    .spanPdsTwo {
+        font-size: 10px !important;
+        color: #000000;
+        font-weight: normal;
+        text-decoration: none;
+        font-family: 'docs-Arial Narrow';
+        font-style: normal;
+        text-decoration-skip-ink: none;
+    }
+
+    .spanPdsThree {
+        font-size: 9px !important;
+        color: #000000;
+        font-weight: normal;
+        text-decoration: none;
+        font-family: 'docs-Arial Narrow';
+        font-style: normal;
+        text-decoration-skip-ink: none;
+    }
+
+    .headerPds {
+        margin-left: 30%;
+        font-size: 18px !important;
+        color: #000000;
+        font-weight: normal;
+        text-decoration: none;
+        font-family: 'docs-Arial Black';
+        font-style: normal;
+        text-decoration-skip-ink: none;
+    }
+
+    .suffix {
+        font-size: 8px !important;
+        color: #000000;
+        font-weight: normal;
+        text-decoration: none;
+        font-family: 'docs-Arial Narrow';
+        font-style: normal;
+        text-decoration-skip-ink: none;
+    }
+
+    #colsFamilyOne {
+        width: 160px;
+        background-color: red !important
+    }
+
+    #colsFamilyTwo {
+        width: 100px;
+        background-color: orange;
+    }
+
+    #colsFamilyThree {
+        width: 100px;
+        background-color: blue;
+    }
+
+    #colsFamilyFour {
+        width: 140px;
+        background-color: pink;
+    }
+
+    #colsFamilyFive {
+        width: 80px;
+        background-color: green;
+    }
+
+    #colsFamilySix {
+        width: 60px;
+        background-color: yellowgreen;
+    }
+
+    #colsFamilySeven {
+        width: 60px !important;
+        background-color: violet;
+    }
+
+    #colsFamilyEight {
+        width: 90px !important;
+        background-color: palegoldenrod;
+    }
+
+    #colsEducOne {
+        width: 80px;
+        background-color: red !important
+    }
+
+    #colsEducTwo {
+        width: 90px;
+        background-color: orange;
+    }
+
+    #colsEducThree {
+        width: 110px;
+        background-color: blue;
+    }
+
+    #colsEducFour {
+        width: 70px;
+        background-color: pink;
+    }
+
+    #colsEducFive {
+        width: 70px;
+        background-color: green;
+    }
+
+    #colsEducSix {
+        width: 60px;
+        background-color: yellowgreen;
+    }
+
+    #colsEducSeven {
+        width: 60px !important;
+        background-color: violet;
+    }
+
+    #colsEducEight {
+        width: 90px !important;
+        background-color: palegoldenrod;
+    }
+
+    #colsCivilOne {
+        width: 70px;
+        background-color: red !important
+    }
+
+    #colsCivilTwo {
+        width: 70px;
+        background-color: orange;
+    }
+
+    #colsCivilThree {
+        width: 70px;
+        background-color: blue;
+    }
+
+    #colsCivilFour {
+        width: 80px;
+        background-color: pink;
+    }
+
+    #colsCivilFive {
+        width: 80px;
+        background-color: green;
+    }
+
+    #colsCivilSix {
+        width: 60px;
+        background-color: yellowgreen;
+    }
+
+    #colsCivilSeven {
+        width: 60px !important;
+        background-color: violet;
+    }
+
+    #colsCivilEight {
+        width: 90px !important;
+        background-color: palegoldenrod;
+    }
+
+    #colsWorkOne {
+        width: 80px !important;
+        background-color: red !important
+    }
+
+    #colsWorkTwo {
+        width: 80px !important;
+        background-color: orange;
+    }
+
+    #colsWorkThree {
+        width: 120px !important;
+        background-color: blue;
+    }
+
+    #colsWorkFour {
+        width: 120px !important;
+        background-color: pink;
+    }
+
+    #colsWorkFive {
+        width: 50px;
+        background-color: green;
+    }
+
+    #colsWorkSix {
+        width: 50px;
+        background-color: yellowgreen;
+    }
+
+    #colsWorkSeven {
+        width: 55px !important;
+        background-color: violet;
+    }
+
+    #colsWorkEight {
+        width: 50px !important;
+        background-color: palegoldenrod;
+    }
+
+    #colsVolOne {
+        width: 50px !important;
+        background-color: red !important
+    }
+
+    #colsVolTwo {
+        width: 50px !important;
+        background-color: orange;
+    }
+
+    #colsVolThree {
+        width: 50px !important;
+        background-color: blue;
+    }
+
+    #colsVolFour {
+        width: 80px !important;
+        background-color: pink;
+    }
+
+    #colsVolFive {
+        width: 80px !important;
+        background-color: green;
+    }
+
+    #colsVolSix {
+        width: 50px !important;
+        background-color: yellowgreen;
+    }
+
+    #colsVolSeven {
+        width: 75px !important;
+        background-color: violet;
+    }
+
+    #colsVolEight {
+        width: 75px !important;
+        background-color: palegoldenrod;
+    }
+
+    #colsLearningOne {
+        width: 80px !important;
+        background-color: red !important
+    }
+
+    #colsLearningTwo {
+        width: 80px !important;
+        background-color: orange;
+    }
+
+    #colsLearningThree {
+        width: 75px !important;
+        background-color: blue;
+    }
+
+    #colsLearningFour {
+        width: 75px !important;
+        background-color: pink;
+    }
+
+    #colsLearningFive {
+        width: 60px !important;
+        background-color: green;
+    }
+
+    #colsLearningSix {
+        width: 60px;
+        background-color: yellowgreen;
+    }
+
+    #colsLearningSeven {
+        width: 70px !important;
+        background-color: violet;
+    }
+
+    #colsLearningEight {
+        width: 70px !important;
+        background-color: palegoldenrod;
+    }
+
+    #colsOtherOne {
+        width: 100px !important;
+        background-color: red !important
+    }
+
+    #colsOtherTwo {
+        width: 100px !important;
+        background-color: orange;
+    }
+
+    #colsOtherThree {
+        width: 100px !important;
+        background-color: blue;
+    }
+
+    #colsOtherFour {
+        width: 70px !important;
+        background-color: pink;
+    }
+
+    #colsOtherFive {
+        width: 70px;
+        background-color: green;
+    }
+
+    #colsOtherSix {
+        width: 70px;
+        background-color: yellowgreen;
+    }
+
+    #colsOtherSeven {
+        width: 100px !important;
+        background-color: violet;
+    }
+
+    #colsOtherEight {
+        width: 100px !important;
+        background-color: palegoldenrod;
+    }
+
+    .imageContainer {
+        display: inherit !important;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    .pdsDivider {
+        height: 25px !important;
+        background-color: rgb(234, 234, 234)
+    }
+
+    .image {
+        width: 100%;
+        height: 50%
+    }
+
+    .spanWork {
+        font-size: 10px !important;
+        color: #ffffff !important;
+        font-weight: bold;
+        text-decoration: none;
+        font-family: 'docs-Arial Narrow';
+        font-style: italic;
+        text-decoration-skip-ink: none;
+    }
+
+    .spanLearning {
+        font-size: 9px !important;
+        color: #ffffff !important;
+        font-weight: bold;
+        text-decoration: none;
+        font-family: 'docs-Arial Narrow';
+        font-style: italic;
+        text-decoration-skip-ink: none;
+    }
+    
+    .questionText {
+        word-break: normal !important;
+        font-size: 13px !important;
+        color: #000000 !important;
+        font-weight: normal;
+        text-decoration: none;
+        font-family: 'docs-Arial Narrow';
+        font-style: normal;
+        text-decoration-skip-ink: none;
+    }
+
+    .answerText {
+        word-break: normal !important;
+        font-size: 13px !important;
+        color: #000000 !important;
+        font-weight: normal;
+        text-decoration: none;
+        font-family: 'Arial';
+        font-style: normal;
+        text-decoration-skip-ink: none;
+    }
+
+    .pdsContainerQ34 {
+        word-break: break-word;
+        font-family: "Arial Narrow" !important;
+        font-size: 13px !important;
+        margin: 0% !important;
+        padding: 0% !important;
+        color: rgb(0, 0, 0);
+        background-color: rgb(234, 234, 234);
+        vertical-align: top;
+        padding: 0px 2px;
+        max-width: 1150px !important;
+        max-height: 426px !important;
+        width: 700px !important;
+        min-width: 440px !important;
+        min-height: 13px !important;
+        left: 65px !important;
+        top: 126.333px;
+        right: 10px !important;
+    }
+
+    .pdsContainerQ35 {
+        font-family: "Arial Narrow" !important;
+        font-size: 13px !important;
+        color: rgb(0, 0, 0);
+        background-color: rgb(234, 234, 234);
+        vertical-align: top;
+        text-align: left;
+        padding: 0px 2px;
+        max-width: 1190px;
+        max-height: 285px;
+        min-width: 380px !important;
+        min-height: 67px;
+        left: 69px;
+        top: 267px;
+        right: auto;
+    }
+
+    .pdsContainerA34 {
+        font-family: "Arial Narrow" !important;
+        font-size: 13px !important;
+        margin: 0% !important;
+        padding: 0% !important;
+        color: rgb(0, 0, 0);
+        vertical-align: top;
+        text-align: left;
+        background-color: rgb(255, 255, 255);
+        padding-left: 2px;
+        max-width: 702px !important;
+        
+        max-height: 361px !important;
+        min-width: 200px !important;
+        min-height: 46px;
+        left: 500px !important;
+        top: 151px;
+        right: auto;
+    }
+
+    .pdsContainerA35 {
+        font-family: "Arial Narrow" !important;
+        font-size: 13px !important;
+        color: rgb(0, 0, 0);
+        vertical-align: top;
+        text-align: left;
+        background-color: rgb(255, 255, 255);
+        padding: 0px 2px;
+        max-width: 722px;
+        max-height: 261px;
+        width: 210px !important;
+        min-width: 200px !important;
+        min-height: 16px;
+        left: 537px;
+        top: 291px;
+        right: auto;
+    }
+
+    .pdsContainerQ36 {
+        font-family: "Arial Narrow" !important;
+        font-size: 13px !important;
+        color: rgb(0, 0, 0);
+        background-color: rgb(234, 234, 234);
+        vertical-align: top;
+        text-align: left;
+        padding: 0px 2px;
+        max-width: 1190px;
+        max-height: 123px;
+        min-width: 431px;
+        min-height: 69px;
+        left: 69px;
+        top: 429px;
+        right: auto;
+    }
+
+    .pdsContainerA36 {
+        font-family: "Arial Narrow" !important;
+        font-size: 13px !important;
+        color: rgb(0, 0, 0);
+        vertical-align: top;
+        text-align: left;
+        background-color: rgb(255, 255, 255);
+        padding: 0px 2px;
+        max-width: 722px;
+        max-height: 368px;
+        width: 210px !important;
+        min-width: 200px;
+        min-height: 16px;
+        left: 537px;
+        top: 183.667px;
+        right: auto;
+
+    }
+
+    .pdsContainerQ37 {
+        font-family: "Arial Narrow" !important;
+        font-size: 13px !important;
+        color: rgb(0, 0, 0);
+        background-color: rgb(234, 234, 234);
+        vertical-align: top;
+        text-align: left;
+        padding: 0px 2px;
+        max-width: 1190px;
+        max-height: 51px;
+        min-width: 461px;
+        min-height: 51px;
+        left: 69px;
+        top: 501px;
+        right: auto;
+    }
+
+    .pdsContainerA37 {
+        font-family: "Arial Narrow" !important;
+        font-size: 13px !important;
+        font-weight: bold;
+        color: rgb(0, 0, 0);
+        vertical-align: middle;
+        text-align: left;
+        background-color: rgb(255, 255, 255);
+        padding: 0px 2px;
+        max-width: 696px;
+        max-height: 386px;
+        display: inline-block;
+        min-width: 42.3333px;
+        min-height: 16px;
+        left: 563px;
+        top: 166px;
+        overflow: hidden;
+    }
+
+    .pdsContainerQ38 {
+        font-family: "Arial Narrow" !important;
+        font-size: 13px !important;
+        color: rgb(0, 0, 0);
+        background-color: rgb(234, 234, 234);
+        vertical-align: top;
+        text-align: left;
+        padding: 0px 2px;
+        max-width: 1190px;
+        max-height: 172px;
+        min-width: 461px;
+        min-height: 37px;
+        left: 69px;
+        top: 379.667px;
+        right: auto;
+    }
+
+    .pdsContainerA38 {
+        font-family: "Arial Narrow" !important;
+        font-size: 13px !important;
+        color: rgb(0, 0, 0);
+        vertical-align: middle;
+        text-align: right;
+        background-color: rgb(255, 255, 255);
+        padding: 0px 2px;
+        max-width: 598px;
+        max-height: 334px;
+        min-width: 107px;
+        min-height: 13px;
+        left: auto;
+        right: 628px;
+        top: 217.667px;
+    }
+
+    .pdsContainerQ39 {
+        font-family: "Arial Narrow" !important;
+        font-size: 13px !important;
+        color: rgb(0, 0, 0);
+        background-color: rgb(234, 234, 234);
+        vertical-align: top;
+        text-align: left;
+        padding: 0px 2px;
+        max-width: 1190px;
+        max-height: 284px;
+        min-width: 461px;
+        min-height: 64px;
+        left: 69px;
+        top: 267.667px;
+        right: auto;
+    }
+
+    .pdsContainerA39 {
+        font-family: "Arial Narrow" !important;
+        font-size: 13px !important;
+        color: rgb(0, 0, 0);
+        vertical-align: top;
+        text-align: left;
+        background-color: rgb(255, 255, 255);
+        padding: 0px 2px;
+        max-width: 722px;
+        max-height: 260px;
+        min-width: 200px !important;
+        min-height: 13px;
+        left: 537px;
+        top: 291.667px;
+        right: auto;
+    }
+
+    .pdsContainerQ40 {
+        font-family: "Arial Narrow" !important;
+        font-size: 13px !important;
+        color: rgb(0, 0, 0);
+        background-color: rgb(234, 234, 234);
+        vertical-align: top;
+        text-align: left;
+        padding: 0px 2px;
+        max-width: 1190px;
+        max-height: 217px;
+        min-width: 461px;
+        min-height: 37px;
+        left: 69px;
+        top: 335px;
+        right: auto;
+    }
+
+    .pdsContainerA40 {
+        font-family: "Arial Narrow" !important;
+        font-size: 13px !important;
+        color: rgb(0, 0, 0);
+        vertical-align: top;
+        text-align: left;
+        background-color: rgb(255, 255, 255);
+        padding: 0px 2px;
+        max-width: 722px;
+        max-height: 159px;
+        display: inline-block;
+        min-width: 107px;
+        min-height: 17px;
+        left: 537px;
+        top: 393px;
+        overflow: hidden;
+    }
+    .pdsContainerParent{
+        margin: 0% !important;
+        padding: 0% !important;
+    }
+
+}
+
+/*css for screen viewing*/
+@media screen {
+    * {
+        color: black !important;
+
+    }
+
+    .tableRow {
+
+        height: 30px !important;
+
+    }
+
+    .tableData {
+        height: 30px !important;
+        font-size: 13px;
+        color: #000000;
+        font-weight: bold;
+        text-decoration: none;
+        font-family: 'docs-Arial Narrow';
+        font-style: normal;
+        text-decoration-skip-ink: none;
+    }
+
+    .tableHeader {
+        font-size: 11px;
+        height: 30px;
+        color: #000000;
+        font-weight: normal;
+        text-decoration: none;
+        font-family: 'docs-Arial Narrow';
+        font-style: normal;
+        text-decoration-skip-ink: none;
+    }
+
+    .header {
+        padding: 0%;
+        height: 35px;
+        font-size: 15px;
+        color: #ffffff !important;
+        font-weight: bold;
+        text-decoration: none;
+        font-family: 'docs-Arial Narrow';
+        font-style: italic;
+        text-decoration-skip-ink: none;
+    }
+
+    .locationLabel {
+        font-size: 11px;
+        color: #000000;
+        font-weight: normal;
+        text-decoration: none;
+        font-family: 'docs-Arial Narrow';
+        font-style: italic;
+        text-decoration-skip-ink: none;
+    }
+
+    #colsPersonalInfoOne {
+        width: 180px;
+        background-color: red !important
+    }
+
+    #colsPersonalInfoTwo {
+        width: 200px;
+        background-color: orange;
+    }
+
+    #colsPersonalInfoThree {
+        width: 100px;
+        background-color: blue;
+    }
+
+    #colsPersonalInfoFour {
+        width: 180px;
+        background-color: pink;
+    }
+
+    #colsPersonalInfoFive {
+        width: 110px;
+        background-color: green;
+    }
+
+    #colsPersonalInfoSix {
+        width: 110px;
+        background-color: yellowgreen;
+    }
+
+    #colsPersonalInfoSeven {
+        width: 150px !important;
+        background-color: violet;
+    }
+
+    #colsFamilyOne {
+        width: 150px;
+        background-color: red !important
+    }
+
+    #colsFamilyTwo {
+        width: 100px;
+        background-color: orange;
+    }
+
+    #colsFamilyThree {
+        width: 100px;
+        background-color: blue;
+    }
+
+    #colsFamilyFour {
+        width: 140px;
+        background-color: pink;
+    }
+
+    #colsFamilyFive {
+        width: 80px;
+        background-color: green;
+    }
+
+    #colsFamilySix {
+        width: 100px;
+        background-color: yellowgreen;
+    }
+
+    #colsFamilySeven {
+        width: 100px !important;
+        background-color: violet;
+    }
+
+    #colsFamilyEight {
+        width: 100px !important;
+        background-color: palegoldenrod;
+    }
+
+    #colsEducOne {
+        width: 100px;
+        background-color: red !important
+    }
+
+    #colsEducTwo {
+        width: 140px;
+        background-color: orange;
+    }
+
+    #colsEducThree {
+        width: 140px;
+        background-color: blue;
+    }
+
+    #colsEducFour {
+        width: 70px;
+        background-color: pink;
+    }
+
+    #colsEducFive {
+        width: 70px;
+        background-color: green;
+    }
+
+    #colsEducSix {
+        width: 100px;
+        background-color: yellowgreen;
+    }
+
+    #colsEducSeven {
+        width: 60px !important;
+        background-color: violet;
+    }
+
+    #colsEducEight {
+        width: 100px !important;
+        background-color: palegoldenrod;
+    }
+
+    #colsCivilOne {
+        width: 80px;
+        background-color: red !important
+    }
+
+    #colsCivilTwo {
+        width: 90px;
+        background-color: orange;
+    }
+
+    #colsCivilThree {
+        width: 120px;
+        background-color: blue;
+    }
+
+    #colsCivilFour {
+        width: 60px;
+        background-color: pink;
+    }
+
+    #colsCivilFive {
+        width: 60px;
+        background-color: green;
+    }
+
+    #colsCivilSix {
+        width: 60px;
+        background-color: yellowgreen;
+    }
+
+    #colsCivilSeven {
+        width: 60px !important;
+        background-color: violet;
+    }
+
+    #colsCivilEight {
+        width: 90px !important;
+        background-color: palegoldenrod;
+    }
+
+    #colsWorkOne {
+        width: 50px;
+        background-color: red !important
+    }
+
+    #colsWorkTwo {
+        width: 50px;
+        background-color: orange;
+    }
+
+    #colsWorkThree {
+        width: 150px;
+        background-color: blue;
+    }
+
+    #colsWorkFour {
+        width: 150px;
+        background-color: pink;
+    }
+
+    #colsWorkFive {
+        width: 50px;
+        background-color: green;
+    }
+
+    #colsWorkSix {
+        width: 50px;
+        background-color: yellowgreen;
+    }
+
+    #colsWorkSeven {
+        width: 50px !important;
+        background-color: violet;
+    }
+
+    #colsWorkEight {
+        width: 50px !important;
+        background-color: palegoldenrod;
+    }
+
+    #colsVolOne {
+        width: 70px !important;
+        background-color: red !important
+    }
+
+    #colsVolTwo {
+        width: 70px !important;
+        background-color: orange;
+    }
+
+    #colsVolThree {
+        width: 60px !important;
+        background-color: blue;
+    }
+
+    #colsVolFour {
+        width: 60px !important;
+        background-color: pink;
+    }
+
+    #colsVolFive {
+        width: 70px;
+        background-color: green;
+    }
+
+    #colsVolSix {
+        width: 50px;
+        background-color: yellowgreen;
+    }
+
+    #colsVolSeven {
+        width: 80px !important;
+        background-color: violet;
+    }
+
+    #colsVolEight {
+        width: 80px !important;
+        background-color: palegoldenrod;
+    }
+
+    #colsLearningOne {
+        width: 110px !important;
+        background-color: red !important
+    }
+
+    #colsLearningTwo {
+        width: 110px !important;
+        background-color: orange;
+    }
+
+    #colsLearningThree {
+        width: 60px !important;
+        background-color: blue;
+    }
+
+    #colsLearningFour {
+        width: 60px !important;
+        background-color: pink;
+    }
+
+    #colsLearningFive {
+        width: 60px;
+        background-color: green;
+    }
+
+    #colsLearningSix {
+        width: 60px;
+        background-color: yellowgreen;
+    }
+
+    #colsLearningSeven {
+        width: 70px !important;
+        background-color: violet;
+    }
+
+    #colsLearningEight {
+        width: 70px !important;
+        background-color: palegoldenrod;
+    }
+
+    #colsOtherOne {
+        width: 100px !important;
+        background-color: red !important
+    }
+
+    #colsOtherTwo {
+        width: 100px !important;
+        background-color: orange;
+    }
+
+    #colsOtherThree {
+        width: 150px !important;
+        background-color: blue;
+    }
+
+    /* #colsOtherFour {
+        width: 80px !important;
+        background-color: pink;
+    } */
+
+    #colsOtherFive {
+        width: 80px;
+        background-color: green;
+    }
+
+    #colsOtherSix {
+        width: 70px;
+        background-color: yellowgreen;
+    }
+
+    #colsOtherSeven {
+        width: 100px !important;
+        background-color: violet;
+    }
+
+    #colsOtherEight {
+        width: 100px !important;
+        background-color: palegoldenrod;
+    }
+
+    .spanPdsOne {
+        font-size: 11px;
+        color: #000000;
+        font-weight: bold;
+        text-decoration: none;
+        font-family: 'Arial';
+        font-style: italic;
+        text-decoration-skip-ink: none;
+    }
+
+    .spanPdsTwo {
+        font-size: 12px;
+        color: #000000;
+        font-weight: normal;
+        text-decoration: none;
+        font-family: 'docs-Arial Narrow';
+        font-style: normal;
+        text-decoration-skip-ink: none;
+    }
+
+    .spanPdsThree {
+        font-size: 11px;
+        color: #000000;
+        font-weight: normal;
+        text-decoration: none;
+        font-family: 'docs-Arial Narrow';
+        font-style: normal;
+        text-decoration-skip-ink: none;
+    }
+
+    .spanWork {
+        font-size: 13px !important;
+        color: #ffffff !important;
+        font-weight: bold;
+        text-decoration: none;
+        font-family: 'docs-Arial Narrow';
+        font-style: italic;
+        text-decoration-skip-ink: none;
+    }
+
+    .spanLearning {
+        font-size: 11px !important;
+        color: #ffffff !important;
+        font-weight: bold;
+        text-decoration: none;
+        font-family: 'docs-Arial Narrow';
+        font-style: italic;
+        text-decoration-skip-ink: none;
+    }
+
+    .headerPds {
+        margin-left: 30%;
+        font-size: 28px;
+        color: #000000;
+        font-weight: normal;
+        text-decoration: none;
+        font-family: 'docs-Arial Black';
+        font-style: normal;
+        text-decoration-skip-ink: none;
+    }
+
+    .suffix {
+        font-size: 9px;
+        color: #000000;
+        font-weight: normal;
+        text-decoration: none;
+        font-family: 'docs-Arial Narrow';
+        font-style: normal;
+        text-decoration-skip-ink: none;
+    }
+
+    .imageContainer {
+        display: inherit;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    .pdsDivider {
+        height: 30px;
+        background-color: rgb(234, 234, 234)
+    }
+
+    .image {
+        width: 100%;
+        height: 60%
+    }
+
+    .questionText {
+        font-size: 13px !important;
+        color: #000000 !important;
+        font-weight: normal;
+        text-decoration: none;
+        font-family: 'docs-Arial Narrow';
+        font-style: normal;
+        text-decoration-skip-ink: none;
+    }
+
+    .answerText {
+        font-size: 13px !important;
+        color: #000000 !important;
+        font-weight: normal;
+        text-decoration: none;
+        font-family: 'Arial';
+        font-style: normal;
+        text-decoration-skip-ink: none;
+    }
+
+    .pdsContainer34 {
+        font-family: "Arial Narrow" !important;
+        font-size: 13px !important;
+        color: rgb(0, 0, 0);
+        background-color: rgb(234, 234, 234);
+        vertical-align: top;
+        padding: 0px 2px;
+        max-width: 1190px;
+        max-height: 426px;
+        min-width: 461px;
+        min-height: 13px;
+        left: 69px;
+        top: 126.333px;
+        right: auto;
+    }
+
+    .pdsContainerQ35 {
+        font-family: "Arial Narrow" !important;
+        font-size: 13px !important;
+        color: rgb(0, 0, 0);
+        background-color: rgb(234, 234, 234);
+        vertical-align: top;
+        text-align: left;
+        padding: 0px 2px;
+        max-width: 1190px;
+        max-height: 285px;
+        min-width: 461px;
+        min-height: 67px;
+        left: 69px;
+        top: 267px;
+        right: auto;
+    }
+
+    .pdsContainerA34 {
+        font-family: "Arial Narrow" !important;
+        font-size: 13px !important;
+        color: rgb(0, 0, 0);
+        vertical-align: top;
+        text-align: left;
+        background-color: rgb(255, 255, 255);
+        padding: 0px 2px;
+        max-width: 722px;
+        max-height: 361px;
+        min-width: 276px;
+        min-height: 46px;
+        left: 537px;
+        top: 191px;
+        right: auto;
+    }
+
+    .pdsContainerA35 {
+        font-family: "Arial Narrow" !important;
+        font-size: 13px !important;
+        color: rgb(0, 0, 0);
+        vertical-align: top;
+        text-align: left;
+        background-color: rgb(255, 255, 255);
+        padding: 0px 2px;
+        max-width: 722px;
+        max-height: 261px;
+        min-width: 276px;
+        min-height: 16px;
+        left: 537px;
+        top: 291px;
+        right: auto;
+    }
+
+    .pdsContainerQ36 {
+        font-family: "Arial Narrow" !important;
+        font-size: 13px !important;
+        color: rgb(0, 0, 0);
+        background-color: rgb(234, 234, 234);
+        vertical-align: top;
+        text-align: left;
+        padding: 0px 2px;
+        max-width: 1190px;
+        max-height: 123px;
+        min-width: 461px;
+        min-height: 69px;
+        left: 69px;
+        top: 429px;
+        right: auto;
+    }
+
+    .pdsContainerA36 {
+        font-family: "Arial Narrow" !important;
+        font-size: 13px !important;
+        color: rgb(0, 0, 0);
+        vertical-align: top;
+        text-align: left;
+        background-color: rgb(255, 255, 255);
+        padding: 0px 2px;
+        max-width: 722px;
+        max-height: 368px;
+        min-width: 276px;
+        min-height: 16px;
+        left: 537px;
+        top: 183.667px;
+        right: auto;
+
+    }
+
+    .pdsContainerQ37 {
+        font-family: "Arial Narrow" !important;
+        font-size: 13px !important;
+        color: rgb(0, 0, 0);
+        background-color: rgb(234, 234, 234);
+        vertical-align: top;
+        text-align: left;
+        padding: 0px 2px;
+        max-width: 1190px;
+        max-height: 51px;
+        min-width: 461px;
+        min-height: 51px;
+        left: 69px;
+        top: 501px;
+        right: auto;
+    }
+
+    .pdsContainerA37 {
+        font-family: "Arial Narrow" !important;
+        font-size: 13px !important;
+        font-weight: bold;
+        color: rgb(0, 0, 0);
+        vertical-align: middle;
+        text-align: left;
+        background-color: rgb(255, 255, 255);
+        padding: 0px 2px;
+        max-width: 696px;
+        max-height: 386px;
+        display: inline-block;
+        min-width: 42.3333px;
+        min-height: 16px;
+        left: 563px;
+        top: 166px;
+        overflow: hidden;
+    }
+
+    .pdsContainerQ38 {
+        font-family: "Arial Narrow" !important;
+        font-size: 13px !important;
+        color: rgb(0, 0, 0);
+        background-color: rgb(234, 234, 234);
+        vertical-align: top;
+        text-align: left;
+        padding: 0px 2px;
+        max-width: 1190px;
+        max-height: 172px;
+        min-width: 461px;
+        min-height: 37px;
+        left: 69px;
+        top: 379.667px;
+        right: auto;
+    }
+
+    .pdsContainerA38 {
+        font-family: "Arial Narrow" !important;
+        font-size: 13px !important;
+        color: rgb(0, 0, 0);
+        vertical-align: middle;
+        text-align: right;
+        background-color: rgb(255, 255, 255);
+        padding: 0px 2px;
+        max-width: 598px;
+        max-height: 334px;
+        min-width: 107px;
+        min-height: 13px;
+        left: auto;
+        right: 628px;
+        top: 217.667px;
+    }
+
+    .pdsContainerQ39 {
+        font-family: "Arial Narrow" !important;
+        font-size: 13px !important;
+        color: rgb(0, 0, 0);
+        background-color: rgb(234, 234, 234);
+        vertical-align: top;
+        text-align: left;
+        padding: 0px 2px;
+        max-width: 1190px;
+        max-height: 284px;
+        min-width: 461px;
+        min-height: 64px;
+        left: 69px;
+        top: 267.667px;
+        right: auto;
+    }
+
+    .pdsContainerA39 {
+        font-family: "Arial Narrow" !important;
+        font-size: 13px !important;
+        color: rgb(0, 0, 0);
+        vertical-align: top;
+        text-align: left;
+        background-color: rgb(255, 255, 255);
+        padding: 0px 2px;
+        max-width: 722px;
+        max-height: 260px;
+        min-width: 290px;
+        min-height: 13px;
+        left: 537px;
+        top: 291.667px;
+        right: auto;
+    }
+
+    .pdsContainerQ40 {
+        font-family: "Arial Narrow" !important;
+        font-size: 13px !important;
+        color: rgb(0, 0, 0);
+        background-color: rgb(234, 234, 234);
+        vertical-align: top;
+        text-align: left;
+        padding: 0px 2px;
+        max-width: 1190px;
+        max-height: 217px;
+        min-width: 461px;
+        min-height: 37px;
+        left: 69px;
+        top: 335px;
+        right: auto;
+    }
+
+    .pdsContainerA40 {
+        font-family: "Arial Narrow" !important;
+        font-size: 13px !important;
+        color: rgb(0, 0, 0);
+        vertical-align: top;
+        text-align: left;
+        background-color: rgb(255, 255, 255);
+        padding: 0px 2px;
+        max-width: 722px;
+        max-height: 159px;
+        display: inline-block;
+        min-width: 107px;
+        min-height: 17px;
+        left: 537px;
+        top: 393px;
+        overflow: hidden;
     }
 }
 
-@media print {
-    *, td, th, table{
-        /* color: white !important; */
-        font-size: 8px;
-    }
-}
- /*.tableHeader{
+/*.tableHeader{
     color:blue;
      -webkit-print-color-adjust: exact; 
     background-color: tomato;
