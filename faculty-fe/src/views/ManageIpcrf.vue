@@ -248,6 +248,80 @@
                       ></v-select>
                     </td>
                   </tr>
+                  <!-- Row 6 -->
+                  <tr>
+                    <td colspan="3" style="text-align: left">Level Taught:</td>
+                    <td colspan="2">
+                      <v-select
+                        :items="levelTaughtItems"
+                        v-model="empLevelTaught"
+                        label="Level Taught"
+                        dense
+                        solo
+                        class="text-center pt-5"
+                      ></v-select>
+                    </td>
+                    <td colspan="3" style="text-align: left">
+                      No. of Years in Teaching:
+                    </td>
+                    <td colspan="3">
+                      <v-select
+                        :items="noYrsTeachingItems"
+                        v-model="empYearsOfTeaching"
+                        label="Years of Teaching"
+                        dense
+                        solo
+                        class="text-center pt-5"
+                      ></v-select>
+                    </td>
+                    <td colspan="1" style="text-align: left">School Type:</td>
+                    <td colspan="1">
+                      <v-select
+                        :items="schoolTypeItems"
+                        v-model="empSchoolType"
+                        label="School Type"
+                        dense
+                        solo
+                        class="text-center pt-5"
+                      ></v-select>
+                    </td>
+                  </tr>
+                  <!-- Row 7 -->
+                  <tr>
+                    <td colspan="3" style="text-align: left">Grade Level Taught:</td>
+                    <td colspan="2">
+                      <v-select
+                        :items="gradeLevelTaughtItems"
+                        v-model="empGradeLevelTaught"
+                        label="Grade Level"
+                        dense
+                        solo
+                        class="text-center pt-5"
+                      ></v-select>
+                    </td>
+                    <td colspan="3" style="text-align: left">Highest Degree Obtained:</td>
+                    <td colspan="3">
+                      <v-select
+                        :items="highestDegreeObtainedItems"
+                        v-model="empDegree"
+                        label="Grade Level"
+                        dense
+                        solo
+                        class="text-center pt-5"
+                      ></v-select>
+                    </td>
+                    <td colspan="1" style="text-align: left">School Size:</td>
+                    <td colspan="1">
+                      <v-select
+                        :items="schoolSizeItems"
+                        v-model="empSchoolSize"
+                        label="School Size"
+                        dense
+                        solo
+                        class="text-center pt-5"
+                      ></v-select>
+                    </td>
+                  </tr>
 
                   <!-- Row 6 -->
                   <tr>
@@ -7917,8 +7991,7 @@ export default {
   data() {
     return {
       valid: false,
-      empName: "",
-      empRater: "",
+
       nameRules: [(v) => !!v || "This field is required"],
       regionItems: [
         "National Capital Region (NCR)",
@@ -8091,7 +8164,1019 @@ export default {
         "Health",
         "TLE/HE/TVL",
       ],
+
+      empName: "",
+      empRater: "",
+      empRegion: "",
+      empPosition: "",
+      empRaterPosition: "",
+      empDivision: "",
+      empId: "",
+      empDateReview: "",
+      empDistrict: "",
+      empStatus: "",
+      empRatingPeriod: "",
+      empSchoolId: "",
+      empAge: "",
+      empSchoolName: "",
+      empSex: "",
+      empLevelTaught: "",
+      empYearsOfTeaching: "",
+      empSchoolType: "",
+      empGradeLevelTaught: "",
+      empDegree: "",
+      empSchoolSize: "",
+      empSubjectTaught: "",
+      empSpecialization: "",
+      empCurricularClassification: "",
+
+      kra1: "",
+      kra2: "",
+      kra3: "",
+      kra4: "",
+      kra5: "",
+      dateObserved: "",
+
+      cotIndicatorNo1: "",
+      cotIndicatorNo2: "",
+      cotIndicatorNo3: "",
+      cotIndicatorNo4: "",
+      cotIndicatorNo5: "",
+      cotIndicatorNo6: "",
+      cotIndicatorNo7: "",
+      cotIndicatorNo8: "",
+      cotIndicatorNo9: "",
+      cotIndicatorNo10: "",
+      cotIndicatorNo11: "",
+      cotIndicatorNo12: "",
+
+      cotIndicatorNo13: "",
+      kra_cot1RpmsObj1: "",
+      kra_cot1Rating2: "",
+      kra_cot1Rating3: "",
+      kra_cot1Rating4: "",
+      kra_cot1Rating5: "",
+      kra_cot1Rating6: "",
+      kra_cot1Rating7: "",
+      kra_cot1Rating8: "",
+      kra_cot1Rating9: "",
+      kra_cot1Rating10: "",
+      kra_cot1Rating11: "",
+      kra_cot1Rating12: "",
+      kra_cot1Rating13: "",
+      kra_cot1Rating14: "",
+
+      // kra_cot1RpmsObj1: "",
+      kra_cot1RpmsObj2: "",
+      kra_cot1RpmsObj3: "",
+      kra_cot1RpmsObj4: "",
+      kra_cot1RpmsObj5: "",
+      kra_cot1RpmsObj6: "",
+      kra_cot1RpmsObj7: "",
+      kra_cot1RpmsObj8: "",
+      kra_cot1RpmsObj9: "",
+      kra_cot1RpmsObj10: "",
+      kra_cot1RpmsObj11: "",
+      kra_cot1RpmsObj12: "",
+
+      kra_cot2Rating1: "",
+      kra_cot2Rating2: "",
+      kra_cot2Rating3: "",
+      kra_cot2Rating4: "",
+      kra_cot2Rating5: "",
+      kra_cot2Rating6: "",
+      kra_cot2Rating7: "",
+      kra_cot2Rating8: "",
+      kra_cot2Rating9: "",
+      kra_cot2Rating10: "",
+      kra_cot2Rating11: "",
+      kra_cot2Rating12: "",
+      kra_cot2Rating13: "",
+      kra_cot2Rating14: "",
+
+      kra_cot2RpmsObj1: "",
+      kra_cot2RpmsObj2: "",
+      kra_cot2RpmsObj3: "",
+      kra_cot2RpmsObj4: "",
+      kra_cot2RpmsObj5: "",
+      kra_cot2RpmsObj6: "",
+      kra_cot2RpmsObj7: "",
+      kra_cot2RpmsObj8: "",
+      kra_cot2RpmsObj9: "",
+      kra_cot2RpmsObj10: "",
+      kra_cot2RpmsObj11: "",
+      kra_cot2RpmsObj12: "",
+
+      tf_kra_cot3Rating1: "",
+      kra_cot3Rating1: "",
+      kra_cot3Rating2: "",
+      kra_cot3Rating3: "",
+      kra_cot3Rating4: "",
+      kra_cot3Rating5: "",
+      kra_cot3Rating6: "",
+      kra_cot3Rating7: "",
+      kra_cot3Rating8: "",
+      kra_cot3Rating9: "",
+      kra_cot3Rating10: "",
+      kra_cot3Rating11: "",
+      kra_cot3Rating12: "",
+      kra_cot3Rating13: "",
+
+      kra_cot3Rpms1: "",
+      kra_cot3Rpms2: "",
+      kra_cot3Rpms3: "",
+      kra_cot3Rpms4: "",
+      kra_cot3Rpms5: "",
+      kra_cot3Rpms6: "",
+      kra_cot3Rpms7: "",
+      kra_cot3Rpms8: "",
+      kra_cot3Rpms9: "",
+      kra_cot3Rpms10: "",
+      kra_cot3Rpms11: "",
+      kra_cot3Rpms12: "",
+
+      tf_kra_cot4Rating1: "",
+      kra_cot4Rating1: "",
+      kra_cot4Rating2: "",
+      kra_cot4Rating3: "",
+      kra_cot4Rating4: "",
+      kra_cot4Rating5: "",
+      kra_cot4Rating6: "",
+      kra_cot4Rating7: "",
+      kra_cot4Rating8: "",
+      kra_cot4Rating9: "",
+      kra_cot4Rating10: "",
+      kra_cot4Rating11: "",
+      kra_cot4Rating12: "",
+      kra_cot4Rating13: "",
+
+      kra_cot4Rpms1: "",
+      kra_cot4Rpms2: "",
+      kra_cot4Rpms3: "",
+      kra_cot4Rpms4: "",
+      kra_cot4Rpms5: "",
+      kra_cot4Rpms6: "",
+      kra_cot4Rpms7: "",
+      kra_cot4Rpms8: "",
+      kra_cot4Rpms9: "",
+      kra_cot4Rpms10: "",
+      kra_cot4Rpms11: "",
+      kra_cot4Rpms12: "",
+
+      encodingAverage1: "",
+      encodingAverage2: "",
+      encodingAverage3: "",
+      encodingAverage4: "",
+      encodingAverage5: "",
+      encodingAverage6: "",
+      encodingAverage7: "",
+      encodingAverage8: "",
+      encodingAverage9: "",
+      encodingAverage10: "",
+      encodingAverage11: "",
+      encodingAverage12: "",
+
+      encoding_ipcrfNumericalQ1: "",
+      encoding_ipcrfNumericalQ2: "",
+      encoding_ipcrfNumericalQ3: "",
+      encoding_ipcrfNumericalQ4: "",
+      encoding_ipcrfNumericalQ5: "",
+      encoding_ipcrfNumericalQ6: "",
+      encoding_ipcrfNumericalQ7: "",
+      encoding_ipcrfNumericalQ8: "",
+      encoding_ipcrfNumericalQ9: "",
+      encoding_ipcrfNumericalQ10: "",
+      encoding_ipcrfNumericalQ11: "",
+      encoding_ipcrfNumericalQ12: "",
+      encoding_ipcrfNumericalQ13: "",
+
+      encoding_ipcrfNumerical_E1: "",
+      encoding_ipcrfNumerical_E2: "",
+      encoding_ipcrfNumerical_E3: "",
+      encoding_ipcrfNumerical_E4: "",
+      encoding_ipcrfNumerical_E5: "",
+      encoding_ipcrfNumerical_E6: "",
+      encoding_ipcrfNumerical_E7: "",
+      encoding_ipcrfNumerical_E8: "",
+      encoding_ipcrfNumerical_E9: "",
+      encoding_ipcrfNumerical_E10: "",
+      encoding_ipcrfNumerical_E11: "",
+      encoding_ipcrfNumerical_E12: "",
+
+      encoding_ipcrfNumerical_T1: "",
+      encoding_ipcrfNumerical_T2: "",
+      encoding_ipcrfNumerical_T3: "",
+      encoding_ipcrfNumerical_T4: "",
+      encoding_ipcrfNumerical_T5: "",
+      encoding_ipcrfNumerical_T6: "",
+      encoding_ipcrfNumerical_T7: "",
+      encoding_ipcrfNumerical_T8: "",
+      encoding_ipcrfNumerical_T9: "",
+      encoding_ipcrfNumerical_T10: "",
+      encoding_ipcrfNumerical_T11: "",
+      encoding_ipcrfNumerical_T12: "",
+
+      encoding_ipcrfRatingAve1: "",
+      encoding_ipcrfRatingAve2: "",
+      encoding_ipcrfRatingAve3: "",
+      encoding_ipcrfRatingAve4: "",
+      encoding_ipcrfRatingAve5: "",
+      encoding_ipcrfRatingAve6: "",
+      encoding_ipcrfRatingAve7: "",
+      encoding_ipcrfRatingAve8: "",
+      encoding_ipcrfRatingAve9: "",
+      encoding_ipcrfRatingAve10: "",
+      encoding_ipcrfRatingAve11: "",
+      encoding_ipcrfRatingAve12: "",
+
+      encoding_1: "",
+      encoding_2: "",
+      encoding_3: "",
+      encoding_4: "",
+      encoding_5: "",
+      encoding_6: "",
+      encoding_7: "",
+      encoding_8: "",
+      encoding_9: "",
+      encoding_10: "",
+      encoding_11: "",
+      encoding_12: "",
+
+      encoding_AdjectivalRating1: "",
+      encoding_AdjectivalRating2: "",
+      encoding_AdjectivalRating3: "",
+      encoding_AdjectivalRating4: "",
+      encoding_AdjectivalRating5: "",
+      encoding_AdjectivalRating6: "",
+      encoding_AdjectivalRating7: "",
+      encoding_AdjectivalRating8: "",
+      encoding_AdjectivalRating9: "",
+      encoding_AdjectivalRating10: "",
+      encoding_AdjectivalRating11: "",
+      encoding_AdjectivalRating12: "",
+
+      empAdjRating1: "",
+      empAdjRating2: "",
+
+      empFinalRating: "",
+      empAdjRating: "",
+
+      part_approvingAuthority: "",
+
+      timeline1: "",
+      timeline2: "",
+      timeline3: "",
+      timeline4: "",
+      timeline5: "",
+      timeline6: "",
+      timeline7: "",
+      timeline8: "",
+      timeline9: "",
+      timeline10: "",
+      timeline11: "",
+      timeline12: "",
+
+      kra_1: "",
+      kra_2: "",
+      kra_3: "",
+      kra_4: "",
+      kra_5: "",
+
+      actual1: "",
+      actual1_blank: "",
+      actual2: "",
+      actual2_blank: "",
+      actual3: "",
+      actual3_blank: "",
+      actual4: "",
+      actual4_blank: "",
+      actual5: "",
+      actual5_blank: "",
+      actual6: "",
+      actual6_blank: "",
+      actual6_timeliness: "",
+      actual7: "",
+      actual7_blank: "",
+      actual8: "",
+      actual9: "",
+      actual9_efficiency: "",
+      actual9_blank: "",
+      actual10: "",
+      actual10_efficiency: "",
+      actual10_blank: "",
+      actual11: "",
+      actual11_efficiency: "",
+      actual11_blank: "",
+
+      part3Kra1: "",
+      part3Kra2: "",
+      part3Kra3: "",
+      part3Kra4: "",
+      part3Kra5: "",
+      part3Kra_5: "",
+
+      part3Encoding_7: "",
+      part3Encoding_8: "",
+      part3Encoding_9: "",
+      part3Encoding_10: "",
+      part3Encoding_11: "",
+      part3Encoding_12: "",
+
+      part3Encoding_AdjectivalRating1: "",
+      part3Encoding_AdjectivalRating2: "",
+      part3Encoding_AdjectivalRating3: "",
+      part3Encoding_AdjectivalRating4: "",
+      part3Encoding_AdjectivalRating5: "",
+      part3Encoding_AdjectivalRating6: "",
+      part3Encoding_AdjectivalRating7: "",
+      part3Encoding_AdjectivalRating8: "",
+      part3Encoding_AdjectivalRating9: "",
+      part3Encoding_AdjectivalRating10: "",
+      part3Encoding_AdjectivalRating11: "",
+      part3Encoding_AdjectivalRating12: "",
+
+      part3EmpAdjRating1: "",
+      part3EmpAdjRating2: "",
+      part3EmpFinalRating: "",
+      part3EmpAdjRating: "",
     };
   },
+
+  methods: {
+    async retrieveIpcrf() {
+      console.log("jgkjk");
+      // const returnedIpcrfData = await this.$store.dispatch("retrieveIpcrfInfoById");
+    },
+    finalizeIpcrf() {
+      const empName = this.empName;
+      const empRater = this.empRater;
+      const empRegion = this.empRegion;
+      const empPosition = this.empPosition;
+      const empRaterPosition = this.empRaterPosition;
+      const empDivision = this.empDivision;
+      const empId = this.empId;
+      const empDateReview = this.empDateReview;
+      const empDistrict = this.empDistrict;
+      const empStatus = this.empStatus;
+      const empRatingPeriod = this.empRatingPeriod;
+      const empSchoolId = this.empSchoolId;
+      const empAge = this.empAge;
+      const empSchoolName = this.empSchoolName;
+      const empSex = this.empSex;
+      const empLevelTaught = this.empLevelTaught;
+      const empYearsOfTeaching = this.empYearsOfTeaching;
+      const empSchoolType = this.empSchoolType;
+      const empGradeLevelTaught = this.empLevelTaught;
+      const empDegree = this.empDegree;
+      const empSchoolSize = this.empSchoolSize;
+      const empSubjectTaught = this.empSubjectTaught;
+      const empSpecialization = this.empSpecialization;
+      const empCurricularClassification = this.empCurricularClassification;
+
+      const kra1 = this.kra1;
+      const kra2 = this.kra2;
+      const kra3 = this.kra3;
+      const kra4 = this.kra4;
+      const kra5 = this.kra5;
+      const dateObserved = this.dateObserved;
+
+      const cotIndicatorNo1 = this.cotIndicatorNo1;
+      const cotIndicatorNo2 = this.cotIndicatorNo2;
+      const cotIndicatorNo3 = this.cotIndicatorNo3;
+      const cotIndicatorNo4 = this.cotIndicatorNo4;
+      const cotIndicatorNo5 = this.cotIndicatorNo5;
+      const cotIndicatorNo6 = this.cotIndicatorNo6;
+      const cotIndicatorNo7 = this.cotIndicatorNo7;
+      const cotIndicatorNo8 = this.cotIndicatorNo8;
+      const cotIndicatorNo9 = this.cotIndicatorNo9;
+      const cotIndicatorNo10 = this.cotIndicatorNo10;
+      const cotIndicatorNo11 = this.cotIndicatorNo11;
+      const cotIndicatorNo12 = this.cotIndicatorNo12;
+      const cotIndicatorNo13 = this.cotIndicatorNo13;
+
+      const kra_cot1RpmsObj1 = this.kra_cot1RpmsObj1;
+      const kra_cot1Rating2 = this.kra_cot1Rating2;
+      const kra_cot1Rating3 = this.kra_cot1Rating3;
+      const kra_cot1Rating4 = this.kra_cot1Rating4;
+      const kra_cot1Rating5 = this.kra_cot1Rating5;
+      const kra_cot1Rating6 = this.kra_cot1Rating6;
+      const kra_cot1Rating7 = this.kra_cot1Rating7;
+      const kra_cot1Rating8 = this.kra_cot1Rating8;
+      const kra_cot1Rating9 = this.kra_cot1Rating9;
+      const kra_cot1Rating10 = this.kra_cot1Rating10;
+      const kra_cot1Rating11 = this.kra_cot1Rating11;
+      const kra_cot1Rating12 = this.kra_cot1Rating12;
+      const kra_cot1Rating13 = this.kra_cot1Rating13;
+      const kra_cot1Rating14 = this.kra_cot1Rating14;
+
+      const kra_cot1RpmsObj2 = this.kra_cot1RpmsObj2;
+      const kra_cot1RpmsObj3 = this.kra_cot1RpmsObj3;
+      const kra_cot1RpmsObj4 = this.kra_cot1RpmsObj4;
+      const kra_cot1RpmsObj5 = this.kra_cot1RpmsObj5;
+      const kra_cot1RpmsObj6 = this.kra_cot1RpmsObj6;
+      const kra_cot1RpmsObj7 = this.kra_cot1RpmsObj7;
+      const kra_cot1RpmsObj8 = this.kra_cot1RpmsObj8;
+      const kra_cot1RpmsObj9 = this.kra_cot1RpmsObj9;
+      const kra_cot1RpmsObj10 = this.kra_cot1RpmsObj10;
+      const kra_cot1RpmsObj11 = this.kra_cot1RpmsObj11;
+      const kra_cot1RpmsObj12 = this.kra_cot1RpmsObj12;
+
+      const kra_cot2Rating1 = this.kra_cot2Rating1;
+      const kra_cot2Rating2 = this.kra_cot2Rating2;
+      const kra_cot2Rating3 = this.kra_cot2Rating3;
+      const kra_cot2Rating4 = this.kra_cot2Rating4;
+      const kra_cot2Rating5 = this.kra_cot2Rating5;
+      const kra_cot2Rating6 = this.kra_cot2Rating6;
+      const kra_cot2Rating7 = this.kra_cot2Rating7;
+      const kra_cot2Rating8 = this.kra_cot2Rating8;
+      const kra_cot2Rating9 = this.kra_cot2Rating9;
+      const kra_cot2Rating10 = this.kra_cot2Rating10;
+      const kra_cot2Rating11 = this.kra_cot2Rating11;
+      const kra_cot2Rating12 = this.kra_cot2Rating12;
+      const kra_cot2Rating13 = this.kra_cot2Rating13;
+      const kra_cot2Rating14 = this.kra_cot2Rating14;
+
+      const kra_cot2RpmsObj1 = this.kra_cot2RpmsObj1;
+      const kra_cot2RpmsObj2 = this.kra_cot2RpmsObj2;
+      const kra_cot2RpmsObj3 = this.kra_cot2RpmsObj3;
+      const kra_cot2RpmsObj4 = this.kra_cot2RpmsObj4;
+      const kra_cot2RpmsObj5 = this.kra_cot2RpmsObj5;
+      const kra_cot2RpmsObj6 = this.kra_cot2RpmsObj6;
+      const kra_cot2RpmsObj7 = this.kra_cot2RpmsObj7;
+      const kra_cot2RpmsObj8 = this.kra_cot2RpmsObj8;
+      const kra_cot2RpmsObj9 = this.kra_cot2RpmsObj9;
+      const kra_cot2RpmsObj10 = this.kra_cot2RpmsObj10;
+      const kra_cot2RpmsObj11 = this.kra_cot2RpmsObj11;
+      const kra_cot2RpmsObj12 = this.kra_cot2RpmsObj12;
+
+      const tf_kra_cot3Rating1 = this.tf_kra_cot3Rating1;
+      const kra_cot3Rating1 = this.kra_cot3Rating1;
+      const kra_cot3Rating2 = this.kra_cot3Rating2;
+      const kra_cot3Rating3 = this.kra_cot3Rating3;
+      const kra_cot3Rating4 = this.kra_cot3Rating4;
+      const kra_cot3Rating5 = this.kra_cot3Rating5;
+      const kra_cot3Rating6 = this.kra_cot3Rating6;
+      const kra_cot3Rating7 = this.kra_cot3Rating7;
+      const kra_cot3Rating8 = this.kra_cot3Rating8;
+      const kra_cot3Rating9 = this.kra_cot3Rating9;
+      const kra_cot3Rating10 = this.kra_cot3Rating10;
+      const kra_cot3Rating11 = this.kra_cot3Rating11;
+      const kra_cot3Rating12 = this.kra_cot3Rating12;
+      const kra_cot3Rating13 = this.kra_cot3Rating13;
+
+      const kra_cot3Rpms1 = this.kra_cot3Rpms1;
+      const kra_cot3Rpms2 = this.kra_cot3Rpms2;
+      const kra_cot3Rpms3 = this.kra_cot3Rpms3;
+      const kra_cot3Rpms4 = this.kra_cot3Rpms4;
+      const kra_cot3Rpms5 = this.kra_cot3Rpms5;
+      const kra_cot3Rpms6 = this.kra_cot3Rpms6;
+      const kra_cot3Rpms7 = this.kra_cot3Rpms7;
+      const kra_cot3Rpms8 = this.kra_cot3Rpms8;
+      const kra_cot3Rpms9 = this.kra_cot3Rpms9;
+      const kra_cot3Rpms10 = this.kra_cot3Rpms10;
+      const kra_cot3Rpms11 = this.kra_cot3Rpms11;
+      const kra_cot3Rpms12 = this.kra_cot3Rpms12;
+
+      const tf_kra_cot4Rating1 = this.tf_kra_cot4Rating1;
+      const kra_cot4Rating1 = this.kra_cot4Rating1;
+      const kra_cot4Rating2 = this.kra_cot4Rating2;
+      const kra_cot4Rating3 = this.kra_cot4Rating3;
+      const kra_cot4Rating4 = this.kra_cot4Rating4;
+      const kra_cot4Rating5 = this.kra_cot4Rating5;
+      const kra_cot4Rating6 = this.kra_cot4Rating6;
+      const kra_cot4Rating7 = this.kra_cot4Rating7;
+      const kra_cot4Rating8 = this.kra_cot4Rating8;
+      const kra_cot4Rating9 = this.kra_cot4Rating9;
+      const kra_cot4Rating10 = this.kra_cot4Rating10;
+      const kra_cot4Rating11 = this.kra_cot4Rating11;
+      const kra_cot4Rating12 = this.kra_cot4Rating12;
+      const kra_cot4Rating13 = this.kra_cot4Rating13;
+
+      const kra_cot4Rpms1 = this.kra_cot4Rpms1;
+      const kra_cot4Rpms2 = this.kra_cot4Rpms2;
+      const kra_cot4Rpms3 = this.kra_cot4Rpms3;
+      const kra_cot4Rpms4 = this.kra_cot4Rpms4;
+      const kra_cot4Rpms5 = this.kra_cot4Rpms5;
+      const kra_cot4Rpms6 = this.kra_cot4Rpms6;
+      const kra_cot4Rpms7 = this.kra_cot4Rpms7;
+      const kra_cot4Rpms8 = this.kra_cot4Rpms8;
+      const kra_cot4Rpms9 = this.kra_cot4Rpms9;
+      const kra_cot4Rpms10 = this.kra_cot4Rpms10;
+      const kra_cot4Rpms11 = this.kra_cot4Rpms11;
+      const kra_cot4Rpms12 = this.kra_cot4Rpms12;
+
+      const encodingAverage1 = this.encodingAverage1;
+      const encodingAverage2 = this.encodingAverage2;
+      const encodingAverage3 = this.encodingAverage3;
+      const encodingAverage4 = this.encodingAverage4;
+      const encodingAverage5 = this.encodingAverage5;
+      const encodingAverage6 = this.encodingAverage6;
+      const encodingAverage7 = this.encodingAverage7;
+      const encodingAverage8 = this.encodingAverage8;
+      const encodingAverage9 = this.encodingAverage9;
+      const encodingAverage10 = this.encodingAverage10;
+      const encodingAverage11 = this.encodingAverage11;
+      const encodingAverage12 = this.encodingAverage12;
+
+      const encoding_ipcrfNumericalQ1 = this.encoding_ipcrfNumericalQ1;
+      const encoding_ipcrfNumericalQ2 = this.encoding_ipcrfNumericalQ2;
+      const encoding_ipcrfNumericalQ3 = this.encoding_ipcrfNumericalQ3;
+      const encoding_ipcrfNumericalQ4 = this.encoding_ipcrfNumericalQ4;
+      const encoding_ipcrfNumericalQ5 = this.encoding_ipcrfNumericalQ5;
+      const encoding_ipcrfNumericalQ6 = this.encoding_ipcrfNumericalQ6;
+      const encoding_ipcrfNumericalQ7 = this.encoding_ipcrfNumericalQ7;
+      const encoding_ipcrfNumericalQ8 = this.encoding_ipcrfNumericalQ8;
+      const encoding_ipcrfNumericalQ9 = this.encoding_ipcrfNumericalQ9;
+      const encoding_ipcrfNumericalQ10 = this.encoding_ipcrfNumericalQ10;
+      const encoding_ipcrfNumericalQ11 = this.encoding_ipcrfNumericalQ11;
+      const encoding_ipcrfNumericalQ12 = this.encoding_ipcrfNumericalQ12;
+      const encoding_ipcrfNumericalQ13 = this.encoding_ipcrfNumericalQ13;
+
+      const encoding_ipcrfNumerical_E1 = this.encoding_ipcrfNumerical_E1;
+      const encoding_ipcrfNumerical_E2 = this.encoding_ipcrfNumerical_E2;
+      const encoding_ipcrfNumerical_E3 = this.encoding_ipcrfNumerical_E3;
+      const encoding_ipcrfNumerical_E4 = this.encoding_ipcrfNumerical_E4;
+      const encoding_ipcrfNumerical_E5 = this.encoding_ipcrfNumerical_E5;
+      const encoding_ipcrfNumerical_E6 = this.encoding_ipcrfNumerical_E6;
+      const encoding_ipcrfNumerical_E7 = this.encoding_ipcrfNumerical_E7;
+      const encoding_ipcrfNumerical_E8 = this.encoding_ipcrfNumerical_E8;
+      const encoding_ipcrfNumerical_E9 = this.encoding_ipcrfNumerical_E9;
+      const encoding_ipcrfNumerical_E10 = this.encoding_ipcrfNumerical_E10;
+      const encoding_ipcrfNumerical_E11 = this.encoding_ipcrfNumerical_E11;
+      const encoding_ipcrfNumerical_E12 = this.encoding_ipcrfNumerical_E12;
+
+      const encoding_ipcrfNumerical_T1 = this.encoding_ipcrfNumerical_T1;
+      const encoding_ipcrfNumerical_T2 = this.encoding_ipcrfNumerical_T2;
+      const encoding_ipcrfNumerical_T3 = this.encoding_ipcrfNumerical_T3;
+      const encoding_ipcrfNumerical_T4 = this.encoding_ipcrfNumerical_T4;
+      const encoding_ipcrfNumerical_T5 = this.encoding_ipcrfNumerical_T5;
+      const encoding_ipcrfNumerical_T6 = this.encoding_ipcrfNumerical_T6;
+      const encoding_ipcrfNumerical_T7 = this.encoding_ipcrfNumerical_T7;
+      const encoding_ipcrfNumerical_T8 = this.encoding_ipcrfNumerical_T8;
+      const encoding_ipcrfNumerical_T9 = this.encoding_ipcrfNumerical_T9;
+      const encoding_ipcrfNumerical_T10 = this.encoding_ipcrfNumerical_T10;
+      const encoding_ipcrfNumerical_T11 = this.encoding_ipcrfNumerical_T11;
+      const encoding_ipcrfNumerical_T12 = this.encoding_ipcrfNumerical_T12;
+
+      const encoding_ipcrfRatingAve1 = this.encoding_ipcrfRatingAve1;
+      const encoding_ipcrfRatingAve2 = this.encoding_ipcrfRatingAve2;
+      const encoding_ipcrfRatingAve3 = this.encoding_ipcrfRatingAve3;
+      const encoding_ipcrfRatingAve4 = this.encoding_ipcrfRatingAve4;
+      const encoding_ipcrfRatingAve5 = this.encoding_ipcrfRatingAve5;
+      const encoding_ipcrfRatingAve6 = this.encoding_ipcrfRatingAve6;
+      const encoding_ipcrfRatingAve7 = this.encoding_ipcrfRatingAve7;
+      const encoding_ipcrfRatingAve8 = this.encoding_ipcrfRatingAve8;
+      const encoding_ipcrfRatingAve9 = this.encoding_ipcrfRatingAve9;
+      const encoding_ipcrfRatingAve10 = this.encoding_ipcrfRatingAve10;
+      const encoding_ipcrfRatingAve11 = this.encoding_ipcrfRatingAve11;
+      const encoding_ipcrfRatingAve12 = this.encoding_ipcrfRatingAve12;
+
+      const encoding_1 = this.encoding_1;
+      const encoding_2 = this.encoding_2;
+      const encoding_3 = this.encoding_3;
+      const encoding_4 = this.encoding_4;
+      const encoding_5 = this.encoding_5;
+      const encoding_6 = this.encoding_6;
+      const encoding_7 = this.encoding_7;
+      const encoding_8 = this.encoding_8;
+      const encoding_9 = this.encoding_9;
+      const encoding_10 = this.encoding_10;
+      const encoding_11 = this.encoding_11;
+      const encoding_12 = this.encoding_12;
+
+      const encoding_AdjectivalRating1 = this.encoding_AdjectivalRating1;
+      const encoding_AdjectivalRating2 = this.encoding_AdjectivalRating2;
+      const encoding_AdjectivalRating3 = this.encoding_AdjectivalRating3;
+      const encoding_AdjectivalRating4 = this.encoding_AdjectivalRating4;
+      const encoding_AdjectivalRating5 = this.encoding_AdjectivalRating5;
+      const encoding_AdjectivalRating6 = this.encoding_AdjectivalRating6;
+      const encoding_AdjectivalRating7 = this.encoding_AdjectivalRating7;
+      const encoding_AdjectivalRating8 = this.encoding_AdjectivalRating8;
+      const encoding_AdjectivalRating9 = this.encoding_AdjectivalRating9;
+      const encoding_AdjectivalRating10 = this.encoding_AdjectivalRating10;
+      const encoding_AdjectivalRating11 = this.encoding_AdjectivalRating11;
+      const encoding_AdjectivalRating12 = this.encoding_AdjectivalRating12;
+
+      const empAdjRating1 = this.empAdjRating1;
+      const empAdjRating2 = this.empAdjRating2;
+
+      const empFinalRating = this.empFinalRating;
+      const empAdjRating = this.empAdjRating;
+
+      const part_approvingAuthority = this.part_approvingAuthority;
+
+      const timeline1 = this.timeline1;
+      const timeline2 = this.timeline2;
+      const timeline3 = this.timeline3;
+      const timeline4 = this.timeline4;
+      const timeline5 = this.timeline5;
+      const timeline6 = this.timeline6;
+      const timeline7 = this.timeline7;
+      const timeline8 = this.timeline8;
+      const timeline9 = this.timeline9;
+      const timeline10 = this.timeline10;
+      const timeline11 = this.timeline11;
+      const timeline12 = this.timeline12;
+
+      const kra_1 = this.kra_1;
+      const kra_2 = this.kra_2;
+      const kra_3 = this.kra_3;
+      const kra_4 = this.kra_4;
+      const kra_5 = this.kra_5;
+
+      const actual1 = this.actual1;
+      const actual1_blank = this.actual1_blank;
+      const actual2 = this.actual2;
+      const actual2_blank = this.actual2_blank;
+      const actual3 = this.actual3;
+      const actual3_blank = this.actual3_blank;
+      const actual4 = this.actual4;
+      const actual4_blank = this.actual4_blank;
+      const actual5 = this.actual5;
+      const actual5_blank = this.actual5_blank;
+      const actual6 = this.actual6;
+      const actual6_blank = this.actual6_blank;
+      const actual6_timeliness = this.actual6_timeliness;
+      const actual7 = this.actual7;
+      const actual7_blank = this.actual7_blank;
+      const actual8 = this.actual8;
+      const actual9 = this.actual9;
+      const actual9_efficiency = this.actual9_efficiency;
+      const actual9_blank = this.actual9_blank;
+      const actual10 = this.actual10;
+      const actual10_efficiency = this.actual10_efficiency;
+      const actual10_blank = this.actual10_blank;
+      const actual11 = this.actual11;
+      const actual11_efficiency = this.actual11_efficiency;
+      const actual11_blank = this.actual11_blank;
+
+      const part3Kra1 = this.part3Kra1;
+      const part3Kra2 = this.part3Kra2;
+      const part3Kra3 = this.part3Kra3;
+      const part3Kra4 = this.part3Kra4;
+      const part3Kra5 = this.part3Kra5;
+      const part3Kra_5 = this.part3Kra_5;
+
+      const part3Encoding_7 = this.part3Encoding_7;
+      const part3Encoding_8 = this.part3Encoding_8;
+      const part3Encoding_9 = this.part3Encoding_9;
+      const part3Encoding_10 = this.part3Encoding_10;
+      const part3Encoding_11 = this.part3Encoding_11;
+      const part3Encoding_12 = this.part3Encoding_12;
+
+      const part3Encoding_AdjectivalRating1 = this.part3Encoding_AdjectivalRating1;
+      const part3Encoding_AdjectivalRating2 = this.part3Encoding_AdjectivalRating2;
+      const part3Encoding_AdjectivalRating3 = this.part3Encoding_AdjectivalRating3;
+      const part3Encoding_AdjectivalRating4 = this.part3Encoding_AdjectivalRating4;
+      const part3Encoding_AdjectivalRating5 = this.part3Encoding_AdjectivalRating5;
+      const part3Encoding_AdjectivalRating6 = this.part3Encoding_AdjectivalRating6;
+      const part3Encoding_AdjectivalRating7 = this.part3Encoding_AdjectivalRating7;
+      const part3Encoding_AdjectivalRating8 = this.part3Encoding_AdjectivalRating8;
+      const part3Encoding_AdjectivalRating9 = this.part3Encoding_AdjectivalRating9;
+      const part3Encoding_AdjectivalRating10 = this.part3Encoding_AdjectivalRating10;
+      const part3Encoding_AdjectivalRating11 = this.part3Encoding_AdjectivalRating11;
+      const part3Encoding_AdjectivalRating12 = this.part3Encoding_AdjectivalRating12;
+
+      const part3EmpAdjRating1 = this.part3EmpAdjRating1;
+      const part3EmpAdjRating2 = this.part3EmpAdjRating2;
+      const part3EmpFinalRating = this.part3EmpFinalRating;
+      const part3EmpAdjRating = this.part3EmpAdjRating;
+
+      const data = {
+        empName,
+        empRater,
+        empRegion,
+        empPosition,
+        empRaterPosition,
+        empDivision,
+        empId,
+        empDateReview,
+        empDistrict,
+        empStatus,
+        empRatingPeriod,
+        empSchoolId,
+        empAge,
+        empSchoolName,
+        empSex,
+        empLevelTaught,
+        empYearsOfTeaching,
+        empSchoolType,
+        empGradeLevelTaught,
+        empDegree,
+        empSchoolSize,
+        empSubjectTaught,
+        empSpecialization,
+        empCurricularClassification,
+
+        kra1,
+        kra2,
+        kra3,
+        kra4,
+        kra5,
+        dateObserved,
+
+        cotIndicatorNo1,
+        cotIndicatorNo2,
+        cotIndicatorNo3,
+        cotIndicatorNo4,
+        cotIndicatorNo5,
+        cotIndicatorNo6,
+        cotIndicatorNo7,
+        cotIndicatorNo8,
+        cotIndicatorNo9,
+        cotIndicatorNo10,
+        cotIndicatorNo11,
+        cotIndicatorNo12,
+        cotIndicatorNo13,
+
+        kra_cot1Rating2,
+        kra_cot1Rating3,
+        kra_cot1Rating4,
+        kra_cot1Rating5,
+        kra_cot1Rating6,
+        kra_cot1Rating7,
+        kra_cot1Rating8,
+        kra_cot1Rating9,
+        kra_cot1Rating10,
+        kra_cot1Rating11,
+        kra_cot1Rating12,
+        kra_cot1Rating13,
+        kra_cot1Rating14,
+
+        kra_cot1RpmsObj1,
+        kra_cot1RpmsObj2,
+        kra_cot1RpmsObj3,
+        kra_cot1RpmsObj4,
+        kra_cot1RpmsObj5,
+        kra_cot1RpmsObj6,
+        kra_cot1RpmsObj7,
+        kra_cot1RpmsObj8,
+        kra_cot1RpmsObj9,
+        kra_cot1RpmsObj10,
+        kra_cot1RpmsObj11,
+        kra_cot1RpmsObj12,
+
+        kra_cot2Rating1,
+        kra_cot2Rating2,
+        kra_cot2Rating3,
+        kra_cot2Rating4,
+        kra_cot2Rating5,
+        kra_cot2Rating6,
+        kra_cot2Rating7,
+        kra_cot2Rating8,
+        kra_cot2Rating9,
+        kra_cot2Rating10,
+        kra_cot2Rating11,
+        kra_cot2Rating12,
+        kra_cot2Rating13,
+        kra_cot2Rating14,
+
+        kra_cot2RpmsObj1,
+        kra_cot2RpmsObj2,
+        kra_cot2RpmsObj3,
+        kra_cot2RpmsObj4,
+        kra_cot2RpmsObj5,
+        kra_cot2RpmsObj6,
+        kra_cot2RpmsObj7,
+        kra_cot2RpmsObj8,
+        kra_cot2RpmsObj9,
+        kra_cot2RpmsObj10,
+        kra_cot2RpmsObj11,
+        kra_cot2RpmsObj12,
+
+        tf_kra_cot3Rating1,
+        kra_cot3Rating1,
+        kra_cot3Rating2,
+        kra_cot3Rating3,
+        kra_cot3Rating4,
+        kra_cot3Rating5,
+        kra_cot3Rating6,
+        kra_cot3Rating7,
+        kra_cot3Rating8,
+        kra_cot3Rating9,
+        kra_cot3Rating10,
+        kra_cot3Rating11,
+        kra_cot3Rating12,
+        kra_cot3Rating13,
+
+        kra_cot3Rpms1,
+        kra_cot3Rpms2,
+        kra_cot3Rpms3,
+        kra_cot3Rpms4,
+        kra_cot3Rpms5,
+        kra_cot3Rpms6,
+        kra_cot3Rpms7,
+        kra_cot3Rpms8,
+        kra_cot3Rpms9,
+        kra_cot3Rpms10,
+        kra_cot3Rpms11,
+        kra_cot3Rpms12,
+
+        tf_kra_cot4Rating1,
+        kra_cot4Rating1,
+        kra_cot4Rating2,
+        kra_cot4Rating3,
+        kra_cot4Rating4,
+        kra_cot4Rating5,
+        kra_cot4Rating6,
+        kra_cot4Rating7,
+        kra_cot4Rating8,
+        kra_cot4Rating9,
+        kra_cot4Rating10,
+        kra_cot4Rating11,
+        kra_cot4Rating12,
+        kra_cot4Rating13,
+
+        kra_cot4Rpms1,
+        kra_cot4Rpms2,
+        kra_cot4Rpms3,
+        kra_cot4Rpms4,
+        kra_cot4Rpms5,
+        kra_cot4Rpms6,
+        kra_cot4Rpms7,
+        kra_cot4Rpms8,
+        kra_cot4Rpms9,
+        kra_cot4Rpms10,
+        kra_cot4Rpms11,
+        kra_cot4Rpms12,
+
+        encodingAverage1,
+        encodingAverage2,
+        encodingAverage3,
+        encodingAverage4,
+        encodingAverage5,
+        encodingAverage6,
+        encodingAverage7,
+        encodingAverage8,
+        encodingAverage9,
+        encodingAverage10,
+        encodingAverage11,
+        encodingAverage12,
+
+        encoding_ipcrfNumericalQ1,
+        encoding_ipcrfNumericalQ2,
+        encoding_ipcrfNumericalQ3,
+        encoding_ipcrfNumericalQ4,
+        encoding_ipcrfNumericalQ5,
+        encoding_ipcrfNumericalQ6,
+        encoding_ipcrfNumericalQ7,
+        encoding_ipcrfNumericalQ8,
+        encoding_ipcrfNumericalQ9,
+        encoding_ipcrfNumericalQ10,
+        encoding_ipcrfNumericalQ11,
+        encoding_ipcrfNumericalQ12,
+        encoding_ipcrfNumericalQ13,
+
+        encoding_ipcrfNumerical_E1,
+        encoding_ipcrfNumerical_E2,
+        encoding_ipcrfNumerical_E3,
+        encoding_ipcrfNumerical_E4,
+        encoding_ipcrfNumerical_E5,
+        encoding_ipcrfNumerical_E6,
+        encoding_ipcrfNumerical_E7,
+        encoding_ipcrfNumerical_E8,
+        encoding_ipcrfNumerical_E9,
+        encoding_ipcrfNumerical_E10,
+        encoding_ipcrfNumerical_E11,
+        encoding_ipcrfNumerical_E12,
+
+        encoding_ipcrfNumerical_T1,
+        encoding_ipcrfNumerical_T2,
+        encoding_ipcrfNumerical_T3,
+        encoding_ipcrfNumerical_T4,
+        encoding_ipcrfNumerical_T5,
+        encoding_ipcrfNumerical_T6,
+        encoding_ipcrfNumerical_T7,
+        encoding_ipcrfNumerical_T8,
+        encoding_ipcrfNumerical_T9,
+        encoding_ipcrfNumerical_T10,
+        encoding_ipcrfNumerical_T11,
+        encoding_ipcrfNumerical_T12,
+
+        encoding_ipcrfRatingAve1,
+        encoding_ipcrfRatingAve2,
+        encoding_ipcrfRatingAve3,
+        encoding_ipcrfRatingAve4,
+        encoding_ipcrfRatingAve5,
+        encoding_ipcrfRatingAve6,
+        encoding_ipcrfRatingAve7,
+        encoding_ipcrfRatingAve8,
+        encoding_ipcrfRatingAve9,
+        encoding_ipcrfRatingAve10,
+        encoding_ipcrfRatingAve11,
+        encoding_ipcrfRatingAve12,
+
+        encoding_1,
+        encoding_2,
+        encoding_3,
+        encoding_4,
+        encoding_5,
+        encoding_6,
+        encoding_7,
+        encoding_8,
+        encoding_9,
+        encoding_10,
+        encoding_11,
+        encoding_12,
+
+        encoding_AdjectivalRating1,
+        encoding_AdjectivalRating2,
+        encoding_AdjectivalRating3,
+        encoding_AdjectivalRating4,
+        encoding_AdjectivalRating5,
+        encoding_AdjectivalRating6,
+        encoding_AdjectivalRating7,
+        encoding_AdjectivalRating8,
+        encoding_AdjectivalRating9,
+        encoding_AdjectivalRating10,
+        encoding_AdjectivalRating11,
+        encoding_AdjectivalRating12,
+
+        empAdjRating1,
+        empAdjRating2,
+        empFinalRating,
+        empAdjRating,
+        part_approvingAuthority,
+        timeline1,
+        timeline2,
+        timeline3,
+        timeline4,
+        timeline5,
+        timeline6,
+        timeline7,
+        timeline8,
+        timeline9,
+        timeline10,
+        timeline11,
+        timeline12,
+
+        kra_1,
+        kra_2,
+        kra_3,
+        kra_4,
+        kra_5,
+
+        actual1,
+        actual1_blank,
+        actual2,
+        actual2_blank,
+        actual3,
+        actual3_blank,
+        actual4,
+        actual4_blank,
+        actual5,
+        actual5_blank,
+        actual6,
+        actual6_blank,
+        actual6_timeliness,
+        actual7,
+        actual7_blank,
+        actual8,
+        actual9,
+        actual9_blank,
+        actual9_efficiency,
+        actual10,
+        actual10_blank,
+        actual10_efficiency,
+        actual11,
+        actual11_blank,
+        actual11_efficiency,
+
+        part3Kra1,
+        part3Kra2,
+        part3Kra3,
+        part3Kra4,
+        part3Kra5,
+        part3Kra_5,
+
+        part3Encoding_7,
+        part3Encoding_8,
+        part3Encoding_9,
+        part3Encoding_10,
+        part3Encoding_11,
+        part3Encoding_12,
+
+        part3Encoding_AdjectivalRating1,
+        part3Encoding_AdjectivalRating2,
+        part3Encoding_AdjectivalRating3,
+        part3Encoding_AdjectivalRating4,
+        part3Encoding_AdjectivalRating5,
+        part3Encoding_AdjectivalRating6,
+        part3Encoding_AdjectivalRating7,
+        part3Encoding_AdjectivalRating8,
+        part3Encoding_AdjectivalRating9,
+        part3Encoding_AdjectivalRating10,
+        part3Encoding_AdjectivalRating11,
+        part3Encoding_AdjectivalRating12,
+
+        part3EmpAdjRating1,
+        part3EmpAdjRating2,
+        part3EmpFinalRating,
+        part3EmpAdjRating,
+      },
+
+      //console.log(data);
+    }
+  }
 };
 </script>
