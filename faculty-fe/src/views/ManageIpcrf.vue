@@ -84,7 +84,7 @@
                   <td colspan="1" style="text-align: left">Region:</td>
                   <td colspan="1">
                     <v-select
-                      :items="items"
+                      :items="regionItems"
                       v-model="empRegion"
                       label="Position"
                       dense
@@ -98,7 +98,7 @@
                   <td colspan="3" style="text-align: left">Position:</td>
                   <td colspan="2">
                     <v-select
-                      :items="items"
+                      :items="empPositionItems"
                       v-model="empPosition"
                       label="Position"
                       dense
@@ -109,7 +109,7 @@
                   <td colspan="3" style="text-align: left">Position:</td>
                   <td colspan="3">
                     <v-select
-                      :items="items"
+                      :items="raterPositionItems"
                       v-model="empRaterPosition"
                       label="Rater Position"
                       dense
@@ -120,7 +120,7 @@
                   <td colspan="1" style="text-align: left">Division:</td>
                   <td colspan="1">
                     <v-select
-                      :items="items"
+                      :items="divisionItems"
                       v-model="empDivision"
                       label="Division"
                       dense
@@ -173,7 +173,7 @@
                   <td colspan="3" style="text-align: left">Employment Status:</td>
                   <td colspan="2">
                     <v-select
-                      :items="items"
+                      :items="employmentStatusItems"
                       v-model="empStatus"
                       label="Status"
                       dense
@@ -195,29 +195,29 @@
                   </td>
                   <td colspan="1" style="text-align: left">School ID:</td>
                   <td colspan="1">
-                    <v-select
-                      :items="items"
-                      v-model="empSchoolId"
-                      label="School ID"
-                      dense
-                      solo
-                      class="text-center pt-5"
-                    ></v-select>
-                  </td>
-                </tr>
-                <!-- Row 5 -->
-                <tr>
-                  <td colspan="3" style="text-align: left">Age :</td>
-                  <td colspan="2">
                     <v-text-field
-                      v-model="empAge"
-                      placeholder="Age"
+                      v-model="empSchoolId"
+                      placeholder="School ID"
                       solo
                       dense
                       class="text-center pt-5"
                       type="text"
                     >
                     </v-text-field>
+                  </td>
+                </tr>
+                <!-- Row 5 -->
+                <tr>
+                  <td colspan="3" style="text-align: left">Age :</td>
+                  <td colspan="2">
+                    <v-select
+                      :items="ageItems"
+                      v-model="empAge"
+                      label="Age"
+                      dense
+                      solo
+                      class="text-center pt-5"
+                    ></v-select>
                   </td>
                   <td colspan="3" style="text-align: left">School Name:</td>
                   <td colspan="3">
@@ -234,7 +234,7 @@
                   <td colspan="1" style="text-align: left">Sex:</td>
                   <td colspan="1">
                     <v-select
-                      :items="items"
+                      :items="sexItems"
                       v-model="empSex"
                       label="Sex"
                       dense
@@ -249,7 +249,7 @@
                   <td colspan="3" style="text-align: left">Level Taught:</td>
                   <td colspan="2">
                     <v-select
-                      :items="items"
+                      :items="levelTaughtItems"
                       v-model="empLevelTaught"
                       label="Level Taught"
                       dense
@@ -260,7 +260,7 @@
                   <td colspan="3" style="text-align: left">No. of Years in Teaching:</td>
                   <td colspan="3">
                     <v-select
-                      :items="items"
+                      :items="noYrsTeachingItems"
                       v-model="empYearsOfTeaching"
                       label="Years of Teaching"
                       dense
@@ -270,15 +270,14 @@
                   </td>
                   <td colspan="1" style="text-align: left">School Type:</td>
                   <td colspan="1">
-                    <v-text-field
+                    <v-select
+                      :items="schoolTypeItems"
                       v-model="empSchoolType"
-                      placeholder="School Type"
-                      solo
+                      label="School Type"
                       dense
+                      solo
                       class="text-center pt-5"
-                      type="text"
-                    >
-                    </v-text-field>
+                    ></v-select>
                   </td>
                 </tr>
                 <!-- Row 7 -->
@@ -286,7 +285,7 @@
                   <td colspan="3" style="text-align: left">Grade Level Taught:</td>
                   <td colspan="2">
                     <v-select
-                      :items="items"
+                      :items="gradeLevelTaughtItems"
                       v-model="empLevelTaught"
                       label="Grade Level"
                       dense
@@ -297,7 +296,7 @@
                   <td colspan="3" style="text-align: left">Highest Degree Obtained:</td>
                   <td colspan="3">
                     <v-select
-                      :items="items"
+                      :items="highestDegreeObtainedItems"
                       v-model="empDegree"
                       label="Grade Level"
                       dense
@@ -308,7 +307,7 @@
                   <td colspan="1" style="text-align: left">School Size:</td>
                   <td colspan="1">
                     <v-select
-                      :items="items"
+                      :items="schoolSizeItems"
                       v-model="empSchoolSize"
                       label="School Size"
                       dense
@@ -323,7 +322,7 @@
                   <td colspan="3" style="text-align: left">Subject Taught:</td>
                   <td colspan="2">
                     <v-select
-                      :items="items"
+                      :items="subjectTaughtItems"
                       v-model="empSubjectTaught"
                       label="Subject Taught"
                       dense
@@ -335,7 +334,7 @@
                   <td colspan="3" style="text-align: left">Area of Specialization:</td>
                   <td colspan="3">
                     <v-select
-                      :items="items"
+                      :items="areaofSpecializationItems"
                       v-model="empSpecialization"
                       label="Area of Specialization"
                       dense
@@ -346,7 +345,7 @@
                   <td colspan="1" style="text-align: left">Curricular Classification:</td>
                   <td colspan="1">
                     <v-select
-                      :items="items"
+                      :items="curricularClassificationItems"
                       v-model="empCurricularClassification"
                       label="Curricular"
                       dense
@@ -3775,205 +3774,194 @@
             </v-card-text>
           </v-card>
           <br /><br />
+          <v-container class="grey lighten-5">
+            <v-card class="pa-2 text-center" color="grey lighten-2" outlined tile>
+              <b>PART 2: CORE BEHAVIORAL COMPETENCIES</b>
+            </v-card>
+            <br />
+            <v-card class="mx-auto" max-width="900">
+              <v-card-text>
+                <div class="text--primary">
+                  <b> INSTRUCTIONS:</b><br />
+
+                  &nbsp;&nbsp; Part 2 shall be acomplished by the Ratee after the Rater
+                  accomplishes Part 1. Please tick the box of the competency indicators
+                  that you demonstrated during the performance cycle. The results of your
+                  assessment can be found in the PART 2 sheet.
+                </div>
+              </v-card-text>
+            </v-card>
+            <br />
+            <v-row no-gutters>
+              <v-col v-for="n in 2" :key="n" class="text-justify">
+                <v-flex md11 sm6>
+                  <v-card v-if="n === 1" class="mx-auto" max-width="500">
+                    <v-card-text>
+                      <div class="text--primary">
+                        <b>Self- Management</b><br />
+                        1.Sets personal goals and directions, needs and development.
+                        <br />
+                        2.Undertakes personal actions and behavior that are clear and
+                        purposive and takes into account personal goals and values
+                        congruent to that of the organization. <br />
+                        3.Displays emotional maturity and enthusiasm for and is challenged
+                        by higher goals. <br />
+                        4.Prioritizes work tasks and schedules (through Gantt chants,
+                        checklists, etc.) to achieve goals. <br />
+                        5.Sets high quality, challenging, realistic goals for self and
+                        others. <br />
+                      </div>
+                    </v-card-text>
+                  </v-card>
+
+                  <v-card v-if="n === 2" class="mx-auto" max-width="500">
+                    <v-card-text>
+                      <div class="text--primary">
+                        <b>Teamwork</b><br />
+                        1. Willingly does his/her share of responsibility.
+                        <br />
+                        2.Promotes collaboration and removes barrier to teamwork and goal
+                        accomplishment across the organization. <br />
+                        3.Applies negotiation principles in arriving at win-win
+                        agreements. <br />
+                        4. Drives consensus and team ownership of decisions.
+                        <br />
+                        5. Works constructively and collaboratively with others and across
+                        organizations to accomplish organization goals and objectives.
+                        <br /><br /><br />
+                      </div>
+                    </v-card-text>
+                  </v-card>
+                </v-flex>
+              </v-col>
+            </v-row>
+            <br />
+            <v-row no-gutters>
+              <v-col v-for="n in 2" :key="n" class="text-justify">
+                <v-flex md11 sm6>
+                  <v-card v-if="n === 1" class="mx-auto" max-width="500">
+                    <v-card-text>
+                      <div class="text--primary">
+                        <b>Professionalism and Ethics</b><br />
+                        1.Demonstrates the values and behavior enshrined in the Norms and
+                        Conduct and Ethical Standards for Public Officials and Employees
+                        (RA 6713). <br />
+                        2.Practices ethical and professional behavior and conduct taking
+                        into account the impact of his/her actions and decisions. <br />
+                        3.Maintains a professional image: being trustworthy, regularity of
+                        attendance and punctuality, good grooming and communication.
+                        <br />
+                        4.Makes personal sacrifices to meet the organization’s needs.
+                        <br />
+                        5.Acts with a sense of urgency and responsibility to meet the
+                        organization’s needs, improve system and help others improve their
+                        effectiveness.
+                      </div>
+                    </v-card-text>
+                  </v-card>
+
+                  <v-card v-if="n === 2" class="mx-auto" max-width="500">
+                    <v-card-text>
+                      <div class="text--primary">
+                        <b>Service Orientation</b><br />
+                        1. Can explain and articulate organizational directions, issues
+                        and problems. <br />
+                        2. Takes personal responsibility for dealing with and/or
+                        correcting customer service issues and concerns. <br />
+                        3. Initiates activities that promote advocacy for men and women
+                        empowerment. <br />
+                        4. Participates in updating office vision, mission, mandates and
+                        strategies based on DepEd strategies and directions. <br />
+                        5. Develops and adopts service improvement program through
+                        simplified procedures that will further enhance service delivery.
+                        <br /><br />
+                      </div>
+                    </v-card-text>
+                  </v-card>
+                </v-flex>
+              </v-col>
+            </v-row>
+            <br />
+            <v-row no-gutters>
+              <v-col v-for="n in 2" :key="n" class="text-justify">
+                <v-flex md11 sm6>
+                  <v-card v-if="n === 1" class="mx-auto" max-width="500">
+                    <v-card-text>
+                      <div class="text--primary">
+                        <b>Results Focus</b><br />
+                        1. Achieves results with optimal use of time and resources most of
+                        the time.<br />
+                        2. Avoids rework, mistakes and wastage through effective work
+                        methods by placing organizational needs before personal needs.
+                        <br />
+                        3. Delivers error-free outputs most of the time by conforming to
+                        standard operating procedures correctly and consistently. Able to
+                        produce very satisfactory quality work in terms of
+                        usefulness/acceptability and completeness with no supervision
+                        required. <br />
+                        4. Expresses a desire to do better and may express frustration at
+                        waste or inefficiency. May focus on new or more precise ways of
+                        meeting goals set. <br />
+                        5. Makes specific changes in the system or in own work methods to
+                        improve performance. Examples may include doing something better,
+                        faster, at a lower cost, more efficiently, or improving quality,
+                        customer satisfaction, morale, without setting any specific goal.
+                      </div>
+                    </v-card-text>
+                  </v-card>
+
+                  <v-card v-if="n === 2" class="mx-auto" max-width="500">
+                    <v-card-text>
+                      <div class="text--primary">
+                        <b>Innovation</b><br />
+                        1. Examines the root cause of problems and suggests effective
+                        solutions. Foster new ideas, processes and suggests better ways to
+                        do things (cost and/or operational efficiency). <br />
+                        2. Demonstrates an ability to think “beyond the box”. Continuously
+                        focuses on improving personal productivity to create higher value
+                        and results.
+                        <br />
+                        3. Promotes a creative climate and inspires co-workers to develop
+                        original ideas or solutions.<br />
+                        4. Translates creative thinking into tangible changes and
+                        solutions that improve the work unit and organization. <br />
+                        5. Uses ingenious methods to accomplish responsibilities.
+                        Demonstrates resourcefulness and the ability to succeed with
+                        minimal resources.
+                        <br /><br />
+                        <br /><br />
+                      </div>
+                    </v-card-text>
+                  </v-card>
+                </v-flex>
+              </v-col>
+            </v-row>
+            <br />
+            <v-card class="mx-auto" max-width="600">
+              <v-card-text>
+                <div class="text--primary">
+                  <b> NOTE:</b><br />
+
+                  Click Finalize Part 2 to save your data. You can now proceed to the
+                  preparation of the Part IV: Development Plan, based on the results of
+                  Part 1 and Part 2 of the IPCRF.
+                </div>
+              </v-card-text>
+            </v-card>
+            <br />
+
+            <div class="pa-2" align="center">
+              <v-btn color="primary"> PREVIOUS </v-btn>
+              <v-btn color="primary" class="ml-2"> NEXT </v-btn>
+            </div>
+          </v-container>
         </v-card>
       </v-tab-item>
-
-      <!-- Encoding Part 2 -->
-      <v-tab>Encoding Part 2</v-tab>
-      <v-tab-item>
-        <div id="encoding2">
-          <v-app>
-            <v-container class="grey lighten-5">
-              <v-card class="pa-2 text-center" color="grey lighten-2" outlined tile>
-                <b>PART 2: CORE BEHAVIORAL COMPETENCIES</b>
-              </v-card>
-              <br />
-              <v-card class="mx-auto" max-width="900">
-                <v-card-text>
-                  <div class="text--primary">
-                    <b> INSTRUCTIONS:</b><br />
-
-                    &nbsp;&nbsp; Part 2 shall be acomplished by the Ratee after the Rater
-                    accomplishes Part 1. Please tick the box of the competency indicators
-                    that you demonstrated during the performance cycle. The results of
-                    your assessment can be found in the PART 2 sheet.
-                  </div>
-                </v-card-text>
-              </v-card>
-              <br />
-              <v-row no-gutters>
-                <v-col v-for="n in 2" :key="n" class="text-justify">
-                  <v-flex md11 sm6>
-                    <v-card v-if="n === 1" class="mx-auto" max-width="500">
-                      <v-card-text>
-                        <div class="text--primary">
-                          <b>Self- Management</b><br />
-                          1.Sets personal goals and directions, needs and development.
-                          <br />
-                          2.Undertakes personal actions and behavior that are clear and
-                          purposive and takes into account personal goals and values
-                          congruent to that of the organization. <br />
-                          3.Displays emotional maturity and enthusiasm for and is
-                          challenged by higher goals. <br />
-                          4.Prioritizes work tasks and schedules (through Gantt chants,
-                          checklists, etc.) to achieve goals. <br />
-                          5.Sets high quality, challenging, realistic goals for self and
-                          others. <br />
-                        </div>
-                      </v-card-text>
-                    </v-card>
-
-                    <v-card v-if="n === 2" class="mx-auto" max-width="500">
-                      <v-card-text>
-                        <div class="text--primary">
-                          <b>Teamwork</b><br />
-                          1. Willingly does his/her share of responsibility.
-                          <br />
-                          2.Promotes collaboration and removes barrier to teamwork and
-                          goal accomplishment across the organization. <br />
-                          3.Applies negotiation principles in arriving at win-win
-                          agreements. <br />
-                          4. Drives consensus and team ownership of decisions.
-                          <br />
-                          5. Works constructively and collaboratively with others and
-                          across organizations to accomplish organization goals and
-                          objectives.
-                          <br /><br /><br />
-                        </div>
-                      </v-card-text>
-                    </v-card>
-                  </v-flex>
-                </v-col>
-              </v-row>
-              <br />
-              <v-row no-gutters>
-                <v-col v-for="n in 2" :key="n" class="text-justify">
-                  <v-flex md11 sm6>
-                    <v-card v-if="n === 1" class="mx-auto" max-width="500">
-                      <v-card-text>
-                        <div class="text--primary">
-                          <b>Professionalism and Ethics</b><br />
-                          1.Demonstrates the values and behavior enshrined in the Norms
-                          and Conduct and Ethical Standards for Public Officials and
-                          Employees (RA 6713). <br />
-                          2.Practices ethical and professional behavior and conduct taking
-                          into account the impact of his/her actions and decisions. <br />
-                          3.Maintains a professional image: being trustworthy, regularity
-                          of attendance and punctuality, good grooming and communication.
-                          <br />
-                          4.Makes personal sacrifices to meet the organization’s needs.
-                          <br />
-                          5.Acts with a sense of urgency and responsibility to meet the
-                          organization’s needs, improve system and help others improve
-                          their effectiveness.
-                        </div>
-                      </v-card-text>
-                    </v-card>
-
-                    <v-card v-if="n === 2" class="mx-auto" max-width="500">
-                      <v-card-text>
-                        <div class="text--primary">
-                          <b>Service Orientation</b><br />
-                          1. Can explain and articulate organizational directions, issues
-                          and problems. <br />
-                          2. Takes personal responsibility for dealing with and/or
-                          correcting customer service issues and concerns. <br />
-                          3. Initiates activities that promote advocacy for men and women
-                          empowerment. <br />
-                          4. Participates in updating office vision, mission, mandates and
-                          strategies based on DepEd strategies and directions. <br />
-                          5. Develops and adopts service improvement program through
-                          simplified procedures that will further enhance service
-                          delivery.
-                          <br /><br />
-                        </div>
-                      </v-card-text>
-                    </v-card>
-                  </v-flex>
-                </v-col>
-              </v-row>
-              <br />
-              <v-row no-gutters>
-                <v-col v-for="n in 2" :key="n" class="text-justify">
-                  <v-flex md11 sm6>
-                    <v-card v-if="n === 1" class="mx-auto" max-width="500">
-                      <v-card-text>
-                        <div class="text--primary">
-                          <b>Results Focus</b><br />
-                          1. Achieves results with optimal use of time and resources most
-                          of the time.<br />
-                          2. Avoids rework, mistakes and wastage through effective work
-                          methods by placing organizational needs before personal needs.
-                          <br />
-                          3. Delivers error-free outputs most of the time by conforming to
-                          standard operating procedures correctly and consistently. Able
-                          to produce very satisfactory quality work in terms of
-                          usefulness/acceptability and completeness with no supervision
-                          required. <br />
-                          4. Expresses a desire to do better and may express frustration
-                          at waste or inefficiency. May focus on new or more precise ways
-                          of meeting goals set. <br />
-                          5. Makes specific changes in the system or in own work methods
-                          to improve performance. Examples may include doing something
-                          better, faster, at a lower cost, more efficiently, or improving
-                          quality, customer satisfaction, morale, without setting any
-                          specific goal.
-                        </div>
-                      </v-card-text>
-                    </v-card>
-
-                    <v-card v-if="n === 2" class="mx-auto" max-width="500">
-                      <v-card-text>
-                        <div class="text--primary">
-                          <b>Innovation</b><br />
-                          1. Examines the root cause of problems and suggests effective
-                          solutions. Foster new ideas, processes and suggests better ways
-                          to do things (cost and/or operational efficiency). <br />
-                          2. Demonstrates an ability to think “beyond the box”.
-                          Continuously focuses on improving personal productivity to
-                          create higher value and results.
-                          <br />
-                          3. Promotes a creative climate and inspires co-workers to
-                          develop original ideas or solutions.<br />
-                          4. Translates creative thinking into tangible changes and
-                          solutions that improve the work unit and organization. <br />
-                          5. Uses ingenious methods to accomplish responsibilities.
-                          Demonstrates resourcefulness and the ability to succeed with
-                          minimal resources.
-                          <br /><br />
-                          <br /><br />
-                        </div>
-                      </v-card-text>
-                    </v-card>
-                  </v-flex>
-                </v-col>
-              </v-row>
-              <br />
-              <v-card class="mx-auto" max-width="600">
-                <v-card-text>
-                  <div class="text--primary">
-                    <b> NOTE:</b><br />
-
-                    Click Finalize Part 2 to save your data. You can now proceed to the
-                    preparation of the Part IV: Development Plan, based on the results of
-                    Part 1 and Part 2 of the IPCRF.
-                  </div>
-                </v-card-text>
-              </v-card>
-              <br />
-
-              <div class="pa-2" align="center">
-                <v-btn color="primary"> PREVIOUS </v-btn>
-                <v-btn color="primary" class="ml-2"> NEXT </v-btn>
-              </div>
-            </v-container>
-          </v-app>
-        </div>
-      </v-tab-item>
+      <!-- End of Encoding part 1 -->
 
       <!-- START OF Part 1 Content -->
 
-      <v-tab>Part 1 - Proficient</v-tab>
+      <v-tab ref="#tab3">Part 1 - Proficient</v-tab>
 
       <v-tab-item>
         <div id=" encodingPart1 ">
@@ -6121,8 +6109,8 @@
           </v-app>
         </div>
       </v-tab-item>
-
-      <!-- Part 2 Content -->
+      <!-- End of encoding Part 2 -->
+      <!-- Start of Part 2 Content -->
       <v-tab>Part 2</v-tab>
 
       <v-tab-item>
@@ -6368,7 +6356,7 @@
       </v-tab-item>
 
       <!-- Part 3 content here -->
-      <v-tab>Part 3</v-tab>
+      <v-tab ref="#tab5">Part 3</v-tab>
 
       <v-tab-item>
         <v-card class="pa-2 text-center" tile
@@ -7234,7 +7222,7 @@
               </v-col>
 
               <!-- End of encoding SCORE-->
-              <!-- Start of encoding SCORE -->
+              <!-- Start of encoding Adjectival Rating -->
               <v-col
                 :key="n"
                 v-else-if="n === 10"
@@ -7822,13 +7810,180 @@
 </style>
 <script>
 export default {
-  data: () => ({
-    empName: "",
-    items: ["Foo", "Bar", "Fizz", "Buzz"],
-  }),
-
-  // data: () => ({
-  //   items: ["Foo", "Bar", "Fizz", "Buzz"],
-  // }),
+  data() {
+    return {
+      regionItems: [
+        "National Capital Region (NCR)",
+        "Cordillera Administrative Region (CAR)",
+        "I - Ilocos Region",
+        "II - Cagayan Valley",
+        "III - Central Luzon",
+        "IV-A - CALABARZON",
+        "IV-B - MIMAROPA",
+        "V - Bicol Region",
+        "VI - Western Visayas",
+        "VII - Central Visayas",
+        "VIII - Eastern Visayas",
+        "IX - Zamboanga Peninsula",
+        "X - Northern Mindanao",
+        "XI - Davao Region",
+        "XII - SOCCSKSARGEN",
+        "XIII - CARAGA Region",
+        "Bangsamoro Autonomous Region in Muslim Mindanao (BARMM)",
+      ],
+      empPositionItems: [
+        "Teacher I",
+        "Teacher II",
+        "Teacher III",
+        "Instructor I",
+        "Instructor II",
+        "SPET I",
+        "SPET II",
+        "SPET III",
+        "SPET IV",
+        "SPET V",
+        "Master Teacher I",
+        "Master Teacher II",
+        "Master Teacher III",
+        "Master Teacher IV",
+        "Special Science Teacher I",
+        "Special Science Teacher II",
+        "Special Science Teacher III",
+        "Special Science Teacher IV",
+        "Special Science Teacher V",
+      ],
+      raterPositionItems: [
+        "Education Program Supervisor",
+        "Education Program Supervisor II",
+        "Public Schools District Supervisor",
+        "Principal IV",
+        "Principal III",
+        "Principal II",
+        "Principal I",
+        "Assistant School Principal I",
+        "Assistant School Principal II",
+        "Special School Principal I",
+        "Special School Principal II",
+        "Vocational School Administrator I",
+        "Vocational School Administrator II",
+        "Head Teacher VI",
+        "Head Teacher V",
+        "Head Teacher IV",
+        "Head Teacher III",
+        "Head Teacher II",
+        "Head Teacher I",
+        "Master Teacher IV",
+        "Master Teacher III",
+        "Master Teacher II",
+        "Master Teacher I",
+        "Officer-in-Charge",
+        "Teacher-in-Charge",
+      ],
+      divisionItems: [
+        "Division I",
+        "Division II",
+        "Division III",
+        "Division IV",
+        "Division V",
+        "Division VI",
+        "Division VII",
+        "Division VIII",
+        "Division IX",
+        "Division X",
+        "Division XI",
+        "Division XII",
+        "Division XIII",
+        "Division XIV",
+        "Division XV",
+        "Division XVI",
+      ],
+      employmentStatusItems: [
+        "Regular Permanent",
+        "Provisional",
+        "Substitute",
+        "Contractual",
+      ],
+      ageItems: [
+        "Under 25 years old",
+        "25-30",
+        "31-35",
+        "36-40",
+        "41-45",
+        "46-50",
+        "51-55",
+        "Over 55 years old",
+      ],
+      sexItems: ["Male", "Female"],
+      noYrsTeachingItems: ["0-3 years", "4-10 years", "More than 10 years"],
+      schoolTypeItems: ["Urban", "Rural"],
+      levelTaughtItems: ["", "", ""],
+      highestDegreeObtainedItems: [
+        "Bachelor's Degree",
+        "Master's Degree",
+        "Doctorate Degree",
+      ],
+      schoolSizeItems: ["Small", "Medium", "Large", "Very Large"],
+      gradeLevelTaughtItems: ["", "", ""],
+      curricularClassificationItems: [
+        "Kindergarten",
+        "Kinder to Grade 6",
+        "Kinder to Grade 10",
+        "Kinder to Grade 12",
+        "Kinder to Grade 6; Grade 11-12",
+        "Kinder to Grade 10 attached to Tertiary",
+        "Kinder to Grade 12 attached to Tertiary",
+        "Kindergarten; Grade 7-10",
+        "Kindergarten; Grade 7-10; Grade 11-12",
+        "Kindergarten; Grade 11-12",
+        "Grade 1-6",
+        "Grade 1-6; Grade 7-10",
+        "Grade 1-6; Grade 11-12",
+        "Grade 1-6; Grade 7-10; Grade 11-12",
+        "Grade 7-10",
+        "Grade 7-10; Grade 11-12",
+        "Grade 11-12",
+        "Community-based Learning Center",
+      ],
+      subjectTaughtItems: [
+        "All Subjects",
+        "MTB-MLE",
+        "Madrasah ALIVE",
+        "Filipino",
+        "English",
+        "Mathematics",
+        "Science",
+        "Araling Panlipunan",
+        "Edukasyon sa Pagpapakatao",
+        "MAPEH",
+        "Music",
+        "Arts",
+        "Physical Education",
+        "Health",
+        "TLE/EPP-HE",
+        "TLE/EPP-LE/Tech-Voc",
+        "ALS",
+        "IPED",
+        "Special Programs",
+      ],
+      areaofSpecializationItems: [
+        "English",
+        "Filipino",
+        "Mathematics",
+        "General Science",
+        "Biology",
+        "Chemistry",
+        "Physics",
+        "Social Science",
+        "Early Childhood Education",
+        "Values Education",
+        "SPED",
+        "Music",
+        "Arts",
+        "Physical Education",
+        "Health",
+        "TLE/HE/TVL",
+      ],
+    };
+  },
 };
 </script>

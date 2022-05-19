@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import PersonalData from '../views/PersonalData.vue'
 import ManageUser from '../views/ManageUser.vue'
 import ManageIpcrf from '../views/ManageIpcrf.vue'
+import Sample from '../views/Sample.vue'
 
 Vue.use(VueRouter)
 
@@ -24,6 +25,11 @@ const routes = [{
         path: '/manageIpcrf',
         name: 'manageIpcrf',
         component: ManageIpcrf
+    },
+    {
+        path: '/sample',
+        name: 'sample',
+        component: Sample
     }
 ]
 
