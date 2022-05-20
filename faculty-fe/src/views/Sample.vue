@@ -1,10 +1,762 @@
 <template id="body">
   <v-app class="pa-4">
+    <br />
+    <!-- START OF ENCODING -->
+    <div class="light-green lighten-2 pa-4">
+      <p style="text-align: center">
+        <b>IPCRF Rating Encoding Form</b> <br />
+        <b>Teacher I-III, SPET I-IV (Proficient Teacher) </b> <br />
+        <b>PART 1: INDIVIDUAL PERFORMANCE COMMITMENT AND REVIEW FORM</b>
+      </p>
+      <table id="table" style="width: 100%">
+        <tbody>
+          <td id="tdata" rowspan="2" colspan="2">
+            <p>
+              <b> PRIVACY NOTICE::</b> <br />
+              By using this tool, you agree to authorize the Department of Education to
+              collect, process, retain, and dispose of your personal information in
+              accordance with the Data Privacy Act of 2012. <br />
+              <b> INSTRUCTIONS: </b> <br />
+              Part 1 shall be accomplished by the Rater during the Phase III: Performance
+              Review and Evaluation of the RPMS Cycle. Fill in empty cells (white) with
+              needed information about the teacher, school and division. <br />
+              COT Rating Encode the COT rating per observation period by doing the
+              following steps: 1) Select the subject for COT; 2) Input the COT rating per
+              objective; and 3) Lock COT once finished. <br />
+              QET Rating <br />
+              Once all available COT ratings are inputted, encode your rating for
+              Efficiency and Timeliness. <br />
+              Note: This form automatically transmutes the COT rating to its corresponding
+              in the RPMS 5-point scale. <br />
+              When COT and QET ratings are encoded, click Finalize Part 1. Give the file
+              copy to the teacher concerned. The teacher shall accomplish Parts 2 & 4.
+            </p>
+          </td>
+        </tbody>
+      </table>
+      <br />
+
+      <table style="width: 100%; border-color: black" class="pa-2">
+        <tr class="row1">
+          <td id="tdata" colspan="2">
+            <p>Name of Employee:</p>
+          </td>
+          <td id="tdata" class="white" colspan="4" style="width: 20%">
+            <p></p>
+          </td>
+          <td id="tdata" colspan="3" style="line-height: 5px">
+            <p>Rater:</p>
+          </td>
+          <td id="tdata" class="white" colspan="4" style="width: 20%">
+            <p></p>
+          </td>
+          <td id="tdata" colspan="3" style="line-height: 5px">
+            <p>Region:</p>
+          </td>
+          <td id="tdata" class="white" colspan="4" style="width: 20%">
+            <p></p>
+          </td>
+        </tr>
+        <tr class="row2">
+          <td id="tdata" colspan="2" style="line-height: 5px">
+            <p>Position</p>
+          </td>
+          <td id="tdata" class="white" colspan="4" style="width: 20%">
+            <p></p>
+          </td>
+          <td id="tdata" colspan="3" style="line-height: 5px">
+            <p>Position:</p>
+          </td>
+          <td id="tdata" class="white" colspan="4" style="width: 20%">
+            <p></p>
+          </td>
+          <td id="tdata" colspan="3" style="line-height: 5px">
+            <p>Division:</p>
+          </td>
+          <td id="tdata" class="white" colspan="4" style="width: 20%">
+            <p></p>
+          </td>
+        </tr>
+        <tr class="row3">
+          <td id="tdata" colspan="2" style="line-height: 5px">
+            <p>Employee ID #:</p>
+          </td>
+          <td id="tdata" class="white" colspan="4" style="width: 20%">
+            <p></p>
+          </td>
+          <td id="tdata" colspan="3" style="line-height: 5px">
+            <p>Date of Review:</p>
+          </td>
+          <td id="tdata" class="white" colspan="4" style="width: 20%">
+            <p></p>
+          </td>
+          <td id="tdata" colspan="3" style="line-height: 5px">
+            <p>District/Municipality:</p>
+          </td>
+          <td id="tdata" class="white" colspan="4" style="width: 20%">
+            <p></p>
+          </td>
+        </tr>
+        <tr class="row4">
+          <td id="tdata" colspan="2">
+            <p>Employment Status:</p>
+          </td>
+          <td id="tdata " class="white" colspan="4" style="width: 20%">
+            <p></p>
+          </td>
+          <td id="tdata" colspan="3" style="line-height: 5px">
+            <p>Rating Period:</p>
+          </td>
+          <td id="tdata" class="white" colspan="4" style="width: 20%">
+            <p></p>
+          </td>
+          <td id="tdata" colspan="3" style="line-height: 5px">
+            <p>School ID:</p>
+          </td>
+          <td id="tdata" class="white" colspan="4" style="width: 20%">
+            <p></p>
+          </td>
+        </tr>
+        <tr class="row5">
+          <td id="tdata" colspan="2" style="line-height: 5px">
+            <p>Age:</p>
+          </td>
+          <td id="tdata" class="white" colspan="4" style="width: 20%">
+            <p></p>
+          </td>
+
+          <td id="tdata" colspan="7" style="width: 20%">
+            <p></p>
+          </td>
+          <td id="tdata" colspan="3" style="line-height: 5px">
+            <p>School Name:</p>
+          </td>
+          <td id="tdata" class="white" colspan="4" style="width: 20%">
+            <p></p>
+          </td>
+        </tr>
+        <tr class="row6">
+          <td id="tdata" colspan="2" style="line-height: 5px">
+            <p>Sex:</p>
+          </td>
+          <td id="tdata" class="white" colspan="4" style="width: 20%">
+            <p></p>
+          </td>
+          <td id="tdata" colspan="3">
+            <p>Number of Years in Teaching:</p>
+          </td>
+          <td id="tdata" class="white" colspan="4" style="width: 20%">
+            <p></p>
+          </td>
+          <td id="tdata" colspan="3" style="line-height: 5px">
+            <p>School Type:</p>
+          </td>
+          <td id="tdata" class="white" colspan="4" style="width: 20%">
+            <p></p>
+          </td>
+        </tr>
+        <tr class="row7">
+          <td id="tdata" colspan="2" style="line-height: 5px">
+            <p>Level Taught:</p>
+          </td>
+          <td id="tdata" class="white" colspan="4" style="width: 20%">
+            <p></p>
+          </td>
+          <td id="tdata" colspan="3" rowspan="2">
+            <p>Highest Degree Obtained:</p>
+          </td>
+          <td id="tdata" class="white" colspan="4" style="width: 20%">
+            <p></p>
+          </td>
+          <td id="tdata" colspan="3" style="line-height: 5px">
+            <p>School Size:</p>
+          </td>
+          <td id="tdata" class="white" colspan="4" style="width: 20%">
+            <p></p>
+          </td>
+        </tr>
+        <tr class="row8">
+          <td id="tdata" colspan="2">
+            <p>Grade Level Taught:</p>
+          </td>
+          <td id="tdata" class="white" colspan="4" style="width: 20%">
+            <p></p>
+          </td>
+
+          <td id="tdata" class="white" colspan="4" style="width: 20%">
+            <p></p>
+          </td>
+          <td id="tdata" colspan="3">
+            <p>Curricular Classification:</p>
+          </td>
+          <td id="tdata" class="white" colspan="4" style="width: 20%">
+            <p></p>
+          </td>
+        </tr>
+        <tr class="row9">
+          <td id="tdata" colspan="2" style="line-height: 5px">
+            <p>Subject Taught:</p>
+          </td>
+          <td id="tdata" class="white" colspan="4" style="width: 20%">
+            <p></p>
+          </td>
+          <td id="tdata" colspan="3">
+            <p>Area of Specialization:</p>
+          </td>
+          <td id="tdata" class="white" colspan="4" style="width: 20%">
+            <p></p>
+          </td>
+          <td id="tdata" colspan="3" style="line-height: 5px">
+            <p style="font-color: red">Encoding Status:</p>
+          </td>
+          <td id="tdata" class="white" colspan="4" style="width: 20%">
+            <p></p>
+          </td>
+        </tr>
+        <!-- START OF KRA TABLE -->
+
+        <tr class="light-green lighten-2">
+          <td id="tdata" rowspan="3"><p>KRA</p></td>
+          <td id="tdata" rowspan="3">
+            <p>Weight per KRA</p>
+          </td>
+          <td id="tdata" rowspan="3">
+            <p>Objectives</p>
+          </td>
+          <td id="tdata" rowspan="3"><p>Weight per Objective</p></td>
+          <td id="tdata" rowspan="3">
+            <p>COT Indicator No.</p>
+          </td>
+          <td id="tdata" colspan="2" rowspan="1"><p>COT 1</p></td>
+          <td id="tdata" colspan="2" rowspan="1"><p>COT 2</p></td>
+          <td id="tdata" colspan="2" rowspan="1"><p>COT 3</p></td>
+          <td id="tdata" colspan="2" rowspan="1"><p>COT 4</p></td>
+          <td id="tdata" rowspan="3">
+            <p>AVE</p>
+          </td>
+
+          <td id="tdata" rowspan="2" colspan=" 4">
+            <p>IPCRF Numerical Ratings</p>
+          </td>
+          <td id="tdata" rowspan="3">
+            <p>Score</p>
+          </td>
+          <td id="tdata" rowspan="3">
+            <p>Adjectival Rating</p>
+          </td>
+        </tr>
+        <tr>
+          <td id="tdata" colspan="2" rowspan="1"><p></p></td>
+          <td id="tdata" colspan="2" rowspan="1"><p></p></td>
+          <td id="tdata" colspan="2" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="2" rowspan="1" class="grey darken-2"><p></p></td>
+        </tr>
+        <tr>
+          <td id="tdata" colspan="1" rowspan="1"><p>Rating</p></td>
+          <td id="tdata" colspan="1" rowspan="1"><p>RPMS 5-pt</p></td>
+          <td id="tdata" colspan="1" rowspan="1"><p>Rating</p></td>
+          <td id="tdata" colspan="1" rowspan="1"><p>RPMS 5-pt</p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1"><p>Q</p></td>
+          <td id="tdata" colspan="1" rowspan="1"><p>E</p></td>
+          <td id="tdata" colspan="1" rowspan="1"><p>T</p></td>
+          <td id="tdata" colspan="1" rowspan="1"><p>AVE</p></td>
+        </tr>
+        <tr>
+          <td id="tdata" rowspan="3"><p>KRA</p></td>
+          <td id="tdata" rowspan="3">
+            <p>24%</p>
+          </td>
+          <td id="tdata" colspan="1" rowspan="1"><p>Obective 1</p></td>
+          <td id="tdata" colspan="1" rowspan="1">
+            <p>8%</p>
+            <p></p>
+          </td>
+          <td id="tdata" colspan="1" rowspan="1"><p>1</p></td>
+          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
+        </tr>
+        <!-- OBJ 2 -->
+        <tr>
+          <td id="tdata" colspan="1" rowspan="1"><p>Obective 2</p></td>
+          <td id="tdata" colspan="1" rowspan="1">
+            <p>8%</p>
+            <p></p>
+          </td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
+        </tr>
+        <!-- OBJ 3 -->
+        <tr>
+          <td id="tdata" colspan="1" rowspan="1"><p>Obective 3</p></td>
+          <td id="tdata" colspan="1" rowspan="1">
+            <p>8%</p>
+            <p></p>
+          </td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
+        </tr>
+        <!-- OBJ 4 -->
+        <tr>
+          <td id="tdata" rowspan="3"><p>KRA 2</p></td>
+          <td id="tdata" rowspan="3">
+            <p>24%</p>
+          </td>
+          <td id="tdata" colspan="1" rowspan="1"><p>Obective 4</p></td>
+          <td id="tdata" colspan="1" rowspan="1">
+            <p>8%</p>
+            <p></p>
+          </td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
+        </tr>
+        <!-- OBJ 5 -->
+        <tr>
+          <td id="tdata" colspan="1" rowspan="1"><p>Obective 5</p></td>
+          <td id="tdata" colspan="1" rowspan="1">
+            <p>8%</p>
+            <p></p>
+          </td>
+          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
+        </tr>
+        <!-- OBJ 6 -->
+        <tr>
+          <td id="tdata" colspan="1" rowspan="1"><p>Obective 6</p></td>
+          <td id="tdata" colspan="1" rowspan="1">
+            <p>8%</p>
+            <p></p>
+          </td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
+        </tr>
+        <!-- OBJ 7 -->
+        <tr>
+          <td id="tdata" rowspan="2"><p>KRA 3</p></td>
+          <td id="tdata" rowspan="2">
+            <p>24%</p>
+          </td>
+          <td id="tdata" colspan="1" rowspan="1"><p>Obective 7</p></td>
+          <td id="tdata" colspan="1" rowspan="1">
+            <p>8%</p>
+            <p></p>
+          </td>
+          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
+        </tr>
+        <!-- OBJ 8 -->
+        <tr>
+          <td id="tdata" colspan="1" rowspan="1"><p>Obective 8</p></td>
+          <td id="tdata" colspan="1" rowspan="1">
+            <p>8%</p>
+            <p></p>
+          </td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
+        </tr>
+        <!-- OBJ 4 -->
+        <tr>
+          <td id="tdata" rowspan="3"><p>KRA 4</p></td>
+          <td id="tdata" rowspan="3">
+            <p>24%</p>
+          </td>
+          <td id="tdata" colspan="1" rowspan="1"><p>Obective 9</p></td>
+          <td id="tdata" colspan="1" rowspan="1">
+            <p>8%</p>
+            <p></p>
+          </td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
+        </tr>
+        <!-- OBJ 5 -->
+        <tr>
+          <td id="tdata" colspan="1" rowspan="1"><p>Obective 10</p></td>
+          <td id="tdata" colspan="1" rowspan="1">
+            <p>8%</p>
+            <p></p>
+          </td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
+        </tr>
+        <!-- OBJ 6 -->
+        <tr>
+          <td id="tdata" colspan="1" rowspan="1"><p>Obective 11</p></td>
+          <td id="tdata" colspan="1" rowspan="1">
+            <p>8%</p>
+            <p></p>
+          </td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
+        </tr>
+        <!-- OBJ 11 -->
+        <tr>
+          <td id="tdata" rowspan="1"><p>PLUS FACTOR</p></td>
+          <td id="tdata" rowspan="1">
+            <p>24%</p>
+          </td>
+          <td id="tdata" colspan="1" rowspan="1"><p>Obective 11</p></td>
+          <td id="tdata" colspan="1" rowspan="1">
+            <p>8%</p>
+            <p></p>
+          </td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
+        </tr>
+        <tr>
+          <td id="tdata" colspan="5" rowspan="1">
+            <p style="float: right">Date Observed:</p>
+          </td>
+          <td id="tdata" colspan="2" rowspan="1"><p></p></td>
+          <td id="tdata" colspan="2" rowspan="1"><p></p></td>
+          <td id="tdata" colspan="2" rowspan="1"><p></p></td>
+          <td id="tdata" colspan="2" rowspan="1"><p></p></td>
+          <td id="tdata" colspan="5" rowspan="1">
+            <p style="float: right">Final Rating:</p>
+          </td>
+          <td id="tdata" colspan="2" rowspan="1"><p></p></td>
+        </tr>
+        <tr>
+          <td id="tdata" colspan="5" rowspan="1"><p></p></td>
+          <td id="tdata" colspan="2" rowspan="1"><p></p></td>
+          <td id="tdata" colspan="2" rowspan="1"><p></p></td>
+          <td id="tdata" colspan="2" rowspan="1"><p></p></td>
+          <td id="tdata" colspan="2" rowspan="1"><p></p></td>
+          <td id="tdata" colspan="5" rowspan="1">
+            <p style="float: right">Adjectival Rating:</p>
+          </td>
+          <td id="tdata" colspan="2" rowspan="1"><p></p></td>
+        </tr>
+        <br />
+      </table>
+      <p style="margin-left: 50%">Approving Authority:</p>
+      <br />
+      <p style="margin-left: 47%">____________________________</p>
+      <br />
+
+      <table id="table" style="margin-left: 30%; width: 50%">
+        <tbody>
+          <td id="tdata">
+            <p>
+              <b>NOTE:</b> <br />
+
+              When COT and QET ratings are encoded, click Finalize Part 1. Give the file
+              copy to the teacher concerned. The teacher shall accomplish Parts 2 & 4.
+            </p>
+          </td>
+        </tbody>
+      </table>
+
+      <br />
+
+      <tr>
+        <table>
+          <td id="tdata" style="width: 50%">
+            <div class="text--primary">
+              <b>Self- Management</b><br />
+              1.Sets personal goals and directions, needs and development.
+              <br />
+              2.Undertakes personal actions and behavior that are clear and purposive and
+              takes into account personal goals and values congruent to that of the
+              organization. <br />
+              3.Displays emotional maturity and enthusiasm for and is challenged by higher
+              goals. <br />
+              4.Prioritizes work tasks and schedules (through Gantt chants, checklists,
+              etc.) to achieve goals. <br />
+              5.Sets high quality, challenging, realistic goals for self and others.
+              <br />
+            </div>
+          </td>
+
+          <td id="tdata" style="width: 50%">
+            <div class="text--primary">
+              <b>Teamwork</b><br />
+              1. Willingly does his/her share of responsibility.
+              <br />
+              2.Promotes collaboration and removes barrier to teamwork and goal
+              accomplishment across the organization. <br />
+              3.Applies negotiation principles in arriving at win-win agreements. <br />
+              4. Drives consensus and team ownership of decisions.
+              <br />
+              5. Works constructively and collaboratively with others and across
+              organizations to accomplish organization goals and objectives.
+              <br /><br /><br />
+            </div>
+          </td>
+        </table>
+        <br />
+        <table>
+          <td id="tdata">
+            <div class="text--primary">
+              <b>Professionalism and Ethics</b><br />
+              1.Demonstrates the values and behavior enshrined in the Norms and Conduct
+              and Ethical Standards for Public Officials and Employees (RA 6713). <br />
+              2.Practices ethical and professional behavior and conduct taking into
+              account the impact of his/her actions and decisions. <br />
+              3.Maintains a professional image: being trustworthy, regularity of
+              attendance and punctuality, good grooming and communication.
+              <br />
+              4.Makes personal sacrifices to meet the organization’s needs.
+              <br />
+              5.Acts with a sense of urgency and responsibility to meet the organization’s
+              needs, improve system and help others improve their effectiveness.
+            </div>
+          </td>
+          <td id="tdata" style="width: 50%">
+            <div class="text--primary">
+              <b>Service Orientation</b><br />
+              1. Can explain and articulate organizational directions, issues and
+              problems. <br />
+              2. Takes personal responsibility for dealing with and/or correcting customer
+              service issues and concerns. <br />
+              3. Initiates activities that promote advocacy for men and women empowerment.
+              <br />
+              4. Participates in updating office vision, mission, mandates and strategies
+              based on DepEd strategies and directions. <br />
+              5. Develops and adopts service improvement program through simplified
+              procedures that will further enhance service delivery.
+              <br /><br />
+            </div>
+          </td>
+        </table>
+        <br />
+      </tr>
+      <tr>
+        <table>
+          <td id="tdata" style="width: 50%">
+            <div class="text--primary">
+              <b>Results Focus</b><br />
+              1. Achieves results with optimal use of time and resources most of the
+              time.<br />
+              2. Avoids rework, mistakes and wastage through effective work methods by
+              placing organizational needs before personal needs.
+              <br />
+              3. Delivers error-free outputs most of the time by conforming to standard
+              operating procedures correctly and consistently. Able to produce very
+              satisfactory quality work in terms of usefulness/acceptability and
+              completeness with no supervision required. <br />
+              4. Expresses a desire to do better and may express frustration at waste or
+              inefficiency. May focus on new or more precise ways of meeting goals set.
+              <br />
+              5. Makes specific changes in the system or in own work methods to improve
+              performance. Examples may include doing something better, faster, at a lower
+              cost, more efficiently, or improving quality, customer satisfaction, morale,
+              without setting any specific goal.
+            </div>
+          </td>
+          <td id="tdata">
+            <div class="text--primary">
+              <b>Innovation</b><br />
+              1. Examines the root cause of problems and suggests effective solutions.
+              Foster new ideas, processes and suggests better ways to do things (cost
+              and/or operational efficiency). <br />
+              2. Demonstrates an ability to think “beyond the box”. Continuously focuses
+              on improving personal productivity to create higher value and results.
+              <br />
+              3. Promotes a creative climate and inspires co-workers to develop original
+              ideas or solutions.<br />
+              4. Translates creative thinking into tangible changes and solutions that
+              improve the work unit and organization. <br />
+              5. Uses ingenious methods to accomplish responsibilities. Demonstrates
+              resourcefulness and the ability to succeed with minimal resources.
+              <br /><br />
+              <br /><br />
+            </div>
+          </td>
+        </table>
+
+        <br />
+      </tr>
+      <table id="table" class="white" style="margin-left: 30%; width: 50%">
+        <tbody>
+          <td id="tdata">
+            <p>
+              <b>NOTE:</b> <br />
+
+              When COT and QET ratings are encoded, click Finalize Part 1. Give the file
+              copy to the teacher concerned. The teacher shall accomplish Parts 2 & 4.
+            </p>
+          </td>
+        </tbody>
+      </table>
+      <br />
+    </div>
+    <br />
+    <!-- END OF ENCODING -->
     <!-- start of part 1 display -->
 
     <table id="table" style="width: 100%">
       <tr class="row1">
-        <td id="tdata" colspan="6" class="grey lighten-2 mt-2" style="line-height: 5px">
+        <td id="tdata" colspan="6" class="pt-4" style="background-color: #ddd9c3">
           <p style="text-align: center">
             <b
               >INDIVIDUAL PERFORMANCE COMMITMENT AND REVIEW FORM (IPCRF) for Teacher
@@ -17,13 +769,13 @@
         <td id="tdata" style="line-height: 5px">
           <p>Name of Employee:</p>
         </td>
-        <td id="tdata" style="line-height: 5px; width: 20%">
+        <td id="tdata" style="width: 20%">
           <p></p>
         </td>
         <td id="tdata" style="line-height: 5px">
           <p>Name of Rater:</p>
         </td>
-        <td id="tdata" style="line-height: 5px; width: 20%">
+        <td id="tdata" style="width: 20%">
           <p></p>
         </td>
       </tr>
@@ -163,7 +915,7 @@
         </td>
       </tr>
       <tr class="row1">
-        <td id="tdata" rowspan="50">
+        <td id="tdata" rowspan="36">
           <p>Basic Education Services</p>
         </td>
         <td id="tdata" rowspan="9">
@@ -1340,7 +2092,7 @@
 
       <!-- Start Number 5 -->
       <tr class="row1">
-        <td id="tdata" rowspan="6">
+        <td id="tdata" rowspan="3">
           <p>5. Plus Factor</p>
         </td>
         <td id="tdata" class="timelineObj1" rowspan="3">
@@ -1353,7 +2105,7 @@
         <td id="tdata" class="weightPerKra" rowspan="3">
           <p></p>
         </td>
-        <td id="tdata" class="weightPerKra" rowspan="6">
+        <td id="tdata" class="weightPerKra" rowspan="3">
           <p>16%</p>
         </td>
         <td id="tdata" class="quality1">
@@ -1447,19 +2199,112 @@
         <td id="tdata" class="timeline5 pa-1 blue-grey darken-4">
           <p></p>
         </td>
+        <td id="tdata" class="timeline6 blue-grey darken-4">
+          <p></p>
+        </td>
         <td id="tdata" class="timeline6">
           <p></p>
         </td>
       </tr>
       <!-- End Number 5 Obj -->
+      <!-- Startof Ratingfor overall accomplishment -->
+      <tr>
+        <td class="timeline6" colspan="12">
+          <p style="float: right" class="mr-2 mt-2">Rating for Overall Accomplishment</p>
+        </td>
+        <td id="tdata" class="ratingTotal" colspan="4">
+          <p></p>
+        </td>
+        <td id="tdata" class="ratingAverage">
+          <p></p>
+        </td>
+      </tr>
+      <!-- End of Ratingfor overall accomplishment -->
     </table>
+    <br />
+    <br />
+
+    <!-- START OF ADJECTIVAL RATING -->
+    <div>
+      <table style="width: 50%; text-align: center">
+        <tr>
+          <td id="tdata" colspan="2">ADJECTIVAL RATING EQUIVALENCES</td>
+        </tr>
+
+        <tr>
+          <td id="tdata">RANGE</td>
+          <td id="tdata">ADJECTIVAL RATING</td>
+        </tr>
+        <tr>
+          <td id="tdata">4.500-5.000</td>
+          <td id="tdata">OUTSTANDING</td>
+        </tr>
+        <tr>
+          <td id="tdata">3.500-4.499</td>
+          <td id="tdata">VERY SATISFACTORY</td>
+        </tr>
+        <tr>
+          <td id="tdata">2.500-3.499</td>
+          <td id="tdata">SATISFACTORY</td>
+        </tr>
+        <tr>
+          <td id="tdata">1.500-2.499</td>
+          <td id="tdata">UNSATISFACTORY</td>
+        </tr>
+        <tr>
+          <td id="tdata">below 1.499</td>
+          <td id="tdata">POOR</td>
+        </tr>
+      </table>
+    </div>
+    <!-- END OF ADJECTIVAL RATING -->
+    <!-- Part 1 Display Signatures -->
+
+    <div class="pa-10 ml-9" style="text-align: center">
+      <v-row>
+        <v-col>
+          <v-text-field
+            v-model="part_ratee"
+            style="width: 200px; height: 100px; margin-left: 80px"
+          >
+          </v-text-field>
+
+          <h5 class="pa-2" style="margin-left: 80px">Ratee</h5>
+        </v-col>
+        <v-col>
+          <v-text-field
+            v-model="part_rater"
+            style="width: 200px; height: 100px; margin-left: 40px"
+          >
+          </v-text-field>
+
+          <h5 class="pa-2" style="margin-right: 10px">Rater</h5>
+        </v-col>
+
+        <v-col>
+          <v-text-field style="width: 200px; height: 100px; margin-left: 40px">
+            <p class="mt-6">{{ part_approvingAuthority }}</p>
+          </v-text-field>
+
+          <h5 class="pa-2" style="margin-left: -20px">Approving Authority</h5>
+        </v-col>
+      </v-row>
+    </div>
+    <br /><br />
+
+    <!-- End of Display Signatures  -->
 
     <br /><br />
     <!-- end of part 1 display -->
     <!-- start of part 2 display -->
     <table id="table" style="width: 100%">
       <tr class="row1">
-        <td id="tdata" colspan="6" class="grey lighten-2 mt-2" style="line-height: 5px">
+        <td
+          id="tdata"
+          colspan="6"
+          class="grey lighten-2 pt-4 pb-0"
+          style="line-height: 5px"
+        >
           <p style="text-align: center"><b>PART II: COMPETENCIES</b></p>
         </td>
       </tr>
@@ -1480,63 +2325,80 @@
       <tr>
         <td id="tdata" colspan="2">
           <b>Self-Management</b> <br />
-          1. Sets personal goals and directions, needs and development. <br />
-          2. Undertakes personal actions and behavior that are clear and purposive and
-          takes into account personal goals and values congruent to that of the
-          organization.
-          <br />3. Displays emotional maturity and enthusiasm for and is challenged by
-          higher goals. <br />
-          4. Prioritizes work tasks and schedules (through Gantt chants, checklists, etc.)
-          to achieve goals.
+          <input type="checkbox" v-model="selfManagement1" /> 1. Sets personal goals and
+          directions, needs and development. <br />
+          <input type="checkbox" v-model="selfManagement2" /> 2. Undertakes personal
+          actions and behavior that are clear and purposive and takes into account
+          personal goals and values congruent to that of the organization. <br />
+          <input type="checkbox" v-model="selfManagement3" /> 3. Displays emotional
+          maturity and enthusiasm for and is challenged by higher goals. <br />
+          <input type="checkbox" v-model="selfManagement4" /> 4. Prioritizes work tasks
+          and schedules (through Gantt chants, checklists, etc.) to achieve goals.
           <br />
-          5. Sets high quality, challenging, realistic goals for self and others.
+          <input type="checkbox" v-model="selfManagement5" /> 5. Sets high quality,
+          challenging, realistic goals for self and others.
         </td>
 
         <td id="tdata" colspan="2" style="width: 15%; text-align: center">0</td>
         <td id="tdata" colspan="1">
           <b> Teamwork</b> <br />
-          1. Willingly does his/her share of responsibility. <br />
-          2. Promotes collaboration and removes barrier to teamwork and goal
-          accomplishment across the organization.
-          <br />3. Applies negotiation principles in arriving at win-win agreements.
+          <input type="checkbox" v-model="teamwork1" /> 1. Willingly does his/her share of
+          responsibility. <br />
+          <input type="checkbox" v-model="teamwork2" /> 2. Promotes collaboration and
+          removes barrier to teamwork and goal accomplishment across the organization.
           <br />
-          4. Drives consensus and team ownership of decisions.
+          <input type="checkbox" v-model="teamwork3" /> 3. Applies negotiation principles
+          in arriving at win-win agreements.
           <br />
-          5. Works constructively and collaboratively with others and across organizations
-          to accomplish organization goals and objectives.
+          <input type="checkbox" v-model="teamwork4" /> 4. Drives consensus and team
+          ownership of decisions.
+          <br />
+          <input type="checkbox" v-model="teamwork5" /> 5. Works constructively and
+          collaboratively with others and across organizations to accomplish organization
+          goals and objectives.
         </td>
         <td id="tdata" colspan="2" style="width: 15%; text-align: center">0</td>
       </tr>
       <tr>
         <td id="tdata" colspan="2">
           <b>Professionalism and Ethics</b> <br />
-          1. Demonstrates the values and behavior enshrined in the Norms and Conduct and
-          Ethical Standards for Public Officials and Employees (RA 6713). <br />
-          2. Practices ethical and professional behavior and conduct taking into account
-          the impact of his/her actions and decisions.
-          <br />3. Maintains a professional image: being trustworthy, regularity of
-          attendance and punctuality, good grooming and communication. <br />
-          4. Makes personal sacrifices to meet the organization’s needs.
+          <input type="checkbox" v-model="professionalism1" /> 1. Demonstrates the values
+          and behavior enshrined in the Norms and Conduct and Ethical Standards for Public
+          Officials and Employees (RA 6713). <br />
+          <input type="checkbox" v-model="professionalism2" /> 2. Practices ethical and
+          professional behavior and conduct taking into account the impact of his/her
+          actions and decisions. <br /><input
+            type="checkbox"
+            v-model="professionalism3"
+          />
+          3. Maintains a professional image: being trustworthy, regularity of attendance
+          and punctuality, good grooming and communication. <br />
+          <input type="checkbox" v-model="professionalism4" /> 4. Makes personal
+          sacrifices to meet the organization’s needs.
           <br />
-          5. Acts with a sense of urgency and responsibility to meet the organization’s
-          needs, improve system and help others improve their effectiveness.
+          <input type="checkbox" v-model="professionalism5" /> 5. Acts with a sense of
+          urgency and responsibility to meet the organization’s needs, improve system and
+          help others improve their effectiveness.
         </td>
 
         <td id="tdata" colspan="2" style="width: 15%; text-align: center">0</td>
         <td id="tdata" colspan="1">
           <b> Service Orientation</b> <br />
-          1. Can explain and articulate organizational directions, issues and problems.
+          <input type="checkbox" v-model="serviceOrientation" /> 1. Can explain and
+          articulate organizational directions, issues and problems.
           <br />
-          2. Takes personal responsibility for dealing with and/or correcting customer
-          service issues and concerns.
-          <br />3. Initiates activities that promote advocacy for men and women
-          empowerment.
+          <input type="checkbox" v-model="serviceOrientation" /> 2. Takes personal
+          responsibility for dealing with and/or correcting customer service issues and
+          concerns. <br /><input type="checkbox" v-model="serviceOrientation" /> 3.
+          Initiates activities that promote advocacy for men and women empowerment.
           <br />
-          4. Participates in updating office vision, mission, mandates and strategies
-          based on DepEd strategies and directions.
+          <input type="checkbox" v-model="serviceOrientation" /> 4. Participates in
+          updating office vision, mission, mandates and strategies based on DepEd
+          strategies and directions.
           <br />
-          5. Develops and adopts service improvement program through simplified procedures
-          that will further enhance service delivery.
+          <input type="checkbox" v-model="serviceOrientation" /> 5. Develops and adopts
+          service improvement program through simplified procedures that will further
+          enhance service delivery.
         </td>
         <td id="tdata" colspan="2" style="width: 15%; text-align: center">0</td>
       </tr>
@@ -1593,9 +2455,19 @@
 
     <br />
     <!-- start of part 3 competencies -->
-    <center>
-      Teacher I-III, SPET I-IV, Special Science Teacher I-II (Proficient Teacher)
-    </center>
+    <table id="table">
+      <tr class="row1">
+        <td id="tdata" colspan="6" class="grey lighten-2 pt-4 pb-0">
+          <p style="text-align: center">
+            <b>
+              Teacher I-III, SPET I-IV, Special Science Teacher I-II (Proficient
+              Teacher)</b
+            >
+          </p>
+        </td>
+      </tr>
+    </table>
+
     <table id="table" class="pa-0" style="width: 100%; text-align: left">
       <tr>
         <td id="tdata" rowspan="2" colspan="1">
