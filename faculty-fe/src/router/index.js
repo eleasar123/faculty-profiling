@@ -10,6 +10,7 @@ import PersonalDataSheet from "../views/Profile/PDSUser.vue";
 import ViewPds from "../views/Profile/ViewPdsAdmin.vue"
 import ProductsInventory from '../views/Test/ProductsInventory'
 import ArticlesPage from '../views/CodingInterview/ArticlesPage'
+import ViewIpcrf from '../views/ViewIpcrf.vue';
 Vue.use(VueRouter);
 
 const routes = [{
@@ -24,11 +25,12 @@ const routes = [{
   name: "ArticlesPage",
   component: ArticlesPage
 },
-  {
-    path: "/personalData",
-    name: "personalData",
-    component: PersonalData,
-  },
+{
+  path: "/viewIprcf",
+  name: "viewIpcrf",
+  component: ViewIpcrf
+},
+  
   {
     path: "/login",
     name: "login",

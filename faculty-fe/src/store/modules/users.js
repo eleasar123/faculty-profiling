@@ -48,12 +48,13 @@ const actions = {
           });
       },
 
-    updateUser({ dispatch }, data) {
+    updateUser({ dispatch,commit }, data) {
         return axios
-            .patch('user/edit/', data)
+            .post('user/edit/', data)
             .then(async (result) => {
                 try {
                   await dispatch("retrieveUserProfile");
+                  commit;
                   return result;
                 }catch(error){
                     return error;

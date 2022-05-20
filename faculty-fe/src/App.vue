@@ -1,16 +1,21 @@
 <template>
+<!-- <v-main> -->
+
+
   <v-container fluid>
   <v-app v-if="userData!==null">
     <Navbar></Navbar>
-    <v-content class="ma-6 pa-2">
+    <v-main>
+    <v-content class="ma-6 pa-2 " fluid>
         <router-view></router-view>
     </v-content>
-   
+   </v-main>
   </v-app>
  <v-app v-else>
       <router-view></router-view>
   </v-app>
  </v-container>
+ <!-- </v-main> -->
 </template>
 
 <script>

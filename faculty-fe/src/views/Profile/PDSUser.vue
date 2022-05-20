@@ -1,7 +1,10 @@
 <template>
-  <v-container class="pa-0 ma-0 mr-0 pt-2">
-    
-    <v-container v-if="user == 'Admin' && edit == false">
+
+  <v-container class="pa-0 ma-0 mr-0 pt-2 d-flex" fluid>
+
+    <br> <br> <br>
+
+    <v-container min-width="70%" style="margin-top:50px" v-if="user == 'Admin' && edit == false">
       <v-card>
         <v-card-title>
           Personal Data Sheet
@@ -2218,18 +2221,21 @@
             </v-card>
           </v-col>
           <v-col cols="4" sm="4" class="text-center">
-            <v-container class="pa-3 text-center" height="300px">
+            <v-container class="pa-3 text-center" height="300px" >
               <v-container
                 class="mt-5 ml-auto mr-auto pa-0 text-center d-initial justify-content-center text-center"
-                style="border: solid 1px black; width: 150px; height: 150px"
-              >
+                style="border: solid 1px black; width: 150px; height: 150px;font-size:12px"
+              > 
+              
+              
                 <img
                   :src="imageUrl.personalPhoto"
                   alt="ID picture taken within the last 6 months 3.5 cm. X 4.5 cm
                     (passport size) With full and handwritten name tag and
                     signature over printed name Computer generated or
                     photocopied picture is not acceptable"
-                  style="height: 100%; width: 100%"
+                  style="height: 100%; width: 100%;font-size:12px;"
+                  
               /></v-container>
 
               <span class="text-center">PHOTO</span>
