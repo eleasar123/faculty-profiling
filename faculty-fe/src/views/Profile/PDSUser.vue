@@ -1,5 +1,6 @@
 <template>
   <v-container class="pa-0 ma-0 mr-0 pt-2">
+    
     <v-container v-if="user == 'Admin' && edit == false">
       <v-card>
         <v-card-title>
@@ -30,16 +31,22 @@
         </v-data-table>
       </v-card>
     </v-container>
-    <v-btn @click="editPds" class="float-right ma-4" v-if="edit == false"
+    <v-btn @click="editPds" class="float-right ma-4" v-if="user == 'Teacher' && create == false"
       >Edit</v-btn
     >
     <!-- <v-btn @click="print">Print</v-btn> -->
+ 
     <v-container
       v-if="create == false && user == 'Teacher' && edit == false"
       id="printMe"
       class="ma-0 mt-12 text-center"
       style=""
     >
+       <v-tabs
+  >
+  <v-tab>C1</v-tab>
+  <v-tab-item >
+    <v-container fluid class="ma-0 pa-0" id="printMeC1">
       <v-container fluid
         class="ma-0 pa-0 text-left pdsContainer"
         style="border: solid 1px; height: fit-content"
@@ -1112,6 +1119,19 @@
           </tr>
         </tfoot>
       </v-simple-table>
+      
+    </v-container>
+    <v-btn
+      v-if="create == false && edit == false"
+      class="mt-5"
+      v-print="printObjC1"
+      >Print</v-btn
+    >
+    <div id="loading" v-show="printLoading"></div>
+      </v-tab-item>
+      <v-tab>C2</v-tab>
+      <v-tab-item >
+        <v-container id="printMeC2">
 <v-container
         class="pa-0 text-left header"
         style="
@@ -1454,6 +1474,19 @@
           </tr>
         </tfoot>
       </v-simple-table>
+     
+    </v-container>
+     <v-btn
+      v-if="create == false && edit == false"
+      class="mt-5"
+      v-print="printObjC2"
+      >Print</v-btn
+    >
+    <div id="loading" v-show="printLoading"></div>
+      </v-tab-item>
+      <v-tab>C3</v-tab>
+      <v-tab-item >
+        <v-container id="printMeC3">
 <v-container
         class="pa-0 text-left header headerWork"
         style="
@@ -1820,7 +1853,19 @@
           </tr>
         </tfoot>
       </v-simple-table>
-
+     
+    </v-container>
+     <v-btn
+      v-if="create == false && edit == false"
+      class="mt-5"
+      v-print="printObjC3"
+      >Print</v-btn
+    >
+    <div id="loading" v-show="printLoading"></div>
+</v-tab-item>
+<v-tab>C4</v-tab>
+<v-tab-item >
+  <v-container id="printMeC4">
       <v-container
         class="pa-0 ma-0 pdsContainerParent"
         style="border: solid 1px black"
@@ -2346,14 +2391,18 @@
           </v-card>
         </v-row>
       </v-container>
-    </v-container>
-    <v-btn
+      </v-container>
+      <v-btn
       v-if="create == false && edit == false"
       class="mt-5"
-      v-print="printObj"
+      v-print="printObjC4"
       >Print</v-btn
     >
-    <div id="loading" v-show="printLoading"></div>
+    <div id="loading" v-show="printLoading4"></div>
+    </v-tab-item>
+    </v-tabs>
+    </v-container>
+    
     <v-tabs v-if="create == true || edit == true">
       <v-btn
         v-if="edit == true"
@@ -4002,12 +4051,7 @@
                 </td>
                 <td colspan="2">
                   <v-file-input
-                    :rules="[
-                      (value) =>
-                        !value ||
-                        value.size < 5000000 ||
-                        'Avatar size should be less than 5 MB!',
-                    ]"
+                  
                     dense
                     counter
                     show-size
@@ -4536,7 +4580,7 @@
                     solo
                     show-size
                     counter
-                    :rules="required"
+                   
                     accept="image/png, image/jpeg, image/bmp"
                     v-model="workExperienceSignature"
                     id="signaturePart1"
@@ -5113,7 +5157,7 @@
                   <v-file-input
                     solo
                     show-size
-                    :rules="required"
+                
                     counter
                     accept="image/png, image/jpeg, image/bmp"
                     v-model="otherInfoSignature"
@@ -5626,7 +5670,7 @@
                       v-model="personalPhotoAttachment"
                       class="text-center pt-6"
                       label="Insert Picture"
-                      :rules="required"
+                    
                       dense
                       chips
                       @change="handleFileInput"
@@ -5727,7 +5771,7 @@
                     <v-file-input
                       solo
                       show-size
-                      :rules="required"
+                     
                       counter
                       accept="image/png, image/jpeg, image/bmp"
                       v-model="oathSignature"
@@ -5793,7 +5837,7 @@
                   >
                     <v-file-input
                       solo
-                      :rules="required"
+                      
                       show-size
                       counter
                       accept="image/png, image/jpeg, image/bmp"
@@ -5872,7 +5916,7 @@
                 class="text-center ma-0"
                 style="font-size: 10px;border: solid 1px black; border-right: solid 1px black;black;background-color:rgb(234, 234, 234);"
                 >Person Administering Oath</v-card-subtitle
-              >
+              > 
             </v-card>
           </v-form>
         </v-container>
@@ -5912,8 +5956,8 @@ export default {
   data() {
     return {
       printLoading: true,
-      printObj: {
-        id: "printMe",
+      printObjC1: {
+        id: "printMeC1",
         // preview: true,
         // previewTitle: "print Title", // The title of the preview window. The default is 打印预览
         // popTitle: "good print",
@@ -5921,23 +5965,105 @@ export default {
 
         extraHead:
           '<meta http-equiv="Content-Language"content="en-us"/>, <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">',
-        previewBeforeOpenCallback() {
-          console.log("正在加载预览窗口");
-        },
-        previewOpenCallback() {
-          console.log("已经加载完预览窗口");
-        },
-        beforeOpenCallback() {
-          //.printLoading = true
-          console.log("打开之前");
-        },
-        openCallback() {
-          // .printLoading = false
-          console.log("执行了打印");
-        },
-        closeCallback() {
-          console.log("关闭了打印工具");
-        },
+        // previewBeforeOpenCallback() {
+        //   console.log("正在加载预览窗口");
+        // },
+        // previewOpenCallback() {
+        //   console.log("已经加载完预览窗口");
+        // },
+        // beforeOpenCallback() {
+        //   //.printLoading = true
+        //   console.log("打开之前");
+        // },
+        // openCallback() {
+        //   // .printLoading = false
+        //   console.log("执行了打印");
+        // },
+        // closeCallback() {
+        //   console.log("关闭了打印工具");
+        // },
+      },
+       printObjC2: {
+        id: "printMeC2",
+        // preview: true,
+        // previewTitle: "print Title", // The title of the preview window. The default is 打印预览
+        // popTitle: "good print",
+        extraCss: "https://cdn.bootcdn.net/ajax/libs/animate.css/4.1.1/animate.compat.css, https://cdn.bootcdn.net/ajax/libs/hover.css/2.3.1/css/hover-min.css",
+
+        extraHead:
+          '<meta http-equiv="Content-Language"content="en-us"/>, <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">',
+        // previewBeforeOpenCallback() {
+        //   console.log("正在加载预览窗口");
+        // },
+        // previewOpenCallback() {
+        //   console.log("已经加载完预览窗口");
+        // },
+        // beforeOpenCallback() {
+        //   //.printLoading = true
+        //   console.log("打开之前");
+        // },
+        // openCallback() {
+        //   // .printLoading = false
+        //   console.log("执行了打印");
+        // },
+        // closeCallback() {
+        //   console.log("关闭了打印工具");
+        // },
+      },
+       printObjC3: {
+        id: "printMeC3",
+        // preview: true,
+        // previewTitle: "print Title", // The title of the preview window. The default is 打印预览
+        // popTitle: "good print",
+        //extraCss: "https://cdn.bootcdn.net/ajax/libs/animate.css/4.1.1/animate.compat.css, https://cdn.bootcdn.net/ajax/libs/hover.css/2.3.1/css/hover-min.css",
+
+        extraHead:
+          '<meta http-equiv="Content-Language"content="en-us"/>, <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">',
+        // previewBeforeOpenCallback() {
+        //   console.log("正在加载预览窗口");
+        // },
+        // previewOpenCallback() {
+        //   console.log("已经加载完预览窗口");
+        // },
+        // beforeOpenCallback() {
+        //   //.printLoading = true
+        //   console.log("打开之前");
+        // },
+        // openCallback() {
+        //   // .printLoading = false
+        //   console.log("执行了打印");
+        // },
+        // closeCallback() {
+        //   console.log("关闭了打印工具");
+        // },
+      },
+      printLoading4: true,
+       printObjC4: {
+        id: "printMeC4",
+        // preview: true,
+        // previewTitle: "print Title", // The title of the preview window. The default is 打印预览
+        // popTitle: "good print",
+        //extraCss: "https://cdn.bootcdn.net/ajax/libs/animate.css/4.1.1/animate.compat.css, https://cdn.bootcdn.net/ajax/libs/hover.css/2.3.1/css/hover-min.css",
+
+        extraHead:
+          '<meta http-equiv="Content-Language"content="en-us"/>, <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">',
+        // previewBeforeOpenCallback() {
+        //   console.log("正在加载预览窗口");
+        // },
+        // previewOpenCallback() {
+        //   console.log("已经加载完预览窗口");
+        // },
+        // beforeOpenCallback() {
+        //   //.printLoading = true
+        //   console.log("打开之前");
+        // },
+        // openCallback() {
+        //   // .printLoading = false
+        //   console.log("执行了打印");
+        // },
+        // closeCallback() {
+        //   console.log("关闭了打印工具");
+        // },
       },
       educBackgroundDOSMenu: false,
       oathDateMenu: false,
@@ -6325,6 +6451,7 @@ export default {
   },
   methods: {
     viewItem(item) {
+      console.log(item)
       let data = "";
       let pdsPersonalInfo = "";
       let pdsFamilyBackground = "";
@@ -6333,13 +6460,10 @@ export default {
       let pdsWorkExperience = "";
       let pdsVoluntaryWorkInvolvement = "";
       let pdsLearningAndDevelopment = "";
-      let pdsOtherInfoSpecialSkills = "";
-      let pdsOtherInfoNonacademicDistinctions = "";
-      let pdsOtherInfoAssociationMembers = "";
+      let pdsOtherInfo = "";
       let pdsReferences = "";
       let pdsQuestions = "";
       let pdsAdditionalInfo = "";
-      let children = "";
       this.editedIndex = this.pds.indexOf(item);
       this.editedItem = Object.assign({}, item);
       console.log(item, this.editedIndex, this.editedItem);
@@ -6356,16 +6480,13 @@ export default {
         data[5][0].voluntaryWorkInvolvement[this.editedIndex];
       pdsLearningAndDevelopment =
         data[6][0].learningAndDevelopment[this.editedIndex];
-      pdsOtherInfoSpecialSkills =
-        data[7][0].otherInfoSpecialSkills[this.editedIndex];
-      pdsOtherInfoNonacademicDistinctions =
-        data[8][0].otherInfoNonacademicDistinctions[this.editedIndex];
-      pdsOtherInfoAssociationMembers =
-        data[9][0].otherInfoAssociationMembers[this.editedIndex];
-      pdsReferences = data[10][0].references[this.editedIndex];
-      pdsQuestions = data[11][0].pdsQuestions[this.editedIndex];
-      pdsAdditionalInfo = data[12][0].pdsAdditionalInfo[this.editedIndex];
-      children = data[13][0].children[this.editedIndex];
+      pdsOtherInfo =
+        data[7][0].otherInfo[this.editedIndex];
+      
+      pdsReferences = data[8][0].references[this.editedIndex];
+      pdsQuestions = data[9][0].pdsQuestions[this.editedIndex];
+      pdsAdditionalInfo = data[10][0].pdsAdditionalInfo[this.editedIndex];
+      // children = data[13][0].children[this.editedIndex];
       data = [];
       data.push(pdsPersonalInfo);
       data.push(pdsFamilyBackground);
@@ -6374,13 +6495,11 @@ export default {
       data.push(pdsWorkExperience);
       data.push(pdsVoluntaryWorkInvolvement);
       data.push(pdsLearningAndDevelopment);
-      data.push(pdsOtherInfoSpecialSkills);
-      data.push(pdsOtherInfoNonacademicDistinctions);
-      data.push(pdsOtherInfoAssociationMembers);
+      data.push(pdsOtherInfo);
       data.push(pdsReferences);
       data.push(pdsQuestions);
       data.push(pdsAdditionalInfo);
-      data.push(children);
+      // data.push(children);
       sessionStorage.setItem(
         "pdsPersonalInfo",
         JSON.stringify(pdsPersonalInfo)
@@ -6410,24 +6529,24 @@ export default {
         JSON.stringify(pdsLearningAndDevelopment)
       );
       sessionStorage.setItem(
-        "pdsOtherInfoSpecialSkills",
-        JSON.stringify(pdsOtherInfoSpecialSkills)
+        "pdsOtherInfo",
+        JSON.stringify(pdsOtherInfo)
       );
-      sessionStorage.setItem(
-        "pdsOtherInfoNonacademicDistinctions",
-        JSON.stringify(pdsOtherInfoNonacademicDistinctions)
-      );
-      sessionStorage.setItem(
-        "pdsOtherInfoAssociationMembers",
-        JSON.stringify(pdsOtherInfoAssociationMembers)
-      );
+      // sessionStorage.setItem(
+      //   "pdsOtherInfoNonacademicDistinctions",
+      //   JSON.stringify(pdsOtherInfoNonacademicDistinctions)
+      // );
+      // sessionStorage.setItem(
+      //   "pdsOtherInfoAssociationMembers",
+      //   JSON.stringify(pdsOtherInfoAssociationMembers)
+      // );
       sessionStorage.setItem("pdsReferences", JSON.stringify(pdsReferences));
       sessionStorage.setItem("pdsQuestions", JSON.stringify(pdsQuestions));
       sessionStorage.setItem(
         "pdsAdditionalInfo",
         JSON.stringify(pdsAdditionalInfo)
       );
-      sessionStorage.setItem("children", JSON.stringify(children));
+      // sessionStorage.setItem("children", JSON.stringify(children));
       this.$router.push({ path: "/viewPds", query: { pdsData: data } }); // -> /user
     },
 
@@ -6438,7 +6557,7 @@ export default {
 
       if (this.user == "Admin") {
         const returnedAllData = await this.$store.dispatch("retrievePdsInfo");
-        console.log("reached");
+        console.log(returnedAllData);
         //this.$store.getters.pdsInfosAll = returnedAllData.data
         this.pds =
           returnedAllData.data[0][0].personalInfo != undefined
@@ -6447,7 +6566,8 @@ export default {
         this.loading = false;
       } else if (this.user == "Teacher") {
         const returnedData = await this.$store.dispatch("retrievePdsInfoById");
-        const imageUrl = await this.$store.dispatch("getImageUrl");
+        const id = JSON.parse(sessionStorage.getItem("user_session")).id
+        const imageUrl = await this.$store.dispatch("getImageUrl", id);
         this.pds = returnedData.data;
         this.imageUrl = imageUrl.data;
         console.log(returnedData);
@@ -7284,10 +7404,7 @@ export default {
 </script>
 
 <style scoped src="../../assets/css/main.css" crossorigin="anonymous">
-* {
-  font-size: 10px;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-}
+
 /* .pdsA,
 td,
 th,

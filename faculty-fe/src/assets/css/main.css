@@ -34,7 +34,7 @@ table,td, th,tr, thead, tbody{
 
     .tableData {
         height: 10px !important;
-        font-size: 9px !important;
+        font-size: 13px !important;
         text-align: center !important;
         color: #000000;
         font-weight: bold;
@@ -46,7 +46,7 @@ table,td, th,tr, thead, tbody{
 
     .tableHeader {
         word-break: normal;
-        font-size: 9px !important;
+        font-size: 11px !important;
         height: 10px !important;
         color: #000000;
         font-weight: normal;
@@ -59,7 +59,7 @@ table,td, th,tr, thead, tbody{
     .header {
         padding-top: 4px;
 
-        font-size: 12px !important;
+        font-size: 15px !important;
         height: 22px !important;
         color: #ffffff !important;
         font-weight: bold;
@@ -83,7 +83,7 @@ table,td, th,tr, thead, tbody{
     }
 
     .locationLabel {
-        font-size: 10px !important;
+        font-size: 11px !important;
         color: #000000;
         font-weight: normal;
         text-decoration: none;
