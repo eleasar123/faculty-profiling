@@ -1,4 +1,5 @@
 <template>
+<v-main>
   <v-container fluid>
   <v-app v-if="userData!==null">
     <Navbar></Navbar>
@@ -11,6 +12,7 @@
       <router-view></router-view>
   </v-app>
  </v-container>
+ </v-main>
 </template>
 
 <script>

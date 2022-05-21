@@ -3,6 +3,7 @@
     height: 100px;
     margin-left: 60%;
     margin-top: 2%;
+    
 }
 
 #esatLogocard {
@@ -10,6 +11,7 @@
     height: 80px;
     margin-left: 25%;
     margin-top: 2%;
+    border-radius: 50px;
 }
 
 #disclosure {
@@ -61,7 +63,7 @@
 }
 
 td {
-    border: 1px solid black;
+    border: .5px solid black;
     padding-left: 10px;
     padding-right: 10px;
 }

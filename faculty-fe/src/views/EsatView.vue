@@ -1,16 +1,15 @@
 <template>
+
   <v-container>
+      
     <v-card>
+    
       <v-tabs
-        mt-5
-        v-model="tab"
-        background-color="blue accent-4"
+        background-color="white"
         centered
         dark
-        icons-and-text
       >
-
-        <v-tab href="#subscribe"> Home </v-tab>
+        <!-- <v-tab href="#subscribe"> Home </v-tab>
         <v-tab href="#privacy"> Privacy Note </v-tab>
 
         <v-tab href="#part1"> Part I </v-tab>
@@ -19,7 +18,16 @@
 
         <v-tab href="#part3"> Part III </v-tab>
         <v-tab href="#show_print"> Show Print </v-tab>
-        <v-tab href="#esat_card"> esatCard </v-tab>
+        <v-tab href="#esat_card"> esatCard </v-tab> -->
+        <v-btn v-if="createBtn" class="mr-5 mt-1 float-right" @click="create()"
+          >Create</v-btn
+        >
+        <v-btn
+          v-if="clickEsat"
+          class="mr-5 mt-1 float-right"
+          @click="goToEsatCard()"
+          >Esat Card</v-btn
+        >
       </v-tabs>
 
       <v-tabs-items v-model="tab">
@@ -140,7 +148,7 @@
               <tr class="infoDetails">
                 <td>Name of Employee:</td>
                 <td>
-                  <v-text-field 
+                  <v-text-field required
                     class="textField mt-5"
                     solo
                     dense
@@ -151,14 +159,14 @@
                 <td rowspan="8"></td>
                 <!-- <td>Number of Years in Teaching:</td>
                 <td>
-                  <v-select
+                  <v-autocomplete
                     solo
                     class="mt-6"
                     v-model="yearsInTeaching"
                     :items="yearsItems"
-                  ></v-select>
+                  ></v-autocomplete>
                 </td> -->
-                 <td>School Year:</td>
+                <td>School Year:</td>
                 <td>
                   <v-text-field
                     solo
@@ -169,12 +177,12 @@
                 <td rowspan="8"></td>
                 <td>Region:</td>
                 <td>
-                  <v-select
+                  <v-autocomplete
                     solo
                     class="mt-6"
                     :items="regionItems"
                     v-model="region"
-                  ></v-select>
+                  ></v-autocomplete>
                 </td>
               </tr>
               <tr class="infoDetails">
@@ -187,61 +195,61 @@
                     dense
                   ></v-text-field>
                 </td>
-                 <td>Number of Years in Teaching:</td>
+                <td>Number of Years in Teaching:</td>
                 <td>
-                  <v-select
+                  <v-autocomplete
                     solo
                     class="mt-6"
                     v-model="yearsInTeaching"
                     :items="yearsItems"
-                  ></v-select>
+                  ></v-autocomplete>
                 </td>
                 <!-- <td rowspan="2">Highest Degree Obtained:</td>
                 <td>
-                  <v-select
+                  <v-autocomplete
                     solo
                     class="mt-6"
                     v-model="highestDegreeObtained"
                     :items="highestDegreeItems"
-                  ></v-select>
+                  ></v-autocomplete>
                 </td> -->
                 <td>Division:</td>
                 <td>
-                  <v-select
+                  <v-autocomplete
                     solo
                     class="mt-6"
                     :items="divisionItems"
                     v-model="division"
-                  ></v-select>
+                  ></v-autocomplete>
                 </td>
               </tr>
               <tr class="infoDetails">
                 <td>Position:</td>
                 <td>
-                  <v-select
+                  <v-autocomplete
                     :items="positionItems"
                     solo
                     class="mt-6"
                     v-model="position"
-                  ></v-select>
+                  ></v-autocomplete>
                 </td>
-                   <td rowspan="2">Highest Degree Obtained:</td>
+                <td rowspan="2">Highest Degree Obtained:</td>
                 <td>
-                  <v-select
+                  <v-autocomplete
                     solo
                     class="mt-6"
                     v-model="highestDegreeObtained"
                     :items="highestDegreeItems"
-                  ></v-select>
+                  ></v-autocomplete>
                 </td>
                 <!-- <td>
-                  <v-select
+                  <v-autocomplete
                     v-model="specifiedHighestDegreeObtained"
                     :items="highestDegreeItems"
                     class="mt-6"
                     solo
                     dense
-                  ></v-select>
+                  ></v-autocomplete>
                 </td> -->
                 <td>District/Municipality:</td>
                 <td>
@@ -256,30 +264,29 @@
               <tr class="infoDetails">
                 <td>Employment Status:</td>
                 <td>
-                  <v-select
+                  <v-autocomplete
                     solo
                     class="mt-6"
                     v-model="employmentStatus"
                     :items="statusItems"
-                  ></v-select>
+                  ></v-autocomplete>
                 </td>
-                 <td>
-                  <v-select
+                <td>
+                  <v-text-field
                     v-model="specifiedHighestDegreeObtained"
-                    :items="highestDegreeItems"
                     class="mt-6"
                     solo
                     dense
-                  ></v-select>
+                  ></v-text-field>
                 </td>
                 <!-- <td>Level Taught:</td>
                 <td>
-                  <v-select
+                  <v-autocomplete
                     solo
                     class="mt-6"
                     v-model="levelTaught"
                     :items="levelTaughtItems"
-                  ></v-select>
+                  ></v-autocomplete>
                 </td> -->
                 <td>School ID:</td>
                 <td>
@@ -294,30 +301,30 @@
               <tr class="infoDetails">
                 <td>Age:</td>
                 <td>
-                  <v-select
+                  <v-autocomplete
                     :items="ageitems"
                     solo
                     class="mt-6"
                     v-model="employeeAge"
-                  ></v-select>
+                  ></v-autocomplete>
                 </td>
                 <!-- <td>Grade Level taught:</td>
                 <td>
-                  <v-select
+                  <v-autocomplete
                     solo
                     class="mt-6"
                     v-model="gradeLevelTaught"
                     :items="gLevelTaughtItems"
-                  ></v-select>
+                  ></v-autocomplete>
                 </td> -->
                 <td>Level Taught:</td>
                 <td>
-                  <v-select
+                  <v-autocomplete
                     solo
                     class="mt-6"
                     v-model="levelTaught"
                     :items="levelTaughtItems"
-                  ></v-select>
+                  ></v-autocomplete>
                 </td>
                 <td>School Name:</td>
                 <td>
@@ -332,57 +339,57 @@
               <tr class="infoDetails">
                 <td>Sex:</td>
                 <td>
-                  <v-select
+                  <v-autocomplete
                     solo
                     class="mt-6"
                     v-model="employeeSex"
                     :items="sexItems"
-                  ></v-select>
+                  ></v-autocomplete>
                 </td>
                 <!-- <td colspan="2"></td> -->
-                 <td>Grade Level taught:</td>
+                <td>Grade Level taught:</td>
                 <td>
-                  <v-select
+                  <v-autocomplete
                     solo
                     class="mt-6"
                     v-model="gradeLevelTaught"
                     :items="gLevelTaughtItems"
-                  ></v-select>
+                  ></v-autocomplete>
                 </td>
                 <td>School Type:</td>
                 <td>
-                  <v-select
+                  <v-autocomplete
                     solo
                     class="mt-6"
                     :items="schoolTypeItems"
                     v-model="schoolType"
                     label="School Type"
-                  ></v-select>
+                  ></v-autocomplete>
                 </td>
               </tr>
               <tr class="infoDetails">
                 <td colspan="6" rowspan="2"></td>
                 <td>School Size:</td>
                 <td>
-                  <v-select
+                  <v-autocomplete
                     solo
                     class="mt-6"
                     :items="schoolSizeItems"
                     v-model="schoolSize"
                     label="School Size"
-                  ></v-select>
+                  ></v-autocomplete>
                 </td>
               </tr>
               <tr class="infoDetails">
                 <td>Curricular Classification:</td>
                 <td>
-                  <v-select
+                  <v-autocomplete
                     solo
                     class="mt-6"
                     :items="classificationItems"
                     v-model="curricularClassification"
                     label="Curricular Classification"
-                  ></v-select>
+                  ></v-autocomplete>
                 </td>
               </tr>
             </v-simple-table>
@@ -390,206 +397,219 @@
             <v-container class="mt-5">
               <v-row>
                 <v-col>
-                  <v-card class="bgCard pa-2" outlined tile>
+                  <v-card
+                    style="
+                      background-color: rgb(211, 238, 158);
+                      border: black 1px solid;
+                    "
+                    class="bgCard pa-2"
+                    outlined
+                    tile
+                  >
                     <h4 class="text-center">AREA(S) OF SPECIALIZATION</h4>
-                    <h5 class="text-center grey--text">
+                    <h5 class="text-center">
                       Please tick all the boxes that apply.
                     </h5>
 
-                    <v-card flat>
-                      <v-card-text>
-                        <v-container fluid>
-                          <v-row>
-                            <v-col cols="12" lg="6" md="4">
-                              <v-checkbox
-                                v-model="english"
-                                label="English"
-                                value="English"
-                              ></v-checkbox>
+                    <v-card-text>
+                      <v-container fluid>
+                        <v-row>
+                          <v-col cols="12" lg="6" md="4">
+                            <v-checkbox
+                              v-model="english"
+                              label="English"
+                              value="English"
+                            ></v-checkbox>
 
-                              <v-checkbox
-                                v-model="filipino"
-                                label="Filipino"
-                                value="Filipino"
-                              ></v-checkbox>
+                            <v-checkbox
+                              v-model="filipino"
+                              label="Filipino"
+                              value="Filipino"
+                            ></v-checkbox>
 
-                              <v-checkbox
-                                v-model="mathematics"
-                                label="Mathematics"
-                                value="Mathematics"
-                              ></v-checkbox>
-                              <v-checkbox
-                                v-model="generalScience"
-                                label="General Science"
-                                value="General Science"
-                              ></v-checkbox>
-                              <v-checkbox
-                                v-model="biology"
-                                label="Biology"
-                                value="Biology"
-                              ></v-checkbox>
-                              <v-checkbox
-                                v-model="chemistry"
-                                label="Chemistry"
-                                value="Chemistry"
-                              ></v-checkbox>
-                              <v-checkbox
-                                v-model="physics"
-                                label="Physics"
-                                value="Physics"
-                              ></v-checkbox>
-                              <v-checkbox
-                                v-model="socialScience"
-                                label="Social Science"
-                                value="Social Science"
-                              ></v-checkbox>
-                              <v-checkbox
-                                v-model="earlyChildhoodEducation"
-                                label="Early Childhood Education"
-                                value="Early Childhood Education"
-                              ></v-checkbox>
-                            </v-col>
-                            <v-col cols="12" lg="5" md="4">
-                              <v-checkbox
-                                v-model="valuesEducation"
-                                label="Values Education"
-                                value="Values Education"
-                              ></v-checkbox>
-                              <v-checkbox
-                                v-model="sped"
-                                label="SPED"
-                                value="SPED"
-                              ></v-checkbox>
-                              <v-checkbox
-                                v-model="music"
-                                label="Music"
-                                value="Music"
-                              ></v-checkbox>
-                              <v-checkbox
-                                v-model="arts"
-                                label="Arts"
-                                value="Arts"
-                              ></v-checkbox>
-                              <v-checkbox
-                                v-model="physicalEducation"
-                                label="Physical Education"
-                                value="Physical Education"
-                              ></v-checkbox>
-                              <v-checkbox
-                                v-model="health"
-                                label="Health"
-                                value="Health"
-                              ></v-checkbox>
-                              <v-checkbox
-                                v-model="TLE_HE_TVL"
-                                label="TLE/HE/TVL"
-                                value="TLE/HE/TVL"
-                              ></v-checkbox>
-                              <v-checkbox
-                                v-model="selected"
-                                label="Others"
-                                value="Others"
-                              ></v-checkbox>
-                              <v-text-field
-                                v-model="otherSpecialized"
-                                label="Specify"
-                                solo
-                              ></v-text-field>
-                            </v-col>
-                          </v-row>
-                        </v-container>
-                      </v-card-text>
-                    </v-card>
+                            <v-checkbox
+                              v-model="mathematics"
+                              label="Mathematics"
+                              value="Mathematics"
+                            ></v-checkbox>
+                            <v-checkbox
+                              v-model="generalScience"
+                              label="General Science"
+                              value="General Science"
+                            ></v-checkbox>
+                            <v-checkbox
+                              v-model="biology"
+                              label="Biology"
+                              value="Biology"
+                            ></v-checkbox>
+                            <v-checkbox
+                              v-model="chemistry"
+                              label="Chemistry"
+                              value="Chemistry"
+                            ></v-checkbox>
+                            <v-checkbox
+                              v-model="physics"
+                              label="Physics"
+                              value="Physics"
+                            ></v-checkbox>
+                            <v-checkbox
+                              v-model="socialScience"
+                              label="Social Science"
+                              value="Social Science"
+                            ></v-checkbox>
+                            <v-checkbox
+                              v-model="earlyChildhoodEducation"
+                              label="Early Childhood Education"
+                              value="Early Childhood Education"
+                            ></v-checkbox>
+                          </v-col>
+                          <v-col cols="12" lg="5" md="4">
+                            <v-checkbox
+                              v-model="valuesEducation"
+                              label="Values Education"
+                              value="Values Education"
+                            ></v-checkbox>
+                            <v-checkbox
+                              v-model="sped"
+                              label="SPED"
+                              value="SPED"
+                            ></v-checkbox>
+                            <v-checkbox
+                              v-model="music"
+                              label="Music"
+                              value="Music"
+                            ></v-checkbox>
+                            <v-checkbox
+                              v-model="arts"
+                              label="Arts"
+                              value="Arts"
+                            ></v-checkbox>
+                            <v-checkbox
+                              v-model="physicalEducation"
+                              label="Physical Education"
+                              value="Physical Education"
+                            ></v-checkbox>
+                            <v-checkbox
+                              v-model="health"
+                              label="Health"
+                              value="Health"
+                            ></v-checkbox>
+                            <v-checkbox
+                              v-model="TLE_HE_TVL"
+                              label="TLE/HE/TVL"
+                              value="TLE/HE/TVL"
+                            ></v-checkbox>
+                            <v-checkbox
+                              v-model="selected"
+                              label="Others"
+                              value="Others"
+                            ></v-checkbox>
+                            <v-text-field
+                              v-model="otherSpecialized"
+                              label="Specify"
+                              solo
+                            ></v-text-field>
+                          </v-col>
+                        </v-row>
+                      </v-container>
+                    </v-card-text>
                   </v-card>
                 </v-col>
                 <v-col order="12">
-                  <v-card class="pa-2" outlined tile>
+                  <v-card
+                    class="pa-2"
+                    outlined
+                    tile
+                    style="
+                      background-color: rgb(211, 238, 158);
+                      border: black 1px solid;
+                    "
+                  >
                     <h4 class="text-center">SUBJECT(S) TAUGHT</h4>
-                    <h5 class="text-center grey--text">
+                    <h5 class="text-center">
                       Please tick all the boxes that appply.
                     </h5>
 
-                    <v-card flat>
-                      <v-card-text>
-                        <v-container fluid>
-                          <v-row>
-                            <v-col cols="12" lg="6" md="4">
-                              <v-checkbox
-                                v-model="MotherTongue"
-                                label="Mother Tongue"
-                                value="Mother Tongue"
-                              ></v-checkbox>
+                    <v-card-text>
+                      <v-container fluid>
+                        <v-row>
+                          <v-col cols="12" lg="6" md="4">
+                            <v-checkbox
+                              v-model="MotherTongue"
+                              label="Mother Tongue"
+                              value="Mother Tongue"
+                            ></v-checkbox>
 
-                              <v-checkbox
-                                v-model="Filipino"
-                                label="Filipino"
-                                value="Filipino"
-                              ></v-checkbox>
+                            <v-checkbox
+                              v-model="Filipino"
+                              label="Filipino"
+                              value="Filipino"
+                            ></v-checkbox>
 
-                              <v-checkbox
-                                v-model="English"
-                                label="English"
-                                value="English"
-                              ></v-checkbox>
+                            <v-checkbox
+                              v-model="English"
+                              label="English"
+                              value="English"
+                            ></v-checkbox>
 
-                              <v-checkbox
-                                v-model="Mathematics"
-                                label="Mathematics"
-                                value="Mathematics"
-                              ></v-checkbox>
-                              <v-checkbox
-                                v-model="Science"
-                                label="Science"
-                                value="Science"
-                              ></v-checkbox>
-                              <v-checkbox
-                                v-model="AralingPanlipunan"
-                                label="Araling Panlipunan"
-                                value="Araling Panlipunan"
-                              ></v-checkbox>
-                              <v-checkbox
-                                v-model="EdukasyonSaPagpapakatao"
-                                label="Edukasyon sa Pagpapakatao"
-                                value="Edukasyon sa Pagpapakatao"
-                              ></v-checkbox>
-                            </v-col>
-                            <v-col cols="12" lg="6" md="4">
-                              <v-checkbox
-                                v-model="Mapeh"
-                                label="MAPEH"
-                                value="MAPEH"
-                              ></v-checkbox>
-                              <v-checkbox
-                                v-model="TLE_HE"
-                                label="TLE/HE"
-                                value="TLE/HE"
-                              ></v-checkbox>
-                              <v-checkbox
-                                v-model="EPP_LE_HE"
-                                label="EPP-LE/HE"
-                                value="EPP-LE/HE"
-                              ></v-checkbox>
-                              <v-checkbox
-                                v-model="specialPrograms"
-                                label="Special Programs (i.e. Journalism and Foreign Language) "
-                                value="Special Programs"
-                              ></v-checkbox>
+                            <v-checkbox
+                              v-model="Mathematics"
+                              label="Mathematics"
+                              value="Mathematics"
+                            ></v-checkbox>
+                            <v-checkbox
+                              v-model="Science"
+                              label="Science"
+                              value="Science"
+                            ></v-checkbox>
+                            <v-checkbox
+                              v-model="AralingPanlipunan"
+                              label="Araling Panlipunan"
+                              value="Araling Panlipunan"
+                            ></v-checkbox>
+                            <v-checkbox
+                              v-model="EdukasyonSaPagpapakatao"
+                              label="Edukasyon sa Pagpapakatao"
+                              value="Edukasyon sa Pagpapakatao"
+                            ></v-checkbox>
+                          </v-col>
+                          <v-col cols="12" lg="6" md="4">
+                            <v-checkbox
+                              v-model="Mapeh"
+                              label="MAPEH"
+                              value="MAPEH"
+                            ></v-checkbox>
+                            <v-checkbox
+                              v-model="TLE_HE"
+                              label="TLE/HE"
+                              value="TLE/HE"
+                            ></v-checkbox>
+                            <v-checkbox
+                              v-model="EPP_LE_HE"
+                              label="EPP-LE/HE"
+                              value="EPP-LE/HE"
+                            ></v-checkbox>
+                            <v-checkbox
+                              v-model="specialPrograms"
+                              label="Special Programs (i.e. Journalism and Foreign Language) "
+                              value="Special Programs"
+                            ></v-checkbox>
 
-                              <v-checkbox
-                                v-model="selected1"
-                                label="Others"
-                                value="Others"
-                              ></v-checkbox>
-                              <v-text-field
-                                v-model="otherSubTaught"
-                                label="Specify"
-                                solo
-                              ></v-text-field>
-                            </v-col>
-                          </v-row>
-                        </v-container>
-                      </v-card-text>
-                    </v-card>
+                            <v-checkbox
+                              v-model="selected1"
+                              label="Others"
+                              value="Others"
+                            ></v-checkbox>
+                            <v-text-field
+                              v-model="otherSubTaught"
+                              label="Specify"
+                              solo
+                            ></v-text-field>
+                          </v-col>
+                        </v-row>
+                      </v-container>
+                    </v-card-text>
+                    <br /><br /><br /><br /><br /><br />
                   </v-card>
                 </v-col>
               </v-row>
@@ -1051,7 +1071,8 @@
                     <td class="checkBox">
                       <v-checkbox
                         v-model="selfManagement1"
-                        hide-details value="true" 
+                        hide-details
+                        value="true"
                       ></v-checkbox>
                     </td>
                     <td>1</td>
@@ -1063,7 +1084,8 @@
                     <td class="checkBox">
                       <v-checkbox
                         v-model="selfManagement2"
-                        hide-details value="true"
+                        hide-details
+                        value="true"
                       ></v-checkbox>
                     </td>
                     <td>2</td>
@@ -1077,7 +1099,8 @@
                     <td class="checkBox">
                       <v-checkbox
                         v-model="selfManagement3"
-                        hide-details value="true"
+                        hide-details
+                        value="true"
                       ></v-checkbox>
                     </td>
                     <td>3</td>
@@ -1090,7 +1113,8 @@
                     <td class="checkBox">
                       <v-checkbox
                         v-model="selfManagement4"
-                        hide-details value="true"
+                        hide-details
+                        value="true"
                       ></v-checkbox>
                     </td>
                     <td>4</td>
@@ -1103,7 +1127,8 @@
                     <td class="checkBox">
                       <v-checkbox
                         v-model="selfManagement5"
-                        hide-details value="true"
+                        hide-details
+                        value="true"
                       ></v-checkbox>
                     </td>
                     <td>5</td>
@@ -1122,7 +1147,8 @@
                     <td class="checkBox">
                       <v-checkbox
                         v-model="professionalAndEthics1"
-                        hide-details value="true"
+                        hide-details
+                        value="true"
                       ></v-checkbox>
                     </td>
                     <td>1</td>
@@ -1136,7 +1162,8 @@
                     <td class="checkBox">
                       <v-checkbox
                         v-model="professionalAndEthics2"
-                        hide-details value="true"
+                        hide-details
+                        value="true"
                       ></v-checkbox>
                     </td>
                     <td>2</td>
@@ -1150,7 +1177,8 @@
                     <td class="checkBox">
                       <v-checkbox
                         v-model="professionalAndEthics3"
-                        hide-details value="true"
+                        hide-details
+                        value="true"
                       ></v-checkbox>
                     </td>
                     <td>3</td>
@@ -1164,7 +1192,8 @@
                     <td class="checkBox">
                       <v-checkbox
                         v-model="professionalAndEthics4"
-                        hide-details value="true"
+                        hide-details
+                        value="true"
                       ></v-checkbox>
                     </td>
                     <td>4</td>
@@ -1177,7 +1206,8 @@
                     <td class="checkBox">
                       <v-checkbox
                         v-model="professionalAndEthics5"
-                        hide-details value="true"
+                        hide-details
+                        value="true"
                       ></v-checkbox>
                     </td>
                     <td>5</td>
@@ -1195,7 +1225,8 @@
                     <td class="checkBox">
                       <v-checkbox
                         v-model="resultsFocus1"
-                        hide-details value="true"
+                        hide-details
+                        value="true"
                       ></v-checkbox>
                     </td>
                     <td>1</td>
@@ -1208,7 +1239,8 @@
                     <td class="checkBox">
                       <v-checkbox
                         v-model="resultsFocus2"
-                        hide-details value="true"
+                        hide-details
+                        value="true"
                       ></v-checkbox>
                     </td>
                     <td>2</td>
@@ -1222,7 +1254,8 @@
                     <td class="checkBox">
                       <v-checkbox
                         v-model="resultsFocus3"
-                        hide-details value="true"
+                        hide-details
+                        value="true"
                       ></v-checkbox>
                     </td>
                     <td>3</td>
@@ -1238,7 +1271,8 @@
                     <td class="checkBox">
                       <v-checkbox
                         v-model="resultsFocus4"
-                        hide-details value="true"
+                        hide-details
+                        value="true"
                       ></v-checkbox>
                     </td>
                     <td>4</td>
@@ -1252,7 +1286,8 @@
                     <td class="checkBox">
                       <v-checkbox
                         v-model="resultsFocus5"
-                        hide-details value="true"
+                        hide-details
+                        value="true"
                       ></v-checkbox>
                     </td>
                     <td>5</td>
@@ -1272,7 +1307,11 @@
                 <v-simple-table class="table">
                   <tr>
                     <td class="checkBox">
-                      <v-checkbox v-model="teamwork1" hide-details value="true"></v-checkbox>
+                      <v-checkbox
+                        v-model="teamwork1"
+                        hide-details
+                        value="true"
+                      ></v-checkbox>
                       <!-- <v-checkbox v-model="teamwork1" hide-details value="true"></v-checkbox> -->
                     </td>
                     <td>1</td>
@@ -1280,7 +1319,11 @@
                   </tr>
                   <tr>
                     <td class="checkBox">
-                      <v-checkbox v-model="teamwork2" hide-details value="true"></v-checkbox>
+                      <v-checkbox
+                        v-model="teamwork2"
+                        hide-details
+                        value="true"
+                      ></v-checkbox>
                     </td>
                     <td>2</td>
                     <td>
@@ -1290,7 +1333,11 @@
                   </tr>
                   <tr>
                     <td class="checkBox">
-                      <v-checkbox v-model="teamwork3" hide-details value="true"></v-checkbox>
+                      <v-checkbox
+                        v-model="teamwork3"
+                        hide-details
+                        value="true"
+                      ></v-checkbox>
                     </td>
                     <td>3</td>
                     <td>
@@ -1300,14 +1347,22 @@
                   </tr>
                   <tr>
                     <td class="checkBox">
-                      <v-checkbox v-model="teamwork4" hide-details value="true"></v-checkbox>
+                      <v-checkbox
+                        v-model="teamwork4"
+                        hide-details
+                        value="true"
+                      ></v-checkbox>
                     </td>
                     <td>4</td>
                     <td>Drives consensus and team ownership of decisions.</td>
                   </tr>
                   <tr>
                     <td class="checkBox">
-                      <v-checkbox v-model="teamwork5" hide-details value="true"></v-checkbox>
+                      <v-checkbox
+                        v-model="teamwork5"
+                        hide-details
+                        value="true"
+                      ></v-checkbox>
                     </td>
                     <td>5</td>
                     <td>
@@ -1327,7 +1382,8 @@
                     <td class="checkBox">
                       <v-checkbox
                         v-model="serviceOrientation1"
-                        hide-details value="true"
+                        hide-details
+                        value="true"
                       ></v-checkbox>
                     </td>
                     <td>1</td>
@@ -1340,7 +1396,8 @@
                     <td class="checkBox">
                       <v-checkbox
                         v-model="serviceOrientation2"
-                        hide-details value="true"
+                        hide-details
+                        value="true"
                       ></v-checkbox>
                     </td>
                     <td>2</td>
@@ -1353,7 +1410,8 @@
                     <td class="checkBox">
                       <v-checkbox
                         v-model="serviceOrientation3"
-                        hide-details value="true"
+                        hide-details
+                        value="true"
                       ></v-checkbox>
                     </td>
                     <td>3</td>
@@ -1366,7 +1424,8 @@
                     <td class="checkBox">
                       <v-checkbox
                         v-model="serviceOrientation4"
-                        hide-details value="true"
+                        hide-details
+                        value="true"
                       ></v-checkbox>
                     </td>
                     <td>4</td>
@@ -1379,7 +1438,8 @@
                     <td class="checkBox">
                       <v-checkbox
                         v-model="serviceOrientation5"
-                        hide-details value="true"
+                        hide-details
+                        value="true"
                       ></v-checkbox>
                     </td>
                     <td>5</td>
@@ -1400,7 +1460,8 @@
                     <td class="checkBox">
                       <v-checkbox
                         v-model="innovation1"
-                        hide-details value="true"
+                        hide-details
+                        value="true"
                       ></v-checkbox>
                     </td>
                     <td>1</td>
@@ -1414,7 +1475,8 @@
                     <td class="checkBox">
                       <v-checkbox
                         v-model="innovation2"
-                        hide-details value="true"
+                        hide-details
+                        value="true"
                       ></v-checkbox>
                     </td>
                     <td>2</td>
@@ -1428,7 +1490,8 @@
                     <td class="checkBox">
                       <v-checkbox
                         v-model="innovation3"
-                        hide-details value="true"
+                        hide-details
+                        value="true"
                       ></v-checkbox>
                     </td>
                     <td>3</td>
@@ -1441,7 +1504,8 @@
                     <td class="checkBox">
                       <v-checkbox
                         v-model="innovation4"
-                        hide-details value="true"
+                        hide-details
+                        value="true"
                       ></v-checkbox>
                     </td>
                     <td>4</td>
@@ -1454,7 +1518,8 @@
                     <td class="checkBox">
                       <v-checkbox
                         v-model="innovation5"
-                        hide-details value="true"
+                        hide-details
+                        value="true"
                       ></v-checkbox>
                     </td>
                     <td>5</td>
@@ -1474,8 +1539,11 @@
                       @click="finalizeEsat"
                       >SAVE</v-btn
                     >
-                    <v-btn class="float-right mb-4 me-4 mt-5" v-if="updateInfos"
-                      @click="updateEsat">UPDATE</v-btn
+                    <v-btn
+                      class="float-right mb-4 me-4 mt-5"
+                      v-if="updateInfos"
+                      @click="updateEsat"
+                      >UPDATE</v-btn
                     >
                     <v-btn
                       class="float-right mb-4 me-4 mt-5"
@@ -1491,7 +1559,7 @@
           </v-container>
         </v-tab-item>
 
-        <v-tab-item :key="5" value="show_print">
+        <v-tab-item :key="5" value="show_print" v-if="showPrint">
           <v-card flat>
             <v-container class="mt-5">
               <h2 class="heading text-center">
@@ -1521,60 +1589,66 @@
                   </thead>
                   <tbody
                     style="color: black"
-                    v-for="row in esatDemographicProfile"
-                    :key="row.id"
+                    v-for="item of printEsatInfo[0]"
+                    :key="item.id"
                   >
                     <tr>
                       <td class="esatPrint">Name of Employee:</td>
-                      <td class="showDataPart1">{{ row.name_of_employee }}</td>
+                      <td class="showDataPart1">{{ item.name_of_employee }}</td>
                       <td rowspan="7"></td>
                       <td class="esatPrint">Region:</td>
-                      <td class="showDataPart1">{{ row.region }}</td>
+                      <td class="showDataPart1">{{ item.region }}</td>
                     </tr>
                     <tr>
                       <td class="esatPrint">Position:</td>
-                      <td class="showDataPart1">{{ row.position }}</td>
-                      <td class="esatPrint">School:</td>
-                      <td class="showDataPart1">
-                        {{ row.school_id }} - {{ row.school_name }}
-                      </td>
+                      <td class="showDataPart1">{{ item.position }}</td>
+                      <td class="esatPrint">Division:</td>
+                      <td class="showDataPart1">{{ item.division }}</td>
                     </tr>
                     <tr>
                       <td class="esatPrint">Employment Status:</td>
-                      <td class="showDataPart1">{{ row.employment_status }}</td>
-                      <td class="esatPrint">Division:</td>
-                      <td class="showDataPart1">{{ row.division }}</td>
+                      <td class="showDataPart1">
+                        {{ item.school_year }} : {{ item.employment_status }}
+                      </td>
+                      <td class="esatPrint">School:</td>
+                      <td class="showDataPart1">
+                        {{ item.school_id }} - {{ item.school_name }}
+                      </td>
                     </tr>
                     <tr>
                       <td class="esatPrint">Age:</td>
-                      <td class="showDataPart1">{{ row.age }}</td>
+                      <td class="showDataPart1">{{ item.age }}</td>
                       <td class="esatPrint">Curricular Classification:</td>
                       <td class="showDataPart1">
-                        {{ row.curricular_classification }}
+                        {{ item.curricular_classification }}
                       </td>
                     </tr>
                     <tr>
                       <td class="esatPrint">Sex:</td>
-                      <td class="showDataPart1">{{ row.sex }}</td>
-                      <td class="esatPrint">Area(s) of Specialization:</td>
+                      <td class="showDataPart1">{{ item.sex }}</td>
+                      <td class="esatPrint">Grade Level Taught:</td>
                       <td class="showDataPart1">
-                        {{ row.area_of_specialization }}
+                        {{ item.grade_level_taught }}
                       </td>
                     </tr>
                     <tr>
                       <td class="esatPrint">Number of Years in Teaching:</td>
-                      <td class="showDataPart1">{{ row.years_in_teaching }}</td>
-                      <td class="esatPrint">Subjects(s) Taught:</td>
-                      <td class="showDataPart1">{{ row.subjects_taught }}</td>
+                      <td class="showDataPart1">
+                        {{ item.years_in_teaching }}
+                      </td>
+                      <td class="esatPrint">Area(s) of Specialization:</td>
+                      <td class="showDataPart1">
+                        {{ item.area_of_specialization }}
+                      </td>
                     </tr>
                     <tr>
-                      <td class="esatPrint">
-                        Specify Highest Degree Obtained:
-                      </td>
+                      <td class="esatPrint">Highest Degree Obtained:</td>
                       <td class="showDataPart1">
-                        {{ row.highest_degree_obtained }} -
-                        {{ row.specified_highest_degree_obtained }}
+                        {{ item.highest_degree_obtained }} -
+                        {{ item.specified_highest_degree_obtained }}
                       </td>
+                      <td class="esatPrint">Subjects(s) Taught:</td>
+                      <td class="showDataPart1">{{ item.subjects_taught }}</td>
                     </tr>
                   </tbody>
                 </template>
@@ -1621,7 +1695,6 @@
                         </th>
                       </tr>
                     </thead>
-
                     <tbody>
                       <tr>
                         <td colspan="4">
@@ -1630,17 +1703,18 @@
                           </h3>
                         </td>
                       </tr>
+
                       <tr>
                         <td class="objNo">1.1</td>
                         <td>
                           Applied knowledge of content within and across
-                          curriculum teaching areas. (PPST Indicator 1.1.2)
+                          curriculum teaching areas (PPST Indicator 1.1.2)
                         </td>
                         <td class="text-center">
-                          {{ functionalObjectives[0].level_of_capability }}
+                          {{ printEsatInfo[2][0].level_of_capability }}
                         </td>
                         <td class="text-center">
-                          {{ functionalObjectives[0].priority_for_development }}
+                          {{ printEsatInfo[2][0].priority_for_development }}
                         </td>
                       </tr>
                       <tr>
@@ -1650,11 +1724,12 @@
                           teaching and learning learning process. (PPST
                           Indicator 1.3.2)
                         </td>
+
                         <td class="text-center">
-                          {{ functionalObjectives[1].level_of_capability }}
+                          {{ printEsatInfo[2][1].level_of_capability }}
                         </td>
                         <td class="text-center">
-                          {{ functionalObjectives[1].priority_for_development }}
+                          {{ printEsatInfo[2][1].priority_for_development }}
                         </td>
                       </tr>
                       <tr>
@@ -1665,10 +1740,10 @@
                           higher order thinking skills. (PPST Indicator 1.5.2)
                         </td>
                         <td class="text-center">
-                          {{ functionalObjectives[2].level_of_capability }}
+                          {{ printEsatInfo[2][2].level_of_capability }}
                         </td>
                         <td class="text-center">
-                          {{ functionalObjectives[2].priority_for_development }}
+                          {{ printEsatInfo[2][2].priority_for_development }}
                         </td>
                       </tr>
 
@@ -1689,10 +1764,10 @@
                           cultural, socio-economic and religious backgrounds.
                         </td>
                         <td class="text-center">
-                          {{ functionalObjectives[3].level_of_capability }}
+                          {{ printEsatInfo[2][3].level_of_capability }}
                         </td>
                         <td class="text-center">
-                          {{ functionalObjectives[3].priority_for_development }}
+                          {{ printEsatInfo[2][3].priority_for_development }}
                         </td>
                       </tr>
                       <tr>
@@ -1707,10 +1782,10 @@
                           3.4.2)
                         </td>
                         <td class="text-center">
-                          {{ functionalObjectives[4].level_of_capability }}
+                          {{ printEsatInfo[2][4].level_of_capability }}
                         </td>
                         <td class="text-center">
-                          {{ functionalObjectives[4].priority_for_development }}
+                          {{ printEsatInfo[2][4].priority_for_development }}
                         </td>
                       </tr>
                       <tr>
@@ -1721,10 +1796,10 @@
                           (PPST Indicator 5.3.2)
                         </td>
                         <td class="text-center">
-                          {{ functionalObjectives[5].level_of_capability }}
+                          {{ printEsatInfo[2][5].level_of_capability }}
                         </td>
                         <td class="text-center">
-                          {{ functionalObjectives[5].priority_for_development }}
+                          {{ printEsatInfo[2][5].priority_for_development }}
                         </td>
                       </tr>
 
@@ -1741,10 +1816,10 @@
                           address learning goals. (PPST Indicator 4.5.2)
                         </td>
                         <td class="text-center">
-                          {{ functionalObjectives[6].level_of_capability }}
+                          {{ printEsatInfo[2][6].level_of_capability }}
                         </td>
                         <td class="text-center">
-                          {{ functionalObjectives[6].priority_for_development }}
+                          {{ printEsatInfo[2][6].priority_for_development }}
                         </td>
                       </tr>
                       <tr>
@@ -1755,10 +1830,10 @@
                           Indicator 4.2.2)
                         </td>
                         <td class="text-center">
-                          {{ functionalObjectives[7].level_of_capability }}
+                          {{ printEsatInfo[2][7].level_of_capability }}
                         </td>
                         <td class="text-center">
-                          {{ functionalObjectives[7].priority_for_development }}
+                          {{ printEsatInfo[2][7].priority_for_development }}
                         </td>
                       </tr>
 
@@ -1780,10 +1855,10 @@
                           the educative process. (PPST Indicator 6.2.2)
                         </td>
                         <td class="text-center">
-                          {{ functionalObjectives[8].level_of_capability }}
+                          {{ printEsatInfo[2][8].level_of_capability }}
                         </td>
                         <td class="text-center">
-                          {{ functionalObjectives[8].priority_for_development }}
+                          {{ printEsatInfo[2][8].priority_for_development }}
                         </td>
                       </tr>
                       <tr>
@@ -1794,10 +1869,10 @@
                           7.3.2)
                         </td>
                         <td class="text-center">
-                          {{ functionalObjectives[9].level_of_capability }}
+                          {{ printEsatInfo[2][9].level_of_capability }}
                         </td>
                         <td class="text-center">
-                          {{ functionalObjectives[9].priority_for_development }}
+                          {{ printEsatInfo[2][9].priority_for_development }}
                         </td>
                       </tr>
                       <tr>
@@ -1808,12 +1883,10 @@
                           learning. (PPST Indicator 7.4.2)
                         </td>
                         <td class="text-center">
-                          {{ functionalObjectives[10].level_of_capability }}
+                          {{ printEsatInfo[2][10].level_of_capability }}
                         </td>
                         <td class="text-center">
-                          {{
-                            functionalObjectives[10].priority_for_development
-                          }}
+                          {{ printEsatInfo[2][10].priority_for_development }}
                         </td>
                       </tr>
                       <tr>
@@ -1826,12 +1899,10 @@
                           contribute to the teaching-learning process.
                         </td>
                         <td class="text-center">
-                          {{ functionalObjectives[11].level_of_capability }}
+                          {{ printEsatInfo[2][11].level_of_capability }}
                         </td>
                         <td class="text-center">
-                          {{
-                            functionalObjectives[11].priority_for_development
-                          }}
+                          {{ printEsatInfo[2][11].priority_for_development }}
                         </td>
                       </tr>
                       <tr>
@@ -1839,8 +1910,8 @@
                           <h3>Personal Comments</h3>
                         </td>
                       </tr>
-                      <tr v-for="row in esatDemographicProfile" :key="row.id">
-                        <td colspan="4">{{ row.personal_comments }}</td>
+                      <tr v-for="item in printEsatInfo[0]" :key="item.id">
+                        <td colspan="4">{{ item.personal_comments }}</td>
                       </tr>
                     </tbody>
                   </template>
@@ -1849,7 +1920,7 @@
 
               <v-container class="">
                 <v-simple-table class="table" style="color: black">
-                  <template>
+                  <template v-slot:default>
                     <thead>
                       <tr>
                         <th colspan="3">
@@ -1873,12 +1944,11 @@
                       <tr>
                         <td>
                           {{
-                            coreBehavioralCompetencies[0].check_status == "true"
+                            printEsatInfo[1][0].check_status == "true"
                               ? "✔"
                               : ""
                           }}
                         </td>
-
                         <td>1</td>
                         <td>
                           Sets personal goals and directions, needs and
@@ -1888,7 +1958,7 @@
                       <tr>
                         <td>
                           {{
-                            coreBehavioralCompetencies[1].check_status == "true"
+                            printEsatInfo[1][1].check_status == "true"
                               ? "✔"
                               : ""
                           }}
@@ -1904,7 +1974,7 @@
                       <tr>
                         <td>
                           {{
-                            coreBehavioralCompetencies[2].check_status == "true"
+                            printEsatInfo[1][2].check_status == "true"
                               ? "✔"
                               : ""
                           }}
@@ -1918,7 +1988,7 @@
                       <tr>
                         <td>
                           {{
-                            coreBehavioralCompetencies[3].check_status == "true"
+                            printEsatInfo[1][3].check_status == "true"
                               ? "✔"
                               : ""
                           }}
@@ -1932,7 +2002,7 @@
                       <tr>
                         <td>
                           {{
-                            coreBehavioralCompetencies[4].check_status == "true"
+                            printEsatInfo[1][4].check_status == "true"
                               ? "✔"
                               : ""
                           }}
@@ -1953,7 +2023,7 @@
                       <tr>
                         <td>
                           {{
-                            coreBehavioralCompetencies[5].check_status == "true"
+                            printEsatInfo[1][5].check_status == "true"
                               ? "✔"
                               : ""
                           }}
@@ -1968,7 +2038,7 @@
                       <tr>
                         <td>
                           {{
-                            coreBehavioralCompetencies[6].check_status == "true"
+                            printEsatInfo[1][6].check_status == "true"
                               ? "✔"
                               : ""
                           }}
@@ -1983,7 +2053,7 @@
                       <tr>
                         <td>
                           {{
-                            coreBehavioralCompetencies[7].check_status == "true"
+                            printEsatInfo[1][7].check_status == "true"
                               ? "✔"
                               : ""
                           }}
@@ -1998,7 +2068,7 @@
                       <tr>
                         <td>
                           {{
-                            coreBehavioralCompetencies[8].check_status == "true"
+                            printEsatInfo[1][8].check_status == "true"
                               ? "✔"
                               : ""
                           }}
@@ -2012,7 +2082,7 @@
                       <tr>
                         <td>
                           {{
-                            coreBehavioralCompetencies[9].check_status == "true"
+                            printEsatInfo[1][9].check_status == "true"
                               ? "✔"
                               : ""
                           }}
@@ -2032,7 +2102,7 @@
                       <tr>
                         <td>
                           {{
-                            coreBehavioralCompetencies[10].check_status == "true"
+                            printEsatInfo[1][10].check_status == "true"
                               ? "✔"
                               : ""
                           }}
@@ -2046,7 +2116,7 @@
                       <tr>
                         <td>
                           {{
-                            coreBehavioralCompetencies[11].check_status == "true"
+                            printEsatInfo[1][11].check_status == "true"
                               ? "✔"
                               : ""
                           }}
@@ -2061,7 +2131,7 @@
                       <tr>
                         <td>
                           {{
-                            coreBehavioralCompetencies[12].check_status == "true"
+                            printEsatInfo[1][12].check_status == "true"
                               ? "✔"
                               : ""
                           }}
@@ -2078,7 +2148,7 @@
                       <tr>
                         <td>
                           {{
-                            coreBehavioralCompetencies[13].check_status == "true"
+                            printEsatInfo[1][13].check_status == "true"
                               ? "✔"
                               : ""
                           }}
@@ -2093,7 +2163,7 @@
                       <tr>
                         <td>
                           {{
-                            coreBehavioralCompetencies[14].check_status == "true"
+                            printEsatInfo[1][14].check_status == "true"
                               ? "✔"
                               : ""
                           }}
@@ -2118,7 +2188,7 @@
                       <tr>
                         <td>
                           {{
-                            coreBehavioralCompetencies[15].check_status == "true"
+                            printEsatInfo[1][15].check_status == "true"
                               ? "✔"
                               : ""
                           }}
@@ -2129,7 +2199,7 @@
                       <tr>
                         <td>
                           {{
-                            coreBehavioralCompetencies[16].check_status == "true"
+                            printEsatInfo[1][16].check_status == "true"
                               ? "✔"
                               : ""
                           }}
@@ -2144,7 +2214,7 @@
                       <tr>
                         <td>
                           {{
-                            coreBehavioralCompetencies[17].check_status == "true"
+                            printEsatInfo[1][17].check_status == "true"
                               ? "✔"
                               : ""
                           }}
@@ -2158,7 +2228,7 @@
                       <tr>
                         <td>
                           {{
-                            coreBehavioralCompetencies[18].check_status == "true"
+                            printEsatInfo[1][18].check_status == "true"
                               ? "✔"
                               : ""
                           }}
@@ -2171,7 +2241,7 @@
                       <tr>
                         <td>
                           {{
-                            coreBehavioralCompetencies[19].check_status == "true"
+                            printEsatInfo[1][19].check_status == "true"
                               ? "✔"
                               : ""
                           }}
@@ -2193,7 +2263,7 @@
                       <tr>
                         <td>
                           {{
-                            coreBehavioralCompetencies[20].check_status == "true"
+                            printEsatInfo[1][20].check_status == "true"
                               ? "✔"
                               : ""
                           }}
@@ -2207,7 +2277,7 @@
                       <tr>
                         <td>
                           {{
-                            coreBehavioralCompetencies[21].check_status == "true"
+                            printEsatInfo[1][21].check_status == "true"
                               ? "✔"
                               : ""
                           }}
@@ -2221,7 +2291,7 @@
                       <tr>
                         <td>
                           {{
-                            coreBehavioralCompetencies[22].check_status == "true"
+                            printEsatInfo[1][22].check_status == "true"
                               ? "✔"
                               : ""
                           }}
@@ -2235,7 +2305,7 @@
                       <tr>
                         <td>
                           {{
-                            coreBehavioralCompetencies[23].check_status == "true"
+                            printEsatInfo[1][23].check_status == "true"
                               ? "✔"
                               : ""
                           }}
@@ -2250,7 +2320,7 @@
                       <tr>
                         <td>
                           {{
-                            coreBehavioralCompetencies[24].check_status == "true"
+                            printEsatInfo[1][24].check_status == "true"
                               ? "✔"
                               : ""
                           }}
@@ -2272,7 +2342,7 @@
                       <tr>
                         <td>
                           {{
-                            coreBehavioralCompetencies[25].check_status == "true"
+                            printEsatInfo[1][25].check_status == "true"
                               ? "✔"
                               : ""
                           }}
@@ -2288,7 +2358,7 @@
                       <tr>
                         <td>
                           {{
-                            coreBehavioralCompetencies[26].check_status == "true"
+                            printEsatInfo[1][26].check_status == "true"
                               ? "✔"
                               : ""
                           }}
@@ -2303,7 +2373,7 @@
                       <tr>
                         <td>
                           {{
-                            coreBehavioralCompetencies[27].check_status == "true"
+                            printEsatInfo[1][27].check_status == "true"
                               ? "✔"
                               : ""
                           }}
@@ -2317,7 +2387,7 @@
                       <tr>
                         <td>
                           {{
-                            coreBehavioralCompetencies[28].check_status == "true"
+                            printEsatInfo[1][28].check_status == "true"
                               ? "✔"
                               : ""
                           }}
@@ -2331,7 +2401,7 @@
                       <tr>
                         <td>
                           {{
-                            coreBehavioralCompetencies[29].check_status == "true"
+                            printEsatInfo[1][29].check_status == "true"
                               ? "✔"
                               : ""
                           }}
@@ -2355,11 +2425,25 @@
                       @click="goToEsatCard(), (esatCard = true)"
                       >FINISH</v-btn
                     >
-                    <v-btn class="float-right mb-4 me-4 mt-5" @click="editInfo"
+                    <v-btn v-if="editBtn"
+                      class="float-right mb-4 me-4 mt-5"
+                      @click="editInfo(printEsatInfo)"
                       >EDIT</v-btn
                     >
                   </v-col>
                 </v-row>
+                <!-- <v-row no-gutters v-else>
+                  <v-col cols="12" sm="6" md="8"> </v-col>
+                  <v-col cols="4" md="4">
+                    <v-btn class="float-right mb-4 me-4 mt-5">PRINT</v-btn>
+                    <v-btn
+                      class="float-right mb-4 me-4 mt-5"
+                      @click="goToEsatCard(), (esatCard = true)"
+                      >FINISH</v-btn
+                    >
+                    >
+                  </v-col>
+                </v-row> -->
               </v-container>
             </v-container>
             <v-row>
@@ -2369,66 +2453,169 @@
         </v-tab-item>
 
         <v-tab-item :key="6" value="esat_card" v-if="esatCard">
-          <v-container class="mt-5 mb-5 p-5">
-            <v-card class="bgCard pa-2" id="cardEsat">
-              <h2 class="heading ml-5">ELECTRONIC SELF-ASSESMENT TOOL</h2>
-              <v-row no-gutters>
-                <v-col cols="2">
-                  <v-img
-                    id="esatLogocard"
-                    :src="require('../assets/esatlogo.png')"
-                  ></v-img>
-                </v-col>
-                <v-col cols="5" class="ml=2">
-                  <v-container id="esatTxt">
-                    <h3 class="text-left font-weight-bold">SY 2020-2021</h3>
-                  </v-container>
-                </v-col>
-              </v-row>
+          <v-container v-if="(role = 'Teacher')">
+            <v-row>
+              <v-col v-for="row in this.esatInfo[0]" :key="row.id" cols="6">
+                <v-container class="mt-5 mb-5 p-5">
+                  <v-card class="bgCard pa-2" id="cardEsat">
+                    <v-row>
+                      <v-col>
+                        <h2 class="heading ml-5 text-center">
+                          ELECTRONIC SELF-ASSESMENT TOOL
+                        </h2>
+                        <v-row no-gutter>
+                          <v-col cols="4">
+                            <v-img
+                              id="esatLogocard"
+                              :src="require('../assets/esatlogo.png')"
+                            ></v-img>
+                          </v-col>
+                          <v-col cols="5" class="ml=2">
+                            <v-container id="esatTxt">
+                              <h3 class="text-left font-weight-bold">
+                                SY 2020-2021
+                              </h3>
+                            </v-container>
+                          </v-col>
+                        </v-row>
 
-              <h3 class="heading mt-2" id="ecard">Survey Completed</h3>
+                        <h3 class="heading mt-2" id="ecard">
+                          Survey Completed
+                        </h3>
 
-              <p class="font-weight-regular font-italic">
-                Submit this file to you Department Head for consolidation.
-              </p>
+                        <p class="font-weight-regular font-italic text-center">
+                          Submit this file to you Department Head for
+                          consolidation.
+                        </p>
+                        <v-simple-table class="table">
+                          <template>
+                            <tbody>
+                              <tr>
+                                <td class="esatCard">Name:</td>
+                                <td colspan="2">
+                                  {{ row.name_of_employee }}
+                                </td>
+                              </tr>
+                              <tr>
+                                <td class="esatCard">School:</td>
+                                <td colspan="2">
+                                  {{ row.school_name }}
+                                </td>
+                              </tr>
+                              <tr>
+                                <td class="esatCard">School Year:</td>
+                                <td>{{ row.school_year }}</td>
+                                <td rowspan="2" class="text-center">
+                                  <!-- <v-btn dense @click="viewPrint(esatInfo)"> View </v-btn> -->
+                                  <v-btn
+                                    dense
+                                    @click="
+                                      viewPrint(
+                                        esatInfo,
+                                        row.school_year,
+                                        row.name_of_employee
+                                      )
+                                    "
+                                  >
+                                    View
+                                  </v-btn>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td class="esatCard">Date:</td>
+                                <td>12/8/2021</td>
+                              </tr>
+                            </tbody>
+                          </template>
+                        </v-simple-table>
+                      </v-col>
+                    </v-row>
+                  </v-card>
+                </v-container>
+              </v-col>
+            </v-row>
+          </v-container>
+          <v-container v-else>
+            <v-row>
+              <v-col v-for="row in this.esatInfo[0]" :key="row.id" cols="6">
+                <v-container class="mt-5 mb-5 p-5">
+                  <v-card class="bgCard pa-2" id="cardEsat">
+                    <v-row>
+                      <v-col>
+                        <h2 class="heading ml-5 text-center">
+                          ELECTRONIC SELF-ASSESMENT TOOL
+                        </h2>
+                        <v-row no-gutter>
+                          <v-col cols="4">
+                            <v-img
+                              id="esatLogocard"
+                              :src="require('../assets/esatlogo.png')"
+                            ></v-img>
+                          </v-col>
+                          <v-col cols="5" class="ml=2">
+                            <v-container id="esatTxt">
+                              <h3 class="text-left font-weight-bold">
+                                SY 2020-2021
+                              </h3>
+                            </v-container>
+                          </v-col>
+                        </v-row>
 
-              <v-row>
-                <v-col>
-                  <v-simple-table class="table ml-5">
-                    <template>
-                      <tbody>
-                        <tr>
-                          <td class="esatCard">Name:</td>
-                          <td colspan="2">
-                            {{
-                              this.esatDemographicProfile[0].name_of_employee
-                            }}
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="esatCard">School:</td>
-                          <td colspan="2">
-                            {{ this.esatDemographicProfile[0].school_name }}
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="esatCard">School Year:</td>
-                          <td>SY {{this.esatDemographicProfile[0].school_year}}</td>
-                          <td rowspan="2" class="text-center">
-                            <v-btn dense @click="viewPrint"> View </v-btn>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="esatCard">Date:</td>
-                          <td>12/8/2021</td>
-                        </tr>
-                      </tbody>
-                    </template>
-                  </v-simple-table>
-                </v-col>
-                <v-col> </v-col>
-              </v-row>
-            </v-card>
+                        <h3 class="heading mt-2" id="ecard">
+                          Survey Completed
+                        </h3>
+
+                        <p class="font-weight-regular text-center font-italic">
+                          Submit this file to you Department Head for
+                          consolidation.
+                        </p>
+                        <v-simple-table class="table">
+                          <template>
+                            <tbody>
+                              <tr>
+                                <td class="esatCard">Name:</td>
+                                <td colspan="2">
+                                  {{ row.name_of_employee }}
+                                </td>
+                              </tr>
+                              <tr>
+                                <td class="esatCard">School:</td>
+                                <td colspan="2">
+                                  {{ row.school_name }}
+                                </td>
+                              </tr>
+                              <tr>
+                                <td class="esatCard">School Year:</td>
+                                <td>{{ row.school_year }}</td>
+                                <td rowspan="2" class="text-center">
+                                  <!-- <v-btn dense @click="viewPrint(esatInfo)"> View </v-btn> -->
+                                  <v-btn
+                                    dense
+                                    @click="
+                                      viewPrint(
+                                        esatInfo,
+                                        row.school_year,
+                                        row.name_of_employee
+                                      )
+                                    "
+                                  >
+                                    View
+                                  </v-btn>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td class="esatCard">Date:</td>
+                                <td>12/8/2021</td>
+                              </tr>
+                            </tbody>
+                          </template>
+                        </v-simple-table>
+                      </v-col>
+                    </v-row>
+                  </v-card>
+                </v-container>
+              </v-col>
+            </v-row>
           </v-container>
         </v-tab-item>
       </v-tabs-items>
@@ -2469,6 +2656,12 @@ export default {
       returnPart3() {
         this.tab = "part3";
       },
+      create() {
+        this.tab = "subscribe";
+        this.disclosure = true;
+        this.createBtn = false;
+        this.clickEsat = true;
+      },
       // goToShowPrint() {
       //   this.tab = "show_print";
       // },
@@ -2478,22 +2671,31 @@ export default {
       // returnShowPrint() {
       //   this.tab = "show_print";
       // },
-      // goToEsatCard() {
-      //   this.tab = "esat_card";
-      // },
+      goToEsatCard() {
+        this.$router.go();
+        this.tab = "esat_card";
+        this.clickEsat = false;
+        this.createBtn = true;
+        // window.location.reload();
+
+        this.retrieveEsat();
+      },
       // returnEsatCard() {
       //   this.tab = "esat_card";
       // },
 
-      disclosure: true,
+      disclosure: false,
       privacyNote: false,
       showPart1: false,
       showPart2: false,
       showPart3: false,
-      // showPrint: false,
+      showPrint: false,
       esatCard: true,
       saveInfos: true,
       updateInfos: false,
+      createBtn: false,
+      clickEsat: false,
+      editBtn: true,
       positionItems: [
         "Teacher I",
         "Teacher II",
@@ -2739,39 +2941,102 @@ export default {
       esatDemographicProfile: [],
       coreBehavioralCompetencies: [],
       functionalObjectives: [],
+      esatInfo: [],
+      viewEsatDemo: [],
+      viewEsatCore: [],
+      viewEsatFunc: [],
+      printEsatInfo: [],
+      editId: "",
+      core_ids: [],
+      funct_ids: [],
+      role: "",
     };
   },
   created() {
     this.retrieveEsat();
   },
-
   methods: {
     async retrieveEsat() {
-      const returnedData = await this.$store.dispatch("retrieveEsatInfoById");
+      this.employeeName = JSON.parse(sessionStorage.user_session).name;
+      this.role = JSON.parse(sessionStorage.user_session).role;
 
+      this.esatInfo = [];
       this.esatDemographicProfile = [];
       this.coreBehavioralCompetencies = [];
       this.functionalObjectives = [];
-      console.log(returnedData.data);
+      if (this.role == "Admin") {
+        this.createBtn = false;
+        this.editBtn = false;
+        const returnedData = await this.$store.dispatch("retrieveEsatInfos");
+        console.log(returnedData.data[0][0].esatDemographicProfile);
+        if (returnedData.data[0][0].esatDemographicProfile.length > 0) {
+          for (let value of returnedData.data[0][0].esatDemographicProfile) {
+            this.esatDemographicProfile.push(value);
+          }
 
-      for (let value of returnedData.data[0][0].esatDemographicProfile) {
-        this.esatDemographicProfile.push(value);
+          for (let core of returnedData.data[1][0]
+            .esatCoreBehavioralCompetencies) {
+            this.coreBehavioralCompetencies.push(core);
+          }
+
+          for (let func of returnedData.data[2][0].esatFunctionalObjectives) {
+            this.functionalObjectives.push(func);
+          }
+
+          this.esatInfo.push(this.esatDemographicProfile);
+          this.esatInfo.push(this.coreBehavioralCompetencies);
+          this.esatInfo.push(this.functionalObjectives);
+          console.log(this.esatInfo);
+          console.log("admin side");
+          this.disclosure = true;
+          this.tab = "esat_card";
+        } else {
+          console.log("No Data");
+        }
+      } else {
+        const returnedData = await this.$store.dispatch("retrieveEsatInfoById");
+        if (returnedData.data[0][0].esatDemographicProfile.length > 0) {
+          this.tab = "esat_card";
+          this.disclosure = false;
+          this.createBtn = true;
+          for (let value of returnedData.data[0][0].esatDemographicProfile) {
+            this.esatDemographicProfile.push(value);
+          }
+
+          for (let core of returnedData.data[1][0]
+            .esatCoreBehavioralCompetencies) {
+            this.coreBehavioralCompetencies.push(core);
+          }
+
+          for (let func of returnedData.data[2][0].esatFunctionalObjectives) {
+            this.functionalObjectives.push(func);
+          }
+
+          this.esatInfo.push(this.esatDemographicProfile);
+          this.esatInfo.push(this.coreBehavioralCompetencies);
+          this.esatInfo.push(this.functionalObjectives);
+        } else {
+          this.tab = "subscribe";
+          this.disclosure = true;
+        }
       }
 
-      for (let core of returnedData.data[1][0].esatCoreBehavioralCompetencies) {
-        this.coreBehavioralCompetencies.push(core);
-      }
+      // console.log(this.employeeName);
+      // console.log(this.role);
 
-      for (let func of returnedData.data[2][0].esatFunctionalObjectives) {
-        this.functionalObjectives.push(func);
-      }
-      this.employeeName = JSON.parse(sessionStorage.user_session).name;
+      // this.disclosure = false;
+      // this.privacyNote = false;
+      // this.showPart1 = false;
+      // this.showPart2 = false;
+      // this.showPart3 = false;
+      // this.tab = "esat_card";
+      // this.esatCard = true;
     },
-    finalizeEsat: async function (){
-      console.log("created")
+    finalizeEsat: async function () {
+      console.log("created");
       // (this.showPart3 = false),
       // (this.tab = "esat_card");
-      
+
       const employeeName = this.employeeName;
       const employeeId = this.employeeId;
       const position = this.position;
@@ -2901,7 +3166,7 @@ export default {
         if (subTaught == "") {
           continue;
         } else {
-          specifySubjectsTaught += subTaught + ",";
+          specifySubjectsTaught += subTaught + ", ";
         }
       }
 
@@ -2951,23 +3216,38 @@ export default {
 
       const personalComments = this.personalComments;
 
-      const selfManagement1 = this.selfManagement1 == null ? "" : this.selfManagement1;
-      const selfManagement2 = this.selfManagement2 == null ? "" : this.selfManagement2;
-      const selfManagement3 = this.selfManagement3 == null ? "" : this.selfManagement3;
-      const selfManagement4 = this.selfManagement4 == null ? "" : this.selfManagement4;
-      const selfManagement5 = this.selfManagement5 == null ? "" : this.selfManagement5;
+      const selfManagement1 =
+        this.selfManagement1 == null ? "" : this.selfManagement1;
+      const selfManagement2 =
+        this.selfManagement2 == null ? "" : this.selfManagement2;
+      const selfManagement3 =
+        this.selfManagement3 == null ? "" : this.selfManagement3;
+      const selfManagement4 =
+        this.selfManagement4 == null ? "" : this.selfManagement4;
+      const selfManagement5 =
+        this.selfManagement5 == null ? "" : this.selfManagement5;
 
-      const professionalAndEthics1 = this.professionalAndEthics1 == null ? "" : this.professionalAndEthics1;
-      const professionalAndEthics2 = this.professionalAndEthics2 == null ? "" : this.professionalAndEthics2;
-      const professionalAndEthics3 = this.professionalAndEthics3 == null ? "" : this.professionalAndEthics3;
-      const professionalAndEthics4 = this.professionalAndEthics4 == null ? "" : this.professionalAndEthics4;
-      const professionalAndEthics5 = this.professionalAndEthics5 == null ? "" : this.professionalAndEthics5;
+      const professionalAndEthics1 =
+        this.professionalAndEthics1 == null ? "" : this.professionalAndEthics1;
+      const professionalAndEthics2 =
+        this.professionalAndEthics2 == null ? "" : this.professionalAndEthics2;
+      const professionalAndEthics3 =
+        this.professionalAndEthics3 == null ? "" : this.professionalAndEthics3;
+      const professionalAndEthics4 =
+        this.professionalAndEthics4 == null ? "" : this.professionalAndEthics4;
+      const professionalAndEthics5 =
+        this.professionalAndEthics5 == null ? "" : this.professionalAndEthics5;
 
-      const resultsFocus1 = this.resultsFocus1 == null ? "" : this.resultsFocus1;
-      const resultsFocus2 = this.resultsFocus2 == null ? "" : this.resultsFocus2;
-      const resultsFocus3 = this.resultsFocus3 == null ? "" : this.resultsFocus3;
-      const resultsFocus4 = this.resultsFocus4 == null ? "" : this.resultsFocus4;
-      const resultsFocus5 = this.resultsFocus5 == null ? "" : this.resultsFocus5;
+      const resultsFocus1 =
+        this.resultsFocus1 == null ? "" : this.resultsFocus1;
+      const resultsFocus2 =
+        this.resultsFocus2 == null ? "" : this.resultsFocus2;
+      const resultsFocus3 =
+        this.resultsFocus3 == null ? "" : this.resultsFocus3;
+      const resultsFocus4 =
+        this.resultsFocus4 == null ? "" : this.resultsFocus4;
+      const resultsFocus5 =
+        this.resultsFocus5 == null ? "" : this.resultsFocus5;
 
       const teamwork1 = this.teamwork1 == null ? "" : this.teamwork1;
       const teamwork2 = this.teamwork2 == null ? "" : this.teamwork2;
@@ -2975,11 +3255,16 @@ export default {
       const teamwork4 = this.teamwork4 == null ? "" : this.teamwork4;
       const teamwork5 = this.teamwork5 == null ? "" : this.teamwork5;
 
-      const serviceOrientation1 = this.serviceOrientation1 == null ? "" : this.serviceOrientation1;
-      const serviceOrientation2 = this.serviceOrientation2 == null ? "" : this.serviceOrientation2;
-      const serviceOrientation3 = this.serviceOrientation3 == null ? "" : this.serviceOrientation3;
-      const serviceOrientation4 = this.serviceOrientation4 == null ? "" : this.serviceOrientation4;
-      const serviceOrientation5 = this.serviceOrientation5 == null ? "" : this.serviceOrientation5;
+      const serviceOrientation1 =
+        this.serviceOrientation1 == null ? "" : this.serviceOrientation1;
+      const serviceOrientation2 =
+        this.serviceOrientation2 == null ? "" : this.serviceOrientation2;
+      const serviceOrientation3 =
+        this.serviceOrientation3 == null ? "" : this.serviceOrientation3;
+      const serviceOrientation4 =
+        this.serviceOrientation4 == null ? "" : this.serviceOrientation4;
+      const serviceOrientation5 =
+        this.serviceOrientation5 == null ? "" : this.serviceOrientation5;
 
       const innovation1 = this.innovation1 == null ? "" : this.innovation1;
       const innovation2 = this.innovation2 == null ? "" : this.innovation2;
@@ -2991,72 +3276,84 @@ export default {
       const functionalObjectives = [
         {
           userID: userId,
+          school_year: schoolYear,
           objectiveNo: "1.1",
           capability: capability1,
           priority: development1,
         },
         {
           userID: userId,
+          school_year: schoolYear,
           objectiveNo: "1.2",
           capability: capability2,
           priority: development2,
         },
         {
           userID: userId,
+          school_year: schoolYear,
           objectiveNo: "1.3",
           capability: capability3,
           priority: development3,
         },
         {
           userID: userId,
+          school_year: schoolYear,
           objectiveNo: "2.1",
           capability: capability4,
           priority: development4,
         },
         {
           userID: userId,
+          school_year: schoolYear,
           objectiveNo: "2.2",
           capability: capability5,
           priority: development5,
         },
         {
           userID: userId,
+          school_year: schoolYear,
           objectiveNo: "2.3",
           capability: capability6,
           priority: development6,
         },
         {
           userID: userId,
+          school_year: schoolYear,
           objectiveNo: "3.1",
           capability: capability7,
           priority: development7,
         },
         {
           userID: userId,
+          school_year: schoolYear,
           objectiveNo: "3.2",
           capability: capability8,
           priority: development8,
         },
         {
           userID: userId,
+          school_year: schoolYear,
           objectiveNo: "4.1",
           capability: capability9,
           priority: development9,
         },
         {
           userID: userId,
+          school_year: schoolYear,
           objectiveNo: "4.2",
           capability: capability10,
           priority: development10,
         },
         {
           userID: userId,
+          school_year: schoolYear,
           objectiveNo: "4.3",
           capability: capability11,
           priority: development11,
         },
         {
           userID: userId,
+          school_year: schoolYear,
           objectiveNo: "5.1",
           capability: capability12,
           priority: development12,
@@ -3066,151 +3363,181 @@ export default {
       const coreBehavioralCompetencies = [
         {
           userID: userId,
+          school_year: schoolYear,
           objectiveNo: "1.1",
           value: selfManagement1,
         },
         {
           userID: userId,
+          school_year: schoolYear,
           objectiveNo: "1.2",
           value: selfManagement2,
         },
         {
           userID: userId,
+          school_year: schoolYear,
           objectiveNo: "1.3",
           value: selfManagement3,
         },
         {
           userID: userId,
+          school_year: schoolYear,
           objectiveNo: "1.4",
           value: selfManagement4,
         },
         {
           userID: userId,
+          school_year: schoolYear,
           objectiveNo: "1.5",
           value: selfManagement5,
         },
         {
           userID: userId,
+          school_year: schoolYear,
           objectiveNo: "2.1",
           value: professionalAndEthics1,
         },
         {
           userID: userId,
+          school_year: schoolYear,
           objectiveNo: "2.2",
           value: professionalAndEthics2,
         },
         {
           userID: userId,
+          school_year: schoolYear,
           objectiveNo: "2.3",
           value: professionalAndEthics3,
         },
         {
           userID: userId,
+          school_year: schoolYear,
           objectiveNo: "2.4",
           value: professionalAndEthics4,
         },
         {
           userID: userId,
+          school_year: schoolYear,
           objectiveNo: "2.5",
           value: professionalAndEthics5,
         },
         {
           userID: userId,
+          school_year: schoolYear,
           objectiveNo: "3.1",
           value: resultsFocus1,
         },
         {
           userID: userId,
+          school_year: schoolYear,
           objectiveNo: "3.2",
           value: resultsFocus2,
         },
         {
           userID: userId,
+          school_year: schoolYear,
           objectiveNo: "3.3",
           value: resultsFocus3,
         },
         {
           userID: userId,
+          school_year: schoolYear,
           objectiveNo: "3.4",
           value: resultsFocus4,
         },
         {
           userID: userId,
+          school_year: schoolYear,
           objectiveNo: "3.5",
           value: resultsFocus5,
         },
         {
           userID: userId,
+          school_year: schoolYear,
           objectiveNo: "4.1",
           value: teamwork1,
         },
         {
           userID: userId,
+          school_year: schoolYear,
           objectiveNo: "4.2",
           value: teamwork2,
         },
         {
           userID: userId,
+          school_year: schoolYear,
           objectiveNo: "4.3",
           value: teamwork3,
         },
         {
           userID: userId,
+          school_year: schoolYear,
           objectiveNo: "4.4",
           value: teamwork4,
         },
         {
           userID: userId,
+          school_year: schoolYear,
           objectiveNo: "4.5",
           value: teamwork5,
         },
         {
           userID: userId,
+          school_year: schoolYear,
           objectiveNo: "5.1",
           value: serviceOrientation1,
         },
         {
           userID: userId,
+          school_year: schoolYear,
           objectiveNo: "5.2",
           value: serviceOrientation2,
         },
         {
           userID: userId,
+          school_year: schoolYear,
           objectiveNo: "5.3",
           value: serviceOrientation3,
         },
         {
           userID: userId,
+          school_year: schoolYear,
           objectiveNo: "5.4",
           value: serviceOrientation4,
         },
         {
           userID: userId,
+          school_year: schoolYear,
           objectiveNo: "5.5",
           value: serviceOrientation5,
         },
         {
           userID: userId,
+          school_year: schoolYear,
           objectiveNo: "6.1",
           value: innovation1,
         },
         {
           userID: userId,
+          school_year: schoolYear,
           objectiveNo: "6.2",
           value: innovation2,
         },
         {
           userID: userId,
+          school_year: schoolYear,
           objectiveNo: "6.3",
           value: innovation3,
         },
         {
           userID: userId,
+          school_year: schoolYear,
           objectiveNo: "6.4",
           value: innovation4,
         },
         {
           userID: userId,
+          school_year: schoolYear,
           objectiveNo: "6.5",
           value: innovation5,
         },
@@ -3280,60 +3607,61 @@ export default {
       const returnedData = await this.$store.dispatch("createEsat", data);
       // const returnedData = await this.post("createEsat", data);
       console.log(returnedData);
-      if (returnedData == "success") {
+      if (returnedData.status == 200) {
         console.log("success");
+        window.location.reload();
       }
     },
-    editInfo: async function () {
+    // editInfo: async function (editEsatDemo,editEsatCore,editEsatFunc) {
+    editInfo: async function (editInfo) {
+      console.log("edit");
+      console.log(this.role);
+      console.log(editInfo);
       this.tab = "part1";
-      this.showPrint = false;
+      (this.clickEsat = true), (this.showPrint = false);
       this.showPart1 = true;
       this.updateInfos = true;
       this.saveInfos = false;
-      console.log("Edit");
 
-      (this.employeeName = this.esatDemographicProfile[0].name_of_employee),
-        (this.employeeId = this.esatDemographicProfile[0].employee_id),
-        (this.position = this.esatDemographicProfile[0].position),
-        (this.employmentStatus =
-          this.esatDemographicProfile[0].employment_status),
-        (this.employeeAge = this.esatDemographicProfile[0].age),
-        (this.employeeSex = this.esatDemographicProfile[0].sex),
-        (this.schoolYear = this.esatDemographicProfile[0].school_year),
-        (this.yearsInTeaching =
-          this.esatDemographicProfile[0].years_in_teaching),
-        (this.highestDegreeObtained =
-          this.esatDemographicProfile[0].highest_degree_obtained),
+      this.editId = editInfo[0][0].id;
+      (this.employeeName = editInfo[0][0].name_of_employee),
+        (this.employeeId = editInfo[0][0].employee_id),
+        (this.position = editInfo[0][0].position),
+        (this.employmentStatus = editInfo[0][0].employment_status),
+        (this.employeeAge = editInfo[0][0].age),
+        (this.employeeSex = editInfo[0][0].sex),
+        (this.schoolYear = editInfo[0][0].school_year),
+        (this.yearsInTeaching = editInfo[0][0].years_in_teaching),
+        (this.highestDegreeObtained = editInfo[0][0].highest_degree_obtained),
         (this.specifiedHighestDegreeObtained =
-          this.esatDemographicProfile[0].specified_highest_degree_obtained),
-        (this.region = this.esatDemographicProfile[0].region),
-        (this.division = this.esatDemographicProfile[0].division),
-        (this.employeeMunicipality =
-          this.esatDemographicProfile[0].employee_municipality),
-        (this.schoolId = this.esatDemographicProfile[0].school_id),
-        (this.schoolName = this.esatDemographicProfile[0].school_name),
-        (this.schoolType = this.esatDemographicProfile[0].school_type),
-        (this.schoolSize = this.esatDemographicProfile[0].school_size),
+          editInfo[0][0].specified_highest_degree_obtained),
+        (this.region = editInfo[0][0].region),
+        (this.division = editInfo[0][0].division),
+        (this.employeeMunicipality = editInfo[0][0].employee_municipality),
+        (this.schoolId = editInfo[0][0].school_id),
+        (this.schoolName = editInfo[0][0].school_name),
+        (this.schoolType = editInfo[0][0].school_type),
+        (this.schoolSize = editInfo[0][0].school_size),
         (this.curricularClassification =
-          this.esatDemographicProfile[0].curricular_classification),
-        (this.gradeLevelTaught =
-          this.esatDemographicProfile[0].grade_level_taught),
-        (this.levelTaught = this.esatDemographicProfile[0].level_taught),
-        (this.personalComments =
-          this.esatDemographicProfile[0].personal_comments);
+          editInfo[0][0].curricular_classification),
+        (this.gradeLevelTaught = editInfo[0][0].grade_level_taught),
+        (this.levelTaught = editInfo[0][0].level_taught),
+        (this.personalComments = editInfo[0][0].personal_comments);
 
       let splitSpecializedLen =
-        this.esatDemographicProfile[0].area_of_specialization.split(",").length;
-      let splitSpecialize =
-        this.esatDemographicProfile[0].area_of_specialization.split(
-          ", ",
-          splitSpecializedLen
-        );
+        editInfo[0][0].area_of_specialization.split(",").length;
+      let splitSpecialize = editInfo[0][0].area_of_specialization.split(
+        ", ",
+        splitSpecializedLen
+      );
+
+      console.log(splitSpecialize);
+
       for (let specializeSub in splitSpecialize) {
         splitSpecialize[specializeSub] == "English"
           ? (this.english = splitSpecialize[specializeSub])
           : splitSpecialize[specializeSub] == "Filipino"
-          ? (this.Filipino = splitSpecialize[specializeSub])
+          ? (this.filipino = "Filipino")
           : splitSpecialize[specializeSub] == "Mathematics"
           ? (this.mathematics = splitSpecialize[specializeSub])
           : splitSpecialize[specializeSub] == "General Science"
@@ -3364,12 +3692,13 @@ export default {
             (this.otherSpecialized = splitSpecialize[specializeSub]));
       }
       let splitSubjectTaughtLen =
-        this.esatDemographicProfile[0].subjects_taught.split(",").length;
-      let splitSubjectTaught =
-        this.esatDemographicProfile[0].subjects_taught.split(
-          ",",
-          splitSubjectTaughtLen
-        );
+        editInfo[0][0].subjects_taught.split(",").length;
+      let splitSubjectTaught = editInfo[0][0].subjects_taught.split(
+        ", ",
+        splitSubjectTaughtLen
+      );
+
+      console.log(this.fsilipino);
 
       for (let subTaught in splitSubjectTaught) {
         splitSubjectTaught[subTaught] == "Mother Tongue"
@@ -3398,84 +3727,98 @@ export default {
             (this.otherSubTaught = splitSubjectTaught[subTaught]));
       }
 
-      this.capability1 = this.functionalObjectives[0].level_of_capability;
-      this.development1 = this.functionalObjectives[0].priority_for_development;
+      console.log(splitSubjectTaughtLen);
 
-      this.capability2 = this.functionalObjectives[1].level_of_capability;
-      this.development2 = this.functionalObjectives[1].priority_for_development;
+      for (let item in editInfo[2]) {
+        this.funct_ids.push(editInfo[2][item].id);
+      }
+      console.log(this.funct_ids);
+      this.capability1 = editInfo[2][0].level_of_capability;
+      this.development1 = editInfo[2][0].priority_for_development;
 
-      this.capability3 = this.functionalObjectives[2].level_of_capability;
-      this.development3 = this.functionalObjectives[2].priority_for_development;
+      this.capability2 = editInfo[2][1].level_of_capability;
+      this.development2 = editInfo[2][1].priority_for_development;
 
-      this.capability4 = this.functionalObjectives[3].level_of_capability;
-      this.development4 = this.functionalObjectives[3].priority_for_development;
+      this.capability3 = editInfo[2][2].level_of_capability;
+      this.development3 = editInfo[2][2].priority_for_development;
 
-      this.capability5 = this.functionalObjectives[4].level_of_capability;
-      this.development5 = this.functionalObjectives[4].priority_for_development;
+      this.capability4 = editInfo[2][3].level_of_capability;
+      this.development4 = editInfo[2][3].priority_for_development;
 
-      this.capability6 = this.functionalObjectives[5].level_of_capability;
-      this.development6 = this.functionalObjectives[5].priority_for_development;
+      this.capability5 = editInfo[2][4].level_of_capability;
+      this.development5 = editInfo[2][4].priority_for_development;
 
-      this.capability7 = this.functionalObjectives[6].level_of_capability;
-      this.development7 = this.functionalObjectives[6].priority_for_development;
+      this.capability6 = editInfo[2][5].level_of_capability;
+      this.development6 = editInfo[2][5].priority_for_development;
 
-      this.capability8 = this.functionalObjectives[7].level_of_capability;
-      this.development8 = this.functionalObjectives[7].priority_for_development;
+      this.capability7 = editInfo[2][6].level_of_capability;
+      this.development7 = editInfo[2][6].priority_for_development;
 
-      this.capability9 = this.functionalObjectives[8].level_of_capability;
-      this.development9 = this.functionalObjectives[8].priority_for_development;
+      this.capability8 = editInfo[2][7].level_of_capability;
+      this.development8 = editInfo[2][7].priority_for_development;
 
-      this.capability10 = this.functionalObjectives[9].level_of_capability;
-      this.development10 = this.functionalObjectives[9].priority_for_development;
+      this.capability9 = editInfo[2][8].level_of_capability;
+      this.development9 = editInfo[2][8].priority_for_development;
 
-      this.capability11 = this.functionalObjectives[10].level_of_capability;
-      this.development11 = this.functionalObjectives[10].priority_for_development;
+      this.capability10 = editInfo[2][9].level_of_capability;
+      this.development10 = editInfo[2][9].priority_for_development;
 
-      this.capability12 = this.functionalObjectives[11].level_of_capability;
-      this.development12 = this.functionalObjectives[11].priority_for_development;
+      this.capability11 = editInfo[2][10].level_of_capability;
+      this.development11 = editInfo[2][10].priority_for_development;
 
+      this.capability12 = editInfo[2][11].level_of_capability;
+      this.development12 = editInfo[2][11].priority_for_development;
 
-      this.selfManagement1 = this.coreBehavioralCompetencies[0].check_status;
-      this.selfManagement2 = this.coreBehavioralCompetencies[1].check_status;
-      this.selfManagement3 = this.coreBehavioralCompetencies[2].check_status;
-      this.selfManagement4 = this.coreBehavioralCompetencies[3].check_status;
-      this.selfManagement5 = this.coreBehavioralCompetencies[4].check_status;
+      for (let item in editInfo[1]) {
+        this.core_ids.push(editInfo[1][item].id);
+      }
+      console.log(this.core_ids);
+      this.selfManagement1 = editInfo[1][0].check_status;
+      this.selfManagement2 = editInfo[1][1].check_status;
+      this.selfManagement3 = editInfo[1][2].check_status;
+      this.selfManagement4 = editInfo[1][3].check_status;
+      this.selfManagement5 = editInfo[1][4].check_status;
 
-      this.professionalAndEthics1 = this.coreBehavioralCompetencies[5].check_status;
-      this.professionalAndEthics2 = this.coreBehavioralCompetencies[6].check_status;
-      this.professionalAndEthics3 = this.coreBehavioralCompetencies[7].check_status;
-      this.professionalAndEthics4 = this.coreBehavioralCompetencies[8].check_status;
-      this.professionalAndEthics5 = this.coreBehavioralCompetencies[9].check_status;
+      this.professionalAndEthics1 = editInfo[1][5].check_status;
+      this.professionalAndEthics2 = editInfo[1][6].check_status;
+      this.professionalAndEthics3 = editInfo[1][7].check_status;
+      this.professionalAndEthics4 = editInfo[1][8].check_status;
+      this.professionalAndEthics5 = editInfo[1][9].check_status;
 
-      this.resultsFocus1 = this.coreBehavioralCompetencies[10].check_status;
-      this.resultsFocus2 = this.coreBehavioralCompetencies[11].check_status;
-      this.resultsFocus3 = this.coreBehavioralCompetencies[12].check_status;
-      this.resultsFocus4 = this.coreBehavioralCompetencies[13].check_status;
-      this.resultsFocus5 = this.coreBehavioralCompetencies[14].check_status;
+      this.resultsFocus1 = editInfo[1][10].check_status;
+      this.resultsFocus2 = editInfo[1][11].check_status;
+      this.resultsFocus3 = editInfo[1][12].check_status;
+      this.resultsFocus4 = editInfo[1][13].check_status;
+      this.resultsFocus5 = editInfo[1][14].check_status;
 
-      this.teamwork1 = this.coreBehavioralCompetencies[15].check_status;
-      this.teamwork2 = this.coreBehavioralCompetencies[16].check_status;
-      this.teamwork3 = this.coreBehavioralCompetencies[17].check_status;
-      this.teamwork4 = this.coreBehavioralCompetencies[18].check_status;
-      this.teamwork5 = this.coreBehavioralCompetencies[19].check_status;
+      this.teamwork1 = editInfo[1][15].check_status;
+      this.teamwork2 = editInfo[1][16].check_status;
+      this.teamwork3 = editInfo[1][17].check_status;
+      this.teamwork4 = editInfo[1][18].check_status;
+      this.teamwork5 = editInfo[1][19].check_status;
 
-      this.serviceOrientation1 = this.coreBehavioralCompetencies[20].check_status;
-      this.serviceOrientation2 = this.coreBehavioralCompetencies[21].check_status;
-      this.serviceOrientation3 = this.coreBehavioralCompetencies[22].check_status;
-      this.serviceOrientation4 = this.coreBehavioralCompetencies[23].check_status;
-      this.serviceOrientation5 = this.coreBehavioralCompetencies[24].check_status;
+      this.serviceOrientation1 = editInfo[1][20].check_status;
+      this.serviceOrientation2 = editInfo[1][21].check_status;
+      this.serviceOrientation3 = editInfo[1][22].check_status;
+      this.serviceOrientation4 = editInfo[1][23].check_status;
+      this.serviceOrientation5 = editInfo[1][24].check_status;
 
-      this.innovation1 = this.coreBehavioralCompetencies[25].check_status;
-      this.innovation2 = this.coreBehavioralCompetencies[26].check_status;
-      this.innovation3 = this.coreBehavioralCompetencies[27].check_status;
-      this.innovation4 = this.coreBehavioralCompetencies[28].check_status;
-      this.innovation5 = this.coreBehavioralCompetencies[29].check_status;
+      this.innovation1 = editInfo[1][25].check_status;
+      this.innovation2 = editInfo[1][26].check_status;
+      this.innovation3 = editInfo[1][27].check_status;
+      this.innovation4 = editInfo[1][28].check_status;
+      this.innovation5 = editInfo[1][29].check_status;
     },
 
     updateEsat: async function () {
-      console.log("Update")
+      console.log("Update");
+      console.log(this.funct_ids);
+      console.log(this.core_ids);
       // (this.showPart3 = false),
       // (this.tab = "esat_card");
+      let rowId = this.editId;
+      let coreBehavioralCompetenciesID = this.core_ids;
+      let funcObjectivesID = this.funct_ids;
       const employeeName = this.employeeName;
       const employeeId = this.employeeId;
       const position = this.position;
@@ -3565,6 +3908,8 @@ export default {
       let specializeSubSplitJoin = specializeSubSplit.join();
       specifyAreaofSpecialization = specializeSubSplitJoin;
 
+      console.log("specialization: " + specifyAreaofSpecialization);
+
       const MotherTongue = this.MotherTongue == null ? "" : this.MotherTongue;
       const Filipino = this.Filipino == null ? "" : this.Filipino;
       const English = this.English == null ? "" : this.English;
@@ -3585,7 +3930,7 @@ export default {
       const otherSubjectTaught =
         this.otherSubTaught == null ? "" : this.otherSubTaught;
 
-      let specifySubjectsTaught = "";
+      let specifySubjectsTaught = [];
       let subjectTaught = [
         MotherTongue,
         Filipino,
@@ -3605,9 +3950,10 @@ export default {
         if (subTaught == "") {
           continue;
         } else {
-          specifySubjectsTaught += subTaught + ",";
+          specifySubjectsTaught += subTaught + ", ";
         }
       }
+      // console.log(specifySubjectsTaught)
 
       let splitSpecifiedSubLen = specifySubjectsTaught.split(",").length - 1;
       let specifiedSubSplit = specifySubjectsTaught.split(
@@ -3616,6 +3962,8 @@ export default {
       );
       let specifiedSubSplitJoin = specifiedSubSplit.join();
       specifySubjectsTaught = specifiedSubSplitJoin;
+      console.log(subjectTaught);
+      console.log("subTuaght: " + specifySubjectsTaught);
 
       const capability1 = this.capability1;
       const development1 = this.development1;
@@ -3655,8 +4003,8 @@ export default {
 
       const personalComments = this.personalComments;
 
-//  == "1" ? this.selfManagement : this.selfManagement1 == "1" ? this.selfManagement
-      const selfManagement1 = this.selfManagement1; 
+      //  == "1" ? this.selfManagement : this.selfManagement1 == "1" ? this.selfManagement
+      const selfManagement1 = this.selfManagement1;
       const selfManagement2 = this.selfManagement2;
       const selfManagement3 = this.selfManagement3;
       const selfManagement4 = this.selfManagement4;
@@ -3696,232 +4044,278 @@ export default {
       const functionalObjectives = [
         {
           userID: userId,
+          school_year: schoolYear,
           objectiveNo: "1.1",
           capability: capability1,
           priority: development1,
         },
         {
           userID: userId,
+          school_year: schoolYear,
           objectiveNo: "1.2",
           capability: capability2,
           priority: development2,
         },
         {
           userID: userId,
+          school_year: schoolYear,
           objectiveNo: "1.3",
           capability: capability3,
           priority: development3,
         },
         {
           userID: userId,
+          school_year: schoolYear,
           objectiveNo: "2.1",
           capability: capability4,
           priority: development4,
         },
         {
           userID: userId,
+          school_year: schoolYear,
           objectiveNo: "2.2",
           capability: capability5,
           priority: development5,
         },
         {
           userID: userId,
+          school_year: schoolYear,
           objectiveNo: "2.3",
           capability: capability6,
           priority: development6,
         },
         {
           userID: userId,
+          school_year: schoolYear,
           objectiveNo: "3.1",
           capability: capability7,
           priority: development7,
         },
         {
           userID: userId,
+          school_year: schoolYear,
           objectiveNo: "3.2",
           capability: capability8,
           priority: development8,
         },
         {
           userID: userId,
+          school_year: schoolYear,
           objectiveNo: "4.1",
           capability: capability9,
           priority: development9,
         },
         {
           userID: userId,
+          school_year: schoolYear,
           objectiveNo: "4.2",
           capability: capability10,
           priority: development10,
         },
         {
           userID: userId,
+          school_year: schoolYear,
           objectiveNo: "4.3",
           capability: capability11,
           priority: development11,
         },
         {
           userID: userId,
+          school_year: schoolYear,
           objectiveNo: "5.1",
           capability: capability12,
           priority: development12,
         },
       ];
       console.log(functionalObjectives);
+
       const coreBehavioralCompetencies = [
         {
           userID: userId,
+          school_year: schoolYear,
           objectiveNo: "1.1",
           value: selfManagement1,
         },
         {
           userID: userId,
+          school_year: schoolYear,
           objectiveNo: "1.2",
           value: selfManagement2,
         },
         {
           userID: userId,
+          school_year: schoolYear,
           objectiveNo: "1.3",
           value: selfManagement3,
         },
         {
           userID: userId,
+          school_year: schoolYear,
           objectiveNo: "1.4",
           value: selfManagement4,
         },
         {
           userID: userId,
+          school_year: schoolYear,
           objectiveNo: "1.5",
           value: selfManagement5,
         },
         {
           userID: userId,
+          school_year: schoolYear,
           objectiveNo: "2.1",
           value: professionalAndEthics1,
         },
         {
           userID: userId,
+          school_year: schoolYear,
           objectiveNo: "2.2",
           value: professionalAndEthics2,
         },
         {
           userID: userId,
+          school_year: schoolYear,
           objectiveNo: "2.3",
           value: professionalAndEthics3,
         },
         {
           userID: userId,
+          school_year: schoolYear,
           objectiveNo: "2.4",
           value: professionalAndEthics4,
         },
         {
           userID: userId,
+          school_year: schoolYear,
           objectiveNo: "2.5",
           value: professionalAndEthics5,
         },
         {
           userID: userId,
+          school_year: schoolYear,
           objectiveNo: "3.1",
           value: resultsFocus1,
         },
         {
           userID: userId,
+          school_year: schoolYear,
           objectiveNo: "3.2",
           value: resultsFocus2,
         },
         {
           userID: userId,
+          school_year: schoolYear,
           objectiveNo: "3.3",
           value: resultsFocus3,
         },
         {
           userID: userId,
+          school_year: schoolYear,
           objectiveNo: "3.4",
           value: resultsFocus4,
         },
         {
           userID: userId,
+          school_year: schoolYear,
           objectiveNo: "3.5",
           value: resultsFocus5,
         },
         {
           userID: userId,
+          school_year: schoolYear,
           objectiveNo: "4.1",
           value: teamwork1,
         },
         {
           userID: userId,
+          school_year: schoolYear,
           objectiveNo: "4.2",
           value: teamwork2,
         },
         {
           userID: userId,
+          school_year: schoolYear,
           objectiveNo: "4.3",
           value: teamwork3,
         },
         {
           userID: userId,
+          school_year: schoolYear,
           objectiveNo: "4.4",
           value: teamwork4,
         },
         {
           userID: userId,
+          school_year: schoolYear,
           objectiveNo: "4.5",
           value: teamwork5,
         },
         {
           userID: userId,
+          school_year: schoolYear,
           objectiveNo: "5.1",
           value: serviceOrientation1,
         },
         {
           userID: userId,
+          school_year: schoolYear,
           objectiveNo: "5.2",
           value: serviceOrientation2,
         },
         {
           userID: userId,
+          school_year: schoolYear,
           objectiveNo: "5.3",
           value: serviceOrientation3,
         },
         {
           userID: userId,
+          school_year: schoolYear,
           objectiveNo: "5.4",
           value: serviceOrientation4,
         },
         {
           userID: userId,
+          school_year: schoolYear,
           objectiveNo: "5.5",
           value: serviceOrientation5,
         },
         {
           userID: userId,
+          school_year: schoolYear,
           objectiveNo: "6.1",
           value: innovation1,
         },
         {
           userID: userId,
+          school_year: schoolYear,
           objectiveNo: "6.2",
           value: innovation2,
         },
         {
           userID: userId,
+          school_year: schoolYear,
           objectiveNo: "6.3",
           value: innovation3,
         },
         {
           userID: userId,
+          school_year: schoolYear,
           objectiveNo: "6.4",
           value: innovation4,
         },
         {
           userID: userId,
+          school_year: schoolYear,
           objectiveNo: "6.5",
           value: innovation5,
         },
       ];
       console.log(coreBehavioralCompetencies);
       const data = {
+        rowId,
+        coreBehavioralCompetenciesID,
+        funcObjectivesID,
         userId,
         employeeName,
         employeeId,
@@ -3986,28 +4380,50 @@ export default {
       // const returnedData = await this.post("createEsat", data);
       console.log(data);
       console.log(returnedData);
-      // if (returnedData.status ==200) {
-      //   console.log("success");
-      // }
+      if (returnedData.status == 200) {
+        console.log("success");
+        window.location.reload();
+      }
     },
-    viewPrint: async function () {
-      
-      // (this.tab = "show_print"), (this.showPrint = true);
-      // console.log("View Card")
-      // const returnedData = await this.$store.dispatch("retrieveEsatInfoById");
-      // this.esatDemographicProfile = [];
-      // this.coreBehavioralCompetencies = [];
-      // this.functionalObjectives = [];
-      // console.log(returnedData.data);
-      // for (let value of returnedData.data[0][0].esatDemographicProfile) {
-      //   this.esatDemographicProfile.push(value);
-      // }
-      // for (let core of returnedData.data[1][0].esatCoreBehavioralCompetencies) {
-      //   this.coreBehavioralCompetencies.push(core);
-      // }
-      // for (let func of returnedData.data[2][0].esatFunctionalObjectives) {
-      //   this.functionalObjectives.push(func);
-      // }
+    viewPrint: async function (array, schoolYear, name) {
+      this.createBtn = false;
+      console.log("View");
+      console.log(this.role);
+      console.log(array[0]);
+      console.log(schoolYear);
+      console.log(name);
+      this.viewEsatDemo = [];
+      this.viewEsatCore = [];
+      this.viewEsatFunc = [];
+      this.printEsatInfo = [];
+      (this.tab = "show_print"), (this.showPrint = true);
+
+      for (let a in array[0]) {
+        if (
+          array[0][a].school_year == schoolYear &&
+          array[0][a].name_of_employee == name
+        ) {
+          this.viewEsatDemo.push(array[0][a]);
+        }
+      }
+
+      for (let b in array[1]) {
+        if (array[1][b].school_year == schoolYear) {
+          this.viewEsatCore.push(array[1][b]);
+        }
+      }
+
+      for (let c in array[2]) {
+        if (array[2][c].school_year == schoolYear) {
+          this.viewEsatFunc.push(array[2][c]);
+        }
+      }
+      this.printEsatInfo.push(this.viewEsatDemo);
+      this.printEsatInfo.push(this.viewEsatCore);
+      this.printEsatInfo.push(this.viewEsatFunc);
+
+      // console.log(this.core_ids)
+      // console.log(this.printEsatInfo)
     },
   },
 };

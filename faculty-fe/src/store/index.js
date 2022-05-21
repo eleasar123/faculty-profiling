@@ -11,11 +11,7 @@ import user from "./modules/users"
 Vue.use(Vuex);
 
 const AUTH_TOKEN = sessionStorage.getItem('user_token')
-<<<<<<< HEAD
 axios.defaults.baseURL = "http://localhost:8000/api";
-=======
-axios.defaults.baseURL = "http://localhost:8000/api/";
->>>>>>> 51395e41a452ca7692a4571456f565e087b52798
 axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
 axios.defaults.headers.common["Content-Type"] = "application/json";
 
