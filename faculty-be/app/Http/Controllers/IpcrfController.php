@@ -12,331 +12,614 @@ class IpcrfController extends Controller
 {
     public function index()
     {
-        $ipcrf = collect();
-        $ipcrf->push([['ipcrfDemographicProfile' => IpcrfDemographicProfile::all()]]);
-        $ipcrf->push([['ipcrfDevelopmentPlan' => IpcrfDevelopmentPlan::all()]]);
-        $ipcrf->push([['ipcrfEncodingPart1' => IpcrfEncodingPart1::all()]]);
-        $ipcrf->push([['ipcrfEncodingPart2' => IpcrfEncodingPart2::all()]]);
+      return [
+       'ipcrfDemographicProfile' => IpcrfDemographicProfile::all(),
+        'ipcrfDevelopmentPlan' => IpcrfDevelopmentPlan::all(),
+        'ipcrfEncodingPart1' => IpcrfEncodingPart1::all(),
+        'ipcrfEncodingPart2' => IpcrfEncodingPart2::all()];
 
-        try {
-            return $ipcrf;
-        } catch (Throwable $error) {
-            return $error;
-        }
     }
 
-    public function getIpcrf(Request $request)
+    public function getIpcrf($id)
     {
-        $ipcrf = collect();
-        $ipcrf->push([['ipcrfDemographicProfile' => IpcrfDemographicProfile::find($request->user)]]);
-        $ipcrf->push([['ipcrfDevelopmentPlan' => IpcrfDevelopmentPlan::find($request->user)]]);
-        $ipcrf->push([['ipcrfEncodingPart1' => IpcrfEncodingPart1::find($request->user)]]);
-        $ipcrf->push([['ipcrfEncodingPart2' => IpcrfEncodingPart2::find($request->user)]]);
+        return[
+        'ipcrfDemographicProfile' => IpcrfDemographicProfile::where('user_id', $id)->get(),
+        'ipcrfDevelopmentPlan' => IpcrfDevelopmentPlan::where('user_id', $id)->get(),
+        'ipcrfEncodingPart1' => IpcrfEncodingPart1::where('user_id', $id)->get(),
+        'ipcrfEncodingPart2' => IpcrfEncodingPart2::where('user_id', $id)->get()];
 
-        try {
-            return $ipcrf;
-        } catch (Throwable $error) {
-            return $error;
-        }
+        
     }
 
-    public function createIpcrf(Request $request)
+    public function getIpcrfBySchoolYear(Request $request)
     {
-        $request->validate([
-            //demographic profile
-            'user',
-            'name_of_employee',
-            'position',
-            'employment_status',
-            'age',
-            'sex',
-            'level_taught',
-            'grade_level_taught',
-            'subject_taught',
-            'rater',
-            'rater_position',
-            'date_of_review',
-            'rating_period',
-            'number_of_years_teaching',
-            'highest_degree_obtained',
-            'area_of_specialization',
-            'region',
-            'division',
-            'district/municipality',
-            'school_id',
-            'school_name',
-            'school_type',
-            'school_size',
-            'curricular_classification',
+        
+        return[
+        'ipcrfDemographicProfile' => IpcrfDemographicProfile::where('user_id', $request->user)
+        ->where('rating_period', $request->schoolYear)->get(),
+        'ipcrfDevelopmentPlan' => IpcrfDevelopmentPlan::where('user_id', $request->user)
+        ->where('school_year', $request->schoolYear)->get(),
+        'ipcrfEncodingPart1' => IpcrfEncodingPart1::where('user_id', $request->user)
+        ->where('school_year', $request->schoolYear)->get(),
+        'ipcrfEncodingPart2' => IpcrfEncodingPart2::where('user_id', $request->user)
+        ->where('school_year', $request->schoolYear)->get()];
+        
+    }
 
-            //ipcrf part 1 encoding
-            'objective1',
-            'objective2',
-            'objective3',
-            'objective4',
-            'objective5',
-            'subject',
-            'objective6',
-            'objective7',
-            'objective8',
-            'objective9',
-            'objective10',
-            'school_year',
-            'personnel',
-            'date_observed',
-            'final_rating',
-            'adjectival_rating',
-            'approving_authority',
-            'approver_position',
-
-            //ipcrf part 2 encoding
-            'self_management',
-            'teamwork',
-            'professional_and_ethics',
-            'service_orientation',
-            'results_focus',
-            'innovation',
-
-            //ipcrf development plan
-            'ratee',
-            'competency_type',
-            'rater',
-            'strengths',
-            'development_needs',
-            'learning_objectives',
-            'timeline',
-            'resources_needed',
-            'approving_authority',
-        ]);
+    public function createIpcrfPart1(Request $request)
+    {
+     
 
         $ipcrfDemographicProfile = new IpcrfDemographicProfile([
             'user_id' => $request->user,
-            'name_of_employee' => $request->name_of_employee,
-            'position' => $request->position,
-            'employment_status' => $request->position,
-            'age' => $request->age,
-            'sex' => $request->sex,
-            'level_taught' => $request->level_taught,
-            'grade_level_taught' => $request->grade_level_taught,
-            'subject_taught' => $request->subject_taught,
-            'rater' => $request->rater,
-            'rater_position' => $request->rater_position,
-            'date_of_review' => $request->date_of_review,
-            'rating_period' => $request->rating_period,
-            'number_of_years_teaching' => $request->number_of_years_teaching,
-            'highest_degree_obtained' => $request->highest_degree_obtained,
-            'area_of_specialization' => $request->area_of_specialization,
-            'region' => $request->region,
-            'division' => $request->division,
-            'district/municipality' => $request->district,
-            'school_id' => $request->school_id,
-            'school_name' => $request->school_name,
-            'school_type' => $request->school_type,
-            'school_size' => $request->user,
-            'curricular_classification' => $request->curricular_classification,
-            'school_year' => $request -> schoolYear
+            'name_of_employee' => $request->empName,
+            'position' => $request->empPosition,
+            'employee_id' => $request->empId,
+            'employment_status' => $request->empStatus,
+            'age' => $request->empAge,
+            'sex' => $request->empSex,
+            'level_taught' => $request->empLevelTaught,
+            'grade_level_taught' => $request->empGradeLevelTaught,
+            'subject_taught' => $request->empSubjectTaught,
+            'rater' => $request->empRater,
+            'rater_position' => $request->empRaterPosition,
+            'date_of_review' => $request->empDateReview,
+            'rating_period' => $request->empRatingPeriod,
+            'number_of_years_teaching' => $request->empYearsOfTeaching,
+            'highest_degree_obtained' => $request->empDegree,
+            'area_of_specialization' => $request->empSpecialization,
+            'region' => $request->empRegion,
+            'division' => $request->empDivision,
+            'district/municipality' => $request->empDistrict,
+            'school_id' => $request->empSchoolId,
+            'school_name' => $request->empSchoolName,
+            'school_type' => $request->empSchoolType,
+            'school_size' => $request->empSchoolSize,
+            'curricular_classification' => $request->empCurricularClassification,
+            'school_year' => $request -> empRatingPeriod
         ]);
 
-        $ipcrfEncodingPart1 = new IpcrfEncodingPart1([
-            'user_id' => $request->user,
-            'subject_cot1' => $request->subject_cot1,
-            'objective_no' => $request->objective_no,
-            'cot_indicator_no' => $request->cot_indicator_no,
-            'rating_cot1' => $request->rating_cot1,
-            'rpms_5pt_scale_cot1' => $request->rpms_5pt_scale_cot2,
-            'cot3' => $request->cot4,
-            'cot4' => $request->cot4,
-            'average_cot' => $request->average_cot,
-            'ipcrf_numerical_ratings_q' => $request->ipcrf_numerical_ratings_q,
-            'ipcrf_numerical_ratings_e' => $request->ipcrf_numerical_ratings_e,
-            'ipcrf_numerical_ratings_average' => $request->ipcrf_numerical_ratings_average,
-            'ipcrf_numerical_ratings_score' => $request->ipcrf_numerical_ratings_average,
-            'ipcrf_numerical_ratings_adjectival_rating' => $request->ipcrf_numerical_ratings_adjectival_rating,
-            'school_year' => $request->school_year,
-            'date_observed' => $request->date_observed,
-            'final_rating' => $request->final_rating,
-            'adjectival_rating' => $request->adjectival_rating,
-            'approving_authority' => $request->approving_authority,
-            'approver_position' => $request->approver_position,
-        ]);
+      
 
+        
+
+            try {
+                $ipcrfDemographicProfile->save();
+                
+                return "Success";
+            } catch (Throwable $error) {
+                return $error;
+            }  
+        
+
+        
+
+       
+
+       
+    }
+
+    public function createPart2(Request $request){
+        // return $request;
+        $selfManagement = $request->selfManagement1.','. $request->selfManagement2.','. $request->selfManagement3.','.
+        $request->selfManagement4.','.$request->selfManagement5;
+        $teamwork = $request->teamwork1.','. $request->teamwork2.','. $request->teamwork3.','.
+        $request->teamwork4.','.$request->teamwork5;
+        $prof = $request->prof1.','. $request->prof2.','. $request->prof3.','.
+        $request->prof4.','.$request->prof5;
+        $service = $request->service1.','. $request->service2.','. $request->service3.','.
+        $request->service4.','.$request->service5;
+        $results = $request->results1.','. $request->results2.','. $request->results3.','.
+        $request->results4.','.$request->results5;
+        $innovation = $request->innnovation1.','. $request->innovation2.','. $request->innovation3.','.
+        $request->innovation4.','.$request->innovation5;
         $ipcrfEncodingPart2 = new IpcrfEncodingPart2([
             'user_id' => $request->user,
-            'self_management' => $request->self_management,
-            'teamwork' => $request->teamwork,
-            'professional_and_ethics' => $request->professional_and_ethics,
-            'service_orientation' => $request->service_orientation,
-            'results_focus' => $request->results_focus,
-            'innovation' => $request->innovation,
+            'self_management' => $selfManagement,
+            'teamwork' => $teamwork,
+            'professional_and_ethics' => $prof,
+            'service_orientation' => $service,
+            'results_focus' => $results,
+            'innovation' => $innovation,
+            'school_year' => $request->schoolYear,
         ]);
+        try {
+            $ipcrfEncodingPart2->save();
+            
+            return "Success";
+        } catch (Throwable $error) {
+            return $error;
+        }
 
+    }
+
+    public function createPart4(Request $request){
         $ipcrfDevelopmentPlan = new IpcrfDevelopmentPlan([
             'user_id' => $request->user,
-            'ratee' => $request->ratee,
-            'competency_type' => $request->competency_type,
-            'rater' => $request->rater,
-            'strengths' => $request->strengths,
-            'development_needs' => $request->development_needs,
-            'learning_objectives' => $request->learning_objectives,
-            'timeline' => $request->timeline,
-            'intervention' => $request->intervention,
-            'resources_needed' => $request->resources_needed,
-            'approving_authority' => $request->approving_authority,
+            'school_year' => $request->empRatingPeriod,
+            'ratee' => $request->rateePart4,
+            'rater' => $request->raterPart4,
+            'strengths_functional' => $request->strengthsFunctional,
+            'strengths_core' => $request->strengthsCore,
+            'development_needs_functional' => $request->developmentNeedsFunctional,
+            'development_needs_core' => $request->developmentCore,
+            'learning_objectives_functional' => $request->learningObjectivesFunctional,
+            'learning_objectives_core' => $request->learningObjectivesCore,
+            'intervention_functional' => $request->interventionFunctional,
+            'intervention_core' => $request->interventionCore,
+            'timeline_functional' => $request->timelineFunctional,
+            'timeline_core' => $request->timelineCore,
+            'feedback' => $request->feedback,
+            'resources_needed_functional' => $request->resourcesNeededFunctional,
+            'resources_needed_core' => $request->resourcesNeededCore,
+            'approving_authority' => $request->approvingAuthorityPart4
         ]);
 
         try {
-            $ipcrfDemographicProfile->save();
-            $ipcrfEncodingPart1->save();
-            $ipcrfEncodingPart2->save();
             $ipcrfDevelopmentPlan->save();
+            
             return "Success";
         } catch (Throwable $error) {
             return $error;
         }
+
     }
 
-    public function editIpcrf(Request $request, $user_id)
+    public function updatePart1(Request $request)
     {
-        $request->validate([
-            //demographic profile
-            'name_of_employee',
-            'position',
-            'employment_status',
-            'age',
-            'sex',
-            'level_taught',
-            'grade_level_taught',
-            'subject_taught',
-            'rater',
-            'rater_position',
-            'date_of_review',
-            'rating_period',
-            'number_of_years_teaching',
-            'highest_degree_obtained',
-            'area_of_specialization',
-            'region',
-            'division',
-            'district/municipality',
-            'school_id',
-            'school_name',
-            'school_type',
-            'school_size',
-            'curricular_classification',
+        
+        if($request->role == 'Admin'){
+            DB::table('ipcrf_encoding_part1s')->where('user_id', $request->user)->where('rating_period', $request->empRatingPeriod)->delete();
+            $ipcrfRow1 = new IpcrfEncodingPart1([
+                'user_id' => $request->user,
+                'subject_cot1' => $request->cot1SubjectsTaught,
+                'subject_cot2' => $request->cot2SubjectsTaught,
+                'objective_no' => 1,
+                'cot_indicator_no' => $request->cot1IndicatorObjNo1,
+                'rating_cot1' => $request->cot1RatingObjNo1,
+                'rpms_5pt_scale_cot1' => $request->cot1RpmsObjNo1,
+                'rating_cot2' => $request->cot2RatingObjNo1,
+                'rpms_5pt_scale_cot2' => $request->cot2RpmsObjNo1,
+                'cot3' => null,
+                'cot4' => null,
+                'average_cot' => $request->encodingAverageObjNo1,
+                'ipcrf_numerical_ratings_q' => $request->encodingIpcrfNumericalQ1,
+                'ipcrf_numerical_ratings_e' => null,
+                'ipcrf_numerical_ratings_t' => null,
+                'ipcrf_numerical_ratings_average' => $request->encodingIpcrfRatingAve1,
+                'ipcrf_numerical_ratings_score' => $request->encodingScore1,
+                'ipcrf_numerical_ratings_adjectival_rating' => $request->encodingAdjectivalRating1,
+                'school_year' => $request->empDateReview,
+                'date_observed_cot1' => $request->cot1DateObserved,
+                'date_observed_cot2' => $request->cot2DateObserved,
+                'final_rating' => $request->empFinalRating,
+                'adjectival_rating' => $request->empFinalAdjRating,
+                'approving_authority' => $request->part1ApprovingAuthority,
+                'approver_position' => $request->approvingPosition,
+            ]);
 
-            //ipcrf part 1 encoding
-            'objective1',
-            'objective2',
-            'objective3',
-            'objective4',
-            'objective5',
-            'subject',
-            'objective6',
-            'objective7',
-            'objective8',
-            'objective9',
-            'objective10',
-            'school_year',
-            'personnel',
-            'date_observed',
-            'final_rating',
-            'adjectival_rating',
-            'approving_authority',
-            'approver_position',
+            $ipcrfRow2 = new IpcrfEncodingPart1([
+                'user_id' => $request->user,
+                'subject_cot1' => $request->cot1SubjectsTaught,
+                'subject_cot2' => $request->cot2SubjectsTaught,
+                'objective_no' => 2,
+                'cot_indicator_no' => null,
+                'rating_cot1' => null,
+                'rpms_5pt_scale_cot1' => null,
+                'rating_cot2' => null,
+                'rpms_5pt_scale_cot2' => null,
+                'cot3' => null,
+                'cot4' => null,
+                'average_cot' => null,
+                'ipcrf_numerical_ratings_q' => $request->encodingIpcrfNumericalQ2,
+                'ipcrf_numerical_ratings_e' => null,
+                'ipcrf_numerical_ratings_t' => null,
+                'ipcrf_numerical_ratings_average' => $request->encodingIpcrfRatingAve2,
+                'ipcrf_numerical_ratings_score' => $request->encodingScore2,
+                'ipcrf_numerical_ratings_adjectival_rating' => $request->encodingAdjectivalRating2,
+                'school_year' => $request->empDateReview,
+                'date_observed_cot1' => $request->cot1DateObserved,
+                'date_observed_cot2' => $request->cot2DateObserved,
+                'final_rating' => $request->empFinalRating,
+                'adjectival_rating' => $request->empFinalAdjRating,
+                'approving_authority' => $request->part1ApprovingAuthority,
+                'approver_position' => $request->approvingPosition,
+            ]);
+            $ipcrfRow3 = new IpcrfEncodingPart1([
+                'user_id' => $request->user,
+                'subject_cot1' => $request->cot1SubjectsTaught,
+                'subject_cot2' => $request->cot2SubjectsTaught,
+                'objective_no' => 3,
+                'cot_indicator_no' => null,
+                'rating_cot1' => null,
+                'rpms_5pt_scale_cot1' => null,
+                'rating_cot2' => null,
+                'rpms_5pt_scale_cot2' => null,
+                'cot3' => null,
+                'cot4' => null,
+                'average_cot' => null,
+                'ipcrf_numerical_ratings_q' => $request->encodingIpcrfNumericalQ3,
+                'ipcrf_numerical_ratings_e' => null,
+                'ipcrf_numerical_ratings_t' => null,
+                'ipcrf_numerical_ratings_average' => $request->encodingIpcrfRatingAve3,
+                'ipcrf_numerical_ratings_score' => $request->encodingScore3,
+                'ipcrf_numerical_ratings_adjectival_rating' => $request->encodingAdjectivalRating3,
+                'school_year' => $request->empDateReview,
+                'date_observed_cot1' => $request->cot1DateObserved,
+                'date_observed_cot2' => $request->cot2DateObserved,
+                'final_rating' => $request->empFinalRating,
+                'adjectival_rating' => $request->empFinalAdjRating,
+                'approving_authority' => $request->part1ApprovingAuthority,
+                'approver_position' => $request->approvingPosition,
+            ]);
+            $ipcrfRow4 = new IpcrfEncodingPart1([
+                'user_id' => $request->user,
+                'subject_cot1' => $request->cot1SubjectsTaught,
+                'subject_cot2' => $request->cot2SubjectsTaught,
+                'objective_no' => 4,
+                'cot_indicator_no' => null,
+                'rating_cot1' => null,
+                'rpms_5pt_scale_cot1' => null,
+                'rating_cot2' => null,
+                'rpms_5pt_scale_cot2' => null,
+                'cot3' => null,
+                'cot4' => null,
+                'average_cot' => null,
+                'ipcrf_numerical_ratings_q' => $request->encodingIpcrfNumericalQ4,
+                'ipcrf_numerical_ratings_e' => null,
+                'ipcrf_numerical_ratings_t' => null,
+                'ipcrf_numerical_ratings_average' => $request->encodingIpcrfRatingAve4,
+                'ipcrf_numerical_ratings_score' => $request->encodingScore4,
+                'ipcrf_numerical_ratings_adjectival_rating' => $request->encodingAdjectivalRating4,
+                'school_year' => $request->empDateReview,
+                'date_observed_cot1' => $request->cot1DateObserved,
+                'date_observed_cot2' => $request->cot2DateObserved,
+                'final_rating' => $request->empFinalRating,
+                'adjectival_rating' => $request->empFinalAdjRating,
+                'approving_authority' => $request->part1ApprovingAuthority,
+                'approver_position' => $request->approvingPosition,
+            ]);
+            $ipcrfRow5 = new IpcrfEncodingPart1([
+                'user_id' => $request->user,
+                'subject_cot1' => $request->cot1SubjectsTaught,
+                'subject_cot2' => $request->cot2SubjectsTaught,
+                'objective_no' => 5,
+                'cot_indicator_no' => $request->cotIndicatorObjNo5,
+                'rating_cot1' => $request->cotRatingObjNo5,
+                'rpms_5pt_scale_cot1' => $request->cot1RpmsObjNo5,
+                'rating_cot2' => $request->cot2RatingObjNo5,
+                'rpms_5pt_scale_cot2' => $request->cot2RpmsObjNo5,
+                'cot3' => null,
+                'cot4' => null,
+                'average_cot' => $request->encodingAverageObjNo5,
+                'ipcrf_numerical_ratings_q' => $request->encodingIpcrfNumericalQ5,
+                'ipcrf_numerical_ratings_e' => null,
+                'ipcrf_numerical_ratings_t' => null,
+                'ipcrf_numerical_ratings_average' => $request->encodingIpcrfRatingAve5,
+                'ipcrf_numerical_ratings_score' => $request->encodingScore5,
+                'ipcrf_numerical_ratings_adjectival_rating' => $request->encodingAdjectivalRating5,
+                'school_year' => $request->empDateReview,
+                'date_observed_cot1' => $request->cot1DateObserved,
+                'date_observed_cot2' => $request->cot2DateObserved,
+                'final_rating' => $request->empFinalRating,
+                'adjectival_rating' => $request->empFinalAdjRating,
+                'approving_authority' => $request->part1ApprovingAuthority,
+                'approver_position' => $request->approvingPosition,
+            ]);
+            $ipcrfRow6 = new IpcrfEncodingPart1([
+                'user_id' => $request->user,
+                'subject_cot1' => $request->cot1SubjectsTaught,
+                'subject_cot2' => $request->cot2SubjectsTaught,
+                'objective_no' => 6,
+                'cot_indicator_no' => null,
+                'rating_cot1' => null,
+                'rpms_5pt_scale_cot1' => null,
+                'rating_cot2' => null,
+                'rpms_5pt_scale_cot2' => null,
+                'cot3' => null,
+                'cot4' => null,
+                'average_cot' => null,
+                'ipcrf_numerical_ratings_q' => $request->encodingIpcrfNumericalQ4,
+                'ipcrf_numerical_ratings_e' => null,
+                'ipcrf_numerical_ratings_t' => $request->encodingIpcrfNumericalT6,
+                'ipcrf_numerical_ratings_average' => $request->encodingIpcrfRatingAve4,
+                'ipcrf_numerical_ratings_score' => $request->encodingScore2,
+                'ipcrf_numerical_ratings_adjectival_rating' => $request->encodingAdjectivalRating4,
+                'school_year' => $request->empDateReview,
+                'date_observed_cot1' => $request->cot1DateObserved,
+                'date_observed_cot2' => $request->cot2DateObserved,
+                'final_rating' => $request->empFinalRating,
+                'adjectival_rating' => $request->empFinalAdjRating,
+                'approving_authority' => $request->part1ApprovingAuthority,
+                'approver_position' => $request->approvingPosition,
+            ]);
+            $ipcrfRow7 = new IpcrfEncodingPart1([
+                'user_id' => $request->user,
+                'subject_cot1' => $request->cot1SubjectsTaught,
+                'subject_cot2' => $request->cot2SubjectsTaught,
+                'objective_no' => 7,
+                'cot_indicator_no' => $request->cotIndicatorObjNo7,
+                'rating_cot1' => $request->cotRatingObjNo7,
+                'rpms_5pt_scale_cot1' => $request->cotRpmsObjNo7,
+                'rating_cot2' => $request->cot2RatingObjNo5,
+                'rpms_5pt_scale_cot2' => $request->cot2RpmsObjNo5,
+                'cot3' => null,
+                'cot4' => null,
+                'average_cot' => $request->encodingAverageObjNo5,
+                'ipcrf_numerical_ratings_q' => $request->encodingIpcrfNumericalQ5,
+                'ipcrf_numerical_ratings_e' => null,
+                'ipcrf_numerical_ratings_t' => null,
+                'ipcrf_numerical_ratings_average' => $request->encodingIpcrfRatingAve5,
+                'ipcrf_numerical_ratings_score' => $request->encodingScore5,
+                'ipcrf_numerical_ratings_adjectival_rating' => $request->encodingAdjectivalRating5,
+                'school_year' => $request->empDateReview,
+                'date_observed_cot1' => $request->cot1DateObserved,
+                'date_observed_cot2' => $request->cot2DateObserved,
+                'final_rating' => $request->empFinalRating,
+                'adjectival_rating' => $request->empFinalAdjRating,
+                'approving_authority' => $request->part1ApprovingAuthority,
+                'approver_position' => $request->approvingPosition,
+            ]);
+            $ipcrfRow8 = new IpcrfEncodingPart1([
+                'user_id' => $request->user,
+                'subject_cot1' => $request->cot1SubjectsTaught,
+                'subject_cot2' => $request->cot2SubjectsTaught,
+                'objective_no' => 8,
+                'cot_indicator_no' => null,
+                'rating_cot1' => null,
+                'rpms_5pt_scale_cot1' => null,
+                'rating_cot2' => null,
+                'rpms_5pt_scale_cot2' => null,
+                'cot3' => null,
+                'cot4' => null,
+                'average_cot' => null,
+                'ipcrf_numerical_ratings_q' => $request->encodingIpcrfNumericalQ8,
+                'ipcrf_numerical_ratings_e' => null,
+                'ipcrf_numerical_ratings_t' => null,
+                'ipcrf_numerical_ratings_average' => $request->encodingIpcrfRatingAve8,
+                'ipcrf_numerical_ratings_score' => $request->encodingScore8,
+                'ipcrf_numerical_ratings_adjectival_rating' => $request->encodingAdjectivalRating8,
+                'school_year' => $request->empDateReview,
+                'date_observed_cot1' => $request->cot1DateObserved,
+                'date_observed_cot2' => $request->cot2DateObserved,
+                'final_rating' => $request->empFinalRating,
+                'adjectival_rating' => $request->empFinalAdjRating,
+                'approving_authority' => $request->part1ApprovingAuthority,
+                'approver_position' => $request->approvingPosition,
+            ]);
+           
+            $ipcrfRow9 = new IpcrfEncodingPart1([
+                'user_id' => $request->user,
+                'subject_cot1' => $request->cot1SubjectsTaught,
+                'subject_cot2' => $request->cot2SubjectsTaught,
+                'objective_no' => 9,
+                'cot_indicator_no' => null,
+                'rating_cot1' => null,
+                'rpms_5pt_scale_cot1' => null,
+                'rating_cot2' => null,
+                'rpms_5pt_scale_cot2' => null,
+                'cot3' => null,
+                'cot4' => null,
+                'average_cot' => null,
+                'ipcrf_numerical_ratings_q' => $request->encodingIpcrfNumericalQ9,
+                'ipcrf_numerical_ratings_e' => $request->encodingIpcrfNumericalE9,
+                'ipcrf_numerical_ratings_t' => null,
+                'ipcrf_numerical_ratings_average' => $request->encodingIpcrfRatingAve9,
+                'ipcrf_numerical_ratings_score' => $request->encodingScore9,
+                'ipcrf_numerical_ratings_adjectival_rating' => $request->encodingAdjectivalRating9,
+                'school_year' => $request->empDateReview,
+                'date_observed_cot1' => $request->cot1DateObserved,
+                'date_observed_cot2' => $request->cot2DateObserved,
+                'final_rating' => $request->empFinalRating,
+                'adjectival_rating' => $request->empFinalAdjRating,
+                'approving_authority' => $request->part1ApprovingAuthority,
+                'approver_position' => $request->approvingPosition,
+            ]);
+            $ipcrfRow10 = new IpcrfEncodingPart1([
+                'user_id' => $request->user,
+                'subject_cot1' => $request->cot1SubjectsTaught,
+                'subject_cot2' => $request->cot2SubjectsTaught,
+                'objective_no' => 10,
+                'cot_indicator_no' => null,
+                'rating_cot1' => null,
+                'rpms_5pt_scale_cot1' => null,
+                'rating_cot2' => null,
+                'rpms_5pt_scale_cot2' => null,
+                'cot3' => null,
+                'cot4' => null,
+                'average_cot' => null,
+                'ipcrf_numerical_ratings_q' => $request->encodingIpcrfNumericalQ10,
+                'ipcrf_numerical_ratings_e' => $request->encodingIpcrfNumericalE10,
+                'ipcrf_numerical_ratings_t' => null,
+                'ipcrf_numerical_ratings_average' => $request->encodingIpcrfRatingAve10,
+                'ipcrf_numerical_ratings_score' => $request->encodingScore9,
+                'ipcrf_numerical_ratings_adjectival_rating' => $request->encodingAdjectivalRating10,
+                'school_year' => $request->empDateReview,
+                'date_observed_cot1' => $request->cot1DateObserved,
+                'date_observed_cot2' => $request->cot2DateObserved,
+                'final_rating' => $request->empFinalRating,
+                'adjectival_rating' => $request->empFinalAdjRating,
+                'approving_authority' => $request->part1ApprovingAuthority,
+                'approver_position' => $request->approvingPosition,
+            ]);
+            $ipcrfRow11 = new IpcrfEncodingPart1([
+                'user_id' => $request->user,
+                'subject_cot1' => $request->cot1SubjectsTaught,
+                'subject_cot2' => $request->cot2SubjectsTaught,
+                'objective_no' => 11,
+                'cot_indicator_no' => null,
+                'rating_cot1' => null,
+                'rpms_5pt_scale_cot1' => null,
+                'rating_cot2' => null,
+                'rpms_5pt_scale_cot2' => null,
+                'cot3' => null,
+                'cot4' => null,
+                'average_cot' => null,
+                'ipcrf_numerical_ratings_q' => $request->encodingIpcrfNumericalQ11,
+                'ipcrf_numerical_ratings_e' => $request->encodingIpcrfNumericalE11,
+                'ipcrf_numerical_ratings_t' => null,
+                'ipcrf_numerical_ratings_average' => $request->encodingIpcrfRatingAve11,
+                'ipcrf_numerical_ratings_score' => $request->encodingScore11,
+                'ipcrf_numerical_ratings_adjectival_rating' => $request->encodingAdjectivalRating11,
+                'school_year' => $request->empDateReview,
+                'date_observed_cot1' => $request->cot1DateObserved,
+                'date_observed_cot2' => $request->cot2DateObserved,
+                'final_rating' => $request->empFinalRating,
+                'adjectival_rating' => $request->empFinalAdjRating,
+                'approving_authority' => $request->part1ApprovingAuthority,
+                'approver_position' => $request->approvingPosition,
+            ]);
+            $ipcrfRow12 = new IpcrfEncodingPart1([
+                'user_id' => $request->user,
+                'subject_cot1' => $request->cot1SubjectsTaught,
+                'subject_cot2' => $request->cot2SubjectsTaught,
+                'objective_no' => 12,
+                'cot_indicator_no' => null,
+                'rating_cot1' => null,
+                'rpms_5pt_scale_cot1' => null,
+                'rating_cot2' => null,
+                'rpms_5pt_scale_cot2' => null,
+                'cot3' => null,
+                'cot4' => null,
+                'average_cot' => null,
+                'ipcrf_numerical_ratings_q' => $request->encodingIpcrfNumericalQ12,
+                'ipcrf_numerical_ratings_e' => $request->encodingIpcrfNumericalE12,
+                'ipcrf_numerical_ratings_t' => null,
+                'ipcrf_numerical_ratings_average' => $request->encodingIpcrfRatingAve12,
+                'ipcrf_numerical_ratings_score' => $request->encodingScore12,
+                'ipcrf_numerical_ratings_adjectival_rating' => $request->encodingAdjectivalRating12,
+                'school_year' => $request->empDateReview,
+                'date_observed_cot1' => $request->cot1DateObserved,
+                'date_observed_cot2' => $request->cot2DateObserved,
+                'final_rating' => $request->empFinalRating,
+                'adjectival_rating' => $request->empFinalAdjRating,
+                'approving_authority' => $request->part1ApprovingAuthority,
+                'approver_position' => $request->approvingPosition,
+            ]);
+            try {
+                $ipcrfRow1->save();
+                $ipcrfRow2->save();
+                $ipcrfRow3->save();
+                $ipcrfRow4->save();
+                $ipcrfRow5->save();
+                $ipcrfRow6->save();
+                $ipcrfRow7->save();
+                $ipcrfRow8->save();
+                $ipcrfRow9->save();
+                $ipcrfRow10->save();
+                $ipcrfRow11->save();
+                $ipcrfRow12->save();
 
-            //ipcrf part 2 encoding
-            'self_management',
-            'teamwork',
-            'professional_and_ethics',
-            'service_orientation',
-            'results_focus',
-            'innovation',
+                return 'success';
+            } catch (Throwable $error) {
+                return $error;
+            }
 
-            //ipcrf development plan
-            'ratee',
-            'competency_type',
-            'rater',
-            'strengths',
-            'development_needs',
-            'learning_objectives',
-            'timeline',
-            'resources_needed',
-            'approving_authority',
+    }else{
+        $affected = DB::table('ipcrf_demographic_profiles')
+              ->where('user_id', $request->user)
+              ->update(['name_of_employee' => $request->empName,
+              'position' => $request->empPosition,
+              'employee_id' => $request->empId,
+              'employment_status' => $request->empStatus,
+              'age' => $request->empAge,
+              'sex' => $request->empSex,
+              'level_taught' => $request->empLevelTaught,
+              'grade_level_taught' => $request->empGradeLevelTaught,
+              'subject_taught' => $request->empSubjectTaught,
+              'rater' => $request->empRater,
+              'rater_position' => $request->empRaterPosition,
+              'date_of_review' => $request->empDateReview,
+              'rating_period' => $request->empRatingPeriod,
+              'number_of_years_teaching' => $request->empYearsOfTeaching,
+              'highest_degree_obtained' => $request->empDegree,
+              'area_of_specialization' => $request->empSpecialization,
+              'region' => $request->empRegion,
+              'division' => $request->empDivision,
+              'district/municipality' => $request->empDistrict,
+              'school_id' => $request->empSchoolId,
+              'school_name' => $request->empSchoolName,
+              'school_type' => $request->empSchoolType,
+              'school_size' => $request->empSchoolSize,
+              'curricular_classification' => $request->empCurricularClassification,
+              'school_year' => $request -> empRatingPeriod]);
+
+              try{
+                if($affected>0){
+                   return 'success'; 
+                }
+              }catch (Throwable $error) {
+                return $error;
+            }
+        }   
+    }
+
+    public function updatePart2(Request $request){
+        $selfManagement = $request->selfManagement1.','. $request->selfManagement2.','. $request->selfManagement3.','.
+        $request->selfManagement4.','.$request->selfManagement5;
+        $teamwork = $request->teamwork1.','. $request->teamwork2.','. $request->teamwork3.','.
+        $request->teamwork4.','.$request->teamwork5;
+        $prof = $request->prof1.','. $request->prof2.','. $request->prof3.','.
+        $request->prof4.','.$request->prof5;
+        $service = $request->service1.','. $request->service2.','. $request->service3.','.
+        $request->service4.','.$request->service5;
+        $results = $request->results1.','. $request->results2.','. $request->results3.','.
+        $request->results4.','.$request->results5;
+        $innovation = $request->innnovation1.','. $request->innovation2.','. $request->innovation3.','.
+        $request->innovation4.','.$request->innovation5;
+        $ipcrfEncodingPart2 = DB::table('ipcrf_encoding_part2s')
+        ->where('user_id', $request->user)->where('school_year', $request->empRatingPeriod)->update([
+            'self_management' => $selfManagement,
+            'teamwork' => $teamwork,
+            'professional_and_ethics' => $prof,
+            'service_orientation' => $service,
+            'results_focus' => $results,
+            'innovation' => $innovation,
+            'school_year' => $request->schoolYear,
         ]);
 
-        $ipcrfDemographicProfile = IpcrfDemographicProfile::find($user_id);
-        $ipcrfDemographicProfile->name_of_employee = $request->name_of_employee;
-        $ipcrfDemographicProfile->position = $request->position;
-        $ipcrfDemographicProfile->employment_status = $request->position;
-        $ipcrfDemographicProfile->age = $request->age;
-        $ipcrfDemographicProfile->sex = $request->sex;
-        $ipcrfDemographicProfile->level_taught = $request->level_taught;
-        $ipcrfDemographicProfile->grade_level_taught = $request->grade_level_taught;
-        $ipcrfDemographicProfile->subject_taught = $request->subject_taught;
-        $ipcrfDemographicProfile->rater = $request->rater;
-        $ipcrfDemographicProfile->rater_position = $request->rater_position;
-        $ipcrfDemographicProfile->date_of_review = $request->date_of_review;
-        $ipcrfDemographicProfile->rating_period = $request->rating_period;
-        $ipcrfDemographicProfile->number_of_years_teaching = $request->number_of_years_teaching;
-        $ipcrfDemographicProfile->highest_degree_obtained = $request->highest_degree_obtained;
-        $ipcrfDemographicProfile->area_of_specialization = $request->area_of_specialization;
-        $ipcrfDemographicProfile->region = $request->region;
-        $ipcrfDemographicProfile->division = $request->division;
-        $ipcrfDemographicProfile->district = $request->district;
-        $ipcrfDemographicProfile->school_id = $request->school_id;
-        $ipcrfDemographicProfile->school_name = $request->school_name;
-        $ipcrfDemographicProfile->school_type = $request->school_type;
-        $ipcrfDemographicProfile->school_size = $request->user;
-        $ipcrfDemographicProfile->curricular_classification = $request->curricular_classification;
+        try{
+            if($ipcrfEncodingPart2 > 0){
+               return 'success'; 
+            }
+          }catch (Throwable $error) {
+            return $error;
+        }
+    }
 
-        $ipcrfEncodingPart1 = IpcrfEncodingPart1::find($user_id);
-        $ipcrfEncodingPart1->objective1 = $request->objective1;
-        $ipcrfEncodingPart1->objective2 = $request->objective2;
-        $ipcrfEncodingPart1->objective3 = $request->objective3;
-        $ipcrfEncodingPart1->objective4 = $request->objective4;
-        $ipcrfEncodingPart1->objective5 = $request->objective5;
-        $ipcrfEncodingPart1->subject = $request->subject;
-        $ipcrfEncodingPart1->objective6 = $request->object6;
-        $ipcrfEncodingPart1->objective7 = $request->objective7;
-        $ipcrfEncodingPart1->objective8 = $request->objective8;
-        $ipcrfEncodingPart1->objective9 = $request->objective9;
-        $ipcrfEncodingPart1->objective10 = $request->objective10;
-        $ipcrfEncodingPart1->school_year = $request->school_year;
-        $ipcrfEncodingPart1->personnel = $request->personnel;
-        $ipcrfEncodingPart1->date_observed = $request->date_observed;
-        $ipcrfEncodingPart1->final_rating = $request->final_rating;
-        $ipcrfEncodingPart1->adjectival_rating = $request->adjectival_rating;
-        $ipcrfEncodingPart1->approving_authority = $request->approving_authority;
-        $ipcrfEncodingPart1->approver_position = $request->approver_position;
-
-        $ipcrfEncodingPart2 = IpcrfEncodingPart2::find($user_id);
-        $ipcrfEncodingPart2->user = $request->user;
-        $ipcrfEncodingPart2->self_management = $request->self_management;
-        $ipcrfEncodingPart2->teamwork = $request->teamwork;
-        $ipcrfEncodingPart2->professional_and_ethics = $request->professional_and_ethics;
-        $ipcrfEncodingPart2->service_orientation = $request->service_orientation;
-        $ipcrfEncodingPart2->results_focus = $request->results_focus;
-        $ipcrfEncodingPart2->innovation = $request->innovation;
-
-        $ipcrfDevelopmentPlan = IpcrfDevelopmentPlan::find($user_id);
-        $ipcrfDevelopmentPlan->user = $request->user;
-        $ipcrfDevelopmentPlan->ratee = $request->ratee;
-        $ipcrfDevelopmentPlan->competency_type = $request->competency_type;
-        $ipcrfDevelopmentPlan->rater = $request->rater;
-        $ipcrfDevelopmentPlan->strengths = $request->strengths;
-        $ipcrfDevelopmentPlan->development_needs = $request->development_needs;
-        $ipcrfDevelopmentPlan->learning_objectives = $request->learning_objectives;
-        $ipcrfDevelopmentPlan->timeline = $request->timeline;
-        $ipcrfDevelopmentPlan->resources_needed = $request->resources_needed;
-        $ipcrfDevelopmentPlan->approving_authority = $request->approving_authority;
+    public function updatePart4(Request $request){
+        $ipcrfDevelopmentPlan = DB::table('ipcrf_development_plans')
+        ->where('user_id', $request->user)->where('school_year', $request->empRatingPeriod)->update([
+            'school_year' => $request->empRatingPeriod,
+            'ratee' => $request->rateePart4,
+            'rater' => $request->raterPart4,
+            'strengths_functional' => $request->strengthsFunctional,
+            'strengths_core' => $request->strengthsCore,
+            'development_needs_functional' => $request->developmentNeedsFunctional,
+            'development_needs_core' => $request->developmentCore,
+            'learning_objectives_functional' => $request->learningObjectivesFunctional,
+            'learning_objectives_core' => $request->learningObjectivesCore,
+            'intervention_functional' => $request->interventionFunctional,
+            'intervention_core' => $request->interventionCore,
+            'timeline_functional' => $request->timelineFunctional,
+            'timeline_core' => $request->timelineCore,
+            'feedback' => $request->feedback,
+            'resources_needed_functional' => $request->resourcesNeededFunctional,
+            'resources_needed_core' => $request->resourcesNeededCore,
+            'approving_authority' => $request->approvingAuthorityPart4
+        ]);
 
         try {
-            $ipcrfDemographicProfile->save();
-            $ipcrfEncodingPart1->save();
-            $ipcrfEncodingPart2->save();
-            $ipcrfDevelopmentPlan->save();
+            if($ipcrfDevelopmentPlan > 0){
+                return 'success';
+            }
+            
             return "Success";
         } catch (Throwable $error) {
             return $error;
         }
+
     }
+        
+    
 }

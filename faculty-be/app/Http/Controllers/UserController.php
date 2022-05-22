@@ -11,13 +11,20 @@ class UserController extends Controller
 
     public function index()
     {
-        return DB::table('users')->get();
+        $users = DB::table('users')->get();
+        //$photos = $users->profile;
+        // $array = collect();
+        foreach($users as $user){
+            $user->profile = asset('storage/profile/user-profile/' . $user->profile);
+        }
+        return $users;
         //return User::find(1)->pds;
     }
 
     public function getUser($id){
-        //
-        return User::find($id);
+        $imageNameProfile = DB::table('users')->where('id', $id)->value('profile');
+        return ['profile' => asset('storage/profile/user-profile/' . $imageNameProfile),
+        'user'=>User::find($id)];
     }
     public function createUser(Request $request)
     {
@@ -54,18 +61,16 @@ class UserController extends Controller
     }
 
 
-    public function editUser(Request $request, $id)
+    public function editUser(Request $request)
     {
-        $request->validate([
-            'id' => 'required',
-            'name'=>'required',
-            'email'=>'required',
-            'password' =>'required',
-            'role' => 'required',
-            'photo' => 'required|mimes:jpg,jpeg,png,csv,txt,xlx,xls,pdf',
-        ]);
-
-        $affected = 0;
+        // $request->validate([
+        //     'id' => 'required',
+        //     'name'=>'required',
+        //     'email'=>'required',
+        //     'password' =>'required',
+        //     'role' => 'required',
+        //     'photo' => 'required|mimes:jpg,jpeg,png,csv,txt,xlx,xls,pdf',
+        // ]);
         if ($request->hasFile('photo')) {
            
             $image           = $request->file('photo');
@@ -85,7 +90,15 @@ class UserController extends Controller
         }    
         
         try{
-            if($affected > 0 ){
+            $affected = DB::table('users')
+            ->where('id', $request->id)
+            ->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => $request->password,
+            'role' => $request -> role,
+            ]);
+            if($affected>0){
                 return 'success';
             }
             

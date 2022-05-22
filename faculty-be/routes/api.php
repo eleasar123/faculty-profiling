@@ -65,7 +65,7 @@ Route::middleware(['cors'])->group(function () {
     Route::get('user/', 'App\Http\Controllers\UserController@index');
     Route::get('user/{id}', 'App\Http\Controllers\UserController@getUser');
     Route::post('user/create', 'App\Http\Controllers\UserController@createUser');
-    Route::post('user/edit/{id}', 'App\Http\Controllers\UserController@editUser');
+    Route::post('user/edit', 'App\Http\Controllers\UserController@editUser');
     Route::delete('user/delete/{id}', 'App\Http\Controllers\UserController@deleteUser');
 
     // Route::apiResource('pds', App\Http\Controllers\PersonalInfoController::class);
@@ -87,9 +87,13 @@ Route::middleware(['cors'])->group(function () {
     //routes for ipcrf
     Route::get('ipcrf/', 'App\Http\Controllers\IpcrfController@index');
     Route::get('ipcrf/{id}', 'App\Http\Controllers\IpcrfController@getIpcrf');
-    Route::post('ipcrf/create', 'App\Http\Controllers\IpcrfController@createIpcrf');
-    Route::patch('ipcrf/update', 'App\Http\Controllers\IpcrfController@createIpcrf');
-
+    Route::post('ipcrf/getBySchoolYear', 'App\Http\Controllers\IpcrfController@getIpcrfBySchoolYear');
+    Route::post('ipcrf/createPart1', 'App\Http\Controllers\IpcrfController@createIpcrfPart1');
+    Route::post('ipcrf/createPart2', 'App\Http\Controllers\IpcrfController@createPart2');
+    Route::post('ipcrf/createPart4', 'App\Http\Controllers\IpcrfController@createPart4');
+    Route::post('ipcrf/updatePart1', 'App\Http\Controllers\IpcrfController@updatePart1');
+    Route::post('ipcrf/updatePart2', 'App\Http\Controllers\IpcrfController@updatePart2');
+    Route::post('ipcrf/updatePart4', 'App\Http\Controllers\IpcrfController@updatePart4');
     //Route::apiResource('masterfile', App\Http\Controllers\EsatController::class);
 
 });
