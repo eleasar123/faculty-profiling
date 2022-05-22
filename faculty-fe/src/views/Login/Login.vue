@@ -29,6 +29,7 @@
              :append-icon="value ? 'visibility' : 'visibility_off'"
               @click:append="() => (value = !value)"
               :type="value ? 'password' : 'text'"
+              prepend-inner-icon="mdi-lock-open"
               label="Enter your Password"
               v-model="password"
               placeholder="Enter your Password"
@@ -55,16 +56,25 @@
 </v-img>
 </template>
 <script>
+import PromptAlert from "@/utils/Prompt";
 export default {
   name: "LogIn",
   data() {
     return {
+      mixins:[PromptAlert],
       value: String,
       email: '',
       password: '',
     };
   },
   methods: {
+     showErrorResponse(title, message) {
+            this.$swal.fire({
+                icon: "error",
+                title: title,
+                text: message
+            })
+        },
     async getDetails() {
       const email = this.email
       const password = this.password
@@ -74,13 +84,14 @@ export default {
       };
       console.log(data)
       const returnedData = await this.$store.dispatch("loginLocally", data);
-      console.log("Login")
       console.log(returnedData);
       if (returnedData.data[0].message === "Credentials matched!") {
         // localStorage.setItem("userData", data);
         // sessionStorage.setItem("userData", data);
         window.location.href = '/personalDataSheet'
         // this.$router.push("/personalDataSheet");
+      }else{
+         this.showErrorResponse("Log In Failed", returnedData.data[0].message);
       }
     },
 

@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <br> <br>
+   
    <v-container style="margin-left:30%">
      <!-- For count Faculty admin card -->
    
@@ -55,22 +55,39 @@
     <v-card-title>
       Manage Users
       
-      <v-btn class=" ml-5 card-purple-pink white--text pa-2" style="border-radius:20px; "  @click="createItem">Create</v-btn>
+    
       <v-spacer></v-spacer>
-      <v-text-field
+      <v-text-field 
+        
+            label="Search"
+
+           style="width:35px; margin-top:10px"
+             append-icon="mdi-magnify"
+               v-model="search"
+            filled
+            rounded
+            dense
+          ></v-text-field>
+      <!-- <v-text-field
+      style="width:40px"
         v-model="search"
         append-icon="mdi-magnify"
         label="Search"
         single-line
         hide-details
-      ></v-text-field>
+      ></v-text-field> -->
+        <v-btn class=" ml-5   pa-2"  @click="createItem">Create</v-btn>
     </v-card-title>
+    
   <v-data-table
       :headers="headers"
       :items="users"
       :search="search"
       :loading ="loading"
     >
+    <template v-slot:[`item.profile`]="{ item }">
+    <img v-bind:src="`${item.profile}`" style="width: 50px; height:50px">
+</template>
     <template v-slot:[`item.actions`]="{ item }">
       
             <v-btn small class="mr-2 card-purple-blue  white--text" style="border-radius:20px;width:80px" @click="editItem(item)">
@@ -140,12 +157,12 @@
                 md="6"
               >
               <label>Role:<span style='color:red'>*</span></label>
-                <v-text-field
-                  hint="Input the user role"
+                <v-select
+                  :items="roleItems"
                   v-model="role"
                   :rules="required"
                   
-                ></v-text-field>
+                ></v-select>
               </v-col>
                <v-col
                 cols="12"
@@ -191,8 +208,10 @@
             Close
           </v-btn>
           <v-btn
-          class="card-purple-pink"
-            text
+          class="card-purple-pink white--text"
+           
+            :loading="loading"
+            :disabled="loading"
             @click="save"
           >
             Save
@@ -229,8 +248,7 @@
 
           <v-btn
             color="green darken-1"
-            text
-            @click="agreeFunc"
+           
           >
             Agree
           </v-btn>
@@ -269,10 +287,13 @@ body{
 }
 </style>
 <script>
+import PromptAlert from "@/utils/Prompt";
   export default {
     data: () => ({
       loading:false,
+      loader: null,
       search: '',
+      mixins:[PromptAlert],
       agree: false,
       dialog: false,
       deleteDialog: false,
@@ -281,7 +302,7 @@ body{
         { text: 'Email Address', value: 'email' },
         { text: 'Password', value: 'password' },
         { text: 'Role', value: 'role' },
-         { text: 'Photo', value: 'photo' },
+         { text: 'Photo', value: 'profile' },
         { text: 'Actions', value: 'actions', sortable: false },
       ],
       editedIndex: -1,
@@ -295,6 +316,10 @@ body{
       countTeachers: '',
       countAdmin: '',
     users: [],
+    roleItems:[
+      "Admin",
+      "Teacher"
+    ],
     required: [
         v => !!v || 'Field is required',
        
@@ -313,6 +338,16 @@ body{
       dialogDelete (val) {
         val || this.closeDelete()
       },
+ 
+      loader () {
+        const l = this.loader
+        this[l] = !this[l]
+
+        setTimeout(() => (this[l] = false), 3000)
+
+        this.loader = null
+      },
+    
     },
     created () {
       this.initializeData()
@@ -344,6 +379,7 @@ body{
       },
       agreeFunc(){
         this.agree = true
+        
         //console.log(this.agree)
         // this.deleteDialog = false
       },
@@ -382,7 +418,9 @@ body{
         this.dialog = true
       },
      async save(){
-       if(this.$refs.form.validate()==true){
+       this.loader = this.loading
+       if(this.$refs.form.validate()){
+         
         console.log("reached")
         let formData = new FormData()
         

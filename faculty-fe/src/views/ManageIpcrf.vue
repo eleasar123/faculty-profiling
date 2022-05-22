@@ -1,761 +1,59 @@
 <template>
 <v-container>
-  <v-container class="pa-4" v-if="create==true">
+  <v-container v-if="showTable==true">
 
+    <v-card>
+     
+        <v-card-title>
+         <p > Individual Performance and Commitment and Review Form</p>
+          <v-spacer></v-spacer>
+           <v-text-field 
+        
+            label="Search"
+
+           style="width:50px; margin-top:10px"
+             append-icon="mdi-magnify"
+               v-model="search"
+            filled
+            rounded
+            dense
+          ></v-text-field>
+          <!-- <v-text-field
+            v-model="search"
+            append-icon="mdi-magnify"
+            label="Search"
+            single-line
+            hide-details
+            dense
+            style="width: 50%"
+          ></v-text-field> -->
+        </v-card-title>
+        <v-data-table
+          :headers="headers"
+          :items="ipcrfDemographicProfile"
+          :search="search"
+          :loading="loading"
+          loading-text="Please wait while loading data..."
+        >
+          <template v-slot:[`item.actions`]="{ item }">
+            <v-icon small class="mr-2" @click="viewItem(item)">
+              mdi-eye
+            </v-icon>
+          </template>
+        </v-data-table>
+      </v-card>
+
+  </v-container>
+  <v-container class="pa-4" v-if="show == true">
+    
     <!-- START OF ENCODING -->
-    <div class="light-green lighten-2 pa-4">
-      <p style="text-align: center">
-        <b>IPCRF Rpms Encoding Form</b> <br />
-        <b>Teacher I-III, SPET I-IV (Proficient Teacher) </b> <br />
-        <b>PART 1: INDIVIDUAL PERFORMANCE COMMITMENT AND REVIEW FORM</b>
-      </p>
-      <table id="table" style="width: 100%">
-        <tbody>
-          <td id="tdata" rowspan="2" colspan="2">
-            <p>
-              <b> PRIVACY NOTICE::</b> <br />
-              By using this tool, you agree to authorize the Department of Education to
-              collect, process, retain, and dispose of your personal information in
-              accordance with the Data Privacy Act of 2012. <br />
-              <b> INSTRUCTIONS: </b> <br />
-              Part 1 shall be accomplished by the Rater during the Phase III: Performance
-              Review and Evaluation of the RPMS Cycle. Fill in empty cells (white) with
-              needed information about the teacher, school and division. <br />
-              COT Rating Encode the COT rating per observation period by doing the
-              following steps: 1) Select the subject for COT; 2) Input the COT rating per
-              objective; and 3) Lock COT once finished. <br />
-              QET Rating <br />
-              Once all available COT ratings are inputted, encode your rating for
-              Efficiency and Timeliness. <br />
-              Note: This form automatically transmutes the COT rating to its corresponding
-              in the RPMS 5-point scale. <br />
-              When COT and QET ratings are encoded, click Finalize Part 1. Give the file
-              copy to the teacher concerned. The teacher shall accomplish Parts 2 & 4.
-            </p>
-          </td>
-        </tbody>
-      </table>
-      <br />
-
-      <table style="width: 100%; border-color: black" class="pa-2">
-        <tr class="row1">
-          <td id="tdata" colspan="2">
-            <p>Name of Employee:</p>
-          </td>
-          <td id="tdata" class="white" colspan="4" style="width: 20%">
-            <p></p>
-          </td>
-          <td id="tdata" colspan="3" style="line-height: 5px">
-            <p>Rater:</p>
-          </td>
-          <td id="tdata" class="white" colspan="4" style="width: 20%">
-            <p></p>
-          </td>
-          <td id="tdata" colspan="3" style="line-height: 5px">
-            <p>Region:</p>
-          </td>
-          <td id="tdata" class="white" colspan="4" style="width: 20%">
-            <p></p>
-          </td>
-        </tr>
-        <tr class="row2">
-          <td id="tdata" colspan="2" style="line-height: 5px">
-            <p>Position</p>
-          </td>
-          <td id="tdata" class="white" colspan="4" style="width: 20%">
-            <p></p>
-          </td>
-          <td id="tdata" colspan="3" style="line-height: 5px">
-            <p>Position:</p>
-          </td>
-          <td id="tdata" class="white" colspan="4" style="width: 20%">
-            <p></p>
-          </td>
-          <td id="tdata" colspan="3" style="line-height: 5px">
-            <p>Division:</p>
-          </td>
-          <td id="tdata" class="white" colspan="4" style="width: 20%">
-            <p></p>
-          </td>
-        </tr>
-        <tr class="row3">
-          <td id="tdata" colspan="2" style="line-height: 5px">
-            <p>Employee ID #:</p>
-          </td>
-          <td id="tdata" class="white" colspan="4" style="width: 20%">
-            <p></p>
-          </td>
-          <td id="tdata" colspan="3" style="line-height: 5px">
-            <p>Date of Review:</p>
-          </td>
-          <td id="tdata" class="white" colspan="4" style="width: 20%">
-            <p></p>
-          </td>
-          <td id="tdata" colspan="3" style="line-height: 5px">
-            <p>District/Municipality:</p>
-          </td>
-          <td id="tdata" class="white" colspan="4" style="width: 20%">
-            <p></p>
-          </td>
-        </tr>
-        <tr class="row4">
-          <td id="tdata" colspan="2">
-            <p>Employment Status:</p>
-          </td>
-          <td id="tdata " class="white" colspan="4" style="width: 20%">
-            <p></p>
-          </td>
-          <td id="tdata" colspan="3" style="line-height: 5px">
-            <p>Rating Period:</p>
-          </td>
-          <td id="tdata" class="white" colspan="4" style="width: 20%">
-            <p></p>
-          </td>
-          <td id="tdata" colspan="3" style="line-height: 5px">
-            <p>School ID:</p>
-          </td>
-          <td id="tdata" class="white" colspan="4" style="width: 20%">
-            <p></p>
-          </td>
-        </tr>
-        <tr class="row5">
-          <td id="tdata" colspan="2" style="line-height: 5px">
-            <p>Age:</p>
-          </td>
-          <td id="tdata" class="white" colspan="4" style="width: 20%">
-            <p></p>
-          </td>
-
-          <td id="tdata" colspan="7" style="width: 20%">
-            <p></p>
-          </td>
-          <td id="tdata" colspan="3" style="line-height: 5px">
-            <p>School Name:</p>
-          </td>
-          <td id="tdata" class="white" colspan="4" style="width: 20%">
-            <p></p>
-          </td>
-        </tr>
-        <tr class="row6">
-          <td id="tdata" colspan="2" style="line-height: 5px">
-            <p>Sex:</p>
-          </td>
-          <td id="tdata" class="white" colspan="4" style="width: 20%">
-            <p></p>
-          </td>
-          <td id="tdata" colspan="3">
-            <p>Number of Years in Teaching:</p>
-          </td>
-          <td id="tdata" class="white" colspan="4" style="width: 20%">
-            <p></p>
-          </td>
-          <td id="tdata" colspan="3" style="line-height: 5px">
-            <p>School Type:</p>
-          </td>
-          <td id="tdata" class="white" colspan="4" style="width: 20%">
-            <p></p>
-          </td>
-        </tr>
-        <tr class="row7">
-          <td id="tdata" colspan="2" style="line-height: 5px">
-            <p>Level Taught:</p>
-          </td>
-          <td id="tdata" class="white" colspan="4" style="width: 20%">
-            <p></p>
-          </td>
-          <td id="tdata" colspan="3" rowspan="2">
-            <p>Highest Degree Obtained:</p>
-          </td>
-          <td id="tdata" class="white" colspan="4" style="width: 20%">
-            <p></p>
-          </td>
-          <td id="tdata" colspan="3" style="line-height: 5px">
-            <p>School Size:</p>
-          </td>
-          <td id="tdata" class="white" colspan="4" style="width: 20%">
-            <p></p>
-          </td>
-        </tr>
-        <tr class="row8">
-          <td id="tdata" colspan="2">
-            <p>Grade Level Taught:</p>
-          </td>
-          <td id="tdata" class="white" colspan="4" style="width: 20%">
-            <p></p>
-          </td>
-
-          <td id="tdata" class="white" colspan="4" style="width: 20%">
-            <p></p>
-          </td>
-          <td id="tdata" colspan="3">
-            <p>Curricular Classification:</p>
-          </td>
-          <td id="tdata" class="white" colspan="4" style="width: 20%">
-            <p></p>
-          </td>
-        </tr>
-        <tr class="row9">
-          <td id="tdata" colspan="2" style="line-height: 5px">
-            <p>Subject Taught:</p>
-          </td>
-          <td id="tdata" class="white" colspan="4" style="width: 20%">
-            <p></p>
-          </td>
-          <td id="tdata" colspan="3">
-            <p>Area of Specialization:</p>
-          </td>
-          <td id="tdata" class="white" colspan="4" style="width: 20%">
-            <p></p>
-          </td>
-          <td id="tdata" colspan="3" style="line-height: 5px">
-            <p style="font-color: red">Encoding Status:</p>
-          </td>
-          <td id="tdata" class="white" colspan="4" style="width: 20%">
-            <p></p>
-          </td>
-        </tr>
-        <!-- START OF KRA TABLE -->
-
-        <tr class="light-green lighten-2">
-          <td id="tdata" rowspan="3"><p>KRA</p></td>
-          <td id="tdata" rowspan="3">
-            <p>Weight per KRA</p>
-          </td>
-          <td id="tdata" rowspan="3">
-            <p>Objectives</p>
-          </td>
-          <td id="tdata" rowspan="3"><p>Weight per Objective</p></td>
-          <td id="tdata" rowspan="3">
-            <p>COT Indicator No.</p>
-          </td>
-          <td id="tdata" colspan="2" rowspan="1"><p>COT 1</p></td>
-          <td id="tdata" colspan="2" rowspan="1"><p>COT 2</p></td>
-          <td id="tdata" colspan="2" rowspan="1"><p>COT 3</p></td>
-          <td id="tdata" colspan="2" rowspan="1"><p>COT 4</p></td>
-          <td id="tdata" rowspan="3">
-            <p>AVE</p>
-          </td>
-
-          <td id="tdata" rowspan="2" colspan=" 4">
-            <p>IPCRF Numerical Ratings</p>
-          </td>
-          <td id="tdata" rowspan="3">
-            <p>Score</p>
-          </td>
-          <td id="tdata" rowspan="3">
-            <p>Adjectival Rating</p>
-          </td>
-        </tr>
-        <tr>
-          <td id="tdata" colspan="2" rowspan="1"><p></p></td>
-          <td id="tdata" colspan="2" rowspan="1"><p></p></td>
-          <td id="tdata" colspan="2" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="2" rowspan="1" class="grey darken-2"><p></p></td>
-        </tr>
-        <tr>
-          <td id="tdata" colspan="1" rowspan="1"><p>Rating</p></td>
-          <td id="tdata" colspan="1" rowspan="1"><p>RPMS 5-pt</p></td>
-          <td id="tdata" colspan="1" rowspan="1"><p>Rating</p></td>
-          <td id="tdata" colspan="1" rowspan="1"><p>RPMS 5-pt</p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1"><p>Q</p></td>
-          <td id="tdata" colspan="1" rowspan="1"><p>E</p></td>
-          <td id="tdata" colspan="1" rowspan="1"><p>T</p></td>
-          <td id="tdata" colspan="1" rowspan="1"><p>AVE</p></td>
-        </tr>
-        <tr>
-          <td id="tdata" rowspan="3"><p>KRA</p></td>
-          <td id="tdata" rowspan="3">
-            <p>24%</p>
-          </td>
-          <td id="tdata" colspan="1" rowspan="1"><p>Obective 1</p></td>
-          <td id="tdata" colspan="1" rowspan="1">
-            <p>8%</p>
-            <p></p>
-          </td>
-          <td id="tdata" colspan="1" rowspan="1"><p>1</p></td>
-          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
-        </tr>
-        <!-- OBJ 2 -->
-        <tr>
-          <td id="tdata" colspan="1" rowspan="1"><p>Obective 2</p></td>
-          <td id="tdata" colspan="1" rowspan="1">
-            <p>8%</p>
-            <p></p>
-          </td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
-        </tr>
-        <!-- OBJ 3 -->
-        <tr>
-          <td id="tdata" colspan="1" rowspan="1"><p>Obective 3</p></td>
-          <td id="tdata" colspan="1" rowspan="1">
-            <p>8%</p>
-            <p></p>
-          </td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
-        </tr>
-        <!-- OBJ 4 -->
-        <tr>
-          <td id="tdata" rowspan="3"><p>KRA 2</p></td>
-          <td id="tdata" rowspan="3">
-            <p>24%</p>
-          </td>
-          <td id="tdata" colspan="1" rowspan="1"><p>Obective 4</p></td>
-          <td id="tdata" colspan="1" rowspan="1">
-            <p>8%</p>
-            <p></p>
-          </td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
-        </tr>
-        <!-- OBJ 5 -->
-        <tr>
-          <td id="tdata" colspan="1" rowspan="1"><p>Obective 5</p></td>
-          <td id="tdata" colspan="1" rowspan="1">
-            <p>8%</p>
-            <p></p>
-          </td>
-          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
-        </tr>
-        <!-- OBJ 6 -->
-        <tr>
-          <td id="tdata" colspan="1" rowspan="1"><p>Obective 6</p></td>
-          <td id="tdata" colspan="1" rowspan="1">
-            <p>8%</p>
-            <p></p>
-          </td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
-        </tr>
-        <!-- OBJ 7 -->
-        <tr>
-          <td id="tdata" rowspan="2"><p>KRA 3</p></td>
-          <td id="tdata" rowspan="2">
-            <p>24%</p>
-          </td>
-          <td id="tdata" colspan="1" rowspan="1"><p>Obective 7</p></td>
-          <td id="tdata" colspan="1" rowspan="1">
-            <p>8%</p>
-            <p></p>
-          </td>
-          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
-        </tr>
-        <!-- OBJ 8 -->
-        <tr>
-          <td id="tdata" colspan="1" rowspan="1"><p>Obective 8</p></td>
-          <td id="tdata" colspan="1" rowspan="1">
-            <p>8%</p>
-            <p></p>
-          </td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
-        </tr>
-        <!-- OBJ 4 -->
-        <tr>
-          <td id="tdata" rowspan="3"><p>KRA 4</p></td>
-          <td id="tdata" rowspan="3">
-            <p>24%</p>
-          </td>
-          <td id="tdata" colspan="1" rowspan="1"><p>Obective 9</p></td>
-          <td id="tdata" colspan="1" rowspan="1">
-            <p>8%</p>
-            <p></p>
-          </td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
-        </tr>
-        <!-- OBJ 5 -->
-        <tr>
-          <td id="tdata" colspan="1" rowspan="1"><p>Obective 10</p></td>
-          <td id="tdata" colspan="1" rowspan="1">
-            <p>8%</p>
-            <p></p>
-          </td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
-        </tr>
-        <!-- OBJ 6 -->
-        <tr>
-          <td id="tdata" colspan="1" rowspan="1"><p>Obective 11</p></td>
-          <td id="tdata" colspan="1" rowspan="1">
-            <p>8%</p>
-            <p></p>
-          </td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
-        </tr>
-        <!-- OBJ 11 -->
-        <tr>
-          <td id="tdata" rowspan="1"><p>PLUS FACTOR</p></td>
-          <td id="tdata" rowspan="1">
-            <p>24%</p>
-          </td>
-          <td id="tdata" colspan="1" rowspan="1"><p>Obective 11</p></td>
-          <td id="tdata" colspan="1" rowspan="1">
-            <p>8%</p>
-            <p></p>
-          </td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
-          <td id="tdata" colspan="1" rowspan="1"><p></p></td>
-        </tr>
-        <tr>
-          <td id="tdata" colspan="5" rowspan="1">
-            <p style="float: right">Date Observed:</p>
-          </td>
-          <td id="tdata" colspan="2" rowspan="1"><p></p></td>
-          <td id="tdata" colspan="2" rowspan="1"><p></p></td>
-          <td id="tdata" colspan="2" rowspan="1"><p></p></td>
-          <td id="tdata" colspan="2" rowspan="1"><p></p></td>
-          <td id="tdata" colspan="5" rowspan="1">
-            <p style="float: right">Final Rating:</p>
-          </td>
-          <td id="tdata" colspan="2" rowspan="1"><p></p></td>
-        </tr>
-        <tr>
-          <td id="tdata" colspan="5" rowspan="1"><p></p></td>
-          <td id="tdata" colspan="2" rowspan="1"><p></p></td>
-          <td id="tdata" colspan="2" rowspan="1"><p></p></td>
-          <td id="tdata" colspan="2" rowspan="1"><p></p></td>
-          <td id="tdata" colspan="2" rowspan="1"><p></p></td>
-          <td id="tdata" colspan="5" rowspan="1">
-            <p style="float: right">Adjectival Rating:</p>
-          </td>
-          <td id="tdata" colspan="2" rowspan="1"><p></p></td>
-        </tr>
-        <br />
-      </table>
-      <p style="margin-left: 50%">Approving Authority:</p>
-      <br />
-      <p style="margin-left: 47%">____________________________</p>
-      <br />
-
-      <table id="table" style="margin-left: 30%; width: 50%">
-        <tbody>
-          <td id="tdata">
-            <p>
-              <b>NOTE:</b> <br />
-
-              When COT and QET ratings are encoded, click Finalize Part 1. Give the file
-              copy to the teacher concerned. The teacher shall accomplish Parts 2 & 4.
-            </p>
-          </td>
-        </tbody>
-      </table>
-
-      <br />
-
-      <tr>
-        <table>
-          <td id="tdata" style="width: 50%">
-            <div class="text--primary">
-              <b>Self- Management</b><br />
-              1.Sets personal goals and directions, needs and development.
-              <br />
-              2.Undertakes personal actions and behavior that are clear and purposive and
-              takes into account personal goals and values congruent to that of the
-              organization. <br />
-              3.Displays emotional maturity and enthusiasm for and is challenged by higher
-              goals. <br />
-              4.Prioritizes work tasks and schedules (through Gantt chants, checklists,
-              etc.) to achieve goals. <br />
-              5.Sets high quality, challenging, realistic goals for self and others.
-              <br />
-            </div>
-          </td>
-
-          <td id="tdata" style="width: 50%">
-            <div class="text--primary">
-              <b>Teamwork</b><br />
-              1. Willingly does his/her share of responsibility.
-              <br />
-              2.Promotes collaboration and removes barrier to teamwork and goal
-              accomplishment across the organization. <br />
-              3.Applies negotiation principles in arriving at win-win agreements. <br />
-              4. Drives consensus and team ownership of decisions.
-              <br />
-              5. Works constructively and collaboratively with others and across
-              organizations to accomplish organization goals and objectives.
-              <br /><br /><br />
-            </div>
-          </td>
-        </table>
-        <br />
-        <table>
-          <td id="tdata">
-            <div class="text--primary">
-              <b>Professionalism and Ethics</b><br />
-              1.Demonstrates the values and behavior enshrined in the Norms and Conduct
-              and Ethical Standards for Public Officials and Employees (RA 6713). <br />
-              2.Practices ethical and professional behavior and conduct taking into
-              account the impact of his/her actions and decisions. <br />
-              3.Maintains a professional image: being trustworthy, regularity of
-              attendance and punctuality, good grooming and communication.
-              <br />
-              4.Makes personal sacrifices to meet the organization’s needs.
-              <br />
-              5.Acts with a sense of urgency and responsibility to meet the organization’s
-              needs, improve system and help others improve their effectiveness.
-            </div>
-          </td>
-          <td id="tdata" style="width: 50%">
-            <div class="text--primary">
-              <b>Service Orientation</b><br />
-              1. Can explain and articulate organizational directions, issues and
-              problems. <br />
-              2. Takes personal responsibility for dealing with and/or correcting customer
-              service issues and concerns. <br />
-              3. Initiates activities that promote advocacy for men and women empowerment.
-              <br />
-              4. Participates in updating office vision, mission, mandates and strategies
-              based on DepEd strategies and directions. <br />
-              5. Develops and adopts service improvement program through simplified
-              procedures that will further enhance service delivery.
-              <br /><br />
-            </div>
-          </td>
-        </table>
-        <br />
-      </tr>
-      <tr>
-        <table>
-          <td id="tdata" style="width: 50%">
-            <div class="text--primary">
-              <b>Results Focus</b><br />
-              1. Achieves results with optimal use of time and resources most of the
-              time.<br />
-              2. Avoids rework, mistakes and wastage through effective work methods by
-              placing organizational needs before personal needs.
-              <br />
-              3. Delivers error-free outputs most of the time by conforming to standard
-              operating procedures correctly and consistently. Able to produce very
-              satisfactory quality work in terms of usefulness/acceptability and
-              completeness with no supervision required. <br />
-              4. Expresses a desire to do better and may express frustration at waste or
-              inefficiency. May focus on new or more precise ways of meeting goals set.
-              <br />
-              5. Makes specific changes in the system or in own work methods to improve
-              performance. Examples may include doing something better, faster, at a lower
-              cost, more efficiently, or improving quality, customer satisfaction, morale,
-              without setting any specific goal.
-            </div>
-          </td>
-          <td id="tdata">
-            <div class="text--primary">
-              <b>Innovation</b><br />
-              1. Examines the root cause of problems and suggests effective solutions.
-              Foster new ideas, processes and suggests better ways to do things (cost
-              and/or operational efficiency). <br />
-              2. Demonstrates an ability to think “beyond the box”. Continuously focuses
-              on improving personal productivity to create higher value and results.
-              <br />
-              3. Promotes a creative climate and inspires co-workers to develop original
-              ideas or solutions.<br />
-              4. Translates creative thinking into tangible changes and solutions that
-              improve the work unit and organization. <br />
-              5. Uses ingenious methods to accomplish responsibilities. Demonstrates
-              resourcefulness and the ability to succeed with minimal resources.
-              <br /><br />
-              <br /><br />
-            </div>
-          </td>
-        </table>
-
-        <br />
-      </tr>
-      <table id="table" class="white" style="margin-left: 30%; width: 50%">
-        <tbody>
-          <td id="tdata">
-            <p>
-              <b>NOTE:</b> <br />
-
-              When COT and QET ratings are encoded, click Finalize Part 1. Give the file
-              copy to the teacher concerned. The teacher shall accomplish Parts 2 & 4.
-            </p>
-          </td>
-        </tbody>
-      </table>
-      <br />
-    </div>
-    <br />
+    <!--  -->
     <!-- END OF ENCODING -->
     <!-- start of part 1 display -->
-
-    <table id="table" style="width: 100%">
+    <v-tabs>
+      <v-tab>Part 1 - Proficient</v-tab>
+      <v-tab-item>
+    <table id="table" style="width: 100%" >
       <tr class="row1">
         <td id="tdata" colspan="6" class="pt-4" style="background-color: #ddd9c3">
           <p style="text-align: center">
@@ -771,13 +69,13 @@
           <p>Name of Employee:</p>
         </td>
         <td id="tdata" style="width: 20%">
-          <p></p>
+          <p>{{ipcrfDemographicProfile.name_of_employee}}</p>
         </td>
         <td id="tdata" style="line-height: 5px">
           <p>Name of Rater:</p>
         </td>
         <td id="tdata" style="width: 20%">
-          <p></p>
+          <p>{{ipcrfDemographicProfile.rater}}</p>
         </td>
       </tr>
       <tr class="row1">
@@ -785,13 +83,13 @@
           <p>Position:</p>
         </td>
         <td id="tdata" style="line-height: 5px">
-          <p></p>
+          <p>{{ipcrfDemographicProfile.position}}</p>
         </td>
         <td id="tdata" style="line-height: 5px">
           <p>Position:</p>
         </td>
-        <td id="tdata" style="line-height: 5px">
-          <p></p>
+        <td id="tdata" style="">
+          <p>{{ipcrfDemographicProfile.rater_position}}</p>
         </td>
       </tr>
       <tr class="row1">
@@ -799,21 +97,21 @@
           <p>Bureau/Center/Service/Division:</p>
         </td>
         <td id="tdata" style="line-height: 5px">
-          <p></p>
+          <p>{{ipcrfDemographicProfile.division}}</p>
         </td>
         <td id="tdata" style="line-height: 5px">
           <p>Date of Review::</p>
         </td>
         <td id="tdata" style="line-height: 5px">
-          <p></p>
+          <p>{{ipcrfDemographicProfile.date_of_review}}</p>
         </td>
       </tr>
       <tr class="row1">
         <td id="tdata" style="line-height: 5px">
-          <p>Position:</p>
+          <p>Rating Period: </p>
         </td>
         <td id="tdata" style="line-height: 5px">
-          <p></p>
+          <p>{{ipcrfDemographicProfile.rating_period}}</p>
         </td>
         <td id="tdata" colspan="2" style="line-height: 5px"></td>
       </tr>
@@ -2266,6 +1564,7 @@
         <v-col>
           <v-text-field
             v-model="part_ratee"
+            readonly
             style="width: 200px; height: 100px; margin-left: 80px"
           >
           </v-text-field>
@@ -2274,6 +1573,7 @@
         </v-col>
         <v-col>
           <v-text-field
+          readonly
             v-model="part_rater"
             style="width: 200px; height: 100px; margin-left: 40px"
           >
@@ -2283,8 +1583,8 @@
         </v-col>
 
         <v-col>
-          <v-text-field style="width: 200px; height: 100px; margin-left: 40px">
-            <p class="mt-6">{{ part_approvingAuthority }}</p>
+          <v-text-field readonly style="width: 200px; height: 100px; margin-left: 40px">
+            <!-- <p class="mt-6">{{ part_approvingAuthority }}</p> -->
           </v-text-field>
 
           <h5 class="pa-2" style="margin-left: -20px">Approving Authority</h5>
@@ -2292,13 +1592,15 @@
       </v-row>
     </div>
     <br /><br />
-
+    </v-tab-item>
+    <v-tab>Part II</v-tab>
+    <v-tab-item>
     <!-- End of Display Signatures  -->
 
-    <br /><br />
     <!-- end of part 1 display -->
     <!-- start of part 2 display -->
-    <table id="table" style="width: 100%">
+   
+    <table id="table" style="width: 100%" >
       <tr class="row1">
         <td
           id="tdata"
@@ -2326,82 +1628,79 @@
       <tr>
         <td id="tdata" colspan="2">
           <b>Self-Management</b> <br />
-          <input type="checkbox" v-model="selfManagement1" /> 1. Sets personal goals and
+          1. Sets personal goals and
           directions, needs and development. <br />
-          <input type="checkbox" v-model="selfManagement2" /> 2. Undertakes personal
+           2. Undertakes personal
           actions and behavior that are clear and purposive and takes into account
           personal goals and values congruent to that of the organization. <br />
-          <input type="checkbox" v-model="selfManagement3" /> 3. Displays emotional
+           3. Displays emotional
           maturity and enthusiasm for and is challenged by higher goals. <br />
-          <input type="checkbox" v-model="selfManagement4" /> 4. Prioritizes work tasks
+           4. Prioritizes work tasks
           and schedules (through Gantt chants, checklists, etc.) to achieve goals.
           <br />
-          <input type="checkbox" v-model="selfManagement5" /> 5. Sets high quality,
+           5. Sets high quality,
           challenging, realistic goals for self and others.
         </td>
 
-        <td id="tdata" colspan="2" style="width: 15%; text-align: center">0</td>
+        <td id="tdata" colspan="2" style="width: 15%; text-align: center">{{countSelfManagement}}</td>
         <td id="tdata" colspan="1">
           <b> Teamwork</b> <br />
-          <input type="checkbox" v-model="teamwork1" /> 1. Willingly does his/her share of
+           1. Willingly does his/her share of
           responsibility. <br />
-          <input type="checkbox" v-model="teamwork2" /> 2. Promotes collaboration and
+           2. Promotes collaboration and
           removes barrier to teamwork and goal accomplishment across the organization.
           <br />
-          <input type="checkbox" v-model="teamwork3" /> 3. Applies negotiation principles
+           3. Applies negotiation principles
           in arriving at win-win agreements.
           <br />
-          <input type="checkbox" v-model="teamwork4" /> 4. Drives consensus and team
+           4. Drives consensus and team
           ownership of decisions.
           <br />
-          <input type="checkbox" v-model="teamwork5" /> 5. Works constructively and
+          5. Works constructively and
           collaboratively with others and across organizations to accomplish organization
           goals and objectives.
         </td>
-        <td id="tdata" colspan="2" style="width: 15%; text-align: center">0</td>
+        <td id="tdata" colspan="2" style="width: 15%; text-align: center">{{countTeamwork}}</td>
       </tr>
       <tr>
         <td id="tdata" colspan="2">
           <b>Professionalism and Ethics</b> <br />
-          <input type="checkbox" v-model="professionalism1" /> 1. Demonstrates the values
+           1. Demonstrates the values
           and behavior enshrined in the Norms and Conduct and Ethical Standards for Public
           Officials and Employees (RA 6713). <br />
-          <input type="checkbox" v-model="professionalism2" /> 2. Practices ethical and
+           2. Practices ethical and
           professional behavior and conduct taking into account the impact of his/her
-          actions and decisions. <br /><input
-            type="checkbox"
-            v-model="professionalism3"
-          />
+          actions and decisions. <br />
           3. Maintains a professional image: being trustworthy, regularity of attendance
           and punctuality, good grooming and communication. <br />
-          <input type="checkbox" v-model="professionalism4" /> 4. Makes personal
+          4. Makes personal
           sacrifices to meet the organization’s needs.
           <br />
-          <input type="checkbox" v-model="professionalism5" /> 5. Acts with a sense of
+          5. Acts with a sense of
           urgency and responsibility to meet the organization’s needs, improve system and
           help others improve their effectiveness.
         </td>
 
-        <td id="tdata" colspan="2" style="width: 15%; text-align: center">0</td>
+        <td id="tdata" colspan="2" style="width: 15%; text-align: center">countProfessional</td>
         <td id="tdata" colspan="1">
           <b> Service Orientation</b> <br />
-          <input type="checkbox" v-model="serviceOrientation" /> 1. Can explain and
+           1. Can explain and
           articulate organizational directions, issues and problems.
           <br />
-          <input type="checkbox" v-model="serviceOrientation" /> 2. Takes personal
+           2. Takes personal
           responsibility for dealing with and/or correcting customer service issues and
-          concerns. <br /><input type="checkbox" v-model="serviceOrientation" /> 3.
+          concerns. <br />3.
           Initiates activities that promote advocacy for men and women empowerment.
           <br />
-          <input type="checkbox" v-model="serviceOrientation" /> 4. Participates in
+          4. Participates in
           updating office vision, mission, mandates and strategies based on DepEd
           strategies and directions.
           <br />
-          <input type="checkbox" v-model="serviceOrientation" /> 5. Develops and adopts
+           5. Develops and adopts
           service improvement program through simplified procedures that will further
           enhance service delivery.
         </td>
-        <td id="tdata" colspan="2" style="width: 15%; text-align: center">0</td>
+        <td id="tdata" colspan="2" style="width: 15%; text-align: center">{{countService}}</td>
       </tr>
 
       <tr>
@@ -2424,7 +1723,7 @@
           without setting any specific goal.
         </td>
 
-        <td id="tdata" colspan="2" style="width: 15%; text-align: center">0</td>
+        <td id="tdata" colspan="2" style="width: 15%; text-align: center">{{countResults}}</td>
         <td id="tdata" colspan="1">
           <b> Innovation</b> <br />
           1. Examines the root cause of problems and suggests effective solutions. Foster
@@ -2441,7 +1740,7 @@
           5. Uses ingenious methods to accomplish responsibilities. Demonstrates
           resourcefulness and the ability to succeed with minimal resources.
         </td>
-        <td id="tdata" colspan="2" style="width: 15%; text-align: center">0</td>
+        <td id="tdata" colspan="2" style="width: 15%; text-align: center">{{countInnovation}}</td>
       </tr>
       <tr class="row1">
         <td id="tdata" colspan="6">
@@ -2453,7 +1752,9 @@
         </td>
       </tr>
     </table>
-
+    </v-tab-item>
+    <v-tab>Part 3</v-tab>
+    <v-tab-item>
     <br />
     <!-- start of part 3 competencies -->
     <table id="table">
@@ -2866,6 +2167,9 @@
     </div>
     <br /><br />
 
+    </v-tab-item>
+    <v-tab>Part 4</v-tab>
+    <v-tab-item>
     <!-- End of Part 3 Display -->
     <div>
       <p style="text-align: center"><b>PART IV: DEVELOPMENTAL PLANS</b></p>
@@ -2907,7 +2211,7 @@
         </tr>
         <tr>
           <td id="tdata" colspan="6" class="pt-4 grey lighten-2" style="line-height: 5px">
-            <p>A. Functional Competencies</p>
+            <p>A. Core Competencies</p>
           </td>
         </tr>
         <!-- Start of functional content -->
@@ -3012,8 +2316,16 @@
         </tbody>
       </table>
     </div>
+      </v-tab-item>
+
+
+      </v-tabs>
+      <v-btn class=" ma-6 float-left" @click="back">Back</v-btn>
+    <v-btn class=" ma-6 float-right" @click="editItems">Edit</v-btn>
   </v-container>
 
+<!--Container for rendering the view for update and create in ipctf -->
+<v-container v-if="create==true || edit==true">
   <!--start for create and fill up encoding-->
   <v-card class="pa-0 pa-0 ma-5">
     <v-tabs>
@@ -3161,15 +2473,36 @@
                   </td>
                   <td colspan="3" style="text-align: left">Date of Review:</td>
                   <td colspan="3">
-                    <v-text-field
-                      v-model="empDateReview"
-                      placeholder="Date of Review"
-                      solo
-                      dense
-                      class="text-center pt-5"
-                      type="text"
-                    >
-                    </v-text-field>
+                     <v-row>
+                    <v-col cols="12" sm="12" md="12" class="text-center">
+                      <v-menu
+                        v-model="empDateReviewMenu"
+                        :close-on-content-click="false"
+                        :nudge-right="40"
+                        transition="scale-transition"
+                        offset-y
+                        min-width="auto"
+                      >
+                        <template v-slot:activator="{ on, attrs }">
+                          <v-text-field
+                            v-model="computedDateFormattedDateOfReview"
+                            append-icon="mdi-calendar"
+                            readonly
+                            :rules="required"
+                            v-bind="attrs"
+                            v-on="on"
+                          ></v-text-field>
+                        </template>
+                        <v-date-picker
+                          v-model="empDateReview"
+                          scrollable
+                          @input="empDateReviewMenu = false"
+                        >
+                        </v-date-picker>
+                      </v-menu>
+                    </v-col>
+                  </v-row>
+                    
                   </td>
                   <td colspan="1" style="text-align: left">District/Municipality:</td>
                   <td colspan="1">
@@ -3199,7 +2532,8 @@
                   </td>
                   <td colspan="3" style="text-align: left">Rating Period:</td>
                   <td colspan="3">
-                    <v-text-field
+                    <v-select
+                    :items="ratingPeriodItems"
                       v-model="empRatingPeriod"
                       placeholder="Rating Period"
                       solo
@@ -3207,7 +2541,7 @@
                       class="text-center pt-5"
                       type="text"
                     >
-                    </v-text-field>
+                    </v-select>
                   </td>
                   <td colspan="1" style="text-align: left">School ID:</td>
                   <td colspan="1">
@@ -3376,7 +2710,10 @@
 
           <!-- first row -->
         </v-card>   
+
+
            <!-- START OF KRA TABLE -->
+           <v-container fluid v-if="user=='Admin'">
         <v-simple-table>
         <tr class="light-green lighten-2">
           <td id="tdata" rowspan="3"><p>KRA</p></td>
@@ -3415,7 +2752,7 @@
                       label="Subject"
                       dense
                       solo
-                      class="text-center pt-2"
+                      class="text-center pt-6"
                     ></v-select></td>
           <td id="tdata" colspan="2" rowspan="1"><v-select
                       :items="subjectTaughtItems"
@@ -3423,7 +2760,7 @@
                       label="Subject"
                       dense
                       solo
-                      class="text-center pt-2"
+                      class="text-center pt-6"
                     ></v-select></td>
           <td id="tdata" colspan="2" rowspan="1" class="grey darken-2"><p></p></td>
           <td id="tdata" colspan="2" rowspan="1" class="grey darken-2"><p></p></td>
@@ -3447,7 +2784,7 @@
           <td id="tdata" rowspan="3">
             <p>24%</p>
           </td>
-          <td id="tdata" colspan="1" rowspan="1"><p>Obective 1</p></td>
+          <td id="tdata" colspan="1" rowspan="1"><p>Objective 1</p></td>
           <td id="tdata" colspan="1" rowspan="1">
             <p>8%</p>
             <p></p>
@@ -3472,7 +2809,7 @@
                         
                       >
                       </v-text-field>
-</td>
+    </td>
           <td id="tdata" colspan="1" rowspan="1"> <v-text-field
                         v-model="cot1RpmsObjNo1"
                         placeholder=""
@@ -3508,7 +2845,7 @@
           <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
           <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
           <td id="tdata" colspan="1" rowspan="1"><v-text-field
-                        v-model="encodingAverageObjNo1"
+                        v-model="calculateObjectivesAverageNo1"
                         placeholder=""
                         solo
                         dense
@@ -3522,7 +2859,7 @@
                         placeholder=""
                         solo
                         dense
-                        readonly
+                        
                         class="text-center ml-auto mr-auto"
                         
                       >
@@ -3530,7 +2867,7 @@
           <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
           <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
           <td id="tdata" colspan="1" rowspan="1"><v-text-field
-                        v-model="encodingIpcrfRatingAve1"
+                        v-model="calculateNumericalRatingsAverageNo1"
                         placeholder=""
                         solo
                         dense
@@ -3562,7 +2899,7 @@
         </tr>
         <!-- OBJ 2 -->
         <tr>
-          <td id="tdata" colspan="1" rowspan="1"><p>Obective 2</p></td>
+          <td id="tdata" colspan="1" rowspan="1"><p>Objective 2</p></td>
           <td id="tdata" colspan="1" rowspan="1">
             <p>8%</p>
             <p></p>
@@ -3582,7 +2919,7 @@
                         placeholder=""
                         solo
                         dense
-                        readonly
+                        
                         class="text-center ml-auto mr-auto"
                         
                       >
@@ -3622,7 +2959,7 @@
         </tr>
         <!-- OBJ 3 -->
         <tr>
-          <td id="tdata" colspan="1" rowspan="1"><p>Obective 3</p></td>
+          <td id="tdata" colspan="1" rowspan="1"><p>Objective 3</p></td>
           <td id="tdata" colspan="1" rowspan="1">
             <p>8%</p>
             <p></p>
@@ -3642,7 +2979,7 @@
                         placeholder=""
                         solo
                         dense
-                        readonly
+                      
                         class="text-center ml-auto mr-auto"
                         
                       >
@@ -3686,7 +3023,7 @@
           <td id="tdata" rowspan="3">
             <p>24%</p>
           </td>
-          <td id="tdata" colspan="1" rowspan="1"><p>Obective 4</p></td>
+          <td id="tdata" colspan="1" rowspan="1"><p>Objective 4</p></td>
           <td id="tdata" colspan="1" rowspan="1">
             <p>8%</p>
             <p></p>
@@ -3706,7 +3043,7 @@
                         placeholder=""
                         solo
                         dense
-                        readonly
+                      
                         class="text-center ml-auto mr-auto"
                         
                       >
@@ -3746,7 +3083,7 @@
         </tr>
         <!-- OBJ 5 -->
         <tr>
-          <td id="tdata" colspan="1" rowspan="1"><p>Obective 5</p></td>
+          <td id="tdata" colspan="1" rowspan="1"><p>Objective 5</p></td>
           <td id="tdata" colspan="1" rowspan="1">
             <p>8%</p>
             <p></p>
@@ -3820,7 +3157,7 @@
                         placeholder=""
                         solo
                         dense
-                        readonly
+                     
                         class="text-center ml-auto mr-auto"
                         
                       >
@@ -3860,7 +3197,7 @@
         </tr>
         <!-- OBJ 6 -->
         <tr>
-          <td id="tdata" colspan="1" rowspan="1"><p>Obective 6</p></td>
+          <td id="tdata" colspan="1" rowspan="1"><p>Objective 6</p></td>
           <td id="tdata" colspan="1" rowspan="1">
             <p>8%</p>
             <p></p>
@@ -3880,7 +3217,7 @@
                         placeholder=""
                         solo
                         dense
-                        readonly
+                  
                         class="text-center ml-auto mr-auto"
                         
                       >
@@ -3891,7 +3228,7 @@
                         placeholder=""
                         solo
                         dense
-                        readonly
+                     
                         class="text-center ml-auto mr-auto"
                         
                       >
@@ -3933,7 +3270,7 @@
           <td id="tdata" rowspan="2">
             <p>24%</p>
           </td>
-          <td id="tdata" colspan="1" rowspan="1"><p>Obective 7</p></td>
+          <td id="tdata" colspan="1" rowspan="1"><p>Objective 7</p></td>
           <td id="tdata" colspan="1" rowspan="1">
             <p>8%</p>
             <p></p>
@@ -4007,6 +3344,1152 @@
                         placeholder=""
                         solo
                         dense
+                        
+                        class="text-center ml-auto mr-auto"
+                        
+                      >
+                      </v-text-field></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1"><v-text-field
+                        v-model="encodingIpcrfRatingAve7"
+                        placeholder=""
+                        solo
+                        dense
+                        readonly
+                        class="text-center ml-auto mr-auto"
+                        
+                      >
+                      </v-text-field></td>
+          <td id="tdata" colspan="1" rowspan="1"><v-text-field
+                        v-model="encodingScore7"
+                        placeholder=""
+                        solo
+                        dense
+                        readonly
+                        class="text-center ml-auto mr-auto"
+                        
+                      >
+                      </v-text-field></td>
+          <td id="tdata" colspan="1" rowspan="1"><v-text-field
+                        v-model="encodingAdjectivalRating7"
+                        placeholder=""
+                        solo
+                        dense
+                        readonly
+                        class="text-center ml-auto mr-auto"
+                        
+                      >
+                      </v-text-field></td>
+        </tr>
+        <!-- OBJ 8 -->
+        <tr>
+          <td id="tdata" colspan="1" rowspan="1"><p>Objective 8</p></td>
+          <td id="tdata" colspan="1" rowspan="1">
+            <p>8%</p>
+            <p></p>
+          </td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1"><v-text-field
+                        v-model="encodingIpcrfNumericalQ8"
+                        placeholder=""
+                        solo
+                        dense
+                       
+                        class="text-center ml-auto mr-auto"
+                        
+                      >
+                      </v-text-field></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1"><v-text-field
+                        v-model="encodingIpcrfRatingAve8"
+                        placeholder=""
+                        solo
+                        dense
+                        readonly
+                        class="text-center ml-auto mr-auto"
+                        
+                      >
+                      </v-text-field></td>
+          <td id="tdata" colspan="1" rowspan="1"><v-text-field
+                        v-model="encodingScore8"
+                        placeholder=""
+                        solo
+                        dense
+                        readonly
+                        class="text-center ml-auto mr-auto"
+                        
+                      >
+                      </v-text-field></td>
+          <td id="tdata" colspan="1" rowspan="1"><v-text-field
+                        v-model="encodingAdjectivalRating8"
+                        placeholder=""
+                        solo
+                        dense
+                        readonly
+                        class="text-center ml-auto mr-auto"
+                        
+                      >
+                      </v-text-field></td>
+        </tr>
+        <!-- OBJ 4 -->
+        <tr>
+          <td id="tdata" rowspan="3"><p>KRA 4</p></td>
+          <td id="tdata" rowspan="3">
+            <p>24%</p>
+          </td>
+          <td id="tdata" colspan="1" rowspan="1"><p>Objective 9</p></td>
+          <td id="tdata" colspan="1" rowspan="1">
+            <p>8%</p>
+            <p></p>
+          </td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1"><v-text-field
+                        v-model="encodingIpcrfNumericalQ9"
+                        placeholder=""
+                        solo
+                        dense
+                     
+                        class="text-center ml-auto mr-auto"
+                        
+                      >
+                      </v-text-field></td>
+          <td id="tdata" colspan="1" rowspan="1"><v-text-field
+                        v-model="encodingIpcrfNumericalE9"
+                        placeholder=""
+                        solo
+                        dense
+                    
+                        class="text-center ml-auto mr-auto"
+                        
+                      >
+                      </v-text-field></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1"><v-text-field
+                        v-model="encodingIpcrfRatingAve9"
+                        placeholder=""
+                        solo
+                        dense
+                        readonly
+                        class="text-center ml-auto mr-auto"
+                        
+                      >
+                      </v-text-field></td>
+          <td id="tdata" colspan="1" rowspan="1"><v-text-field
+                        v-model="encodingScore9"
+                        placeholder=""
+                        solo
+                        dense
+                        readonly
+                        class="text-center ml-auto mr-auto"
+                        
+                      >
+                      </v-text-field></td>
+          <td id="tdata" colspan="1" rowspan="1"><v-text-field
+                        v-model="encodingAdjectivalRating9"
+                        placeholder=""
+                        solo
+                        dense
+                        readonly
+                        class="text-center ml-auto mr-auto"
+                        
+                      >
+                      </v-text-field></td>
+        </tr>
+        <!-- OBJ 10 -->
+        <tr>
+          <td id="tdata" colspan="1" rowspan="1"><p>Objective 10</p></td>
+          <td id="tdata" colspan="1" rowspan="1">
+            <p>8%</p>
+            <p></p>
+          </td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1"><v-text-field
+                        v-model="encodingIpcrfNumericalQ10"
+                        placeholder=""
+                        solo
+                        dense
+                        
+                        class="text-center ml-auto mr-auto"
+                        
+                      >
+                      </v-text-field></td>
+          <td id="tdata" colspan="1" rowspan="1"><v-text-field
+                        v-model="encodingIpcrfNumericalE10"
+                        placeholder=""
+                        solo
+                        dense
+                        
+                        class="text-center ml-auto mr-auto"
+                        
+                      >
+                      </v-text-field></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1"><v-text-field
+                        v-model="encodingIpcrfRatingAve10"
+                        placeholder=""
+                        solo
+                        dense
+                        readonly
+                        class="text-center ml-auto mr-auto"
+                        
+                      >
+                      </v-text-field></td>
+          <td id="tdata" colspan="1" rowspan="1"><v-text-field
+                        v-model="encodingScore10"
+                        placeholder=""
+                        solo
+                        dense
+                        readonly
+                        class="text-center ml-auto mr-auto"
+                        
+                      >
+                      </v-text-field></td>
+          <td id="tdata" colspan="1" rowspan="1"><v-text-field
+                        v-model="encodingAdjectivalRating10"
+                        placeholder=""
+                        solo
+                        dense
+                        readonly
+                        class="text-center ml-auto mr-auto"
+                        
+                      >
+                      </v-text-field></td>
+        </tr>
+        <!-- OBJ 11 -->
+        <tr>
+          <td id="tdata" colspan="1" rowspan="1"><p>Objective 11</p></td>
+          <td id="tdata" colspan="1" rowspan="1">
+            <p>8%</p>
+            <p></p>
+          </td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1"><v-text-field
+                        v-model="encodingIpcrfNumericalQ11"
+                        placeholder=""
+                        solo
+                        dense
+                        
+                        class="text-center ml-auto mr-auto"
+                        
+                      >
+                      </v-text-field></td>
+          <td id="tdata" colspan="1" rowspan="1"><v-text-field
+                        v-model="encodingIpcrfNumericalE11"
+                        placeholder=""
+                        solo
+                        dense
+                        
+                        class="text-center ml-auto mr-auto"
+                        
+                      >
+                      </v-text-field></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1"><v-text-field
+                        v-model="encodingIpcrfRatingAve11"
+                        placeholder=""
+                        solo
+                        dense
+                        readonly
+                        class="text-center ml-auto mr-auto"
+                        
+                      >
+                      </v-text-field></td>
+          <td id="tdata" colspan="1" rowspan="1"><v-text-field
+                        v-model="encodingScore11"
+                        placeholder=""
+                        solo
+                        dense
+                        readonly
+                        class="text-center ml-auto mr-auto"
+                        
+                      >
+                      </v-text-field></td>
+          <td id="tdata" colspan="1" rowspan="1"><v-text-field
+                        v-model="encodingAdjectivalRating11"
+                        placeholder=""
+                        solo
+                        dense
+                        readonly
+                        class="text-center ml-auto mr-auto"
+                        
+                      >
+                      </v-text-field></td>
+        </tr>
+        <!-- OBJ 12 -->
+        <tr>
+          <td id="tdata" rowspan="1"><p>PLUS FACTOR</p></td>
+          <td id="tdata" rowspan="1">
+            <p>24%</p>
+          </td>
+          <td id="tdata" colspan="1" rowspan="1"><p>Objective 12</p></td>
+          <td id="tdata" colspan="1" rowspan="1">
+            <p>8%</p>
+            <p></p>
+          </td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1"><v-text-field
+                        v-model="encodingIpcrfNumericalQ12"
+                        placeholder=""
+                        solo
+                        dense
+                        
+                        class="text-center ml-auto mr-auto"
+                        
+                      >
+                      </v-text-field></td>
+          <td id="tdata" colspan="1" rowspan="1"><v-text-field
+                        v-model="encodingIpcrfNumericalE12"
+                        placeholder=""
+                        solo
+                        dense
+                        
+                        class="text-center ml-auto mr-auto"
+                        
+                      >
+                      </v-text-field></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1"><v-text-field
+                        v-model="encodingIpcrfRatingAve12"
+                        placeholder=""
+                        solo
+                        dense
+                        readonly
+                        class="text-center ml-auto mr-auto"
+                        
+                      >
+                      </v-text-field></td>
+          <td id="tdata" colspan="1" rowspan="1"><v-text-field
+                        v-model="encodingScore12"
+                        placeholder=""
+                        solo
+                        dense
+                        readonly
+                        class="text-center ml-auto mr-auto"
+                        
+                      >
+                      </v-text-field></td>
+          <td id="tdata" colspan="1" rowspan="1"><v-text-field
+                        v-model="encodingAdjectivalRating12"
+                        placeholder=""
+                        solo
+                        dense
+                        readonly
+                        class="text-center ml-auto mr-auto"
+                        
+                      >
+                      </v-text-field></td>
+        </tr>
+        <tr>
+          <td id="tdata" colspan="5" rowspan="1">
+            <p style="float: right">Date Observed:</p>
+          </td>
+          <td id="tdata" colspan="2" rowspan="1">
+                       <v-row>
+                    <v-col cols="12" sm="12" md="12" class="text-center">
+                      <v-menu
+                        v-model="cot1DateMenu"
+                        :close-on-content-click="false"
+                        :nudge-right="40"
+                        transition="scale-transition"
+                        offset-y
+                        min-width="auto"
+                      >
+                        <template v-slot:activator="{ on, attrs }">
+                          <v-text-field
+                            v-model="computedDateFormattedCot1DateObserved"
+                            append-icon="mdi-calendar"
+                            readonly
+                            :rules="required"
+                            v-bind="attrs"
+                            v-on="on"
+                          ></v-text-field>
+                        </template>
+                        <v-date-picker
+                          v-model="cot1DateObserved"
+                          scrollable
+                          @input="cot1DateMenu = false"
+                        >
+                        </v-date-picker>
+                      </v-menu>
+                    </v-col>
+                  </v-row></td>
+          <td id="tdata" colspan="2" rowspan="1"><v-row>
+                    <v-col cols="12" sm="12" md="12" class="text-center">
+                      <v-menu
+                        v-model="cot2DateMenu"
+                        :close-on-content-click="false"
+                        :nudge-right="40"
+                        transition="scale-transition"
+                        offset-y
+                        min-width="auto"
+                      >
+                        <template v-slot:activator="{ on, attrs }">
+                          <v-text-field
+                            v-model="computedDateFormattedCot2DateObserved"
+                            append-icon="mdi-calendar"
+                            readonly
+                            :rules="required"
+                            v-bind="attrs"
+                            v-on="on"
+                          ></v-text-field>
+                        </template>
+                        <v-date-picker
+                          v-model="cot2DateObserved"
+                          scrollable
+                          @input="cot2DateMenu = false"
+                        >
+                        </v-date-picker>
+                      </v-menu>
+                    </v-col>
+                  </v-row></td>
+          <td id="tdata" colspan="2" rowspan="1"><p></p></td>
+          <td id="tdata" colspan="2" rowspan="1"><p></p></td>
+          <td id="tdata" colspan="5" rowspan="1">
+            <p style="float: right">Final Rating:</p>
+          </td>
+          <td id="tdata" colspan="2" rowspan="1"><v-text-field
+                        v-model="empFinalRating"
+                        placeholder=""
+                        solo
+                        dense
+                       
+                        class="text-center ml-auto mr-auto"
+                  
+                      >
+                      </v-text-field></td>
+        </tr>
+        <tr>
+          <td id="tdata" colspan="5" rowspan="1"><p></p></td>
+          <td id="tdata" colspan="2" rowspan="1"><p></p></td>
+          <td id="tdata" colspan="2" rowspan="1"><p></p></td>
+          <td id="tdata" colspan="2" rowspan="1"><p></p></td>
+          <td id="tdata" colspan="2" rowspan="1"><p></p></td>
+          <td id="tdata" colspan="5" rowspan="1">
+            <p style="float: right">Adjectival Rating:</p>
+          </td>
+          <td id="tdata" colspan="2" rowspan="1"><v-text-field
+                        v-model="empFinalAdjRating"
+                        placeholder=""
+                        solo
+                        dense
+                       
+                        class="text-center ml-auto mr-auto"
+                  
+                      >
+                      </v-text-field></td>
+        </tr>
+        </v-simple-table>  
+
+          <br />
+          <div style="margin-left: 350px">
+            <v-col class="pa-0">
+              <h5 class="pa-2" style="margin-left: 70px">Approving Authority</h5>
+
+              <v-text-field
+                v-model="part1ApprovingAuthority"
+                placeholder="Enter Approving Authority"
+                solo
+                dense
+                class="mb-0"
+                style="width: 300px"
+              >
+              </v-text-field>
+            <v-divider  style="width: 300px"></v-divider>
+                <v-select
+                      :items="approvingAuthorityPosition"
+                      v-model="approvingAuthPosition"
+                      label=""
+                      dense
+                      solo
+                      style="width: 300px"
+                      class="text-center pt-6"
+                    ></v-select>
+              
+            </v-col>
+          </div>
+           </v-container>
+
+           <!-- table for teacher view only mode -->
+           <v-container fluid v-if="user=='Teacher'">
+             <v-simple-table>
+        <tr class="light-green lighten-2">
+          <td id="tdata" rowspan="3"><p>KRA</p></td>
+          <td id="tdata" rowspan="3">
+            <p>Weight per KRA</p>
+          </td>
+          <td id="tdata" rowspan="3">
+            <p>Objectives</p>
+          </td>
+          <td id="tdata" rowspan="3"><p>Weight per Objective</p></td>
+          <td id="tdata" rowspan="3">
+            <p>COT Indicator No.</p>
+          </td>
+          <td id="tdata" colspan="2" rowspan="1"><p>COT 1</p></td>
+          <td id="tdata" colspan="2" rowspan="1"><p>COT 2</p></td>
+          <td id="tdata" colspan="2" rowspan="1"><p>COT 3</p></td>
+          <td id="tdata" colspan="2" rowspan="1"><p>COT 4</p></td>
+          <td id="tdata" rowspan="3">
+            <p>AVE</p>
+          </td>
+
+          <td id="tdata" rowspan="2" colspan=" 4">
+            <p>IPCRF Numerical Ratings</p>
+          </td>
+          <td id="tdata" rowspan="3">
+            <p>Score</p>
+          </td>
+          <td id="tdata" rowspan="3">
+            <p>Adjectival Rating</p>
+          </td>
+        </tr>
+        <tr>
+          <td id="tdata" colspan="2" rowspan="1"> <v-select
+                      :items="subjectTaughtItems"
+                      v-model="cot1SubjectsTaught"
+                      label="Subject"
+                      dense
+                      readonly
+                      solo
+                      class="text-center pt-6"
+                    ></v-select></td>
+          <td id="tdata" colspan="2" rowspan="1"><v-select
+                      :items="subjectTaughtItems"
+                      v-model="cot2SubjectsTaught"
+                      label="Subject"
+                      dense
+                      readonly
+                      solo
+                      class="text-center pt-6"
+                    ></v-select></td>
+          <td id="tdata" colspan="2" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="2" rowspan="1" class="grey darken-2"><p></p></td>
+        </tr>
+        <tr>
+          <td id="tdata" colspan="1" rowspan="1"><p>Rating</p></td>
+          <td id="tdata" colspan="1" rowspan="1"><p>RPMS 5-pt</p></td>
+          <td id="tdata" colspan="1" rowspan="1"><p>Rating</p></td>
+          <td id="tdata" colspan="1" rowspan="1"><p>RPMS 5-pt</p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1"><p>Q</p></td>
+          <td id="tdata" colspan="1" rowspan="1"><p>E</p></td>
+          <td id="tdata" colspan="1" rowspan="1"><p>T</p></td>
+          <td id="tdata" colspan="1" rowspan="1"><p>AVE</p></td>
+        </tr>
+        <tr>
+          <td id="tdata" rowspan="3"><p>KRA</p></td>
+          <td id="tdata" rowspan="3">
+            <p>24%</p>
+          </td>
+          <td id="tdata" colspan="1" rowspan="1"><p>Objective 1</p></td>
+          <td id="tdata" colspan="1" rowspan="1">
+            <p>8%</p>
+            <p></p>
+          </td>
+          <td id="tdata" colspan="1" rowspan="1"> <v-text-field
+                        v-model="cot1IndicatorObjNo1"
+                        placeholder=""
+                        solo
+                        dense
+                       readonly
+                        class="text-center ml-auto mr-auto"
+                        
+                      >
+                      </v-text-field></td>
+          <td id="tdata" colspan="1" rowspan="1"> <v-text-field
+                        v-model="cot1RatingObjNo1"
+                        placeholder=""
+                        solo
+                        dense
+                       readonly
+                        class="text-center ml-auto mr-auto"
+                        
+                      >
+                      </v-text-field>
+    </td>
+          <td id="tdata" colspan="1" rowspan="1"> <v-text-field
+                        v-model="cot1RpmsObjNo1"
+                        placeholder=""
+                        solo
+                        dense
+                       readonly
+                        class="text-center ml-auto mr-auto"
+                        
+                      >
+                      </v-text-field></td>
+          <td id="tdata" colspan="1" rowspan="1"> <v-text-field
+                        v-model="cot2RatingObjNo1"
+                        placeholder=""
+                        solo
+                        dense
+                       readonly
+                        class="text-center ml-auto mr-auto"
+                        
+                      >
+                      </v-text-field></td>
+          <td id="tdata" colspan="1" rowspan="1"> <v-text-field
+                        v-model="cot2RpmsObjNo1"
+                        placeholder=""
+                        solo
+                        dense
+                       readonly
+                        class="text-center ml-auto mr-auto"
+                        
+                      >
+                      </v-text-field></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1"><v-text-field
+                        v-model="encodingAverageObjNo1"
+                        placeholder=""
+                        solo
+                        dense
+                        readonly
+                        class="text-center ml-auto mr-auto"
+                        
+                      >
+                      </v-text-field></td>
+          <td id="tdata" colspan="1" rowspan="1"><v-text-field
+                        v-model="encodingIpcrfNumericalQ1"
+                        placeholder=""
+                        solo
+                        dense
+                        readonly
+                        class="text-center ml-auto mr-auto"
+                        
+                      >
+                      </v-text-field></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1"><v-text-field
+                        v-model="encodingIpcrfRatingAve1"
+                        placeholder=""
+                        solo
+                        dense
+                        readonly
+                        class="text-center ml-auto mr-auto"
+                        
+                      >
+                      </v-text-field></td>
+          <td id="tdata" colspan="1" rowspan="1"><v-text-field
+                        v-model="encodingScore1"
+                        placeholder=""
+                        solo
+                        dense
+                        readonly
+                        class="text-center ml-auto mr-auto"
+                        
+                      >
+                      </v-text-field></td>
+          <td id="tdata" colspan="1" rowspan="1"><v-text-field
+                        v-model="encodingAdjectivalRating1"
+                        placeholder=""
+                        solo
+                        dense
+                        readonly
+                        class="text-center ml-auto mr-auto"
+                        
+                      >
+                      </v-text-field></td>
+        </tr>
+        <!-- OBJ 2 -->
+        <tr>
+          <td id="tdata" colspan="1" rowspan="1"><p>Objective 2</p></td>
+          <td id="tdata" colspan="1" rowspan="1">
+            <p>8%</p>
+            <p></p>
+          </td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1"><v-text-field
+                        v-model="encodingIpcrfNumericalQ2"
+                        placeholder=""
+                        solo
+                        dense
+                        readonly
+                        class="text-center ml-auto mr-auto"
+                        
+                      >
+                      </v-text-field></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+           <td id="tdata" colspan="1" rowspan="1"><v-text-field
+                        v-model="encodingIpcrfRatingAve2"
+                        placeholder=""
+                        solo
+                        dense
+                        readonly
+                        class="text-center ml-auto mr-auto"
+                        
+                      >
+                      </v-text-field></td>
+          <td id="tdata" colspan="1" rowspan="1"><v-text-field
+                        v-model="encodingScore2"
+                        placeholder=""
+                        solo
+                        dense
+                        readonly
+                        class="text-center ml-auto mr-auto"
+                        
+                      >
+                      </v-text-field></td>
+          <td id="tdata" colspan="1" rowspan="1"><v-text-field
+                        v-model="encodingAdjectivalRating2"
+                        placeholder=""
+                        solo
+                        dense
+                        readonly
+                        class="text-center ml-auto mr-auto"
+                        
+                      >
+                      </v-text-field></td>
+        </tr>
+        <!-- OBJ 3 -->
+        <tr>
+          <td id="tdata" colspan="1" rowspan="1"><p>Objective 3</p></td>
+          <td id="tdata" colspan="1" rowspan="1">
+            <p>8%</p>
+            <p></p>
+          </td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1"><v-text-field
+                        v-model="encodingIpcrfNumericalQ3"
+                        placeholder=""
+                        solo
+                        dense
+                        readonly
+                        class="text-center ml-auto mr-auto"
+                        
+                      >
+                      </v-text-field></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+           <td id="tdata" colspan="1" rowspan="1"><v-text-field
+                        v-model="encodingIpcrfRatingAve3"
+                        placeholder=""
+                        solo
+                        dense
+                        readonly
+                        class="text-center ml-auto mr-auto"
+                        
+                      >
+                      </v-text-field></td>
+          <td id="tdata" colspan="1" rowspan="1"><v-text-field
+                        v-model="encodingScore3"
+                        placeholder=""
+                        solo
+                        dense
+                        readonly
+                        class="text-center ml-auto mr-auto"
+                        
+                      >
+                      </v-text-field></td>
+          <td id="tdata" colspan="1" rowspan="1"><v-text-field
+                        v-model="encodingAdjectivalRating3"
+                        placeholder=""
+                        solo
+                        dense
+                        readonly
+                        class="text-center ml-auto mr-auto"
+                        
+                      >
+                      </v-text-field></td>
+        </tr>
+        <!-- OBJ 4 -->
+        <tr>
+          <td id="tdata" rowspan="3"><p>KRA 2</p></td>
+          <td id="tdata" rowspan="3">
+            <p>24%</p>
+          </td>
+          <td id="tdata" colspan="1" rowspan="1"><p>Objective 4</p></td>
+          <td id="tdata" colspan="1" rowspan="1">
+            <p>8%</p>
+            <p></p>
+          </td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1"><v-text-field
+                        v-model="encodingIpcrfNumericalQ4"
+                        placeholder=""
+                        solo
+                        dense
+                        readonly
+                        class="text-center ml-auto mr-auto"
+                        
+                      >
+                      </v-text-field></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+           <td id="tdata" colspan="1" rowspan="1"><v-text-field
+                        v-model="encodingIpcrfRatingAve4"
+                        placeholder=""
+                        solo
+                        dense
+                        readonly
+                        class="text-center ml-auto mr-auto"
+                        
+                      >
+                      </v-text-field></td>
+          <td id="tdata" colspan="1" rowspan="1"><v-text-field
+                        v-model="encodingScore4"
+                        placeholder=""
+                        solo
+                        dense
+                        readonly
+                        class="text-center ml-auto mr-auto"
+                        
+                      >
+                      </v-text-field></td>
+          <td id="tdata" colspan="1" rowspan="1"><v-text-field
+                        v-model="encodingAdjectivalRating4"
+                        placeholder=""
+                        solo
+                        dense
+                        readonly
+                        class="text-center ml-auto mr-auto"
+                        
+                      >
+                      </v-text-field></td>
+        </tr>
+        <!-- OBJ 5 -->
+        <tr>
+          <td id="tdata" colspan="1" rowspan="1"><p>Objective 5</p></td>
+          <td id="tdata" colspan="1" rowspan="1">
+            <p>8%</p>
+            <p></p>
+          </td>
+          <td id="tdata" colspan="1" rowspan="1"> <v-text-field
+                        v-model="cot1IndicatorObjNo5"
+                        placeholder=""
+                        solo
+                        dense
+                       readonly
+                        class="text-center ml-auto mr-auto"
+                        
+                      >
+                      </v-text-field></td>
+          <td id="tdata" colspan="1" rowspan="1"> <v-text-field
+                        v-model="cot1RatingObjNo5"
+                        placeholder=""
+                        solo
+                        dense
+                       readonly
+                        class="text-center ml-auto mr-auto"
+                        
+                      >
+                      </v-text-field></td>
+          <td id="tdata" colspan="1" rowspan="1"> <v-text-field
+                        v-model="cot1RpmsObjNo5"
+                        placeholder=""
+                        solo
+                        dense
+                       readonly
+                        class="text-center ml-auto mr-auto"
+                        
+                      >
+                      </v-text-field></td>
+          <td id="tdata" colspan="1" rowspan="1"> <v-text-field
+                        v-model="cot2RatingObjNo5"
+                        placeholder=""
+                        solo
+                        dense
+                       readonly
+                        class="text-center ml-auto mr-auto"
+                        
+                      >
+                      </v-text-field></td>
+          <td id="tdata" colspan="1" rowspan="1"> <v-text-field
+                        v-model="cot2RpmsObjNo5"
+                        placeholder=""
+                        solo
+                        dense
+                       readonly
+                        class="text-center ml-auto mr-auto"
+                        
+                      >
+                      </v-text-field></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1"><v-text-field
+                        v-model="encodingAverageObjNo5"
+                        placeholder=""
+                        solo
+                        dense
+                       readonly
+                        class="text-center ml-auto mr-auto"
+                        
+                      >
+                      </v-text-field></td>
+          <td id="tdata" colspan="1" rowspan="1"><v-text-field
+                        v-model="encodingIpcrfNumericalQ5"
+                        placeholder=""
+                        solo
+                        dense
+                        readonly
+                        class="text-center ml-auto mr-auto"
+                        
+                      >
+                      </v-text-field></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1"><v-text-field
+                        v-model="encodingIpcrfRatingAve5"
+                        placeholder=""
+                        solo
+                        dense
+                        readonly
+                        class="text-center ml-auto mr-auto"
+                        
+                      >
+                      </v-text-field></td>
+          <td id="tdata" colspan="1" rowspan="1"><v-text-field
+                        v-model="encodingScore5"
+                        placeholder=""
+                        solo
+                        dense
+                        readonly
+                        class="text-center ml-auto mr-auto"
+                        
+                      >
+                      </v-text-field></td>
+          <td id="tdata" colspan="1" rowspan="1"><v-text-field
+                        v-model="encodingAdjectivalRating5"
+                        placeholder=""
+                        solo
+                        dense
+                        readonly
+                        class="text-center ml-auto mr-auto"
+                        
+                      >
+                      </v-text-field></td>
+        </tr>
+        <!-- OBJ 6 -->
+        <tr>
+          <td id="tdata" colspan="1" rowspan="1"><p>Objective 6</p></td>
+          <td id="tdata" colspan="1" rowspan="1">
+            <p>8%</p>
+            <p></p>
+          </td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1"><v-text-field
+                        v-model="encodingIpcrfNumericalQ6"
+                        placeholder=""
+                        solo
+                        dense
+                        readonly
+                        class="text-center ml-auto mr-auto"
+                        
+                      >
+                      </v-text-field></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1"><v-text-field
+                        v-model="encodingIpcrfNumericalT6"
+                        placeholder=""
+                        solo
+                        dense
+                        readonly
+                        class="text-center ml-auto mr-auto"
+                        
+                      >
+                      </v-text-field></td>
+           <td id="tdata" colspan="1" rowspan="1"><v-text-field
+                        v-model="encodingIpcrfRatingAve6"
+                        placeholder=""
+                        solo
+                        dense
+                        readonly
+                        class="text-center ml-auto mr-auto"
+                        
+                      >
+                      </v-text-field></td>
+          <td id="tdata" colspan="1" rowspan="1"><v-text-field
+                        v-model="encodingScore6"
+                        placeholder=""
+                        solo
+                        dense
+                        readonly
+                        class="text-center ml-auto mr-auto"
+                        
+                      >
+                      </v-text-field></td>
+          <td id="tdata" colspan="1" rowspan="1"><v-text-field
+                        v-model="encodingAdjectivalRating6"
+                        placeholder=""
+                        solo
+                        dense
+                        readonly
+                        class="text-center ml-auto mr-auto"
+                        
+                      >
+                      </v-text-field></td>
+        </tr>
+        <!-- OBJ 7 -->
+        <tr>
+          <td id="tdata" rowspan="2"><p>KRA 3</p></td>
+          <td id="tdata" rowspan="2">
+            <p>24%</p>
+          </td>
+          <td id="tdata" colspan="1" rowspan="1"><p>Objective 7</p></td>
+          <td id="tdata" colspan="1" rowspan="1">
+            <p>8%</p>
+            <p></p>
+          </td>
+          <td id="tdata" colspan="1" rowspan="1"> <v-text-field
+                        v-model="cot1IndicatorObjNo7"
+                        placeholder=""
+                        solo
+                        dense
+                       readonly
+                        class="text-center ml-auto mr-auto"
+                        
+                      >
+                      </v-text-field></td>
+          <td id="tdata" colspan="1" rowspan="1"><v-text-field
+                        v-model="cot1RatingObjNo7"
+                        placeholder=""
+                        solo
+                        dense
+                       readonly
+                        class="text-center ml-auto mr-auto"
+                        
+                      >
+                      </v-text-field></td>
+          <td id="tdata" colspan="1" rowspan="1"><v-text-field
+                        v-model="cot1RpmsObjNo7"
+                        placeholder=""
+                        solo
+                        dense
+                       readonly
+                        class="text-center ml-auto mr-auto"
+                        
+                      >
+                      </v-text-field></td>
+          <td id="tdata" colspan="1" rowspan="1"><v-text-field
+                        v-model="cot2RatingObjNo7"
+                        placeholder=""
+                        solo
+                        dense
+                       readonly
+                        class="text-center ml-auto mr-auto"
+                        
+                      >
+                      </v-text-field></td>
+          <td id="tdata" colspan="1" rowspan="1"><v-text-field
+                        v-model="cot2RpmsObjNo7"
+                        placeholder=""
+                        solo
+                        dense
+                       readonly
+                        class="text-center ml-auto mr-auto"
+                        
+                      >
+                      </v-text-field></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1" class="grey darken-2"><p></p></td>
+          <td id="tdata" colspan="1" rowspan="1"><v-text-field
+                        v-model="encodingAverageObjNo7"
+                        placeholder=""
+                        solo
+                        dense
+                       readonly
+                        class="text-center ml-auto mr-auto"
+                        
+                      >
+                      </v-text-field></td>
+          <td id="tdata" colspan="1" rowspan="1"><v-text-field
+                        v-model="encodingIpcrfNumericalQ7"
+                        placeholder=""
+                        solo
+                        dense
                         readonly
                         class="text-center ml-auto mr-auto"
                         
@@ -4047,7 +4530,7 @@
         </tr>
         <!-- OBJ 8 -->
         <tr>
-          <td id="tdata" colspan="1" rowspan="1"><p>Obective 8</p></td>
+          <td id="tdata" colspan="1" rowspan="1"><p>Objective 8</p></td>
           <td id="tdata" colspan="1" rowspan="1">
             <p>8%</p>
             <p></p>
@@ -4111,7 +4594,7 @@
           <td id="tdata" rowspan="3">
             <p>24%</p>
           </td>
-          <td id="tdata" colspan="1" rowspan="1"><p>Obective 9</p></td>
+          <td id="tdata" colspan="1" rowspan="1"><p>Objective 9</p></td>
           <td id="tdata" colspan="1" rowspan="1">
             <p>8%</p>
             <p></p>
@@ -4180,7 +4663,7 @@
         </tr>
         <!-- OBJ 10 -->
         <tr>
-          <td id="tdata" colspan="1" rowspan="1"><p>Obective 10</p></td>
+          <td id="tdata" colspan="1" rowspan="1"><p>Objective 10</p></td>
           <td id="tdata" colspan="1" rowspan="1">
             <p>8%</p>
             <p></p>
@@ -4322,7 +4805,7 @@
           <td id="tdata" rowspan="1">
             <p>24%</p>
           </td>
-          <td id="tdata" colspan="1" rowspan="1"><p>Obective 12</p></td>
+          <td id="tdata" colspan="1" rowspan="1"><p>Objective 12</p></td>
           <td id="tdata" colspan="1" rowspan="1">
             <p>8%</p>
             <p></p>
@@ -4394,17 +4877,7 @@
             <p style="float: right">Date Observed:</p>
           </td>
           <td id="tdata" colspan="2" rowspan="1">
-                       <v-row>
-                    <v-col cols="12" sm="8" md="8" class="text-center">
-                      <v-menu
-                        v-model="cot1DateMenu"
-                        :close-on-content-click="false"
-                        :nudge-right="40"
-                        transition="scale-transition"
-                        offset-y
-                        min-width="auto"
-                      >
-                        <template v-slot:activator="{ on, attrs }">
+                    
                           <v-text-field
                             v-model="computedDateFormattedCot1DateObserved"
                             append-icon="mdi-calendar"
@@ -4413,27 +4886,8 @@
                             v-bind="attrs"
                             v-on="on"
                           ></v-text-field>
-                        </template>
-                        <v-date-picker
-                          v-model="cot1DateObserved"
-                          scrollable
-                          @input="cot1DateMenu = false"
-                        >
-                        </v-date-picker>
-                      </v-menu>
-                    </v-col>
-                  </v-row></td>
-          <td id="tdata" colspan="2" rowspan="1"><v-row>
-                    <v-col cols="12" sm="8" md="8" class="text-center">
-                      <v-menu
-                        v-model="cot2DateMenu"
-                        :close-on-content-click="false"
-                        :nudge-right="40"
-                        transition="scale-transition"
-                        offset-y
-                        min-width="auto"
-                      >
-                        <template v-slot:activator="{ on, attrs }">
+                        </td>
+          <td id="tdata" colspan="2" rowspan="1">
                           <v-text-field
                             v-model="computedDateFormattedCot2DateObserved"
                             append-icon="mdi-calendar"
@@ -4442,16 +4896,7 @@
                             v-bind="attrs"
                             v-on="on"
                           ></v-text-field>
-                        </template>
-                        <v-date-picker
-                          v-model="cot2DateObserved"
-                          scrollable
-                          @input="cot2DateMenu = false"
-                        >
-                        </v-date-picker>
-                      </v-menu>
-                    </v-col>
-                  </v-row></td>
+                      </td>
           <td id="tdata" colspan="2" rowspan="1"><p></p></td>
           <td id="tdata" colspan="2" rowspan="1"><p></p></td>
           <td id="tdata" colspan="5" rowspan="1">
@@ -4462,7 +4907,7 @@
                         placeholder=""
                         solo
                         dense
-                       
+                       readonly
                         class="text-center ml-auto mr-auto"
                   
                       >
@@ -4482,7 +4927,7 @@
                         placeholder=""
                         solo
                         dense
-                       
+                       readonly
                         class="text-center ml-auto mr-auto"
                   
                       >
@@ -4492,31 +4937,34 @@
 
           <br />
           <div style="margin-left: 350px">
-            <v-col>
+            <v-col class="pa-0">
               <h5 class="pa-2" style="margin-left: 70px">Approving Authority</h5>
 
               <v-text-field
                 v-model="part1ApprovingAuthority"
                 placeholder="Enter Approving Authority"
                 solo
+                readonly
                 dense
-                
+                class="mb-0"
                 style="width: 300px"
               >
               </v-text-field>
-              <v-card>
+            <v-divider  style="width: 300px"></v-divider>
                 <v-select
                       :items="approvingAuthorityPosition"
                       v-model="approvingAuthPosition"
                       label=""
                       dense
+                      readonly
                       solo
-                      class="text-center pt-2"
+                      style="width: 300px"
+                      class="text-center pt-6"
                     ></v-select>
-              </v-card>
+              
             </v-col>
           </div>
-
+           </v-container>
           <v-card class="mx-auto" max-width="600">
             <v-card-text>
               <div class="text--primary">
@@ -4527,7 +4975,7 @@
               </div>
             </v-card-text>
           </v-card>
-          <v-btn @click="finalizeIpcrf" class="text-center justify-content-center">Finalize Part1</v-btn>
+          <v-btn @click="finalizePart1" class="text-center ml-auto mr-auto justify-content-center">Finalize Part1</v-btn>
           <br /><br />
           <v-container class="grey lighten-5">
             <v-card class="pa-2 text-center" color="grey lighten-2" outlined tile>
@@ -4547,6 +4995,9 @@
               </v-card-text>
             </v-card>
             <br />
+
+
+            <v-container fluid v-if="user=='Admin'">
             <v-row no-gutters>
               <v-col v-for="n in 2" :key="n" class="text-justify">
                 <v-flex md11 sm6>
@@ -4559,6 +5010,7 @@
               color="black"
               v-model="selfManagement1"
               hide-details
+              readonly
             ></v-checkbox>  
                     
                                        <v-checkbox
@@ -4568,6 +5020,7 @@
               color="black"
               v-model="selfManagement2"
               hide-details
+              readonly
             ></v-checkbox> 
                
                                                <v-checkbox
@@ -4576,6 +5029,7 @@
               color="black"
               v-model="selfManagement3"
               hide-details
+              readonly
             ></v-checkbox> 
                     
                            <v-checkbox
@@ -4584,6 +5038,7 @@
               color="black"
               v-model="selfManagement4"
               hide-details
+              readonly
             ></v-checkbox> 
               
                           <v-checkbox
@@ -4592,6 +5047,7 @@
               color="black"
               v-model="selfManagement5"
               hide-details
+              readonly
             ></v-checkbox> 
                        
                       </div>
@@ -4608,6 +5064,7 @@
               v-model="teamwork1"
 
               hide-details
+              readonly
             ></v-checkbox> 
                    <v-checkbox
               label="2.Promotes collaboration and removes barrier to teamwork and goal
@@ -4615,6 +5072,7 @@
               color="black"
               v-model="teamwork2"
               hide-details
+              readonly
             ></v-checkbox> 
                        <v-checkbox
               label="3.Applies negotiation principles in arriving at win-win
@@ -4622,12 +5080,14 @@
               color="black"
               v-model="teamwork3"
               hide-details
+              readonly
             ></v-checkbox> 
               <v-checkbox
               label="4. Drives consensus and team ownership of decisions."
               color="black"
               v-model="teamwork4"
               hide-details
+              readonly
             ></v-checkbox> 
                       <v-checkbox
               label=" 5. Works constructively and collaboratively with others and across
@@ -4636,6 +5096,7 @@
               v-model="teamwork5"
 
               hide-details
+              readonly
             ></v-checkbox>   
                         
                         <br />
@@ -4661,6 +5122,7 @@
               v-model="prof1"
 
               hide-details
+              readonly
             ></v-checkbox>   
                         <v-checkbox
               label=" 2.Practices ethical and professional behavior and conduct taking
@@ -4669,6 +5131,7 @@
               v-model="prof2"
 
               hide-details
+              readonly
             ></v-checkbox>   
                        <v-checkbox
               label=" 3.Maintains a professional image: being trustworthy, regularity of
@@ -4676,12 +5139,14 @@
               color="black"
               v-model="prof3"
               hide-details
+              readonly
             ></v-checkbox>   
                       <v-checkbox
               label=" 4.Makes personal sacrifices to meet the organization’s needs."
               color="black"
               v-model="prof4"
               hide-details
+              readonly
             ></v-checkbox>     
                <v-checkbox
               label="  5.Acts with a sense of urgency and responsibility to meet the
@@ -4690,6 +5155,7 @@
               color="black"
               v-model="prof5"
               hide-details
+              readonly
             ></v-checkbox>   
                        
                       </div>
@@ -4707,6 +5173,7 @@
               v-model="service1"
               
               hide-details
+              readonly
             ></v-checkbox> 
                      <v-checkbox
               label="  2. Takes personal responsibility for dealing with and/or
@@ -4715,6 +5182,7 @@
               v-model="service2"
       
               hide-details
+              readonly
             ></v-checkbox>   
                           <v-checkbox
               label=" 3. Initiates activities that promote advocacy for men and women
@@ -4723,6 +5191,7 @@
               v-model="service3"
           
               hide-details
+              readonly
             ></v-checkbox>   
                       <v-checkbox
               label=" 4. Participates in updating office vision, mission, mandates and
@@ -4731,6 +5200,7 @@
               color="black"
               v-model="service4"
               hide-details
+              readonly
             ></v-checkbox> 
              <v-checkbox
               label=" 5. Develops and adopts service improvement program through
@@ -4739,6 +5209,7 @@
               color="black"
               v-model="service5"
               hide-details
+              readonly
             ></v-checkbox>   
                          
                         <br /><br />
@@ -4763,6 +5234,7 @@
               color="black"
               v-model="results1"
               hide-details
+              readonly
             ></v-checkbox>
                    <v-checkbox
               label=" 2. Avoids rework, mistakes and wastage through effective work
@@ -4771,6 +5243,7 @@
               color="black"
               v-model="results2"
               hide-details
+              readonly
             ></v-checkbox>
                        <v-checkbox
               label=" 3. Delivers error-free outputs most of the time by conforming to
@@ -4782,6 +5255,7 @@
               color="black"
               v-model="results3"
               hide-details
+              readonly
             ></v-checkbox>
                       <v-checkbox
               label=" 4. Expresses a desire to do better and may express frustration at
@@ -4792,6 +5266,7 @@
               v-model="results4"
   
               hide-details
+              readonly
             ></v-checkbox>    
                    <v-checkbox
               label="5. Makes specific changes in the system or in own work methods to
@@ -4802,6 +5277,7 @@
               color="black"
               v-model="results5"
               hide-details
+              readonly
             ></v-checkbox>           
                         
                       </div>
@@ -4820,6 +5296,7 @@
               color="black"
               v-model="innovation1"
               hide-details
+              readonly
             ></v-checkbox>   
                        <v-checkbox
               label=" 2. Demonstrates an ability to think “beyond the box”. Continuously
@@ -4829,6 +5306,7 @@
               color="black"
               v-model="innovation2"
               hide-details
+              readonly
             ></v-checkbox>   
                       <v-checkbox
               label=" 3. Promotes a creative climate and inspires co-workers to develop
@@ -4837,6 +5315,8 @@
               color="black"
               v-model="innovation3"
               hide-details
+              readonly
+              
             ></v-checkbox>   
                        <v-checkbox
               label=" 4. Translates creative thinking into tangible changes and
@@ -4845,6 +5325,8 @@
               color="black"
               v-model="innovation4"
               hide-details
+              readonly
+              
             ></v-checkbox>   
                    <v-checkbox
               label=" 5. Uses ingenious methods to accomplish responsibilities.
@@ -4854,6 +5336,7 @@
               color="black"
               v-model="innovation5"
               hide-details
+              readonly
             ></v-checkbox> 
                         
                         <br /><br />
@@ -4864,6 +5347,359 @@
                 </v-flex>
               </v-col>
             </v-row>
+            </v-container>
+
+            <v-container fluid v-if="user=='Teacher'">
+              <v-row no-gutters>
+              <v-col v-for="n in 2" :key="n" class="text-justify">
+                <v-flex md11 sm6>
+                  <v-card v-if="n === 1" class="mx-auto" max-width="500">
+                    <v-card-text>
+                      <div class="text--primary">
+                        <b>Self- Management</b><br />
+                      <v-checkbox
+              label="1.Sets personal goals and directions, needs and development."
+              color="black"
+              v-model="selfManagement1"
+              hide-details
+              
+            ></v-checkbox>  
+                    
+                                       <v-checkbox
+              label="2.Undertakes personal actions and behavior that are clear and
+                        purposive and takes into account personal goals and values
+                        congruent to that of the organization."
+              color="black"
+              v-model="selfManagement2"
+              hide-details
+              
+            ></v-checkbox> 
+               
+                                               <v-checkbox
+              label="3.Displays emotional maturity and enthusiasm for and is challenged
+                        by higher goals."
+              color="black"
+              v-model="selfManagement3"
+              hide-details
+              
+            ></v-checkbox> 
+                    
+                           <v-checkbox
+              label="4.Prioritizes work tasks and schedules (through Gantt chants,
+                        checklists, etc.) to achieve goals."
+              color="black"
+              v-model="selfManagement4"
+              hide-details
+              
+            ></v-checkbox> 
+              
+                          <v-checkbox
+              label=" 5.Sets high quality, challenging, realistic goals for self and
+                        others. "
+              color="black"
+              v-model="selfManagement5"
+              hide-details
+              
+            ></v-checkbox> 
+                       
+                      </div>
+                    </v-card-text>
+                  </v-card>
+
+                  <v-card v-if="n === 2" class="mx-auto" max-width="500">
+                    <v-card-text>
+                      <div class="text--primary">
+                        <b>Teamwork</b><br />
+                          <v-checkbox
+              label="1. Willingly does his/her share of responsibility."
+              color="black"
+              v-model="teamwork1"
+
+              hide-details
+              
+            ></v-checkbox> 
+                   <v-checkbox
+              label="2.Promotes collaboration and removes barrier to teamwork and goal
+                        accomplishment across the organization."
+              color="black"
+              v-model="teamwork2"
+              hide-details
+              
+            ></v-checkbox> 
+                       <v-checkbox
+              label="3.Applies negotiation principles in arriving at win-win
+                        agreements."
+              color="black"
+              v-model="teamwork3"
+              hide-details
+              
+            ></v-checkbox> 
+              <v-checkbox
+              label="4. Drives consensus and team ownership of decisions."
+              color="black"
+              v-model="teamwork4"
+              hide-details
+              
+            ></v-checkbox> 
+                      <v-checkbox
+              label=" 5. Works constructively and collaboratively with others and across
+                        organizations to accomplish organization goals and objectives."
+              color="black"
+              v-model="teamwork5"
+
+              hide-details
+              
+            ></v-checkbox>   
+                        
+                        <br />
+                      </div>
+                    </v-card-text>
+                  </v-card>
+                </v-flex>
+              </v-col>
+            </v-row>
+            <br />
+            <v-row no-gutters>
+              <v-col v-for="n in 2" :key="n" class="text-justify">
+                <v-flex md11 sm6>
+                  <v-card v-if="n === 1" class="mx-auto" max-width="500">
+                    <v-card-text>
+                      <div class="text--primary">
+                        <b>Professionalism and Ethics</b><br />
+                         <v-checkbox
+              label=" 1.Demonstrates the values and behavior enshrined in the Norms and
+                        Conduct and Ethical Standards for Public Officials and Employees
+                        (RA 6713)."
+              color="black"
+              v-model="prof1"
+
+              hide-details
+              
+            ></v-checkbox>   
+                        <v-checkbox
+              label=" 2.Practices ethical and professional behavior and conduct taking
+                        into account the impact of his/her actions and decisions."
+              color="black"
+              v-model="prof2"
+
+              hide-details
+              
+            ></v-checkbox>   
+                       <v-checkbox
+              label=" 3.Maintains a professional image: being trustworthy, regularity of
+                        attendance and punctuality, good grooming and communication."
+              color="black"
+              v-model="prof3"
+              hide-details
+              
+            ></v-checkbox>   
+                      <v-checkbox
+              label=" 4.Makes personal sacrifices to meet the organization’s needs."
+              color="black"
+              v-model="prof4"
+              hide-details
+              
+            ></v-checkbox>     
+               <v-checkbox
+              label="  5.Acts with a sense of urgency and responsibility to meet the
+                        organization’s needs, improve system and help others improve their
+                        effectiveness."
+              color="black"
+              v-model="prof5"
+              hide-details
+              
+            ></v-checkbox>   
+                       
+                      </div>
+                    </v-card-text>
+                  </v-card>
+
+                  <v-card v-if="n === 2" class="mx-auto" max-width="500">
+                    <v-card-text>
+                      <div class="text--primary">
+                        <b>Service Orientation</b><br />
+                         <v-checkbox
+              label="  1. Can explain and articulate organizational directions, issues
+                        and problems."
+              color="black"
+              v-model="service1"
+              
+              hide-details
+              
+            ></v-checkbox> 
+                     <v-checkbox
+              label="  2. Takes personal responsibility for dealing with and/or
+                        correcting customer service issues and concerns."
+              color="black"
+              v-model="service2"
+      
+              hide-details
+              
+            ></v-checkbox>   
+                          <v-checkbox
+              label=" 3. Initiates activities that promote advocacy for men and women
+                        empowerment."
+              color="black"
+              v-model="service3"
+          
+              hide-details
+              
+            ></v-checkbox>   
+                      <v-checkbox
+              label=" 4. Participates in updating office vision, mission, mandates and
+                        strategies based on DepEd strategies and directions. 
+                       "
+              color="black"
+              v-model="service4"
+              hide-details
+              
+            ></v-checkbox> 
+             <v-checkbox
+              label=" 5. Develops and adopts service improvement program through
+                        simplified procedures that will further enhance service delivery.
+                       "
+              color="black"
+              v-model="service5"
+              hide-details
+              
+            ></v-checkbox>   
+                         
+                        <br /><br />
+                      </div>
+                    </v-card-text>
+                  </v-card>
+                </v-flex>
+              </v-col>
+            </v-row>
+            <br />
+            <v-row no-gutters>
+              <v-col v-for="n in 2" :key="n" class="text-justify">
+                <v-flex md11 sm6>
+                  <v-card v-if="n === 1" class="mx-auto" max-width="500">
+                    <v-card-text>
+                      <div class="text--primary">
+                        <b>Results Focus</b><br />
+                        <v-checkbox
+              label=" 1. Achieves results with optimal use of time and resources most of
+                        the time.
+                       "
+              color="black"
+              v-model="results1"
+              hide-details
+              
+            ></v-checkbox>
+                   <v-checkbox
+              label=" 2. Avoids rework, mistakes and wastage through effective work
+                        methods by placing organizational needs before personal needs.
+                       "
+              color="black"
+              v-model="results2"
+              hide-details
+              
+            ></v-checkbox>
+                       <v-checkbox
+              label=" 3. Delivers error-free outputs most of the time by conforming to
+                        standard operating procedures correctly and consistently. Able to
+                        produce very satisfactory quality work in terms of
+                        usefulness/acceptability and completeness with no supervision
+                        required.
+                       "
+              color="black"
+              v-model="results3"
+              hide-details
+              
+            ></v-checkbox>
+                      <v-checkbox
+              label=" 4. Expresses a desire to do better and may express frustration at
+                        waste or inefficiency. May focus on new or more precise ways of
+                        meeting goals set.
+                       "
+              color="black"
+              v-model="results4"
+  
+              hide-details
+              
+            ></v-checkbox>    
+                   <v-checkbox
+              label="5. Makes specific changes in the system or in own work methods to
+                        improve performance. Examples may include doing something better,
+                        faster, at a lower cost, more efficiently, or improving quality,
+                        customer satisfaction, morale, without setting any specific goal.
+                       "
+              color="black"
+              v-model="results5"
+              hide-details
+              
+            ></v-checkbox>           
+                        
+                      </div>
+                    </v-card-text>
+                  </v-card>
+
+                  <v-card v-if="n === 2" class="mx-auto" max-width="500">
+                    <v-card-text>
+                      <div class="text--primary">
+                        <b>Innovation</b><br />
+                        <v-checkbox
+              label=" 1. Examines the root cause of problems and suggests effective
+                        solutions. Foster new ideas, processes and suggests better ways to
+                        do things (cost and/or operational efficiency).
+                       "
+              color="black"
+              v-model="innovation1"
+              hide-details
+              
+            ></v-checkbox>   
+                       <v-checkbox
+              label=" 2. Demonstrates an ability to think “beyond the box”. Continuously
+                        focuses on improving personal productivity to create higher value
+                        and results.
+                       "
+              color="black"
+              v-model="innovation2"
+              hide-details
+              
+            ></v-checkbox>   
+                      <v-checkbox
+              label=" 3. Promotes a creative climate and inspires co-workers to develop
+                        original ideas or solutions.
+                       "
+              color="black"
+              v-model="innovation3"
+              hide-details
+              
+              
+            ></v-checkbox>   
+                       <v-checkbox
+              label=" 4. Translates creative thinking into tangible changes and
+                        solutions that improve the work unit and organization.
+                       "
+              color="black"
+              v-model="innovation4"
+              hide-details
+              
+              
+            ></v-checkbox>   
+                   <v-checkbox
+              label=" 5. Uses ingenious methods to accomplish responsibilities.
+                        Demonstrates resourcefulness and the ability to succeed with
+                        minimal resources.
+                       "
+              color="black"
+              v-model="innovation5"
+              hide-details
+              
+            ></v-checkbox> 
+                        
+                        <br /><br />
+                        <br />
+                      </div>
+                    </v-card-text>
+                  </v-card>
+                </v-flex>
+              </v-col>
+            </v-row>
+            </v-container>
             <br />
             <v-card class="mx-auto" max-width="600">
               <v-card-text>
@@ -4882,8 +5718,9 @@
               <v-btn color="primary"> PREVIOUS </v-btn>
               <v-btn color="primary" class="ml-2"> NEXT </v-btn>
             </div> -->
+                 
+    
           </v-container>
-      
       </v-tab-item>
       <!-- End of Encoding part 1 -->
 
@@ -8438,7 +9275,7 @@
                 </v-col>
               </v-row>
 
-              <div class="d-flex flex-column mb-6">
+              <div class="d-flex flex-column mb-6" v-if="user=='Teacher'">
                 <v-card class="pa-2" color="grey lighten-2" outlined tile>
                   A. Functional Competencies
                 </v-card>
@@ -8578,7 +9415,7 @@
                           <v-col>
                             <v-textarea
                               auto-grow
-                              
+                              v-model="strengthsCore"
                               flat
                               solo
                               class="ma-0 pa-0"
@@ -8597,7 +9434,7 @@
                               auto-grow
                               flat
                               solo
-                               
+                               v-model="developmentCore"
                               class="ma-0 pa-0"
                               hide-details
                               row-height="15"
@@ -8613,7 +9450,7 @@
                             <v-textarea
                               auto-grow
                               flat
-                               
+                               v-model="learningObjectivesCore"
                               solo
                               class="ma-0 pa-0"
                               hide-details
@@ -8624,6 +9461,7 @@
                             <v-textarea
                               auto-grow
                               flat
+                              v-model="interventionCore"
                               solo
                               class="ma-0 pa-0"
                               hide-details
@@ -8641,7 +9479,7 @@
                               auto-grow
                               flat
                               solo
-                               
+                               v-model="timelineCore"
                               class="ma-0 pa-0"
                               hide-details
                               row-height="15"
@@ -8657,7 +9495,7 @@
                             <v-textarea
                               auto-grow
                               flat
-                               
+                               v-model="resourcesNeededCore"
                               solo
                               class="ma-0 pa-0"
                               hide-details
@@ -8678,7 +9516,7 @@
                         <v-textarea
                           auto-grow
                           flat
-                           
+                           v-model="feedback"
                           solo
                           class="ma-0 pa-0"
                           hide-details
@@ -8730,6 +9568,307 @@
                 </div>
                 <div class="ml-9"></div>
               </div>
+
+              <div class="d-flex flex-column mb-6" v-if="user=='Admin'">
+                <v-card class="pa-2" color="grey lighten-2" outlined tile>
+                  A. Functional Competencies
+                </v-card>
+                <v-row no-gutters>
+                  <v-col
+                    v-for="n in 5"
+                    :key="n"
+                    :cols="n === 3 ? 6 : undefined"
+                    class="text-center"
+                    outlined
+                    tile
+                  >
+                    <v-card v-if="n === 1" outlined tile>
+                      <v-container>
+                        <v-row>
+                          <v-col>
+                            <v-textarea
+                              auto-grow
+                              flat
+                              readonly
+                              solo
+                              v-model="strengthsFunctional"
+                              class="ma-0 pa-0"
+                              hide-details
+                              row-height="15"
+                            ></v-textarea>
+                          </v-col>
+                        </v-row>
+                      </v-container>
+                    </v-card>
+                    <v-card v-else-if="n === 2" outlined tile
+                      ><v-container>
+                        <v-row>
+                          <v-col>
+                            <v-textarea
+                              auto-grow
+                               readonly
+                              flat
+                              v-model="developmentNeedsFunctional"
+                              solo
+                              class="ma-0 pa-0"
+                              hide-details
+                              row-height="15"
+                            ></v-textarea>
+                          </v-col>
+                        </v-row>
+                      </v-container>
+                    </v-card>
+                    <v-card v-else-if="n === 3" class="text-center" outlined tile>
+                      <v-container>
+                        <v-row>
+                          <v-col>
+                            <v-textarea
+                              auto-grow
+                              flat
+                              v-model="learningObjectivesFunctional"
+                               readonly
+                              solo
+                              class="ma-0 pa-0"
+                              hide-details
+                              row-height="15"
+                            ></v-textarea>
+                        
+                          </v-col>
+                           <v-col>
+                            <v-textarea
+                              auto-grow
+                              flat
+                              v-model="interventionFunctional"
+                               readonly
+                              solo
+                              class="ma-0 pa-0"
+                              hide-details
+                              row-height="15"
+                            ></v-textarea>
+                      
+                          </v-col>
+                        </v-row>
+                      </v-container>
+                    </v-card>
+                    <v-card v-else-if="n === 4" outlined tile>
+                      <v-container>
+                        <v-row>
+                          <v-col>
+                            <v-textarea
+                              auto-grow
+                              flat
+                              v-model="timelineFunctional"
+                              solo
+                               readonly
+                              class="ma-0 pa-0"
+                              hide-details
+                              row-height="15"
+                            ></v-textarea>
+                          </v-col>
+                        </v-row>
+                      </v-container>
+                    </v-card>
+                    <v-card v-else-if="n === 5" outlined tile>
+                      <v-container>
+                        <v-row>
+                          <v-col>
+                            <v-textarea
+                              auto-grow
+                              flat
+                              v-model="resourcesNeededFunctional"
+                               readonly
+                              solo
+                              class="ma-0 pa-0"
+                              hide-details
+                              row-height="15"
+                            ></v-textarea>
+                          </v-col>
+                        </v-row>
+                      </v-container>
+                    </v-card>
+                  </v-col>
+                </v-row>
+
+                <!-- Core Behavioral Text Area -->
+                <v-card class="pa-2" color="grey lighten-2" outlined tile>
+                  B. Core Behavioral Competencies
+                </v-card>
+
+                <v-row no-gutters>
+                  <v-col
+                    v-for="n in 5"
+                    :key="n"
+                    :cols="n === 3 ? 6 : undefined"
+                    class="text-center"
+                    outlined
+                    tile
+                  >
+                    <v-card v-if="n === 1" outlined tile>
+                      <v-container>
+                        <v-row>
+                          <v-col>
+                            <v-textarea
+                              auto-grow
+                              v-model="strengthsCore"
+                              flat
+                              readonly
+                              solo
+                              class="ma-0 pa-0"
+                              hide-details
+                              row-height="15"
+                            ></v-textarea>
+                          </v-col>
+                        </v-row>
+                      </v-container>
+                    </v-card>
+                    <v-card v-else-if="n === 2" outlined tile
+                      ><v-container>
+                        <v-row>
+                          <v-col>
+                            <v-textarea
+                              auto-grow
+                              flat
+                              solo
+                              readonly
+                               v-model="developmentCore"
+                              class="ma-0 pa-0"
+                              hide-details
+                              row-height="15"
+                            ></v-textarea>
+                          </v-col>
+                        </v-row>
+                      </v-container>
+                    </v-card>
+                    <v-card v-else-if="n === 3" class="text-center" outlined tile>
+                      <v-container>
+                        <v-row>
+                          <v-col>
+                            <v-textarea
+                              auto-grow
+                              flat
+                               v-model="learningObjectivesCore"
+                              solo
+                              readonly
+                              class="ma-0 pa-0"
+                              hide-details
+                              row-height="15"
+                            ></v-textarea>
+                          </v-col>
+                          <v-col>
+                            <v-textarea
+                              auto-grow
+                              flat
+                              v-model="interventionCore"
+                              solo
+                              readonly
+                              class="ma-0 pa-0"
+                              hide-details
+                              row-height="15"
+                            ></v-textarea>
+                          </v-col>
+                        </v-row>
+                      </v-container>
+                    </v-card>
+                    <v-card v-else-if="n === 4" outlined tile>
+                      <v-container>
+                        <v-row>
+                          <v-col>
+                            <v-textarea
+                              auto-grow
+                              flat
+                              solo
+                              readonly
+                               v-model="timelineCore"
+                              class="ma-0 pa-0"
+                              hide-details
+                              row-height="15"
+                            ></v-textarea>
+                          </v-col>
+                        </v-row>
+                      </v-container>
+                    </v-card>
+                    <v-card v-else-if="n === 5" outlined tile>
+                      <v-container>
+                        <v-row>
+                          <v-col>
+                            <v-textarea
+                              auto-grow
+                              flat
+                               v-model="resourcesNeededCore"
+                              solo
+                              readonly
+                              class="ma-0 pa-0"
+                              hide-details
+                              row-height="15"
+                            ></v-textarea>
+                          </v-col>
+                        </v-row>
+                      </v-container>
+                    </v-card>
+                  </v-col>
+                </v-row>
+                <!-- Feedback  -->
+                <v-card class="pa-2" outlined tile>
+                  Feedback:
+                  <v-container>
+                    <v-row>
+                      <v-col>
+                        <v-textarea
+                          auto-grow
+                          flat
+                           v-model="feedback"
+                          solo
+                          readonly
+                          class="ma-0 pa-0"
+                          hide-details
+                          row-height="15"
+                        ></v-textarea>
+                      </v-col>
+                    </v-row>
+                  </v-container>
+                </v-card>
+
+                <!-- This is the signature part in part 4 -->
+                <div class="pa-10 ml-9" style="text-align: center">
+                  <v-row>
+                    <v-col>
+                      <v-card
+                       
+                        class="pa-2"
+                        style="width: 250px; height: 100px; margin-left: 20px"
+                      >
+                       <v-text-field dense solo flat v-model="rateePart4"  readonly>
+
+                       </v-text-field>
+                      </v-card>
+                      <h5 class="pa-2" style="margin-left: 30px">RATEE</h5>
+                    </v-col>
+
+                    <v-col>
+                      <v-card
+                        v-model="part4_rater"
+                        class="pa-2"
+                        style="width: 250px; height: 100px; margin-left: 15px"
+                      >
+                       <v-text-field dense solo flat v-model="raterPart4" readonly >
+
+                       </v-text-field>
+                      </v-card>
+                      <h5 class="pa-2" style="margin-right: 10px">RATER</h5>
+                    </v-col>
+
+                    <v-col>
+                      <v-card class="pa-2" style="width: 250px; height: 100px">
+                         <v-text-field dense solo flat v-model="approvingAuthorityPart4" readonly >
+
+                       </v-text-field>
+                      </v-card>
+                      <h5 class="pa-2" style="margin-left: -70px">APPROVING AUTHORITY</h5>
+                    </v-col>
+                  </v-row>
+                </div>
+                <div class="ml-9"></div>
+              </div>
               <v-card class="mx-auto" max-width="800">
                 <v-card-text>
                   <div class="text--primary">
@@ -8742,12 +9881,14 @@
                   </div>
                 </v-card-text> </v-card
               ><br />
+              <v-btn @click="finalizePart4" class="ml-auto mr-auto text-center">Finalize Part 4</v-btn>
             </v-container>
           </v-app>
         </div>
       </v-tab-item>
     </v-tabs>
   </v-card>
+  </v-container>
   </v-container>
 </template>
 <style>
@@ -8793,7 +9934,7 @@
 }
 #table,
 #tdata {
-  font-size: 12px;
+  font-size: 10px;
   border: solid 1px #000;
   padding: 6px;
 }
@@ -8817,46 +9958,55 @@ caption {
   padding-top: 5px;
 }
 </style>
+
+<script src="../../node_modules\excel-formula\dist\excel-formula.js" />
 <script>
+import formula from 'excel-formula';
+// import * as excel from 'excel-formula'
+//  var formattedFormula = excelFormulaUtilities.formatFormulaHTML('IF(1+1=2,"true","false")');
+//         alert(formattedFormula)
 export default {
    
   data() {
- 
     return {
       //user:JSON.parse(sessionStorage.getItem('user_session')).role,
       create:false,
-      selfManagement1:false,
-      selfManagement2:false,
-      selfManagement3:false,
-      selfManagement4:false,
-      selfManagement5:false,
-      teamwork1:false,
-      teamwork2:false,
-      teamwork3:false,
-      teamwork4:false,
-      teamwork5:false,
-      prof1:false,
-      prof2:false,
-      prof3:false,
-      prof4:false,
-      prof5:false,
-      service1:false,
-      service2:false,
-      service3:false,
-      service4:false,
-      service5:false,
-      results1:false,
-      results2:false,
-      results3:false,
-      results4:false,
-      results5:false,
-      innovation1:false,
-      innovation2:false,
-      innovation3:false,
-      innovation4:false,
-      innovation5:false,
+      edit:false,
+      show:false,
       user: JSON.parse(sessionStorage.getItem("user_session")).role,
+      userId: JSON.parse(sessionStorage.getItem("user_session")).id,
       inputType:'',
+      ipcrf:[],
+      search:'',
+      headers: [
+        { text: "ID", value: "user_id" },
+        {
+          text: "Employee Name",
+          align: "start",
+          sortable: false,
+          value: "name_of_employee",
+        },
+        { text: "Position", value: "position" },
+        { text: "Employment Status", value: "employment_status" },
+       
+        { text: "Sex", value: "sex" },
+         { text: "Rater", value: "rater" },
+        { text: "Rater Position", value: "rater_position" },
+        { text: "Rating Period", value: "rating_period" },
+        { text: "Actions", value: "actions", sortable: false },
+      ],
+      ratingPeriodItems:[
+        "SY 2020-2021",
+        "SY 2021-2022",
+        "SY 2022-2023",
+        "SY 2023-2024",
+        "SY 2024-2025",
+        "SY 2025-2026",
+        "SY 2027-2028",
+        "SY 2028-2029",
+        "SY 2029-2030"
+      ],
+
       approvingAuthorityPosition:[
         "Schools Division Superintendent",
         "Assistant Schools Division Superintendent",
@@ -8990,14 +10140,31 @@ export default {
       sexItems: ["Male", "Female"],
       noYrsTeachingItems: ["0-3 years", "4-10 years", "More than 10 years"],
       schoolTypeItems: ["Urban", "Rural"],
-      levelTaughtItems: ["", "", ""],
+      levelTaughtItems: [
+        "Elementary",
+        "Junior High School",
+        "Senior High School",
+        "College"
+      ],
       highestDegreeObtainedItems: [
         "Bachelor's Degree",
         "Master's Degree",
         "Doctorate Degree",
       ],
       schoolSizeItems: ["Small", "Medium", "Large", "Very Large"],
-      gradeLevelTaughtItems: ["", "", ""],
+      gradeLevelTaughtItems: ["Kinder", 
+      "Grade 1",
+       "Grade 2",
+         "Grade 3",
+          "Grade 4",
+           "Grade 5",
+         "Grade 6",
+          "Grade 7",
+           "Grade 8",
+            "Grade 9",
+             "Grade 10",
+           "Grade 11",
+           "Grade 12",],
       curricularClassificationItems: [
         "Kindergarten",
         "Kinder to Grade 6",
@@ -9057,6 +10224,7 @@ export default {
         "Health",
         "TLE/HE/TVL",
       ],
+  
 
       empName: "",
       empRater: "",
@@ -9194,93 +10362,132 @@ cot2IndicatorObjNo1: "",
       approvingAuthPosition:"",
       cot1DateMenu: false,
       cot2DateMenu:false,
-      // timeline1: "",
-      // timeline2: "",
-      // timeline3: "",
-      // timeline4: "",
-      // timeline5: "",
-      // timeline6: "",
-      // timeline7: "",
-      // timeline8: "",
-      // timeline9: "",
-      // timeline10: "",
-      // timeline11: "",
-      // timeline12: "",
+      dateOfReviewMenu:false,
 
-      // kra_1: "",
-      // kra_2: "",
-      // kra_3: "",
-      // kra_4: "",
-      // kra_5: "",
-
-      // actual1: "",
-      // actual1_blank: "",
-      // actual2: "",
-      // actual2_blank: "",
-      // actual3: "",
-      // actual3_blank: "",
-      // actual4: "",
-      // actual4_blank: "",
-      // actual5: "",
-      // actual5_blank: "",
-      // actual6: "",
-      // actual6_blank: "",
-      // actual6_timeliness: "",
-      // actual7: "",
-      // actual7_blank: "",
-      // actual8: "",
-      // actual9: "",
-      // actual9_efficiency: "",
-      // actual9_blank: "",
-      // actual10: "",
-      // actual10_efficiency: "",
-      // actual10_blank: "",
-      // actual11: "",
-      // actual11_efficiency: "",
-      // actual11_blank: "",
-
-      // part3Kra1: "",
-      // part3Kra2: "",
-      // part3Kra3: "",
-      // part3Kra4: "",
-      // part3Kra5: "",
-      // part3Kra_5: "",
-
-      // part3Encoding_7: "",
-      // part3Encoding_8: "",
-      // part3Encoding_9: "",
-      // part3Encoding_10: "",
-      // part3Encoding_11: "",
-      // part3Encoding_12: "",
-
-      // part3Encoding_AdjectivalRating1: "",
-      // part3Encoding_AdjectivalRating2: "",
-      // part3Encoding_AdjectivalRating3: "",
-      // part3Encoding_AdjectivalRating4: "",
-      // part3Encoding_AdjectivalRating5: "",
-      // part3Encoding_AdjectivalRating6: "",
-      // part3Encoding_AdjectivalRating7: "",
-      // part3Encoding_AdjectivalRating8: "",
-      // part3Encoding_AdjectivalRating9: "",
-      // part3Encoding_AdjectivalRating10: "",
-      // part3Encoding_AdjectivalRating11: "",
-      // part3Encoding_AdjectivalRating12: "",
-
-      // part3EmpAdjRating1: "",
-      // part3EmpAdjRating2: "",
-      // part3EmpFinalRating: "",
-      // part3EmpAdjRating: "",
-      
+  //part 2 encoding
+      selfManagement1:false,
+      selfManagement2:false,
+      selfManagement3:false,
+      selfManagement4:false,
+      selfManagement5:false,
+      teamwork1:false,
+      teamwork2:false,
+      teamwork3:false,
+      teamwork4:false,
+      teamwork5:false,
+      prof1:false,
+      prof2:false,
+      prof3:false,
+      prof4:false,
+      prof5:false,
+      service1:false,
+      service2:false,
+      service3:false,
+      service4:false,
+      service5:false,
+      results1:false,
+      results2:false,
+      results3:false,
+      results4:false,
+      results5:false,
+      innovation1:false,
+      innovation2:false,
+      innovation3:false,
+      innovation4:false,
+      innovation5:false,
 
 
-
+    //part 4 encoding
+      strengthsFunctional: "",
+      developmentNeedsFunctional: "",
+      learningObjectivesFunctional: "",
+      interventionFunctional: "",
+      timelineFunctional: "",
+      resourcesNeededFunctional:"",
+      strengthsCore: "",
+      developmentCore: "",
+      learningObjectivesCore: "",
+      interventionCore: "",
+      timelineCore: "",
+      resourcesNeededCore:"",
+      feedback:"",
+      rateePart4: "",
+      raterPart4: "",
+      approvingAuthorityPart4: "",
+      showTable:false,
+      ipcrfDemographicProfile:[],
+      ipcrfEncodingPart1:[],
+      ipcrfEncodingPart2:[],
+      ipcrfDevelopmentlan: [],
+      countSelfManagement:'',
+      countTeamwork:0,
+      countProfessional:0,
+      countService:0,
+      countResults:0,
+      countInnovation:0,
+      loading:false,
+    
     };
   },
   created(){
     console.log(this.user)
-   
+    this.retrieveIpcrf();
+    var formattedFormula = excelFormulaUtilities.formula2JavaScript('=ROUND(IFERROR(SUM(B2,D2,F2,H2)/INDEX(FREQUENCY((D3,E3,F3,G3),0),2),0),3)')
+     console.log(formattedFormula)   
+    var formatted = formula.toJavaScript('=ROUND(IFERROR(SUM(B2,D2,F2,H2)/INDEX(FREQUENCY((D3,E3,F3,G3),0),2),0),3)');
+    console.log(formatted);
   },
   computed:{
+
+    calculateObjectivesAverageNo7(){
+      this.encodingAverageObjNo7 = this.cot1RpmsObjNo1+this.cot2RpmsObjNo7/2
+    },
+     calculateObjectivesAverageNo5(){
+      this.encodingAverageObjNo5 = this.cot1RpmsObjNo1+this.cot2RpmsObjNo5/2
+    },
+     calculateObjectivesAverageNo1(){
+      this.encodingAverageObjNo1 = this.cot1RpmsObjNo1+this.cot2RpmsObjNo1/2
+    },
+
+
+    calculateNumericalRatingsAverageNo1(){
+      this.encodingIpcrfRatingAve1 = this.encodingIpcrfNumericalQ1
+    },
+      calculateNumericalRatingsAverageNo2(){
+      this.encodingIpcrfRatingAve2 = this.encodingIpcrfNumericalQ2
+    },
+     calculateNumericalRatingsAverageNo3(){
+      this.encodingIpcrfRatingAve3 = this.encodingIpcrfNumericalQ3
+    },
+     calculateNumericalRatingsAverageNo4(){
+      this.encodingIpcrfRatingAve4 = this.encodingIpcrfNumericalQ4
+    },
+     calculateNumericalRatingsAverageNo5(){
+      this.encodingIpcrfRatingAve5 = this.encodingIpcrfNumericalQ5
+    },
+     calculateNumericalRatingsAverageNo6(){
+      this.encodingIpcrfRatingAve6 = this.encodingIpcrfNumericalQ6+this.encodingIpcrfNumericalT6/2
+    },
+     calculateNumericalRatingsAverageNo7(){
+      this.encodingIpcrfRatingAve7 = this.encodingIpcrfNumericalQ7
+    },
+     calculateNumericalRatingsAverageNo8(){
+      this.encodingIpcrfRatingAve8 = this.encodingIpcrfNumericalQ8
+    },
+     calculateNumericalRatingsAverageNo9(){
+      this.encodingIpcrfRatingAve9 = this.encodingIpcrfNumericalQ9+this.encodingIpcrfNumericalE9/2
+    },
+    
+     calculateNumericalRatingsAverageNo10(){
+      this.encodingIpcrfRatingAve10 = this.encodingIpcrfNumericalQ10+this.encodingIpcrfNumericalE10/2
+    },
+     calculateNumericalRatingsAverageNo11(){
+      this.encodingIpcrfRatingAve11 = this.encodingIpcrfNumericalQ11+this.encodingIpcrfNumericalE11/2
+    },
+     calculateNumericalRatingsAverageNo12(){
+      this.encodingIpcrfRatingAve12 = this.encodingIpcrfNumericalQ12+this.encodingIpcrfNumericalE12/2
+    },
+
 ifAdmin(){
   return this.user=='Admin'
 },
@@ -9289,6 +10496,9 @@ computedDateFormattedCot1DateObserved() {
     },
     computedDateFormattedCot2DateObserved() {
       return this.formatDate(this.cot2DateObserved);
+    },
+    computedDateFormattedDateOfReview() {
+      return this.formatDate(this.empDateReview);
     },
   },
 
@@ -9300,542 +10510,120 @@ computedDateFormattedCot1DateObserved() {
       return `${month}/${day}/${year}`;
     },
     async retrieveIpcrf() {
+      if(this.user=='Admin'){
+        
+        this.ipcrfDemographicProfile =[]
+        // this.ipcrfEncodingPart1 = []
+        // this.ipcrfEncodingPart2 =[]
+        const returnedAllData =await this.$store.dispatch('retrieveIpcrfInfo')
+        console.log(returnedAllData.data.ipcrfDemographicProfile)
+        this.ipcrfDemographicProfile = returnedAllData.data.ipcrfDemographicProfile
+        //this.ipcrfEncodingPart1 = returnedAllData.data.ipcrfEncodingPart1
+        this.showTable = true
+        
+      }else if(this.user=='Teacher'){
+        this.ipcrfDemographicProfile =[]
+         const returnedAllData = await this.$store.dispatch('retrieveIpcrfInfoById',this.userId)
+        console.log(returnedAllData.data.ipcrfDemographicProfile)
+         this.ipcrfDemographicProfile = returnedAllData.data.ipcrfDemographicProfile
+          
+        console.log(this.ipcrfDemographicProfile.length)
+        if(this.ipcrfDemographicProfile.length==0){
+          this.create=true
+          this.showTable=false
+        }else{
+          this.showTable = true
+          this.show = true
+        }
+      }
       // const returnedIpcrfData = await this.$store.dispatch("retrieveIpcrfInfoById");
     },
-    async finalizePart1(){
-      // const empSchoolYear = this.empSchoolYear
-      const empName = this.empName;
-      const empRater = this.empRater;
-      const empRegion = this.empRegion;
-      const empPosition = this.empPosition;
-      const empRaterPosition = this.empRaterPosition;
-      const empDivision = this.empDivision;
-      const empId = this.empId;
-      const empDateReview = this.empDateReview;
-      const empDistrict = this.empDistrict;
-      const empStatus = this.empStatus;
-      const empRatingPeriod = this.empRatingPeriod;
-      const empSchoolId = this.empSchoolId;
-      const empAge = this.empAge;
-      const empSchoolName = this.empSchoolName;
-      const empSex = this.empSex;
-      const empLevelTaught = this.empLevelTaught;
-      const empYearsOfTeaching = this.empYearsOfTeaching;
-      const empSchoolType = this.empSchoolType;
-      const empGradeLevelTaught = this.empLevelTaught;
-      const empDegree = this.empDegree;
-      const empSchoolSize = this.empSchoolSize;
-      const empSubjectTaught = this.empSubjectTaught;
-      const empSpecialization = this.empSpecialization;
-      const empCurricularClassification = this.empCurricularClassification;
 
-      const kra1 = this.kra1;
-      const kra2 = this.kra2;
-      const kra3 = this.kra3;
-      const kra4 = this.kra4;
-      const kra5 = this.kra5;
-      const dateObserved = this.dateObserved;
-
-      const cotIndicatorNo1 = this.cotIndicatorNo1;
-      const cotIndicatorNo2 = this.cotIndicatorNo2;
-      const cotIndicatorNo3 = this.cotIndicatorNo3;
-      const cotIndicatorNo4 = this.cotIndicatorNo4;
-      const cotIndicatorNo5 = this.cotIndicatorNo5;
-      const cotIndicatorNo6 = this.cotIndicatorNo6;
-      const cotIndicatorNo7 = this.cotIndicatorNo7;
-      const cotIndicatorNo8 = this.cotIndicatorNo8;
-      const cotIndicatorNo9 = this.cotIndicatorNo9;
-      const cotIndicatorNo10 = this.cotIndicatorNo10;
-      const cotIndicatorNo11 = this.cotIndicatorNo11;
-      const cotIndicatorNo12 = this.cotIndicatorNo12; 
-      const cotIndicatorNo13 = this.cotIndicatorNo13;
-
-
-      const kra_cot1RpmsObj1 = this.kra_cot1RpmsObj1;
-      const kra_cot1Rating2 = this.kra_cot1Rating2;
-      const kra_cot1Rating3 = this.kra_cot1Rating3;
-      const kra_cot1Rating4 = this.kra_cot1Rating4;
-      const kra_cot1Rating5 = this.kra_cot1Rating5;
-      const kra_cot1Rating6 = this.kra_cot1Rating6;
-      const kra_cot1Rating7 = this.kra_cot1Rating7;
-      const kra_cot1Rating8 = this.kra_cot1Rating8;
-      const kra_cot1Rating9 = this.kra_cot1Rating9;
-      const kra_cot1Rating10 = this.kra_cot1Rating10;
-      const kra_cot1Rating11 = this.kra_cot1Rating11;
-      const kra_cot1Rating12 = this.kra_cot1Rating12;
-      const kra_cot1Rating13 = this.kra_cot1Rating13;
-      const kra_cot1Rating14 = this.kra_cot1Rating14;
-
-
-      const kra_cot1RpmsObj2 = this.kra_cot1RpmsObj2;
-      const kra_cot1RpmsObj3 = this.kra_cot1RpmsObj3;
-      const kra_cot1RpmsObj4 = this.kra_cot1RpmsObj4;
-      const kra_cot1RpmsObj5 = this.kra_cot1RpmsObj5;
-      const kra_cot1RpmsObj6 = this.kra_cot1RpmsObj6;
-      const kra_cot1RpmsObj7 = this.kra_cot1RpmsObj7;
-      const kra_cot1RpmsObj8 = this.kra_cot1RpmsObj8;
-      const kra_cot1RpmsObj9 = this.kra_cot1RpmsObj9;
-      const kra_cot1RpmsObj10 = this.kra_cot1RpmsObj10;
-      const kra_cot1RpmsObj11 = this.kra_cot1RpmsObj11;
-      const kra_cot1RpmsObj12 = this.kra_cot1RpmsObj12;
-
-      const kra_cot2Rating1 = this.kra_cot2Rating1;
-      const kra_cot2Rating2 = this.kra_cot2Rating2;
-      const kra_cot2Rating3 = this.kra_cot2Rating3;
-      const kra_cot2Rating4 = this.kra_cot2Rating4;
-      const kra_cot2Rating5 = this.kra_cot2Rating5;
-      const kra_cot2Rating6 = this.kra_cot2Rating6;
-      const kra_cot2Rating7 = this.kra_cot2Rating7;
-      const kra_cot2Rating8 = this.kra_cot2Rating8;
-      const kra_cot2Rating9 = this.kra_cot2Rating9;
-      const kra_cot2Rating10 = this.kra_cot2Rating10;
-      const kra_cot2Rating11 = this.kra_cot2Rating11;
-      const kra_cot2Rating12 = this.kra_cot2Rating12;
-      const kra_cot2Rating13 = this.kra_cot2Rating13;
-      const kra_cot2Rating14 = this.kra_cot2Rating14;
-
-
-      const kra_cot2RpmsObj1 = this.kra_cot2RpmsObj1;
-      const kra_cot2RpmsObj2 = this.kra_cot2RpmsObj2;
-      const kra_cot2RpmsObj3 = this.kra_cot2RpmsObj3;
-      const kra_cot2RpmsObj4 = this.kra_cot2RpmsObj4;
-      const kra_cot2RpmsObj5 = this.kra_cot2RpmsObj5;
-      const kra_cot2RpmsObj6 = this.kra_cot2RpmsObj6;
-      const kra_cot2RpmsObj7 = this.kra_cot2RpmsObj7;
-      const kra_cot2RpmsObj8 = this.kra_cot2RpmsObj8;
-      const kra_cot2RpmsObj9 = this.kra_cot2RpmsObj9;
-      const kra_cot2RpmsObj10 = this.kra_cot2RpmsObj10;
-      const kra_cot2RpmsObj11 = this.kra_cot2RpmsObj11;
-      const kra_cot2RpmsObj12 = this.kra_cot2RpmsObj12;
-
-      const tf_kra_cot3Rating1 = this.tf_kra_cot3Rating1;
-      const kra_cot3Rating1 = this.kra_cot3Rating1;
-      const kra_cot3Rating2 = this.kra_cot3Rating2;
-      const kra_cot3Rating3 = this.kra_cot3Rating3;
-      const kra_cot3Rating4 = this.kra_cot3Rating4;
-      const kra_cot3Rating5 = this.kra_cot3Rating5;
-      const kra_cot3Rating6 = this.kra_cot3Rating6;
-      const kra_cot3Rating7 = this.kra_cot3Rating7;
-      const kra_cot3Rating8 = this.kra_cot3Rating8;
-      const kra_cot3Rating9 = this.kra_cot3Rating9;
-      const kra_cot3Rating10 = this.kra_cot3Rating10;
-      const kra_cot3Rating11 = this.kra_cot3Rating11;
-      const kra_cot3Rating12 = this.kra_cot3Rating12;
-      const kra_cot3Rating13 = this.kra_cot3Rating13;
-
-      const kra_cot3Rpms1 = this.kra_cot3Rpms1;
-      const kra_cot3Rpms2 = this.kra_cot3Rpms2;
-      const kra_cot3Rpms3 = this.kra_cot3Rpms3;
-      const kra_cot3Rpms4 = this.kra_cot3Rpms4;
-      const kra_cot3Rpms5 = this.kra_cot3Rpms5;
-      const kra_cot3Rpms6 = this.kra_cot3Rpms6;
-      const kra_cot3Rpms7 = this.kra_cot3Rpms7;
-      const kra_cot3Rpms8 = this.kra_cot3Rpms8;
-      const kra_cot3Rpms9 = this.kra_cot3Rpms9;
-      const kra_cot3Rpms10 = this.kra_cot3Rpms10;
-      const kra_cot3Rpms11 = this.kra_cot3Rpms11;
-      const kra_cot3Rpms12 = this.kra_cot3Rpms12;
-
-      const tf_kra_cot4Rating1 = this.tf_kra_cot4Rating1;
-      const kra_cot4Rating1 = this.kra_cot4Rating1;
-      const kra_cot4Rating2 = this.kra_cot4Rating2;
-      const kra_cot4Rating3 = this.kra_cot4Rating3;
-      const kra_cot4Rating4 = this.kra_cot4Rating4;
-      const kra_cot4Rating5 = this.kra_cot4Rating5;
-      const kra_cot4Rating6 = this.kra_cot4Rating6;
-      const kra_cot4Rating7 = this.kra_cot4Rating7;
-      const kra_cot4Rating8 = this.kra_cot4Rating8;
-      const kra_cot4Rating9 = this.kra_cot4Rating9;
-      const kra_cot4Rating10 = this.kra_cot4Rating10;
-      const kra_cot4Rating11 = this.kra_cot4Rating11;
-      const kra_cot4Rating12 = this.kra_cot4Rating12;
-      const kra_cot4Rating13 = this.kra_cot4Rating13;
-
-
-      const kra_cot4Rpms1 = this.kra_cot4Rpms1;
-      const kra_cot4Rpms2 = this.kra_cot4Rpms2;
-      const kra_cot4Rpms3 = this.kra_cot4Rpms3;
-      const kra_cot4Rpms4 = this.kra_cot4Rpms4;
-      const kra_cot4Rpms5 = this.kra_cot4Rpms5;
-      const kra_cot4Rpms6 = this.kra_cot4Rpms6;
-      const kra_cot4Rpms7 = this.kra_cot4Rpms7;
-      const kra_cot4Rpms8 = this.kra_cot4Rpms8;
-      const kra_cot4Rpms9 = this.kra_cot4Rpms9;
-      const kra_cot4Rpms10 = this.kra_cot4Rpms10;
-      const kra_cot4Rpms11 = this.kra_cot4Rpms11;
-      const kra_cot4Rpms12 = this.kra_cot4Rpms12;
-
-
-      const encodingAverage1 = this.encodingAverage1;
-      const encodingAverage2 = this.encodingAverage2;
-      const encodingAverage3 = this.encodingAverage3;
-      const encodingAverage4 = this.encodingAverage4;
-      const encodingAverage5 = this.encodingAverage5;
-      const encodingAverage6 = this.encodingAverage6;
-      const encodingAverage7 = this.encodingAverage7;
-      const encodingAverage8 = this.encodingAverage8;
-      const encodingAverage9 = this.encodingAverage9;
-      const encodingAverage10 = this.encodingAverage10;
-      const encodingAverage11 = this.encodingAverage11;
-      const encodingAverage12 = this.encodingAverage12;
-
-
-      const encoding_ipcrfNumericalQ1 = this.encoding_ipcrfNumericalQ1;
-      const encoding_ipcrfNumericalQ2 = this.encoding_ipcrfNumericalQ2;
-      const encoding_ipcrfNumericalQ3 = this.encoding_ipcrfNumericalQ3;
-      const encoding_ipcrfNumericalQ4 = this.encoding_ipcrfNumericalQ4;
-      const encoding_ipcrfNumericalQ5 = this.encoding_ipcrfNumericalQ5;
-      const encoding_ipcrfNumericalQ6 = this.encoding_ipcrfNumericalQ6;
-      const encoding_ipcrfNumericalQ7 = this.encoding_ipcrfNumericalQ7;
-      const encoding_ipcrfNumericalQ8 = this.encoding_ipcrfNumericalQ8;
-      const encoding_ipcrfNumericalQ9 = this.encoding_ipcrfNumericalQ9;
-      const encoding_ipcrfNumericalQ10 = this.encoding_ipcrfNumericalQ10;
-      const encoding_ipcrfNumericalQ11 = this.encoding_ipcrfNumericalQ11;
-      const encoding_ipcrfNumericalQ12 = this.encoding_ipcrfNumericalQ12;
-      const encoding_ipcrfNumericalQ13 = this.encoding_ipcrfNumericalQ13;
-
-      const encoding_ipcrfNumerical_E1 = this.encoding_ipcrfNumerical_E1;
-      const encoding_ipcrfNumerical_E2 = this.encoding_ipcrfNumerical_E2;
-      const encoding_ipcrfNumerical_E3 = this.encoding_ipcrfNumerical_E3;
-      const encoding_ipcrfNumerical_E4 = this.encoding_ipcrfNumerical_E4;
-      const encoding_ipcrfNumerical_E5 = this.encoding_ipcrfNumerical_E5;
-      const encoding_ipcrfNumerical_E6 = this.encoding_ipcrfNumerical_E6;
-      const encoding_ipcrfNumerical_E7 = this.encoding_ipcrfNumerical_E7;
-      const encoding_ipcrfNumerical_E8 = this.encoding_ipcrfNumerical_E8;
-      const encoding_ipcrfNumerical_E9 = this.encoding_ipcrfNumerical_E9;
-      const encoding_ipcrfNumerical_E10 = this.encoding_ipcrfNumerical_E10;
-      const encoding_ipcrfNumerical_E11 = this.encoding_ipcrfNumerical_E11;
-      const encoding_ipcrfNumerical_E12 = this.encoding_ipcrfNumerical_E12;
-
-
-      const encoding_ipcrfNumerical_T1 = this.encoding_ipcrfNumerical_T1;
-      const encoding_ipcrfNumerical_T2 = this.encoding_ipcrfNumerical_T2;
-      const encoding_ipcrfNumerical_T3 = this.encoding_ipcrfNumerical_T3;
-      const encoding_ipcrfNumerical_T4 = this.encoding_ipcrfNumerical_T4;
-      const encoding_ipcrfNumerical_T5 = this.encoding_ipcrfNumerical_T5;
-      const encoding_ipcrfNumerical_T6 = this.encoding_ipcrfNumerical_T6;
-      const encoding_ipcrfNumerical_T7 = this.encoding_ipcrfNumerical_T7;
-      const encoding_ipcrfNumerical_T8 = this.encoding_ipcrfNumerical_T8;
-      const encoding_ipcrfNumerical_T9 = this.encoding_ipcrfNumerical_T9;
-      const encoding_ipcrfNumerical_T10 = this.encoding_ipcrfNumerical_T10;
-      const encoding_ipcrfNumerical_T11 = this.encoding_ipcrfNumerical_T11;
-      const encoding_ipcrfNumerical_T12 = this.encoding_ipcrfNumerical_T12;
-
-      const encoding_ipcrfRatingAve1 = this.encoding_ipcrfRatingAve1;
-      const encoding_ipcrfRatingAve2 = this.encoding_ipcrfRatingAve2;
-      const encoding_ipcrfRatingAve3 = this.encoding_ipcrfRatingAve3;
-      const encoding_ipcrfRatingAve4 = this.encoding_ipcrfRatingAve4;
-      const encoding_ipcrfRatingAve5 = this.encoding_ipcrfRatingAve5;
-      const encoding_ipcrfRatingAve6 = this.encoding_ipcrfRatingAve6;
-      const encoding_ipcrfRatingAve7 = this.encoding_ipcrfRatingAve7;
-      const encoding_ipcrfRatingAve8 = this.encoding_ipcrfRatingAve8;
-      const encoding_ipcrfRatingAve9 = this.encoding_ipcrfRatingAve9;
-      const encoding_ipcrfRatingAve10 = this.encoding_ipcrfRatingAve10;
-      const encoding_ipcrfRatingAve11 = this.encoding_ipcrfRatingAve11;
-      const encoding_ipcrfRatingAve12 = this.encoding_ipcrfRatingAve12;
-
-      const encoding_1 = this.encoding_1;
-      const encoding_2 = this.encoding_2;
-      const encoding_3 = this.encoding_3;
-      const encoding_4 = this.encoding_4;
-      const encoding_5 = this.encoding_5;
-      const encoding_6 = this.encoding_6;
-      const encoding_7 = this.encoding_7;
-      const encoding_8 = this.encoding_8;
-      const encoding_9 = this.encoding_9;
-      const encoding_10 = this.encoding_10;
-      const encoding_11 = this.encoding_11;
-      const encoding_12 = this.encoding_12;
-
-      const encoding_AdjectivalRating1 = this.encoding_AdjectivalRating1;
-      const encoding_AdjectivalRating2 = this.encoding_AdjectivalRating2;
-      const encoding_AdjectivalRating3 = this.encoding_AdjectivalRating3;
-      const encoding_AdjectivalRating4 = this.encoding_AdjectivalRating4;
-      const encoding_AdjectivalRating5 = this.encoding_AdjectivalRating5;
-      const encoding_AdjectivalRating6 = this.encoding_AdjectivalRating6;
-      const encoding_AdjectivalRating7 = this.encoding_AdjectivalRating7;
-      const encoding_AdjectivalRating8 = this.encoding_AdjectivalRating8;
-      const encoding_AdjectivalRating9 = this.encoding_AdjectivalRating9;
-      const encoding_AdjectivalRating10 = this.encoding_AdjectivalRating10;
-      const encoding_AdjectivalRating11 = this.encoding_AdjectivalRating11;
-      const encoding_AdjectivalRating12 = this.encoding_AdjectivalRating12;
-
-      const empAdjRating1 = this.empAdjRating1;
-      const empAdjRating2 = this.empAdjRating2;
-
-      const empFinalRating = this.empFinalRating;
-      const empAdjRating = this.empAdjRating;
-
-      const part_approvingAuthority = this.part_approvingAuthority;
-      const user = JSON.parse(sessionStorage.user_session).id;
-      const role = JSON.parse(sessionStorage.user_session).role;
+    async viewItem(item){
+      this.showTable = false
+      
+      this.show = true
+      console.log(item)
+      const user = item.user_id
+      const schoolYear = item.rating_period
       const data = {
         user,
-        role,
-           empName,
-      empRater,
-      empRegion,
-      empPosition,
-      empRaterPosition,
-      empDivision,
-      empId,
-      empDateReview,
-      empDistrict,
-      empStatus,
-      empRatingPeriod,
-      empSchoolId,
-      empAge,
-      empSchoolName,
-      empSex,
-      empLevelTaught,
-      empYearsOfTeaching,
-      empSchoolType,
-      empGradeLevelTaught,
-      empDegree,
-      empSchoolSize,
-      empSubjectTaught,
-      empSpecialization,
-      empCurricularClassification,
+        schoolYear
+      }
+    const returnedData = await this.$store.dispatch('retrieveIpcrfInfoBySchoolYear', data);
 
-      kra1,
-      kra2,
-      kra3,
-      kra4,
-      kra5,
-      dateObserved,
-
-      cotIndicatorNo1,
-      cotIndicatorNo2,
-      cotIndicatorNo3,
-      cotIndicatorNo4,
-      cotIndicatorNo5,
-      cotIndicatorNo6,
-      cotIndicatorNo7,
-      cotIndicatorNo8,
-      cotIndicatorNo9,
-      cotIndicatorNo10,
-      cotIndicatorNo11,
-      cotIndicatorNo12,
-      cotIndicatorNo13,
-
-      kra_cot1Rating2,
-      kra_cot1Rating3,
-      kra_cot1Rating4,
-      kra_cot1Rating5,
-      kra_cot1Rating6,
-      kra_cot1Rating7,
-      kra_cot1Rating8,
-      kra_cot1Rating9,
-      kra_cot1Rating10,
-      kra_cot1Rating11,
-      kra_cot1Rating12,
-      kra_cot1Rating13,
-      kra_cot1Rating14,
-
-      kra_cot1RpmsObj1,
-      kra_cot1RpmsObj2,
-      kra_cot1RpmsObj3,
-      kra_cot1RpmsObj4,
-      kra_cot1RpmsObj5,
-      kra_cot1RpmsObj6,
-      kra_cot1RpmsObj7,
-      kra_cot1RpmsObj8,
-      kra_cot1RpmsObj9,
-      kra_cot1RpmsObj10,
-      kra_cot1RpmsObj11,
-      kra_cot1RpmsObj12,
-
-      kra_cot2Rating1,
-      kra_cot2Rating2,
-      kra_cot2Rating3,
-      kra_cot2Rating4,
-      kra_cot2Rating5,
-      kra_cot2Rating6,
-      kra_cot2Rating7,
-      kra_cot2Rating8,
-      kra_cot2Rating9,
-      kra_cot2Rating10,
-      kra_cot2Rating11,
-      kra_cot2Rating12,
-      kra_cot2Rating13,
-      kra_cot2Rating14,
-
-
-      kra_cot2RpmsObj1,
-      kra_cot2RpmsObj2,
-      kra_cot2RpmsObj3,
-      kra_cot2RpmsObj4,
-      kra_cot2RpmsObj5,
-      kra_cot2RpmsObj6,
-      kra_cot2RpmsObj7,
-      kra_cot2RpmsObj8,
-      kra_cot2RpmsObj9,
-      kra_cot2RpmsObj10,
-      kra_cot2RpmsObj11,
-      kra_cot2RpmsObj12,
-
-      tf_kra_cot3Rating1,
-      kra_cot3Rating1,
-      kra_cot3Rating2,
-      kra_cot3Rating3,
-      kra_cot3Rating4,
-      kra_cot3Rating5,
-      kra_cot3Rating6,
-      kra_cot3Rating7,
-      kra_cot3Rating8,
-      kra_cot3Rating9,
-      kra_cot3Rating10,
-      kra_cot3Rating11,
-      kra_cot3Rating12,
-      kra_cot3Rating13,
-
-
-      kra_cot3Rpms1,
-      kra_cot3Rpms2,
-      kra_cot3Rpms3,
-      kra_cot3Rpms4,
-      kra_cot3Rpms5,
-      kra_cot3Rpms6,
-      kra_cot3Rpms7,
-      kra_cot3Rpms8,
-      kra_cot3Rpms9,
-      kra_cot3Rpms10,
-      kra_cot3Rpms11,
-      kra_cot3Rpms12,
-
-      tf_kra_cot4Rating1,
-      kra_cot4Rating1,
-      kra_cot4Rating2,
-      kra_cot4Rating3,
-      kra_cot4Rating4,
-      kra_cot4Rating5,
-      kra_cot4Rating6,
-      kra_cot4Rating7,
-      kra_cot4Rating8,
-      kra_cot4Rating9,
-      kra_cot4Rating10,
-      kra_cot4Rating11,
-      kra_cot4Rating12,
-      kra_cot4Rating13,
-
-      kra_cot4Rpms1,
-      kra_cot4Rpms2,
-      kra_cot4Rpms3,
-      kra_cot4Rpms4,
-      kra_cot4Rpms5,
-      kra_cot4Rpms6,
-      kra_cot4Rpms7,
-      kra_cot4Rpms8,
-      kra_cot4Rpms9,
-      kra_cot4Rpms10,
-      kra_cot4Rpms11,
-      kra_cot4Rpms12,
+      console.log(returnedData)
+      this.ipcrfDemographicProfile = returnedData.data.ipcrfDemographicProfile[0]
+      this.ipcrfDevelopmentPlan = returnedData.data.ipcrfDevelopmentPlan[0]
+      this.ipcrfEncodingPart1 = returnedData.data.ipcrfEncodingPart1
+      this.ipcrfEncodingPart2 = returnedData.data.ipcrfEncodingPart2[0]
+      console.log(this.ipcrfEncodingPart2)
+      let selfManagement = this.ipcrfEncodingPart2.self_management.split(",")
+      selfManagement = selfManagement.splice("",1)
+      let teamwork = this.ipcrfEncodingPart2.teamwork.split(",")
+      this.countSelfManagement = selfManagement.length
+      this.countSelfTeamwork = teamwork.length
+      /*innovation: (...)
+professional_and_ethics: (...)
+results_focus: (...)
+school_year: (...)
+self_management: (...)
+service_orientation: (...)
+teamwork: (...)*/ 
+      let professionalAndEthics = this.ipcrfEncodingPart2.professional_and_ethics.split(",")
+      let innovation = this.ipcrfEncodingPart2.innovation.split(",")
+      let service = this.ipcrfEncodingPart2.service_orientation.split(',')
+      let results = this.ipcrfEncodingPart2.results_focus.split(',')
+       professionalAndEthics = professionalAndEthics.splice("",1)
+        innovation = innovation.splice("",1)
+         service = service.splice("",1)
+          results = results.splice("",1)
+         this.countProfessional = professionalAndEthics.length
+          this.countInnovation = innovation.length
+           this.countService = service.length
+           this.countResults = results.length
   
-      encodingAverage1,
-      encodingAverage2,
-      encodingAverage3,
-      encodingAverage4,
-      encodingAverage5,
-      encodingAverage6,
-      encodingAverage7,
-      encodingAverage8,
-      encodingAverage9,
-      encodingAverage10,
-      encodingAverage11,
-      encodingAverage12,
-
-      encoding_ipcrfNumericalQ1,
-      encoding_ipcrfNumericalQ2,
-      encoding_ipcrfNumericalQ3,
-      encoding_ipcrfNumericalQ4,
-      encoding_ipcrfNumericalQ5,
-      encoding_ipcrfNumericalQ6,
-      encoding_ipcrfNumericalQ7,
-      encoding_ipcrfNumericalQ8,
-      encoding_ipcrfNumericalQ9,
-      encoding_ipcrfNumericalQ10,
-      encoding_ipcrfNumericalQ11,
-      encoding_ipcrfNumericalQ12,
-      encoding_ipcrfNumericalQ13,
-
-      encoding_ipcrfNumerical_E1,
-      encoding_ipcrfNumerical_E2,
-      encoding_ipcrfNumerical_E3,
-      encoding_ipcrfNumerical_E4,
-      encoding_ipcrfNumerical_E5,
-      encoding_ipcrfNumerical_E6,
-      encoding_ipcrfNumerical_E7,
-      encoding_ipcrfNumerical_E8,
-      encoding_ipcrfNumerical_E9,
-      encoding_ipcrfNumerical_E10,
-      encoding_ipcrfNumerical_E11,
-      encoding_ipcrfNumerical_E12,
-
-      encoding_ipcrfNumerical_T1,
-      encoding_ipcrfNumerical_T2,
-      encoding_ipcrfNumerical_T3,
-      encoding_ipcrfNumerical_T4,
-      encoding_ipcrfNumerical_T5,
-      encoding_ipcrfNumerical_T6,
-      encoding_ipcrfNumerical_T7,
-      encoding_ipcrfNumerical_T8,
-      encoding_ipcrfNumerical_T9,
-      encoding_ipcrfNumerical_T10,
-      encoding_ipcrfNumerical_T11,
-      encoding_ipcrfNumerical_T12,
-
-      encoding_ipcrfRatingAve1,
-      encoding_ipcrfRatingAve2,
-      encoding_ipcrfRatingAve3,
-      encoding_ipcrfRatingAve4,
-      encoding_ipcrfRatingAve5,
-      encoding_ipcrfRatingAve6,
-      encoding_ipcrfRatingAve7,
-      encoding_ipcrfRatingAve8,
-      encoding_ipcrfRatingAve9,
-      encoding_ipcrfRatingAve10,
-      encoding_ipcrfRatingAve11,
-      encoding_ipcrfRatingAve12,
-
-      encoding_1,
-      encoding_2,
-      encoding_3,
-      encoding_4,
-      encoding_5,
-      encoding_6,
-      encoding_7,
-      encoding_8,
-      encoding_9,
-      encoding_10,
-      encoding_11,
-      encoding_12,
-
-      encoding_AdjectivalRating1,
-      encoding_AdjectivalRating2,
-      encoding_AdjectivalRating3,
-      encoding_AdjectivalRating4,
-      encoding_AdjectivalRating5,
-      encoding_AdjectivalRating6,
-      encoding_AdjectivalRating7,
-      encoding_AdjectivalRating8,
-      encoding_AdjectivalRating9,
-      encoding_AdjectivalRating10,
-      encoding_AdjectivalRating11,
-      encoding_AdjectivalRating12,
-
-      empAdjRating1,
-      empAdjRating2,
-      empFinalRating,
-      empAdjRating,
-      part_approvingAuthority,
-
-        }
-        console.log(data)
-    const returnedData = await this.$store.dispatch('createIpcrf', data);
-    console.log(returnedData)
     },
+    editItems(){
+      console.log(this.ipcrfDemographicProfile)
+      this.empName = this.ipcrfDemographicProfile.name_of_employee
+      this.empRater = this.ipcrfDemographicProfile.rater
+      this.empRegion = this.ipcrfDemographicProfile.region
+      this.empPosition = this.ipcrfDemographicProfile.position
+      this.empRaterPosition = this.ipcrfDemographicProfile.rater_position
+      this.empDivision = this.ipcrfDemographicProfile.division
+      this.empId = this.ipcrfDemographicProfile.employee_id
+      this.empDateReview = this.ipcrfDemographicProfile.date_of_review
+      this.empDistrict = this.ipcrfDemographicProfile.district_municipality
+      this.empStatus = this.ipcrfDemographicProfile.employment_status
+      this.empRatingPeriod = this.ipcrfDemographicProfile.rating_period
+      this.empSchoolId = this.ipcrfDemographicProfile.school_id
+      this.empAge = this.ipcrfDemographicProfile.age
+      this.empSchoolName = this.ipcrfDemographicProfile.school_name
+      this.empSex = this.ipcrfDemographicProfile.sex
+      this.empLevelTaught = this.ipcrfDemographicProfile.level_taught
+      this.empYearsOfTeaching = this.ipcrfDemographicProfile.number_of_years_teaching
+      this.empSchoolType = this.ipcrfDemographicProfile.school_type
+      this.empGradeLevelTaught = this.ipcrfDemographicProfile.grade_level_taught
+      this.empDegree = this.ipcrfDemographicProfile.highest_degree_obtained
+      this.empSchoolSize = this.ipcrfDemographicProfile.school_size
+      this.empSubjectTaught = this.ipcrfDemographicProfile.subject_taught
+      this.empSpecialization = this.ipcrfDemographicProfile.area_of_specialization
+      this.empCurricularClassification = this.ipcrfDemographicProfile.
+      empSchoolYear = this.ipcrfDemographicProfile.rating_period
+      this.show = false
+      this.edit = true
+    },
+   
+    back(){
+      this.show=false
+      this.showTable=true
+    },
+  
 
     finalizePart1: async function (){
+      const user = JSON.parse(sessionStorage.user_session).id;
+      const role = JSON.parse(sessionStorage.user_session).role;
       const empName = this.empName
       const empRater = this.empRater
       const empRegion = this.empRegion
@@ -9963,8 +10751,9 @@ computedDateFormattedCot1DateObserved() {
 
       const part1ApprovingAuthority = this.part1ApprovingAuthority
       const approvingAuthPosition = this.approvingAuthPosition
-
       const data ={
+        user, 
+        role,
           empName,
       empRater,
       empRegion,
@@ -9989,7 +10778,7 @@ computedDateFormattedCot1DateObserved() {
       empSubjectTaught,
       empSpecialization,
       empCurricularClassification,
-      schoolYear,
+      empSchoolYear,
 
 //part 2 fields to be filled out by admin
       cot1SubjectsTaught,
@@ -10093,6 +10882,15 @@ computedDateFormattedCot1DateObserved() {
       part1ApprovingAuthority,
       approvingAuthPosition,
       }
+      if(this.create == true){
+        const returnedData = await this.$store.dispatch("createIpcrfPart1", data)
+        console.log(returnedData)
+      }else{
+        const returnedData = await this.$store.dispatch("updateIpcrfPart1", data)
+        console.log(returnedData)
+      }
+      
+      
     },
 
     finalizePart2: async function (){
@@ -10130,7 +10928,7 @@ computedDateFormattedCot1DateObserved() {
    
      const data ={ 
        user,
-           selfManagement1,
+      selfManagement1,
       selfManagement2,
       selfManagement3,
       selfManagement4,
@@ -10166,180 +10964,53 @@ computedDateFormattedCot1DateObserved() {
     const returnedData = await this.$store.dispatch('createIpcrfPart2', data);
     console.log(returnedData)
     },
+
     finalizePart4: async function (){
-      
-
-      const timeline1 = this.timeline1;
-      const timeline2 = this.timeline2;
-      const timeline3 = this.timeline3;
-      const timeline4 = this.timeline4;
-      const timeline5 = this.timeline5;
-      const timeline6 = this.timeline6;
-      const timeline7 = this.timeline7;
-      const timeline8 = this.timeline8;
-      const timeline9 = this.timeline9;
-      const timeline10 = this.timeline10;
-      const timeline11 = this.timeline11;
-      const timeline12 = this.timeline12;
-
-      const kra_1 = this.kra_1;
-      const kra_2 = this.kra_2;
-      const kra_3 = this.kra_3;
-      const kra_4 = this.kra_4;
-      const kra_5 = this.kra_5;
-
-      const actual1 = this.actual1;
-      const actual1_blank = this.actual1_blank;
-      const actual2 = this.actual2;
-      const actual2_blank = this.actual2_blank;
-      const actual3 = this.actual3;
-      const actual3_blank = this.actual3_blank;
-      const actual4 = this.actual4;
-      const actual4_blank = this.actual4_blank;
-      const actual5 = this.actual5;
-      const actual5_blank = this.actual5_blank;
-      const actual6 = this.actual6;
-      const actual6_blank = this.actual6_blank;
-      const actual6_timeliness = this.actual6_timeliness;
-      const actual7 = this.actual7;
-      const actual7_blank = this.actual7_blank;
-      const actual8 = this.actual8;
-      const actual9 = this.actual9;
-      const actual9_efficiency = this.actual9_efficiency;
-      const actual9_blank = this.actual9_blank;
-      const actual10 = this.actual10;
-      const actual10_efficiency = this.actual10_efficiency;
-      const actual10_blank = this.actual10_blank;
-      const actual11 = this.actual11;
-      const actual11_efficiency = this.actual11_efficiency;
-      const actual11_blank = this.actual11_blank;
-
-
-      const part3Kra1 = this.part3Kra1;
-      const part3Kra2 = this.part3Kra2;
-      const part3Kra3 = this.part3Kra3;
-      const part3Kra4 = this.part3Kra4;
-      const part3Kra5 = this.part3Kra5;
-      const part3Kra_5 = this.part3Kra_5;
-
-      const part3Encoding_7 = this.part3Encoding_7;
-      const part3Encoding_8 = this.part3Encoding_8;
-      const part3Encoding_9 = this.part3Encoding_9;
-      const part3Encoding_10 = this.part3Encoding_10;
-      const part3Encoding_11 = this.part3Encoding_11;
-      const part3Encoding_12 = this.part3Encoding_12;
-
-      const part3Encoding_AdjectivalRating1 = this.part3Encoding_AdjectivalRating1;
-      const part3Encoding_AdjectivalRating2 = this.part3Encoding_AdjectivalRating2;
-      const part3Encoding_AdjectivalRating3 = this.part3Encoding_AdjectivalRating3;
-      const part3Encoding_AdjectivalRating4 = this.part3Encoding_AdjectivalRating4;
-      const part3Encoding_AdjectivalRating5 = this.part3Encoding_AdjectivalRating5;
-      const part3Encoding_AdjectivalRating6 = this.part3Encoding_AdjectivalRating6;
-      const part3Encoding_AdjectivalRating7 = this.part3Encoding_AdjectivalRating7;
-      const part3Encoding_AdjectivalRating8 = this.part3Encoding_AdjectivalRating8;
-      const part3Encoding_AdjectivalRating9 = this.part3Encoding_AdjectivalRating9;
-      const part3Encoding_AdjectivalRating10 = this.part3Encoding_AdjectivalRating10;
-      const part3Encoding_AdjectivalRating11 = this.part3Encoding_AdjectivalRating11;
-      const part3Encoding_AdjectivalRating12 = this.part3Encoding_AdjectivalRating12;
-
-      const part3EmpAdjRating1 = this.part3EmpAdjRating1;
-      const part3EmpAdjRating2 = this.part3EmpAdjRating2;
-      const part3EmpFinalRating = this.part3EmpFinalRating;
-      const part3EmpAdjRating = this.part3EmpAdjRating;
+        const user = JSON.parse(sessionStorage.user_session).id;
+      const role = JSON.parse(sessionStorage.user_session).role;
+      const strengthsFunctional = this.strengthsFunctional
+      const developmentNeedsFunctional = this.developmentNeedsFunctional
+      const learningObjectivesFunctional = this.learningObjectivesFunctional
+      const interventionFunctional = this.interventionFunctional
+      const timelineFunctional = this.timelineFunctional
+      const resourcesNeededFunctional = this.resourcesNeededFunctional
+      const strengthsCore = this.strengthsCore
+      const developmentCore = this.developmentCore
+      const learningObjectivesCore = this.learningObjectivesCore
+      const interventionCore = this.interventionCore
+      const timelineCore = this.timelineCore
+      const resourcesNeededCore = this.resourcesNeededCore
+      const feedback = this.feedback
+      const rateePart4 = this.rateePart4
+      const raterPart4 = this.raterPart4
+      const approvingAuthorityPart4 = this.approvingAuthorityPart4
+      const empRatingPeriod = this.empRatingPeriod
 
     const data = {
-     
-      timeline1,
-      timeline2,
-      timeline3,
-      timeline4,
-      timeline5,
-      timeline6,
-      timeline7,
-      timeline8,
-      timeline9,
-      timeline10,
-      timeline11,
-      timeline12,
-
-      kra_1,
-      kra_2,
-      kra_3,
-      kra_4,
-      kra_5,
-
-      actual1,
-      actual1_blank,
-      actual2,
-      actual2_blank,
-      actual3,
-      actual3_blank,
-      actual4,
-      actual4_blank,
-      actual5,
-      actual5_blank,
-      actual6,
-      actual6_blank,
-      actual6_timeliness,
-      actual7,
-      actual7_blank,
-      actual8,
-      actual9,
-      actual9_blank,
-      actual9_efficiency,
-      actual10,
-      actual10_blank,
-      actual10_efficiency,
-      actual11,
-      actual11_blank,
-      actual11_efficiency,
-
-      part3Kra1,
-      part3Kra2,
-      part3Kra3,
-      part3Kra4,
-      part3Kra5,
-      part3Kra_5,
-
-      part3Encoding_7,
-      part3Encoding_8,
-      part3Encoding_9,
-      part3Encoding_10,
-      part3Encoding_11,
-      part3Encoding_12,
-
-      part3Encoding_AdjectivalRating1,
-      part3Encoding_AdjectivalRating2,
-      part3Encoding_AdjectivalRating3,
-      part3Encoding_AdjectivalRating4,
-      part3Encoding_AdjectivalRating5,
-      part3Encoding_AdjectivalRating6,
-      part3Encoding_AdjectivalRating7,
-      part3Encoding_AdjectivalRating8,
-      part3Encoding_AdjectivalRating9,
-      part3Encoding_AdjectivalRating10,
-      part3Encoding_AdjectivalRating11,
-      part3Encoding_AdjectivalRating12,
-
-      part3EmpAdjRating1,
-      part3EmpAdjRating2,
-      part3EmpFinalRating,
-      part3EmpAdjRating,
-
-
-
-
-
-      
+      user,
+      role,
+      empRatingPeriod,
+      strengthsFunctional,
+      developmentNeedsFunctional,
+      learningObjectivesFunctional,
+      interventionFunctional,
+      timelineFunctional,
+      resourcesNeededFunctional,
+      strengthsCore,
+      developmentCore,
+      learningObjectivesCore,
+      interventionCore,
+      timelineCore,
+      resourcesNeededCore,
+      feedback,
+      rateePart4,
+      raterPart4,
+      approvingAuthorityPart4, 
     
     }
   console.log(data)
-    // const returnedIpcrfData = await this.$store.dispatch("createIpcrf", data);
-
-    // console.log(returnedIpcrfData);
-    // if (returnedIpcrfData == "success") {
-    //   console.log("success");
-    // }
+    const returnedIpcrfData = await this.$store.dispatch("createIpcrfPart4", data);
+    console.log(returnedIpcrfData)
     }
   }
 };

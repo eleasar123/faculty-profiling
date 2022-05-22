@@ -15,6 +15,7 @@ const actions = {
     retrieveIpcrfInfo({ commit }) {
         return axios.get(`ipcrf/`).then((result) => {
             commit('setIpcrfInfos', JSON.stringify(result.data));
+            commit;
             return result;
         }).catch((err) => {
             return err.response;
@@ -31,12 +32,23 @@ const actions = {
         });
     },
 
-    createIpcrfPart1({ dispatch }, data) {
+    retrieveIpcrfInfoBySchoolYear({  commit }, data) {
+      return axios.post('ipcrf/getBySchoolYear', data).then((result) => {
+
+          commit('setIpcrfInfos', JSON.stringify(result.data));
+          return result;
+      }).catch((err) => {
+          return err.response;
+      });
+  },
+
+    createIpcrfPart1({ dispatch,commit }, data) {
         return axios
           .post("ipcrf/createPart1", data)
           .then(async (result) => {
             try {
               await dispatch("retrieveIpcrfInfo");
+              commit;
               return result;
             } catch (error) {
               return error;
@@ -47,12 +59,13 @@ const actions = {
           });
       },
 
-      createIpcrfPart2({ dispatch }, data) {
+      createIpcrfPart2({ dispatch,commit }, data) {
         return axios
           .post("ipcrf/createPart2", data)
           .then(async (result) => {
             try {
               await dispatch("retrieveIpcrfInfo");
+              commit;
               return result;
             } catch (error) {
               return error;
@@ -62,12 +75,13 @@ const actions = {
             return err.response;
           });
       },
-      createIpcrfPart4({ dispatch }, data) {
+      createIpcrfPart4({ dispatch,commit }, data) {
         return axios
           .post("ipcrf/createPart4", data)
           .then(async (result) => {
             try {
               await dispatch("retrieveIpcrfInfo");
+              commit;
               return result;
             } catch (error) {
               return error;
@@ -78,17 +92,44 @@ const actions = {
           });
       },
 
-    updateIPcrfInfo({state}, props) {
+    updateIPcrfPart1({state,commit}, props) {
         return axios
-            .post(`ipcrf/edit/${props.ID}`, props)
+            .post('ipcrf/updatePart1', props)
             .then((result) => {
               state.ipcrfInfos[props.index] = props.editedData;
+              commit;
               return result;
             })
             .catch((err) => {
               return err.response;
             });
     },
+
+    updateIPcrfPart2({state,commit}, props) {
+      return axios
+          .post('ipcrf/updatePart2', props)
+          .then((result) => {
+            state.ipcrfInfos[props.index] = props.editedData;
+            commit;
+            return result;
+          })
+          .catch((err) => {
+            return err.response;
+          });
+  },
+
+  updateIPcrfPart4({state,commit}, props) {
+    return axios
+        .post('ipcrf/updatePart4', props)
+        .then((result) => {
+          state.ipcrfInfos[props.index] = props.editedData;
+          commit;
+          return result;
+        })
+        .catch((err) => {
+          return err.response;
+        });
+},
 
     deleteIpcrfInfo({ state }, props) {
         const index = state.ipcrfInfos.indexOf(props.item);
