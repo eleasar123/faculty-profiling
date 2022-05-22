@@ -41,10 +41,16 @@ class LoginController extends Controller
                 }
             }
             $response = collect([['message' => $message]]);
+            if($message == "Credentials matched!"){
+                $token = $userDetails -> createToken('loginAccess');
+                $response-> push([['token' => $token->plainTextToken]]);
+            }else{
+                $token = "";
+                $response-> push([['token' => $token]]);
+            }
             
-            $token = $userDetails -> createToken('loginAccess');
             $response -> push([['account' => $userDetails]]);
-            $response-> push([['token' => $token->plainTextToken]]);
+            
             return $response;
         
 

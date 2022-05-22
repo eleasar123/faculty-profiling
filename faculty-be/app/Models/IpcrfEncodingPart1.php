@@ -21,6 +21,7 @@ class IpcrfEncodingPart1 extends Model
 
         'user_id',
         'subject_cot1',
+        'subject_cot2',
         'objective_no',
         'cot_indicator_no',
         'rating_cot1',
@@ -37,7 +38,8 @@ class IpcrfEncodingPart1 extends Model
         'ipcrf_numerical_ratings_score',
         'ipcrf_numerical_ratings_adjectival_rating',
         'school_year',
-        'date_observed',
+        'date_observed_cot1',
+        'date_observed_cot2',
         'final_rating',
         'adjectival_rating',
         'approving_authority',

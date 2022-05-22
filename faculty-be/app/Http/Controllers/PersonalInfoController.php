@@ -127,13 +127,11 @@ class PersonalInfoController extends Controller
         $pds->push([['workExperience' => WorkExperience::all()]]);
         $pds->push([['voluntaryWorkInvolvement' => VoluntaryWorkInvolvement::all()]]);
         $pds->push([['learningAndDevelopment' => learningAndDevelopment::all()]]);
-        $pds->push([['otherInfoSpecialSkills' => OtherInfoSpecialSkills::all()]]);
-        $pds->push([['otherInfoNonacademicDistinctions' => OtherInfoNonacademicDistinctions::all()]]);
-        $pds->push([['otherInfoAssociationMembers' => OtherInfoAssociationMembers::all()]]);
+        $pds->push([['otherInfo' => OtherInfo::all()]]);
         $pds->push([['references' => References::all()]]);
         $pds->push([['pdsQuestions' => PdsQuestions::all()]]);
         $pds->push([['pdsAdditionalInfo' => PdsAdditionalInfo::all()]]);
-        $pds->push([['children' => Children::all()]]);
+
         return $pds;
         // return [
         //   'id' => $id,
@@ -163,7 +161,7 @@ class PersonalInfoController extends Controller
 
     public function getImage($id)
     {
-
+       
         $imageNameEducBackground = DB::table('personal_data_sheet_personal_information')->where('user_id', $id)->value('educational_signature');
         $imageNameworkExp = DB::table('personal_data_sheet_personal_information')->where('user_id', $id)->value('work_experience_signature');
         $imageNameOtherInfo = DB::table('personal_data_sheet_personal_information')->where('user_id', $id)->value('other_info_signature');
@@ -172,13 +170,13 @@ class PersonalInfoController extends Controller
         $imageNameRightThumbMark = DB::table('pds_additional_infos')->where('user_id', $id)->value('right_thumbmark');
         $imageNamePersonAdministeringOath = DB::table('pds_additional_infos')->where('user_id', $id)->value('person_administering_oath');
 
-
+       
 
         return [
             'educationalBackgroundSignature' => asset('storage/signatures/educational-background/' . $imageNameEducBackground),
             'workExperienceSignature' => asset('storage/signatures/work-experience/' . $imageNameworkExp),
             'otherInfoSignature' => asset('storage/signatures/other-info/' . $imageNameOtherInfo),
-            'personalPhoto' => asset('storage/profiles/' . $imageNamePersonalPhoto),
+            'personalPhoto' => asset('storage/profiles/personal-photo/' . $imageNamePersonalPhoto),
             'oathSignature' => asset('storage/signatures/oath-signature/' . $imageNameOathSignature),
             'rightThumbMark' => asset('storage/signatures/right-thumbmark/' . $imageNameRightThumbMark),
             'personAdministeringOath' => asset('storage/signatures/person-administering-oath/' . $imageNamePersonAdministeringOath),
@@ -710,6 +708,7 @@ class PersonalInfoController extends Controller
                 'mother_middle_name'      => $request->familyMotherMiddleName,
                 'mother_date_of_birth'    => $request->dateOfBirthMother,
             ]);
+                DB::table('personal_data_sheet_educational_backgrounds')->where('user_id', $request->user)->delete();
 
         foreach ($request->educationalBackground as $educBackground) {
             // return $educBackground['educBackgroundLevel'];
@@ -725,10 +724,9 @@ class PersonalInfoController extends Controller
                 'academic_honors_received'   => $educBackground['educBackgroundScholarship'],
             ]);
             try {
-                $deleted = DB::table('personal_data_sheet_educational_backgrounds')->where('user_id', $request->user)->delete();
-                if ($deleted > 0) {
+               
                     $educationalBackground->save();
-                }
+                
             } catch (Throwable $e) {
                 return $e;
             }
@@ -747,6 +745,7 @@ class PersonalInfoController extends Controller
         //  }
 
         // }
+        DB::table('civil_service_eligibilities')->where('user_id', $request->user)->delete();
 
         foreach ($request->civilServiceEligibility as $civilServ) {
             $civilServiceEligibility = new CivilServiceEligibility([
@@ -759,15 +758,15 @@ class PersonalInfoController extends Controller
                 'license_date_of_validity' => $civilServ['dateOfValidity'],
             ]);
             try {
-                $deleted = DB::table('civil_service_eligibilities')->where('user_id', $request->user)->delete();
-                if ($deleted > 0) {
+               
+               
                     $civilServiceEligibility->save();
-                }
+               
             } catch (Throwable $e) {
                 return $e;
             }
         }
-
+        DB::table('work_experiences')->where('user_id', $request->user)->delete();
         foreach ($request->workExperience as $workExp) {
             $workExperience = new WorkExperience([
                 'user_id'                   => $request->user,
@@ -781,15 +780,14 @@ class PersonalInfoController extends Controller
                 'government_service'        => $workExp['governmentServiceWorkExperience'],
             ]);
             try {
-                $deleted = DB::table('work_experiences')->where('user_id', $request->user)->delete();
-                if ($deleted > 0) {
-                    $workExperience->save();
-                }
+               
+                $workExperience->save();
+                
             } catch (Throwable $e) {
                 return $e;
             }
         }
-
+        DB::table('voluntary_work_involvements')->where('user_id', $request->user)->delete();
         foreach ($request->voluntaryWorkInvolvement as $volWork) {
             $voluntaryWorkInvolvement = new VoluntaryWorkInvolvement([
                 'user_id'                        => $request->user,
@@ -800,15 +798,14 @@ class PersonalInfoController extends Controller
                 'position'                       => $volWork['positionOfWorkVolWork'],
             ]);
             try {
-                $deleted = DB::table('voluntary_work_involvements')->where('user_id', $request->user)->delete();
-                if ($deleted > 0) {
+             
                     $voluntaryWorkInvolvement->save();
-                }
+               
             } catch (Throwable $e) {
                 return $e;
             }
         }
-
+       DB::table('learning_and_developments')->where('user_id', $request->user)->delete();
         foreach ($request->learningAndDevelopment as $learnAndDev) {
             $learningAndDevelopment = new LearningAndDevelopment([
                 'user_id'                                => $request->user,
@@ -820,15 +817,14 @@ class PersonalInfoController extends Controller
                 'conducted_by'                           => $learnAndDev['learningAndDevelopmentConductedBy'],
             ]);
             try {
-                $deleted = DB::table('learning_and_developments')->where('user_id', $request->user)->delete();
-                if ($deleted > 0) {
+ 
                     $learningAndDevelopment->save();
-                }
+              
             } catch (Throwable $e) {
                 return $e;
             }
         }
-
+        DB::table('other_info')->where('user_id', $request->user)->delete();
         foreach ($request->otherInfo as $otherInfo) {
             $otherInfo = new OtherInfo([
                 'user_id'                    => $request->user,
@@ -837,7 +833,7 @@ class PersonalInfoController extends Controller
                 'association_members' => $otherInfo['otherInfoAssociationMembers'],
             ]);
             try {
-                DB::table('other_info')->where('user_id', $request->user)->delete();
+                
                 $otherInfo->save();
             } catch (Throwable $e) {
                 return $e;

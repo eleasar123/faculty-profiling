@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('user_id');
             $table->string('name_of_employee');
             $table->string('position');
+            $table->string('employee_id');
             $table->string('employment_status');
             $table->string('age');
             $table->string('sex');
@@ -34,7 +35,7 @@ return new class extends Migration
             $table->string('area_of_specialization');
             $table->string('region');
             $table->string('division');
-            $table->string('district/municipality');
+            $table->string('district_municipality');
             $table->string('school_id');
             $table->string('school_name');
             $table->string('school_type');

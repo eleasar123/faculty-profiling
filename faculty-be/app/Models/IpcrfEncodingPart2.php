@@ -25,6 +25,7 @@ class IpcrfEncodingPart2 extends Model
         'service_orientation',
         'results_focus',
         'innovation',
+        'school_year',
     ];
 
     public function user()

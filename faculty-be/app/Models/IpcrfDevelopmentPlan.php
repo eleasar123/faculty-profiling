@@ -19,16 +19,23 @@ class IpcrfDevelopmentPlan extends Model
      */
     protected $fillable = [
         'user_id',
-        'ratee',
-        'competency_type',
-        'rater',
-        'strengths',
-        'development_needs',
-        'learning_objectives',
-        'intervention',
-        'timeline',
-        'resources_needed',
-        'approving_authority',
+            'school_year' ,
+            'ratee',
+            'rater' ,
+            'strengths_functional' ,
+            'strengths_core',
+            'development_needs_functional',
+            'development_needs_core' ,
+            'learning_objectives_functional',
+            'learning_objectives_core',
+            'intervention_functional',
+            'intervention_core',
+            'timeline_functional',
+            'timeline_core',
+            'feedback',
+            'resources_needed_functional',
+            'resources_needed_core',
+            'approving_authority'
     ];
 
     public function user()

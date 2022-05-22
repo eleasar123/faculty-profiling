@@ -18,6 +18,7 @@ return new class extends Migration
             $table->increments('id');
             $table->string('user_id');
             $table->string('subject_cot1');
+            $table->string('subject_cot2');
             $table->string('objective_no')-> nullable();
             $table->string('cot_indicator_no')-> nullable();
             $table->string('rating_cot1')-> nullable();
@@ -34,11 +35,12 @@ return new class extends Migration
             $table->string('ipcrf_numerical_ratings_score')-> nullable();
             $table->string('ipcrf_numerical_ratings_adjectival_rating')-> nullable();
             $table->string('school_year');
-            $table->string('date_observed');
-            $table->string('final_rating');
-            $table->string('adjectival_rating');
-            $table->string('approving_authority');
-            $table->string('approver_position');
+            $table->string('date_observed_cot1')->nullable();
+            $table->string('date_observed_cot2')->nullable();
+            $table->string('final_rating')->nullable();
+            $table->string('adjectival_rating')->nullable();
+            $table->string('approving_authority')->nullable();
+            $table->string('approver_position')->nullable();
             $table->timestamp('created_at') ->useCurrent();
             $table->timestamp('updated_at') -> nullable() -> useCurrentOnUpdate();
             $table->softDeletesTz();
@@ -53,6 +55,6 @@ return new class extends Migration
     public function down()
     {
         //
-        Schema::dropIfExists('ipcrf_encoding_part1');
+        Schema::dropIfExists('ipcrf_encoding_part1s');
     }
 };
