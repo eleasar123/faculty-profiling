@@ -21,8 +21,8 @@ const actions = {
         });
     },
 
-    retrieveIpcrfInfoById({ state, commit }) {
-        return axios.get(`ipcrf/${JSON.parse(state.ipcrfInfos).ID}`).then((result) => {
+    retrieveIpcrfInfoById({  commit }, id,) {
+        return axios.get(`ipcrf/${id}`).then((result) => {
 
             commit('setIpcrfInfos', JSON.stringify(result.data));
             return result;
@@ -31,12 +31,43 @@ const actions = {
         });
     },
 
-    createIpcrf({ dispatch }, data) {
+    createIpcrfPart1({ dispatch }, data) {
         return axios
-          .post("ipcrf/create", data)
+          .post("ipcrf/createPart1", data)
           .then(async (result) => {
             try {
-              await dispatch("retrieveIpcrfInfos");
+              await dispatch("retrieveIpcrfInfo");
+              return result;
+            } catch (error) {
+              return error;
+            }
+          })
+          .catch((err) => {
+            return err.response;
+          });
+      },
+
+      createIpcrfPart2({ dispatch }, data) {
+        return axios
+          .post("ipcrf/createPart2", data)
+          .then(async (result) => {
+            try {
+              await dispatch("retrieveIpcrfInfo");
+              return result;
+            } catch (error) {
+              return error;
+            }
+          })
+          .catch((err) => {
+            return err.response;
+          });
+      },
+      createIpcrfPart4({ dispatch }, data) {
+        return axios
+          .post("ipcrf/createPart4", data)
+          .then(async (result) => {
+            try {
+              await dispatch("retrieveIpcrfInfo");
               return result;
             } catch (error) {
               return error;

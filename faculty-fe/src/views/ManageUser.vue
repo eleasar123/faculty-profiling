@@ -1,67 +1,61 @@
 <template>
   <v-container>
-   <v-container >
-      <v-layout row wrap>
-         <v-flex
-        sm6
-        xs12
-        md6
-        lg3
-      >
-       <v-card class="ma-3"  >
-          <v-list-item  >
+    <br> <br>
+   <v-container style="margin-left:30%">
+     <!-- For count Faculty admin card -->
+   
+    
+      <v-layout row wrap  >
+          <div class="card card-purple-blue text-white mb-3 mb-md-0" >
+        <div class="card-body d-flex justify-content-between align-items-end" >
+          <v-list-item   class="justify-center">
             <v-list-item-avatar
               tile
               class="mt-n7"
             >
-            <v-sheet color="green" width="80" height="80" elevation="10">
-                  <v-icon dark large>store</v-icon>
-            </v-sheet>
-            </v-list-item-avatar>
-            <v-list-item-content>
-              <div class="overline text-right">Faculty Admin</div>
-              <v-list-item-title class="headline mb-1 text-center" >{{countAdmin}}</v-list-item-title>
-              <div><v-divider></v-divider></div>
-            </v-list-item-content> 
-          </v-list-item>
-   
-         </v-card>
+           
+                  <v-icon dark large>person</v-icon>
          
-      </v-flex>
-        <v-flex
-        sm6
-        xs12
-        md6
-        lg3
-      >
-       <v-card class="ma-3 justify-center">
-          <v-list-item  >
+            </v-list-item-avatar>
+            <v-list-item-content>
+              <div class="overline text-center white--text " >  Faculty Admin</div>
+              <v-list-item-title class="headline mb-1 text-center  white--text" >{{countAdmin}}</v-list-item-title>
+              <div></div>
+            </v-list-item-content> 
+          </v-list-item>
+        </div>
+      </div>
+      
+       <div class="card card-blue-green text-white">
+        <div class="card-body d-flex justify-content-between align-items-end">
+         <v-list-item   class="justify-center">
             <v-list-item-avatar
               tile
               class="mt-n7"
             >
-            <v-sheet color="green" width="80" height="80" elevation="10">
+            
                   <v-icon dark large>store</v-icon>
-            </v-sheet>
+         
             </v-list-item-avatar>
             <v-list-item-content>
-              <div class="overline text-right">Faculty Teacher</div>
-              <v-list-item-title class="headline mb-1 text-center" >{{countTeachers}}</v-list-item-title>
-              <div><v-divider></v-divider></div>
+              <div class="overline text-center  white--text">Faculty Teacher</div>
+              <v-list-item-title class="headline mb-1 text-center  white--text" >{{countTeachers}}</v-list-item-title>
+              <div></div>
             </v-list-item-content> 
           </v-list-item>
-   
-         </v-card>
-      </v-flex>
+        </div>
+      </div>
+    
     
       </v-layout>
+      <br><br>
     
 </v-container >
 <v-card>
     <v-card-title>
       Manage Users
       
-      <v-btn class="ml-5" @click="createItem">Create</v-btn>
+      <v-btn class=" ml-5 card-purple-pink white--text pa-2" style="border-radius:20px; "  @click="createItem">Create</v-btn>
       <v-spacer></v-spacer>
       <v-text-field
         v-model="search"
@@ -78,10 +72,11 @@
       :loading ="loading"
     >
     <template v-slot:[`item.actions`]="{ item }">
-            <v-btn small class="mr-2 primary" @click="editItem(item)">
+      
+            <v-btn small class="mr-2 card-purple-blue  white--text" style="border-radius:20px;width:80px" @click="editItem(item)">
               Edit
             </v-btn>
-            <v-btn small class="mr-2 btn error" @click="deleteItem(item)">
+            <v-btn small class="mr-2 btn card-salmon-pink  white--text" style="border-radius:20px" @click="deleteItem(item)">
               Delete
             </v-btn>
           </template>
@@ -105,8 +100,8 @@
         </v-btn> -->
       </template>
       <v-card>
-        <v-card-title>
-          <span class="text-h5">User</span>
+        <v-card-title class=justify-center>
+          <span class="text-h5 ml-8 ">Edit User Info</span>
         </v-card-title>
         <v-card-text>
           <v-container>
@@ -186,17 +181,17 @@
           </v-container>
           <small><span style="color: red">*&nbsp;</span>indicates required field</small>
         </v-card-text>
-        <v-card-actions>
+        <v-card-actions >
           <v-spacer></v-spacer>
           <v-btn
-            color="blue darken-1"
+           class="card-purple-blue white--text"
             text
             @click="close"
           >
             Close
           </v-btn>
           <v-btn
-            color="blue darken-1"
+          class="card-purple-pink"
             text
             @click="save"
           >
@@ -245,7 +240,34 @@
   </v-row>
   </v-container>
 </template>
-
+<style scoped>
+body{
+  background:#F5F5F5 ;
+}
+.card-purple-blue {
+  background: linear-gradient(45deg, #6d80fe 0%, #23d2fd 100%);
+  box-shadow: 0 5px 20px rgba(35, 210, 253, 0.3);
+}
+.card-blue-green {
+  margin-left: 30px;
+  background: linear-gradient(45deg, #09afe8 0%, #29f499 100%);
+  box-shadow: 0 5px 20px rgba(41, 244, 153, 0.3);
+}
+.card-salmon-pink {
+  background: linear-gradient(45deg, #ff998b 0%, #ff6d88 100%);
+  box-shadow: 0 5px 20px rgba(255, 153, 139, 0.3);
+}
+.card-purple-pink {
+  background: linear-gradient(45deg, #707cff 0%, #fa81e8 100%);
+  box-shadow: 0 5px 20px rgba(250, 129, 232, 0.3);
+}
+.card {
+  border: 0;
+  border-radius: 10px;
+  width:25%;
+ 
+}
+</style>
 <script>
   export default {
     data: () => ({
@@ -300,7 +322,8 @@
         this.loading =true
         const role = JSON.parse(sessionStorage.user_session).role
         console.log(role)
-     
+          this.countTeachers = 0
+          this.countAdmin = 0
           let userData = await this.$store.dispatch('retrieveUserProfile') 
           console.log(userData)
           if(userData){

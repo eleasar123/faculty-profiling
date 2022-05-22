@@ -21,9 +21,9 @@
 }
 
 
-/* #disclose {
+ #disclose {
     font-weight: bolder;
-} */
+} 
 
 #cardEsat {
     background-color: #e491a3;
@@ -127,4 +127,37 @@ td {
 
 .objNo {
     width: 1%;
+}
+
+
+#noDataTxt {
+    font-size: 20px;
+}
+
+#alert {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+#alert1 {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+#alertMsg {
+    margin-top: 100%;
+}
+
+#checkRequired {
+    color: red;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    font-size: 20px;
+
 }

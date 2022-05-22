@@ -11,7 +11,7 @@ import user from "./modules/users"
 Vue.use(Vuex);
 
 const AUTH_TOKEN = sessionStorage.getItem('user_token')
-axios.defaults.baseURL = "http://localhost:8000/api";
+axios.defaults.baseURL = "http://localhost:8000/api/";
 axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
 axios.defaults.headers.common["Content-Type"] = "application/json";
 
@@ -147,12 +147,14 @@ export default new Vuex.Store({
                 });
         },
 
-        getImageUrl() {
+        getImageUrl({commit}, id) {
+            console.log(id)
             console.log(JSON.parse(sessionStorage.getItem("user_session")).id)
             return axios
-                .get("pds/getImage/" + JSON.parse(sessionStorage.getItem("user_session")).id)
+                .get("pds/getImage/" + id)
                 .then((res) => {
                     console.log(res)
+                    commit;
                     return res;
 
                 })
