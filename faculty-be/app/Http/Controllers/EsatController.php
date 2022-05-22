@@ -22,13 +22,14 @@ class EsatController extends Controller
         return $esat;
     }
 
-    public function getEsat($id)
+    public function getEsat($id,Request $request)
     {
 
         $esat = collect();
-        $esat->push([['esatDemographicProfile' => EsatDemographicProfile::where('user_id', $id)->get()]]);
-        $esat->push([['esatCoreBehavioralCompetencies' => EsatCoreBehavioralCompetencies::where('user_id', $id)->get()]]);
-        $esat->push([['esatFunctionalObjectives' => EsatFunctionalObjectives::where('user_id', $id)->get()]]);
+        $esat->push([['esatDemographicProfile' =>  DB::table('esat_demographic_profiles')->where('user_id', $id)->orderBy('user_id', 'asc')->orderBy('school_year', 'asc')->get()]]);
+        // $esat->push([['esatDemographicProfile' => EsatDemographicProfile::where('user_id', $id && 'school_year', $request->schoolYear)->get()]]);
+        $esat->push([['esatCoreBehavioralCompetencies' =>  DB::table('esat_core_behavioral_competencies')->where('user_id', $id) ->orderBy('user_id', 'asc') ->orderBy('school_year', 'asc')->get()]]);
+        $esat->push([['esatFunctionalObjectives' => DB::table('esat_functional_objectives')->where('user_id', $id) ->orderBy('user_id', 'asc') ->orderBy('school_year', 'asc')->get()]]);
         return $esat;
     }
 
@@ -109,6 +110,7 @@ class EsatController extends Controller
         foreach ($request->coreBehavioralCompetencies as $coreBehavioral) {
             $esatCoreBehavioralCompetencies = new EsatCoreBehavioralCompetencies([
                 'user_id' => $request->userId,
+                'school_year' => $request->schoolYear,
                 'objectives_no' => $coreBehavioral['objectiveNo'],
                 'check_status' => $coreBehavioral['value'],
             ]);
@@ -122,6 +124,7 @@ class EsatController extends Controller
         foreach ($request->functionalObjectives as $funcObj) {
             $esatFunctionalObjectives = new EsatFunctionalObjectives([
                 'user_id' => $request->userId,
+                'school_year' => $request->schoolYear,
                 'objectives_no' => $funcObj['objectiveNo'],
                 'level_of_capability' => $funcObj['capability'],
                 'priority_for_development' => $funcObj['priority'],
@@ -142,14 +145,8 @@ class EsatController extends Controller
     }
 
     public function editEsat(Request $request)
-<<<<<<< HEAD
     {
         // return $request;
-=======
-   
-    {
-        return $request;
->>>>>>> c9d85aea941534d3f58e8869d7a03d001e03c83e
         $request->validate([
             //demographic profile
             'userId' => 'required',
@@ -178,9 +175,10 @@ class EsatController extends Controller
             'specifyAreaofSpecialization' => 'required',
             'specifySubjectsTaught' => 'required',
         ]);
-
-        $esatDemographicProfile = DB::table('esat_demographic_profiles')->where('user_id', $request->userId)->update([
-            'user_id' => $request->userId,
+            // DB::table('esat_demographic_profiles')->where('user_id', $request->userId && 'school_year', $request->schoolYear)->delete();
+        $esatDemographicProfile = DB::table('esat_demographic_profiles')->where('id', $request->rowId)->update([
+            // $esatDemographicProfile = new EsatDemographicProfile([
+            // 'user_id' => $request->userId,
             'name_of_employee' => $request->employeeName,
             'employee_id' => $request->employeeId,
             'position' => $request->position,
@@ -208,10 +206,16 @@ class EsatController extends Controller
             'personal_comments' => $request->personalComments,
 
         ]);
-        DB::table('esat_core_behavioral_competencies')->where('user_id', $request->userId)->delete();
+        // DB::table('esat_core_behavioral_competencies')->where('user_id', $request->userId && 'school_year', $request->schoolYear)->delete();
+        // DB::delete('delete id where id = ?', [$request->id]);
+        foreach ($request->coreBehavioralCompetenciesID as $coreID) {
+            DB::table('esat_core_behavioral_competencies')->where('id', $coreID)->delete();
+        }
         foreach ($request->coreBehavioralCompetencies as $coreBehavioral) {
+
             $esatCoreBehavioralCompetencies = new EsatCoreBehavioralCompetencies([
                 'user_id'       => $request->userId,
+                'school_year' => $coreBehavioral['school_year'],
                 'objectives_no' => $coreBehavioral['objectiveNo'],
                 'check_status'  => $coreBehavioral['value'],
 
@@ -225,10 +229,15 @@ class EsatController extends Controller
             }
         }
 
-        DB::table('esat_functional_objectives')->where('user_id', $request->userId)->delete();
+        // DB::table('esat_functional_objectives')->where('user_id', $request->userId && 'school_year', $request->schoolYear)->delete();
+        foreach ($request->funcObjectivesID as $funcID) {
+            DB::table('esat_functional_objectives')->where('id', $funcID)->delete();
+        }
         foreach ($request->functionalObjectives as $funcObj) {
+
             $esatFunctionalObjectives = new EsatFunctionalObjectives([
                 'user_id' => $request->userId,
+                'school_year' => $funcObj['school_year'],
                 'objectives_no' => $funcObj['objectiveNo'],
                 'level_of_capability' => $funcObj['capability'],
                 'priority_for_development' => $funcObj['priority'],
@@ -242,7 +251,7 @@ class EsatController extends Controller
 
         try {
             if ($esatDemographicProfile > 0) {
-                return "success";
+                return $request;
             }
             // return "success";
             // return $esatDemographicProfile;

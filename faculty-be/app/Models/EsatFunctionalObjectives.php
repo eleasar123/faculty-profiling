@@ -19,6 +19,7 @@ class EsatFunctionalObjectives extends Model
      */
     protected $fillable = [
         'user_id',
+        'school_year',
         'objectives_no',
         'level_of_capability',
         'priority_for_development',

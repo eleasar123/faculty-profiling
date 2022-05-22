@@ -17,6 +17,7 @@ return new class extends Migration
         Schema::create('esat_core_behavioral_competencies', function (Blueprint $table){
             $table->increments('id');
             $table->string('user_id');
+            $table->string('school_year');
             $table->string('objectives_no');
             $table->string('check_status')->nullable();
             $table->timestamp('created_at') ->useCurrent();
