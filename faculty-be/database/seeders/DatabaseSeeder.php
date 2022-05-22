@@ -17,20 +17,12 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
         DB::table('users')->insert([
-            'name' => "Dexter Tampioc",
-            'email' => 'dexter@gmail.com',
-            'password' => 'abc123',
-            'role' => 'Teacher',
+            'name' => "Admin",
+            'email' => 'admin@admin',
+            'password' => 'admin',
+            'role' => 'Admin',
             'profile' => 'sample.jpeg'
         ],
-        [
-            'name' => "Eleasar Patot",
-            'email' => 'eleasar@gmail.com',
-            'password' => 'abc123',
-            'role' => 'Teacher',
-            'profile' => 'sample.jpeg'
-        ],
-
     );
     }
 }
