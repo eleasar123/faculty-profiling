@@ -2,7 +2,7 @@
 
   <v-container class="pa-0 ma-0 mr-0 pt-2 d-flex" fluid>
 
-    <br> <br> <br>
+  
 
     <v-container min-width="70%" style="margin-top:50px" v-if="user == 'Admin' && edit == false">
       <v-card>
@@ -45,9 +45,8 @@
         </v-data-table>
       </v-card>
     </v-container>
-    <v-btn @click="editPds" class="float-right ma-4" v-if="user == 'Teacher' && create == false && edit==false"
-      >Edit</v-btn
-    >
+
+    
     <!-- <v-btn @click="print">Print</v-btn> -->
  
     <v-container
@@ -56,10 +55,13 @@
       class="ma-0 mt-12 text-center"
       style=""
     >
+     <v-btn @click="editPds" class=" ma-4"  style="float:right; margin-top:-20px "  v-if="user == 'Teacher' && create == false && edit==false"
+      >Edit</v-btn
+    >
        <v-tabs
   >
   <v-tab>C1</v-tab>
-  <v-tab-item >
+  <v-tab-item ><br>
     <v-container fluid class="ma-0 pa-0" id="printMeC1">
       <v-container fluid
         class="ma-0 pa-0 text-left pdsContainer"
@@ -2351,11 +2353,12 @@
                 class="px-2 d-initial justify-content-center text-center"
                 fluid
               >
-                <!-- <img
+              
+                <img
                   :src="imageUrl.rightThumbMark"
                   alt="Base64 encoded image"
                   style="height: 30%; width: 30%"
-                /> -->
+                />
               </v-container>
               <span
                 class="text-center"
@@ -2381,31 +2384,40 @@
           </v-col>
         </v-row>
         <v-row>
-          <v-card
-            cols="4"
-            sm="4"
+
+
+          <!-- Administering Area -->
+          <!-- <v-card
+            cols="6"
+            sm="6"
             class="pa-0 text-center mb-6 d-flex justify-content-center text-center"
             height="100px"
-            width="150px"
-            align="center"
-            justify="center"
+            width="200px"
+          
             style="
-              margin-left: auto;
-              margin-right: auto;
+              margin-left:auto;
+              margin-right:auto;
               border: solid 1px black;
             "
-          >
+          > -->
+          <v-spacer>
+            <br>
+          <v-card class="justify-center " style="margin:auto" height="80px"
+            width="210px" >
+            <br>
+          <!-- <v-card cols="12" sm="12" class="ml-auto mr-auto" style =" text-align:center" width="100px" height="50px">{{addInfo.person_administering_oath}}</v-card> -->
             <!-- <img
             :src="imageUrl.personAdministeringOath"
             alt="Base64 encoded image"
             style="height: 30%; width: 30%"
           /> -->
-            <span
-              class="text-center ma-0 mt-12"
-              style="font-size: 10px;border: solid 1px black; border-right: solid 1px black;black;background-color:rgb(234, 234, 234);height:20px"
-              >Person Administering Oath
-            </span>
+          <b >{{addInfo.person_administering_oath}} </b>  <br><v-divider></v-divider>
+         
+          Administering Oath
+            
           </v-card>
+          </v-spacer>
+           <br><br><br><br><br> <br>
         </v-row>
       </v-container>
       </v-container>
@@ -5929,6 +5941,7 @@
                 border: solid 1px black;
               "
             >
+            <v-text-field :rules="required" v-model="personAdministeringOath" dense solo></v-text-field>
               <v-card-subtitle
                 class="text-center ma-0"
                 style="font-size: 10px;border: solid 1px black; border-right: solid 1px black;black;background-color:rgb(234, 234, 234);"
@@ -6346,9 +6359,9 @@ export default {
       otherInfo: [
         {
           id: "",
-          otherInformationSpecialSkills: "",
-          otherInformationNonacademicDistinctions: "",
-          otherInformationAssociationMembers: "",
+          otherInfoSpecialSkills: "",
+          otherInfoNonacademicDistinctions: "",
+          otherInfoAssociationMembers: "",
         },
       ],
 
@@ -7337,6 +7350,7 @@ export default {
           oathDateAccomplished,
           rightThumbMark,
           subscribedAndSwornDate,
+          personAdministeringOath
         };
         if (this.create == true) {
           /*formDataEducationalBackground,workExperienceSignature,otherInfoSignature,personalPhotoAttachment,oathSignature,personAdministeringOath,*/
@@ -7355,11 +7369,11 @@ export default {
               "uploadFile",
               formData
             );
-            if (fileUpload.data == "success") {
+            console.log(fileUpload)
               this.pds = this.$store.getters.pdsInfosAll;
               this.create = false;
               this.retrievePds();
-            }
+            
             //this.pds = this.$store.getters.pdsInfosAll;
             //this.retrievePds()
           }

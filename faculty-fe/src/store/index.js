@@ -100,7 +100,7 @@ export default new Vuex.Store({
             },
 
 
-        uploadFile(context, file) {
+        uploadFile({commit}, file) {
             console.log([...file]);
             return axios
                 .post("pds/handleImage", file, {
@@ -110,7 +110,7 @@ export default new Vuex.Store({
                 })
                 .then((response) => {
                     console.log(response.data);
-                    context;
+                    commit;
                 })
                 .catch((error) => {
                     console.log(error.response.data);

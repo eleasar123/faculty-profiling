@@ -1606,13 +1606,13 @@
           id="tdata"
           colspan="6"
           class="grey lighten-2 pt-4 pb-0"
-          style="line-height: 5px"
+  
         >
           <p style="text-align: center"><b>PART II: COMPETENCIES</b></p>
         </td>
       </tr>
 
-      <tr class="row1">
+      <tr class="row1" >
         <td id="tdata" colspan="6" style="line-height: 5px">
           <p>
             Instructions: Please indicate the number of competency indicators that you
@@ -1621,12 +1621,12 @@
         </td>
       </tr>
       <tr class="row1">
-        <td id="tdata" colspan="6">
+        <td id="tdata">
           <p><b>CORE BEHAVIORAL COMPETENCIES</b></p>
         </td>
       </tr>
-      <tr>
-        <td id="tdata" colspan="2">
+      <tr  >
+        <td id="tdata"  >
           <b>Self-Management</b> <br />
           1. Sets personal goals and
           directions, needs and development. <br />
@@ -1642,8 +1642,8 @@
           challenging, realistic goals for self and others.
         </td>
 
-        <td id="tdata" colspan="2" style="width: 15%; text-align: center">{{countSelfManagement}}</td>
-        <td id="tdata" colspan="1">
+        <td id="tdata" colspan="1" style="width: 5%; text-align: center">{{countSelfManagement}}</td>
+        <td id="tdata" colspan="3">
           <b> Teamwork</b> <br />
            1. Willingly does his/her share of
           responsibility. <br />
@@ -1660,10 +1660,10 @@
           collaboratively with others and across organizations to accomplish organization
           goals and objectives.
         </td>
-        <td id="tdata" colspan="2" style="width: 15%; text-align: center">{{countTeamwork}}</td>
+        <td id="tdata" colspan="1" style="width: 5%; text-align: center">{{countTeamwork}}</td>
       </tr>
       <tr>
-        <td id="tdata" colspan="2">
+        <td id="tdata"  >
           <b>Professionalism and Ethics</b> <br />
            1. Demonstrates the values
           and behavior enshrined in the Norms and Conduct and Ethical Standards for Public
@@ -1681,8 +1681,8 @@
           help others improve their effectiveness.
         </td>
 
-        <td id="tdata" colspan="2" style="width: 15%; text-align: center">countProfessional</td>
-        <td id="tdata" colspan="1">
+        <td id="tdata" colspan="1" style="width: 5%; text-align: center">countProfessional</td>
+        <td id="tdata" colspan="3">
           <b> Service Orientation</b> <br />
            1. Can explain and
           articulate organizational directions, issues and problems.
@@ -1700,11 +1700,11 @@
           service improvement program through simplified procedures that will further
           enhance service delivery.
         </td>
-        <td id="tdata" colspan="2" style="width: 15%; text-align: center">{{countService}}</td>
+        <td id="tdata" colspan="1" style="width: 5%; text-align: center">{{countService}}</td>
       </tr>
 
       <tr>
-        <td id="tdata" colspan="2">
+        <td id="tdata" colspan="3">
           <b>Results Focus</b> <br />
           1. Achieves results with optimal use of time and resources most of the time.
           <br />
@@ -1723,8 +1723,8 @@
           without setting any specific goal.
         </td>
 
-        <td id="tdata" colspan="2" style="width: 15%; text-align: center">{{countResults}}</td>
-        <td id="tdata" colspan="1">
+        <td id="tdata" colspan="1" style="width: 5%; text-align: center">{{countResults}}</td>
+        <td id="tdata" colspan="3">
           <b> Innovation</b> <br />
           1. Examines the root cause of problems and suggests effective solutions. Foster
           new ideas, processes and suggests better ways to do things (cost and/or
@@ -1740,7 +1740,7 @@
           5. Uses ingenious methods to accomplish responsibilities. Demonstrates
           resourcefulness and the ability to succeed with minimal resources.
         </td>
-        <td id="tdata" colspan="2" style="width: 15%; text-align: center">{{countInnovation}}</td>
+        <td id="tdata" colspan="1" style="width: 5%; text-align: center">{{countInnovation}}</td>
       </tr>
       <tr class="row1">
         <td id="tdata" colspan="6">
@@ -5732,7 +5732,7 @@
         <div id=" encodingPart1 ">
           <v-app id="encodingContent">
             <v-container class="grey lighten-5" style="height: 100%">
-              <v-card class="pa-2 text-center" color="grey lighten-2" outlined tile>
+              <v-card class="pa-2 text-center"  color="grey lighten-2" outlined tile>
                 <b
                   >INDIVIDUAL PERFORMANCE COMMITMENT AND REVIEW FORM (IPCRF) for Teacher
                   I-III, SPET I-IV, Special Science Teacher I-II</b
@@ -8124,7 +8124,7 @@
       <v-tab ref="#tab5">Part 3</v-tab>
 
       <v-tab-item>
-        <v-card class="pa-2 text-center" tile
+        <v-card class="pa-4 text-center"  style="width:100%" tile
           ><br />
           <b>INDIVIDUAL PERFORMANCE COMMITMENT AND REVIEW FORM (IPCRF) SUMMARY SHEET</b>
           <h5 class="text-center font-weight-regular">

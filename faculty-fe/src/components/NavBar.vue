@@ -39,16 +39,18 @@
         <v-list-item v-for="link in links"  :key="link.text" router :to="link.route" active-class="border">
           <v-list-item-title >{{link.text}} </v-list-item-title>
         </v-list-item>
-      </v-list>
-            </v-menu>
-            <v-btn text @click="logOut">
-                <span style="font-size:12px"> Sign Out</span>
+         <v-btn text @click="logOut">
+                <span style="font-size:14px"> Sign Out</span>
                 <v-icon right></v-icon>
              </v-btn>
+      </v-list>
+            </v-menu>
+           
        </v-app-bar>
-       
+      
       <v-navigation-drawer  v-model="drawer" dark app color="#00063F">
           <v-layout column align-center>
+             <br><br>
                <v-flex class="mt-5"> 
               
                      <img  :src="require('../assets/lnhslogo.png')" width="100px" height="100px"/>
@@ -78,10 +80,8 @@ export default {
      user:JSON.parse(sessionStorage.user_session).role,
       drawer: true,
       links :[
-         {icon: 'account', text:'Personal Data Sheet', route: '/personalDataSheet'},
+         {icon: 'person', text:'Personal Data Sheet', route: '/personalDataSheet'},
           {icon: 'person', text:'ESAT',  route: '/esat'},
-          
-          
           {icon: 'folder', text:'Manage IPCRF', route: '/manageIpcrf' ,items: [
             { title: 'List Item' }
           ]}
