@@ -10697,12 +10697,12 @@ teamwork: (...)*/
       const encodingIpcrfNumericalQ12 = this.encodingIpcrfNumericalQ12
 
  
-      const encodingIpcrfNumericalE9 = this.encodingIpcrfNumericalE9
-      const encodingIpcrfNumericalE10 = this.encodingIpcrfNumericalE10
-      const encodingIpcrfNumericalE11 = this.encodingIpcrfNumericalE11
-      const encodingIpcrfNumericalE12 = this.encodingIpcrfNumericalE12
+//       const encodingIpcrfNumericalE9 = this.encodingIpcrfNumericalE9
+//       const encodingIpcrfNumericalE10 = this.encodingIpcrfNumericalE10
+//       const encodingIpcrfNumericalE11 = this.encodingIpcrfNumericalE11
+//       const encodingIpcrfNumericalE12 = this.encodingIpcrfNumericalE12
 
-      const encodingIpcrfNumericalT6 = this.encodingIpcrfNumericalT6
+//       const encodingIpcrfNumericalT6 = this.encodingIpcrfNumericalT6
      
       const encodingIpcrfRatingAve1 = this.encodingIpcrfRatingAve1
       const encodingIpcrfRatingAve2 = this.encodingIpcrfRatingAve2
@@ -10827,12 +10827,12 @@ teamwork: (...)*/
       encodingIpcrfNumericalQ12,
 
  
-      encodingIpcrfNumericalE9,
-      encodingIpcrfNumericalE10,
-      encodingIpcrfNumericalE11,
-      encodingIpcrfNumericalE12,
+//       encodingIpcrfNumericalE9,
+//       encodingIpcrfNumericalE10,
+//       encodingIpcrfNumericalE11,
+//       encodingIpcrfNumericalE12,
 
-      encodingIpcrfNumericalT6,
+//       encodingIpcrfNumericalT6,
      
       encodingIpcrfRatingAve1,
       encodingIpcrfRatingAve2,
