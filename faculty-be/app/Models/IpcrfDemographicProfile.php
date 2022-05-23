@@ -65,7 +65,7 @@ class IpcrfDemographicProfile extends Model
     public function user()
     {
         //return $this->belongsTo(User::class, 'foreign_key');
-        //return $this->belongsTo(User::class, 'foreign_key', 'owner_key'); 
+        //return $this->belongsTo(User::class, 'foreign_key', 'owner_key');
         return $this->belongsTo(User::class);
     }
 

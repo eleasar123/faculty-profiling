@@ -7,7 +7,7 @@ use App\Models\IpcrfDevelopmentPlan;
 use App\Models\IpcrfEncodingPart1;
 use App\Models\IpcrfEncodingPart2;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 class IpcrfController extends Controller
 {
     public function index()
@@ -28,12 +28,12 @@ class IpcrfController extends Controller
         'ipcrfEncodingPart1' => IpcrfEncodingPart1::where('user_id', $id)->get(),
         'ipcrfEncodingPart2' => IpcrfEncodingPart2::where('user_id', $id)->get()];
 
-        
+
     }
 
     public function getIpcrfBySchoolYear(Request $request)
     {
-        
+
         return[
         'ipcrfDemographicProfile' => IpcrfDemographicProfile::where('user_id', $request->user)
         ->where('rating_period', $request->schoolYear)->get(),
@@ -43,12 +43,12 @@ class IpcrfController extends Controller
         ->where('school_year', $request->schoolYear)->get(),
         'ipcrfEncodingPart2' => IpcrfEncodingPart2::where('user_id', $request->user)
         ->where('school_year', $request->schoolYear)->get()];
-        
+
     }
 
     public function createIpcrfPart1(Request $request)
     {
-     
+
 
         $ipcrfDemographicProfile = new IpcrfDemographicProfile([
             'user_id' => $request->user,
@@ -70,7 +70,7 @@ class IpcrfController extends Controller
             'area_of_specialization' => $request->empSpecialization,
             'region' => $request->empRegion,
             'division' => $request->empDivision,
-            'district/municipality' => $request->empDistrict,
+            'district_municipality' => $request->empDistrict,
             'school_id' => $request->empSchoolId,
             'school_name' => $request->empSchoolName,
             'school_type' => $request->empSchoolType,
@@ -79,24 +79,24 @@ class IpcrfController extends Controller
             'school_year' => $request -> empRatingPeriod
         ]);
 
-      
 
-        
+
+
 
             try {
                 $ipcrfDemographicProfile->save();
-                
+
                 return "Success";
             } catch (Throwable $error) {
                 return $error;
-            }  
-        
+            }
 
-        
 
-       
 
-       
+
+
+
+
     }
 
     public function createPart2(Request $request){
@@ -125,7 +125,7 @@ class IpcrfController extends Controller
         ]);
         try {
             $ipcrfEncodingPart2->save();
-            
+
             return "Success";
         } catch (Throwable $error) {
             return $error;
@@ -157,7 +157,7 @@ class IpcrfController extends Controller
 
         try {
             $ipcrfDevelopmentPlan->save();
-            
+
             return "Success";
         } catch (Throwable $error) {
             return $error;
@@ -167,7 +167,7 @@ class IpcrfController extends Controller
 
     public function updatePart1(Request $request)
     {
-        
+
         if($request->role == 'Admin'){
             DB::table('ipcrf_encoding_part1s')->where('user_id', $request->user)->where('rating_period', $request->empRatingPeriod)->delete();
             $ipcrfRow1 = new IpcrfEncodingPart1([
@@ -387,7 +387,7 @@ class IpcrfController extends Controller
                 'approving_authority' => $request->part1ApprovingAuthority,
                 'approver_position' => $request->approvingPosition,
             ]);
-           
+
             $ipcrfRow9 = new IpcrfEncodingPart1([
                 'user_id' => $request->user,
                 'subject_cot1' => $request->cot1SubjectsTaught,
@@ -546,12 +546,12 @@ class IpcrfController extends Controller
 
               try{
                 if($affected>0){
-                   return 'success'; 
+                   return 'success';
                 }
               }catch (Throwable $error) {
                 return $error;
             }
-        }   
+        }
     }
 
     public function updatePart2(Request $request){
@@ -580,7 +580,7 @@ class IpcrfController extends Controller
 
         try{
             if($ipcrfEncodingPart2 > 0){
-               return 'success'; 
+               return 'success';
             }
           }catch (Throwable $error) {
             return $error;
@@ -613,13 +613,13 @@ class IpcrfController extends Controller
             if($ipcrfDevelopmentPlan > 0){
                 return 'success';
             }
-            
+
             return "Success";
         } catch (Throwable $error) {
             return $error;
         }
 
     }
-        
-    
+
+
 }
