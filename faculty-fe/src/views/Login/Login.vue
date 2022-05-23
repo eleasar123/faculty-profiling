@@ -1,9 +1,10 @@
 <template>
-  <v-img :src="require('../../assets/landingBg.gif')">
+<v-container fluid style="">
+  <v-img  :src="require('../../assets/landingBg.gif')">
 
-    <v-layout>
+    
       <v-spacer></v-spacer>
-      <v-col md="5">
+      <v-col md="5" style="float:right">
         <form ref="form">
           <p class="text-center font-weight-bold"><br><br><br><br><br>
             <img
@@ -15,7 +16,8 @@
 
           <h3 class="text-center font-weight-bold white--text">LUT-OD NHS FACULTY</h3>
           <h3 class="text-center font-weight-bold white--text">PROFILING SYSTEM</h3><br>
-          <v-col   style="width:70%; margin:auto" >
+          <br>
+          <v-col style="width:65%; margin:auto" >
             <v-text-field
             prepend-inner-icon="mdi-email-outline"
               label="  Enter your Email"
@@ -55,9 +57,18 @@
           </p>
         </form>
       </v-col>
-    </v-layout>
+   
 </v-img>
+</v-container>
 </template>
+<style scoped>
+/* .imgBg{
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  
+} */
+</style>
 <script>
 import PromptAlert from "@/utils/Prompt";
 export default {
