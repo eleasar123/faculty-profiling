@@ -31,7 +31,14 @@ import Print from 'vue-print-nb'
 
 //or, using the defaults with no stylesheet
 //Vue.use(VueHtmlToPaper);
+import VueSweetalert2 from 'vue-sweetalert2';
+
+// If you don't need the styles, do not connect
+import 'sweetalert2/dist/sweetalert2.min.css';
+
+Vue.use(VueSweetalert2);
 // Global instruction 
+
 Vue.use(Print);
 Vue.config.productionTip = false
 Vue.prototype.$axios = Axios;

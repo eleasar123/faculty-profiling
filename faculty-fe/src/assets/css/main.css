@@ -94,37 +94,37 @@ table,td, th,tr, thead, tbody{
 
     #colsPersonalInfoOne {
         width: 160px !important;
-        background-color: red !important
+        /* background-color: red !important */
     }
 
     #colsPersonalInfoTwo {
         width: 180px !important;
-        background-color: orange;
+        /* background-color: orange; */
     }
 
     #colsPersonalInfoThree {
         width: 180px !important;
-        background-color: blue;
+        /* background-color: blue; */
     }
 
     #colsPersonalInfoFour {
         width: 160px !important;
-        background-color: pink;
+        /* background-color: pink; */
     }
 
     #colsPersonalInfoFive {
         width: 40px !important;
-        background-color: green;
+        /* background-color: green; */
     }
 
     #colsPersonalInfoSix {
         width: 80px !important;
-        background-color: yellowgreen;
+        /* background-color: yellowgreen; */
     }
 
     #colsPersonalInfoSeven {
         width: 120px !important;
-        background-color: violet;
+        /* background-color: violet; */
     }
 
     .pdsContainer {
@@ -185,282 +185,282 @@ table,td, th,tr, thead, tbody{
 
     #colsFamilyOne {
         width: 160px;
-        background-color: red !important
+        /* background-color: red !important */
     }
 
     #colsFamilyTwo {
         width: 100px;
-        background-color: orange;
+        /* background-color: orange; */
     }
 
     #colsFamilyThree {
         width: 100px;
-        background-color: blue;
+        /* background-color: blue; */
     }
 
     #colsFamilyFour {
         width: 140px;
-        background-color: pink;
+        /* background-color: pink; */
     }
 
     #colsFamilyFive {
         width: 80px;
-        background-color: green;
+        /* background-color: green; */
     }
 
     #colsFamilySix {
         width: 60px;
-        background-color: yellowgreen;
+        /* background-color: yellowgreen; */
     }
 
     #colsFamilySeven {
         width: 60px !important;
-        background-color: violet;
+        /* background-color: violet; */
     }
 
     #colsFamilyEight {
         width: 90px !important;
-        background-color: palegoldenrod;
+        /* background-color: palegoldenrod; */
     }
 
     #colsEducOne {
         width: 80px;
-        background-color: red !important
+        /* background-color: red !important */
     }
 
     #colsEducTwo {
         width: 90px;
-        background-color: orange;
+        /* background-color: orange; */
     }
 
     #colsEducThree {
         width: 110px;
-        background-color: blue;
+        /* background-color: blue; */
     }
 
     #colsEducFour {
         width: 70px;
-        background-color: pink;
+        /* background-color: pink; */
     }
 
     #colsEducFive {
         width: 70px;
-        background-color: green;
+        /* background-color: green; */
     }
 
     #colsEducSix {
         width: 60px;
-        background-color: yellowgreen;
+        /* background-color: yellowgreen; */
     }
 
     #colsEducSeven {
         width: 60px !important;
-        background-color: violet;
+        /* background-color: violet; */
     }
 
     #colsEducEight {
         width: 90px !important;
-        background-color: palegoldenrod;
+        /* background-color: palegoldenrod; */
     }
 
     #colsCivilOne {
         width: 70px;
-        background-color: red !important
+        /* background-color: red !important */
     }
 
     #colsCivilTwo {
         width: 70px;
-        background-color: orange;
+        /* background-color: orange; */
     }
 
     #colsCivilThree {
         width: 70px;
-        background-color: blue;
+        /* background-color: blue; */
     }
 
     #colsCivilFour {
         width: 80px;
-        background-color: pink;
+        /* background-color: pink; */
     }
 
     #colsCivilFive {
         width: 80px;
-        background-color: green;
+        /* background-color: green; */
     }
 
     #colsCivilSix {
         width: 60px;
-        background-color: yellowgreen;
+        /* background-color: yellowgreen; */
     }
 
     #colsCivilSeven {
         width: 60px !important;
-        background-color: violet;
+        /* background-color: violet; */
     }
 
     #colsCivilEight {
         width: 90px !important;
-        background-color: palegoldenrod;
+        /* background-color: palegoldenrod; */
     }
 
     #colsWorkOne {
         width: 80px !important;
-        background-color: red !important
+        /* background-color: red !important */
     }
 
     #colsWorkTwo {
         width: 80px !important;
-        background-color: orange;
+        /* background-color: orange; */
     }
 
     #colsWorkThree {
         width: 120px !important;
-        background-color: blue;
+        /* background-color: blue; */
     }
 
     #colsWorkFour {
         width: 120px !important;
-        background-color: pink;
+        /* background-color: pink; */
     }
 
     #colsWorkFive {
         width: 50px;
-        background-color: green;
+        /* background-color: green; */
     }
 
     #colsWorkSix {
         width: 50px;
-        background-color: yellowgreen;
+        /* background-color: yellowgreen; */
     }
 
     #colsWorkSeven {
         width: 55px !important;
-        background-color: violet;
+        /* background-color: violet; */
     }
 
     #colsWorkEight {
         width: 50px !important;
-        background-color: palegoldenrod;
+        /* background-color: palegoldenrod; */
     }
 
     #colsVolOne {
         width: 50px !important;
-        background-color: red !important
+        /* background-color: red !important */
     }
 
     #colsVolTwo {
         width: 50px !important;
-        background-color: orange;
+        /* background-color: orange; */
     }
 
     #colsVolThree {
         width: 50px !important;
-        background-color: blue;
+        /* background-color: blue; */
     }
 
     #colsVolFour {
         width: 80px !important;
-        background-color: pink;
+        /* background-color: pink; */
     }
 
     #colsVolFive {
         width: 80px !important;
-        background-color: green;
+        /* background-color: green; */
     }
 
     #colsVolSix {
         width: 50px !important;
-        background-color: yellowgreen;
+        /* background-color: yellowgreen; */
     }
 
     #colsVolSeven {
         width: 75px !important;
-        background-color: violet;
+        /* background-color: violet; */
     }
 
     #colsVolEight {
         width: 75px !important;
-        background-color: palegoldenrod;
+        /* background-color: palegoldenrod; */
     }
 
     #colsLearningOne {
         width: 80px !important;
-        background-color: red !important
+        /* background-color: red !important */
     }
 
     #colsLearningTwo {
         width: 80px !important;
-        background-color: orange;
+        /* background-color: orange; */
     }
 
     #colsLearningThree {
         width: 75px !important;
-        background-color: blue;
+        /* background-color: blue; */
     }
 
     #colsLearningFour {
         width: 75px !important;
-        background-color: pink;
+        /* background-color: pink; */
     }
 
     #colsLearningFive {
         width: 60px !important;
-        background-color: green;
+        /* background-color: green; */
     }
 
     #colsLearningSix {
         width: 60px;
-        background-color: yellowgreen;
+        /* background-color: yellowgreen; */
     }
 
     #colsLearningSeven {
         width: 70px !important;
-        background-color: violet;
+        /* background-color: violet; */
     }
 
     #colsLearningEight {
         width: 70px !important;
-        background-color: palegoldenrod;
+        /* background-color: palegoldenrod; */
     }
 
     #colsOtherOne {
         width: 100px !important;
-        background-color: red !important
+        /* background-color: red !important */
     }
 
     #colsOtherTwo {
         width: 100px !important;
-        background-color: orange;
+        /* background-color: orange; */
     }
 
     #colsOtherThree {
         width: 100px !important;
-        background-color: blue;
+        /* background-color: blue; */
     }
 
     #colsOtherFour {
         width: 70px !important;
-        background-color: pink;
+        /* background-color: pink; */
     }
 
     #colsOtherFive {
         width: 70px;
-        background-color: green;
+        /* background-color: green; */
     }
 
     #colsOtherSix {
         width: 70px;
-        background-color: yellowgreen;
+        /* background-color: yellowgreen; */
     }
 
     #colsOtherSeven {
         width: 100px !important;
-        background-color: violet;
+        /* background-color: violet; */
     }
 
     #colsOtherEight {
         width: 100px !important;
-        background-color: palegoldenrod;
+        /* background-color: palegoldenrod; */
     }
 
     .imageContainer {
@@ -842,287 +842,287 @@ table,td, th,tr, thead, tbody{
 
     #colsPersonalInfoTwo {
         width: 200px;
-        background-color: orange;
+        /* background-color: orange; */
     }
 
     #colsPersonalInfoThree {
         width: 100px;
-        background-color: blue;
+        /* background-color: blue; */
     }
 
     #colsPersonalInfoFour {
         width: 180px;
-        background-color: pink;
+        /* background-color: pink; */
     }
 
     #colsPersonalInfoFive {
         width: 110px;
-        background-color: green;
+        /* background-color: green; */
     }
 
     #colsPersonalInfoSix {
         width: 110px;
-        background-color: yellowgreen;
+        /* background-color: yellowgreen; */
     }
 
     #colsPersonalInfoSeven {
         width: 150px !important;
-        background-color: violet;
+        /* background-color: violet; */
     }
 
     #colsFamilyOne {
         width: 150px;
-        background-color: red !important
+        /* background-color: red !important */
     }
 
     #colsFamilyTwo {
         width: 100px;
-        background-color: orange;
+        /* background-color: orange; */
     }
 
     #colsFamilyThree {
         width: 100px;
-        background-color: blue;
+        /* background-color: blue; */
     }
 
     #colsFamilyFour {
         width: 140px;
-        background-color: pink;
+        /* background-color: pink; */
     }
 
     #colsFamilyFive {
         width: 80px;
-        background-color: green;
+        /* background-color: green; */
     }
 
     #colsFamilySix {
         width: 100px;
-        background-color: yellowgreen;
+        /* background-color: yellowgreen; */
     }
 
     #colsFamilySeven {
         width: 100px !important;
-        background-color: violet;
+        /* background-color: violet; */
     }
 
     #colsFamilyEight {
         width: 100px !important;
-        background-color: palegoldenrod;
+        /* background-color: palegoldenrod; */
     }
 
     #colsEducOne {
         width: 100px;
-        background-color: red !important
+        /* background-color: red !important */
     }
 
     #colsEducTwo {
         width: 140px;
-        background-color: orange;
+        /* background-color: orange; */
     }
 
     #colsEducThree {
         width: 140px;
-        background-color: blue;
+        /* background-color: blue; */
     }
 
     #colsEducFour {
         width: 70px;
-        background-color: pink;
+        /* background-color: pink; */
     }
 
     #colsEducFive {
         width: 70px;
-        background-color: green;
+        /* background-color: green; */
     }
 
     #colsEducSix {
         width: 100px;
-        background-color: yellowgreen;
+        /* background-color: yellowgreen; */
     }
 
     #colsEducSeven {
         width: 60px !important;
-        background-color: violet;
+        /* background-color: violet; */
     }
 
     #colsEducEight {
         width: 100px !important;
-        background-color: palegoldenrod;
+        /* background-color: palegoldenrod; */
     }
 
     #colsCivilOne {
         width: 80px;
-        background-color: red !important
+        /* background-color: red !important */
     }
 
     #colsCivilTwo {
         width: 90px;
-        background-color: orange;
+        /* background-color: orange; */
     }
 
     #colsCivilThree {
         width: 120px;
-        background-color: blue;
+        /* background-color: blue; */
     }
 
     #colsCivilFour {
         width: 60px;
-        background-color: pink;
+        /* background-color: pink; */
     }
 
     #colsCivilFive {
         width: 60px;
-        background-color: green;
+        /* background-color: green; */
     }
 
     #colsCivilSix {
         width: 60px;
-        background-color: yellowgreen;
+        /* background-color: yellowgreen; */
     }
 
     #colsCivilSeven {
         width: 60px !important;
-        background-color: violet;
+        /* background-color: violet; */
     }
 
     #colsCivilEight {
         width: 90px !important;
-        background-color: palegoldenrod;
+        /* background-color: palegoldenrod; */
     }
 
     #colsWorkOne {
         width: 50px;
-        background-color: red !important
+        /* background-color: red !important */
     }
 
     #colsWorkTwo {
         width: 50px;
-        background-color: orange;
+        /* background-color: orange; */
     }
 
     #colsWorkThree {
         width: 150px;
-        background-color: blue;
+        /* background-color: blue; */
     }
 
     #colsWorkFour {
         width: 150px;
-        background-color: pink;
+        /* background-color: pink; */
     }
 
     #colsWorkFive {
         width: 50px;
-        background-color: green;
+        /* background-color: green; */
     }
 
     #colsWorkSix {
         width: 50px;
-        background-color: yellowgreen;
+        /* background-color: yellowgreen; */
     }
 
     #colsWorkSeven {
         width: 50px !important;
-        background-color: violet;
+        /* background-color: violet; */
     }
 
     #colsWorkEight {
         width: 50px !important;
-        background-color: palegoldenrod;
+        /* background-color: palegoldenrod; */
     }
 
     #colsVolOne {
         width: 70px !important;
-        background-color: red !important
+        /* background-color: red !important */
     }
 
     #colsVolTwo {
         width: 70px !important;
-        background-color: orange;
+        /* background-color: orange; */
     }
 
     #colsVolThree {
         width: 60px !important;
-        background-color: blue;
+        /* background-color: blue; */
     }
 
     #colsVolFour {
         width: 60px !important;
-        background-color: pink;
+        /* background-color: pink; */
     }
 
     #colsVolFive {
         width: 70px;
-        background-color: green;
+        /* background-color: green; */
     }
 
     #colsVolSix {
         width: 50px;
-        background-color: yellowgreen;
+        /* background-color: yellowgreen; */
     }
 
     #colsVolSeven {
         width: 80px !important;
-        background-color: violet;
+        /* background-color: violet; */
     }
 
     #colsVolEight {
         width: 80px !important;
-        background-color: palegoldenrod;
+        /* background-color: palegoldenrod; */
     }
 
     #colsLearningOne {
         width: 110px !important;
-        background-color: red !important
+        /* background-color: red !important */
     }
 
     #colsLearningTwo {
         width: 110px !important;
-        background-color: orange;
+        /* background-color: orange; */
     }
 
     #colsLearningThree {
         width: 60px !important;
-        background-color: blue;
+        /* background-color: blue; */
     }
 
     #colsLearningFour {
         width: 60px !important;
-        background-color: pink;
+        /* background-color: pink; */
     }
 
     #colsLearningFive {
         width: 60px;
-        background-color: green;
+        /* background-color: green; */
     }
 
     #colsLearningSix {
         width: 60px;
-        background-color: yellowgreen;
+        /* background-color: yellowgreen; */
     }
 
     #colsLearningSeven {
         width: 70px !important;
-        background-color: violet;
+        /* background-color: violet; */
     }
 
     #colsLearningEight {
         width: 70px !important;
-        background-color: palegoldenrod;
+        /* background-color: palegoldenrod; */
     }
 
     #colsOtherOne {
         width: 100px !important;
-        background-color: red !important
+        /* background-color: red !important */
     }
 
     #colsOtherTwo {
         width: 100px !important;
-        background-color: orange;
+        /* background-color: orange; */
     }
 
     #colsOtherThree {
         width: 150px !important;
-        background-color: blue;
+        /* background-color: blue; */
     }
 
     /* #colsOtherFour {
@@ -1132,22 +1132,22 @@ table,td, th,tr, thead, tbody{
 
     #colsOtherFive {
         width: 80px;
-        background-color: green;
+        /* background-color: green; */
     }
 
     #colsOtherSix {
         width: 70px;
-        background-color: yellowgreen;
+        /* background-color: yellowgreen; */
     }
 
     #colsOtherSeven {
         width: 100px !important;
-        background-color: violet;
+        /* background-color: violet; */
     }
 
     #colsOtherEight {
         width: 100px !important;
-        background-color: palegoldenrod;
+        /* background-color: palegoldenrod; */
     }
 
     .spanPdsOne {

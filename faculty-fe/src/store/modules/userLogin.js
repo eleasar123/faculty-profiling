@@ -8,8 +8,12 @@ const state = () => ({
 const mutations = {
     setUserToken(state, data) {
         console.log(data)
-        sessionStorage.setItem("user_session", JSON.stringify(data[1][0].account));
-        sessionStorage.setItem("token",  JSON.stringify(data[2][0].token));
+      if(data[2][0].account.length!=0){
+          console.log("reached")
+        sessionStorage.setItem("user_session", JSON.stringify(data[2][0].account));
+        sessionStorage.setItem("token",  JSON.stringify(data[1][0].token));
+      }
+       
     //     axios.defaults.headers.common.Authorization = `bearer ${
     //   JSON.parse(data).access_token
     // }`;
@@ -43,15 +47,15 @@ const actions = {
             });
     },
 
-    retrieveUserData({ state, commit }) {
-        return axios.get(`user/profile/${JSON.parse(state.userToken).empId}`).then((result) => {
+    // retrieveUserData({ state, commit }) {
+    //     return axios.get(`user/profile/${JSON.parse(state.userToken).empId}`).then((result) => {
 
-            commit('setUserDetails', JSON.stringify(result.data));
-            return result;
-        }).catch((err) => {
-            return err.response;
-        });
-    },
+    //         commit('setUserDetails', JSON.stringify(result.data));
+    //         return result;
+    //     }).catch((err) => {
+    //         return err.response;
+    //     });
+    // },
 
     logout({ commit }) {
         commit("clearUserSession");

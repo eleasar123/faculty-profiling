@@ -7,16 +7,27 @@
     <v-container min-width="70%" style="margin-top:50px" v-if="user == 'Admin' && edit == false">
       <v-card>
         <v-card-title>
-          Personal Data Sheet
+          PERSONAL DATA SHEET
           <v-spacer></v-spacer>
-          <v-text-field
+          <!-- <v-text-field
+          style="width:40px"
             v-model="search"
             append-icon="mdi-magnify"
             label="Search"
             single-line
             hide-details
             dense
-            style="width: 50%"
+            
+          ></v-text-field> -->
+          <v-text-field
+            label="Search"
+
+           style="width:35px; margin-top:10px"
+             append-icon="mdi-magnify"
+               v-model="search"
+            filled
+            rounded
+            dense
           ></v-text-field>
         </v-card-title>
         <v-data-table
@@ -34,7 +45,7 @@
         </v-data-table>
       </v-card>
     </v-container>
-    <v-btn @click="editPds" class="float-right ma-4" v-if="user == 'Teacher' && create == false"
+    <v-btn @click="editPds" class="float-right ma-4" v-if="user == 'Teacher' && create == false && edit==false"
       >Edit</v-btn
     >
     <!-- <v-btn @click="print">Print</v-btn> -->

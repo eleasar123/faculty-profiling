@@ -4,7 +4,27 @@
            <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
           
            <v-spacer></v-spacer>
-           <v-menu offset-y>
+
+            <!-- <v-avatar>
+      <img
+        src="http://127.0.0.1:8000/storage/profiles/personal-photo/image.png"
+        alt="user"
+        style="border-radius:50px ; height:10vh;width:40px;margin-left:40px"
+
+      >
+      <span style="font-size:12px ;margin-right:30px">{{user}}</span>
+    </v-avatar> -->
+           
+      <img
+        src="http://127.0.0.1:8000/storage/profiles/personal-photo/image.png"
+        alt="user"
+        style="border-radius:100px ; height:40px;width:40px;margin-right:20px"
+
+      >
+      <span style="font-size:14px ;margin-right:30px"> {{user}}</span>
+
+            
+                        <v-menu offset-y>
       <template v-slot:activator="{ on }">
         <v-btn
           text
@@ -14,17 +34,19 @@
            
         </v-btn>
       </template>
+
       <v-list flat>
         <v-list-item v-for="link in links"  :key="link.text" router :to="link.route" active-class="border">
-          <v-list-item-title >{{link.text}}</v-list-item-title>
+          <v-list-item-title >{{link.text}} </v-list-item-title>
         </v-list-item>
       </v-list>
             </v-menu>
             <v-btn text @click="logOut">
-                <span>Exit</span>
+                <span style="font-size:12px"> Sign Out</span>
                 <v-icon right></v-icon>
              </v-btn>
        </v-app-bar>
+       
       <v-navigation-drawer  v-model="drawer" dark app color="#00063F">
           <v-layout column align-center>
                <v-flex class="mt-5"> 
@@ -53,15 +75,19 @@
 //import Popup from './Popup.vue'
 export default {
    data: () => ({
+     user:JSON.parse(sessionStorage.user_session).role,
       drawer: true,
       links :[
+         {icon: 'account', text:'Personal Data Sheet', route: '/personalDataSheet'},
           {icon: 'person', text:'ESAT',  route: '/esat'},
-          {icon: 'folder', text:'Personal Data Sheet', route: '/personalDataSheet'},
+          
+          
           {icon: 'folder', text:'Manage IPCRF', route: '/manageIpcrf' ,items: [
             { title: 'List Item' }
           ]}
           
-      ]
+      ],
+    
      
     }),
     created(){
