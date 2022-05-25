@@ -5618,7 +5618,7 @@
                       <tr
                         height="10px"
                         v-for="row in references"
-                        :key="row.name"
+                        :key="row.id"
                       >
                         <td>
                           <v-text-field
@@ -5953,7 +5953,8 @@
         <!-- </tbody>
         
         </v-simple-table> -->
-        <v-btn class="primary ma-4" @click.prevent="finalizePds"
+        <v-btn :loading="loading2"
+      :disabled="loading2" class="primary ma-4" @click.prevent="finalizePds"
           >Finalize C1-4</v-btn
         >
       </v-tab-item>
@@ -6138,7 +6139,7 @@ export default {
       create: false,
       edit: false,
       loading: false,
-
+      loading2:false,
       personalSurname: "",
       personalFirstName: "",
       personalMiddleName: "",
@@ -6410,6 +6411,7 @@ export default {
       personalInfoId: "",
       pdsAdditionalInfoId: "",
       required: [(v) => !!v || "Field is required"],
+       loader: null,
     };
   },
 
@@ -6417,7 +6419,8 @@ export default {
     computedDateFormattedPersonalDOB() {
       return this.formatDate(this.personalDateOfBirth);
     },
-    computedDateFormattedSpouseDOB() {
+    computedDateFormattedSpouseDOB(date) {
+      if(!date) return null
       return this.formatDate(this.dateOfBirthSpouse);
     },
     computedDateFormattedFatherDOB() {
@@ -6460,6 +6463,14 @@ export default {
       this.dateFormattedPersonalDOB = this.formatDate(this.personalDateOfBirth);
       console.log(val);
     },
+     loader () {
+        const l = this.loader
+        this[l] = !this[l]
+
+        setTimeout(() => (this[l] = false), 3000)
+
+        this.loader = null
+     },
   },
   created() {
     this.retrievePds();
@@ -7077,13 +7088,18 @@ export default {
       //await this.$htmlToPaper("printMe");
     },
     finalizePds: async function () {
-      console.log(this.dateOfBirthSpouse);
+      console.log(this.loader)
+       console.log(this.dateOfBirthSpouse=='');
+    
+     
       if (
-        this.$refs.pds.validate() &&
-        this.$refs.pdsA.validate() &&
-        this.$refs.pdsB.validate() &&
-        this.$refs.pdsC3.validate()
+        this.$refs.pds.validate(true) &&
+        this.$refs.pdsA.validate(true) &&
+        this.$refs.pdsB.validate(true) &&
+        this.$refs.pdsC3.validate(true)
       ) {
+           this.loading2 = true
+      this.loader = true
         const personalSurname = this.personalSurname;
         const personalFirstName = this.personalFirstName;
         const personalMiddleName = this.personalMiddleName;
@@ -7148,8 +7164,8 @@ export default {
         const fifthChild = this.fifthChild;
         const sixthChild = this.sixthChild;
         const dateOfBirthSpouse =
-          this.dateOfBirthSpouse == null
-            ? null
+          this.dateOfBirthSpouse == ''
+            ? ''
             : moment(this.dateOfBirthSpouse).format("YYYY-MM-DD");
         const dateOfBirthFather = moment(this.dateOfBirthFather).format(
           "YYYY-MM-DD"
@@ -7392,6 +7408,8 @@ export default {
           this.edit = false;
           this.retrievePds();
         }
+         this.loading2 = false
+          this.loader = false
       }
     },
     download: async function () {

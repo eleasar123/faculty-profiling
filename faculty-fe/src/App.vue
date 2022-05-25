@@ -2,7 +2,7 @@
 <!-- <v-main> -->
 
 
-  <v-container fluid>
+  <v-container fluid  height="fit-content" style="border: solid 1px black;padding:0px;margin:0px" class="ma-0 pa-0">
   <v-app v-if="userData!==null">
     <Navbar></Navbar>
     <v-main>
@@ -11,8 +11,10 @@
     </v-content>
    </v-main>
   </v-app>
- <v-app v-else>
+ <v-app v-else >
+   <v-content style="border: solid 1px black">
       <router-view></router-view>
+      </v-content>
   </v-app>
  </v-container>
  <!-- </v-main> -->

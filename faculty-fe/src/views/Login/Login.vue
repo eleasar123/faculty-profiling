@@ -1,13 +1,12 @@
-<template>
-<v-container fluid style="">
-  <v-img  :src="require('../../assets/landingBg.gif')">
+<template style="border:solid 2px black">
+<v-container height="100vh" fluid class="pa-0 ma-0" style="border:solid 2px black">
+  <v-img  style="height:100vh;width:100vw" :src="require('../../assets/landingBg.gif')" class="pa-0 ma-0">
 
-    
-      <v-spacer></v-spacer>
+
       <v-col md="5" style="float:right">
         <form ref="form">
           <p class="text-center font-weight-bold"><br><br><br><br><br>
-            <img
+            <imgs
               :src="require('../../assets/lnhslogo.png')"
               width="100px"
               height="100px"
