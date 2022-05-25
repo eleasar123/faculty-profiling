@@ -84,10 +84,8 @@ export default{
             for(const item of articles.data){
               this.articles.push(item)
             }
-            
-
+          
         },
-
         async editArticle(item){
           console.log(item)
           const returnedData = this.$store.dispatch('editArticles', item)

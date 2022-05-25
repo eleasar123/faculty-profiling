@@ -1,12 +1,12 @@
-<template>
-  <v-img :src="require('../../assets/landingBg.gif')">
+<template style="border:solid 2px black">
+<v-container height="100vh" fluid class="pa-0 ma-0" style="border:solid 2px black">
+  <v-img  style="height:100vh;width:100vw" :src="require('../../assets/landingBg.gif')" class="pa-0 ma-0">
 
-    <v-layout>
-      <v-spacer></v-spacer>
-      <v-col md="5">
+
+      <v-col md="5" style="float:right">
         <form ref="form">
           <p class="text-center font-weight-bold"><br><br><br><br><br>
-            <img
+            <imgs
               :src="require('../../assets/lnhslogo.png')"
               width="100px"
               height="100px"
@@ -15,23 +15,27 @@
 
           <h3 class="text-center font-weight-bold white--text">LUT-OD NHS FACULTY</h3>
           <h3 class="text-center font-weight-bold white--text">PROFILING SYSTEM</h3><br>
-          <v-col>
+          <br>
+          <v-col style="width:65%; margin:auto" >
             <v-text-field
             prepend-inner-icon="mdi-email-outline"
               label="  Enter your Email"
               v-model="email"
               type="email"
+              required
+
               placeholder="Enter your Email"
               rounded solo dense
             ></v-text-field>
             <v-text-field
-           
+         
              :append-icon="value ? 'visibility' : 'visibility_off'"
               @click:append="() => (value = !value)"
               :type="value ? 'password' : 'text'"
               prepend-inner-icon="mdi-lock-open"
               label="Enter your Password"
               v-model="password"
+              required
               placeholder="Enter your Password"
               rounded solo dense
             ></v-text-field>
@@ -52,9 +56,18 @@
           </p>
         </form>
       </v-col>
-    </v-layout>
+   
 </v-img>
+</v-container>
 </template>
+<style scoped>
+/* .imgBg{
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  
+} */
+</style>
 <script>
 import PromptAlert from "@/utils/Prompt";
 export default {
@@ -83,6 +96,7 @@ export default {
         password,
       };
       console.log(data)
+      
       const returnedData = await this.$store.dispatch("loginLocally", data);
       console.log(returnedData);
       if (returnedData.data[0].message === "Credentials matched!") {
