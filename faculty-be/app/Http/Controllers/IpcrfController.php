@@ -70,7 +70,7 @@ class IpcrfController extends Controller
             'area_of_specialization' => $request->empSpecialization,
             'region' => $request->empRegion,
             'division' => $request->empDivision,
-            'district/municipality' => $request->empDistrict,
+            'district_municipality' => $request->empDistrict,
             'school_id' => $request->empSchoolId,
             'school_name' => $request->empSchoolName,
             'school_type' => $request->empSchoolType,

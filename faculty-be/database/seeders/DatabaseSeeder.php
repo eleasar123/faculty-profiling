@@ -21,8 +21,16 @@ class DatabaseSeeder extends Seeder
             'email' => 'admin@admin',
             'password' => 'admin',
             'role' => 'Admin',
-            'profile' => 'sample.jpeg'
+            'profile' => 'image.jpg'
         ],
     );
+    DB::table('users')->insert([
+        'name' => "Elsa",
+        'email' => 'user@gmail.com',
+        'password' => 'user',
+        'role' => 'Teacher',
+        'profile' => 'image.jpg'
+    ],
+);
     }
 }
