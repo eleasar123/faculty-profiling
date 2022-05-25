@@ -1,16 +1,6 @@
 <template>
   <v-container>
     <v-tabs transparent background-color="white" centered dark>
-      <!-- <v-tab href="#subscribe"> Home </v-tab>
-        <v-tab href="#privacy"> Privacy Note </v-tab>
-
-        <v-tab href="#part1"> Part I </v-tab>
-
-        <v-tab href="#part2"> Part II </v-tab>
-
-        <v-tab href="#part3"> Part III </v-tab>
-        <v-tab href="#show_print"> Show Print </v-tab>
-        <v-tab href="#esat_card"> esatCard </v-tab> -->
       <v-btn v-if="createBtn" class="mr-5 float-right" @click="create()"
         >Create</v-btn
       >
@@ -1712,6 +1702,7 @@
                   </td>
                 </tr>
               </v-simple-table>
+
               <v-row no-gutters>
                 <v-col cols="12" sm="6" md="8"> </v-col>
                 <v-col cols="4" md="4">
@@ -1739,108 +1730,120 @@
             </v-col>
           </v-row>
         </v-container>
+        <v-container v-if="saveLoad" class="text-center">
+          <v-progress-circular
+            :size="150"
+            width="10"
+            color="primary"
+            indeterminate
+          ></v-progress-circular>
+        </v-container>
       </v-tab-item>
 
       <v-tab-item :key="5" value="show_print" v-if="showPrint">
         <v-card flat>
-          <v-container class="mt-5">
-            <h2 class="heading text-center">
-              Electronic Self-Assessment Tool(e-SAT)SY 2020-2021
-            </h2>
+          <v-container id="printMeEsat">
+            <v-container style="padding: 10px">
+              <v-container style="text-align: center">
+                <h2 class="heading">
+                  Electronic Self-Assessment Tool(e-SAT)SY 2020-2021
+                </h2>
 
-            <h2 class="heading text-center">
-              Teacher I-III, SPET I-IV, Instructor I-II, Special Science Teacher
-              I-II (Proficient Teachers)
-            </h2>
+                <h2 class="heading">
+                  Teacher I-III, SPET I-IV, Instructor I-II, Special Science
+                  Teacher I-II (Proficient Teachers)
+                </h2>
+              </v-container>
 
-            <!-- showPRINT -->
+              <!-- showPRINT -->
 
-            <v-simple-table class="table mt-6">
-              <template v-slot:default>
-                <thead>
-                  <tr>
-                    <th colspan="5">
-                      <h2
-                        style="color: black"
-                        class="font-weight-bold text-decoration-underline"
-                      >
-                        PART I. DEMOGRAPHIC PROFILE
-                      </h2>
-                    </th>
-                  </tr>
-                </thead>
-                <tbody
-                  style="color: black"
-                  v-for="item of printEsatInfo[0]"
-                  :key="item.id"
-                >
-                  <tr>
-                    <td class="esatPrint">Name of Employee:</td>
-                    <td class="showDataPart1">
-                      {{ item.name_of_employee }}
-                    </td>
-                    <td rowspan="7"></td>
-                    <td class="esatPrint">Region:</td>
-                    <td class="showDataPart1">{{ item.region }}</td>
-                  </tr>
-                  <tr>
-                    <td class="esatPrint">Position:</td>
-                    <td class="showDataPart1">{{ item.position }}</td>
-                    <td class="esatPrint">Division:</td>
-                    <td class="showDataPart1">{{ item.division }}</td>
-                  </tr>
-                  <tr>
-                    <td class="esatPrint">Employment Status:</td>
-                    <td class="showDataPart1">
-                      {{ item.school_year }} : {{ item.employment_status }}
-                    </td>
-                    <td class="esatPrint">School:</td>
-                    <td class="showDataPart1">
-                      {{ item.school_id }} - {{ item.school_name }}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="esatPrint">Age:</td>
-                    <td class="showDataPart1">{{ item.age }}</td>
-                    <td class="esatPrint">Curricular Classification:</td>
-                    <td class="showDataPart1">
-                      {{ item.curricular_classification }}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="esatPrint">Sex:</td>
-                    <td class="showDataPart1">{{ item.sex }}</td>
-                    <td class="esatPrint">Grade Level Taught:</td>
-                    <td class="showDataPart1">
-                      {{ item.grade_level_taught }}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="esatPrint">Number of Years in Teaching:</td>
-                    <td class="showDataPart1">
-                      {{ item.years_in_teaching }}
-                    </td>
-                    <td class="esatPrint">Area(s) of Specialization:</td>
-                    <td class="showDataPart1">
-                      {{ item.area_of_specialization }}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="esatPrint">Highest Degree Obtained:</td>
-                    <td class="showDataPart1">
-                      {{ item.highest_degree_obtained }} -
-                      {{ item.specified_highest_degree_obtained }}
-                    </td>
-                    <td class="esatPrint">Subjects(s) Taught:</td>
-                    <td class="showDataPart1">
-                      {{ item.subjects_taught }}
-                    </td>
-                  </tr>
-                </tbody>
-              </template>
-            </v-simple-table>
+              <v-simple-table id="printPart1" class="table">
+                <template v-slot:default>
+                  <thead>
+                    <tr>
+                      <th colspan="5">
+                        <h2
+                          style="color: black"
+                          class="font-weight-bold text-decoration-underline"
+                        >
+                          PART I. DEMOGRAPHIC PROFILE
+                        </h2>
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody
+                    style="color: black"
+                    v-for="item of printEsatInfo[0]"
+                    :key="item.id"
+                  >
+                    <tr>
+                      <td class="esatPrint">Name of Employee:</td>
+                      <td class="showDataPart1">
+                        {{ item.name_of_employee }}
+                      </td>
+                      <td rowspan="7"></td>
+                      <td class="esatPrint">Region:</td>
+                      <td class="showDataPart1">{{ item.region }}</td>
+                    </tr>
+                    <tr>
+                      <td class="esatPrint">Position:</td>
+                      <td class="showDataPart1">{{ item.position }}</td>
+                      <td class="esatPrint">Division:</td>
+                      <td class="showDataPart1">{{ item.division }}</td>
+                    </tr>
+                    <tr>
+                      <td class="esatPrint">Employment Status:</td>
+                      <td class="showDataPart1">
+                        {{ item.school_year }} : {{ item.employment_status }}
+                      </td>
+                      <td class="esatPrint">School:</td>
+                      <td class="showDataPart1">
+                        {{ item.school_id }} - {{ item.school_name }}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="esatPrint">Age:</td>
+                      <td class="showDataPart1">{{ item.age }}</td>
+                      <td class="esatPrint">Curricular Classification:</td>
+                      <td class="showDataPart1">
+                        {{ item.curricular_classification }}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="esatPrint">Sex:</td>
+                      <td class="showDataPart1">{{ item.sex }}</td>
+                      <td class="esatPrint">Grade Level Taught:</td>
+                      <td class="showDataPart1">
+                        {{ item.grade_level_taught }}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="esatPrint">Number of Years in Teaching:</td>
+                      <td class="showDataPart1">
+                        {{ item.years_in_teaching }}
+                      </td>
+                      <td class="esatPrint">Area(s) of Specialization:</td>
+                      <td class="showDataPart1">
+                        {{ item.area_of_specialization }}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="esatPrint">Highest Degree Obtained:</td>
+                      <td class="showDataPart1">
+                        {{ item.highest_degree_obtained }} -
+                        {{ item.specified_highest_degree_obtained }}
+                      </td>
+                      <td class="esatPrint">Subjects(s) Taught:</td>
+                      <td class="showDataPart1">
+                        {{ item.subjects_taught }}
+                      </td>
+                    </tr>
+                  </tbody>
+                </template>
+              </v-simple-table>
+            </v-container>
 
-            <v-container class="mt-5">
+            <v-container class="mt-5" style="padding: 10px">
               <h2 class="font-weight-bold mt-6 text-decoration-underline">
                 PART II. FUNCTIONAL OBJECTOVES
               </h2>
@@ -2102,7 +2105,7 @@
               </v-simple-table>
             </v-container>
 
-            <v-container class="">
+            <v-container class="" style="padding: 10px">
               <v-simple-table class="table" style="color: black">
                 <template v-slot:default>
                   <thead>
@@ -2536,20 +2539,22 @@
                 </template>
               </v-simple-table>
             </v-container>
-            <v-container>
-              <v-btn class="float-right mb-4 me-4 mt-5">PRINT</v-btn>
-              <v-btn
-                class="float-right mb-4 me-4 mt-5"
-                @click="goToEsatCard(), (esatCard = true)"
-                >FINISH</v-btn
-              >
-              <v-btn
-                v-if="editBtn"
-                class="float-right mb-4 me-4 mt-5"
-                @click="editInfo(printEsatInfo)"
-                >EDIT</v-btn
-              >
-            </v-container>
+          </v-container>
+          <v-container>
+            <v-btn v-print="printEsat" class="float-right mb-4 me-4 mt-5"
+              >PRINT</v-btn
+            >
+            <v-btn
+              class="float-right mb-4 me-4 mt-5"
+              @click="goToEsatCard(), (esatCard = true)"
+              >FINISH</v-btn
+            >
+            <v-btn
+              v-if="editBtn"
+              class="float-right mb-4 me-4 mt-5"
+              @click="editInfo(printEsatInfo)"
+              >EDIT</v-btn
+            >
           </v-container>
         </v-card>
       </v-tab-item>
@@ -2606,7 +2611,7 @@
                         Submit this file to you Department Head for
                         consolidation.
                       </p>
-                      <v-simple-table class="table">
+                      <v-simple-table class="table overflow-hidden">
                         <template>
                           <tbody>
                             <tr>
@@ -2774,6 +2779,34 @@ export default {
     returnPart3() {
       this.tab = "part3";
     },
+    printEsat: {
+      id: "printMeEsat",
+      // preview: true,
+      // previewTitle: "print Title", // The title of the preview window. The default is 打印预览
+      // popTitle: "good print",
+      extraCss:
+        "https://cdn.bootcdn.net/ajax/libs/animate.css/4.1.1/animate.compat.css, https://cdn.bootcdn.net/ajax/libs/hover.css/2.3.1/css/hover-min.css",
+
+      extraHead:
+        '<meta http-equiv="Content-Language"content="en-us"/>, <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">',
+      // previewBeforeOpenCallback() {
+      //   console.log("正在加载预览窗口");
+      // },
+      // previewOpenCallback() {
+      //   console.log("已经加载完预览窗口");
+      // },
+      // beforeOpenCallback() {
+      //   //.printLoading = true
+      //   console.log("打开之前");
+      // },
+      // openCallback() {
+      //   // .printLoading = false
+      //   console.log("执行了打印");
+      // },
+      // closeCallback() {
+      //   console.log("关闭了打印工具");
+      // },
+    },
     create() {
       this.tab = "part1";
       this.showPart1 = true;
@@ -2782,6 +2815,7 @@ export default {
       this.editCancelBtn = false;
     },
     goToEsatCard() {
+      
       this.$router.go();
       this.tab = "esat_card";
       this.clickEsat = false;
@@ -2808,6 +2842,7 @@ export default {
     noData: false,
     saveData: false,
     part3Table: true,
+    saveLoad: false,
     specialized: false,
     subs: false,
     editCancelBtn: true,
@@ -3302,7 +3337,10 @@ export default {
       }
     },
     finalizeEsat: async function () {
-      console.log("created");
+      (this.clickEsat = false),
+        (this.part3Table = false),
+        (this.saveLoad = true),
+        console.log("created");
 
       {
         const employeeName = this.employeeName;
@@ -4097,7 +4135,10 @@ export default {
     },
 
     updateEsat: async function () {
-      console.log("Update");
+      (this.clickEsat = false),
+        (this.part3Table = false),
+        (this.saveLoad = true),
+        console.log("Update");
       console.log(this.funct_ids);
       console.log(this.core_ids);
       // (this.showPart3 = false),
@@ -4705,9 +4746,6 @@ export default {
       this.printEsatInfo.push(this.viewEsatDemo);
       this.printEsatInfo.push(this.viewEsatCore);
       this.printEsatInfo.push(this.viewEsatFunc);
-
-      // console.log(this.core_ids)
-      // console.log(this.printEsatInfo)
     },
   },
 };

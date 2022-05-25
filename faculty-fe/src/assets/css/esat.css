@@ -162,3 +162,15 @@ td {
     right: 0;
     font-size: 20px;
 }
+
+@media print {
+     ::-webkit-scrollbar:horizontal {
+        height: 0;
+        width: 0;
+        display: none;
+    }
+    v-simple-table {
+        overflow-x: hidden;
+        color: red;
+    }
+}
