@@ -23,8 +23,8 @@
       <v-tab-item :key="1" value="subscribe" v-if="disclosure">
         <v-card flat>
           <p class="text-center">
-            <v-alert elevation="24" shaped outlined dismissible
-              ><h1 id="noDataTxt">Disclosure</h1></v-alert
+            <v-alert elevation="24" outlined
+              ><h1 id="disclosureText">Disclosure</h1></v-alert
             >
           </p>
 
@@ -130,7 +130,7 @@
       <v-tab-item :key="2" value="part1" v-if="showPart1">
         <v-container id="alert" v-if="saveData">
           <v-alert id="alertMsg" elevation="24" type="error" dismissible
-            ><h1 id="noDataTxt">Unsuccessful!</h1></v-alert
+            ><h1 id="disclosureText">Unsuccessful!</h1></v-alert
           >
         </v-container>
         <v-form ref="demo" v-model="valid" lazy-validation>
@@ -168,6 +168,7 @@
                     :rules="demoRequired"
                     required
                     solo
+                    dense
                     class="mt-6"
                     v-model="schoolYear"
                   ></v-text-field>
@@ -179,6 +180,7 @@
                     :rules="demoRequired"
                     required
                     solo
+                    dense
                     class="mt-6"
                     :items="regionItems"
                     v-model="region"
@@ -203,6 +205,7 @@
                     :rules="demoRequired"
                     required
                     solo
+                    dense
                     class="mt-6"
                     v-model="yearsInTeaching"
                     :items="yearsItems"
@@ -215,6 +218,7 @@
                     :rules="demoRequired"
                     required
                     solo
+                    dense
                     class="mt-6"
                     :items="divisionItems"
                     v-model="division"
@@ -229,6 +233,7 @@
                     required
                     :items="positionItems"
                     solo
+                    dense
                     class="mt-6"
                     v-model="position"
                   ></v-autocomplete>
@@ -239,6 +244,7 @@
                     :rules="demoRequired"
                     required
                     solo
+                    dense
                     class="mt-6"
                     v-model="highestDegreeObtained"
                     :items="highestDegreeItems"
@@ -264,6 +270,7 @@
                     :rules="demoRequired"
                     required
                     solo
+                    dense
                     class="mt-6"
                     v-model="employmentStatus"
                     :items="statusItems"
@@ -300,6 +307,7 @@
                     required
                     :items="ageitems"
                     solo
+                    dense
                     class="mt-6"
                     v-model="employeeAge"
                   ></v-autocomplete>
@@ -311,6 +319,7 @@
                     :rules="demoRequired"
                     required
                     solo
+                    dense
                     class="mt-6"
                     v-model="levelTaught"
                     :items="levelTaughtItems"
@@ -335,6 +344,7 @@
                     :rules="demoRequired"
                     required
                     solo
+                    dense
                     class="mt-6"
                     v-model="employeeSex"
                     :items="sexItems"
@@ -347,6 +357,7 @@
                     :rules="demoRequired"
                     required
                     solo
+                    dense
                     class="mt-6"
                     v-model="gradeLevelTaught"
                     :items="gLevelTaughtItems"
@@ -358,6 +369,7 @@
                     :rules="demoRequired"
                     required
                     solo
+                    dense
                     class="mt-6"
                     :items="schoolTypeItems"
                     v-model="schoolType"
@@ -373,6 +385,7 @@
                     :rules="demoRequired"
                     required
                     solo
+                    dense
                     class="mt-6"
                     :items="schoolSizeItems"
                     v-model="schoolSize"
@@ -387,6 +400,7 @@
                     :rules="demoRequired"
                     required
                     solo
+                    dense
                     class="mt-6"
                     :items="classificationItems"
                     v-model="curricularClassification"
@@ -506,16 +520,17 @@
                               v-model="otherSpecialized"
                               label="If others, please specify"
                               solo
+                              dense
                             ></v-text-field>
                           </v-col>
                           <v-col>
-                            <v-container v-if="specialized" id="checkRequired">
+                            <!-- <v-container v-if="specialized" id="checkRequired">
                               <p style="font-size: 20px">
                                 <v-alert elevation="24" type="error" dismissible
                                   ><h3>Select at least 1 subject!</h3></v-alert
                                 >
                               </p>
-                            </v-container>
+                            </v-container> -->
                           </v-col>
                         </v-row>
                       </v-container>
@@ -605,6 +620,7 @@
 
                             <v-text-field
                               v-model="otherSubTaught"
+                              dense
                               label="If others, please specify"
                               solo
                             ></v-text-field>
@@ -613,13 +629,14 @@
                       </v-container>
                     </v-card-text>
                     <br />
-                    <br /><br /><v-container v-if="subs" id="checkRequired">
+                    <br /><br />
+                    <!-- <v-container v-if="subs" id="checkRequired">
                       <p>
                         <v-alert elevation="24" type="error" dismissible
                           ><h3>Select at least 1 subject!</h3></v-alert
                         >
-                      </p> </v-container
-                    ><br /><br /><br />
+                      </p> </v-container> -->
+                    <br /><br /><br />
                   </v-card>
                 </v-col>
               </v-row>
@@ -632,7 +649,8 @@
                     @click="goToPart2"
                     >NEXT</v-btn
                   >
-                  <v-btn v-if="editCancelBtn"
+                  <v-btn
+                    v-if="editCancelBtn"
                     color="error"
                     class="float-right mb-4 me-4 mt-5"
                     @click="
@@ -2517,47 +2535,38 @@
                   </tbody>
                 </template>
               </v-simple-table>
-              <v-row no-gutters>
-                <v-col cols="12" sm="6" md="8"> </v-col>
-                <v-col cols="4" md="4">
-                  <v-btn class="float-right mb-4 me-4 mt-5">PRINT</v-btn>
-                  <v-btn
-                    class="float-right mb-4 me-4 mt-5"
-                    @click="goToEsatCard(), (esatCard = true)"
-                    >FINISH</v-btn
-                  >
-                  <v-btn
-                    v-if="editBtn"
-                    class="float-right mb-4 me-4 mt-5"
-                    @click="editInfo(printEsatInfo)"
-                    >EDIT</v-btn
-                  >
-                </v-col>
-              </v-row>
-              <!-- <v-row no-gutters v-else>
-                  <v-col cols="12" sm="6" md="8"> </v-col>
-                  <v-col cols="4" md="4">
-                    <v-btn class="float-right mb-4 me-4 mt-5">PRINT</v-btn>
-                    <v-btn
-                      class="float-right mb-4 me-4 mt-5"
-                      @click="goToEsatCard(), (esatCard = true)"
-                      >FINISH</v-btn
-                    >
-                    >
-                  </v-col>
-                </v-row> -->
+            </v-container>
+            <v-container>
+              <v-btn class="float-right mb-4 me-4 mt-5">PRINT</v-btn>
+              <v-btn
+                class="float-right mb-4 me-4 mt-5"
+                @click="goToEsatCard(), (esatCard = true)"
+                >FINISH</v-btn
+              >
+              <v-btn
+                v-if="editBtn"
+                class="float-right mb-4 me-4 mt-5"
+                @click="editInfo(printEsatInfo)"
+                >EDIT</v-btn
+              >
             </v-container>
           </v-container>
-          <v-row>
-            <v-col> </v-col>
-          </v-row>
         </v-card>
       </v-tab-item>
 
       <v-tab-item :key="6" value="esat_card" v-if="esatCard">
         <v-container class="p-5" v-if="noData">
-          <v-alert elevation="24" type="error" dismissible
-            ><h1>No Data!</h1></v-alert
+          <v-alert elevation="24" color="info"
+            ><h1
+              style="
+                font-size: 30px;
+                text-align: center;
+                padding-top: 10px;
+                padding-bottom: 10px;
+              "
+            >
+              No Data Yet!
+            </h1></v-alert
           >
         </v-container>
         <v-container>
@@ -2730,10 +2739,13 @@
 
 <script>
 // @ is an alias to /src
+import PromptAlert from "@/utils/Prompt";
 export default {
   // methods: {},
   data: () => ({
     // return {
+    mixins: [PromptAlert],
+    value: String,
     goToPrivacy() {
       this.tab = "privacy";
     },
@@ -2769,28 +2781,16 @@ export default {
       this.clickEsat = true;
       this.editCancelBtn = false;
     },
-    // goToShowPrint() {
-    //   this.tab = "show_print";
-    // },
-    // editInfoInfo() {
-    //   this.tab = "part1";
-    // },
-    // returnShowPrint() {
-    //   this.tab = "show_print";
-    // },
     goToEsatCard() {
       this.$router.go();
       this.tab = "esat_card";
       this.clickEsat = false;
       this.createBtn = true;
-      
+
       // window.location.reload();
 
       this.retrieveEsat();
     },
-    // returnEsatCard() {
-    //   this.tab = "esat_card";
-    // },
 
     valid: true,
     disclosure: false,
@@ -3072,6 +3072,13 @@ export default {
     this.retrieveEsat();
   },
   methods: {
+    showErrorResponse(title, message) {
+      this.$swal.fire({
+        icon: "error",
+        title: title,
+        text: message,
+      });
+    },
     goToPart2() {
       const english = this.english == null ? "" : this.english;
       const filipino = this.filipino == null ? "" : this.filipino;
@@ -3201,15 +3208,24 @@ export default {
         this.subs = false;
         (this.showPart1 = false), (this.showPart2 = true), (this.tab = "part2");
       } else {
-        if (specializeSubSplitJoin == "") {
-          this.specialized = true;
+        if (specializeSubSplitJoin == "" && specifiedSubSplitJoin == "") {
+          this.showErrorResponse(
+            "Opppsss",
+            "Select at least 1 subject in Area of Specialization and in Subject Taught!"
+          );
         } else {
-          this.specialized = false;
-        }
-        if (specifiedSubSplitJoin == "") {
-          this.subs = true;
-        } else {
-          this.subs = false;
+          if (specializeSubSplitJoin == "") {
+            this.showErrorResponse(
+              "Opppsss",
+              "Select at least 1 subject in Area of Specialization!"
+            );
+          }
+          if (specifiedSubSplitJoin == "") {
+            this.showErrorResponse(
+              "Opppsss",
+              "Select at least 1 subject in Subject Taught!"
+            );
+          }
         }
       }
     },
@@ -3254,6 +3270,7 @@ export default {
           // alert("No data")
           this.tab = "esat_card";
           this.noData = true;
+          // this.showErrorResponse("No Data!", "NO");
           this.esatCard = true;
         }
       } else {
@@ -3298,7 +3315,8 @@ export default {
         const schoolYear = this.schoolYear;
         const yearsInTeaching = this.yearsInTeaching;
         const highestDegreeObtained = this.highestDegreeObtained;
-        const specifiedHighestDegreeObtained = this.highestDegreeObtained;
+        const specifiedHighestDegreeObtained =
+          this.specifiedHighestDegreeObtained;
         const levelTaught = this.levelTaught;
         const gradeLevelTaught = this.gradeLevelTaught;
 
@@ -4097,7 +4115,8 @@ export default {
       const schoolYear = this.schoolYear;
       const yearsInTeaching = this.yearsInTeaching;
       const highestDegreeObtained = this.highestDegreeObtained;
-      const specifiedHighestDegreeObtained = this.highestDegreeObtained;
+      const specifiedHighestDegreeObtained =
+        this.specifiedHighestDegreeObtained;
       const levelTaught = this.levelTaught;
       const gradeLevelTaught = this.gradeLevelTaught;
 
@@ -4269,7 +4288,6 @@ export default {
 
       const personalComments = this.personalComments;
 
-      //  == "1" ? this.selfManagement : this.selfManagement1 == "1" ? this.selfManagement
       const selfManagement1 = this.selfManagement1;
       const selfManagement2 = this.selfManagement2;
       const selfManagement3 = this.selfManagement3;

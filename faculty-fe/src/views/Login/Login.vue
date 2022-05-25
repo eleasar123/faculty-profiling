@@ -91,6 +91,7 @@ export default {
         window.location.href = '/personalDataSheet'
         // this.$router.push("/personalDataSheet");
       }else{
+        console.log(returnedData.data)
          this.showErrorResponse("Log In Failed", returnedData.data[0].message);
       }
     },

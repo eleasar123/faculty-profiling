@@ -3,7 +3,6 @@
     height: 100px;
     margin-left: 60%;
     margin-top: 2%;
-    
 }
 
 #esatLogocard {
@@ -20,10 +19,9 @@
     border: rgb(64, 35, 131) 4px solid;
 }
 
-
- #disclose {
+#disclose {
     font-weight: bolder;
-} 
+}
 
 #cardEsat {
     background-color: #e491a3;
@@ -129,9 +127,12 @@ td {
     width: 1%;
 }
 
-
-#noDataTxt {
+#disclosureText {
     font-size: 20px;
+    text-align: center;
+    /* background-color: rgb(211, 238, 158);
+    padding: 10px;
+    border: black solid; */
 }
 
 #alert {
@@ -148,6 +149,7 @@ td {
     left: 0;
     right: 0;
 }
+
 #alertMsg {
     margin-top: 100%;
 }
@@ -159,5 +161,4 @@ td {
     left: 0;
     right: 0;
     font-size: 20px;
-
 }
