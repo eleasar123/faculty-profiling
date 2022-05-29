@@ -163,14 +163,91 @@ td {
     font-size: 20px;
 }
 
+.fieldRequire {
+    color: red;
+    font-weight: bolder;
+}
+
 @media print {
-     ::-webkit-scrollbar:horizontal {
-        height: 0;
-        width: 0;
-        display: none;
+    * {
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+        color: black !important;
+        font-family: 'Arial';
     }
-    v-simple-table {
-        overflow-x: hidden;
-        color: red;
+    /* #colgroup1 {
+        background-color: red;
+        width: 40px;
+        font-family: 'docs-Arial Narrow';
+        font-style: italic;
+    }
+    #colgroup2 {
+        background-color: green;
+    }
+    #colgroup3 {
+        background-color: blue;
+    }
+    #colgroup4 {
+        background-color: orange;
+        width: 40px;
+        font-family: 'docs-Arial Narrow';
+        font-style: italic;
+    }
+    #colgroup5 {
+        background-color: yellow;
+        width: 80px;
+        font-family: 'docs-Arial Narrow';
+        font-style: italic;
+    } */
+    #emptyCol {
+        width: 2px !important;
+    }
+    .esatPrint {
+        width: 110px !important;
+        height: 1px !important;
+    }
+    .showDataPart1 {
+        width: 130px !important;
+        height: 1px !important;
+    }
+    .tRow {
+        font-size: 8px;
+    }
+    .part1FontSize,
+    .part2FontSize,
+    .part3FontSize {
+        font-size: 8px;
+    }
+    .objNo,
+    .text-center,
+    .objDes,
+    .obsHeadHght,
+    .text-left,
+    .coreHeadHght,
+    .part3TdHght {
+        height: 1px !important;
+    }
+    .text-center,
+    .text-left {
+        width: 40px !important;
+    }
+    .part2TblHead {
+        font-size: 10px;
+    }
+    .objsHead,
+    .coreHead {
+        font-size: 9px;
+    }
+    #part3 {
+        text-align: left;
+        margin-top: 30px;
+    }
+    .heading {
+        font-size: 15px;
+        margin-bottom: 5px;
+    }
+    .printParts {
+        font-size: 13px;
+        margin-bottom: 3px;
     }
 }

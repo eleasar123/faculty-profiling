@@ -6,13 +6,12 @@
       <v-col md="5" style="float:right">
         <form ref="form">
           <p class="text-center font-weight-bold"><br><br><br><br><br>
-            <imgs
+            <img
               :src="require('../../assets/lnhslogo.png')"
               width="100px"
               height="100px"
             />
           </p>
-
           <h3 class="text-center font-weight-bold white--text">LUT-OD NHS FACULTY</h3>
           <h3 class="text-center font-weight-bold white--text">PROFILING SYSTEM</h3><br>
           <br>

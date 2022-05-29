@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <v-tabs transparent background-color="white" centered dark>
-      <v-btn v-if="createBtn" class="mr-5 float-right" @click="create()"
+      <v-btn v-if="createBtn" class="mr-5 float-right" @click="createEsat()"
         >Create</v-btn
       >
       <v-btn v-if="clickEsat" class="mr-5 float-right" @click="goToEsatCard()"
@@ -13,9 +13,9 @@
       <v-tab-item :key="1" value="subscribe" v-if="disclosure">
         <v-card flat>
           <p class="text-center">
-            <v-alert elevation="24" outlined
-              ><h1 id="disclosureText">Disclosure</h1></v-alert
-            >
+            <v-alert elevation="24" outlined>
+              <h1 id="disclosureText">Disclosure</h1>
+            </v-alert>
           </p>
 
           <v-container>
@@ -67,8 +67,9 @@
                   @click="
                     goToPrivacy(), (disclosure = false), (privacyNote = true)
                   "
-                  ><h3>START</h3></v-btn
                 >
+                  <h3>START</h3>
+                </v-btn>
               </v-card-text>
             </v-container>
           </v-container>
@@ -101,8 +102,9 @@
             @click="
               returnDisclosure(), (privacyNote = false), (disclosure = true)
             "
-            ><h3>DISAGREE</h3></v-btn
           >
+            <h3>DISAGREE</h3>
+          </v-btn>
 
           <v-btn
             class="float-right mt-5 mb-5 mr-5 font-weight-black"
@@ -112,16 +114,17 @@
                 (privacyNote = false),
                 (showPart1 = true)
             "
-            ><h3>AGREE</h3></v-btn
           >
+            <h3>AGREE</h3>
+          </v-btn>
         </v-container>
       </v-tab-item>
 
       <v-tab-item :key="2" value="part1" v-if="showPart1">
         <v-container id="alert" v-if="saveData">
-          <v-alert id="alertMsg" elevation="24" type="error" dismissible
-            ><h1 id="disclosureText">Unsuccessful!</h1></v-alert
-          >
+          <v-alert id="alertMsg" elevation="24" type="error" dismissible>
+            <h1 id="disclosureText">Unsuccessful!</h1>
+          </v-alert>
         </v-container>
         <v-form ref="demo" v-model="valid" lazy-validation>
           <v-container class="bgContainer mt-5">
@@ -138,7 +141,7 @@
 
             <v-simple-table class="table part1" dense>
               <tr class="infoDetails">
-                <td>Name of Employee:</td>
+                <td>Name of Employee: <span class="fieldRequire">*</span></td>
                 <td>
                   <v-text-field
                     class="textField mt-5"
@@ -152,7 +155,7 @@
                 </td>
                 <td rowspan="8"></td>
 
-                <td>School Year:</td>
+                <td>School Year: <span class="fieldRequire">*</span></td>
                 <td>
                   <v-text-field
                     :rules="demoRequired"
@@ -164,7 +167,7 @@
                   ></v-text-field>
                 </td>
                 <td rowspan="8"></td>
-                <td>Region:</td>
+                <td>Region: <span class="fieldRequire">*</span></td>
                 <td>
                   <v-autocomplete
                     :rules="demoRequired"
@@ -178,7 +181,7 @@
                 </td>
               </tr>
               <tr class="infoDetails">
-                <td>Employee ID:</td>
+                <td>Employee ID: <span class="fieldRequire">*</span></td>
                 <td>
                   <v-text-field
                     :rules="demoRequired"
@@ -189,7 +192,10 @@
                     dense
                   ></v-text-field>
                 </td>
-                <td>Number of Years in Teaching:</td>
+                <td>
+                  Number of Years in Teaching:
+                  <span class="fieldRequire">*</span>
+                </td>
                 <td>
                   <v-autocomplete
                     :rules="demoRequired"
@@ -202,7 +208,7 @@
                   ></v-autocomplete>
                 </td>
 
-                <td>Division:</td>
+                <td>Division: <span class="fieldRequire">*</span></td>
                 <td>
                   <v-autocomplete
                     :rules="demoRequired"
@@ -216,7 +222,7 @@
                 </td>
               </tr>
               <tr class="infoDetails">
-                <td>Position:</td>
+                <td>Position: <span class="fieldRequire">*</span></td>
                 <td>
                   <v-autocomplete
                     :rules="demoRequired"
@@ -228,7 +234,9 @@
                     v-model="position"
                   ></v-autocomplete>
                 </td>
-                <td rowspan="2">Highest Degree Obtained:</td>
+                <td rowspan="2">
+                  Highest Degree Obtained: <span class="fieldRequire">*</span>
+                </td>
                 <td>
                   <v-autocomplete
                     :rules="demoRequired"
@@ -241,7 +249,9 @@
                   ></v-autocomplete>
                 </td>
 
-                <td>District/Municipality:</td>
+                <td>
+                  District/Municipality: <span class="fieldRequire">*</span>
+                </td>
                 <td>
                   <v-text-field
                     :rules="demoRequired"
@@ -254,7 +264,7 @@
                 </td>
               </tr>
               <tr class="infoDetails">
-                <td>Employment Status:</td>
+                <td>Employment Status: <span class="fieldRequire">*</span></td>
                 <td>
                   <v-autocomplete
                     :rules="demoRequired"
@@ -277,7 +287,7 @@
                   ></v-text-field>
                 </td>
 
-                <td>School ID:</td>
+                <td>School ID: <span class="fieldRequire">*</span></td>
                 <td>
                   <v-text-field
                     :rules="demoRequired"
@@ -290,7 +300,7 @@
                 </td>
               </tr>
               <tr class="infoDetails">
-                <td>Age:</td>
+                <td>Age: <span class="fieldRequire">*</span></td>
                 <td>
                   <v-autocomplete
                     :rules="demoRequired"
@@ -303,7 +313,7 @@
                   ></v-autocomplete>
                 </td>
 
-                <td>Level Taught:</td>
+                <td>Level Taught: <span class="fieldRequire">*</span></td>
                 <td>
                   <v-autocomplete
                     :rules="demoRequired"
@@ -315,7 +325,7 @@
                     :items="levelTaughtItems"
                   ></v-autocomplete>
                 </td>
-                <td>School Name:</td>
+                <td>School Name: <span class="fieldRequire">*</span></td>
                 <td>
                   <v-text-field
                     :rules="demoRequired"
@@ -328,7 +338,7 @@
                 </td>
               </tr>
               <tr class="infoDetails">
-                <td>Sex:</td>
+                <td>Sex: <span class="fieldRequire">*</span></td>
                 <td>
                   <v-autocomplete
                     :rules="demoRequired"
@@ -341,7 +351,7 @@
                   ></v-autocomplete>
                 </td>
 
-                <td>Grade Level taught:</td>
+                <td>Grade Level taught: <span class="fieldRequire">*</span></td>
                 <td>
                   <v-autocomplete
                     :rules="demoRequired"
@@ -353,7 +363,7 @@
                     :items="gLevelTaughtItems"
                   ></v-autocomplete>
                 </td>
-                <td>School Type:</td>
+                <td>School Type: <span class="fieldRequire">*</span></td>
                 <td>
                   <v-autocomplete
                     :rules="demoRequired"
@@ -363,13 +373,12 @@
                     class="mt-6"
                     :items="schoolTypeItems"
                     v-model="schoolType"
-                    label="School Type"
                   ></v-autocomplete>
                 </td>
               </tr>
               <tr class="infoDetails">
                 <td colspan="6" rowspan="2"></td>
-                <td>School Size:</td>
+                <td>School Size: <span class="fieldRequire">*</span></td>
                 <td>
                   <v-autocomplete
                     :rules="demoRequired"
@@ -379,12 +388,13 @@
                     class="mt-6"
                     :items="schoolSizeItems"
                     v-model="schoolSize"
-                    label="School Size"
                   ></v-autocomplete>
                 </td>
               </tr>
               <tr class="infoDetails">
-                <td>Curricular Classification:</td>
+                <td>
+                  Curricular Classification: <span class="fieldRequire">*</span>
+                </td>
                 <td>
                   <v-autocomplete
                     :rules="demoRequired"
@@ -394,7 +404,6 @@
                     class="mt-6"
                     :items="classificationItems"
                     v-model="curricularClassification"
-                    label="Curricular Classification"
                   ></v-autocomplete>
                 </td>
               </tr>
@@ -1119,7 +1128,9 @@
             <!-- 5 -->
             <v-simple-table class="table">
               <tr>
-                <td colspan="3" class="head"><h2>PLUS FACTOR</h2></td>
+                <td colspan="3" class="head">
+                  <h2>PLUS FACTOR</h2>
+                </td>
               </tr>
               <tr>
                 <td>
@@ -1169,9 +1180,7 @@
                   outlined
                   dense
                 ></v-text-field>
-                <v-btn
-                  class="float-right mb-4 me-4 mt-5"
-                  @click="goToPart3(), (showPart2 = false), (showPart3 = true)"
+                <v-btn class="float-right mb-4 me-4 mt-5" @click="goToPart3()"
                   >NEXT</v-btn
                 >
                 <v-btn
@@ -1756,86 +1765,147 @@
               </v-container>
 
               <!-- showPRINT -->
-
+              <h2 class="printParts font-weight-bold text-decoration-underline">
+                PART I. DEMOGRAPHIC PROFILE
+              </h2>
               <v-simple-table id="printPart1" class="table">
                 <template v-slot:default>
-                  <thead>
-                    <tr>
-                      <th colspan="5">
-                        <h2
-                          style="color: black"
-                          class="font-weight-bold text-decoration-underline"
-                        >
-                          PART I. DEMOGRAPHIC PROFILE
-                        </h2>
-                      </th>
-                    </tr>
-                  </thead>
+                  <colgroup>
+                    <col id="colgroup1" />
+                    <col id="colgroup2" />
+                    <col id="colgroup3" />
+                    <col id="colgroup4" />
+                    <col id="colgroup5" />
+                  </colgroup>
                   <tbody
                     style="color: black"
                     v-for="item of printEsatInfo[0]"
                     :key="item.id"
                   >
-                    <tr>
-                      <td class="esatPrint">Name of Employee:</td>
-                      <td class="showDataPart1">
-                        {{ item.name_of_employee }}
+                    <tr class="tRow">
+                      <td class="esatPrint">
+                        <span class="part1FontSize">Name of Employee:</span>
                       </td>
-                      <td rowspan="7"></td>
-                      <td class="esatPrint">Region:</td>
-                      <td class="showDataPart1">{{ item.region }}</td>
-                    </tr>
-                    <tr>
-                      <td class="esatPrint">Position:</td>
-                      <td class="showDataPart1">{{ item.position }}</td>
-                      <td class="esatPrint">Division:</td>
-                      <td class="showDataPart1">{{ item.division }}</td>
-                    </tr>
-                    <tr>
-                      <td class="esatPrint">Employment Status:</td>
                       <td class="showDataPart1">
-                        {{ item.school_year }} : {{ item.employment_status }}
+                        <span class="part1FontSize">{{
+                          item.name_of_employee
+                        }}</span>
                       </td>
-                      <td class="esatPrint">School:</td>
+                      <td id="emptyCol" rowspan="7"></td>
+                      <td class="esatPrint">
+                        <span class="part1FontSize">Region:</span>
+                      </td>
                       <td class="showDataPart1">
-                        {{ item.school_id }} - {{ item.school_name }}
+                        <span class="part1FontSize">{{ item.region }}</span>
                       </td>
                     </tr>
-                    <tr>
-                      <td class="esatPrint">Age:</td>
-                      <td class="showDataPart1">{{ item.age }}</td>
-                      <td class="esatPrint">Curricular Classification:</td>
+                    <tr class="tRow">
+                      <td class="esatPrint">
+                        <span class="part1FontSize">Position:</span>
+                      </td>
                       <td class="showDataPart1">
-                        {{ item.curricular_classification }}
+                        <span class="part1FontSize">{{ item.position }}</span>
+                      </td>
+                      <td class="esatPrint">
+                        <span class="part1FontSize">Division:</span>
+                      </td>
+                      <td class="showDataPart1">
+                        <span class="part1FontSize">{{ item.division }}</span>
                       </td>
                     </tr>
-                    <tr>
-                      <td class="esatPrint">Sex:</td>
-                      <td class="showDataPart1">{{ item.sex }}</td>
-                      <td class="esatPrint">Grade Level Taught:</td>
+                    <tr class="tRow">
+                      <td class="esatPrint">
+                        <span class="part1FontSize">Employment Status:</span>
+                      </td>
                       <td class="showDataPart1">
-                        {{ item.grade_level_taught }}
+                        <span class="part1FontSize">{{
+                          item.employment_status
+                        }}</span>
+                      </td>
+                      <td class="esatPrint">
+                        <span class="part1FontSize">School:</span>
+                      </td>
+                      <td class="showDataPart1">
+                        <span class="part1FontSize"
+                          >{{ item.school_id }} - {{ item.school_name }}</span
+                        >
                       </td>
                     </tr>
-                    <tr>
-                      <td class="esatPrint">Number of Years in Teaching:</td>
-                      <td class="showDataPart1">
-                        {{ item.years_in_teaching }}
+                    <tr class="tRow">
+                      <td class="esatPrint">
+                        <span class="part1FontSize">Age:</span>
                       </td>
-                      <td class="esatPrint">Area(s) of Specialization:</td>
                       <td class="showDataPart1">
-                        {{ item.area_of_specialization }}
+                        <span class="part1FontSize">{{ item.age }}</span>
+                      </td>
+                      <td class="esatPrint">
+                        <span class="part1FontSize"
+                          >Curricular Classification:</span
+                        >
+                      </td>
+                      <td class="showDataPart1">
+                        <span class="part1FontSize">{{
+                          item.curricular_classification
+                        }}</span>
                       </td>
                     </tr>
-                    <tr>
-                      <td class="esatPrint">Highest Degree Obtained:</td>
-                      <td class="showDataPart1">
-                        {{ item.highest_degree_obtained }} -
-                        {{ item.specified_highest_degree_obtained }}
+                    <tr class="tRow">
+                      <td class="esatPrint">
+                        <span class="part1FontSize">Sex:</span>
                       </td>
-                      <td class="esatPrint">Subjects(s) Taught:</td>
                       <td class="showDataPart1">
-                        {{ item.subjects_taught }}
+                        <span class="part1FontSize">{{ item.sex }}</span>
+                      </td>
+                      <td class="esatPrint">
+                        <span class="part1FontSize">Grade Level Taught:</span>
+                      </td>
+                      <td class="showDataPart1">
+                        <span class="part1FontSize"
+                          >{{ item.grade_level_taught }}
+                        </span>
+                      </td>
+                    </tr>
+                    <tr class="tRow">
+                      <td class="esatPrint">
+                        <span class="part1FontSize"
+                          >Number of Years in Teaching:</span
+                        >
+                      </td>
+                      <td class="showDataPart1">
+                        <span class="part1FontSize"
+                          >{{ item.years_in_teaching }}
+                        </span>
+                      </td>
+                      <td class="esatPrint">
+                        <span class="part1FontSize"
+                          >Area(s) of Specialization:</span
+                        >
+                      </td>
+                      <td class="showDataPart1">
+                        <span class="part1FontSize"
+                          >{{ item.area_of_specialization }}
+                        </span>
+                      </td>
+                    </tr>
+                    <tr class="tRow">
+                      <td class="esatPrint">
+                        <span class="part1FontSize"
+                          >Highest Degree Obtained:</span
+                        >
+                      </td>
+                      <td class="showDataPart1">
+                        <span class="part1FontSize">
+                          {{ item.highest_degree_obtained }} -
+                          {{ item.specified_highest_degree_obtained }}
+                        </span>
+                      </td>
+                      <td class="esatPrint">
+                        <span class="part1FontSize">Subjects(s) Taught:</span>
+                      </td>
+                      <td class="showDataPart1">
+                        <span class="part1FontSize"
+                          >{{ item.subjects_taught }}
+                        </span>
                       </td>
                     </tr>
                   </tbody>
@@ -1844,8 +1914,10 @@
             </v-container>
 
             <v-container class="mt-5" style="padding: 10px">
-              <h2 class="font-weight-bold mt-6 text-decoration-underline">
-                PART II. FUNCTIONAL OBJECTOVES
+              <h2
+                class="printParts font-weight-bold mt-6 text-decoration-underline"
+              >
+                PART II. FUNCTIONAL OBJECTIVES
               </h2>
               <v-simple-table class="table">
                 <template v-slot:default>
@@ -1860,7 +1932,7 @@
                         "
                         class="text-center"
                       >
-                        Objectives
+                        <span class="part2TblHead"> Objectives </span>
                       </th>
                       <th
                         style="
@@ -1870,7 +1942,7 @@
                         "
                         class="text-left"
                       >
-                        Level of Capacity
+                        <span class="part2TblHead"> Level of Capacity</span>
                       </th>
                       <th
                         style="
@@ -1880,65 +1952,92 @@
                         "
                         class="text-left"
                       >
-                        Priority for Development
+                        <span class="part2TblHead">
+                          Priority for Development</span
+                        >
                       </th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
-                      <td colspan="4">
-                        <h3>
+                      <td class="obsHeadHght" colspan="4">
+                        <h3 class="objsHead">
                           1.Content Knowledge and Pedagogy (PPST Domain 1)
                         </h3>
                       </td>
                     </tr>
 
                     <tr>
-                      <td class="objNo">1.1</td>
-                      <td>
-                        Applied knowledge of content within and across
-                        curriculum teaching areas (PPST Indicator 1.1.2)
+                      <td class="objNo">
+                        <span class="part2FontSize">1.1</span>
+                      </td>
+                      <td class="objDes">
+                        <span class="part2FontSize">
+                          Applied knowledge of content within and across
+                          curriculum teaching areas (PPST Indicator 1.1.2)</span
+                        >
                       </td>
                       <td class="text-center">
-                        {{ printEsatInfo[2][0].level_of_capability }}
+                        <span class="part2FontSize">
+                          {{ printEsatInfo[2][0].level_of_capability }}
+                        </span>
                       </td>
                       <td class="text-center">
-                        {{ printEsatInfo[2][0].priority_for_development }}
+                        <span class="part2FontSize">
+                          {{ printEsatInfo[2][0].priority_for_development }}
+                        </span>
                       </td>
                     </tr>
                     <tr>
-                      <td class="objNo">1.2</td>
-                      <td>
-                        Ensured the positive use of ICT to facilitate the
-                        teaching and learning learning process. (PPST Indicator
-                        1.3.2)
+                      <td class="objNo">
+                        <span class="part2FontSize">1.2</span>
+                      </td>
+                      <td class="objDes">
+                        <span class="part2FontSize">
+                          Ensured the positive use of ICT to facilitate the
+                          teaching and learning learning process. (PPST
+                          Indicator 1.3.2)</span
+                        >
                       </td>
 
                       <td class="text-center">
-                        {{ printEsatInfo[2][1].level_of_capability }}
+                        <span class="part2FontSize">
+                          {{ printEsatInfo[2][1].level_of_capability }}
+                        </span>
                       </td>
                       <td class="text-center">
-                        {{ printEsatInfo[2][1].priority_for_development }}
+                        <span class="part2FontSize">
+                          {{ printEsatInfo[2][1].priority_for_development }}
+                        </span>
                       </td>
                     </tr>
                     <tr>
-                      <td class="objNo">1.3</td>
-                      <td>
-                        Applied a range of teaching strategies to develop
-                        critical and creative thinking, as well as other higher
-                        order thinking skills. (PPST Indicator 1.5.2)
+                      <td class="objNo">
+                        <span class="part2FontSize">1.3</span>
+                      </td>
+                      <td class="objDes">
+                        <span class="part2FontSize">
+                          Applied a range of teaching strategies to develop
+                          critical and creative thinking, as well as other
+                          higher order thinking skills. (PPST Indicator
+                          1.5.2)</span
+                        >
                       </td>
                       <td class="text-center">
-                        {{ printEsatInfo[2][2].level_of_capability }}
+                        <span class="part2FontSize">
+                          {{ printEsatInfo[2][2].level_of_capability }}
+                        </span>
                       </td>
                       <td class="text-center">
-                        {{ printEsatInfo[2][2].priority_for_development }}
+                        <span class="part2FontSize">
+                          {{ printEsatInfo[2][2].priority_for_development }}
+                        </span>
                       </td>
                     </tr>
 
                     <tr>
-                      <td colspan="4">
-                        <h3>
+                      <td class="obsHeadHght" colspan="4">
+                        <h3 class="objsHead">
                           2. Diversity of Learners & Assessment and Reporting
                           (PPST Domain 2 and Domain 5)
                         </h3>
@@ -1946,88 +2045,132 @@
                     </tr>
 
                     <tr>
-                      <td class="objNo">2.1</td>
-                      <td>
-                        Established a learner-centered culture by using teaching
-                        strategies that respond to their linguistic, cultural,
-                        socio-economic and religious backgrounds.
+                      <td class="objNo">
+                        <span class="part2FontSize">2.1</span>
+                      </td>
+                      <td class="objDes">
+                        <span class="part2FontSize">
+                          Established a learner-centered culture by using
+                          teaching strategies that respond to their linguistic,
+                          cultural, socio-economic and religious
+                          backgrounds.</span
+                        >
                       </td>
                       <td class="text-center">
-                        {{ printEsatInfo[2][3].level_of_capability }}
+                        <span class="part2FontSize">
+                          {{ printEsatInfo[2][3].level_of_capability }}
+                        </span>
                       </td>
                       <td class="text-center">
-                        {{ printEsatInfo[2][3].priority_for_development }}
+                        <span class="part2FontSize">
+                          {{ printEsatInfo[2][3].priority_for_development }}
+                        </span>
                       </td>
                     </tr>
                     <tr>
-                      <td class="objNo">2.2</td>
-                      <td>
-                        Planned and delivered teaching strategies that are
-                        responsive to the special educational needs of learners
-                        in difficult circumstances, including: geographic
-                        isolation; chronic illness; displacement due to armed
-                        conflict, urban resettlement or disasters; child labor
-                        practices. (PPST Indicator 3.4.2)
+                      <td class="objNo">
+                        <span class="part2FontSize">2.2</span>
+                      </td>
+                      <td class="objDes">
+                        <span class="part2FontSize">
+                          Planned and delivered teaching strategies that are
+                          responsive to the special educational needs of
+                          learners in difficult circumstances, including:
+                          geographic isolation; chronic illness; displacement
+                          due to armed conflict, urban resettlement or
+                          disasters; child labor practices. (PPST Indicator
+                          3.4.2)</span
+                        >
                       </td>
                       <td class="text-center">
-                        {{ printEsatInfo[2][4].level_of_capability }}
+                        <span class="part2FontSize">
+                          {{ printEsatInfo[2][4].level_of_capability }}
+                        </span>
                       </td>
                       <td class="text-center">
-                        {{ printEsatInfo[2][4].priority_for_development }}
+                        <span class="part2FontSize">
+                          {{ printEsatInfo[2][4].priority_for_development }}
+                        </span>
                       </td>
                     </tr>
                     <tr>
-                      <td class="objNo">2.3</td>
-                      <td>
-                        Used strategies for providing timely, accurate and
-                        constructive feedback to improve learner performance.
-                        (PPST Indicator 5.3.2)
+                      <td class="objNo">
+                        <span class="part2FontSize">2.3</span>
+                      </td>
+                      <td class="objDes">
+                        <span class="part2FontSize">
+                          Used strategies for providing timely, accurate and
+                          constructive feedback to improve learner performance.
+                          (PPST Indicator 5.3.2)</span
+                        >
                       </td>
                       <td class="text-center">
-                        {{ printEsatInfo[2][5].level_of_capability }}
+                        <span class="part2FontSize">
+                          {{ printEsatInfo[2][5].level_of_capability }}
+                        </span>
                       </td>
                       <td class="text-center">
-                        {{ printEsatInfo[2][5].priority_for_development }}
-                      </td>
-                    </tr>
-
-                    <tr>
-                      <td colspan="4">
-                        <h3>3. Curriculum and Planning (PPST Domain 4)</h3>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="objNo">3.1</td>
-                      <td>
-                        Selected, developed, organized and used appropriate
-                        teaching and learning resources, including ICT, to
-                        address learning goals. (PPST Indicator 4.5.2)
-                      </td>
-                      <td class="text-center">
-                        {{ printEsatInfo[2][6].level_of_capability }}
-                      </td>
-                      <td class="text-center">
-                        {{ printEsatInfo[2][6].priority_for_development }}
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="objNo">3.2</td>
-                      <td>
-                        Set achievable and appropriate learning outcomes that
-                        are aligned with learning competencies. (PPST Indicator
-                        4.2.2)
-                      </td>
-                      <td class="text-center">
-                        {{ printEsatInfo[2][7].level_of_capability }}
-                      </td>
-                      <td class="text-center">
-                        {{ printEsatInfo[2][7].priority_for_development }}
+                        <span class="part2FontSize">
+                          {{ printEsatInfo[2][5].priority_for_development }}
+                        </span>
                       </td>
                     </tr>
 
                     <tr>
-                      <td colspan="4">
-                        <h3>
+                      <td class="obsHeadHght" colspan="4">
+                        <h3 class="objsHead">
+                          3. Curriculum and Planning (PPST Domain 4)
+                        </h3>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="objNo">
+                        <span class="part2FontSize">3.1</span>
+                      </td>
+                      <td class="objDes">
+                        <span class="part2FontSize">
+                          Selected, developed, organized and used appropriate
+                          teaching and learning resources, including ICT, to
+                          address learning goals. (PPST Indicator 4.5.2)</span
+                        >
+                      </td>
+                      <td class="text-center">
+                        <span class="part2FontSize">
+                          {{ printEsatInfo[2][6].level_of_capability }}
+                        </span>
+                      </td>
+                      <td class="text-center">
+                        <span class="part2FontSize">
+                          {{ printEsatInfo[2][6].priority_for_development }}
+                        </span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="objNo">
+                        <span class="part2FontSize">3.2</span>
+                      </td>
+                      <td class="objDes">
+                        <span class="part2FontSize">
+                          Set achievable and appropriate learning outcomes that
+                          are aligned with learning competencies. (PPST
+                          Indicator 4.2.2)</span
+                        >
+                      </td>
+                      <td class="text-center">
+                        <span class="part2FontSize">
+                          {{ printEsatInfo[2][7].level_of_capability }}
+                        </span>
+                      </td>
+                      <td class="text-center">
+                        <span class="part2FontSize">
+                          {{ printEsatInfo[2][7].priority_for_development }}
+                        </span>
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td class="obsHeadHght" colspan="4">
+                        <h3 class="objsHead">
                           4. Community Linkages and Professional Engagement &
                           Personal Growth and Professional Development (PPST
                           Domain 6 and 7)
@@ -2036,65 +2179,100 @@
                     </tr>
 
                     <tr>
-                      <td class="objNo">4.1</td>
-                      <td>
-                        Built relationships with parents/guardians and the wider
-                        school community to facilitate involvement in the
-                        educative process. (PPST Indicator 6.2.2)
+                      <td class="objNo">
+                        <span class="part2FontSize">4.1</span>
+                      </td>
+                      <td class="objDes">
+                        <span class="part2FontSize">
+                          Built relationships with parents/guardians and the
+                          wider school community to facilitate involvement in
+                          the educative process. (PPST Indicator 6.2.2)</span
+                        >
                       </td>
                       <td class="text-center">
-                        {{ printEsatInfo[2][8].level_of_capability }}
+                        <span class="part2FontSize">
+                          {{ printEsatInfo[2][8].level_of_capability }}
+                        </span>
                       </td>
                       <td class="text-center">
-                        {{ printEsatInfo[2][8].priority_for_development }}
+                        <span class="part2FontSize">
+                          {{ printEsatInfo[2][8].priority_for_development }}
+                        </span>
                       </td>
                     </tr>
                     <tr>
-                      <td class="objNo">4.2</td>
-                      <td>
-                        Participates in professional networks to share knowledge
-                        and to enhance practice. (PPST Indicator 7.3.2)
+                      <td class="objNo">
+                        <span class="part2FontSize">4.2</span>
+                      </td>
+                      <td class="objDes">
+                        <span class="part2FontSize">
+                          Participates in professional networks to share
+                          knowledge and to enhance practice. (PPST Indicator
+                          7.3.2)</span
+                        >
                       </td>
                       <td class="text-center">
-                        {{ printEsatInfo[2][9].level_of_capability }}
+                        <span class="part2FontSize">
+                          {{ printEsatInfo[2][9].level_of_capability }}
+                        </span>
                       </td>
                       <td class="text-center">
-                        {{ printEsatInfo[2][9].priority_for_development }}
+                        <span class="part2FontSize">
+                          {{ printEsatInfo[2][9].priority_for_development }}
+                        </span>
                       </td>
                     </tr>
                     <tr>
-                      <td class="objNo">4.3</td>
-                      <td>
-                        Developed a personal improvement plan based on
-                        reflection of one’s practice and ongoing professional
-                        learning. (PPST Indicator 7.4.2)
+                      <td class="objNo">
+                        <span class="part2FontSize">4.3</span>
+                      </td>
+                      <td class="objDes">
+                        <span class="part2FontSize">
+                          Developed a personal improvement plan based on
+                          reflection of one’s practice and ongoing professional
+                          learning. (PPST Indicator 7.4.2)</span
+                        >
                       </td>
                       <td class="text-center">
-                        {{ printEsatInfo[2][10].level_of_capability }}
+                        <span class="part2FontSize">
+                          {{ printEsatInfo[2][10].level_of_capability }}
+                        </span>
                       </td>
                       <td class="text-center">
-                        {{ printEsatInfo[2][10].priority_for_development }}
+                        <span class="part2FontSize">
+                          {{ printEsatInfo[2][10].priority_for_development }}
+                        </span>
                       </td>
                     </tr>
                     <tr>
-                      <td colspan="4"><h3>PLUS FACTOR</h3></td>
-                    </tr>
-                    <tr>
-                      <td class="objNo">5.1</td>
-                      <td>
-                        Performed various related works/activities that
-                        contribute to the teaching-learning process.
-                      </td>
-                      <td class="text-center">
-                        {{ printEsatInfo[2][11].level_of_capability }}
-                      </td>
-                      <td class="text-center">
-                        {{ printEsatInfo[2][11].priority_for_development }}
+                      <td class="obsHeadHght" colspan="4">
+                        <h3 class="objsHead">PLUS FACTOR</h3>
                       </td>
                     </tr>
                     <tr>
-                      <td colspan="4">
-                        <h3>Personal Comments</h3>
+                      <td class="objNo">
+                        <span class="part2FontSize">5.1</span>
+                      </td>
+                      <td class="objDes">
+                        <span class="part2FontSize">
+                          Performed various related works/activities that
+                          contribute to the teaching-learning process.</span
+                        >
+                      </td>
+                      <td class="text-center">
+                        <span class="part2FontSize">
+                          {{ printEsatInfo[2][11].level_of_capability }}
+                        </span>
+                      </td>
+                      <td class="text-center">
+                        <span class="part2FontSize">
+                          {{ printEsatInfo[2][11].priority_for_development }}
+                        </span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="obsHeadHght" colspan="4">
+                        <h3 class="objsHead">Personal Comments</h3>
                       </td>
                     </tr>
                     <tr v-for="item in printEsatInfo[0]" :key="item.id">
@@ -2106,433 +2284,677 @@
             </v-container>
 
             <v-container class="" style="padding: 10px">
+              <h2
+                id="part3"
+                class="printParts font-weight-bold mt-6 text-decoration-underline"
+              >
+                PART III. CORE BEHAVIORAL COMPETENCIES
+              </h2>
               <v-simple-table class="table" style="color: black">
                 <template v-slot:default>
                   <thead>
                     <tr>
-                      <th colspan="3">
-                        <h2
-                          style="color: black"
-                          class="font-weight-bold mt-6 text-decoration-underline"
-                        >
-                          PART III. CORE BEHAVIORAL COMPETENCIES
-                        </h2>
-                      </th>
-                    </tr>
-                    <tr>
-                      <td colspan="3">
-                        <h3 style="color: black" class="mt-5">
-                          1. SELF-MANAGEMENT
-                        </h3>
+                      <td class="coreHeadHght" colspan="3">
+                        <h3 class="coreHead">1. SELF-MANAGEMENT</h3>
                       </td>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
-                      <td>
-                        {{
-                          printEsatInfo[1][0].check_status == "true" ? "✔" : ""
-                        }}
+                      <td class="part3TdHght">
+                        <span class="part3FontSize">
+                          {{
+                            printEsatInfo[1][0].check_status == "true"
+                              ? "✔"
+                              : ""
+                          }}
+                        </span>
                       </td>
-                      <td>1</td>
-                      <td>
-                        Sets personal goals and directions, needs and
-                        development.
+                      <td class="part3TdHght">
+                        <span class="part3FontSize">1</span>
                       </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        {{
-                          printEsatInfo[1][1].check_status == "true" ? "✔" : ""
-                        }}
-                      </td>
-                      <td>2</td>
-                      <td>
-                        Undertakes personal actions and behavior that are clear
-                        and purposive and takes into account personal goals and
-                        values congruent to that of the organization.
+                      <td class="part3TdHght">
+                        <span class="part3FontSize">
+                          Sets personal goals and directions, needs and
+                          development.
+                        </span>
                       </td>
                     </tr>
                     <tr>
-                      <td>
-                        {{
-                          printEsatInfo[1][2].check_status == "true" ? "✔" : ""
-                        }}
+                      <td class="part3TdHght">
+                        <span class="part3FontSize">
+                          {{
+                            printEsatInfo[1][1].check_status == "true"
+                              ? "✔"
+                              : ""
+                          }}
+                        </span>
                       </td>
-                      <td>3</td>
-                      <td>
-                        Displays emotional maturity and enthusiasm for and is
-                        challenged by higher goals.
+                      <td class="part3TdHght">
+                        <span class="part3FontSize">2</span>
                       </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        {{
-                          printEsatInfo[1][3].check_status == "true" ? "✔" : ""
-                        }}
-                      </td>
-                      <td>4</td>
-                      <td>
-                        Prioritizes work tasks and schedules (through Gantt
-                        charts, checklist, etc) achieve goals.
+                      <td class="part3TdHght">
+                        <span class="part3FontSize">
+                          Undertakes personal actions and behavior that are
+                          clear and purposive and takes into account personal
+                          goals and values congruent to that of the
+                          organization.
+                        </span>
                       </td>
                     </tr>
                     <tr>
-                      <td>
-                        {{
-                          printEsatInfo[1][4].check_status == "true" ? "✔" : ""
-                        }}
+                      <td class="part3TdHght">
+                        <span class="part3FontSize">
+                          {{
+                            printEsatInfo[1][2].check_status == "true"
+                              ? "✔"
+                              : ""
+                          }}
+                        </span>
                       </td>
-                      <td>5</td>
-                      <td>
-                        Sets high quality, challenging, realistic goals for self
-                        and others.
+                      <td class="part3TdHght">
+                        <span class="part3FontSize">3</span>
                       </td>
-                    </tr>
-
-                    <tr>
-                      <td colspan="3">
-                        <h3>2.PROFESSIONALISM AND ETHICS</h3>
-                      </td>
-                    </tr>
-
-                    <tr>
-                      <td>
-                        {{
-                          printEsatInfo[1][5].check_status == "true" ? "✔" : ""
-                        }}
-                      </td>
-                      <td>1</td>
-                      <td>
-                        Demonstrates the values and behavior enshrined in the
-                        Norms and Conduct and Ethical Standards for public
-                        officials and employees. (RA 6713)
+                      <td class="part3TdHght">
+                        <span class="part3FontSize">
+                          Displays emotional maturity and enthusiasm for and is
+                          challenged by higher goals.
+                        </span>
                       </td>
                     </tr>
                     <tr>
-                      <td>
-                        {{
-                          printEsatInfo[1][6].check_status == "true" ? "✔" : ""
-                        }}
+                      <td class="part3TdHght">
+                        <span class="part3FontSize">
+                          {{
+                            printEsatInfo[1][3].check_status == "true"
+                              ? "✔"
+                              : ""
+                          }}
+                        </span>
                       </td>
-                      <td>2</td>
-                      <td>
-                        Practices ethical and professional behavior and conduct
-                        taking into account the impact of his/her actions and
-                        decisions.
+                      <td class="part3TdHght">
+                        <span class="part3FontSize">4</span>
                       </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        {{
-                          printEsatInfo[1][7].check_status == "true" ? "✔" : ""
-                        }}
-                      </td>
-                      <td>3</td>
-                      <td>
-                        Maintains a professional image: being trustworthy,
-                        regularity of attendance and punctuality, good grooming
-                        and communication.
+                      <td class="part3TdHght">
+                        <span class="part3FontSize">
+                          Prioritizes work tasks and schedules (through Gantt
+                          charts, checklist, etc) achieve goals.
+                        </span>
                       </td>
                     </tr>
                     <tr>
-                      <td>
-                        {{
-                          printEsatInfo[1][8].check_status == "true" ? "✔" : ""
-                        }}
+                      <td class="part3TdHght">
+                        <span class="part3FontSize">
+                          {{
+                            printEsatInfo[1][4].check_status == "true"
+                              ? "✔"
+                              : ""
+                          }}
+                        </span>
                       </td>
-                      <td>4</td>
-                      <td>
-                        Makes personal sacrifices to meet the organization’s
-                        needs.
+                      <td class="part3TdHght">
+                        <span class="part3FontSize">5</span>
                       </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        {{
-                          printEsatInfo[1][9].check_status == "true" ? "✔" : ""
-                        }}
-                      </td>
-                      <td>5</td>
-                      <td>
-                        Act with a sense of urgency and responsibility to meet
-                        the organization’s needs, improve system and help others
-                        improve their effectiveness.
+                      <td class="part3TdHght">
+                        <span class="part3FontSize">
+                          Sets high quality, challenging, realistic goals for
+                          self and others.
+                        </span>
                       </td>
                     </tr>
 
                     <tr>
-                      <td colspan="3"><h3>3. RESULTS FOCUS</h3></td>
-                    </tr>
-
-                    <tr>
-                      <td>
-                        {{
-                          printEsatInfo[1][10].check_status == "true" ? "✔" : ""
-                        }}
-                      </td>
-                      <td>1</td>
-                      <td>
-                        Achieves results with optimal use of time and resources
-                        most of the time.
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        {{
-                          printEsatInfo[1][11].check_status == "true" ? "✔" : ""
-                        }}
-                      </td>
-                      <td>2</td>
-                      <td>
-                        Avoids rework, mistakes and wastage through effective
-                        work methods by placing organizational needs before
-                        personal needs.
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        {{
-                          printEsatInfo[1][12].check_status == "true" ? "✔" : ""
-                        }}
-                      </td>
-                      <td>3</td>
-                      <td>
-                        Delivers error-free outputs most of the time by
-                        conforming to standard operating procedures correctly
-                        and consistently. Able to produce very satisfactory
-                        quality work in terms of usefulness/acceptability and
-                        completeness with no supervision required.
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        {{
-                          printEsatInfo[1][13].check_status == "true" ? "✔" : ""
-                        }}
-                      </td>
-                      <td>4</td>
-                      <td>
-                        Expresses the desire to do better and may express
-                        frustration at waste or efficiency. May focus on new or
-                        more precise ways of meeting goals set.
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        {{
-                          printEsatInfo[1][14].check_status == "true" ? "✔" : ""
-                        }}
-                      </td>
-                      <td>5</td>
-                      <td>
-                        Makes specific changes in the system or in own work
-                        methods to improve performance. Examples may include
-                        doing something better,faster, at a lower cost, more
-                        efficiently, or improving quality, customer
-                        satisfaction, morale, without setting any specific goal.
+                      <td class="coreHeadHght" colspan="3">
+                        <h3 class="coreHead">2.PROFESSIONALISM AND ETHICS</h3>
                       </td>
                     </tr>
 
                     <tr>
-                      <td colspan="3">
-                        <h3>4. TEAMWORK</h3>
+                      <td class="part3TdHght">
+                        <span class="part3FontSize">
+                          {{
+                            printEsatInfo[1][5].check_status == "true"
+                              ? "✔"
+                              : ""
+                          }}
+                        </span>
+                      </td>
+                      <td class="part3TdHght">
+                        <span class="part3FontSize">1</span>
+                      </td>
+                      <td class="part3TdHght">
+                        <span class="part3FontSize">
+                          Demonstrates the values and behavior enshrined in the
+                          Norms and Conduct and Ethical Standards for public
+                          officials and employees. (RA 6713)
+                        </span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="part3TdHght">
+                        <span class="part3FontSize">
+                          {{
+                            printEsatInfo[1][6].check_status == "true"
+                              ? "✔"
+                              : ""
+                          }}
+                        </span>
+                      </td>
+                      <td class="part3TdHght">
+                        <span class="part3FontSize">2</span>
+                      </td>
+                      <td class="part3TdHght">
+                        <span class="part3FontSize">
+                          Practices ethical and professional behavior and
+                          conduct taking into account the impact of his/her
+                          actions and decisions.
+                        </span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="part3TdHght">
+                        <span class="part3FontSize">
+                          {{
+                            printEsatInfo[1][7].check_status == "true"
+                              ? "✔"
+                              : ""
+                          }}
+                        </span>
+                      </td>
+                      <td class="part3TdHght">
+                        <span class="part3FontSize">3</span>
+                      </td>
+                      <td class="part3TdHght">
+                        <span class="part3FontSize">
+                          Maintains a professional image: being trustworthy,
+                          regularity of attendance and punctuality, good
+                          grooming and communication.
+                        </span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="part3TdHght">
+                        <span class="part3FontSize">
+                          {{
+                            printEsatInfo[1][8].check_status == "true"
+                              ? "✔"
+                              : ""
+                          }}
+                        </span>
+                      </td>
+                      <td class="part3TdHght">
+                        <span class="part3FontSize">4</span>
+                      </td>
+                      <td class="part3TdHght">
+                        <span class="part3FontSize">
+                          Makes personal sacrifices to meet the organization’s
+                          needs.
+                        </span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="part3TdHght">
+                        <span class="part3FontSize">
+                          {{
+                            printEsatInfo[1][9].check_status == "true"
+                              ? "✔"
+                              : ""
+                          }}
+                        </span>
+                      </td>
+                      <td class="part3TdHght">
+                        <span class="part3FontSize">5</span>
+                      </td>
+                      <td class="part3TdHght">
+                        <span class="part3FontSize">
+                          Act with a sense of urgency and responsibility to meet
+                          the organization’s needs, improve system and help
+                          others improve their effectiveness.
+                        </span>
                       </td>
                     </tr>
 
                     <tr>
-                      <td>
-                        {{
-                          printEsatInfo[1][15].check_status == "true" ? "✔" : ""
-                        }}
-                      </td>
-                      <td>1</td>
-                      <td>Willingly does his/her share of responsibility.</td>
-                    </tr>
-                    <tr>
-                      <td>
-                        {{
-                          printEsatInfo[1][16].check_status == "true" ? "✔" : ""
-                        }}
-                      </td>
-                      <td>2</td>
-                      <td>
-                        Promotes collaboration and removes barriers to teamwork
-                        and goal accomplishment across the organization.
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        {{
-                          printEsatInfo[1][17].check_status == "true" ? "✔" : ""
-                        }}
-                      </td>
-                      <td>3</td>
-                      <td>
-                        Applies negotiation principles in arriving at win-win
-                        agreements.
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        {{
-                          printEsatInfo[1][18].check_status == "true" ? "✔" : ""
-                        }}
-                      </td>
-                      <td>4</td>
-                      <td>Drives consensus and team ownership of decisions.</td>
-                    </tr>
-                    <tr>
-                      <td>
-                        {{
-                          printEsatInfo[1][19].check_status == "true" ? "✔" : ""
-                        }}
-                      </td>
-                      <td>5</td>
-                      <td>
-                        Works constructively and collaboratively with others and
-                        across organizations to accomplish organizational goals
-                        and objectives.
+                      <td class="coreHeadHght" colspan="3">
+                        <h3 class="coreHead">3. RESULTS FOCUS</h3>
                       </td>
                     </tr>
 
                     <tr>
-                      <td colspan="3">
-                        <h3>5. SERVICE ORIENTATION</h3>
+                      <td class="part3TdHght">
+                        <span class="part3FontSize">
+                          {{
+                            printEsatInfo[1][10].check_status == "true"
+                              ? "✔"
+                              : ""
+                          }}
+                        </span>
+                      </td>
+                      <td class="part3TdHght">
+                        <span class="part3FontSize">1</span>
+                      </td>
+                      <td class="part3TdHght">
+                        <span class="part3FontSize">
+                          Achieves results with optimal use of time and
+                          resources most of the time.
+                        </span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="part3TdHght">
+                        <span class="part3FontSize">
+                          {{
+                            printEsatInfo[1][11].check_status == "true"
+                              ? "✔"
+                              : ""
+                          }}
+                        </span>
+                      </td>
+                      <td class="part3TdHght">
+                        <span class="part3FontSize">2</span>
+                      </td>
+                      <td class="part3TdHght">
+                        <span class="part3FontSize">
+                          Avoids rework, mistakes and wastage through effective
+                          work methods by placing organizational needs before
+                          personal needs.
+                        </span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="part3TdHght">
+                        <span class="part3FontSize">
+                          {{
+                            printEsatInfo[1][12].check_status == "true"
+                              ? "✔"
+                              : ""
+                          }}
+                        </span>
+                      </td>
+                      <td class="part3TdHght">
+                        <span class="part3FontSize">3</span>
+                      </td>
+                      <td class="part3TdHght">
+                        <span class="part3FontSize">
+                          Delivers error-free outputs most of the time by
+                          conforming to standard operating procedures correctly
+                          and consistently. Able to produce very satisfactory
+                          quality work in terms of usefulness/acceptability and
+                          completeness with no supervision required.
+                        </span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="part3TdHght">
+                        <span class="part3FontSize">
+                          {{
+                            printEsatInfo[1][13].check_status == "true"
+                              ? "✔"
+                              : ""
+                          }}
+                        </span>
+                      </td>
+                      <td class="part3TdHght">
+                        <span class="part3FontSize">4</span>
+                      </td>
+                      <td class="part3TdHght">
+                        <span class="part3FontSize">
+                          Expresses the desire to do better and may express
+                          frustration at waste or efficiency. May focus on new
+                          or more precise ways of meeting goals set.
+                        </span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="part3TdHght">
+                        <span class="part3FontSize">
+                          {{
+                            printEsatInfo[1][14].check_status == "true"
+                              ? "✔"
+                              : ""
+                          }}
+                        </span>
+                      </td>
+                      <td class="part3TdHght">
+                        <span class="part3FontSize">5</span>
+                      </td>
+                      <td class="part3TdHght">
+                        <span class="part3FontSize">
+                          Makes specific changes in the system or in own work
+                          methods to improve performance. Examples may include
+                          doing something better,faster, at a lower cost, more
+                          efficiently, or improving quality, customer
+                          satisfaction, morale, without setting any specific
+                          goal.
+                        </span>
                       </td>
                     </tr>
 
                     <tr>
-                      <td>
-                        {{
-                          printEsatInfo[1][20].check_status == "true" ? "✔" : ""
-                        }}
-                      </td>
-                      <td>1</td>
-                      <td>
-                        Can explain and articulate organizational directions,
-                        issues and problems.
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        {{
-                          printEsatInfo[1][21].check_status == "true" ? "✔" : ""
-                        }}
-                      </td>
-                      <td>2</td>
-                      <td>
-                        Takes personal responsibility for dealing with and/or
-                        correcting customer service issues and concerns.
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        {{
-                          printEsatInfo[1][22].check_status == "true" ? "✔" : ""
-                        }}
-                      </td>
-                      <td>3</td>
-                      <td>
-                        Initiates activities that promote advocacy for men and
-                        women empowerment.
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        {{
-                          printEsatInfo[1][23].check_status == "true" ? "✔" : ""
-                        }}
-                      </td>
-                      <td>4</td>
-                      <td>
-                        Participates in updating office vision, mission,
-                        mandates and strategies based on DepEd strategies and
-                        directions.
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        {{
-                          printEsatInfo[1][24].check_status == "true" ? "✔" : ""
-                        }}
-                      </td>
-                      <td>5</td>
-                      <td>
-                        Develops and adopts services improvement program through
-                        simplified procedures that will further enhance service
-                        delivery.
+                      <td class="coreHeadHght" colspan="3">
+                        <h3 class="coreHead">4. TEAMWORK</h3>
                       </td>
                     </tr>
 
                     <tr>
-                      <td colspan="3">
-                        <h3>6. INNOVATION</h3>
+                      <td class="part3TdHght">
+                        <span class="part3FontSize">
+                          {{
+                            printEsatInfo[1][15].check_status == "true"
+                              ? "✔"
+                              : ""
+                          }}
+                        </span>
+                      </td>
+                      <td class="part3TdHght">
+                        <span class="part3FontSize">1</span>
+                      </td>
+                      <td class="part3TdHght">
+                        <span class="part3FontSize"
+                          >Willingly does his/her share of responsibility.</span
+                        >
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="part3TdHght">
+                        <span class="part3FontSize">
+                          {{
+                            printEsatInfo[1][16].check_status == "true"
+                              ? "✔"
+                              : ""
+                          }}
+                        </span>
+                      </td>
+                      <td class="part3TdHght">
+                        <span class="part3FontSize">2</span>
+                      </td>
+                      <td class="part3TdHght">
+                        <span class="part3FontSize">
+                          Promotes collaboration and removes barriers to
+                          teamwork and goal accomplishment across the
+                          organization.
+                        </span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="part3TdHght">
+                        <span class="part3FontSize">
+                          {{
+                            printEsatInfo[1][17].check_status == "true"
+                              ? "✔"
+                              : ""
+                          }}
+                        </span>
+                      </td>
+                      <td class="part3TdHght">
+                        <span class="part3FontSize">3</span>
+                      </td>
+                      <td class="part3TdHght">
+                        <span class="part3FontSize">
+                          Applies negotiation principles in arriving at win-win
+                          agreements.
+                        </span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="part3TdHght">
+                        <span class="part3FontSize">
+                          {{
+                            printEsatInfo[1][18].check_status == "true"
+                              ? "✔"
+                              : ""
+                          }}
+                        </span>
+                      </td>
+                      <td class="part3TdHght">
+                        <span class="part3FontSize">4</span>
+                      </td>
+                      <td class="part3TdHght">
+                        <span class="part3FontSize"
+                          >Drives consensus and team ownership of
+                          decisions.</span
+                        >
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="part3TdHght">
+                        <span class="part3FontSize">
+                          {{
+                            printEsatInfo[1][19].check_status == "true"
+                              ? "✔"
+                              : ""
+                          }}
+                        </span>
+                      </td>
+                      <td class="part3TdHght">
+                        <span class="part3FontSize">5</span>
+                      </td>
+                      <td class="part3TdHght">
+                        <span class="part3FontSize">
+                          Works constructively and collaboratively with others
+                          and across organizations to accomplish organizational
+                          goals and objectives.
+                        </span>
                       </td>
                     </tr>
 
                     <tr>
-                      <td>
-                        {{
-                          printEsatInfo[1][25].check_status == "true" ? "✔" : ""
-                        }}
+                      <td class="coreHeadHght" colspan="3">
+                        <h3 class="coreHead">5. SERVICE ORIENTATION</h3>
                       </td>
-                      <td>1</td>
-                      <td>
-                        Examines the root cause of problems and suggests
-                        effective solutions. Foster new ideas, processes and
-                        suggests better ways to do things(cost and/or operaional
-                        effeciency).
+                    </tr>
+
+                    <tr>
+                      <td class="part3TdHght">
+                        <span class="part3FontSize">
+                          {{
+                            printEsatInfo[1][20].check_status == "true"
+                              ? "✔"
+                              : ""
+                          }}
+                        </span>
+                      </td>
+                      <td class="part3TdHght">
+                        <span class="part3FontSize">1</span>
+                      </td>
+                      <td class="part3TdHght">
+                        <span class="part3FontSize">
+                          Can explain and articulate organizational directions,
+                          issues and problems.
+                        </span>
                       </td>
                     </tr>
                     <tr>
-                      <td>
-                        {{
-                          printEsatInfo[1][26].check_status == "true" ? "✔" : ""
-                        }}
+                      <td class="part3TdHght">
+                        <span class="part3FontSize">
+                          {{
+                            printEsatInfo[1][21].check_status == "true"
+                              ? "✔"
+                              : ""
+                          }}
+                        </span>
                       </td>
-                      <td>2</td>
-                      <td>
-                        Demonstrates an ability to think "beyond the box".
-                        Continuosly focuses on improving personal productivity
-                        to create higher value and results.
+                      <td class="part3TdHght">
+                        <span class="part3FontSize">2</span>
                       </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        {{
-                          printEsatInfo[1][27].check_status == "true" ? "✔" : ""
-                        }}
-                      </td>
-                      <td>3</td>
-                      <td>
-                        Promote a creative climate and inspires co-workers to
-                        develop original ideas or solutions.
+                      <td class="part3TdHght">
+                        <span class="part3FontSize">
+                          Takes personal responsibility for dealing with and/or
+                          correcting customer service issues and concerns.
+                        </span>
                       </td>
                     </tr>
                     <tr>
-                      <td>
-                        {{
-                          printEsatInfo[1][28].check_status == "true" ? "✔" : ""
-                        }}
+                      <td class="part3TdHght">
+                        <span class="part3FontSize">
+                          {{
+                            printEsatInfo[1][22].check_status == "true"
+                              ? "✔"
+                              : ""
+                          }}
+                        </span>
                       </td>
-                      <td>4</td>
-                      <td>
-                        Translates creative thinking into tangible changes and
-                        solutions that improve the work unit and organization.
+                      <td class="part3TdHght">
+                        <span class="part3FontSize">3</span>
+                      </td>
+                      <td class="part3TdHght">
+                        <span class="part3FontSize">
+                          Initiates activities that promote advocacy for men and
+                          women empowerment.
+                        </span>
                       </td>
                     </tr>
                     <tr>
-                      <td>
-                        {{
-                          printEsatInfo[1][29].check_status == "true" ? "✔" : ""
-                        }}
+                      <td class="part3TdHght">
+                        <span class="part3FontSize">
+                          {{
+                            printEsatInfo[1][23].check_status == "true"
+                              ? "✔"
+                              : ""
+                          }}
+                        </span>
                       </td>
-                      <td>5</td>
-                      <td>
-                        Uses ingenious methods to accomplish responsibilities.
-                        Demonstrates resourcefulness and the ability to succeed
-                        with minimal resources.
+                      <td class="part3TdHght">
+                        <span class="part3FontSize">4</span>
+                      </td>
+                      <td class="part3TdHght">
+                        <span class="part3FontSize">
+                          Participates in updating office vision, mission,
+                          mandates and strategies based on DepEd strategies and
+                          directions.
+                        </span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="part3TdHght">
+                        <span class="part3FontSize">
+                          {{
+                            printEsatInfo[1][24].check_status == "true"
+                              ? "✔"
+                              : ""
+                          }}
+                        </span>
+                      </td>
+                      <td class="part3TdHght">
+                        <span class="part3FontSize">5</span>
+                      </td>
+                      <td class="part3TdHght">
+                        <span class="part3FontSize">
+                          Develops and adopts services improvement program
+                          through simplified procedures that will further
+                          enhance service delivery.
+                        </span>
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td class="coreHeadHght" colspan="3">
+                        <h3 class="coreHead">6. INNOVATION</h3>
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td class="part3TdHght">
+                        <span class="part3FontSize">
+                          {{
+                            printEsatInfo[1][25].check_status == "true"
+                              ? "✔"
+                              : ""
+                          }}
+                        </span>
+                      </td>
+                      <td class="part3TdHght">
+                        <span class="part3FontSize">1</span>
+                      </td>
+                      <td class="part3TdHght">
+                        <span class="part3FontSize">
+                          Examines the root cause of problems and suggests
+                          effective solutions. Foster new ideas, processes and
+                          suggests better ways to do things(cost and/or
+                          operaional effeciency).
+                        </span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="part3TdHght">
+                        <span class="part3FontSize">
+                          {{
+                            printEsatInfo[1][26].check_status == "true"
+                              ? "✔"
+                              : ""
+                          }}
+                        </span>
+                      </td>
+                      <td class="part3TdHght">
+                        <span class="part3FontSize">2</span>
+                      </td>
+                      <td class="part3TdHght">
+                        <span class="part3FontSize">
+                          Demonstrates an ability to think "beyond the box".
+                          Continuosly focuses on improving personal productivity
+                          to create higher value and results.
+                        </span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="part3TdHght">
+                        <span class="part3FontSize">
+                          {{
+                            printEsatInfo[1][27].check_status == "true"
+                              ? "✔"
+                              : ""
+                          }}
+                        </span>
+                      </td>
+                      <td class="part3TdHght">
+                        <span class="part3FontSize">3</span>
+                      </td>
+                      <td class="part3TdHght">
+                        <span class="part3FontSize">
+                          Promote a creative climate and inspires co-workers to
+                          develop original ideas or solutions.
+                        </span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="part3TdHght">
+                        <span class="part3FontSize">
+                          {{
+                            printEsatInfo[1][28].check_status == "true"
+                              ? "✔"
+                              : ""
+                          }}
+                        </span>
+                      </td>
+                      <td class="part3TdHght">
+                        <span class="part3FontSize">4</span>
+                      </td>
+                      <td class="part3TdHght">
+                        <span class="part3FontSize">
+                          Translates creative thinking into tangible changes and
+                          solutions that improve the work unit and organization.
+                        </span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="part3TdHght">
+                        <span class="part3FontSize">
+                          {{
+                            printEsatInfo[1][29].check_status == "true"
+                              ? "✔"
+                              : ""
+                          }}
+                        </span>
+                      </td>
+                      <td class="part3TdHght">
+                        <span class="part3FontSize">5</span>
+                      </td>
+                      <td class="part3TdHght">
+                        <span class="part3FontSize">
+                          Uses ingenious methods to accomplish responsibilities.
+                          Demonstrates resourcefulness and the ability to
+                          succeed with minimal resources.
+                        </span>
                       </td>
                     </tr>
                   </tbody>
@@ -2561,8 +2983,8 @@
 
       <v-tab-item :key="6" value="esat_card" v-if="esatCard">
         <v-container class="p-5" v-if="noData">
-          <v-alert elevation="24" color="info"
-            ><h1
+          <v-alert elevation="24" color="info">
+            <h1
               style="
                 font-size: 30px;
                 text-align: center;
@@ -2571,8 +2993,8 @@
               "
             >
               No Data Yet!
-            </h1></v-alert
-          >
+            </h1>
+          </v-alert>
         </v-container>
         <v-container>
           <v-container class="mb-5 p-5" v-if="(role = 'Teacher')">
@@ -2647,7 +3069,7 @@
                             </tr>
                             <tr>
                               <td class="esatCard">Date:</td>
-                              <td>12/8/2021</td>
+                              <td>{{ dateCreate(row.created_at) }}</td>
                             </tr>
                           </tbody>
                         </template>
@@ -2725,7 +3147,7 @@
                             </tr>
                             <tr>
                               <td class="esatCard">Date:</td>
-                              <td>12/8/2021</td>
+                              <td>{{ dateCreate(row.created_at) }}</td>
                             </tr>
                           </tbody>
                         </template>
@@ -2744,6 +3166,7 @@
 
 <script>
 // @ is an alias to /src
+import moment from "moment";
 import PromptAlert from "@/utils/Prompt";
 export default {
   // methods: {},
@@ -2766,14 +3189,14 @@ export default {
     returnPart1() {
       this.tab = "part1";
     },
-    // goToPart2() {
-
-    //   if (this.$refs.demo.validate()) this.tab = "part2";
-    // },
     returnPart2() {
       this.tab = "part2";
     },
     goToPart3() {
+      console.log("to part 3");
+      this.saveLoad = false;
+      // (this.showPart2 = false);
+      this.showPart3 = true;
       this.tab = "part3";
     },
     returnPart3() {
@@ -2807,7 +3230,7 @@ export default {
       //   console.log("关闭了打印工具");
       // },
     },
-    create() {
+    createEsat() {
       this.tab = "part1";
       this.showPart1 = true;
       this.createBtn = false;
@@ -2815,15 +3238,12 @@ export default {
       this.editCancelBtn = false;
     },
     goToEsatCard() {
-      
       this.$router.go();
+      // this.resetFields();
+      // this.retrieveEsat();
       this.tab = "esat_card";
       this.clickEsat = false;
-      this.createBtn = true;
-
-      // window.location.reload();
-
-      this.retrieveEsat();
+      this.createBtn = false;
     },
 
     valid: true,
@@ -2891,12 +3311,9 @@ export default {
       "Doctorate Degree",
     ],
     levelTaughtItems: [
-      "Grade 7",
-      "Grade 8",
-      "Grade 9",
-      "Grade 10",
-      "Grade 11",
-      "Grade 12",
+      "Junior High School",
+      "Senior High School",
+      "Multigrade",
     ],
     gLevelTaughtItems: [
       "Grade 7",
@@ -3105,8 +3522,13 @@ export default {
   }),
   created() {
     this.retrieveEsat();
+    // this.resetFields();
   },
+
   methods: {
+    dateCreate: function (date) {
+      return moment(date).format("MM/DD/YYYY");
+    },
     showErrorResponse(title, message) {
       this.$swal.fire({
         icon: "error",
@@ -3114,6 +3536,7 @@ export default {
         text: message,
       });
     },
+
     goToPart2() {
       const english = this.english == null ? "" : this.english;
       const filipino = this.filipino == null ? "" : this.filipino;
@@ -3294,18 +3717,12 @@ export default {
           this.esatInfo.push(this.esatDemographicProfile);
           this.esatInfo.push(this.coreBehavioralCompetencies);
           this.esatInfo.push(this.functionalObjectives);
-          console.log(this.esatInfo);
           console.log("admin side");
-          console.log(this.disclosure);
           this.disclosure = true;
-          console.log(this.disclosure);
           this.tab = "esat_card";
-          // this.noData = true;
         } else {
-          // alert("No data")
           this.tab = "esat_card";
           this.noData = true;
-          // this.showErrorResponse("No Data!", "NO");
           this.esatCard = true;
         }
       } else {
@@ -3336,11 +3753,128 @@ export default {
         }
       }
     },
+
+    // async resetFields() {
+    //   this.employeeId = null;
+    //   this.position = null;
+    //   this.employmentStatus = null;
+    //   this.employeeAge = null;
+    //   this.employeeSex = null;
+    //   this.schoolYear = null;
+    //   this.yearsInTeaching = null;
+    //   this.highestDegreeObtained = null;
+    //   this.specifiedHighestDegreeObtained = null;
+    //   this.region = null;
+    //   this.division = null;
+    //   this.employeeMunicipality = null;
+    //   this.schoolId = null;
+    //   this.schoolName = null;
+    //   this.schoolType = null;
+    //   this.schoolSize = null;
+    //   this.curricularClassification = null;
+    //   this.gradeLevelTaught = null;
+    //   this.levelTaught = null;
+    //   this.personalComments = null;
+
+    //   this.english = null;
+    //   this.filipino = null;
+    //   this.mathematics = null;
+    //   this.generalScience = null;
+    //   this.biology = null;
+    //   this.chemistry = null;
+    //   this.physics = null;
+    //   this.socialScience = null;
+    //   this.earlyChildhoodEducation = null;
+    //   this.valuesEducation = null;
+    //   this.sped = null;
+    //   this.music = null;
+    //   this.arts = null;
+    //   this.physicalEducation = null;
+    //   this.health = null;
+    //   this.TLE_HE_TVL = null;
+
+    //   this.otherSpecialized = null;
+
+    //   this.MotherTongue = null;
+    //   this.Filipino = null;
+    //   this.English = null;
+    //   this.Mathematics = null;
+    //   this.Science = null;
+    //   this.AralingPanlipunan = null;
+    //   this.EdukasyonSaPagpapakatao = null;
+    //   this.Mapeh = null;
+    //   this.TLE_HE = null;
+    //   this.EPP_LE_HE = null;
+    //   this.specialPrograms = null;
+    //   this.otherSubTaught = null;
+    //   this.capability1 = null;
+    //   this.development1 = null;
+    //   this.capability2 = null;
+    //   this.development2 = null;
+    //   this.capability3 = null;
+    //   this.development3 = null;
+    //   this.capability4 = null;
+    //   this.development4 = null;
+    //   this.capability5 = null;
+    //   this.development5 = null;
+    //   this.capability6 = null;
+    //   this.development6 = null;
+    //   this.capability7 = null;
+    //   this.development7 = null;
+    //   this.capability8 = null;
+    //   this.development8 = null;
+    //   this.capability9 = null;
+    //   this.development9 = null;
+    //   this.capability10 = null;
+    //   this.development10 = null;
+    //   this.capability11 = null;
+    //   this.development11 = null;
+    //   this.capability12 = null;
+    //   this.development12 = null;
+    //   this.personalComments = null;
+
+    //   this.selfManagement1 = null;
+    //   this.selfManagement2 = null;
+    //   this.selfManagement3 = null;
+    //   this.selfManagement4 = null;
+    //   this.selfManagement5 = null;
+
+    //   this.professionalAndEthics1 = null;
+    //   this.professionalAndEthics2 = null;
+    //   this.professionalAndEthics3 = null;
+    //   this.professionalAndEthics4 = null;
+    //   this.professionalAndEthics5 = null;
+
+    //   this.resultsFocus1 = null;
+    //   this.resultsFocus2 = null;
+    //   this.resultsFocus3 = null;
+    //   this.resultsFocus4 = null;
+    //   this.resultsFocus5 = null;
+
+    //   this.teamwork1 = null;
+    //   this.teamwork2 = null;
+    //   this.teamwork3 = null;
+    //   this.teamwork4 = null;
+    //   this.teamwork5 = null;
+
+    //   this.serviceOrientation1 = null;
+    //   this.serviceOrientation2 = null;
+    //   this.serviceOrientation3 = null;
+    //   this.serviceOrientation4 = null;
+    //   this.serviceOrientation5 = null;
+
+    //   this.innovation1 = null;
+    //   this.innovation2 = null;
+    //   this.innovation3 = null;
+    //   this.innovation4 = null;
+    //   this.innovation5 = null;
+    // },
+
     finalizeEsat: async function () {
-      (this.clickEsat = false),
-        (this.part3Table = false),
-        (this.saveLoad = true),
-        console.log("created");
+      this.clickEsat = false;
+      this.part3Table = false;
+      this.saveLoad = true;
+      console.log("created");
 
       {
         const employeeName = this.employeeName;
@@ -3920,20 +4454,19 @@ export default {
           personalComments,
         };
         const returnedData = await this.$store.dispatch("createEsat", data);
-        // const returnedData = await this.post("createEsat", data);
         console.log(returnedData);
         if (returnedData.status == 200) {
           console.log("success");
           window.location.reload();
+          // this.retrieveEsat();
+          // this.resetFields();
         } else {
           this.saveData = true;
           this.part3Table = false;
           {
             window.location = "http://localhost:8082/esat";
           }
-          50000; // this.tab = "part1"
-          // this.showPart1 = true;
-          // this.tab = "part1";
+          50000;
         }
       }
     },
@@ -3943,14 +4476,15 @@ export default {
       console.log(this.role);
       console.log(editInfo);
       this.tab = "part1";
-      (this.clickEsat = true), (this.showPrint = false);
+      this.clickEsat = true;
+      this.showPrint = false;
       this.showPart1 = true;
       this.updateInfos = true;
       this.saveInfos = false;
       this.editCancelBtn = false;
 
-      this.editId = editInfo[0][0].id;
-      (this.employeeName = editInfo[0][0].name_of_employee),
+      (this.editId = editInfo[0][0].id),
+        (this.employeeName = editInfo[0][0].name_of_employee),
         (this.employeeId = editInfo[0][0].employee_id),
         (this.position = editInfo[0][0].position),
         (this.employmentStatus = editInfo[0][0].employment_status),
@@ -4135,10 +4669,10 @@ export default {
     },
 
     updateEsat: async function () {
-      (this.clickEsat = false),
-        (this.part3Table = false),
-        (this.saveLoad = true),
-        console.log("Update");
+      this.clickEsat = false;
+      this.part3Table = false;
+      this.saveLoad = true;
+      console.log("Update");
       console.log(this.funct_ids);
       console.log(this.core_ids);
       // (this.showPart3 = false),
@@ -4707,6 +5241,9 @@ export default {
       console.log(returnedData);
       if (returnedData.status == 200) {
         console.log("success");
+        //
+        // this.retrieveEsat();
+        // this.resetFields();
         window.location.reload();
       }
     },
@@ -4750,4 +5287,5 @@ export default {
   },
 };
 </script>
+
 <style scope src="../assets/css/esat.css"></style>
