@@ -41,7 +41,7 @@ return new class extends Migration
             $table->string('curricular_classification');
             $table->string('area_of_specialization');
             $table->string('subjects_taught');
-            $table->string('personal_comments')-> nullable();
+            $table->longText('personal_comments')-> nullable();
             $table->timestamp('created_at') ->useCurrent();
             $table->timestamp('updated_at') -> nullable() -> useCurrentOnUpdate();
             $table->softDeletesTz();
