@@ -92,11 +92,11 @@ const actions = {
           });
       },
 
-    updateIPcrfPart1({state,commit}, props) {
+    updateIpcrfPart1({commit}, props) {
         return axios
             .post('ipcrf/updatePart1', props)
             .then((result) => {
-              state.ipcrfInfos[props.index] = props.editedData;
+              //state.ipcrfInfos[props.index] = props.editedData;
               commit;
               return result;
             })
@@ -105,11 +105,11 @@ const actions = {
             });
     },
 
-    updateIPcrfPart2({state,commit}, props) {
+    updateIpcrfPart2({commit}, props) {
       return axios
           .post('ipcrf/updatePart2', props)
           .then((result) => {
-            state.ipcrfInfos[props.index] = props.editedData;
+            //state.ipcrfInfos[props.index] = props.editedData;
             commit;
             return result;
           })
@@ -118,7 +118,7 @@ const actions = {
           });
   },
 
-  updateIPcrfPart4({state,commit}, props) {
+  updateIpcrfPart4({state,commit}, props) {
     return axios
         .post('ipcrf/updatePart4', props)
         .then((result) => {

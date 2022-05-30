@@ -1,8 +1,7 @@
 <template>
 <!-- <v-main> -->
 
-
-  <v-container fluid  height="fit-content" style="border: solid 1px black;padding:0px;margin:0px" class="ma-0 pa-0">
+<!-- <v-container fluid  height="fit-content"  class="ma-0 pa-0"> -->
   <v-app v-if="userData!==null">
     <Navbar></Navbar>
     <v-main>
@@ -12,11 +11,11 @@
    </v-main>
   </v-app>
  <v-app v-else >
-   <v-content style="border: solid 1px black">
+   <v-content >
       <router-view></router-view>
       </v-content>
   </v-app>
- </v-container>
+ <!-- </v-container> -->
  <!-- </v-main> -->
 </template>
 

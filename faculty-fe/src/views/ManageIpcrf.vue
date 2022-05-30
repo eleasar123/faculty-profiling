@@ -14,15 +14,7 @@
             rounded
             dense
           ></v-text-field>
-          <!-- <v-text-field
-            v-model="search"
-            append-icon="mdi-magnify"
-            label="Search"
-            single-line
-            hide-details
-            dense
-            style="width: 50%"
-          ></v-text-field> -->
+       <v-btn class=" ml-5   pa-2"  @click="createIpcrf">Create</v-btn>
         </v-card-title>
         <v-data-table
           :headers="headers"
@@ -39,7 +31,7 @@
         </v-data-table>
       </v-card>
     </v-container>
-    <v-container class="pa-4" v-if="show == true">
+    <v-container class="pa-4" v-if="show == true && showTable == false">
       <!-- START OF ENCODING -->
       <!--  -->
       <!-- END OF ENCODING -->
@@ -47,1605 +39,1832 @@
       <v-tabs>
         <v-tab>Part 1 - Proficient</v-tab>
         <v-tab-item>
-          <table id="table" style="width: 100%">
-            <tr class="row1">
-              <td
-                id="tdata"
-                colspan="6"
-                class="pt-4"
-                style="background-color: #ddd9c3"
-              >
-                <p style="text-align: center">
-                  <b
-                    >INDIVIDUAL PERFORMANCE COMMITMENT AND REVIEW FORM (IPCRF)
-                    for Teacher I-III, SPET I-IV, Special Science Teacher
-                    I-II</b
-                  >
-                </p>
-              </td>
-            </tr>
-            <tr class="row1">
-              <td id="tdata" style="line-height: 5px">
-                <p>Name of Employee:</p>
-              </td>
-              <td id="tdata" style="width: 20%">
-                <p>{{ ipcrfDemographicProfile.name_of_employee }}</p>
-              </td>
-              <td id="tdata" style="line-height: 5px">
-                <p>Name of Rater:</p>
-              </td>
-              <td id="tdata" style="width: 20%">
-                <p>{{ ipcrfDemographicProfile.rater }}</p>
-              </td>
-            </tr>
-            <tr class="row1">
-              <td id="tdata" style="line-height: 5px">
-                <p>Position:</p>
-              </td>
-              <td id="tdata" style="line-height: 5px">
-                <p>{{ ipcrfDemographicProfile.position }}</p>
-              </td>
-              <td id="tdata" style="line-height: 5px">
-                <p>Position:</p>
-              </td>
-              <td id="tdata" style="">
-                <p>{{ ipcrfDemographicProfile.rater_position }}</p>
-              </td>
-            </tr>
-            <tr class="row1">
-              <td id="tdata" style="line-height: 5px">
-                <p>Bureau/Center/Service/Division:</p>
-              </td>
-              <td id="tdata" style="line-height: 5px">
-                <p>{{ ipcrfDemographicProfile.division }}</p>
-              </td>
-              <td id="tdata" style="line-height: 5px">
-                <p>Date of Review::</p>
-              </td>
-              <td id="tdata" style="line-height: 5px">
-                <p>{{ ipcrfDemographicProfile.date_of_review }}</p>
-              </td>
-            </tr>
-            <tr class="row1">
-              <td id="tdata" style="line-height: 5px">
-                <p>Rating Period:</p>
-              </td>
-              <td id="tdata" style="line-height: 5px">
-                <p>{{ ipcrfDemographicProfile.rating_period }}</p>
-              </td>
-              <td id="tdata" colspan="2" style="line-height: 5px"></td>
-            </tr>
-          </table>
-          <br />
-          <table
-            id="table"
-            style="width: 100%; text-align: center; font-weight: bold"
-          >
-            <tr class="row1 mt-2">
-              <td id="tdata" colspan="6" style="line-height: 5px">
-                <p>TO BE FILLED OUT DURING PLANNING</p>
-              </td>
-              <td id="tdata" colspan="11" style="line-height: 5px">
-                <p>TO BE FILLED OUT DURING EVALUATION</p>
-              </td>
-            </tr>
-            <tr
-              class="row1 light-green lighten-2"
-              style="width: 100%; text-align: center; font-weight: bold"
-            >
-              <td id="tdata" rowspan="2" style="line-height: 5px">
-                <p>MFO's</p>
-              </td>
-              <td id="tdata" rowspan="2" style="line-height: 5px">
-                <p>KRAs</p>
-              </td>
-              <td id="tdata" rowspan="2" style="line-height: 5px">
-                <p>Objectives</p>
-              </td>
-              <td id="tdata" rowspan="2" style="line-height: 5px">
-                <p>Timeline</p>
-              </td>
-              <td id="tdata" rowspan="2">
-                <p>Weight per KRA</p>
-              </td>
-              <td id="tdata" colspan="6" rowspan="1" style="line-height: 5px">
-                <p>Performance Indicator</p>
-              </td>
-              <td id="tdata" rowspan="2">
-                <p>Actual Result</p>
-              </td>
-              <td id="tdata" colspan="4" style="line-height: 5px">
-                <p>Rating</p>
-              </td>
-              <td id="tdata" rowspan="2" style="line-height: 5px">
-                <p>Score</p>
-              </td>
-            </tr>
-            <tr
-              class="row1 light-green lighten-2"
-              style="text-align: center; font-weight: bold"
-            >
-              <td id="tdata" style="line-height: 5px">
-                <p>QET</p>
-              </td>
-              <td id="tdata" style="line-height: 5px">
-                <p>
-                  Outstanding <br /><br /><br />
-                  <br />5
-                </p>
-              </td>
-              <td id="tdata" style="line-height: 15px">
-                <p>
-                  Very Satisfactory
-                  <br />
-                  4
-                </p>
-              </td>
-              <td id="tdata" style="line-height: 5px">
-                <p>
-                  Satisfactory<br /><br />
-                  <br /><br />
-                  3
-                </p>
-              </td>
-              <td id="tdata" style="line-height: 5px">
-                <p>
-                  Unsatisfactory <br /><br />
-                  <br /><br />
-                  2
-                </p>
-              </td>
-              <td id="tdata" style="line-height: 5px">
-                <p>
-                  Poor <br /><br />
-                  <br />
-                  <br />
-                  1
-                </p>
-              </td>
-              <td id="tdata" style="line-height: 5px">
-                <p>Q</p>
-              </td>
-              <td id="tdata" style="line-height: 5px">
-                <p>E</p>
-              </td>
-              <td id="tdata" style="line-height: 5px">
-                <p>T</p>
-              </td>
-              <td id="tdata" style="line-height: 5px">
-                <p>AVE</p>
-              </td>
-            </tr>
-            <tr class="row1">
-              <td id="tdata" rowspan="36">
-                <p>Basic Education Services</p>
-              </td>
-              <td id="tdata" rowspan="9">
-                <p>1. Content Knowledge and Pedagogy</p>
-              </td>
-              <td id="tdata" rowspan="3">
-                <p>
-                  1. Applied knowledge of content within and across curriculum
-                  teaching areas.
-                </p>
-              </td>
-              <td id="tdata" class="timelineObj1" rowspan="3">
-                <p></p>
-              </td>
-              <td id="tdata" class="weightPerKra" rowspan="9">
-                <p>24%</p>
-              </td>
-              <td id="tdata" class="quality1">
-                <p>Quality</p>
-              </td>
-              <td id="tdata" class="outstanding1">
-                <p>
-                  Demonstrated Level 7 in Objective 1 as shown in COT rating
-                  sheets/interobserver agreement forms
-                </p>
-              </td>
-              <td id="tdata" class="verySatisfactory1">
-                <p>
-                  Demonstrated Level 6 in Objective 1 as shown in COT rating
-                  sheets/interobserver agreement forms
-                </p>
-              </td>
-              <td id="tdata" class="satisfactory1">
-                <p>
-                  Demonstrated Level 5 in Objective 1 as shown in COT rating
-                  sheets/interobserver agreement forms
-                </p>
-              </td>
-              <td id="tdata" class="unsatisfactory1">
-                <p>
-                  Demonstrated Level 4 in Objective 1 as shown in COT rating
-                  sheets/interobserver agreement forms
-                </p>
-              </td>
-              <td id="tdata" class="poor1">
-                <p>
-                  Demonstrated Level 3 in Objective 1 as shown in COT rating
-                  sheets/interobserver agreement forms or No acceptable evidence
-                  was shown
-                </p>
-              </td>
-              <td id="tdata" rowspan="1" class="actualResult">
-                <p></p>
-              </td>
-              <td id="tdata" rowspan="3" class="q1">
-                <p></p>
-              </td>
-              <td id="tdata" rowspan="3" class="e1 blue-grey darken-4">
-                <p></p>
-              </td>
-              <td id="tdata" rowspan="3" class="t1 blue-grey darken-4">
-                <p></p>
-              </td>
-              <td id="tdata" rowspan="3" class="ave1">
-                <p></p>
-              </td>
-              <td id="tdata" rowspan="3" class="score1">
-                <p></p>
-              </td>
-            </tr>
-
-            <tr>
-              <td id="tdata" class="eff1 pa-1">
-                <p>Efficiency</p>
-              </td>
-              <td id="tdata" class="eff2 pa-1 blue-grey darken-4">
-                <p></p>
-              </td>
-              <td id="tdata" class="eff2 pa-1 blue-grey darken-4">
-                <p></p>
-              </td>
-              <td id="tdata" class="eff4 pa-1 blue-grey darken-4">
-                <p></p>
-              </td>
-              <td id="tdata" class="eff5 pa-1 blue-grey darken-4">
-                <p></p>
-              </td>
-              <td id="tdata" colspan="2" class="eff6 pa-1 blue-grey darken-4">
-                <p></p>
-              </td>
-            </tr>
-            <tr>
-              <td id="tdata" class="timeline1 pa-1">
-                <p>Timeliness</p>
-              </td>
-              <td id="tdata" class="timeline2 pa-1 blue-grey darken-4">
-                <p></p>
-              </td>
-              <td id="tdata" class="timeline2 pa-1 blue-grey darken-4">
-                <p></p>
-              </td>
-              <td id="tdata" class="timeline4 pa-1 blue-grey darken-4">
-                <p></p>
-              </td>
-              <td id="tdata" class="timeline5 pa-1 blue-grey darken-4">
-                <p></p>
-              </td>
-              <td id="tdata" colspan="2" class="timeline6 blue-grey darken-4">
-                <p></p>
-              </td>
-            </tr>
-            <!-- end of row1 -->
-            <!-- start of row 2 -->
-            <tr>
-              <td id="tdata" rowspan="3">
-                <p>
-                  2. Ensured the positive use of ICT to facilitate the teaching
-                  and learning process
-                </p>
-              </td>
-              <td id="tdata" class="timelineObj1" rowspan="3">
-                <p></p>
-              </td>
-
-              <td id="tdata" class="quality1">
-                <p>Quality</p>
-              </td>
-              <td id="tdata" class="outstanding1">
-                <p>
-                  Ensured that the ICT used redefine and transform learning
-                  experiences and are documented properly and consistently using
-                  any referencing style as shown in the submitted learning
-                  material
-                </p>
-              </td>
-              <td id="tdata" class="verySatisfactory1">
-                <p>
-                  Ensured that the ICT used augment and enrich learning
-                  experiences and are documented properly and consistently using
-                  any referencing style as shown in the submitted learning
-                  material
-                </p>
-              </td>
-              <td id="tdata" class="satisfactory1">
-                <p>
-                  Ensured that the ICT used modify processes and improve
-                  learning experiences and are documented properly and
-                  consistently using any referencing style as shown in the
-                  submitted learning material
-                </p>
-              </td>
-              <td id="tdata" class="unsatisfactory1">
-                <p>
-                  Ensured that ICT are used but do not create a new learning
-                  experience and/or are documented but not consistent with one
-                  referencing style as shown in the submitted learning material
-                </p>
-              </td>
-              <td id="tdata" class="poor1">
-                <p>No acceptable evidence was shown</p>
-              </td>
-              <td id="tdata" rowspan="1" class="actualResult">
-                <p></p>
-              </td>
-              <td id="tdata" rowspan="3" class="q2">
-                <p></p>
-              </td>
-              <td id="tdata" rowspan="3" class="e2 blue-grey darken-4">
-                <p></p>
-              </td>
-              <td id="tdata" rowspan="3" class="t2 blue-grey darken-4">
-                <p></p>
-              </td>
-              <td id="tdata" rowspan="3" class="ave2">
-                <p></p>
-              </td>
-              <td id="tdata" rowspan="3" class="score2">
-                <p></p>
-              </td>
-            </tr>
-            <tr>
-              <td id="tdata" class="eff1 pa-1">
-                <p>Efficiency</p>
-              </td>
-              <td id="tdata" class="eff2 pa-1 blue-grey darken-4">
-                <p></p>
-              </td>
-              <td id="tdata" class="eff2 pa-1 blue-grey darken-4">
-                <p></p>
-              </td>
-              <td id="tdata" class="eff4 pa-1 blue-grey darken-4">
-                <p></p>
-              </td>
-              <td id="tdata" class="eff5 pa-1 blue-grey darken-4">
-                <p></p>
-              </td>
-              <td id="tdata" colspan="2" class="eff6 pa-1 blue-grey darken-4">
-                <p></p>
-              </td>
-            </tr>
-            <tr>
-              <td id="tdata" class="eff1 pa-1">
-                <p>Timeliness</p>
-              </td>
-              <td id="tdata" class="eff2 pa-1 blue-grey darken-4">
-                <p></p>
-              </td>
-              <td id="tdata" class="eff2 pa-1 blue-grey darken-4">
-                <p></p>
-              </td>
-              <td id="tdata" class="eff4 pa-1 blue-grey darken-4">
-                <p></p>
-              </td>
-              <td id="tdata" class="eff5 pa-1 blue-grey darken-4">
-                <p></p>
-              </td>
-              <td id="tdata" colspan="2" class="eff6 blue-grey darken-4">
-                <p></p>
-              </td>
-            </tr>
-            <!-- end of row 2 -->
-            <tr>
-              <td id="tdata" rowspan="3">
-                <p>
-                  3. Applied a range of teaching strategies to develop critical
-                  and creative thinking, as well as other higher-order thinking
-                  skills.
-                </p>
-              </td>
-              <td id="tdata" class="timelineObj1" rowspan="3">
-                <p></p>
-              </td>
-
-              <td id="tdata" class="quality1">
-                <p>Quality</p>
-              </td>
-              <td id="tdata" class="outstanding1">
-                <p>
-                  Ensured that the ICT used redefine and transform learning
-                  experiences and are documented properly and consistently using
-                  any referencing style as shown in the submitted learning
-                  material
-                </p>
-              </td>
-              <td id="tdata" class="verySatisfactory1">
-                <p>
-                  Ensured that the ICT used augment and enrich learning
-                  experiences and are documented properly and consistently using
-                  any referencing style as shown in the submitted learning
-                  material
-                </p>
-              </td>
-              <td id="tdata" class="satisfactory1">
-                <p>
-                  Ensured that the ICT used modify processes and improve
-                  learning experiences and are documented properly and
-                  consistently using any referencing style as shown in the
-                  submitted learning material
-                </p>
-              </td>
-              <td id="tdata" class="unsatisfactory1">
-                <p>
-                  Ensured that ICT are used but do not create a new learning
-                  experience and/or are documented but not consistent with one
-                  referencing style as shown in the submitted learning material
-                </p>
-              </td>
-              <td id="tdata" class="poor1">
-                <p>No acceptable evidence was shown</p>
-              </td>
-              <td id="tdata" rowspan="1" class="actualResult">
-                <p></p>
-              </td>
-              <td id="tdata" rowspan="3" class="q2">
-                <p></p>
-              </td>
-              <td id="tdata" rowspan="3" class="e2 blue-grey darken-4">
-                <p></p>
-              </td>
-              <td id="tdata" rowspan="3" class="t2 blue-grey darken-4">
-                <p></p>
-              </td>
-              <td id="tdata" rowspan="3" class="ave2">
-                <p></p>
-              </td>
-              <td id="tdata" rowspan="3" class="score3">
-                <p></p>
-              </td>
-            </tr>
-            <tr>
-              <td id="tdata" class="eff1 pa-1">
-                <p>Efficiency</p>
-              </td>
-              <td id="tdata" class="eff2 pa-1 blue-grey darken-4">
-                <p></p>
-              </td>
-              <td id="tdata" class="eff2 pa-1 blue-grey darken-4">
-                <p></p>
-              </td>
-              <td id="tdata" class="eff4 pa-1 blue-grey darken-4">
-                <p></p>
-              </td>
-              <td id="tdata" class="eff5 pa-1 blue-grey darken-4">
-                <p></p>
-              </td>
-              <td id="tdata" colspan="2" class="eff6 pa-1 blue-grey darken-4">
-                <p></p>
-              </td>
-            </tr>
-            <tr>
-              <td id="tdata" class="eff1 pa-1">
-                <p>Timeliness</p>
-              </td>
-              <td id="tdata" class="eff2 pa-1 blue-grey darken-4">
-                <p></p>
-              </td>
-              <td id="tdata" class="eff2 pa-1 blue-grey darken-4">
-                <p></p>
-              </td>
-              <td id="tdata" class="eff4 pa-1 blue-grey darken-4">
-                <p></p>
-              </td>
-              <td id="tdata" class="eff5 pa-1 blue-grey darken-4">
-                <p></p>
-              </td>
-              <td id="tdata" colspan="2" class="eff6 blue-grey darken-4">
-                <p></p>
-              </td>
-            </tr>
-
-            <!-- Start Number 2 -->
-            <tr class="row1">
-              <td id="tdata" rowspan="9">
-                <p>2. Diversity of Learners & Assessment and Reporting</p>
-              </td>
-              <td id="tdata" class="timelineObj1" rowspan="3">
-                <p>
-                  4. Established a learnercentered culture by using teaching
-                  strategies that respond to their linguistic, cultural,
-                  socioeconomic and religious backgrounds
-                </p>
-              </td>
-              <td id="tdata" class="timelineObj1" rowspan="3">
-                <p></p>
-              </td>
-              <td id="tdata" class="weightPerKra" rowspan="9">
-                <p>24%</p>
-              </td>
-              <td id="tdata" class="quality1">
-                <p>Quality</p>
-              </td>
-              <td id="tdata" class="outstanding1">
-                <p>
-                  Utilized effective teaching strategies that are appropriate in
-                  responding to learners’ linguistic, cultural, socioeconomic,
-                  or religious backgrounds at an individual level* as shown in
-                  the submitted learning material
-                </p>
-              </td>
-              <td id="tdata" class="verySatisfactory1">
-                <p>
-                  Utilized effective teaching strategies that are appropriate in
-                  responding to learners’ linguistic, cultural, socioeconomic,
-                  or religious backgrounds at a group level* as shown in the
-                  submitted learning material
-                </p>
-              </td>
-              <td id="tdata" class="satisfactory1">
-                <p>
-                  Utilized an effective teaching strategy that is appropriate in
-                  responding to learners’ linguistic, cultural, socioeconomic,
-                  or religious backgrounds as shown in the submitted learning
-                  material
-                </p>
-              </td>
-              <td id="tdata" class="unsatisfactory1">
-                <p>
-                  Utilized a teaching strategy or strategies that partially
-                  respond to learners’ linguistic, cultural, socioeconomic, or
-                  religious backgrounds as shown in the submitted learning
-                  material
-                </p>
-              </td>
-              <td id="tdata" class="poor1">
-                <p>No acceptable evidence was shown</p>
-              </td>
-              <td id="tdata" rowspan="1" class="actualResult">
-                <p></p>
-              </td>
-              <td id="tdata" rowspan="3" class="q1">
-                <p></p>
-              </td>
-              <td id="tdata" rowspan="3" class="e1 blue-grey darken-4">
-                <p></p>
-              </td>
-              <td id="tdata" rowspan="3" class="t1 blue-grey darken-4">
-                <p></p>
-              </td>
-              <td id="tdata" rowspan="3" class="ave1">
-                <p></p>
-              </td>
-              <td id="tdata" rowspan="3" class="score4">
-                <p></p>
-              </td>
-            </tr>
-            <tr>
-              <td id="tdata" class="eff1 pa-1">
-                <p>Efficiency</p>
-              </td>
-              <td id="tdata" class="eff2 pa-1 blue-grey darken-4">
-                <p></p>
-              </td>
-              <td id="tdata" class="eff2 pa-1 blue-grey darken-4">
-                <p></p>
-              </td>
-              <td id="tdata" class="eff4 pa-1 blue-grey darken-4">
-                <p></p>
-              </td>
-              <td id="tdata" class="eff5 pa-1 blue-grey darken-4">
-                <p></p>
-              </td>
-              <td id="tdata" colspan="2" class="eff6 pa-1 blue-grey darken-4">
-                <p></p>
-              </td>
-            </tr>
-            <tr>
-              <td id="tdata" class="timeline1 pa-1">
-                <p>Timeliness</p>
-              </td>
-              <td id="tdata" class="timeline2 pa-1 blue-grey darken-4">
-                <p></p>
-              </td>
-              <td id="tdata" class="timeline2 pa-1 blue-grey darken-4">
-                <p></p>
-              </td>
-              <td id="tdata" class="timeline4 pa-1 blue-grey darken-4">
-                <p></p>
-              </td>
-              <td id="tdata" class="timeline5 pa-1 blue-grey darken-4">
-                <p></p>
-              </td>
-              <td id="tdata" colspan="2" class="timeline6 blue-grey darken-4">
-                <p></p>
-              </td>
-            </tr>
-            <tr class="row1">
-              <td id="tdata" class="timelineObj1" rowspan="3">
-                <p>
-                  5. Planned and delivered teaching strategies that are
-                  responsive to the special educational needs of learners in
-                  difficult circumstances*, including: geographic isolation;
-                  chronic illness; displacement due to armed conflict, urban
-                  resettlement or disasters; child abuse and child labor
-                  practices
-                </p>
-              </td>
-
-              <td id="tdata" class="weightPerKra" rowspan="3">
-                <p></p>
-              </td>
-              <td id="tdata" class="quality1">
-                <p>Quality</p>
-              </td>
-              <td id="tdata" class="outstanding1">
-                <p>
-                  Demonstrated Level 7 in Objective 5 as shown in COT rating
-                  sheets/interobserver a greement forms
-                </p>
-              </td>
-              <td id="tdata" class="verySatisfactory1">
-                <p>
-                  Utilized effective teaching strategies that are appropriate in
-                  responding to learners’ linguistic, cultural, socioeconomic,
-                  or religious backgrounds at a group level* as shown in the
-                  submitted learning material
-                </p>
-              </td>
-              <td id="tdata" class="satisfactory1">
-                <p>
-                  Utilized an effective teaching strategy that is appropriate in
-                  responding to learners’ linguistic, cultural, socioeconomic,
-                  or religious backgrounds as shown in the submitted learning
-                  material
-                </p>
-              </td>
-              <td id="tdata" class="unsatisfactory1">
-                <p>
-                  Utilized a teaching strategy or strategies that partially
-                  respond to learners’ linguistic, cultural, socioeconomic, or
-                  religious backgrounds as shown in the submitted learning
-                  material
-                </p>
-              </td>
-              <td id="tdata" class="poor1">
-                <p>No acceptable evidence was shown</p>
-              </td>
-              <td id="tdata" rowspan="1" class="actualResult">
-                <p></p>
-              </td>
-              <td id="tdata" rowspan="3" class="q1">
-                <p></p>
-              </td>
-              <td id="tdata" rowspan="3" class="e1 blue-grey darken-4">
-                <p></p>
-              </td>
-              <td id="tdata" rowspan="3" class="t1 blue-grey darken-4">
-                <p></p>
-              </td>
-              <td id="tdata" rowspan="3" class="ave1">
-                <p></p>
-              </td>
-              <td id="tdata" rowspan="3" class="score6">
-                <p></p>
-              </td>
-            </tr>
-            <tr>
-              <td id="tdata" class="eff1 pa-1">
-                <p>Efficiency</p>
-              </td>
-              <td id="tdata" class="eff2 pa-1 blue-grey darken-4">
-                <p></p>
-              </td>
-              <td id="tdata" class="eff2 pa-1 blue-grey darken-4">
-                <p></p>
-              </td>
-              <td id="tdata" class="eff4 pa-1 blue-grey darken-4">
-                <p></p>
-              </td>
-              <td id="tdata" class="eff5 pa-1 blue-grey darken-4">
-                <p></p>
-              </td>
-              <td id="tdata" colspan="2" class="eff6 pa-1 blue-grey darken-4">
-                <p></p>
-              </td>
-            </tr>
-            <tr>
-              <td id="tdata" class="timeline1 pa-1">
-                <p>Timeliness</p>
-              </td>
-              <td id="tdata" class="timeline2 pa-1 blue-grey darken-4">
-                <p></p>
-              </td>
-              <td id="tdata" class="timeline2 pa-1 blue-grey darken-4">
-                <p></p>
-              </td>
-              <td id="tdata" class="timeline4 pa-1 blue-grey darken-4">
-                <p></p>
-              </td>
-              <td id="tdata" class="timeline5 pa-1 blue-grey darken-4">
-                <p></p>
-              </td>
-              <td id="tdata" colspan="2" class="timeline6 blue-grey darken-4">
-                <p></p>
-              </td>
-            </tr>
-            <tr class="row1">
-              <td id="tdata" class="timelineObj1" rowspan="3">
-                <p>
-                  6. Used strategies for providing timely, accurate and
-                  constructive feedback to improve learner performance
-                </p>
-              </td>
-              <td id="tdata" class="weightPerKra" rowspan="3">
-                <p></p>
-              </td>
-              <td id="tdata" class="quality1">
-                <p>Quality</p>
-              </td>
-              <td id="tdata" class="outstanding1">
-                <p>
-                  Provided learners with accurate, and specific and directed
-                  constructive feedback* as shown in the evidence submitted
-                </p>
-              </td>
-              <td id="tdata" class="verySatisfactory1">
-                <p>
-                  Provided learners with accurate, and specific constructive
-                  feedback as shown in the evidence submitted
-                </p>
-              </td>
-              <td id="tdata" class="satisfactory1">
-                <p>
-                  Provided learners with accurate, and general constructive
-                  feedback as shown in the evidence submitted
-                </p>
-              </td>
-              <td id="tdata" class="unsatisfactory1">
-                <p>
-                  Provided learners with inaccurate and/or destructive feedback
-                  as shown in the evidence submitted
-                </p>
-              </td>
-              <td id="tdata" class="poor1">
-                <p>No evidence was shown</p>
-              </td>
-              <td id="tdata" rowspan="1" class="actualResult">
-                <p></p>
-              </td>
-              <td id="tdata" rowspan="3" class="q1">
-                <p></p>
-              </td>
-              <td id="tdata" rowspan="3" class="e1 blue-grey darken-4">
-                <p></p>
-              </td>
-              <td id="tdata" rowspan="3" class="t1">
-                <p></p>
-              </td>
-              <td id="tdata" rowspan="3" class="ave1">
-                <p></p>
-              </td>
-              <td id="tdata" rowspan="3" class="score7">
-                <p></p>
-              </td>
-            </tr>
-            <tr>
-              <td id="tdata" class="eff1 pa-1">
-                <p>Efficiency</p>
-              </td>
-              <td id="tdata" class="eff2 pa-1 blue-grey darken-4">
-                <p></p>
-              </td>
-              <td id="tdata" class="eff2 pa-1 blue-grey darken-4">
-                <p></p>
-              </td>
-              <td id="tdata" class="eff4 pa-1 blue-grey darken-4">
-                <p></p>
-              </td>
-              <td id="tdata" class="eff5 pa-1 blue-grey darken-4">
-                <p></p>
-              </td>
-              <td id="tdata" colspan="2" class="eff6 pa-1 blue-grey darken-4">
-                <p></p>
-              </td>
-            </tr>
-            <tr>
-              <td id="tdata" class="timeline1 pa-1">
-                <p>Timeliness</p>
-              </td>
-              <td id="tdata" class="timeline2 pa-1">
-                <p>
-                  MOV submitted shows feedback given within 5 working days from
-                  submission**
-                </p>
-              </td>
-              <td id="tdata" class="timeline2 pa-1">
-                <p>
-                  MOV submitted shows feedback given within 6-10 working days
-                  from submission**
-                </p>
-              </td>
-              <td id="tdata" class="timeline4 pa-1">
-                <p>
-                  MOV submitted shows feedback given within 11-20 working days
-                  from submission**
-                </p>
-              </td>
-              <td id="tdata" class="timeline5 pa-1">
-                <p>
-                  MOV submitted shows feedback given beyond 20 working days from
-                  submission**
-                </p>
-              </td>
-              <td id="tdata" class="timeline6">
-                <p>No evidence was shown</p>
-              </td>
-            </tr>
-            <tr class="row1">
-              <td id="tdata" rowspan="6">
-                <p>3. Curriculum and Planning</p>
-              </td>
-              <td id="tdata" class="timelineObj1" rowspan="3">
-                <p>
-                  7. Selected, developed, organized and used appropriate
-                  teaching and learning resources, including ICT, to address
-                  learning goals
-                </p>
-              </td>
-
-              <td id="tdata" class="weightPerKra" rowspan="3">
-                <p></p>
-              </td>
-              <td id="tdata" class="weightPerKra" rowspan="6">
-                <p>16%</p>
-              </td>
-              <td id="tdata" class="quality1">
-                <p>Quality</p>
-              </td>
-              <td id="tdata" class="outstanding1">
-                <p>
-                  Demonstrated Level 7 in Objective 7 as shown in COT rating
-                  sheets/interobserver agreement forms
-                </p>
-              </td>
-              <td id="tdata" class="verySatisfactory1">
-                <p>
-                  Demonstrated Level 6 in Objective 7 as shown in COT rating
-                  sheets/interobserver agreement forms
-                </p>
-              </td>
-              <td id="tdata" class="satisfactory1">
-                <p>
-                  Demonstrated Level 5 in Objective 7 as shown in COT rating
-                  sheets/interobserver agreement forms
-                </p>
-              </td>
-              <td id="tdata" class="unsatisfactory1">
-                <p>
-                  Demonstrated Level 4 in Objective 7 as shown in COT rating
-                  sheets/interobserver agreement forms
-                </p>
-              </td>
-              <td id="tdata" class="poor1">
-                <p>
-                  Demonstrated Level 3 in Objective 7 as shown in COT rating
-                  sheets/interobserver agreement forms or No acceptable evidence
-                  was shown
-                </p>
-              </td>
-              <td id="tdata" rowspan="1" class="actualResult">
-                <p></p>
-              </td>
-              <td id="tdata" rowspan="3" class="q1">
-                <p></p>
-              </td>
-              <td id="tdata" rowspan="3" class="e1 blue-grey darken-4">
-                <p></p>
-              </td>
-              <td id="tdata" rowspan="3" class="t1 blue-grey darken-4">
-                <p></p>
-              </td>
-              <td id="tdata" colspan="1" rowspan="3" class="ave1">
-                <p></p>
-              </td>
-              <td id="tdata" rowspan="3" class="score8">
-                <p></p>
-              </td>
-            </tr>
-            <tr>
-              <td id="tdata" class="eff1 pa-1">
-                <p>Efficiency</p>
-              </td>
-              <td id="tdata" class="eff2 pa-1 blue-grey darken-4">
-                <p></p>
-              </td>
-              <td id="tdata" class="eff2 pa-1 blue-grey darken-4">
-                <p></p>
-              </td>
-              <td id="tdata" class="eff4 pa-1 blue-grey darken-4">
-                <p></p>
-              </td>
-              <td id="tdata" class="eff5 pa-1 blue-grey darken-4">
-                <p></p>
-              </td>
-              <td id="tdata" colspan="2" class="eff6 pa-1 blue-grey darken-4">
-                <p></p>
-              </td>
-            </tr>
-            <tr>
-              <td id="tdata" class="timeline1 pa-1">
-                <p>Timeliness</p>
-              </td>
-              <td id="tdata" class="timeline2 pa-1 blue-grey darken-4">
-                <p></p>
-              </td>
-              <td id="tdata" class="timeline2 pa-1 blue-grey darken-4">
-                <p></p>
-              </td>
-              <td id="tdata" class="timeline4 pa-1 blue-grey darken-4">
-                <p></p>
-              </td>
-              <td id="tdata" class="timeline5 pa-1 blue-grey darken-4">
-                <p></p>
-              </td>
-              <td id="tdata" colspan="2" class="timeline6 blue-grey darken-4">
-                <p></p>
-              </td>
-            </tr>
-            <!-- End Number7 -->
-
-            <!-- Start Number 8 -->
-            <tr class="row1">
-              <td id="tdata" class="timelineObj1" rowspan="3">
-                <p>
-                  8. Set achievable and appropriate learning outcomes that are
-                  aligned with learning competencies
-                </p>
-              </td>
-
-              <td id="tdata" class="weightPerKra" rowspan="3">
-                <p></p>
-              </td>
-              <td id="tdata" class="quality1">
-                <p>Quality</p>
-              </td>
-              <td id="tdata" class="outstanding1">
-                <p>
-                  All of the learning outcomes set are aligned with the learning
-                  competencies as shown in the MOV submitted
-                </p>
-              </td>
-              <td id="tdata" class="verySatisfactory1">
-                <p>
-                  Majority of the learning outcomes set are aligned with the
-                  learning competencies as shown in the MOV submitted
-                </p>
-              </td>
-              <td id="tdata" class="satisfactory1">
-                <p>
-                  Half of the learning outcomes set are aligned with the
-                  learning competencies as shown in the MOV submitted
-                </p>
-              </td>
-              <td id="tdata" class="unsatisfactory1">
-                <p>
-                  Less than half of the learning outcomes set are aligned with
-                  the learning competencies as shown in the MOV submitted
-                </p>
-              </td>
-              <td id="tdata" class="poor1">
-                <p>No acceptable evidence was shown</p>
-              </td>
-              <td id="tdata" rowspan="1" class="actualResult">
-                <p></p>
-              </td>
-              <td id="tdata" rowspan="3" class="q1">
-                <p></p>
-              </td>
-              <td id="tdata" rowspan="3" class="e1 blue-grey darken-4">
-                <p></p>
-              </td>
-              <td id="tdata" rowspan="3" class="t1 blue-grey darken-4">
-                <p></p>
-              </td>
-              <td id="tdata" rowspan="3" class="ave1">
-                <p></p>
-              </td>
-              <td id="tdata" rowspan="3" class="score10">
-                <p></p>
-              </td>
-            </tr>
-            <tr>
-              <td id="tdata" class="eff1 pa-1">
-                <p>Efficiency</p>
-              </td>
-              <td id="tdata" class="eff2 pa-1 blue-grey darken-4">
-                <p></p>
-              </td>
-              <td id="tdata" class="eff2 pa-1 blue-grey darken-4">
-                <p></p>
-              </td>
-              <td id="tdata" class="eff4 pa-1 blue-grey darken-4">
-                <p></p>
-              </td>
-              <td id="tdata" class="eff5 pa-1 blue-grey darken-4">
-                <p></p>
-              </td>
-              <td id="tdata" colspan="2" class="eff6 pa-1 blue-grey darken-4">
-                <p></p>
-              </td>
-            </tr>
-            <tr>
-              <td id="tdata" class="timeline1 pa-1">
-                <p>Timeliness</p>
-              </td>
-              <td id="tdata" class="timeline2 pa-1 blue-grey darken-4">
-                <p></p>
-              </td>
-              <td id="tdata" class="timeline2 pa-1 blue-grey darken-4">
-                <p></p>
-              </td>
-              <td id="tdata" class="timeline4 pa-1 blue-grey darken-4">
-                <p></p>
-              </td>
-              <td id="tdata" class="timeline5 pa-1 blue-grey darken-4">
-                <p></p>
-              </td>
-              <td id="tdata" colspan="2" class="timeline6 blue-grey darken-4">
-                <p></p>
-              </td>
-            </tr>
-            <!-- End Number 3 -->
-            <!-- Start Number 4 -->
-
-            <tr class="row1">
-              <td id="tdata" rowspan="9">
-                <p>
-                  4. Community Linkages and Professional Engagement & Personal
-                  Growth and Professional Development
-                </p>
-              </td>
-              <td id="tdata" class="timelineObj1" rowspan="3">
-                <p>
-                  9. Built relationships with parents/ guardians and the wider
-                  school community to facilitate involvement in the educative
-                  process
-                </p>
-              </td>
-              <td id="tdata" class="timelineObj1" rowspan="3">
-                <p></p>
-              </td>
-              <td id="tdata" class="weightPerKra" rowspan="9">
-                <p>24%</p>
-              </td>
-              <td id="tdata" class="quality1">
-                <p>Quality</p>
-              </td>
-              <td id="tdata" class="outstanding1">
-                <p>
-                  Sustained engagement with parents/ guardians and/ or wider
-                  school community to facilitate involvement in the educative
-                  process as evidenced by 2 or more of MOV no. 1 or 2
-                </p>
-              </td>
-              <td id="tdata" class="verySatisfactory1">
-                <p>
-                  Secured collaboration with parents/ guardians and/ or wider
-                  school community to facilitate involvement in the educative
-                  process as evidenced by one MOV no. 1 or 2
-                </p>
-              </td>
-              <td id="tdata" class="satisfactory1">
-                <p>
-                  Communicated with and obtained response from parents/
-                  guardians and/ or wider school community to facilitate
-                  involvement in the educative process as evidenced by MOV No. 3
-                </p>
-              </td>
-              <td id="tdata" class="unsatisfactory1">
-                <p>
-                  Communicated with parents/ guardians and/or wider school
-                  community to facilitate involvement in the educative process
-                  but received no response/reply as evidenced by MOV No. 3
-                </p>
-              </td>
-              <td id="tdata" class="poor1">
-                <p>No acceptable evidence was shown</p>
-              </td>
-              <td id="tdata" rowspan="1" class="actualResult">
-                <p></p>
-              </td>
-              <td id="tdata" rowspan="3" class="q1">
-                <p></p>
-              </td>
-              <td id="tdata" rowspan="3">
-                <p></p>
-              </td>
-              <td id="tdata" rowspan="3" class="t1 blue-grey darken-4">
-                <p></p>
-              </td>
-              <td id="tdata" rowspan="3" class="ave1">
-                <p></p>
-              </td>
-              <td id="tdata" rowspan="3" class="score11">
-                <p></p>
-              </td>
-            </tr>
-            <tr>
-              <td id="tdata" class="eff1 pa-1">
-                <p>Efficiency</p>
-              </td>
-              <td id="tdata" class="eff2 pa-1">
-                <p>Submitted any 4 of the acceptable MOV*</p>
-              </td>
-              <td id="tdata" class="eff2 pa-1">
-                <p>Submitted any 3 of the acceptable MOV*</p>
-              </td>
-              <td id="tdata" class="eff4 pa-1">
-                <p>Submitted any 2 of the acceptable MOV*</p>
-              </td>
-              <td id="tdata" class="eff5 pa-1">
-                <p>Submitted any 1 of the acceptable MOV</p>
-              </td>
-              <td id="tdata" class="eff6 pa-1">
-                <p>No acceptable evidence was shown</p>
-              </td>
-            </tr>
-            <tr>
-              <td id="tdata" class="timeline1 pa-1">
-                <p>Timeliness</p>
-              </td>
-              <td id="tdata" class="timeline2 pa-1 blue-grey darken-4">
-                <p></p>
-              </td>
-              <td id="tdata" class="timeline2 pa-1 blue-grey darken-4">
-                <p></p>
-              </td>
-              <td id="tdata" class="timeline4 pa-1 blue-grey darken-4">
-                <p></p>
-              </td>
-              <td id="tdata" class="timeline5 pa-1 blue-grey darken-4">
-                <p></p>
-              </td>
-              <td id="tdata" colspan="2" class="timeline6 blue-grey darken-4">
-                <p></p>
-              </td>
-            </tr>
-            <tr class="row1">
-              <td id="tdata" class="timelineObj1" rowspan="3">
-                <p>
-                  10. Participated in professional networks to share knowledge
-                  and to enhance practice
-                </p>
-              </td>
-
-              <td id="tdata" class="weightPerKra" rowspan="3">
-                <p></p>
-              </td>
-              <td id="tdata" class="quality1">
-                <p>Quality</p>
-              </td>
-              <td id="tdata" class="outstanding1">
-                <p>
-                  Participated in any professional network/ activity that
-                  requires output* and proof of implementation ** within the
-                  school to share knowledge and to enhance practice as evidenced
-                  by the submitted MOV
-                </p>
-              </td>
-              <td id="tdata" class="verySatisfactory1">
-                <p>
-                  Participated in any professional network/ activity that
-                  requires output* and proof of implementation ** within the
-                  department/grade level to share knowledge and to enhance
-                  practice as evidenced by the submitted MOV
-                </p>
-              </td>
-              <td id="tdata" class="satisfactory1">
-                <p>
-                  Participated in any professional network/ activity that
-                  requires output* to share knowledge and to enhance practice as
-                  evidenced by the submitted MOV
-                </p>
-              </td>
-              <td id="tdata" class="unsatisfactory1">
-                <p>
-                  Participated in any professional network/ activity that does
-                  not require output to share knowledge and to enhance practice
-                  as evidenced by the submitted MOV
-                </p>
-              </td>
-              <td id="tdata" class="poor1">
-                <p>No acceptable evidence was shown</p>
-              </td>
-              <td id="tdata" rowspan="1" class="actualResult">
-                <p></p>
-              </td>
-              <td id="tdata" rowspan="3" class="q1">
-                <p></p>
-              </td>
-              <td id="tdata" rowspan="3">
-                <p></p>
-              </td>
-              <td id="tdata" rowspan="3" class="t1 blue-grey darken-4">
-                <p></p>
-              </td>
-              <td id="tdata" rowspan="3" class="ave1">
-                <p></p>
-              </td>
-              <td id="tdata" rowspan="3" class="score13">
-                <p></p>
-              </td>
-            </tr>
-            <tr>
-              <td id="tdata" class="eff1 pa-1">
-                <p>Efficiency</p>
-              </td>
-              <td id="tdata" class="eff2 pa-1">
-                <p>Submitted 4 different kinds of acceptable MOV***</p>
-              </td>
-              <td id="tdata" class="eff2 pa-1">
-                <p>Submitted 3 different kinds of acceptable MOV***</p>
-              </td>
-              <td id="tdata" class="eff4 pa-1">
-                <p>Submitted 2 different kinds of acceptable MOV***</p>
-              </td>
-              <td id="tdata" class="eff5 pa-1">
-                <p>Submitted 1 of the acceptable MOV</p>
-              </td>
-              <td id="tdata" class="eff6 pa-1">
-                <p>No acceptable evidence was shown</p>
-              </td>
-            </tr>
-            <tr>
-              <td id="tdata" class="timeline1 pa-1">
-                <p>Timeliness</p>
-              </td>
-              <td id="tdata" class="timeline2 pa-1 blue-grey darken-4">
-                <p></p>
-              </td>
-              <td id="tdata" class="timeline2 pa-1 blue-grey darken-4">
-                <p></p>
-              </td>
-              <td id="tdata" class="timeline4 pa-1 blue-grey darken-4">
-                <p></p>
-              </td>
-              <td id="tdata" class="timeline5 pa-1 blue-grey darken-4">
-                <p></p>
-              </td>
-              <td id="tdata" colspan="2" class="timeline6 blue-grey darken-4">
-                <p></p>
-              </td>
-            </tr>
-            <tr class="row1">
-              <td id="tdata" class="timelineObj1" rowspan="3">
-                <p>
-                  11. Developed a personal improvement plan based on reflection
-                  of one’s practice and ongoing professional learning
-                </p>
-              </td>
-              <td id="tdata" class="weightPerKra" rowspan="3">
-                <p></p>
-              </td>
-              <td id="tdata" class="quality1">
-                <p>Quality</p>
-              </td>
-              <td id="tdata" class="outstanding1">
-                <p>
-                  Updated the Development Plan and approved by the rater during
-                  Phase II of the RPMS cycle
-                </p>
-              </td>
-              <td id="tdata" class="verySatisfactory1">
-                <p>
-                  Discussed progress on the Development Plan with the rater to
-                  check whether Development Needs were addressed
-                </p>
-              </td>
-              <td id="tdata" class="satisfactory1">
-                <p>
-                  Accomplished the Development Plan from learning objectives up
-                  to resources needed to address Development Needs during Phase
-                  I of the RPMS cycle
-                </p>
-              </td>
-              <td id="tdata" class="unsatisfactory1">
-                <p>
-                  Accomplished the Strengths and Development Needs portion of
-                  the Development Plan after self-assessment at the beginning of
-                  the school year
-                </p>
-              </td>
-              <td id="tdata" class="poor1">
-                <p>No acceptable evidence was shown</p>
-              </td>
-              <td id="tdata" rowspan="1" class="actualResult">
-                <p></p>
-              </td>
-              <td id="tdata" rowspan="3" class="q1">
-                <p></p>
-              </td>
-              <td id="tdata" rowspan="3">
-                <p></p>
-              </td>
-              <td id="tdata" rowspan="3" class="t1 blue-grey darken-4">
-                <p></p>
-              </td>
-              <td id="tdata" rowspan="3" class="ave1">
-                <p></p>
-              </td>
-              <td id="tdata" rowspan="3" class="score13">
-                <p></p>
-              </td>
-            </tr>
-            <tr>
-              <td id="tdata" class="eff1 pa-1">
-                <p>Efficiency</p>
-              </td>
-              <td id="tdata" class="eff2 pa-1">
-                <p>
-                  Submitted the IPCRF-DP with any 4 of the acceptable Supporting
-                  MOV*
-                </p>
-              </td>
-              <td id="tdata" class="eff2 pa-1">
-                <p>
-                  Submitted the IPCRF-DP with any 3 of the acceptable Supporting
-                  MOV*
-                </p>
-              </td>
-              <td id="tdata" class="eff4 pa-1">
-                <p>
-                  Submitted the IPCRF-DP with any 2 of the acceptable Supporting
-                  MOV*
-                </p>
-              </td>
-              <td id="tdata" class="eff5 pa-1">
-                <p>
-                  Submitted the IPCRF-DP with any 1 of the acceptable Supporting
-                  MOV
-                </p>
-              </td>
-              <td id="tdata" class="eff6 pa-1">
-                <p>No acceptable evidence was shown</p>
-              </td>
-            </tr>
-            <tr>
-              <td id="tdata" class="timeline1 pa-1">
-                <p>Timeliness</p>
-              </td>
-              <td id="tdata" class="timeline2 pa-1 blue-grey darken-4">
-                <p></p>
-              </td>
-              <td id="tdata" class="timeline2 pa-1 blue-grey darken-4">
-                <p></p>
-              </td>
-              <td id="tdata" class="timeline4 pa-1 blue-grey darken-4">
-                <p></p>
-              </td>
-              <td id="tdata" class="timeline5 pa-1 blue-grey darken-4">
-                <p></p>
-              </td>
-              <td id="tdata" colspan="2" class="timeline6 blue-grey darken-4">
-                <p></p>
-              </td>
-            </tr>
-            <!-- End Number 4 -->
-
-            <!-- Start Number 5 -->
-            <tr class="row1">
-              <td id="tdata" rowspan="3">
-                <p>5. Plus Factor</p>
-              </td>
-              <td id="tdata" class="timelineObj1" rowspan="3">
-                <p>
-                  12. Performed various related works/ activities that
-                  contribute to the teaching-learning process
-                </p>
-              </td>
-
-              <td id="tdata" class="weightPerKra" rowspan="3">
-                <p></p>
-              </td>
-              <td id="tdata" class="weightPerKra" rowspan="3">
-                <p>16%</p>
-              </td>
-              <td id="tdata" class="quality1">
-                <p>Quality</p>
-              </td>
-              <td id="tdata" class="outstanding1">
-                <p>
-                  Performed at least 1 related work/activity that contributed to
-                  the teaching-learning process beyond the school/ Community
-                  Learning Center (CLC) as evidenced by submitted MOV
-                </p>
-              </td>
-              <td id="tdata" class="verySatisfactory1">
-                <p>
-                  Performed at least 1 related work/activity that contributed to
-                  the teaching-learning process within the school/ Community
-                  Learning Center (CLC) as evidenced by submitted MOV
-                </p>
-              </td>
-              <td id="tdata" class="satisfactory1">
-                <p>
-                  Performed at least 1 related work/activity that contributed to
-                  the teaching-learning process within the learning area/
-                  department as evidenced by submitted MOV
-                </p>
-              </td>
-              <td id="tdata" class="unsatisfactory1">
-                <p>
-                  Performed at least 1 related work/activity that contributed to
-                  the teaching-learning process within the class as evidenced by
-                  submitted MOV
-                </p>
-              </td>
-              <td id="tdata" class="poor1">
-                <p>No acceptable evidence was shown</p>
-              </td>
-              <td id="tdata" rowspan="1" class="actualResult">
-                <p></p>
-              </td>
-              <td id="tdata" rowspan="3" class="q1">
-                <p></p>
-              </td>
-              <td id="tdata" rowspan="3" class="e1">
-                <p></p>
-              </td>
-              <td id="tdata" rowspan="3" class="t1 blue-grey darken-4">
-                <p></p>
-              </td>
-              <td id="tdata" colspan="1" rowspan="3" class="ave1">
-                <p></p>
-              </td>
-              <td id="tdata" rowspan="3" class="score8">
-                <p></p>
-              </td>
-            </tr>
-            <tr>
-              <td id="tdata" class="eff1 pa-1">
-                <p>Efficiency</p>
-              </td>
-              <td id="tdata" class="eff2 pa-1">
-                <p>Submitted any 4 of the acceptable MOV*</p>
-              </td>
-              <td id="tdata" class="eff2 pa-1">
-                <p>Submitted any 3 of the acceptable MOV*</p>
-              </td>
-              <td id="tdata" class="eff4 pa-1">
-                <p>Submitted any 2 of the acceptable MOV*</p>
-              </td>
-              <td id="tdata" class="eff5 pa-1">
-                <p>Submitted any 1 of the acceptable MOV</p>
-              </td>
-              <td id="tdata" class="eff6 pa-1">
-                <p>No acceptable evidence was shown</p>
-              </td>
-              <td id="tdata" colspan="2" class="eff6 pa-1">
-                <p></p>
-              </td>
-            </tr>
-            <tr>
-              <td id="tdata" class="timeline1 pa-1">
-                <p>Timeliness</p>
-              </td>
-              <td id="tdata" class="timeline2 pa-1 blue-grey darken-4">
-                <p></p>
-              </td>
-              <td id="tdata" class="timeline2 pa-1 blue-grey darken-4">
-                <p></p>
-              </td>
-              <td id="tdata" class="timeline4 pa-1 blue-grey darken-4">
-                <p></p>
-              </td>
-              <td id="tdata" class="timeline5 pa-1 blue-grey darken-4">
-                <p></p>
-              </td>
-              <td id="tdata" class="timeline6 blue-grey darken-4">
-                <p></p>
-              </td>
-              <td id="tdata" class="timeline6">
-                <p></p>
-              </td>
-            </tr>
-            <!-- End Number 5 Obj -->
-            <!-- Startof Ratingfor overall accomplishment -->
-            <tr>
-              <td class="timeline6" colspan="12">
-                <p style="float: right" class="mr-2 mt-2">
-                  Rating for Overall Accomplishment
-                </p>
-              </td>
-              <td id="tdata" class="ratingTotal" colspan="4">
-                <p></p>
-              </td>
-              <td id="tdata" class="ratingAverage">
-                <p></p>
-              </td>
-            </tr>
-            <!-- End of Ratingfor overall accomplishment -->
-          </table>
-          <br />
-          <br />
-
-          <!-- START OF ADJECTIVAL RATING -->
-          <div>
-            <table style="width: 50%; text-align: center">
-              <tr>
-                <td id="tdata" colspan="2">ADJECTIVAL RATING EQUIVALENCES</td>
+          <v-container fluid id="printMePart1">
+            <table id="table" style="width: 100%">
+              <tr class="row1">
+                <td
+                  id="tdata"
+                  colspan="6"
+                  class="pt-4"
+                  style="background-color: #ddd9c3"
+                >
+                  <p style="text-align: center">
+                    <b
+                      >INDIVIDUAL PERFORMANCE COMMITMENT AND REVIEW FORM (IPCRF)
+                      for Teacher I-III, SPET I-IV, Special Science Teacher
+                      I-II</b
+                    >
+                  </p>
+                </td>
               </tr>
-
-              <tr>
-                <td id="tdata">RANGE</td>
-                <td id="tdata">ADJECTIVAL RATING</td>
+              <tr class="row1">
+                <td id="tdata" style="line-height: 5px">
+                  <p>Name of Employee:</p>
+                </td>
+                <td id="tdata" style="width: 20%">
+                  <p>{{ ipcrfDemographicProfile.name_of_employee }}</p>
+                </td>
+                <td id="tdata" style="line-height: 5px">
+                  <p>Name of Rater:</p>
+                </td>
+                <td id="tdata" style="width: 20%">
+                  <p>{{ ipcrfDemographicProfile.rater }}</p>
+                </td>
               </tr>
-              <tr>
-                <td id="tdata">4.500-5.000</td>
-                <td id="tdata">OUTSTANDING</td>
+              <tr class="row1">
+                <td id="tdata" style="line-height: 5px">
+                  <p>Position:</p>
+                </td>
+                <td id="tdata" style="line-height: 5px">
+                  <p>{{ ipcrfDemographicProfile.position }}</p>
+                </td>
+                <td id="tdata" style="line-height: 5px">
+                  <p>Position:</p>
+                </td>
+                <td id="tdata" style="">
+                  <p>{{ ipcrfDemographicProfile.rater_position }}</p>
+                </td>
               </tr>
-              <tr>
-                <td id="tdata">3.500-4.499</td>
-                <td id="tdata">VERY SATISFACTORY</td>
+              <tr class="row1">
+                <td id="tdata" style="line-height: 5px">
+                  <p>Bureau/Center/Service/Division:</p>
+                </td>
+                <td id="tdata" style="line-height: 5px">
+                  <p>{{ ipcrfDemographicProfile.division }}</p>
+                </td>
+                <td id="tdata" style="line-height: 5px">
+                  <p>Date of Review::</p>
+                </td>
+                <td id="tdata" style="line-height: 5px">
+                  <p>{{ ipcrfDemographicProfile.date_of_review }}</p>
+                </td>
               </tr>
-              <tr>
-                <td id="tdata">2.500-3.499</td>
-                <td id="tdata">SATISFACTORY</td>
-              </tr>
-              <tr>
-                <td id="tdata">1.500-2.499</td>
-                <td id="tdata">UNSATISFACTORY</td>
-              </tr>
-              <tr>
-                <td id="tdata">below 1.499</td>
-                <td id="tdata">POOR</td>
+              <tr class="row1">
+                <td id="tdata" style="line-height: 5px">
+                  <p>Rating Period:</p>
+                </td>
+                <td id="tdata" style="line-height: 5px">
+                  <p>{{ ipcrfDemographicProfile.rating_period }}</p>
+                </td>
+                <td id="tdata" colspan="2" style="line-height: 5px"></td>
               </tr>
             </table>
-          </div>
-          <!-- END OF ADJECTIVAL RATING -->
-          <!-- Part 1 Display Signatures -->
-
-          <div class="pa-10 ml-9" style="text-align: center">
-            <v-row>
-              <v-col>
-                <v-text-field
-                  v-model="part_ratee"
-                  readonly
-                  style="width: 200px; height: 100px; margin-left: 80px"
+            <br />
+            <div class="ePart2">
+              <table
+                id="table"
+                style="width: 100%; text-align: center; font-weight: bold"
+              >
+                <tr class="row1 mt-2">
+                  <td id="tdata" colspan="6" style="line-height: 5px">
+                    <p>TO BE FILLED OUT DURING PLANNING</p>
+                  </td>
+                  <td id="tdata" colspan="11" style="line-height: 5px">
+                    <p>TO BE FILLED OUT DURING EVALUATION</p>
+                  </td>
+                </tr>
+                <tr
+                  class="row1 light-green lighten-2"
+                  style="width: 100%; text-align: center; font-weight: bold"
                 >
-                </v-text-field>
-
-                <h5 class="pa-2" style="margin-left: 80px">Ratee</h5>
-              </v-col>
-              <v-col>
-                <v-text-field
-                  readonly
-                  v-model="part_rater"
-                  style="width: 200px; height: 100px; margin-left: 40px"
+                  <td id="tdata" rowspan="2" style="line-height: 5px">
+                    <p>MFO's</p>
+                  </td>
+                  <td id="tdata" rowspan="2" style="line-height: 5px">
+                    <p>KRAs</p>
+                  </td>
+                  <td id="tdata" rowspan="2" style="line-height: 5px">
+                    <p>Objectives</p>
+                  </td>
+                  <td id="tdata" rowspan="2" style="line-height: 5px">
+                    <p>Timeline</p>
+                  </td>
+                  <td id="tdata" rowspan="2">
+                    <p>Weight per KRA</p>
+                  </td>
+                  <td
+                    id="tdata"
+                    colspan="6"
+                    rowspan="1"
+                    style="line-height: 5px"
+                  >
+                    <p>Performance Indicator</p>
+                  </td>
+                  <td id="tdata" rowspan="2">
+                    <p>Actual Result</p>
+                  </td>
+                  <td id="tdata" colspan="4" style="line-height: 5px">
+                    <p>Rating</p>
+                  </td>
+                  <td id="tdata" rowspan="2" style="line-height: 5px">
+                    <p>Score</p>
+                  </td>
+                </tr>
+                <tr
+                  class="row1 light-green lighten-2"
+                  style="text-align: center; font-weight: bold"
                 >
-                </v-text-field>
+                  <td id="tdata" style="line-height: 5px">
+                    <p>QET</p>
+                  </td>
+                  <td id="tdata" style="line-height: 5px">
+                    <p>
+                      Outstanding <br /><br /><br />
+                      <br />5
+                    </p>
+                  </td>
+                  <td id="tdata" style="line-height: 15px">
+                    <p>
+                      Very Satisfactory
+                      <br />
+                      4
+                    </p>
+                  </td>
+                  <td id="tdata" style="line-height: 5px">
+                    <p>
+                      Satisfactory<br /><br />
+                      <br /><br />
+                      3
+                    </p>
+                  </td>
+                  <td id="tdata" style="line-height: 5px">
+                    <p>
+                      Unsatisfactory <br /><br />
+                      <br /><br />
+                      2
+                    </p>
+                  </td>
+                  <td id="tdata" style="line-height: 5px">
+                    <p>
+                      Poor <br /><br />
+                      <br />
+                      <br />
+                      1
+                    </p>
+                  </td>
+                  <td id="tdata" style="line-height: 5px">
+                    <p>Q</p>
+                  </td>
+                  <td id="tdata" style="line-height: 5px">
+                    <p>E</p>
+                  </td>
+                  <td id="tdata" style="line-height: 5px">
+                    <p>T</p>
+                  </td>
+                  <td id="tdata" style="line-height: 5px">
+                    <p>AVE</p>
+                  </td>
+                </tr>
+                <tr class="row1">
+                  <td id="tdata" rowspan="36">
+                    <p>Basic Education Services</p>
+                  </td>
+                  <td id="tdata" rowspan="9">
+                    <p>1. Content Knowledge and Pedagogy</p>
+                  </td>
+                  <td id="tdata" rowspan="3">
+                    <p>
+                      1. Applied knowledge of content within and across
+                      curriculum teaching areas.
+                    </p>
+                  </td>
+                  <td id="tdata" class="timelineObj1" rowspan="3">
+                    <p></p>
+                  </td>
+                  <td id="tdata" class="weightPerKra" rowspan="9">
+                    <p>24%</p>
+                  </td>
+                  <td id="tdata" class="quality1">
+                    <p>Quality</p>
+                  </td>
+                  <td id="tdata" class="outstanding1">
+                    <p>
+                      Demonstrated Level 7 in Objective 1 as shown in COT rating
+                      sheets/interobserver agreement forms
+                    </p>
+                  </td>
+                  <td id="tdata" class="verySatisfactory1">
+                    <p>
+                      Demonstrated Level 6 in Objective 1 as shown in COT rating
+                      sheets/interobserver agreement forms
+                    </p>
+                  </td>
+                  <td id="tdata" class="satisfactory1">
+                    <p>
+                      Demonstrated Level 5 in Objective 1 as shown in COT rating
+                      sheets/interobserver agreement forms
+                    </p>
+                  </td>
+                  <td id="tdata" class="unsatisfactory1">
+                    <p>
+                      Demonstrated Level 4 in Objective 1 as shown in COT rating
+                      sheets/interobserver agreement forms
+                    </p>
+                  </td>
+                  <td id="tdata" class="poor1">
+                    <p>
+                      Demonstrated Level 3 in Objective 1 as shown in COT rating
+                      sheets/interobserver agreement forms or No acceptable
+                      evidence was shown
+                    </p>
+                  </td>
+                  <td id="tdata" rowspan="1" class="actualResult">
+                    <p>
+                      {{
+                        ipcrfEncodingPart1[0]
+                          .ipcrf_numerical_ratings_adjectival_rating
+                      }}
+                    </p>
+                  </td>
+                  <td id="tdata" rowspan="3" class="q1">
+                    <p>{{ ipcrfEncodingPart1[0].ipcrf_numerical_ratings_q }}</p>
+                  </td>
+                  <td id="tdata" rowspan="3" class="e1 blue-grey darken-4">
+                    <p></p>
+                  </td>
+                  <td id="tdata" rowspan="3" class="t1 blue-grey darken-4">
+                    <p></p>
+                  </td>
+                  <td id="tdata" rowspan="3" class="ave1">
+                    <p>
+                      {{
+                        ipcrfEncodingPart1[0].ipcrf_numerical_ratings_average
+                      }}
+                    </p>
+                  </td>
+                  <td id="tdata" rowspan="3" class="score1">
+                    <p>
+                      {{ ipcrfEncodingPart1[0].ipcrf_numerical_ratings_score }}
+                    </p>
+                  </td>
+                </tr>
 
-                <h5 class="pa-2" style="margin-right: 10px">Rater</h5>
-              </v-col>
+                <tr>
+                  <td id="tdata" class="eff1 pa-1">
+                    <p>Efficiency</p>
+                  </td>
+                  <td id="tdata" class="eff2 pa-1 blue-grey darken-4">
+                    <p></p>
+                  </td>
+                  <td id="tdata" class="eff2 pa-1 blue-grey darken-4">
+                    <p></p>
+                  </td>
+                  <td id="tdata" class="eff4 pa-1 blue-grey darken-4">
+                    <p></p>
+                  </td>
+                  <td id="tdata" class="eff5 pa-1 blue-grey darken-4">
+                    <p></p>
+                  </td>
+                  <td
+                    id="tdata"
+                    colspan="2"
+                    class="eff6 pa-1 blue-grey darken-4"
+                  >
+                    <p></p>
+                  </td>
+                </tr>
+                <tr>
+                  <td id="tdata" class="timeline1 pa-1">
+                    <p>Timeliness</p>
+                  </td>
+                  <td id="tdata" class="timeline2 pa-1 blue-grey darken-4">
+                    <p></p>
+                  </td>
+                  <td id="tdata" class="timeline2 pa-1 blue-grey darken-4">
+                    <p></p>
+                  </td>
+                  <td id="tdata" class="timeline4 pa-1 blue-grey darken-4">
+                    <p></p>
+                  </td>
+                  <td id="tdata" class="timeline5 pa-1 blue-grey darken-4">
+                    <p></p>
+                  </td>
+                  <td
+                    id="tdata"
+                    colspan="2"
+                    class="timeline6 blue-grey darken-4"
+                  >
+                    <p></p>
+                  </td>
+                </tr>
+                <!-- end of row1 -->
+                <!-- start of row 2 -->
+                <tr>
+                  <td id="tdata" rowspan="3">
+                    <p>
+                      2. Ensured the positive use of ICT to facilitate the
+                      teaching and learning process
+                    </p>
+                  </td>
+                  <td id="tdata" class="timelineObj1" rowspan="3">
+                    <p></p>
+                  </td>
 
-              <v-col>
-                <v-text-field
-                  readonly
-                  style="width: 200px; height: 100px; margin-left: 40px"
-                >
-                  <!-- <p class="mt-6">{{ part_approvingAuthority }}</p> -->
-                </v-text-field>
+                  <td id="tdata" class="quality1">
+                    <p>Quality</p>
+                  </td>
+                  <td id="tdata" class="outstanding1">
+                    <p>
+                      Ensured that the ICT used redefine and transform learning
+                      experiences and are documented properly and consistently
+                      using any referencing style as shown in the submitted
+                      learning material
+                    </p>
+                  </td>
+                  <td id="tdata" class="verySatisfactory1">
+                    <p>
+                      Ensured that the ICT used augment and enrich learning
+                      experiences and are documented properly and consistently
+                      using any referencing style as shown in the submitted
+                      learning material
+                    </p>
+                  </td>
+                  <td id="tdata" class="satisfactory1">
+                    <p>
+                      Ensured that the ICT used modify processes and improve
+                      learning experiences and are documented properly and
+                      consistently using any referencing style as shown in the
+                      submitted learning material
+                    </p>
+                  </td>
+                  <td id="tdata" class="unsatisfactory1">
+                    <p>
+                      Ensured that ICT are used but do not create a new learning
+                      experience and/or are documented but not consistent with
+                      one referencing style as shown in the submitted learning
+                      material
+                    </p>
+                  </td>
+                  <td id="tdata" class="poor1">
+                    <p>No acceptable evidence was shown</p>
+                  </td>
+                  <td id="tdata" rowspan="1" class="actualResult">
+                    <p>
+                      {{
+                        ipcrfEncodingPart1[1]
+                          .ipcrf_numerical_ratings_adjectival_rating
+                      }}
+                    </p>
+                  </td>
+                  <td id="tdata" rowspan="3" class="q2">
+                    <p>{{ ipcrfEncodingPart1[1].ipcrf_numerical_ratings_q }}</p>
+                  </td>
+                  <td id="tdata" rowspan="3" class="e2 blue-grey darken-4">
+                    <p></p>
+                  </td>
+                  <td id="tdata" rowspan="3" class="t2 blue-grey darken-4">
+                    <p></p>
+                  </td>
+                  <td id="tdata" rowspan="3" class="ave2">
+                    <p>
+                      {{
+                        ipcrfEncodingPart1[1].ipcrf_numerical_ratings_average
+                      }}
+                    </p>
+                  </td>
+                  <td id="tdata" rowspan="3" class="score2">
+                    <p>
+                      {{ ipcrfEncodingPart1[1].ipcrf_numerical_ratings_score }}
+                    </p>
+                  </td>
+                </tr>
+                <tr>
+                  <td id="tdata" class="eff1 pa-1">
+                    <p>Efficiency</p>
+                  </td>
+                  <td id="tdata" class="eff2 pa-1 blue-grey darken-4">
+                    <p></p>
+                  </td>
+                  <td id="tdata" class="eff2 pa-1 blue-grey darken-4">
+                    <p></p>
+                  </td>
+                  <td id="tdata" class="eff4 pa-1 blue-grey darken-4">
+                    <p></p>
+                  </td>
+                  <td id="tdata" class="eff5 pa-1 blue-grey darken-4">
+                    <p></p>
+                  </td>
+                  <td
+                    id="tdata"
+                    colspan="2"
+                    class="eff6 pa-1 blue-grey darken-4"
+                  >
+                    <p></p>
+                  </td>
+                </tr>
+                <tr>
+                  <td id="tdata" class="eff1 pa-1">
+                    <p>Timeliness</p>
+                  </td>
+                  <td id="tdata" class="eff2 pa-1 blue-grey darken-4">
+                    <p></p>
+                  </td>
+                  <td id="tdata" class="eff2 pa-1 blue-grey darken-4">
+                    <p></p>
+                  </td>
+                  <td id="tdata" class="eff4 pa-1 blue-grey darken-4">
+                    <p></p>
+                  </td>
+                  <td id="tdata" class="eff5 pa-1 blue-grey darken-4">
+                    <p></p>
+                  </td>
+                  <td id="tdata" colspan="2" class="eff6 blue-grey darken-4">
+                    <p></p>
+                  </td>
+                </tr>
+                <!-- end of row 2 -->
+                <tr>
+                  <td id="tdata" rowspan="3">
+                    <p>
+                      3. Applied a range of teaching strategies to develop
+                      critical and creative thinking, as well as other
+                      higher-order thinking skills.
+                    </p>
+                  </td>
+                  <td id="tdata" class="timelineObj1" rowspan="3">
+                    <p></p>
+                  </td>
 
-                <h5 class="pa-2" style="margin-left: -20px">
-                  Approving Authority
-                </h5>
-              </v-col>
-            </v-row>
-          </div>
-          <br /><br />
+                  <td id="tdata" class="quality1">
+                    <p>Quality</p>
+                  </td>
+                  <td id="tdata" class="outstanding1">
+                    <p>
+                      Ensured that the ICT used redefine and transform learning
+                      experiences and are documented properly and consistently
+                      using any referencing style as shown in the submitted
+                      learning material
+                    </p>
+                  </td>
+                  <td id="tdata" class="verySatisfactory1">
+                    <p>
+                      Ensured that the ICT used augment and enrich learning
+                      experiences and are documented properly and consistently
+                      using any referencing style as shown in the submitted
+                      learning material
+                    </p>
+                  </td>
+                  <td id="tdata" class="satisfactory1">
+                    <p>
+                      Ensured that the ICT used modify processes and improve
+                      learning experiences and are documented properly and
+                      consistently using any referencing style as shown in the
+                      submitted learning material
+                    </p>
+                  </td>
+                  <td id="tdata" class="unsatisfactory1">
+                    <p>
+                      Ensured that ICT are used but do not create a new learning
+                      experience and/or are documented but not consistent with
+                      one referencing style as shown in the submitted learning
+                      material
+                    </p>
+                  </td>
+                  <td id="tdata" class="poor1">
+                    <p>No acceptable evidence was shown</p>
+                  </td>
+                  <td id="tdata" rowspan="1" class="actualResult">
+                    <p>
+                      {{
+                        ipcrfEncodingPart1[2]
+                          .ipcrf_numerical_ratings_adjectival_rating
+                      }}
+                    </p>
+                  </td>
+                  <td id="tdata" rowspan="3" class="q2">
+                    <p>{{ ipcrfEncodingPart1[2].ipcrf_numerical_ratings_q }}</p>
+                  </td>
+                  <td id="tdata" rowspan="3" class="e2 blue-grey darken-4">
+                    <p></p>
+                  </td>
+                  <td id="tdata" rowspan="3" class="t2 blue-grey darken-4">
+                    <p></p>
+                  </td>
+                  <td id="tdata" rowspan="3" class="ave2">
+                    <p>
+                      {{
+                        ipcrfEncodingPart1[2].ipcrf_numerical_ratings_average
+                      }}
+                    </p>
+                  </td>
+                  <td id="tdata" rowspan="3" class="score3">
+                    <p>
+                      {{ ipcrfEncodingPart1[2].ipcrf_numerical_ratings_score }}
+                    </p>
+                  </td>
+                </tr>
+                <tr>
+                  <td id="tdata" class="eff1 pa-1">
+                    <p>Efficiency</p>
+                  </td>
+                  <td id="tdata" class="eff2 pa-1 blue-grey darken-4">
+                    <p></p>
+                  </td>
+                  <td id="tdata" class="eff2 pa-1 blue-grey darken-4">
+                    <p></p>
+                  </td>
+                  <td id="tdata" class="eff4 pa-1 blue-grey darken-4">
+                    <p></p>
+                  </td>
+                  <td id="tdata" class="eff5 pa-1 blue-grey darken-4">
+                    <p></p>
+                  </td>
+                  <td
+                    id="tdata"
+                    colspan="2"
+                    class="eff6 pa-1 blue-grey darken-4"
+                  >
+                    <p></p>
+                  </td>
+                </tr>
+                <tr>
+                  <td id="tdata" class="eff1 pa-1">
+                    <p>Timeliness</p>
+                  </td>
+                  <td id="tdata" class="eff2 pa-1 blue-grey darken-4">
+                    <p></p>
+                  </td>
+                  <td id="tdata" class="eff2 pa-1 blue-grey darken-4">
+                    <p></p>
+                  </td>
+                  <td id="tdata" class="eff4 pa-1 blue-grey darken-4">
+                    <p></p>
+                  </td>
+                  <td id="tdata" class="eff5 pa-1 blue-grey darken-4">
+                    <p></p>
+                  </td>
+                  <td id="tdata" colspan="2" class="eff6 blue-grey darken-4">
+                    <p></p>
+                  </td>
+                </tr>
+
+                <!-- Start Number 2 -->
+                <tr class="row1">
+                  <td id="tdata" rowspan="9">
+                    <p>2. Diversity of Learners & Assessment and Reporting</p>
+                  </td>
+                  <td id="tdata" class="timelineObj1" rowspan="3">
+                    <p>
+                      4. Established a learnercentered culture by using teaching
+                      strategies that respond to their linguistic, cultural,
+                      socioeconomic and religious backgrounds
+                    </p>
+                  </td>
+                  <td id="tdata" class="timelineObj1" rowspan="3">
+                    <p></p>
+                  </td>
+                  <td id="tdata" class="weightPerKra" rowspan="9">
+                    <p>24%</p>
+                  </td>
+                  <td id="tdata" class="quality1">
+                    <p>Quality</p>
+                  </td>
+                  <td id="tdata" class="outstanding1">
+                    <p>
+                      Utilized effective teaching strategies that are
+                      appropriate in responding to learners’ linguistic,
+                      cultural, socioeconomic, or religious backgrounds at an
+                      individual level* as shown in the submitted learning
+                      material
+                    </p>
+                  </td>
+                  <td id="tdata" class="verySatisfactory1">
+                    <p>
+                      Utilized effective teaching strategies that are
+                      appropriate in responding to learners’ linguistic,
+                      cultural, socioeconomic, or religious backgrounds at a
+                      group level* as shown in the submitted learning material
+                    </p>
+                  </td>
+                  <td id="tdata" class="satisfactory1">
+                    <p>
+                      Utilized an effective teaching strategy that is
+                      appropriate in responding to learners’ linguistic,
+                      cultural, socioeconomic, or religious backgrounds as shown
+                      in the submitted learning material
+                    </p>
+                  </td>
+                  <td id="tdata" class="unsatisfactory1">
+                    <p>
+                      Utilized a teaching strategy or strategies that partially
+                      respond to learners’ linguistic, cultural, socioeconomic,
+                      or religious backgrounds as shown in the submitted
+                      learning material
+                    </p>
+                  </td>
+                  <td id="tdata" class="poor1">
+                    <p>No acceptable evidence was shown</p>
+                  </td>
+                  <td id="tdata" rowspan="1" class="actualResult">
+                    <p>
+                      {{
+                        ipcrfEncodingPart1[3]
+                          .ipcrf_numerical_ratings_adjectival_rating
+                      }}
+                    </p>
+                  </td>
+                  <td id="tdata" rowspan="3" class="q1">
+                    <p>{{ ipcrfEncodingPart1[3].ipcrf_numerical_ratings_q }}</p>
+                  </td>
+                  <td id="tdata" rowspan="3" class="e1 blue-grey darken-4">
+                    <p></p>
+                  </td>
+                  <td id="tdata" rowspan="3" class="t1 blue-grey darken-4">
+                    <p></p>
+                  </td>
+                  <td id="tdata" rowspan="3" class="ave1">
+                    <p>
+                      {{
+                        ipcrfEncodingPart1[3].ipcrf_numerical_ratings_average
+                      }}
+                    </p>
+                  </td>
+                  <td id="tdata" rowspan="3" class="score4">
+                    <p>
+                      {{ ipcrfEncodingPart1[3].ipcrf_numerical_ratings_score }}
+                    </p>
+                  </td>
+                </tr>
+                <tr>
+                  <td id="tdata" class="eff1 pa-1">
+                    <p>Efficiency</p>
+                  </td>
+                  <td id="tdata" class="eff2 pa-1 blue-grey darken-4">
+                    <p></p>
+                  </td>
+                  <td id="tdata" class="eff2 pa-1 blue-grey darken-4">
+                    <p></p>
+                  </td>
+                  <td id="tdata" class="eff4 pa-1 blue-grey darken-4">
+                    <p></p>
+                  </td>
+                  <td id="tdata" class="eff5 pa-1 blue-grey darken-4">
+                    <p></p>
+                  </td>
+                  <td
+                    id="tdata"
+                    colspan="2"
+                    class="eff6 pa-1 blue-grey darken-4"
+                  >
+                    <p></p>
+                  </td>
+                </tr>
+                <tr>
+                  <td id="tdata" class="timeline1 pa-1">
+                    <p>Timeliness</p>
+                  </td>
+                  <td id="tdata" class="timeline2 pa-1 blue-grey darken-4">
+                    <p></p>
+                  </td>
+                  <td id="tdata" class="timeline2 pa-1 blue-grey darken-4">
+                    <p></p>
+                  </td>
+                  <td id="tdata" class="timeline4 pa-1 blue-grey darken-4">
+                    <p></p>
+                  </td>
+                  <td id="tdata" class="timeline5 pa-1 blue-grey darken-4">
+                    <p></p>
+                  </td>
+                  <td
+                    id="tdata"
+                    colspan="2"
+                    class="timeline6 blue-grey darken-4"
+                  >
+                    <p></p>
+                  </td>
+                </tr>
+                <tr class="row1">
+                  <td id="tdata" class="timelineObj1" rowspan="3">
+                    <p>
+                      5. Planned and delivered teaching strategies that are
+                      responsive to the special educational needs of learners in
+                      difficult circumstances*, including: geographic isolation;
+                      chronic illness; displacement due to armed conflict, urban
+                      resettlement or disasters; child abuse and child labor
+                      practices
+                    </p>
+                  </td>
+
+                  <td id="tdata" class="weightPerKra" rowspan="3">
+                    <p></p>
+                  </td>
+                  <td id="tdata" class="quality1">
+                    <p>Quality</p>
+                  </td>
+                  <td id="tdata" class="outstanding1">
+                    <p>
+                      Demonstrated Level 7 in Objective 5 as shown in COT rating
+                      sheets/interobserver a greement forms
+                    </p>
+                  </td>
+                  <td id="tdata" class="verySatisfactory1">
+                    <p>
+                      Utilized effective teaching strategies that are
+                      appropriate in responding to learners’ linguistic,
+                      cultural, socioeconomic, or religious backgrounds at a
+                      group level* as shown in the submitted learning material
+                    </p>
+                  </td>
+                  <td id="tdata" class="satisfactory1">
+                    <p>
+                      Utilized an effective teaching strategy that is
+                      appropriate in responding to learners’ linguistic,
+                      cultural, socioeconomic, or religious backgrounds as shown
+                      in the submitted learning material
+                    </p>
+                  </td>
+                  <td id="tdata" class="unsatisfactory1">
+                    <p>
+                      Utilized a teaching strategy or strategies that partially
+                      respond to learners’ linguistic, cultural, socioeconomic,
+                      or religious backgrounds as shown in the submitted
+                      learning material
+                    </p>
+                  </td>
+                  <td id="tdata" class="poor1">
+                    <p>No acceptable evidence was shown</p>
+                  </td>
+                  <td id="tdata" rowspan="1" class="actualResult">
+                    <p>
+                      {{
+                        ipcrfEncodingPart1[4]
+                          .ipcrf_numerical_ratings_adjectival_rating
+                      }}
+                    </p>
+                  </td>
+                  <td id="tdata" rowspan="3" class="q1">
+                    <p>{{ ipcrfEncodingPart1[4].ipcrf_numerical_ratings_q }}</p>
+                  </td>
+                  <td id="tdata" rowspan="3" class="e1 blue-grey darken-4">
+                    <p></p>
+                  </td>
+                  <td id="tdata" rowspan="3" class="t1 blue-grey darken-4">
+                    <p></p>
+                  </td>
+                  <td id="tdata" rowspan="3" class="ave1">
+                    <p>
+                      {{
+                        ipcrfEncodingPart1[4].ipcrf_numerical_ratings_average
+                      }}
+                    </p>
+                  </td>
+                  <td id="tdata" rowspan="3" class="score6">
+                    <p>
+                      {{ ipcrfEncodingPart1[4].ipcrf_numerical_ratings_score }}
+                    </p>
+                  </td>
+                </tr>
+                <tr>
+                  <td id="tdata" class="eff1 pa-1">
+                    <p>Efficiency</p>
+                  </td>
+                  <td id="tdata" class="eff2 pa-1 blue-grey darken-4">
+                    <p></p>
+                  </td>
+                  <td id="tdata" class="eff2 pa-1 blue-grey darken-4">
+                    <p></p>
+                  </td>
+                  <td id="tdata" class="eff4 pa-1 blue-grey darken-4">
+                    <p></p>
+                  </td>
+                  <td id="tdata" class="eff5 pa-1 blue-grey darken-4">
+                    <p></p>
+                  </td>
+                  <td
+                    id="tdata"
+                    colspan="2"
+                    class="eff6 pa-1 blue-grey darken-4"
+                  >
+                    <p></p>
+                  </td>
+                </tr>
+                <tr>
+                  <td id="tdata" class="timeline1 pa-1">
+                    <p>Timeliness</p>
+                  </td>
+                  <td id="tdata" class="timeline2 pa-1 blue-grey darken-4">
+                    <p></p>
+                  </td>
+                  <td id="tdata" class="timeline2 pa-1 blue-grey darken-4">
+                    <p></p>
+                  </td>
+                  <td id="tdata" class="timeline4 pa-1 blue-grey darken-4">
+                    <p></p>
+                  </td>
+                  <td id="tdata" class="timeline5 pa-1 blue-grey darken-4">
+                    <p></p>
+                  </td>
+                  <td
+                    id="tdata"
+                    colspan="2"
+                    class="timeline6 blue-grey darken-4"
+                  >
+                    <p></p>
+                  </td>
+                </tr>
+                <tr class="row1">
+                  <td id="tdata" class="timelineObj1" rowspan="3">
+                    <p>
+                      6. Used strategies for providing timely, accurate and
+                      constructive feedback to improve learner performance
+                    </p>
+                  </td>
+                  <td id="tdata" class="weightPerKra" rowspan="3">
+                    <p></p>
+                  </td>
+                  <td id="tdata" class="quality1">
+                    <p>Quality</p>
+                  </td>
+                  <td id="tdata" class="outstanding1">
+                    <p>
+                      Provided learners with accurate, and specific and directed
+                      constructive feedback* as shown in the evidence submitted
+                    </p>
+                  </td>
+                  <td id="tdata" class="verySatisfactory1">
+                    <p>
+                      Provided learners with accurate, and specific constructive
+                      feedback as shown in the evidence submitted
+                    </p>
+                  </td>
+                  <td id="tdata" class="satisfactory1">
+                    <p>
+                      Provided learners with accurate, and general constructive
+                      feedback as shown in the evidence submitted
+                    </p>
+                  </td>
+                  <td id="tdata" class="unsatisfactory1">
+                    <p>
+                      Provided learners with inaccurate and/or destructive
+                      feedback as shown in the evidence submitted
+                    </p>
+                  </td>
+                  <td id="tdata" class="poor1">
+                    <p>No evidence was shown</p>
+                  </td>
+                  <td id="tdata" rowspan="1" class="actualResult">
+                    <p>
+                      {{
+                        ipcrfEncodingPart1[5]
+                          .ipcrf_numerical_ratings_adjectival_rating
+                      }}
+                    </p>
+                  </td>
+                  <td id="tdata" rowspan="3" class="q1">
+                    <p>{{ ipcrfEncodingPart1[5].ipcrf_numerical_ratings_q }}</p>
+                  </td>
+                  <td id="tdata" rowspan="3" class="e1 blue-grey darken-4">
+                    <p></p>
+                  </td>
+                  <td id="tdata" rowspan="3" class="t1">
+                    <p>{{ ipcrfEncodingPart1[5].ipcrf_numerical_ratings_t }}</p>
+                  </td>
+                  <td id="tdata" rowspan="3" class="ave1">
+                    <p>
+                      {{
+                        ipcrfEncodingPart1[5].ipcrf_numerical_ratings_average
+                      }}
+                    </p>
+                  </td>
+                  <td id="tdata" rowspan="3" class="score7">
+                    <p>
+                      {{ ipcrfEncodingPart1[5].ipcrf_numerical_ratings_score }}
+                    </p>
+                  </td>
+                </tr>
+                <tr>
+                  <td id="tdata" class="eff1 pa-1">
+                    <p>Efficiency</p>
+                  </td>
+                  <td id="tdata" class="eff2 pa-1 blue-grey darken-4">
+                    <p></p>
+                  </td>
+                  <td id="tdata" class="eff2 pa-1 blue-grey darken-4">
+                    <p></p>
+                  </td>
+                  <td id="tdata" class="eff4 pa-1 blue-grey darken-4">
+                    <p></p>
+                  </td>
+                  <td id="tdata" class="eff5 pa-1 blue-grey darken-4">
+                    <p></p>
+                  </td>
+                  <td
+                    id="tdata"
+                    colspan="2"
+                    class="eff6 pa-1 blue-grey darken-4"
+                  >
+                    <p></p>
+                  </td>
+                </tr>
+                <tr>
+                  <td id="tdata" class="timeline1 pa-1">
+                    <p>Timeliness</p>
+                  </td>
+                  <td id="tdata" class="timeline2 pa-1">
+                    <p>
+                      MOV submitted shows feedback given within 5 working days
+                      from submission**
+                    </p>
+                  </td>
+                  <td id="tdata" class="timeline2 pa-1">
+                    <p>
+                      MOV submitted shows feedback given within 6-10 working
+                      days from submission**
+                    </p>
+                  </td>
+                  <td id="tdata" class="timeline4 pa-1">
+                    <p>
+                      MOV submitted shows feedback given within 11-20 working
+                      days from submission**
+                    </p>
+                  </td>
+                  <td id="tdata" class="timeline5 pa-1">
+                    <p>
+                      MOV submitted shows feedback given beyond 20 working days
+                      from submission**
+                    </p>
+                  </td>
+                  <td id="tdata" class="timeline6">
+                    <p>No evidence was shown</p>
+                  </td>
+                </tr>
+                <tr class="row1">
+                  <td id="tdata" rowspan="6">
+                    <p>3. Curriculum and Planning</p>
+                  </td>
+                  <td id="tdata" class="timelineObj1" rowspan="3">
+                    <p>
+                      7. Selected, developed, organized and used appropriate
+                      teaching and learning resources, including ICT, to address
+                      learning goals
+                    </p>
+                  </td>
+
+                  <td id="tdata" class="weightPerKra" rowspan="3">
+                    <p></p>
+                  </td>
+                  <td id="tdata" class="weightPerKra" rowspan="6">
+                    <p>16%</p>
+                  </td>
+                  <td id="tdata" class="quality1">
+                    <p>Quality</p>
+                  </td>
+                  <td id="tdata" class="outstanding1">
+                    <p>
+                      Demonstrated Level 7 in Objective 7 as shown in COT rating
+                      sheets/interobserver agreement forms
+                    </p>
+                  </td>
+                  <td id="tdata" class="verySatisfactory1">
+                    <p>
+                      Demonstrated Level 6 in Objective 7 as shown in COT rating
+                      sheets/interobserver agreement forms
+                    </p>
+                  </td>
+                  <td id="tdata" class="satisfactory1">
+                    <p>
+                      Demonstrated Level 5 in Objective 7 as shown in COT rating
+                      sheets/interobserver agreement forms
+                    </p>
+                  </td>
+                  <td id="tdata" class="unsatisfactory1">
+                    <p>
+                      Demonstrated Level 4 in Objective 7 as shown in COT rating
+                      sheets/interobserver agreement forms
+                    </p>
+                  </td>
+                  <td id="tdata" class="poor1">
+                    <p>
+                      Demonstrated Level 3 in Objective 7 as shown in COT rating
+                      sheets/interobserver agreement forms or No acceptable
+                      evidence was shown
+                    </p>
+                  </td>
+                  <td id="tdata" rowspan="1" class="actualResult">
+                    <p>
+                      {{
+                        ipcrfEncodingPart1[6]
+                          .ipcrf_numerical_ratings_adjectival_rating
+                      }}
+                    </p>
+                  </td>
+                  <td id="tdata" rowspan="3" class="q1">
+                    <p>{{ ipcrfEncodingPart1[6].ipcrf_numerical_ratings_q }}</p>
+                  </td>
+                  <td id="tdata" rowspan="3" class="e1 blue-grey darken-4">
+                    <p></p>
+                  </td>
+                  <td id="tdata" rowspan="3" class="t1 blue-grey darken-4">
+                    <p></p>
+                  </td>
+                  <td id="tdata" colspan="1" rowspan="3" class="ave1">
+                    <p>
+                      {{
+                        ipcrfEncodingPart1[6].ipcrf_numerical_ratings_average
+                      }}
+                    </p>
+                  </td>
+                  <td id="tdata" rowspan="3" class="score8">
+                    <p>
+                      {{ ipcrfEncodingPart1[2].ipcrf_numerical_ratings_score }}
+                    </p>
+                  </td>
+                </tr>
+                <tr>
+                  <td id="tdata" class="eff1 pa-1">
+                    <p>Efficiency</p>
+                  </td>
+                  <td id="tdata" class="eff2 pa-1 blue-grey darken-4">
+                    <p></p>
+                  </td>
+                  <td id="tdata" class="eff2 pa-1 blue-grey darken-4">
+                    <p></p>
+                  </td>
+                  <td id="tdata" class="eff4 pa-1 blue-grey darken-4">
+                    <p></p>
+                  </td>
+                  <td id="tdata" class="eff5 pa-1 blue-grey darken-4">
+                    <p></p>
+                  </td>
+                  <td
+                    id="tdata"
+                    colspan="2"
+                    class="eff6 pa-1 blue-grey darken-4"
+                  >
+                    <p></p>
+                  </td>
+                </tr>
+                <tr>
+                  <td id="tdata" class="timeline1 pa-1">
+                    <p>Timeliness</p>
+                  </td>
+                  <td id="tdata" class="timeline2 pa-1 blue-grey darken-4">
+                    <p></p>
+                  </td>
+                  <td id="tdata" class="timeline2 pa-1 blue-grey darken-4">
+                    <p></p>
+                  </td>
+                  <td id="tdata" class="timeline4 pa-1 blue-grey darken-4">
+                    <p></p>
+                  </td>
+                  <td id="tdata" class="timeline5 pa-1 blue-grey darken-4">
+                    <p></p>
+                  </td>
+                  <td
+                    id="tdata"
+                    colspan="2"
+                    class="timeline6 blue-grey darken-4"
+                  >
+                    <p></p>
+                  </td>
+                </tr>
+                <!-- End Number7 -->
+
+                <!-- Start Number 8 -->
+                <tr class="row1">
+                  <td id="tdata" class="timelineObj1" rowspan="3">
+                    <p>
+                      8. Set achievable and appropriate learning outcomes that
+                      are aligned with learning competencies
+                    </p>
+                  </td>
+
+                  <td id="tdata" class="weightPerKra" rowspan="3">
+                    <p></p>
+                  </td>
+                  <td id="tdata" class="quality1">
+                    <p>Quality</p>
+                  </td>
+                  <td id="tdata" class="outstanding1">
+                    <p>
+                      All of the learning outcomes set are aligned with the
+                      learning competencies as shown in the MOV submitted
+                    </p>
+                  </td>
+                  <td id="tdata" class="verySatisfactory1">
+                    <p>
+                      Majority of the learning outcomes set are aligned with the
+                      learning competencies as shown in the MOV submitted
+                    </p>
+                  </td>
+                  <td id="tdata" class="satisfactory1">
+                    <p>
+                      Half of the learning outcomes set are aligned with the
+                      learning competencies as shown in the MOV submitted
+                    </p>
+                  </td>
+                  <td id="tdata" class="unsatisfactory1">
+                    <p>
+                      Less than half of the learning outcomes set are aligned
+                      with the learning competencies as shown in the MOV
+                      submitted
+                    </p>
+                  </td>
+                  <td id="tdata" class="poor1">
+                    <p>No acceptable evidence was shown</p>
+                  </td>
+                  <td id="tdata" rowspan="1" class="actualResult">
+                    <p>
+                      {{
+                        ipcrfEncodingPart1[7]
+                          .ipcrf_numerical_ratings_adjectival_rating
+                      }}
+                    </p>
+                  </td>
+                  <td id="tdata" rowspan="3" class="q1">
+                    <p>{{ ipcrfEncodingPart1[7].ipcrf_numerical_ratings_q }}</p>
+                  </td>
+                  <td id="tdata" rowspan="3" class="e1 blue-grey darken-4">
+                    <p></p>
+                  </td>
+                  <td id="tdata" rowspan="3" class="t1 blue-grey darken-4">
+                    <p></p>
+                  </td>
+                  <td id="tdata" rowspan="3" class="ave1">
+                    <p>
+                      {{
+                        ipcrfEncodingPart1[7].ipcrf_numerical_ratings_average
+                      }}
+                    </p>
+                  </td>
+                  <td id="tdata" rowspan="3" class="score10">
+                    <p>
+                      {{ ipcrfEncodingPart1[7].ipcrf_numerical_ratings_score }}
+                    </p>
+                  </td>
+                </tr>
+                <tr>
+                  <td id="tdata" class="eff1 pa-1">
+                    <p>Efficiency</p>
+                  </td>
+                  <td id="tdata" class="eff2 pa-1 blue-grey darken-4">
+                    <p></p>
+                  </td>
+                  <td id="tdata" class="eff2 pa-1 blue-grey darken-4">
+                    <p></p>
+                  </td>
+                  <td id="tdata" class="eff4 pa-1 blue-grey darken-4">
+                    <p></p>
+                  </td>
+                  <td id="tdata" class="eff5 pa-1 blue-grey darken-4">
+                    <p></p>
+                  </td>
+                  <td
+                    id="tdata"
+                    colspan="2"
+                    class="eff6 pa-1 blue-grey darken-4"
+                  >
+                    <p></p>
+                  </td>
+                </tr>
+                <tr>
+                  <td id="tdata" class="timeline1 pa-1">
+                    <p>Timeliness</p>
+                  </td>
+                  <td id="tdata" class="timeline2 pa-1 blue-grey darken-4">
+                    <p></p>
+                  </td>
+                  <td id="tdata" class="timeline2 pa-1 blue-grey darken-4">
+                    <p></p>
+                  </td>
+                  <td id="tdata" class="timeline4 pa-1 blue-grey darken-4">
+                    <p></p>
+                  </td>
+                  <td id="tdata" class="timeline5 pa-1 blue-grey darken-4">
+                    <p></p>
+                  </td>
+                  <td
+                    id="tdata"
+                    colspan="2"
+                    class="timeline6 blue-grey darken-4"
+                  >
+                    <p></p>
+                  </td>
+                </tr>
+                <!-- End Number 3 -->
+                <!-- Start Number 4 -->
+
+                <tr class="row1">
+                  <td id="tdata" rowspan="9">
+                    <p>
+                      4. Community Linkages and Professional Engagement &
+                      Personal Growth and Professional Development
+                    </p>
+                  </td>
+                  <td id="tdata" class="timelineObj1" rowspan="3">
+                    <p>
+                      9. Built relationships with parents/ guardians and the
+                      wider school community to facilitate involvement in the
+                      educative process
+                    </p>
+                  </td>
+                  <td id="tdata" class="timelineObj1" rowspan="3">
+                    <p></p>
+                  </td>
+                  <td id="tdata" class="weightPerKra" rowspan="9">
+                    <p>24%</p>
+                  </td>
+                  <td id="tdata" class="quality1">
+                    <p>Quality</p>
+                  </td>
+                  <td id="tdata" class="outstanding1">
+                    <p>
+                      Sustained engagement with parents/ guardians and/ or wider
+                      school community to facilitate involvement in the
+                      educative process as evidenced by 2 or more of MOV no. 1
+                      or 2
+                    </p>
+                  </td>
+                  <td id="tdata" class="verySatisfactory1">
+                    <p>
+                      Secured collaboration with parents/ guardians and/ or
+                      wider school community to facilitate involvement in the
+                      educative process as evidenced by one MOV no. 1 or 2
+                    </p>
+                  </td>
+                  <td id="tdata" class="satisfactory1">
+                    <p>
+                      Communicated with and obtained response from parents/
+                      guardians and/ or wider school community to facilitate
+                      involvement in the educative process as evidenced by MOV
+                      No. 3
+                    </p>
+                  </td>
+                  <td id="tdata" class="unsatisfactory1">
+                    <p>
+                      Communicated with parents/ guardians and/or wider school
+                      community to facilitate involvement in the educative
+                      process but received no response/reply as evidenced by MOV
+                      No. 3
+                    </p>
+                  </td>
+                  <td id="tdata" class="poor1">
+                    <p>No acceptable evidence was shown</p>
+                  </td>
+                  <td id="tdata" rowspan="1" class="actualResult">
+                    <p>
+                      {{
+                        ipcrfEncodingPart1[8]
+                          .ipcrf_numerical_ratings_adjectival_rating
+                      }}
+                    </p>
+                  </td>
+                  <td id="tdata" rowspan="3" class="q1">
+                    <p>{{ ipcrfEncodingPart1[8].ipcrf_numerical_ratings_q }}</p>
+                  </td>
+                  <td id="tdata" rowspan="3">
+                    <p>{{ ipcrfEncodingPart1[8].ipcrf_numerical_ratings_e }}</p>
+                  </td>
+                  <td id="tdata" rowspan="3" class="t1 blue-grey darken-4">
+                    <p></p>
+                  </td>
+                  <td id="tdata" rowspan="3" class="ave1">
+                    <p></p>
+                  </td>
+                  <td id="tdata" rowspan="3" class="score11">
+                    <p></p>
+                  </td>
+                </tr>
+                <tr>
+                  <td id="tdata" class="eff1 pa-1">
+                    <p>Efficiency</p>
+                  </td>
+                  <td id="tdata" class="eff2 pa-1">
+                    <p>Submitted any 4 of the acceptable MOV*</p>
+                  </td>
+                  <td id="tdata" class="eff2 pa-1">
+                    <p>Submitted any 3 of the acceptable MOV*</p>
+                  </td>
+                  <td id="tdata" class="eff4 pa-1">
+                    <p>Submitted any 2 of the acceptable MOV*</p>
+                  </td>
+                  <td id="tdata" class="eff5 pa-1">
+                    <p>Submitted any 1 of the acceptable MOV</p>
+                  </td>
+                  <td id="tdata" class="eff6 pa-1">
+                    <p>No acceptable evidence was shown</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td id="tdata" class="timeline1 pa-1">
+                    <p>Timeliness</p>
+                  </td>
+                  <td id="tdata" class="timeline2 pa-1 blue-grey darken-4">
+                    <p></p>
+                  </td>
+                  <td id="tdata" class="timeline2 pa-1 blue-grey darken-4">
+                    <p></p>
+                  </td>
+                  <td id="tdata" class="timeline4 pa-1 blue-grey darken-4">
+                    <p></p>
+                  </td>
+                  <td id="tdata" class="timeline5 pa-1 blue-grey darken-4">
+                    <p></p>
+                  </td>
+                  <td
+                    id="tdata"
+                    colspan="2"
+                    class="timeline6 blue-grey darken-4"
+                  >
+                    <p></p>
+                  </td>
+                </tr>
+                <tr class="row1">
+                  <td id="tdata" class="timelineObj1" rowspan="3">
+                    <p>
+                      10. Participated in professional networks to share
+                      knowledge and to enhance practice
+                    </p>
+                  </td>
+
+                  <td id="tdata" class="weightPerKra" rowspan="3">
+                    <p></p>
+                  </td>
+                  <td id="tdata" class="quality1">
+                    <p>Quality</p>
+                  </td>
+                  <td id="tdata" class="outstanding1">
+                    <p>
+                      Participated in any professional network/ activity that
+                      requires output* and proof of implementation ** within the
+                      school to share knowledge and to enhance practice as
+                      evidenced by the submitted MOV
+                    </p>
+                  </td>
+                  <td id="tdata" class="verySatisfactory1">
+                    <p>
+                      Participated in any professional network/ activity that
+                      requires output* and proof of implementation ** within the
+                      department/grade level to share knowledge and to enhance
+                      practice as evidenced by the submitted MOV
+                    </p>
+                  </td>
+                  <td id="tdata" class="satisfactory1">
+                    <p>
+                      Participated in any professional network/ activity that
+                      requires output* to share knowledge and to enhance
+                      practice as evidenced by the submitted MOV
+                    </p>
+                  </td>
+                  <td id="tdata" class="unsatisfactory1">
+                    <p>
+                      Participated in any professional network/ activity that
+                      does not require output to share knowledge and to enhance
+                      practice as evidenced by the submitted MOV
+                    </p>
+                  </td>
+                  <td id="tdata" class="poor1">
+                    <p>No acceptable evidence was shown</p>
+                  </td>
+                  <td id="tdata" rowspan="1" class="actualResult">
+                    <p>
+                      {{
+                        ipcrfEncodingPart1[9]
+                          .ipcrf_numerical_ratings_adjectival_rating
+                      }}
+                    </p>
+                  </td>
+                  <td id="tdata" rowspan="3" class="q1">
+                    <p>{{ ipcrfEncodingPart1[9].ipcrf_numerical_ratings_q }}</p>
+                  </td>
+                  <td id="tdata" rowspan="3">
+                    <p>{{ ipcrfEncodingPart1[9].ipcrf_numerical_ratings_e }}</p>
+                  </td>
+                  <td id="tdata" rowspan="3" class="t1 blue-grey darken-4">
+                    <p></p>
+                  </td>
+                  <td id="tdata" rowspan="3" class="ave1">
+                    <p>
+                      {{
+                        ipcrfEncodingPart1[9].ipcrf_numerical_ratings_average
+                      }}
+                    </p>
+                  </td>
+                  <td id="tdata" rowspan="3" class="score13">
+                    <p>
+                      {{ ipcrfEncodingPart1[9].ipcrf_numerical_ratings_score }}
+                    </p>
+                  </td>
+                </tr>
+                <tr>
+                  <td id="tdata" class="eff1 pa-1">
+                    <p>Efficiency</p>
+                  </td>
+                  <td id="tdata" class="eff2 pa-1">
+                    <p>Submitted 4 different kinds of acceptable MOV***</p>
+                  </td>
+                  <td id="tdata" class="eff2 pa-1">
+                    <p>Submitted 3 different kinds of acceptable MOV***</p>
+                  </td>
+                  <td id="tdata" class="eff4 pa-1">
+                    <p>Submitted 2 different kinds of acceptable MOV***</p>
+                  </td>
+                  <td id="tdata" class="eff5 pa-1">
+                    <p>Submitted 1 of the acceptable MOV</p>
+                  </td>
+                  <td id="tdata" class="eff6 pa-1">
+                    <p>No acceptable evidence was shown</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td id="tdata" class="timeline1 pa-1">
+                    <p>Timeliness</p>
+                  </td>
+                  <td id="tdata" class="timeline2 pa-1 blue-grey darken-4">
+                    <p></p>
+                  </td>
+                  <td id="tdata" class="timeline2 pa-1 blue-grey darken-4">
+                    <p></p>
+                  </td>
+                  <td id="tdata" class="timeline4 pa-1 blue-grey darken-4">
+                    <p></p>
+                  </td>
+                  <td id="tdata" class="timeline5 pa-1 blue-grey darken-4">
+                    <p></p>
+                  </td>
+                  <td
+                    id="tdata"
+                    colspan="2"
+                    class="timeline6 blue-grey darken-4"
+                  >
+                    <p></p>
+                  </td>
+                </tr>
+                <tr class="row1">
+                  <td id="tdata" class="timelineObj1" rowspan="3">
+                    <p>
+                      11. Developed a personal improvement plan based on
+                      reflection of one’s practice and ongoing professional
+                      learning
+                    </p>
+                  </td>
+                  <td id="tdata" class="weightPerKra" rowspan="3">
+                    <p></p>
+                  </td>
+                  <td id="tdata" class="quality1">
+                    <p>Quality</p>
+                  </td>
+                  <td id="tdata" class="outstanding1">
+                    <p>
+                      Updated the Development Plan and approved by the rater
+                      during Phase II of the RPMS cycle
+                    </p>
+                  </td>
+                  <td id="tdata" class="verySatisfactory1">
+                    <p>
+                      Discussed progress on the Development Plan with the rater
+                      to check whether Development Needs were addressed
+                    </p>
+                  </td>
+                  <td id="tdata" class="satisfactory1">
+                    <p>
+                      Accomplished the Development Plan from learning objectives
+                      up to resources needed to address Development Needs during
+                      Phase I of the RPMS cycle
+                    </p>
+                  </td>
+                  <td id="tdata" class="unsatisfactory1">
+                    <p>
+                      Accomplished the Strengths and Development Needs portion
+                      of the Development Plan after self-assessment at the
+                      beginning of the school year
+                    </p>
+                  </td>
+                  <td id="tdata" class="poor1">
+                    <p>No acceptable evidence was shown</p>
+                  </td>
+                  <td id="tdata" rowspan="1" class="actualResult">
+                    <p>
+                      {{
+                        ipcrfEncodingPart1[10]
+                          .ipcrf_numerical_ratings_adjectival_rating
+                      }}
+                    </p>
+                  </td>
+                  <td id="tdata" rowspan="3" class="q1">
+                    <p>
+                      {{ ipcrfEncodingPart1[10].ipcrf_numerical_ratings_q }}
+                    </p>
+                  </td>
+                  <td id="tdata" rowspan="3">
+                    <p>
+                      {{ ipcrfEncodingPart1[10].ipcrf_numerical_ratings_e }}
+                    </p>
+                  </td>
+                  <td id="tdata" rowspan="3" class="t1 blue-grey darken-4">
+                    <p></p>
+                  </td>
+                  <td id="tdata" rowspan="3" class="ave1">
+                    <p>
+                      {{
+                        ipcrfEncodingPart1[10].ipcrf_numerical_ratings_average
+                      }}
+                    </p>
+                  </td>
+                  <td id="tdata" rowspan="3" class="score13">
+                    <p>
+                      {{ ipcrfEncodingPart1[10].ipcrf_numerical_ratings_score }}
+                    </p>
+                  </td>
+                </tr>
+                <tr>
+                  <td id="tdata" class="eff1 pa-1">
+                    <p>Efficiency</p>
+                  </td>
+                  <td id="tdata" class="eff2 pa-1">
+                    <p>
+                      Submitted the IPCRF-DP with any 4 of the acceptable
+                      Supporting MOV*
+                    </p>
+                  </td>
+                  <td id="tdata" class="eff2 pa-1">
+                    <p>
+                      Submitted the IPCRF-DP with any 3 of the acceptable
+                      Supporting MOV*
+                    </p>
+                  </td>
+                  <td id="tdata" class="eff4 pa-1">
+                    <p>
+                      Submitted the IPCRF-DP with any 2 of the acceptable
+                      Supporting MOV*
+                    </p>
+                  </td>
+                  <td id="tdata" class="eff5 pa-1">
+                    <p>
+                      Submitted the IPCRF-DP with any 1 of the acceptable
+                      Supporting MOV
+                    </p>
+                  </td>
+                  <td id="tdata" class="eff6 pa-1">
+                    <p>No acceptable evidence was shown</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td id="tdata" class="timeline1 pa-1">
+                    <p>Timeliness</p>
+                  </td>
+                  <td id="tdata" class="timeline2 pa-1 blue-grey darken-4">
+                    <p></p>
+                  </td>
+                  <td id="tdata" class="timeline2 pa-1 blue-grey darken-4">
+                    <p></p>
+                  </td>
+                  <td id="tdata" class="timeline4 pa-1 blue-grey darken-4">
+                    <p></p>
+                  </td>
+                  <td id="tdata" class="timeline5 pa-1 blue-grey darken-4">
+                    <p></p>
+                  </td>
+                  <td
+                    id="tdata"
+                    colspan="2"
+                    class="timeline6 blue-grey darken-4"
+                  >
+                    <p></p>
+                  </td>
+                </tr>
+                <!-- End Number 4 -->
+
+                <!-- Start Number 5 -->
+                <tr class="row1">
+                  <td id="tdata" rowspan="3">
+                    <p>5. Plus Factor</p>
+                  </td>
+                  <td id="tdata" class="timelineObj1" rowspan="3">
+                    <p>
+                      12. Performed various related works/ activities that
+                      contribute to the teaching-learning process
+                    </p>
+                  </td>
+
+                  <td id="tdata" class="weightPerKra" rowspan="3">
+                    <p></p>
+                  </td>
+                  <td id="tdata" class="weightPerKra" rowspan="3">
+                    <p>16%</p>
+                  </td>
+                  <td id="tdata" class="quality1">
+                    <p>Quality</p>
+                  </td>
+                  <td id="tdata" class="outstanding1">
+                    <p>
+                      Performed at least 1 related work/activity that
+                      contributed to the teaching-learning process beyond the
+                      school/ Community Learning Center (CLC) as evidenced by
+                      submitted MOV
+                    </p>
+                  </td>
+                  <td id="tdata" class="verySatisfactory1">
+                    <p>
+                      Performed at least 1 related work/activity that
+                      contributed to the teaching-learning process within the
+                      school/ Community Learning Center (CLC) as evidenced by
+                      submitted MOV
+                    </p>
+                  </td>
+                  <td id="tdata" class="satisfactory1">
+                    <p>
+                      Performed at least 1 related work/activity that
+                      contributed to the teaching-learning process within the
+                      learning area/ department as evidenced by submitted MOV
+                    </p>
+                  </td>
+                  <td id="tdata" class="unsatisfactory1">
+                    <p>
+                      Performed at least 1 related work/activity that
+                      contributed to the teaching-learning process within the
+                      class as evidenced by submitted MOV
+                    </p>
+                  </td>
+                  <td id="tdata" class="poor1">
+                    <p>No acceptable evidence was shown</p>
+                  </td>
+                  <td id="tdata" rowspan="1" class="actualResult">
+                    <p>
+                      {{
+                        ipcrfEncodingPart1[11]
+                          .ipcrf_numerical_ratings_adjectival_rating
+                      }}
+                    </p>
+                  </td>
+                  <td id="tdata" rowspan="3" class="q1">
+                    <p>
+                      {{ ipcrfEncodingPart1[11].ipcrf_numerical_ratings_q }}
+                    </p>
+                  </td>
+                  <td id="tdata" rowspan="3" class="e1">
+                    <p>
+                      {{ ipcrfEncodingPart1[11].ipcrf_numerical_ratings_e }}
+                    </p>
+                  </td>
+                  <td id="tdata" rowspan="3" class="t1 blue-grey darken-4">
+                    <p></p>
+                  </td>
+                  <td id="tdata" colspan="1" rowspan="3" class="ave1">
+                    <p>
+                      {{
+                        ipcrfEncodingPart1[11].ipcrf_numerical_ratings_average
+                      }}
+                    </p>
+                  </td>
+                  <td id="tdata" rowspan="3" class="score8">
+                    <p>
+                      {{ ipcrfEncodingPart1[11].ipcrf_numerical_ratings_score }}
+                    </p>
+                  </td>
+                </tr>
+                <tr>
+                  <td id="tdata" class="eff1 pa-1">
+                    <p>Efficiency</p>
+                  </td>
+                  <td id="tdata" class="eff2 pa-1">
+                    <p>Submitted any 4 of the acceptable MOV*</p>
+                  </td>
+                  <td id="tdata" class="eff2 pa-1">
+                    <p>Submitted any 3 of the acceptable MOV*</p>
+                  </td>
+                  <td id="tdata" class="eff4 pa-1">
+                    <p>Submitted any 2 of the acceptable MOV*</p>
+                  </td>
+                  <td id="tdata" class="eff5 pa-1">
+                    <p>Submitted any 1 of the acceptable MOV</p>
+                  </td>
+                  <td id="tdata" class="eff6 pa-1">
+                    <p>No acceptable evidence was shown</p>
+                  </td>
+                  <td id="tdata" colspan="2" class="eff6 pa-1">
+                    <p></p>
+                  </td>
+                </tr>
+                <tr>
+                  <td id="tdata" class="timeline1 pa-1">
+                    <p>Timeliness</p>
+                  </td>
+                  <td id="tdata" class="timeline2 pa-1 blue-grey darken-4">
+                    <p></p>
+                  </td>
+                  <td id="tdata" class="timeline2 pa-1 blue-grey darken-4">
+                    <p></p>
+                  </td>
+                  <td id="tdata" class="timeline4 pa-1 blue-grey darken-4">
+                    <p></p>
+                  </td>
+                  <td id="tdata" class="timeline5 pa-1 blue-grey darken-4">
+                    <p></p>
+                  </td>
+                  <td id="tdata" class="timeline6 blue-grey darken-4">
+                    <p></p>
+                  </td>
+                  <td id="tdata" class="timeline6">
+                    <p></p>
+                  </td>
+                </tr>
+                <!-- End Number 5 Obj -->
+                <!-- Startof Ratingfor overall accomplishment -->
+                <tr>
+                  <td class="timeline6" colspan="12">
+                    <p style="float: right" class="mr-2 mt-2">
+                      Rating for Overall Accomplishment
+                    </p>
+                  </td>
+                  <td id="tdata" class="ratingTotal" colspan="4">
+                    <p>{{ ipcrfEncodingPart1[0].adjectival_rating }}</p>
+                  </td>
+                  <td id="tdata" class="ratingAverage">
+                    <p>{{ ipcrfEncodingPart1[0].final_rating }}</p>
+                  </td>
+                </tr>
+                <!-- End of Ratingfor overall accomplishment -->
+              </table>
+              <br />
+              <br />
+            </div>
+            <!-- START OF ADJECTIVAL RATING -->
+            <div>
+              <table style="width: 50%; text-align: center">
+                <tr>
+                  <td id="tdata" colspan="2">ADJECTIVAL RATING EQUIVALENCES</td>
+                </tr>
+
+                <tr>
+                  <td id="tdata">RANGE</td>
+                  <td id="tdata">ADJECTIVAL RATING</td>
+                </tr>
+                <tr>
+                  <td id="tdata">4.500-5.000</td>
+                  <td id="tdata">OUTSTANDING</td>
+                </tr>
+                <tr>
+                  <td id="tdata">3.500-4.499</td>
+                  <td id="tdata">VERY SATISFACTORY</td>
+                </tr>
+                <tr>
+                  <td id="tdata">2.500-3.499</td>
+                  <td id="tdata">SATISFACTORY</td>
+                </tr>
+                <tr>
+                  <td id="tdata">1.500-2.499</td>
+                  <td id="tdata">UNSATISFACTORY</td>
+                </tr>
+                <tr>
+                  <td id="tdata">below 1.499</td>
+                  <td id="tdata">POOR</td>
+                </tr>
+              </table>
+            </div>
+
+            <!-- END OF ADJECTIVAL RATING -->
+            <!-- Part 1 Display Signatures -->
+
+            <div class="pa-10 ml-9" style="text-align: center">
+              <v-row>
+                <v-col>
+                  <v-text-field
+                    v-model="ipcrfDemographicProfile.name_of_employee"
+                    readonly
+                    class="text-center"
+                    style="width: 200px; height: 100px; margin-left: 80px"
+                  >
+                  </v-text-field>
+
+                  <h5 class="pa-2" style="margin-left: 80px">Ratee</h5>
+                </v-col>
+                <v-col>
+                  <v-text-field
+                    readonly
+                    class="text-center"
+                    v-model="ipcrfDemographicProfile.rater"
+                    style="width: 200px; height: 100px; margin-left: 40px"
+                  >
+                  </v-text-field>
+
+                  <h5 class="pa-2" style="margin-right: 10px">Rater</h5>
+                </v-col>
+
+                <v-col>
+                  <v-text-field
+                    v-model="ipcrfEncodingPart1[11].approving_authority"
+                    readonly
+                    class="text-center"
+                    style="width: 200px; height: 100px; margin-left: 40px"
+                  >
+                    <!-- <p class="mt-6">{{ part_approvingAuthority }}</p> -->
+                  </v-text-field>
+
+                  <h5 class="pa-2" style="margin-left: -20px">
+                    Approving Authority
+                  </h5>
+                </v-col>
+              </v-row>
+            </div>
+
+            <br /><br />
+          </v-container>
+          <v-btn
+            v-print="printObjPart1"
+            style="margin-left: 45%; margin-right: auto"
+            >Print</v-btn
+          >
         </v-tab-item>
         <v-tab>Part II</v-tab>
         <v-tab-item>
@@ -1733,7 +1952,7 @@
               </td>
 
               <td id="tdata" colspan="1" style="width: 5%; text-align: center">
-                countProfessional
+                {{ countProfessional }}
               </td>
               <td id="tdata" colspan="3">
                 <b> Service Orientation</b> <br />
@@ -1758,7 +1977,7 @@
             </tr>
 
             <tr>
-              <td id="tdata" colspan="3">
+              <td id="tdata" colspan="1">
                 <b>Results Focus</b> <br />
                 1. Achieves results with optimal use of time and resources most
                 of the time.
@@ -1817,39 +2036,72 @@
               </td>
             </tr>
           </table>
+          <v-btn
+            v-print="printObjPart1"
+            style="margin-top: 20px; margin-right: auto; margin-left: 45%"
+            >Print</v-btn
+          >
         </v-tab-item>
         <v-tab>Part 3</v-tab>
         <v-tab-item>
           <br />
           <!-- start of part 3 competencies -->
-          <table id="table">
+
+          <table id="table" class="pa-0" style="width: 100%; text-align: left">
             <tr class="row1">
               <td id="tdata" colspan="6" class="grey lighten-2 pt-4 pb-0">
                 <p style="text-align: center">
-                  <b>
-                    Teacher I-III, SPET I-IV, Special Science Teacher I-II
+                  <b
+                    >Teacher I-III, SPET I-IV, Special Science Teacher I-II
                     (Proficient Teacher)</b
                   >
                 </p>
               </td>
             </tr>
-          </table>
-
-          <table id="table" class="pa-0" style="width: 100%; text-align: left">
             <tr>
               <td id="tdata" rowspan="2" colspan="1">
-                <p>Name of Employee:</p>
-                <p>Position:</p>
-                <p>Bureau/Center/Service/Division:</p>
-                <p>Rating Period:</p>
+                <p>
+                  Name of Employee:<span class="ml-4">{{
+                    ipcrfDemographicProfile.name_of_employee
+                  }}</span>
+                </p>
+                <p>
+                  Position:<span class="ml-4">{{
+                    ipcrfDemographicProfile.position
+                  }}</span>
+                </p>
+                <p>
+                  Bureau/Center/Service/Division:<span class="ml-4">{{
+                    ipcrfDemographicProfile.division
+                  }}</span>
+                </p>
+                <p>
+                  Rating Period:<span class="ml-4">{{
+                    ipcrfDemographicProfile.rating_period
+                  }}</span>
+                </p>
               </td>
             </tr>
             <tr>
               <td id="tdata" rowspan="2" colspan="2">
-                <p>Name of Rater:</p>
-                <p>Position:</p>
+                <p>
+                  Name of Rater:<span class="ml-4">{{
+                    ipcrfDemographicProfile.rater
+                  }}</span>
+                </p>
+                <p>
+                  Position:
+                  <span class="ml-4">{{
+                    ipcrfDemographicProfile.rater_position
+                  }}</span>
+                </p>
 
-                <p>Date of Review:</p>
+                <p>
+                  Date of Review:
+                  <span class="ml-4">{{
+                    ipcrfDemographicProfile.date_of_review
+                  }}</span>
+                </p>
               </td>
             </tr>
 
@@ -1892,23 +2144,30 @@
               <td id="tdata">Objective 1</td>
               <td id="tdata">8%</td>
               <td id="tdata">
-                <p></p>
+                <p>{{ ipcrfEncodingPart1[0].ipcrf_numerical_ratings_q }}</p>
               </td>
 
-              <td id="tdata">
+              <td id="tdata" class="grey darken-2">
+                <p></p>
+              </td>
+              <td id="tdata" class="grey darken-2">
                 <p></p>
               </td>
               <td id="tdata">
-                <p></p>
+                <p>
+                  {{ ipcrfEncodingPart1[0].ipcrf_numerical_ratings_average }}
+                </p>
               </td>
               <td id="tdata">
-                <p></p>
+                <p>{{ ipcrfEncodingPart1[0].ipcrf_numerical_ratings_score }}</p>
               </td>
               <td id="tdata">
-                <p></p>
-              </td>
-              <td id="tdata">
-                <p></p>
+                <p>
+                  {{
+                    ipcrfEncodingPart1[0]
+                      .ipcrf_numerical_ratings_adjectival_rating
+                  }}
+                </p>
               </td>
             </tr>
             <tr class="blank2">
@@ -1917,22 +2176,31 @@
               <td id="tdata">Objective 2</td>
               <td id="tdata">8%</td>
 
-              <td id="tdata"></td>
               <td id="tdata">
+                <p>{{ ipcrfEncodingPart1[1].ipcrf_numerical_ratings_q }}</p>
+              </td>
+              <td id="tdata" class="grey darken-2">
                 <p></p>
               </td>
 
-              <td id="tdata">
+              <td id="tdata" class="grey darken-2">
                 <p></p>
               </td>
               <td id="tdata">
-                <p></p>
+                <p>
+                  {{ ipcrfEncodingPart1[1].ipcrf_numerical_ratings_average }}
+                </p>
               </td>
               <td id="tdata">
-                <p></p>
+                <p>{{ ipcrfEncodingPart1[1].ipcrf_numerical_ratings_score }}</p>
               </td>
               <td id="tdata">
-                <p></p>
+                <p>
+                  {{
+                    ipcrfEncodingPart1[1]
+                      .ipcrf_numerical_ratings_adjectival_rating
+                  }}
+                </p>
               </td>
             </tr>
             <tr class="blank2">
@@ -1941,22 +2209,31 @@
               <td id="tdata">Objective 2</td>
               <td id="tdata">8%</td>
 
-              <td id="tdata"></td>
               <td id="tdata">
+                <p>{{ ipcrfEncodingPart1[2].ipcrf_numerical_ratings_q }}</p>
+              </td>
+              <td id="tdata" class="grey darken-2">
                 <p></p>
               </td>
 
-              <td id="tdata">
+              <td id="tdata" class="grey darken-2">
                 <p></p>
               </td>
               <td id="tdata">
-                <p></p>
+                <p>
+                  {{ ipcrfEncodingPart1[2].ipcrf_numerical_ratings_average }}
+                </p>
               </td>
               <td id="tdata">
-                <p></p>
+                <p>{{ ipcrfEncodingPart1[2].ipcrf_numerical_ratings_score }}</p>
               </td>
               <td id="tdata">
-                <p></p>
+                <p>
+                  {{
+                    ipcrfEncodingPart1[2]
+                      .ipcrf_numerical_ratings_adjectival_rating
+                  }}
+                </p>
               </td>
             </tr>
             <tr class="displayKra2">
@@ -1966,23 +2243,30 @@
               <td id="tdata">Objective 3</td>
               <td id="tdata">8%</td>
               <td id="tdata">
-                <p></p>
+                <p>{{ ipcrfEncodingPart1[3].ipcrf_numerical_ratings_q }}</p>
               </td>
 
-              <td id="tdata">
+              <td id="tdata" class="grey darken-2">
+                <p></p>
+              </td>
+              <td id="tdata" class="grey darken-2">
                 <p></p>
               </td>
               <td id="tdata">
-                <p></p>
+                <p>
+                  {{ ipcrfEncodingPart1[3].ipcrf_numerical_ratings_average }}
+                </p>
               </td>
               <td id="tdata">
-                <p></p>
+                <p>{{ ipcrfEncodingPart1[3].ipcrf_numerical_ratings_score }}</p>
               </td>
               <td id="tdata">
-                <p></p>
-              </td>
-              <td id="tdata">
-                <p></p>
+                <p>
+                  {{
+                    ipcrfEncodingPart1[3]
+                      .ipcrf_numerical_ratings_adjectival_rating
+                  }}
+                </p>
               </td>
             </tr>
             <tr class="kra2Blank1">
@@ -1991,22 +2275,31 @@
               <td id="tdata">Objective 2</td>
               <td id="tdata">8%</td>
 
-              <td id="tdata"></td>
               <td id="tdata">
+                <p>{{ ipcrfEncodingPart1[4].ipcrf_numerical_ratings_q }}</p>
+              </td>
+              <td id="tdata" class="grey darken-2">
                 <p></p>
               </td>
 
-              <td id="tdata">
+              <td id="tdata" class="grey darken-2">
                 <p></p>
               </td>
               <td id="tdata">
-                <p></p>
+                <p>
+                  {{ ipcrfEncodingPart1[4].ipcrf_numerical_ratings_average }}
+                </p>
               </td>
               <td id="tdata">
-                <p></p>
+                <p>{{ ipcrfEncodingPart1[4].ipcrf_numerical_ratings_score }}</p>
               </td>
               <td id="tdata">
-                <p></p>
+                <p>
+                  {{
+                    ipcrfEncodingPart1[4]
+                      .ipcrf_numerical_ratings_adjectival_rating
+                  }}
+                </p>
               </td>
             </tr>
             <tr class="kra2Blank2">
@@ -2015,22 +2308,31 @@
               <td id="tdata">Objective 2</td>
               <td id="tdata">8%</td>
 
-              <td id="tdata"></td>
               <td id="tdata">
+                <p>{{ ipcrfEncodingPart1[5].ipcrf_numerical_ratings_q }}</p>
+              </td>
+              <td id="tdata" class="grey darken-2">
                 <p></p>
               </td>
 
               <td id="tdata">
-                <p></p>
+                <p>{{ ipcrfEncodingPart1[5].ipcrf_numerical_ratings_t }}</p>
               </td>
               <td id="tdata">
-                <p></p>
+                <p>
+                  {{ ipcrfEncodingPart1[5].ipcrf_numerical_ratings_average }}
+                </p>
               </td>
               <td id="tdata">
-                <p></p>
+                <p>{{ ipcrfEncodingPart1[5].ipcrf_numerical_ratings_score }}</p>
               </td>
               <td id="tdata">
-                <p></p>
+                <p>
+                  {{
+                    ipcrfEncodingPart1[5]
+                      .ipcrf_numerical_ratings_adjectival_rating
+                  }}
+                </p>
               </td>
             </tr>
             <tr class="displayKra2">
@@ -2040,23 +2342,30 @@
               <td id="tdata">Objective 3</td>
               <td id="tdata">8%</td>
               <td id="tdata">
-                <p></p>
+                <p>{{ ipcrfEncodingPart1[6].ipcrf_numerical_ratings_q }}</p>
               </td>
 
-              <td id="tdata">
+              <td id="tdata" class="grey darken-2">
+                <p></p>
+              </td>
+              <td id="tdata" class="grey darken-2">
                 <p></p>
               </td>
               <td id="tdata">
-                <p></p>
+                <p>
+                  {{ ipcrfEncodingPart1[6].ipcrf_numerical_ratings_average }}
+                </p>
               </td>
               <td id="tdata">
-                <p></p>
+                <p>{{ ipcrfEncodingPart1[6].ipcrf_numerical_ratings_score }}</p>
               </td>
               <td id="tdata">
-                <p></p>
-              </td>
-              <td id="tdata">
-                <p></p>
+                <p>
+                  {{
+                    ipcrfEncodingPart1[6]
+                      .ipcrf_numerical_ratings_adjectival_rating
+                  }}
+                </p>
               </td>
             </tr>
             <tr class="kra3Blank1">
@@ -2065,22 +2374,31 @@
               <td id="tdata">Objective 2</td>
               <td id="tdata">8%</td>
 
-              <td id="tdata"></td>
               <td id="tdata">
+                <p>{{ ipcrfEncodingPart1[7].ipcrf_numerical_ratings_q }}</p>
+              </td>
+              <td id="tdata" class="grey darken-2">
                 <p></p>
               </td>
 
-              <td id="tdata">
+              <td id="tdata" class="grey darken-2">
                 <p></p>
               </td>
               <td id="tdata">
-                <p></p>
+                <p>
+                  {{ ipcrfEncodingPart1[7].ipcrf_numerical_ratings_average }}
+                </p>
               </td>
               <td id="tdata">
-                <p></p>
+                <p>{{ ipcrfEncodingPart1[7].ipcrf_numerical_ratings_score }}</p>
               </td>
               <td id="tdata">
-                <p></p>
+                <p>
+                  {{
+                    ipcrfEncodingPart1[7]
+                      .ipcrf_numerical_ratings_adjectival_rating
+                  }}
+                </p>
               </td>
             </tr>
             <tr class="displayKra4">
@@ -2090,23 +2408,30 @@
               <td id="tdata">Objective 3</td>
               <td id="tdata">8%</td>
               <td id="tdata">
-                <p></p>
+                <p>{{ ipcrfEncodingPart1[8].ipcrf_numerical_ratings_q }}</p>
               </td>
 
               <td id="tdata">
+                <p>{{ ipcrfEncodingPart1[8].ipcrf_numerical_ratings_e }}</p>
+              </td>
+              <td id="tdata" class="grey darken-2">
                 <p></p>
               </td>
               <td id="tdata">
-                <p></p>
+                <p>
+                  {{ ipcrfEncodingPart1[8].ipcrf_numerical_ratings_average }}
+                </p>
               </td>
               <td id="tdata">
-                <p></p>
+                <p>{{ ipcrfEncodingPart1[8].ipcrf_numerical_ratings_score }}</p>
               </td>
               <td id="tdata">
-                <p></p>
-              </td>
-              <td id="tdata">
-                <p></p>
+                <p>
+                  {{
+                    ipcrfEncodingPart1[8]
+                      .ipcrf_numerical_ratings_adjectival_rating
+                  }}
+                </p>
               </td>
             </tr>
             <tr class="kra4Blank1">
@@ -2115,22 +2440,31 @@
               <td id="tdata">Objective 2</td>
               <td id="tdata">8%</td>
 
-              <td id="tdata"></td>
               <td id="tdata">
-                <p></p>
+                <p>{{ ipcrfEncodingPart1[9].ipcrf_numerical_ratings_q }}</p>
+              </td>
+              <td id="tdata">
+                <p>{{ ipcrfEncodingPart1[9].ipcrf_numerical_ratings_e }}</p>
               </td>
 
-              <td id="tdata">
+              <td id="tdata" class="grey darken-2">
                 <p></p>
               </td>
               <td id="tdata">
-                <p></p>
+                <p>
+                  {{ ipcrfEncodingPart1[9].ipcrf_numerical_ratings_average }}
+                </p>
               </td>
               <td id="tdata">
-                <p></p>
+                <p>{{ ipcrfEncodingPart1[9].ipcrf_numerical_ratings_score }}</p>
               </td>
               <td id="tdata">
-                <p></p>
+                <p>
+                  {{
+                    ipcrfEncodingPart1[9]
+                      .ipcrf_numerical_ratings_adjectival_rating
+                  }}
+                </p>
               </td>
             </tr>
             <tr class="kra4Blank2">
@@ -2139,22 +2473,32 @@
               <td id="tdata">Objective 2</td>
               <td id="tdata">8%</td>
 
-              <td id="tdata"></td>
               <td id="tdata">
-                <p></p>
+                <p>{{ ipcrfEncodingPart1[10].ipcrf_numerical_ratings_q }}</p>
               </td>
 
               <td id="tdata">
-                <p></p>
+                <p>{{ ipcrfEncodingPart1[10].ipcrf_numerical_ratings_e }}</p>
+              </td>
+
+              <td id="tdata" class="grey darken-2"><p></p></td>
+              <td id="tdata">
+                <p>
+                  {{ ipcrfEncodingPart1[10].ipcrf_numerical_ratings_average }}
+                </p>
               </td>
               <td id="tdata">
-                <p></p>
+                <p>
+                  {{ ipcrfEncodingPart1[10].ipcrf_numerical_ratings_score }}
+                </p>
               </td>
               <td id="tdata">
-                <p></p>
-              </td>
-              <td id="tdata">
-                <p></p>
+                <p>
+                  {{
+                    ipcrfEncodingPart1[10]
+                      .ipcrf_numerical_ratings_adjectival_rating
+                  }}
+                </p>
               </td>
             </tr>
             <tr class="displayKra4">
@@ -2164,23 +2508,32 @@
               <td id="tdata">Objective 3</td>
               <td id="tdata">8%</td>
               <td id="tdata">
-                <p></p>
+                <p>{{ ipcrfEncodingPart1[11].ipcrf_numerical_ratings_q }}</p>
               </td>
 
               <td id="tdata">
+                <p>{{ ipcrfEncodingPart1[11].ipcrf_numerical_ratings_e }}</p>
+              </td>
+              <td id="tdata" class="grey darken-2">
                 <p></p>
               </td>
               <td id="tdata">
-                <p></p>
+                <p>
+                  {{ ipcrfEncodingPart1[11].ipcrf_numerical_ratings_average }}
+                </p>
               </td>
               <td id="tdata">
-                <p></p>
+                <p>
+                  {{ ipcrfEncodingPart1[11].ipcrf_numerical_ratings_score }}
+                </p>
               </td>
               <td id="tdata">
-                <p></p>
-              </td>
-              <td id="tdata">
-                <p></p>
+                <p>
+                  {{
+                    ipcrfEncodingPart1[11]
+                      .ipcrf_numerical_ratings_adjectival_rating
+                  }}
+                </p>
               </td>
             </tr>
             <!-- Final Rating Area -->
@@ -2196,8 +2549,12 @@
               <td id="tdata" colspan="2">Adjectival Rating</td>
             </tr>
             <tr class="finalRating light-green lighten-2">
-              <td id="tdata" colspan="2"><p></p></td>
-              <td id="tdata" colspan="2"><p></p></td>
+              <td id="tdata" colspan="2">
+                <p>{{ ipcrfEncodingPart1[11].final_rating }}</p>
+              </td>
+              <td id="tdata" colspan="2">
+                <p>{{ ipcrfEncodingPart1[11].adjectival_rating }}</p>
+              </td>
             </tr>
           </table>
           <br />
@@ -2208,7 +2565,8 @@
             <v-row>
               <v-col>
                 <v-text-field
-                  v-model="part_ratee"
+                  readonly
+                  v-model="ipcrfDemographicProfile.name_of_employee"
                   style="width: 200px; height: 100px; margin-left: 80px"
                 >
                 </v-text-field>
@@ -2217,7 +2575,8 @@
               </v-col>
               <v-col>
                 <v-text-field
-                  v-model="part_rater"
+                  readonly
+                  v-model="ipcrfDemographicProfile.rater"
                   style="width: 200px; height: 100px; margin-left: 40px"
                 >
                 </v-text-field>
@@ -2227,9 +2586,10 @@
 
               <v-col>
                 <v-text-field
-                  style="width: 200px; height: 100px; margin-left: 40px"
+                  readonly
+                  style="width: 200px; height: 100px; margin-left: -20px"
+                  v-model="ipcrfEncodingPart1[11].approving_authority"
                 >
-                  <p class="mt-6">{{ part_approvingAuthority }}</p>
                 </v-text-field>
 
                 <h5 class="pa-2" style="margin-left: -20px">
@@ -2239,11 +2599,17 @@
             </v-row>
           </div>
           <br /><br />
+          <v-btn
+            v-print="printObjPart1"
+            style="margin-top: 10px; margin-right: auto; margin-left: 45%"
+            >Print</v-btn
+          >
         </v-tab-item>
         <v-tab>Part 4</v-tab>
         <v-tab-item>
           <!-- End of Part 3 Display -->
           <div>
+            <br />
             <p style="text-align: center">
               <b>PART IV: DEVELOPMENTAL PLANS</b>
             </p>
@@ -2297,22 +2663,24 @@
               <!-- Start of functional content -->
               <tr style="height: 100px">
                 <td id="tdata">
-                  <p></p>
+                  <p>{{ ipcrfDevelopmentPlan.strengths_functional }}</p>
                 </td>
                 <td id="tdata">
-                  <p></p>
+                  <p>{{ ipcrfDevelopmentPlan.development_needs_functional }}</p>
                 </td>
                 <td id="tdata">
-                  <p></p>
+                  <p>
+                    {{ ipcrfDevelopmentPlan.learning_objectives_functional }}
+                  </p>
                 </td>
                 <td id="tdata">
-                  <p></p>
+                  <p>{{ ipcrfDevelopmentPlan.intervention_functional }}</p>
                 </td>
                 <td id="tdata">
-                  <p></p>
+                  <p>{{ ipcrfDevelopmentPlan.timeline_functional }}</p>
                 </td>
                 <td id="tdata">
-                  <p></p>
+                  <p>{{ ipcrfDevelopmentPlan.resources_needed_functional }}</p>
                 </td>
               </tr>
               <!-- End of functional content -->
@@ -2329,28 +2697,32 @@
               <!-- Start of Core Behavioral -->
               <tr style="height: 100px">
                 <td id="tdata">
-                  <p></p>
+                  <p>{{ ipcrfDevelopmentPlan.strengths_core }}</p>
                 </td>
                 <td id="tdata">
-                  <p></p>
+                  <p>{{ ipcrfDevelopmentPlan.development_needs_core }}</p>
                 </td>
                 <td id="tdata">
-                  <p></p>
+                  <p>{{ ipcrfDevelopmentPlan.learning_objectives_core }}</p>
                 </td>
                 <td id="tdata">
-                  <p></p>
+                  <p>{{ ipcrfDevelopmentPlan.intervention_core }}</p>
                 </td>
                 <td id="tdata">
-                  <p></p>
+                  <p>{{ ipcrfDevelopmentPlan.timeline_core }}</p>
                 </td>
                 <td id="tdata">
-                  <p></p>
+                  <p>{{ ipcrfDevelopmentPlan.resources_needed_core }}</p>
                 </td>
               </tr>
               <!-- End of Core Behavioral -->
               <tr style="height: 100px">
                 <td id="tdata" colspan="6" class="mt-4">
-                  <p>Feedback:</p>
+                  <p>
+                    Feedback:<span class="ml-4">{{
+                      ipcrfDevelopmentPlan.feedback
+                    }}</span>
+                  </p>
                 </td>
               </tr>
             </table>
@@ -2359,7 +2731,7 @@
               <v-row>
                 <v-col>
                   <v-text-field
-                    v-model="part_ratee"
+                    v-model="ipcrfDevelopmentPlan.ratee"
                     style="width: 200px; height: 100px; margin-left: 80px"
                   >
                   </v-text-field>
@@ -2368,7 +2740,7 @@
                 </v-col>
                 <v-col>
                   <v-text-field
-                    v-model="part_rater"
+                    v-model="ipcrfDevelopmentPlan.rater"
                     style="width: 200px; height: 100px; margin-left: 40px"
                   >
                   </v-text-field>
@@ -2378,9 +2750,9 @@
 
                 <v-col>
                   <v-text-field
+                    v-model="ipcrfDevelopmentPlan.approving_authority"
                     style="width: 200px; height: 100px; margin-left: 40px"
                   >
-                    <p class="mt-6">{{ part_approvingAuthority }}</p>
                   </v-text-field>
 
                   <h5 class="pa-2" style="margin-left: -20px">
@@ -2406,6 +2778,11 @@
               </tbody>
             </table>
           </div>
+          <v-btn
+            v-print="printObjPart1"
+            style="margin-top: 20px; marign-right: auto; margin-left: 45%"
+            >Print</v-btn
+          >
         </v-tab-item>
       </v-tabs>
       <v-btn class="ma-6 float-left" @click="back">Back</v-btn>
@@ -2413,7 +2790,10 @@
     </v-container>
 
     <!--Container for rendering the view for update and create in ipctf -->
-    <v-container v-if="create == true || (edit == true && showTable != true)">
+    <v-container
+      v-if="create == true || edit == true"
+      fluid width="100vw"
+    >
       <!--start for create and fill up encoding-->
       <v-alert
         :value="alert"
@@ -2433,7 +2813,7 @@
         Saved Successfully!
       </v-alert>
       <v-btn @click="back" v-if="edit == true">Back</v-btn>
-      <v-card class="pa-0 pa-0 ma-5">
+      <v-card class="pa-0 pa-0 ma-1" width="100vw">
         <v-tabs>
           <!-- Encoding Page -->
           <v-tab> Encoding</v-tab>
@@ -2490,6 +2870,7 @@
                 <v-simple-table
                   height="auto"
                   class="pa-0 pa-0 ma-5"
+                  width="100vw"
                   max-width="100vw"
                 >
                   <template v-slot:default>
@@ -2497,7 +2878,7 @@
                       <!-- row 1 -->
                       <tr>
                         <td colspan="3" style="text-align: left">
-                          Name of Employee:
+                          Name of Employee:<span class="red--text text--lighten-1">*</span>
                         </td>
                         <td colspan="2">
                           <v-text-field
@@ -2511,7 +2892,7 @@
                           >
                           </v-text-field>
                         </td>
-                        <td colspan="3" style="text-align: left">Rater:</td>
+                        <td colspan="3" style="text-align: left">Rater:<span class="red--text text--lighten-1">*</span></td>
                         <td colspan="3">
                           <v-text-field
                             v-model="empRater"
@@ -2524,7 +2905,7 @@
                           >
                           </v-text-field>
                         </td>
-                        <td colspan="1" style="text-align: left">Region:</td>
+                        <td colspan="1" style="text-align: left">Region:<span class="red--text text--lighten-1">*</span></td>
                         <td colspan="1">
                           <v-select
                             :items="regionItems"
@@ -2539,7 +2920,7 @@
                       </tr>
                       <!-- Row 2 -->
                       <tr>
-                        <td colspan="3" style="text-align: left">Position:</td>
+                        <td colspan="3" style="text-align: left">Position:<span class="red--text text--lighten-1">*</span></td>
                         <td colspan="2">
                           <v-select
                             :items="empPositionItems"
@@ -2551,7 +2932,7 @@
                             class="text-center pt-5"
                           ></v-select>
                         </td>
-                        <td colspan="3" style="text-align: left">Position:</td>
+                        <td colspan="3" style="text-align: left">Position:<span class="red--text text--lighten-1">*</span></td>
                         <td colspan="3">
                           <v-select
                             :items="raterPositionItems"
@@ -2563,7 +2944,7 @@
                             class="text-center pt-5"
                           ></v-select>
                         </td>
-                        <td colspan="1" style="text-align: left">Division:</td>
+                        <td colspan="1" style="text-align: left">Division:<span class="red--text text--lighten-1">*</span></td>
                         <td colspan="1">
                           <v-select
                             :items="divisionItems"
@@ -2579,7 +2960,7 @@
 
                       <tr>
                         <td colspan="3" style="text-align: left">
-                          Employee ID#:
+                          Employee ID#:<span class="red--text text--lighten-1">*</span>
                         </td>
                         <td colspan="2">
                           <v-text-field
@@ -2634,7 +3015,7 @@
                           </v-row>
                         </td>
                         <td colspan="1" style="text-align: left">
-                          District/Municipality:
+                          District/Municipality:<span class="red--text text--lighten-1">*</span>
                         </td>
                         <td colspan="1">
                           <v-text-field
@@ -2652,7 +3033,7 @@
                       <!-- Row 4 -->
                       <tr>
                         <td colspan="3" style="text-align: left">
-                          Employment Status:
+                          Employment Status:<span class="red--text text--lighten-1">*</span>
                         </td>
                         <td colspan="2">
                           <v-select
@@ -2666,7 +3047,7 @@
                           ></v-select>
                         </td>
                         <td colspan="3" style="text-align: left">
-                          Rating Period:
+                          Rating Period:<span class="red--text text--lighten-1">*</span>
                         </td>
                         <td colspan="3">
                           <v-select
@@ -2681,7 +3062,7 @@
                           >
                           </v-select>
                         </td>
-                        <td colspan="1" style="text-align: left">School ID:</td>
+                        <td colspan="1" style="text-align: left">School ID:<span class="red--text text--lighten-1">*</span></td>
                         <td colspan="1">
                           <v-text-field
                             v-model="empSchoolId"
@@ -2697,7 +3078,7 @@
                       </tr>
                       <!-- Row 5 -->
                       <tr>
-                        <td colspan="3" style="text-align: left">Age :</td>
+                        <td colspan="3" style="text-align: left">Age :<span class="red--text text--lighten-1">*</span></td>
                         <td colspan="2">
                           <v-select
                             :items="ageItems"
@@ -2710,7 +3091,7 @@
                           ></v-select>
                         </td>
                         <td colspan="3" style="text-align: left">
-                          School Name:
+                          School Name:<span class="red--text text--lighten-1">*</span>
                         </td>
                         <td colspan="3">
                           <v-text-field
@@ -2724,7 +3105,7 @@
                           >
                           </v-text-field>
                         </td>
-                        <td colspan="1" style="text-align: left">Sex:</td>
+                        <td colspan="1" style="text-align: left">Sex:<span class="red--text text--lighten-1">*</span></td>
                         <td colspan="1">
                           <v-select
                             :items="sexItems"
@@ -2741,7 +3122,7 @@
                       <!-- Row 6 -->
                       <tr>
                         <td colspan="3" style="text-align: left">
-                          Level Taught:
+                          Level Taught:<span class="red--text text--lighten-1">*</span>
                         </td>
                         <td colspan="2">
                           <v-select
@@ -2755,7 +3136,7 @@
                           ></v-select>
                         </td>
                         <td colspan="3" style="text-align: left">
-                          No. of Years in Teaching:
+                          No. of Years in Teaching:<span class="red--text text--lighten-1">*</span>
                         </td>
                         <td colspan="3">
                           <v-select
@@ -2769,7 +3150,7 @@
                           ></v-select>
                         </td>
                         <td colspan="1" style="text-align: left">
-                          School Type:
+                          School Type:<span class="red--text text--lighten-1">*</span>
                         </td>
                         <td colspan="1">
                           <v-select
@@ -2786,7 +3167,7 @@
                       <!-- Row 7 -->
                       <tr>
                         <td colspan="3" style="text-align: left">
-                          Grade Level Taught:
+                          Grade Level Taught:<span class="red--text text--lighten-1">*</span>
                         </td>
                         <td colspan="2">
                           <v-select
@@ -2800,7 +3181,7 @@
                           ></v-select>
                         </td>
                         <td colspan="3" style="text-align: left">
-                          Highest Degree Obtained:
+                          Highest Degree Obtained:<span class="red--text text--lighten-1">*</span>
                         </td>
                         <td colspan="3">
                           <v-select
@@ -2814,7 +3195,7 @@
                           ></v-select>
                         </td>
                         <td colspan="1" style="text-align: left">
-                          School Size:
+                          School Size:<span class="red--text text--lighten-1">*</span>
                         </td>
                         <td colspan="1">
                           <v-select
@@ -2832,7 +3213,7 @@
                       <!-- Row8 -->
                       <tr>
                         <td colspan="3" style="text-align: left">
-                          Subject Taught:
+                          Subject Taught:<span class="red--text text--lighten-1">*</span>
                         </td>
                         <td colspan="2">
                           <v-select
@@ -2847,7 +3228,7 @@
                         </td>
 
                         <td colspan="3" style="text-align: left">
-                          Area of Specialization:
+                          Area of Specialization:<span class="red--text text--lighten-1">*</span>
                         </td>
                         <td colspan="3">
                           <v-select
@@ -2861,7 +3242,7 @@
                           ></v-select>
                         </td>
                         <td colspan="1" style="text-align: left">
-                          Curricular Classification:
+                          Curricular Classification:<span class="red--text text--lighten-1">*</span>
                         </td>
                         <td colspan="1">
                           <v-select
@@ -2885,7 +3266,11 @@
             <!-- START OF KRA TABLE -->
             <v-form ref="part1Admin">
               <v-container fluid>
-                <v-simple-table>
+                <v-simple-table width="100vw">
+                  <colgroup>
+                    <col id="col1"><col id="col2"><col id="col3"><col id="col4"><col id="col5"><col id="col1">
+                    <col id="col6"><col id="col7"><col id="col8"><col id="col9"><col id="col10">
+                  </colgroup>
                   <!-- <v-form ref="part"></v-form> -->
                   <tr class="light-green lighten-2">
                     <td id="tdata" rowspan="3"><p>KRA</p></td>
@@ -2922,7 +3307,8 @@
                       <v-select
                         :items="subjectTaughtItems"
                         v-model="cot1SubjectsTaught"
-                        :disabled="ifTeacher"
+                        :readonly="ifTeacher"
+                        :rules="requiredField"
                         label="Subject"
                         dense
                         solo
@@ -2933,7 +3319,8 @@
                       <v-select
                         :items="subjectTaughtItems"
                         v-model="cot2SubjectsTaught"
-                        :disabled="ifTeacher"
+                        :rules="requiredField"
+                        :readonly="ifTeacher"
                         label="Subject"
                         dense
                         solo
@@ -3014,10 +3401,14 @@
                     <td id="tdata" colspan="1" rowspan="1">
                       <v-text-field
                         v-model="cot1IndicatorObjNo1"
+                        :rules="requiredField"
                         placeholder=""
                         solo
+                        type="number"
+                        min="5"
+                        max="10"
                         dense
-                        :disabled="ifTeacher"
+                        :readonly="ifTeacher"
                         class="text-center ml-auto mr-auto"
                       >
                       </v-text-field>
@@ -3025,10 +3416,12 @@
                     <td id="tdata" colspan="1" rowspan="1">
                       <v-text-field
                         v-model="cot1RatingObjNo1"
+                        :rules="requiredField"
                         placeholder=""
+                        type="number"
                         solo
                         dense
-                        :disabled="ifTeacher"
+                        :readonly="ifTeacher"
                         class="text-center ml-auto mr-auto"
                       >
                       </v-text-field>
@@ -3036,10 +3429,12 @@
                     <td id="tdata" colspan="1" rowspan="1">
                       <v-text-field
                         v-model="cot1RpmsObjNo1"
+                        :rules="requiredField"
                         placeholder=""
                         solo
+                        type="number"
                         dense
-                        :disabled="ifTeacher"
+                        :readonly="ifTeacher"
                         class="text-center ml-auto mr-auto"
                       >
                       </v-text-field>
@@ -3047,10 +3442,12 @@
                     <td id="tdata" colspan="1" rowspan="1">
                       <v-text-field
                         v-model="cot2RatingObjNo1"
+                        :rules="requiredField"
                         placeholder=""
                         solo
+                        type="number"
                         dense
-                        :disabled="ifTeacher"
+                        :readonly="ifTeacher"
                         class="text-center ml-auto mr-auto"
                       >
                       </v-text-field>
@@ -3058,10 +3455,12 @@
                     <td id="tdata" colspan="1" rowspan="1">
                       <v-text-field
                         v-model="cot2RpmsObjNo1"
+                        :rules="requiredField"
+                        type="number"
                         placeholder=""
                         solo
                         dense
-                        :disabled="ifTeacher"
+                        :readonly="ifTeacher"
                         class="text-center ml-auto mr-auto"
                       >
                       </v-text-field>
@@ -3103,8 +3502,9 @@
                         v-model="calculateObjectivesAverageNo1"
                         placeholder=""
                         solo
+                        disabled
                         dense
-                        :disabled="ifTeacher"
+                        :readonly="ifTeacher"
                         class="text-center ml-auto mr-auto"
                       >
                       </v-text-field>
@@ -3112,10 +3512,12 @@
                     <td id="tdata" colspan="1" rowspan="1">
                       <v-text-field
                         v-model="encodingIpcrfNumericalQ1"
+                        :rules="requiredField"
+                        @input="calculateAdjectivalRatingNo1"
                         placeholder=""
                         solo
                         dense
-                        :disabled="ifTeacher"
+                        :readonly="ifTeacher"
                         class="text-center ml-auto mr-auto"
                       >
                       </v-text-field>
@@ -3140,20 +3542,23 @@
                       <v-text-field
                         v-model="calculateNumericalRatingsAverageNo1"
                         placeholder=""
+                        disabled
                         solo
+                        @keyup="calculateScore('no1')"
                         dense
-                        :disabled="ifTeacher"
+                        :readonly="ifTeacher"
                         class="text-center ml-auto mr-auto"
                       >
                       </v-text-field>
                     </td>
                     <td id="tdata" colspan="1" rowspan="1">
                       <v-text-field
-                        v-model="encodingScore1"
+                        v-model="calculateScoreNo1"
                         placeholder=""
                         solo
+                        disabled
                         dense
-                        :disabled="ifTeacher"
+                        :readonly="ifTeacher"
                         class="text-center ml-auto mr-auto"
                       >
                       </v-text-field>
@@ -3163,8 +3568,9 @@
                         v-model="encodingAdjectivalRating1"
                         placeholder=""
                         solo
+                        disabled
                         dense
-                        :disabled="ifTeacher"
+                        :readonly="ifTeacher"
                         class="text-center ml-auto mr-auto"
                       >
                       </v-text-field>
@@ -3262,10 +3668,12 @@
                     <td id="tdata" colspan="1" rowspan="1">
                       <v-text-field
                         v-model="encodingIpcrfNumericalQ2"
+                        :rules="requiredField"
                         placeholder=""
+                        @input="calculateAdjectivalRatingNo2"
                         solo
                         dense
-                        :disabled="ifTeacher"
+                        :readonly="ifTeacher"
                         class="text-center ml-auto mr-auto"
                       >
                       </v-text-field>
@@ -3288,22 +3696,24 @@
                     </td>
                     <td id="tdata" colspan="1" rowspan="1">
                       <v-text-field
-                        v-model="encodingIpcrfRatingAve2"
+                        v-model="calculateNumericalRatingsAverageNo2"
                         placeholder=""
+                        disabled
                         solo
                         dense
-                        :disabled="ifTeacher"
+                        :readonly="ifTeacher"
                         class="text-center ml-auto mr-auto"
                       >
                       </v-text-field>
                     </td>
                     <td id="tdata" colspan="1" rowspan="1">
                       <v-text-field
-                        v-model="encodingScore2"
+                        v-model="calculateScoreNo2"
+                        disabled
                         placeholder=""
                         solo
                         dense
-                        :disabled="ifTeacher"
+                        :readonly="ifTeacher"
                         class="text-center ml-auto mr-auto"
                       >
                       </v-text-field>
@@ -3313,8 +3723,9 @@
                         v-model="encodingAdjectivalRating2"
                         placeholder=""
                         solo
+                        disabled
                         dense
-                        :disabled="ifTeacher"
+                        :readonly="ifTeacher"
                         class="text-center ml-auto mr-auto"
                       >
                       </v-text-field>
@@ -3412,10 +3823,12 @@
                     <td id="tdata" colspan="1" rowspan="1">
                       <v-text-field
                         v-model="encodingIpcrfNumericalQ3"
+                        :rules="requiredField"
                         placeholder=""
+                        @input="calculateAdjectivalRatingNo3"
                         solo
                         dense
-                        :disabled="ifTeacher"
+                        :readonly="ifTeacher"
                         class="text-center ml-auto mr-auto"
                       >
                       </v-text-field>
@@ -3438,22 +3851,24 @@
                     </td>
                     <td id="tdata" colspan="1" rowspan="1">
                       <v-text-field
-                        v-model="encodingIpcrfRatingAve3"
+                        v-model="calculateNumericalRatingsAverageNo3"
                         placeholder=""
+                        disabled
                         solo
                         dense
-                        :disabled="ifTeacher"
+                        :readonly="ifTeacher"
                         class="text-center ml-auto mr-auto"
                       >
                       </v-text-field>
                     </td>
                     <td id="tdata" colspan="1" rowspan="1">
                       <v-text-field
-                        v-model="encodingScore3"
+                        v-model="calculateScoreNo3"
                         placeholder=""
                         solo
+                        disabled
                         dense
-                        :disabled="ifTeacher"
+                        :readonly="ifTeacher"
                         class="text-center ml-auto mr-auto"
                       >
                       </v-text-field>
@@ -3462,9 +3877,10 @@
                       <v-text-field
                         v-model="encodingAdjectivalRating3"
                         placeholder=""
+                        disabled
                         solo
                         dense
-                        :disabled="ifTeacher"
+                        :readonly="ifTeacher"
                         class="text-center ml-auto mr-auto"
                       >
                       </v-text-field>
@@ -3566,10 +3982,12 @@
                     <td id="tdata" colspan="1" rowspan="1">
                       <v-text-field
                         v-model="encodingIpcrfNumericalQ4"
+                        :rules="requiredField"
+                        @input="calculateAdjectivalRatingNo4"
                         placeholder=""
                         solo
                         dense
-                        :disabled="ifTeacher"
+                        :readonly="ifTeacher"
                         class="text-center ml-auto mr-auto"
                       >
                       </v-text-field>
@@ -3592,22 +4010,24 @@
                     </td>
                     <td id="tdata" colspan="1" rowspan="1">
                       <v-text-field
-                        v-model="encodingIpcrfRatingAve4"
+                        v-model="calculateNumericalRatingsAverageNo4"
                         placeholder=""
+                        disabled
                         solo
                         dense
-                        :disabled="ifTeacher"
+                        :readonly="ifTeacher"
                         class="text-center ml-auto mr-auto"
                       >
                       </v-text-field>
                     </td>
                     <td id="tdata" colspan="1" rowspan="1">
                       <v-text-field
-                        v-model="encodingScore4"
+                        v-model="calculateScoreNo4"
                         placeholder=""
+                        disabled
                         solo
                         dense
-                        :disabled="ifTeacher"
+                        :readonly="ifTeacher"
                         class="text-center ml-auto mr-auto"
                       >
                       </v-text-field>
@@ -3617,8 +4037,9 @@
                         v-model="encodingAdjectivalRating4"
                         placeholder=""
                         solo
+                        disabled
                         dense
-                        :disabled="ifTeacher"
+                        :readonly="ifTeacher"
                         class="text-center ml-auto mr-auto"
                       >
                       </v-text-field>
@@ -3636,10 +4057,11 @@
                     <td id="tdata" colspan="1" rowspan="1">
                       <v-text-field
                         v-model="cot1IndicatorObjNo5"
+                        :rules="requiredField"
                         placeholder=""
                         solo
                         dense
-                        :disabled="ifTeacher"
+                        :readonly="ifTeacher"
                         class="text-center ml-auto mr-auto"
                       >
                       </v-text-field>
@@ -3647,10 +4069,11 @@
                     <td id="tdata" colspan="1" rowspan="1">
                       <v-text-field
                         v-model="cot1RatingObjNo5"
+                        :rules="requiredField"
                         placeholder=""
                         solo
                         dense
-                        :disabled="ifTeacher"
+                        :readonly="ifTeacher"
                         class="text-center ml-auto mr-auto"
                       >
                       </v-text-field>
@@ -3658,10 +4081,11 @@
                     <td id="tdata" colspan="1" rowspan="1">
                       <v-text-field
                         v-model="cot1RpmsObjNo5"
+                        :rules="requiredField"
                         placeholder=""
                         solo
                         dense
-                        :disabled="ifTeacher"
+                        :readonly="ifTeacher"
                         class="text-center ml-auto mr-auto"
                       >
                       </v-text-field>
@@ -3669,10 +4093,11 @@
                     <td id="tdata" colspan="1" rowspan="1">
                       <v-text-field
                         v-model="cot2RatingObjNo5"
+                        :rules="requiredField"
                         placeholder=""
                         solo
                         dense
-                        :disabled="ifTeacher"
+                        :readonly="ifTeacher"
                         class="text-center ml-auto mr-auto"
                       >
                       </v-text-field>
@@ -3680,10 +4105,11 @@
                     <td id="tdata" colspan="1" rowspan="1">
                       <v-text-field
                         v-model="cot2RpmsObjNo5"
+                        :rules="requiredField"
                         placeholder=""
                         solo
                         dense
-                        :disabled="ifTeacher"
+                        :readonly="ifTeacher"
                         class="text-center ml-auto mr-auto"
                       >
                       </v-text-field>
@@ -3722,11 +4148,12 @@
                     </td>
                     <td id="tdata" colspan="1" rowspan="1">
                       <v-text-field
-                        v-model="encodingAverageObjNo5"
+                        v-model="calculateObjectivesAverageNo5"
                         placeholder=""
                         solo
+                        disabled
                         dense
-                        :disabled="ifTeacher"
+                        :readonly="ifTeacher"
                         class="text-center ml-auto mr-auto"
                       >
                       </v-text-field>
@@ -3734,10 +4161,12 @@
                     <td id="tdata" colspan="1" rowspan="1">
                       <v-text-field
                         v-model="encodingIpcrfNumericalQ5"
+                        :rules="requiredField"
                         placeholder=""
                         solo
+                        @input="calculateAdjectivalRatingNo5"
                         dense
-                        :disabled="ifTeacher"
+                        :readonly="ifTeacher"
                         class="text-center ml-auto mr-auto"
                       >
                       </v-text-field>
@@ -3760,22 +4189,24 @@
                     </td>
                     <td id="tdata" colspan="1" rowspan="1">
                       <v-text-field
-                        v-model="encodingIpcrfRatingAve5"
+                        v-model="calculateNumericalRatingsAverageNo5"
                         placeholder=""
                         solo
+                        disabled
                         dense
-                        :disabled="ifTeacher"
+                        :readonly="ifTeacher"
                         class="text-center ml-auto mr-auto"
                       >
                       </v-text-field>
                     </td>
                     <td id="tdata" colspan="1" rowspan="1">
                       <v-text-field
-                        v-model="encodingScore5"
+                        v-model="calculateScoreNo5"
                         placeholder=""
                         solo
+                        disabled
                         dense
-                        :disabled="ifTeacher"
+                        :readonly="ifTeacher"
                         class="text-center ml-auto mr-auto"
                       >
                       </v-text-field>
@@ -3785,8 +4216,9 @@
                         v-model="encodingAdjectivalRating5"
                         placeholder=""
                         solo
+                        disabled
                         dense
-                        :disabled="ifTeacher"
+                        :readonly="ifTeacher"
                         class="text-center ml-auto mr-auto"
                       >
                       </v-text-field>
@@ -3884,10 +4316,12 @@
                     <td id="tdata" colspan="1" rowspan="1">
                       <v-text-field
                         v-model="encodingIpcrfNumericalQ6"
+                        :rules="requiredField"
                         placeholder=""
+                        @input="calculateAdjectivalRatingNo6"
                         solo
                         dense
-                        :disabled="ifTeacher"
+                        :readonly="ifTeacher"
                         class="text-center ml-auto mr-auto"
                       >
                       </v-text-field>
@@ -3903,34 +4337,37 @@
                     <td id="tdata" colspan="1" rowspan="1">
                       <v-text-field
                         v-model="encodingIpcrfNumericalT6"
+                        :rules="requiredField"
                         placeholder=""
+                        @input="calculateAdjectivalRatingNo6"
                         solo
                         dense
-                        :disabled="ifTeacher"
+                        :readonly="ifTeacher"
                         class="text-center ml-auto mr-auto"
                       >
                       </v-text-field>
                     </td>
                     <td id="tdata" colspan="1" rowspan="1">
                       <v-text-field
-                        v-model="encodingIpcrfRatingAve6"
+                        v-model="calculateNumericalRatingsAverageNo6"
                         placeholder=""
                         solo
                         dense
-                        readonly
+                        disabled
                         class="text-center ml-auto mr-auto"
-                        :disabled="ifTeacher"
+                        :readonly="ifTeacher"
                       >
                       </v-text-field>
                     </td>
                     <td id="tdata" colspan="1" rowspan="1">
                       <v-text-field
-                        v-model="encodingScore6"
+                        v-model="calculateScoreNo6"
                         placeholder=""
                         solo
                         dense
-                        :disabled="ifTeacher"
-                        readonly
+                        disabled
+                        :readonly="ifTeacher"
+                        
                         class="text-center ml-auto mr-auto"
                       >
                       </v-text-field>
@@ -3941,9 +4378,9 @@
                         placeholder=""
                         solo
                         dense
-                        readonly
+                        disabled
                         class="text-center ml-auto mr-auto"
-                        :disabled="ifTeacher"
+                        :readonly="ifTeacher"
                       >
                       </v-text-field>
                     </td>
@@ -3964,10 +4401,11 @@
                     <td id="tdata" colspan="1" rowspan="1">
                       <v-text-field
                         v-model="cot1IndicatorObjNo7"
+                        :rules="requiredField"
                         placeholder=""
                         solo
                         dense
-                        :disabled="ifTeacher"
+                        :readonly="ifTeacher"
                         class="text-center ml-auto mr-auto"
                       >
                       </v-text-field>
@@ -3975,10 +4413,11 @@
                     <td id="tdata" colspan="1" rowspan="1">
                       <v-text-field
                         v-model="cot1RatingObjNo7"
+                        :rules="requiredField"
                         placeholder=""
                         solo
                         dense
-                        :disabled="ifTeacher"
+                        :readonly="ifTeacher"
                         class="text-center ml-auto mr-auto"
                       >
                       </v-text-field>
@@ -3986,10 +4425,11 @@
                     <td id="tdata" colspan="1" rowspan="1">
                       <v-text-field
                         v-model="cot1RpmsObjNo7"
+                        :rules="requiredField"
                         placeholder=""
                         solo
                         dense
-                        :disabled="ifTeacher"
+                        :readonly="ifTeacher"
                         class="text-center ml-auto mr-auto"
                       >
                       </v-text-field>
@@ -3997,10 +4437,11 @@
                     <td id="tdata" colspan="1" rowspan="1">
                       <v-text-field
                         v-model="cot2RatingObjNo7"
+                        :rules="requiredField"
                         placeholder=""
                         solo
                         dense
-                        :disabled="ifTeacher"
+                        :readonly="ifTeacher"
                         class="text-center ml-auto mr-auto"
                       >
                       </v-text-field>
@@ -4008,10 +4449,11 @@
                     <td id="tdata" colspan="1" rowspan="1">
                       <v-text-field
                         v-model="cot2RpmsObjNo7"
+                        :rules="requiredField"
                         placeholder=""
                         solo
                         dense
-                        :disabled="ifTeacher"
+                        :readonly="ifTeacher"
                         class="text-center ml-auto mr-auto"
                       >
                       </v-text-field>
@@ -4050,23 +4492,25 @@
                     </td>
                     <td id="tdata" colspan="1" rowspan="1">
                       <v-text-field
-                        v-model="encodingAverageObjNo7"
+                        v-model="calculateObjectivesAverageNo7"
                         placeholder=""
                         solo
                         dense
-                        readonly
+                        disabled
                         class="text-center ml-auto mr-auto"
-                        :disabled="ifTeacher"
+                        :readonly="ifTeacher"
                       >
                       </v-text-field>
                     </td>
                     <td id="tdata" colspan="1" rowspan="1">
                       <v-text-field
                         v-model="encodingIpcrfNumericalQ7"
+                        :rules="requiredField"
+                        @input="calculateAdjectivalRatingNo7"
                         placeholder=""
                         solo
                         dense
-                        :disabled="ifTeacher"
+                        :readonly="ifTeacher"
                         class="text-center ml-auto mr-auto"
                       >
                       </v-text-field>
@@ -4089,25 +4533,25 @@
                     </td>
                     <td id="tdata" colspan="1" rowspan="1">
                       <v-text-field
-                        v-model="encodingIpcrfRatingAve7"
+                        v-model="calculateNumericalRatingsAverageNo7"
                         placeholder=""
                         solo
                         dense
-                        readonly
+                        disabled
                         class="text-center ml-auto mr-auto"
-                        :disabled="ifTeacher"
+                        :readonly="ifTeacher"
                       >
                       </v-text-field>
                     </td>
                     <td id="tdata" colspan="1" rowspan="1">
                       <v-text-field
-                        v-model="encodingScore7"
+                        v-model="calculateScoreNo7"
                         placeholder=""
                         solo
                         dense
-                        readonly
+                        disabled
                         class="text-center ml-auto mr-auto"
-                        :disabled="ifTeacher"
+                        :readonly="ifTeacher"
                       >
                       </v-text-field>
                     </td>
@@ -4117,9 +4561,9 @@
                         placeholder=""
                         solo
                         dense
-                        readonly
+                        disabled
                         class="text-center ml-auto mr-auto"
-                        :disabled="ifTeacher"
+                        :readonly="ifTeacher"
                       >
                       </v-text-field>
                     </td>
@@ -4216,10 +4660,12 @@
                     <td id="tdata" colspan="1" rowspan="1">
                       <v-text-field
                         v-model="encodingIpcrfNumericalQ8"
+                        :rules="requiredField"
+                        @input="calculateAdjectivalRatingNo8"
                         placeholder=""
                         solo
                         dense
-                        :disabled="ifTeacher"
+                        :readonly="ifTeacher"
                         class="text-center ml-auto mr-auto"
                       >
                       </v-text-field>
@@ -4242,25 +4688,25 @@
                     </td>
                     <td id="tdata" colspan="1" rowspan="1">
                       <v-text-field
-                        v-model="encodingIpcrfRatingAve8"
+                        v-model="calculateNumericalRatingsAverageNo8"
                         placeholder=""
                         solo
                         dense
-                        readonly
+                        disabled
                         class="text-center ml-auto mr-auto"
-                        :disabled="ifTeacher"
+                        :readonly="ifTeacher"
                       >
                       </v-text-field>
                     </td>
                     <td id="tdata" colspan="1" rowspan="1">
                       <v-text-field
-                        v-model="encodingScore8"
+                        v-model="calculateScoreNo8"
                         placeholder=""
                         solo
                         dense
-                        readonly
+                        disabled
                         class="text-center ml-auto mr-auto"
-                        :disabled="ifTeacher"
+                        :readonly="ifTeacher"
                       >
                       </v-text-field>
                     </td>
@@ -4270,9 +4716,9 @@
                         placeholder=""
                         solo
                         dense
-                        readonly
+                        disabled
                         class="text-center ml-auto mr-auto"
-                        :disabled="ifTeacher"
+                        :readonly="ifTeacher"
                       >
                       </v-text-field>
                     </td>
@@ -4373,10 +4819,12 @@
                     <td id="tdata" colspan="1" rowspan="1">
                       <v-text-field
                         v-model="encodingIpcrfNumericalQ9"
+                        :rules="requiredField"
+                        @input="calculateAdjectivalRatingNo9"
                         placeholder=""
                         solo
                         dense
-                        :disabled="ifTeacher"
+                        :readonly="ifTeacher"
                         class="text-center ml-auto mr-auto"
                       >
                       </v-text-field>
@@ -4384,10 +4832,12 @@
                     <td id="tdata" colspan="1" rowspan="1">
                       <v-text-field
                         v-model="encodingIpcrfNumericalE9"
+                        :rules="requiredField"
                         placeholder=""
                         solo
+                        @input="calculateAdjectivalRatingNo9"
                         dense
-                        :disabled="ifTeacher"
+                        :readonly="ifTeacher"
                         class="text-center ml-auto mr-auto"
                       >
                       </v-text-field>
@@ -4402,37 +4852,37 @@
                     </td>
                     <td id="tdata" colspan="1" rowspan="1">
                       <v-text-field
-                        v-model="encodingIpcrfRatingAve9"
+                        v-model="calculateNumericalRatingsAverageNo9"
                         placeholder=""
                         solo
                         dense
-                        readonly
+                        disabled
                         class="text-center ml-auto mr-auto"
-                        :disabled="ifTeacher"
+                        :readonly="ifTeacher"
                       >
                       </v-text-field>
                     </td>
                     <td id="tdata" colspan="1" rowspan="1">
                       <v-text-field
-                        v-model="encodingScore9"
+                        v-model="calculateScoreNo9"
                         placeholder=""
                         solo
                         dense
-                        readonly
+                        disabled
                         class="text-center ml-auto mr-auto"
-                        :disabled="ifTeacher"
+                        :readonly="ifTeacher"
                       >
                       </v-text-field>
                     </td>
                     <td id="tdata" colspan="1" rowspan="1">
                       <v-text-field
-                        v-model="encodingAdjectivalRating9"
+                        v-model="encodingAdjectivalRating10"
                         placeholder=""
                         solo
                         dense
-                        readonly
+                        disabled
                         class="text-center ml-auto mr-auto"
-                        :disabled="ifTeacher"
+                        :readonly="ifTeacher"
                       >
                       </v-text-field>
                     </td>
@@ -4529,10 +4979,12 @@
                     <td id="tdata" colspan="1" rowspan="1">
                       <v-text-field
                         v-model="encodingIpcrfNumericalQ10"
+                        :rules="requiredField"
+                        @input="calculateAdjectivalRatingNo10"
                         placeholder=""
                         solo
                         dense
-                        :disabled="ifTeacher"
+                        :readonly="ifTeacher"
                         class="text-center ml-auto mr-auto"
                       >
                       </v-text-field>
@@ -4540,10 +4992,12 @@
                     <td id="tdata" colspan="1" rowspan="1">
                       <v-text-field
                         v-model="encodingIpcrfNumericalE10"
+                        :rules="requiredField"
+                        @input="calculateAdjectivalRatingNo10"
                         placeholder=""
                         solo
                         dense
-                        :disabled="ifTeacher"
+                        :readonly="ifTeacher"
                         class="text-center ml-auto mr-auto"
                       >
                       </v-text-field>
@@ -4558,25 +5012,25 @@
                     </td>
                     <td id="tdata" colspan="1" rowspan="1">
                       <v-text-field
-                        v-model="encodingIpcrfRatingAve10"
+                        v-model="calculateNumericalRatingsAverageNo10"
                         placeholder=""
                         solo
                         dense
-                        readonly
+                        disabled
                         class="text-center ml-auto mr-auto"
-                        :disabled="ifTeacher"
+                        :readonly="ifTeacher"
                       >
                       </v-text-field>
                     </td>
                     <td id="tdata" colspan="1" rowspan="1">
                       <v-text-field
-                        v-model="encodingScore10"
+                        v-model="calculateScoreNo10"
                         placeholder=""
                         solo
                         dense
-                        readonly
+                        disabled
                         class="text-center ml-auto mr-auto"
-                        :disabled="ifTeacher"
+                        :readonly="ifTeacher"
                       >
                       </v-text-field>
                     </td>
@@ -4586,9 +5040,9 @@
                         placeholder=""
                         solo
                         dense
-                        readonly
+                        disabled
                         class="text-center ml-auto mr-auto"
-                        :disabled="ifTeacher"
+                        :readonly="ifTeacher"
                       >
                       </v-text-field>
                     </td>
@@ -4685,10 +5139,13 @@
                     <td id="tdata" colspan="1" rowspan="1">
                       <v-text-field
                         v-model="encodingIpcrfNumericalQ11"
+                 
+                        @input="calculateAdjectivalRatingNo11"
                         placeholder=""
+                        :rules="requiredField"
                         solo
                         dense
-                        :disabled="ifTeacher"
+                        :readonly="ifTeacher"
                         class="text-center ml-auto mr-auto"
                       >
                       </v-text-field>
@@ -4696,10 +5153,12 @@
                     <td id="tdata" colspan="1" rowspan="1">
                       <v-text-field
                         v-model="encodingIpcrfNumericalE11"
+                        :rules="requiredField"
+                        @input="calculateAdjectivalRatingNo11"
                         placeholder=""
                         solo
                         dense
-                        :disabled="ifTeacher"
+                        :readonly="ifTeacher"
                         class="text-center ml-auto mr-auto"
                       >
                       </v-text-field>
@@ -4714,25 +5173,25 @@
                     </td>
                     <td id="tdata" colspan="1" rowspan="1">
                       <v-text-field
-                        v-model="encodingIpcrfRatingAve11"
+                        v-model="calculateNumericalRatingsAverageNo11"
                         placeholder=""
                         solo
                         dense
-                        readonly
+                        disabled
                         class="text-center ml-auto mr-auto"
-                        :disabled="ifTeacher"
+                        :readonly="ifTeacher"
                       >
                       </v-text-field>
                     </td>
                     <td id="tdata" colspan="1" rowspan="1">
                       <v-text-field
-                        v-model="encodingScore11"
+                        v-model="calculateScoreNo11"
                         placeholder=""
                         solo
                         dense
-                        readonly
+                        disabled
                         class="text-center ml-auto mr-auto"
-                        :disabled="ifTeacher"
+                        :readonly="ifTeacher"
                       >
                       </v-text-field>
                     </td>
@@ -4742,9 +5201,9 @@
                         placeholder=""
                         solo
                         dense
-                        readonly
+                        disabled
                         class="text-center ml-auto mr-auto"
-                        :disabled="ifTeacher"
+                        :readonly="ifTeacher"
                       >
                       </v-text-field>
                     </td>
@@ -4845,10 +5304,12 @@
                     <td id="tdata" colspan="1" rowspan="1">
                       <v-text-field
                         v-model="encodingIpcrfNumericalQ12"
+                        :rules="requiredField"
+                        @input="calculateAdjectivalRatingNo12"
                         placeholder=""
                         solo
                         dense
-                        :disabled="ifTeacher"
+                        :readonly="ifTeacher"
                         class="text-center ml-auto mr-auto"
                       >
                       </v-text-field>
@@ -4856,10 +5317,12 @@
                     <td id="tdata" colspan="1" rowspan="1">
                       <v-text-field
                         v-model="encodingIpcrfNumericalE12"
+                        :rules="requiredField"
                         placeholder=""
+                        @input="calculateAdjectivalRatingNo12"
                         solo
                         dense
-                        :disabled="ifTeacher"
+                        :readonly="ifTeacher"
                         class="text-center ml-auto mr-auto"
                       >
                       </v-text-field>
@@ -4874,25 +5337,25 @@
                     </td>
                     <td id="tdata" colspan="1" rowspan="1">
                       <v-text-field
-                        v-model="encodingIpcrfRatingAve12"
+                        v-model="calculateNumericalRatingsAverageNo12"
                         placeholder=""
                         solo
                         dense
-                        readonly
+                        disabled
                         class="text-center ml-auto mr-auto"
-                        :disabled="ifTeacher"
+                        :readonly="ifTeacher"
                       >
                       </v-text-field>
                     </td>
                     <td id="tdata" colspan="1" rowspan="1">
                       <v-text-field
-                        v-model="encodingScore12"
+                        v-model="calculateScoreNo12"
                         placeholder=""
                         solo
                         dense
-                        readonly
+                        disabled
                         class="text-center ml-auto mr-auto"
-                        :disabled="ifTeacher"
+                        :readonly="ifTeacher"
                       >
                       </v-text-field>
                     </td>
@@ -4902,16 +5365,16 @@
                         placeholder=""
                         solo
                         dense
-                        readonly
+                        disabled
                         class="text-center ml-auto mr-auto"
-                        :disabled="ifTeacher"
+                        :readonly="ifTeacher"
                       >
                       </v-text-field>
                     </td>
                   </tr>
                   <tr>
                     <td id="tdata" colspan="5" rowspan="1">
-                      <p style="float: right">Date Observed:</p>
+                      <p style="float: right">Date Observed:  <span class="red--text text--lighten-1">*</span></p>
                     </td>
                     <td id="tdata" colspan="2" rowspan="1">
                       <v-row>
@@ -4928,8 +5391,8 @@
                               <v-text-field
                                 v-model="computedDateFormattedCot1DateObserved"
                                 append-icon="mdi-calendar"
-                                readonly
-                                :disabled="ifTeacher"
+                                
+                                :readonly="ifTeacher"
                                 :rules="required"
                                 v-bind="attrs"
                                 v-on="on"
@@ -4960,8 +5423,8 @@
                               <v-text-field
                                 v-model="computedDateFormattedCot2DateObserved"
                                 append-icon="mdi-calendar"
-                                readonly
-                                :disabled="ifTeacher"
+                                
+                                :readonly="ifTeacher"
                                 :rules="required"
                                 v-bind="attrs"
                                 v-on="on"
@@ -4984,11 +5447,12 @@
                     </td>
                     <td id="tdata" colspan="2" rowspan="1">
                       <v-text-field
-                        v-model="empFinalRating"
+                        v-model="calculateFinalRating"
                         placeholder=""
                         solo
+                        disabled
                         dense
-                        :disabled="ifTeacher"
+                        :readonly="ifTeacher"
                         class="text-center ml-auto mr-auto"
                       >
                       </v-text-field>
@@ -5009,7 +5473,8 @@
                         placeholder=""
                         solo
                         dense
-                        :disabled="ifTeacher"
+                        disabled
+                        :readonly="ifTeacher"
                         class="text-center ml-auto mr-auto"
                       >
                       </v-text-field>
@@ -5021,26 +5486,27 @@
                 <div style="margin-left: 350px">
                   <v-col class="pa-0">
                     <h5 class="pa-2" style="margin-left: 70px">
-                      Approving Authority
+                      Approving Authority  <span class="red--text text--lighten-1">*</span>
                     </h5>
 
                     <v-text-field
                       v-model="part1ApprovingAuthority"
                       placeholder="Enter Approving Authority"
                       solo
-                      :disabled="ifTeacher"
+                      :readonly="ifTeacher"
                       dense
                       class="mb-0"
                       style="width: 300px"
                     >
                     </v-text-field>
                     <v-divider style="width: 300px"></v-divider>
+                    
                     <v-select
                       :items="approvingAuthorityPosition"
                       v-model="approvingAuthPosition"
                       label=""
                       dense
-                      :disabled="ifTeacher"
+                      :readonly="ifTeacher"
                       solo
                       style="width: 300px"
                       class="text-center pt-6"
@@ -5063,7 +5529,7 @@
             <v-btn
               @click="finalizePart1"
               :loading="loading"
-              :disabled="loading"
+              :readonly="loading"
               class="ml-auto mr-auto mt-5 text-center d-block"
               height="50px"
               >Finalize Part1</v-btn
@@ -5107,7 +5573,7 @@
                               color="black"
                               v-model="selfManagement1"
                               hide-details
-                              :disabled="ifAdmin"
+                              :readonly="ifAdmin"
                             ></v-checkbox>
 
                             <v-checkbox
@@ -5117,7 +5583,7 @@
                               color="black"
                               v-model="selfManagement2"
                               hide-details
-                              :disabled="ifAdmin"
+                              :readonly="ifAdmin"
                             ></v-checkbox>
 
                             <v-checkbox
@@ -5126,7 +5592,7 @@
                               color="black"
                               v-model="selfManagement3"
                               hide-details
-                              :disabled="ifAdmin"
+                              :readonly="ifAdmin"
                             ></v-checkbox>
 
                             <v-checkbox
@@ -5135,7 +5601,7 @@
                               color="black"
                               v-model="selfManagement4"
                               hide-details
-                              :disabled="ifAdmin"
+                              :readonly="ifAdmin"
                             ></v-checkbox>
 
                             <v-checkbox
@@ -5144,7 +5610,7 @@
                               color="black"
                               v-model="selfManagement5"
                               hide-details
-                              :disabled="ifAdmin"
+                              :readonly="ifAdmin"
                             ></v-checkbox>
                           </div>
                         </v-card-text>
@@ -5159,7 +5625,7 @@
                               color="black"
                               v-model="teamwork1"
                               hide-details
-                              :disabled="ifAdmin"
+                              :readonly="ifAdmin"
                             ></v-checkbox>
                             <v-checkbox
                               label="2.Promotes collaboration and removes barrier to teamwork and goal
@@ -5167,7 +5633,7 @@
                               color="black"
                               v-model="teamwork2"
                               hide-details
-                              :disabled="ifAdmin"
+                              :readonly="ifAdmin"
                             ></v-checkbox>
                             <v-checkbox
                               label="3.Applies negotiation principles in arriving at win-win
@@ -5175,14 +5641,14 @@
                               color="black"
                               v-model="teamwork3"
                               hide-details
-                              :disabled="ifAdmin"
+                              :readonly="ifAdmin"
                             ></v-checkbox>
                             <v-checkbox
                               label="4. Drives consensus and team ownership of decisions."
                               color="black"
                               v-model="teamwork4"
                               hide-details
-                              :disabled="ifAdmin"
+                              :readonly="ifAdmin"
                             ></v-checkbox>
                             <v-checkbox
                               label=" 5. Works constructively and collaboratively with others and across
@@ -5190,7 +5656,7 @@
                               color="black"
                               v-model="teamwork5"
                               hide-details
-                              :disabled="ifAdmin"
+                              :readonly="ifAdmin"
                             ></v-checkbox>
 
                             <br />
@@ -5215,7 +5681,7 @@
                               color="black"
                               v-model="prof1"
                               hide-details
-                              :disabled="ifAdmin"
+                              :readonly="ifAdmin"
                             ></v-checkbox>
                             <v-checkbox
                               label=" 2.Practices ethical and professional behavior and conduct taking
@@ -5223,7 +5689,7 @@
                               color="black"
                               v-model="prof2"
                               hide-details
-                              :disabled="ifAdmin"
+                              :readonly="ifAdmin"
                             ></v-checkbox>
                             <v-checkbox
                               label=" 3.Maintains a professional image: being trustworthy, regularity of
@@ -5231,14 +5697,14 @@
                               color="black"
                               v-model="prof3"
                               hide-details
-                              :disabled="ifAdmin"
+                              :readonly="ifAdmin"
                             ></v-checkbox>
                             <v-checkbox
                               label=" 4.Makes personal sacrifices to meet the organization’s needs."
                               color="black"
                               v-model="prof4"
                               hide-details
-                              :disabled="ifAdmin"
+                              :readonly="ifAdmin"
                             ></v-checkbox>
                             <v-checkbox
                               label="  5.Acts with a sense of urgency and responsibility to meet the
@@ -5247,7 +5713,7 @@
                               color="black"
                               v-model="prof5"
                               hide-details
-                              :disabled="ifAdmin"
+                              :readonly="ifAdmin"
                             ></v-checkbox>
                           </div>
                         </v-card-text>
@@ -5263,7 +5729,7 @@
                               color="black"
                               v-model="service1"
                               hide-details
-                              :disabled="ifAdmin"
+                              :readonly="ifAdmin"
                             ></v-checkbox>
                             <v-checkbox
                               label="  2. Takes personal responsibility for dealing with and/or
@@ -5271,7 +5737,7 @@
                               color="black"
                               v-model="service2"
                               hide-details
-                              :disabled="ifAdmin"
+                              :readonly="ifAdmin"
                             ></v-checkbox>
                             <v-checkbox
                               label=" 3. Initiates activities that promote advocacy for men and women
@@ -5279,7 +5745,7 @@
                               color="black"
                               v-model="service3"
                               hide-details
-                              :disabled="ifAdmin"
+                              :readonly="ifAdmin"
                             ></v-checkbox>
                             <v-checkbox
                               label=" 4. Participates in updating office vision, mission, mandates and
@@ -5288,7 +5754,7 @@
                               color="black"
                               v-model="service4"
                               hide-details
-                              :disabled="ifAdmin"
+                              :readonly="ifAdmin"
                             ></v-checkbox>
                             <v-checkbox
                               label=" 5. Develops and adopts service improvement program through
@@ -5297,7 +5763,7 @@
                               color="black"
                               v-model="service5"
                               hide-details
-                              :disabled="ifAdmin"
+                              :readonly="ifAdmin"
                             ></v-checkbox>
 
                             <br /><br />
@@ -5322,7 +5788,7 @@
                               color="black"
                               v-model="results1"
                               hide-details
-                              :disabled="ifAdmin"
+                              :readonly="ifAdmin"
                             ></v-checkbox>
                             <v-checkbox
                               label=" 2. Avoids rework, mistakes and wastage through effective work
@@ -5331,7 +5797,7 @@
                               color="black"
                               v-model="results2"
                               hide-details
-                              :disabled="ifAdmin"
+                              :readonly="ifAdmin"
                             ></v-checkbox>
                             <v-checkbox
                               label=" 3. Delivers error-free outputs most of the time by conforming to
@@ -5343,7 +5809,7 @@
                               color="black"
                               v-model="results3"
                               hide-details
-                              :disabled="ifAdmin"
+                              :readonly="ifAdmin"
                             ></v-checkbox>
                             <v-checkbox
                               label=" 4. Expresses a desire to do better and may express frustration at
@@ -5353,7 +5819,7 @@
                               color="black"
                               v-model="results4"
                               hide-details
-                              :disabled="ifAdmin"
+                              :readonly="ifAdmin"
                             ></v-checkbox>
                             <v-checkbox
                               label="5. Makes specific changes in the system or in own work methods to
@@ -5364,7 +5830,7 @@
                               color="black"
                               v-model="results5"
                               hide-details
-                              :disabled="ifAdmin"
+                              :readonly="ifAdmin"
                             ></v-checkbox>
                           </div>
                         </v-card-text>
@@ -5382,7 +5848,7 @@
                               color="black"
                               v-model="innovation1"
                               hide-details
-                              :disabled="ifAdmin"
+                              :readonly="ifAdmin"
                             ></v-checkbox>
                             <v-checkbox
                               label=" 2. Demonstrates an ability to think “beyond the box”. Continuously
@@ -5392,7 +5858,7 @@
                               color="black"
                               v-model="innovation2"
                               hide-details
-                              :disabled="ifAdmin"
+                              :readonly="ifAdmin"
                             ></v-checkbox>
                             <v-checkbox
                               label=" 3. Promotes a creative climate and inspires co-workers to develop
@@ -5401,7 +5867,7 @@
                               color="black"
                               v-model="innovation3"
                               hide-details
-                              :disabled="ifAdmin"
+                              :readonly="ifAdmin"
                             ></v-checkbox>
                             <v-checkbox
                               label=" 4. Translates creative thinking into tangible changes and
@@ -5410,7 +5876,7 @@
                               color="black"
                               v-model="innovation4"
                               hide-details
-                              :disabled="ifAdmin"
+                              :readonly="ifAdmin"
                             ></v-checkbox>
                             <v-checkbox
                               label=" 5. Uses ingenious methods to accomplish responsibilities.
@@ -5420,7 +5886,7 @@
                               color="black"
                               v-model="innovation5"
                               hide-details
-                              :disabled="ifAdmin"
+                              :readonly="ifAdmin"
                             ></v-checkbox>
 
                             <br /><br />
@@ -5431,6 +5897,16 @@
                     </v-flex>
                   </v-col>
                 </v-row>
+                <v-alert v-if="alert2==true"
+                  type="error"
+                  width="fit-content"
+                
+                  dense
+                  class=" ma-6 ml-auto mr-auto mt-5 text-center d-block"
+              height="50px"
+                  :value="alert2"
+                  >Check at least one for each competency</v-alert
+                >
               </v-container>
 
               <br />
@@ -5449,8 +5925,10 @@
               <v-btn
                 @click="finalizePart2"
                 :loading="loading"
-                :disabled="loading"
-                class="text-center justify-content-center"
+                :readonly="loading"
+                class="ml-auto mr-auto text-center ma-6 ml-auto mr-auto mt-5 text-center d-block"
+              
+              height="50px"
                 >Finalize Part2</v-btn
               >
               <!-- <div class="pa-2" align="center">
@@ -5463,4648 +5941,2637 @@
 
           <!-- START OF Part 1 Content -->
 
-          <v-tab ref="#tab3">Part 1 - Proficient</v-tab>
-
+          <v-tab>Part 1 - Proficient</v-tab>
           <v-tab-item>
-            <div id=" encodingPart1 ">
-              <v-app id="encodingContent">
-                <v-container class="grey lighten-5" style="height: 100%">
-                  <v-card
-                    class="pa-2 text-center"
-                    color="grey lighten-2"
-                    outlined
-                    tile
+            <v-container fluid id="printMePart1">
+              <table id="table" style="width: 100%">
+                <tr class="row1">
+                  <td
+                    id="tdata"
+                    colspan="6"
+                    class="pt-4"
+                    style="background-color: #ddd9c3"
                   >
-                    <b
-                      >INDIVIDUAL PERFORMANCE COMMITMENT AND REVIEW FORM (IPCRF)
-                      for Teacher I-III, SPET I-IV, Special Science Teacher
-                      I-II</b
-                    >
-                  </v-card>
-
-                  <v-row no-gutters>
-                    <v-col v-for="n in 2" :key="n" class="">
-                      <v-card
-                        v-if="n === 1"
-                        class="pa-4"
-                        outlined
-                        tile
-                        style="height: 220px"
+                    <p style="text-align: center">
+                      <b
+                        >INDIVIDUAL PERFORMANCE COMMITMENT AND REVIEW FORM
+                        (IPCRF) for Teacher I-III, SPET I-IV, Special Science
+                        Teacher I-II</b
                       >
-                        <tr>
-                          <td colspan="3" style="text-align: left">
-                            <v-subheader>
-                              Name of Employee :
-                              <b class="ml-10">&nbsp;{{ empName }} </b>
-                            </v-subheader>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td colspan="3" style="text-align: left">
-                            <v-subheader> Position: </v-subheader>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td colspan="3" style="text-align: left">
-                            <v-subheader>
-                              Bureau/Center/Service/Division:</v-subheader
-                            >
-                          </td>
-                          <v-row> </v-row>
-                        </tr>
-                        <tr>
-                          <td colspan="3" style="text-align: left">
-                            <v-subheader> Rating Period: </v-subheader>
-                          </td>
-                        </tr>
-                      </v-card>
-
-                      <v-card
-                        v-else-if="n === 2"
-                        class="pa-4"
-                        outlined
-                        tile
-                        style="height: 220px"
-                      >
-                        <tr>
-                          <td colspan="3" style="text-align: left">
-                            <v-subheader>Name of Rater: </v-subheader>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td colspan="3" style="text-align: left">
-                            <v-subheader> Position: </v-subheader>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td colspan="3" style="text-align: left">
-                            <v-subheader> Date of Review:</v-subheader>
-                          </td>
-                        </tr>
-                      </v-card>
-                    </v-col>
-                  </v-row>
-                  <v-card
-                    class="pa-2 text-center"
-                    color="grey lighten-2"
-                    outlined
-                    tile
-                  >
-                    <b>TO BE FILLED OUT DURING PLANNING </b>
-                  </v-card>
-                  <!-- ePart2 row 1 -->
-
-                  <!-- <v-col no-gutters class="text-center" >
-                <template v-for="n in 15">
-                  <v-row :key="n" v-if="n === 1">
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h5>MFOs</h5></v-card
-                    >
-                  </v-row>
-                  <v-row :key="n" v-if="n === 2">
-                    <v-card class="pa-2 pt-4" outlined tile>
-                      <h5>MFOs</h5></v-card
-                    >
-                  </v-row>
-                </template>
-                
-              </v-col>
-               -->
-
-                  <!-- first row -->
-
-                  <!-- START OF MFO COLUMN -->
-                  <v-row class="text-center">
-                    <div class="ePart1">
-                      <template v-for="n in 15">
-                        <v-col :key="n" v-if="n === 1" class="ePartCol1">
-                          <v-card class="pa-2 pt-4" outlined tile>
-                            <h5>
-                              MFOs <br />
-                              <br /></h5
-                          ></v-card>
-
-                          <!-- END OF MFO COLUMN -->
-
-                          <!-- START OF BASIC EDUCATION COLUMN -->
-                          <v-card
-                            class="pa-2 pt-4"
-                            style="height: 97.05%; width: 100px"
-                            outlined
-                            tile
-                          >
-                            <h5>Basic Education Services</h5></v-card
-                          >
-                        </v-col>
-
-                        <v-col
-                          :key="n"
-                          v-else-if="n === 2"
-                          class="ePartCol2"
-                          style="margin-left: -25px"
-                        >
-                          <v-card
-                            class="pa-2 pt-4"
-                            style="width: 180px"
-                            outlined
-                            tile
-                          >
-                            <h5>
-                              KRAs <br />
-                              <br />
-                            </h5>
-                          </v-card>
-                          <div style="text-align: left">
-                            <v-card
-                              class="pa-2 pt-4"
-                              style="height: 520px"
-                              outlined
-                              tile
-                            >
-                              <h5>1. Content Knowledge and Pedagogy</h5>
-                            </v-card>
-                            <v-card
-                              class="pa-2 pt-4"
-                              style="height: 503px"
-                              outlined
-                              tile
-                            >
-                              <h5>
-                                2. Diversity of Learners and Assessment and
-                                Reporting
-                              </h5>
-                            </v-card>
-                            <v-card
-                              class="pa-2 pt-4"
-                              style="height: 291px"
-                              outlined
-                              tile
-                            >
-                              <h5>3. Curriculum and Planning</h5>
-                            </v-card>
-                            <v-card
-                              class="pa-2 pt-4"
-                              style="height: 661px"
-                              outlined
-                              tile
-                            >
-                              <h5>
-                                4. Community Linkages and Professional
-                                Engagement and Personal Growth and Professional
-                                Development
-                              </h5>
-                            </v-card>
-                            <v-card
-                              class="pa-2 pt-4"
-                              style="height: 217px"
-                              outlined
-                              tile
-                            >
-                              <h5>5. Plus Factor</h5>
-                            </v-card>
-                          </div>
-                        </v-col>
-
-                        <!-- END OF BASIC EDUCATION COLUMN -->
-                        <!-- START OF OBJECTIVES COLUMN -->
-
-                        <v-col
-                          :key="n"
-                          v-else-if="n === 3"
-                          class="ePartCol3"
-                          style="margin-left: -25px"
-                        >
-                          <v-card
-                            class="pa-2 pt-4"
-                            outlined
-                            tile
-                            style="width: 300px"
-                          >
-                            <h5>
-                              Objectives<br />
-                              <br />
-                            </h5>
-                          </v-card>
-                          <div style="text-align: center">
-                            <v-card
-                              class="pa-2 pt-4"
-                              style="height: 150px"
-                              outlined
-                              tile
-                            >
-                              <h5 class="font-weight-regular">
-                                1. Applied knowledge of content within <br />
-                                and across curriculum teaching areas.
-                              </h5>
-                              <br />
-                            </v-card>
-
-                            <v-card
-                              class="pa-2 pt-4"
-                              style="height: 180px"
-                              outlined
-                              tile
-                            >
-                              <h5 class="font-weight-regular">
-                                2. Ensured the positive use of ICT to facilitate
-                                the teaching and learning process
-                              </h5>
-                              <br />
-                            </v-card>
-                            <v-card
-                              class="pa-2 pt-4"
-                              style="height: 190px"
-                              outlined
-                              tile
-                            >
-                              <h5 class="font-weight-regular">
-                                3. Applied a range of teaching strategies to
-                                develop critical and creative thinking, as well
-                                as other higher-order thinking skills.
-                              </h5>
-                              <br />
-                            </v-card>
-                            <v-card
-                              class="pa-2 pt-8"
-                              style="height: 185px"
-                              outlined
-                              tile
-                            >
-                              <h5 class="font-weight-regular">
-                                4. Established a learnercentered culture by
-                                using teaching strategies that respond to their
-                                linguistic, cultural, socioeconomic and
-                                religious backgrounds
-                              </h5>
-                              <br />
-                            </v-card>
-
-                            <v-card
-                              class="pa-2"
-                              style="height: 146px"
-                              outlined
-                              tile
-                            >
-                              <h5 class="font-weight-regular">
-                                5. Planned and delivered teaching strategies
-                                that are responsive to the special educational
-                                needs of learners in difficult circumstances*,
-                                including: geographic isolation; chronic
-                                illness; displacement due to armed conflict,
-                                urban resettlement or disasters; child abuse and
-                                child labor practices
-                              </h5>
-                              <br />
-                            </v-card>
-                            <v-card
-                              class="pa-2 pt-4"
-                              style="height: 172px"
-                              outlined
-                              tile
-                            >
-                              <h5 class="font-weight-regular">
-                                6. Used strategies for providing timely,
-                                accurate and constructive feedback to improve
-                                learner performance
-                              </h5>
-                              <br />
-                            </v-card>
-                            <v-card
-                              class="pa-1"
-                              style="height: 145px"
-                              outlined
-                              tile
-                            >
-                              <h5 class="font-weight-regular">
-                                7. Selected, developed, organized and used
-                                appropriate teaching and learning resources,
-                                including ICT, to address learning goals
-                              </h5>
-                              <br />
-                            </v-card>
-                            <v-card
-                              class="pa-2 pt-4"
-                              style="height: 146px"
-                              outlined
-                              tile
-                            >
-                              <h5 class="font-weight-regular">
-                                8. Set achievable and appropriate learning
-                                outcomes that are aligned with learning
-                                competencies
-                              </h5>
-                              <br />
-                            </v-card>
-
-                            <v-card
-                              class="pa-2 pt-4"
-                              style="height: 217px"
-                              outlined
-                              tile
-                            >
-                              <h5 class="font-weight-regular">
-                                9. Built relationships with parents/ guardians
-                                and the wider school community to facilitate
-                                involvement in the educative process
-                              </h5>
-                              <br />
-                            </v-card>
-                            <v-card
-                              class="pa-2 pt-4"
-                              style="height: 247px"
-                              outlined
-                              tile
-                            >
-                              <h5 class="font-weight-regular">
-                                10. Participated in professional networks to
-                                share knowledge and to enhance practice
-                              </h5>
-                              <br />
-                            </v-card>
-                            <v-card
-                              class="pa-2 pt-4"
-                              style="height: 197px"
-                              outlined
-                              tile
-                            >
-                              <h5 class="font-weight-regular">
-                                11. Developed a personal improvement plan based
-                                on reflection of one’s practice and ongoing
-                                professional learning
-                              </h5>
-                              <br />
-                            </v-card>
-                            <v-card
-                              class="pa-2 pt-4"
-                              style="height: 217px"
-                              outlined
-                              tile
-                            >
-                              <h5 class="font-weight-regular">
-                                12. Performed various related works/ activities
-                                that contribute to the teaching-learning process
-                              </h5>
-                              <br />
-                            </v-card>
-                          </div>
-                        </v-col>
-                        <!-- END OF OBJECTIVES COLUMN -->
-                        <!-- START OF TIMELINE COLUMN -->
-
-                        <v-col
-                          :key="n"
-                          v-else-if="n === 4"
-                          class="ePartCol4"
-                          style="margin-left: -25px"
-                        >
-                          <v-card
-                            class="pa-2 pt-4"
-                            style="width: 100px"
-                            outlined
-                            tile
-                          >
-                            <h5>
-                              Timeline <br />
-                              <br />
-                            </h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4 timeline"
-                            style="height: 150px"
-                            v-model="timeline1"
-                            outlined
-                            tile
-                          >
-                            <h5 class="timeline01"></h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4 timeline"
-                            style="height: 180px"
-                            v-model="timeline2"
-                            outlined
-                            tile
-                          >
-                            <h5 class="timeline02"></h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4 timeline"
-                            style="height: 190px"
-                            v-model="timeline3"
-                            outlined
-                            tile
-                          >
-                            <h5 class="timeline03"></h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4 timeline"
-                            style="height: 185px"
-                            v-model="timeline4"
-                            outlined
-                            tile
-                          >
-                            <h5 class="timeline04"></h5>
-                          </v-card>
-
-                          <v-card
-                            class="pa-2 pt-4 timeline"
-                            style="height: 146px"
-                            v-model="timeline5"
-                            outlined
-                            tile
-                          >
-                            <h5 class="timeline05"></h5>
-                          </v-card>
-
-                          <v-card
-                            class="pa-2 pt-4 timeline"
-                            style="height: 172px"
-                            v-model="timeline6"
-                            outlined
-                            tile
-                          >
-                            <h5 class="timeline06"></h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4 timeline"
-                            style="height: 145px"
-                            v-model="timeline7"
-                            outlined
-                            tile
-                          >
-                            <h5 class="timeline07"></h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4 timeline"
-                            style="height: 146px"
-                            v-model="timeline8"
-                            outlined
-                            tile
-                          >
-                            <h5 class="timeline08"></h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4 timeline"
-                            style="height: 217px"
-                            v-model="timeline9"
-                            outlined
-                            tile
-                          >
-                            <h5 class="timeline09"></h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4 timeline"
-                            style="height: 247px"
-                            v-model="timeline10"
-                            outlined
-                            tile
-                          >
-                            <h5 class="timeline010"></h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4 timeline"
-                            style="height: 197px"
-                            v-model="timeline11"
-                            outlined
-                            tile
-                          >
-                            <h5 class="timeline11"></h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4 timeline"
-                            style="height: 217px"
-                            v-model="timeline12"
-                            outlined
-                            tile
-                          >
-                            <h5 class="timeline12"></h5>
-                          </v-card>
-                        </v-col>
-                        <v-col
-                          :key="n"
-                          v-else-if="n === 5"
-                          class="ePartCol5"
-                          style="margin-left: -25px"
-                        >
-                          <v-card
-                            class="pa-2 pt-4"
-                            style="width: 140px"
-                            outlined
-                            tile
-                          >
-                            <h5>
-                              Weight per KRA<br />
-                              <br />
-                            </h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4 kra1"
-                            style="height: 520px"
-                            v-model="kra_1"
-                            outlined
-                            tile
-                          >
-                            <h5 class="font-weight-regular">
-                              <br />24.00%<br /><br />
-                            </h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4 kra2"
-                            style="height: 503px"
-                            v-model="kra_2"
-                            outlined
-                            tile
-                          >
-                            <h5 class="font-weight-regular">
-                              <br />24.00%<br /><br /><br />
-                            </h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4 kra3"
-                            style="height: 291px"
-                            v-model="kra_3"
-                            outlined
-                            tile
-                          >
-                            <h5 class="font-weight-regular">
-                              <br />16.00%<br /><br /><br />
-                            </h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4 kra4"
-                            style="height: 661px"
-                            v-model="kra_4"
-                            outlined
-                            tile
-                          >
-                            <h5 class="font-weight-regular">
-                              <br /><br />24.00%<br /><br /><br />
-                            </h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4 kra5"
-                            style="height: 217px"
-                            v-model="kra_5"
-                            outlined
-                            tile
-                          >
-                            <h5 class="font-weight-regular">
-                              <br />12.00%<br /><br /><br />
-                            </h5>
-                          </v-card>
-                        </v-col>
-
-                        <v-col
-                          :key="n"
-                          v-else-if="n === 6"
-                          class="ePartCol6"
-                          style="margin-left: -25px"
-                        >
-                          <v-card
-                            class="pa-2 pt-4"
-                            style="width: 100px"
-                            outlined
-                            tile
-                          >
-                            <h5>
-                              QET <br />
-                              <br /></h5
-                          ></v-card>
-                          <v-card
-                            class="pa-2 pt-4 qet"
-                            style="height: 86px"
-                            outlined
-                            tile
-                          >
-                            <h5 class="font-weight-regular">
-                              <br />
-                              Quality<br />
-                              <br /></h5></v-card
-                          ><v-card class="pa-1" outlined tile>
-                            <h5 class="font-weight-regular">
-                              Efficiency
-                            </h5></v-card
-                          ><v-card class="pa-1 pb-2" outlined tile>
-                            <h5 class="font-weight-regular">
-                              Timeliness
-                            </h5></v-card
-                          >
-                          <v-card
-                            class="pa-2 pt-4 qet"
-                            style="height: 125px"
-                            outlined
-                            tile
-                          >
-                            <h5 class="font-weight-regular">
-                              Quality <br /><br />
-                              <br /></h5
-                          ></v-card>
-                          <v-card class="pa-1" outlined tile>
-                            <h5 class="font-weight-regular">
-                              Efficiency
-                            </h5></v-card
-                          >
-                          <v-card class="pa-1" outlined tile>
-                            <h5 class="font-weight-regular">
-                              Timeliness
-                            </h5></v-card
-                          >
-                          <v-card
-                            class="pa-2 pt-4 qet"
-                            style="height: 126px"
-                            outlined
-                            tile
-                          >
-                            <h5 class="font-weight-regular">
-                              Quality <br /><br />
-                              <br /></h5
-                          ></v-card>
-                          <v-card class="pa-1" outlined tile>
-                            <h5 class="font-weight-regular">
-                              Efficiency
-                            </h5></v-card
-                          >
-                          <v-card class="pa-1" outlined tile>
-                            <h5 class="font-weight-regular">
-                              Timeliness
-                            </h5></v-card
-                          >
-                          <v-card
-                            class="pa-2 pt-4 qet"
-                            style="height: 125px"
-                            outlined
-                            tile
-                          >
-                            <h5 class="font-weight-regular">
-                              Quality <br /><br />
-                              <br /></h5></v-card
-                          ><v-card class="pa-1" outlined tile>
-                            <h5 class="font-weight-regular">
-                              Efficiency
-                            </h5></v-card
-                          ><v-card class="pa-1" outlined tile>
-                            <h5 class="font-weight-regular">
-                              Timeliness
-                            </h5></v-card
-                          >
-                          <v-card class="pa-2 pt-4 qet" outlined tile>
-                            <h5 class="font-weight-regular">
-                              Quality <br /><br />
-                              <br /></h5
-                          ></v-card>
-                          <v-card class="pa-1" outlined tile>
-                            <h5 class="font-weight-regular">
-                              Efficiency
-                            </h5></v-card
-                          >
-                          <v-card class="pa-1" outlined tile>
-                            <h5 class="font-weight-regular">
-                              Timeliness
-                            </h5></v-card
-                          >
-                          <v-card class="pa-2 pt-4 qet" outlined tile>
-                            <h5 class="font-weight-regular">
-                              Quality <br /><br />
-                              <br /></h5
-                          ></v-card>
-                          <v-card class="pa-1" outlined tile>
-                            <h5 class="font-weight-regular">
-                              Efficiency
-                            </h5></v-card
-                          >
-                          <v-card
-                            class="pa-1"
-                            style="height: 56px"
-                            outlined
-                            tile
-                          >
-                            <h5 class="font-weight-regular">
-                              Timeliness
-                            </h5></v-card
-                          >
-                          <v-card
-                            class="pa-2 pt-4 qet"
-                            style="height: 86px"
-                            outlined
-                            tile
-                          >
-                            <h5 class="font-weight-regular">
-                              Quality <br /><br />
-                              <br /></h5></v-card
-                          ><v-card class="pa-1" outlined tile>
-                            <h5 class="font-weight-regular">
-                              Efficiency
-                            </h5></v-card
-                          ><v-card class="pa-1" outlined tile>
-                            <h5 class="font-weight-regular">
-                              Timeliness
-                            </h5></v-card
-                          >
-                          <v-card class="pa-2 pt-4 qet" outlined tile>
-                            <h5 class="font-weight-regular">
-                              Quality <br /><br />
-                              <br /></h5
-                          ></v-card>
-                          <v-card class="pa-1" outlined tile>
-                            <h5 class="font-weight-regular">
-                              Efficiency
-                            </h5></v-card
-                          >
-                          <v-card class="pa-1" outlined tile>
-                            <h5 class="font-weight-regular">
-                              Timeliness
-                            </h5></v-card
-                          >
-                          <v-card
-                            class="pa-6 pt-4 qet"
-                            style="height: 125px"
-                            outlined
-                            tile
-                          >
-                            <h5 class="font-weight-regular">
-                              Quality <br /><br />
-                              <br /></h5
-                          ></v-card>
-                          <v-card
-                            class="pa-4"
-                            style="height: 46px"
-                            outlined
-                            tile
-                          >
-                            <h5 class="font-weight-regular">
-                              Efficiency
-                            </h5></v-card
-                          >
-                          <v-card
-                            class="pa-2"
-                            style="height: 46px"
-                            outlined
-                            tile
-                          >
-                            <h5 class="font-weight-regular">
-                              Timeliness
-                            </h5></v-card
-                          >
-                          <v-card
-                            class="pa-2 pt-4 qet"
-                            style="height: 136px"
-                            outlined
-                            tile
-                          >
-                            <h5 class="font-weight-regular">
-                              Quality <br /><br />
-                              <br /></h5></v-card
-                          ><v-card
-                            class="pa-4"
-                            style="height: 65px"
-                            outlined
-                            tile
-                          >
-                            <h5 class="font-weight-regular">
-                              Efficiency
-                            </h5></v-card
-                          ><v-card
-                            class="pa-3"
-                            style="height: 46px"
-                            outlined
-                            tile
-                          >
-                            <h5 class="font-weight-regular">
-                              Timeliness
-                            </h5></v-card
-                          >
-                          <v-card class="pa-2 pt-4 qet" outlined tile>
-                            <h5 class="font-weight-regular">
-                              Quality <br /><br />
-                              <br /></h5
-                          ></v-card>
-                          <v-card
-                            class="pa-4"
-                            style="height: 65px"
-                            outlined
-                            tile
-                          >
-                            <h5 class="font-weight-regular">
-                              Efficiency
-                            </h5></v-card
-                          >
-                          <v-card
-                            class="pa-4"
-                            style="height: 46px"
-                            outlined
-                            tile
-                          >
-                            <h5 class="font-weight-regular">
-                              Timeliness
-                            </h5></v-card
-                          >
-                          <v-card
-                            class="pa-6 qet"
-                            style="height: 125px"
-                            outlined
-                            tile
-                          >
-                            <h5 class="font-weight-regular">
-                              Quality <br /><br />
-                              <br /></h5
-                          ></v-card>
-                          <v-card
-                            class="pa-4"
-                            style="height: 46px"
-                            outlined
-                            tile
-                          >
-                            <h5 class="font-weight-regular">
-                              Efficiency
-                            </h5></v-card
-                          >
-                          <v-card
-                            class="pa-4"
-                            style="height: 46px"
-                            outlined
-                            tile
-                          >
-                            <h5 class="font-weight-regular">
-                              Timeliness
-                            </h5></v-card
-                          >
-                        </v-col>
-                        <!-- START OF OUTSTANDING -->
-                        <v-col
-                          :key="n"
-                          v-else-if="n === 7"
-                          class="ePartCol7"
-                          style="margin-left: -25px"
-                        >
-                          <v-card
-                            class="pa-2 pt-4 part1Outstanding"
-                            style="width: 290px"
-                            outlined
-                            tile
-                          >
-                            <h5>
-                              Outstanding <br />
-                              5
-                              <br />
-                            </h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4 part1Outstanding"
-                            outlined
-                            tile
-                          >
-                            <h5>
-                              Demonstrated Level 7 in Objective 1 as shown in
-                              COT rating sheets/interobserver agreement forms
-                              <br />
-                            </h5>
-                          </v-card>
-                          <v-card
-                            class="pa-4"
-                            style="height: 64px"
-                            outlined
-                            tile
-                          >
-                            <h5>2 blank</h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4 part1Outstanding"
-                            outlined
-                            tile
-                          >
-                            <h5>
-                              Ensured that the ICT used redefine and transform
-                              learning experiences and are documented properly
-                              and consistently using any referencing style as
-                              shown in the submitted learning material <br />
-                            </h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4"
-                            style="height: 60px"
-                            outlined
-                            tile
-                          >
-                            <h5>2 black <br /></h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4 part1Outstanding"
-                            outlined
-                            tile
-                          >
-                            <h5>
-                              Applied teaching strategies that challenge
-                              learners to draw conclusions and justify their
-                              thinking or put parts together to promote deeper
-                              understanding of ideas learned as shown in the
-                              submitted learning material
-                              <br />
-                            </h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4"
-                            style="height: 59px"
-                            outlined
-                            tile
-                          >
-                            <h5>2black <br /></h5>
-                          </v-card>
-
-                          <v-card
-                            class="pa-2 pt-4 part1Outstanding"
-                            outlined
-                            tile
-                          >
-                            <h5>
-                              Utilized effective teaching strategies that are
-                              appropriate in responding to learners’ linguistic,
-                              cultural, socioeconomic, or religious backgrounds
-                              at an individual level* as shown in the submitted
-                              learning material <br />
-                            </h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4"
-                            style="height: 60px"
-                            outlined
-                            tile
-                          >
-                            <h5>2 black <br /></h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4 part1Outstanding"
-                            outlined
-                            tile
-                          >
-                            <h5>
-                              Demonstrated Level 7 in Objective 5 as shown in
-                              COT rating sheets/interobserver agreement forms
-                              <br />
-                            </h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4"
-                            style="height: 60px"
-                            outlined
-                            tile
-                          >
-                            <h5>2black <br /></h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4 part1Outstanding"
-                            outlined
-                            tile
-                          >
-                            <h5>
-                              Provided learners with accurate, and specific and
-                              directed constructive feedback* as shown in the
-                              evidence submitted <br />
-                            </h5>
-                          </v-card>
-                          <v-card
-                            class="pa-1"
-                            style="height: 30px"
-                            outlined
-                            tile
-                          >
-                            <h5>efficiency black <br /></h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 part1Outstanding"
-                            style="height: 56px"
-                            outlined
-                            tile
-                          >
-                            <h5>
-                              MOV submitted shows feedback given within 5
-                              working days from submission** <br />
-                            </h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4 part1Outstanding"
-                            outlined
-                            tile
-                          >
-                            <h5>
-                              Demonstrated Level 7 in Objective 7 as shown in
-                              COT rating sheets/interobserver agreement forms
-                              <br />
-                            </h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4"
-                            style="height: 59px"
-                            outlined
-                            tile
-                          >
-                            <h5>2 black <br /></h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4 part1Outstanding"
-                            outlined
-                            tile
-                          >
-                            <h5>
-                              All of the learning outcomes set are aligned with
-                              the learning competencies as shown in the MOV
-                              submitted
-                              <br />
-                            </h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4"
-                            style="height: 60px"
-                            outlined
-                            tile
-                          >
-                            <h5>2 black <br /></h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4 part1Outstanding"
-                            outlined
-                            tile
-                          >
-                            <h5>
-                              Sustained engagement with parents/ guardians and/
-                              or wider school community to facilitate
-                              involvement in the educative process as evidenced
-                              by 2 or more of MOV no. 1 or 2 <br />
-                            </h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4 part1Outstanding"
-                            outlined
-                            tile
-                          >
-                            <h5>
-                              Submitted any 4 of the acceptable MOV*<br />
-                            </h5>
-                          </v-card>
-
-                          <v-card class="pa-2 pt-4" outlined tile>
-                            <h5>#4 1 Timeliness black <br /></h5>
-                          </v-card>
-
-                          <v-card
-                            class="pa-2 part1Outstanding"
-                            style="height: 136px"
-                            outlined
-                            tile
-                          >
-                            <h5>
-                              Participated in any professional network/ activity
-                              that requires output* and proof of implementation
-                              ** within the school to share knowledge and to
-                              enhance practice as evidenced by the submitted MOV
-                              <br />
-                            </h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4 part1Outstanding"
-                            style="height: 65px"
-                            outlined
-                            tile
-                          >
-                            <h5>
-                              Submitted 4 different kinds of acceptable
-                              MOV***<br />
-                            </h5>
-                          </v-card>
-                          <v-card class="pa-2 pt-4" outlined tile>
-                            <h5>#4.2 1 Timeliness black <br /></h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4 part1Outstanding"
-                            outlined
-                            tile
-                          >
-                            <h5>
-                              Updated the Development Plan and approved by the
-                              rater during Phase II of the RPMS cycle <br />
-                            </h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4 part1Outstanding"
-                            outlined
-                            tile
-                          >
-                            <h5>
-                              Submitted the IPCRF-DP with any 4 of the
-                              acceptable Supporting MOV* <br />
-                            </h5>
-                          </v-card>
-                          <v-card class="pa-2 pt-4" outlined tile>
-                            <h5>#4.3 1 Timeliness black <br /></h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4 part1Outstanding"
-                            style="height: 125px"
-                            outlined
-                            tile
-                          >
-                            <h5>
-                              Performed at least 1 related work/activity that
-                              contributed to the teaching-learning process
-                              beyond the school/ Community Learning Center (CLC)
-                              as evidenced by submitted MOV <br />
-                            </h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4 part1Outstanding"
-                            outlined
-                            tile
-                          >
-                            <h5>
-                              Submitted any 4 of the acceptable MOV* <br />
-                            </h5>
-                          </v-card>
-
-                          <v-card class="pa-2 pt-4" outlined tile>
-                            <h5>5.1 Timeliness Black<br /></h5>
-                          </v-card>
-                        </v-col>
-
-                        <!-- START OF Very Satisfactory  -->
-
-                        <v-col
-                          :key="n"
-                          v-if="n === 8"
-                          class="ePart8"
-                          style="margin-left: -25px"
-                        >
-                          <v-card
-                            class="pa-2 pt-4"
-                            style="width: 290px"
-                            outlined
-                            tile
-                          >
-                            <h5>
-                              Very Satisfactory <br />
-
-                              4
-                              <br />
-                            </h5>
-                          </v-card>
-                          <v-card class="pa-2 pt-4" outlined tile>
-                            <h5>
-                              Demonstrated Level 6 in Objective 1 as shown in
-                              COT rating sheets/interobserver agreement forms
-                              <br />
-                            </h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4"
-                            style="height: 64px"
-                            outlined
-                            tile
-                          >
-                            <h5>2 blank <br /></h5>
-                          </v-card>
-                          <v-card class="pa-2 pt-4" outlined tile>
-                            <h5>
-                              Ensured that the ICT used augment and enrich
-                              learning experiences and are documented properly
-                              and consistently using any referencing style as
-                              shown in the submitted learning material<br />
-                            </h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4"
-                            style="height: 60px"
-                            outlined
-                            tile
-                          >
-                            <h5>2 black <br /></h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4"
-                            style="height: 126px"
-                            outlined
-                            tile
-                          >
-                            <h5>
-                              Applied teaching strategies that require learners
-                              to make connections using ideas learned as shown
-                              in the submitted learning material
-                              <br />
-                            </h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4"
-                            style="height: 59px"
-                            outlined
-                            tile
-                          >
-                            <h5>2black <br /></h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4"
-                            style="height: 125px"
-                            outlined
-                            tile
-                          >
-                            <h5>
-                              Utilized effective teaching strategies that are
-                              appropriate in responding to learners’ linguistic,
-                              cultural, socioeconomic, or religious backgrounds
-                              at a group level* as shown in the submitted
-                              learning material
-                              <br />
-                            </h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4"
-                            style="height: 60px"
-                            outlined
-                            tile
-                          >
-                            <h5>2 black <br /></h5>
-                          </v-card>
-                          <v-card class="pa-2 pt-4" outlined tile>
-                            <h5>
-                              Demonstrated Level 6 in Objective 5 as shown in
-                              COT rating sheets/interobserver agreement forms<br />
-                            </h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4"
-                            style="height: 60px"
-                            outlined
-                            tile
-                          >
-                            <h5>2black <br /></h5>
-                          </v-card>
-                          <v-card class="pa-2 pt-4" outlined tile>
-                            <h5>
-                              Provided learners with accurate, and specific
-                              constructive feedback as shown in the evidence
-                              submitted
-                              <br />
-                            </h5>
-                          </v-card>
-                          <v-card
-                            class="pa-1"
-                            style="height: 30px"
-                            outlined
-                            tile
-                          >
-                            <h5>efficiency black <br /></h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2"
-                            style="height: 56px"
-                            outlined
-                            tile
-                          >
-                            <h5>
-                              MOV submitted shows feedback given within 6-10
-                              working days from submission**<br />
-                            </h5>
-                          </v-card>
-                          <v-card class="pa-2 pt-4" outlined tile>
-                            <h5>
-                              Demonstrated Level 6 in Objective 7 as shown in
-                              COT rating sheets/interobserver agreement forms
-                              <br />
-                            </h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4"
-                            style="height: 59px"
-                            outlined
-                            tile
-                          >
-                            <h5>2 black <br /></h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4"
-                            style="height: 86px"
-                            outlined
-                            tile
-                          >
-                            <h5>
-                              Majority of the learning outcomes set are aligned
-                              with the learning competencies as shown in the MOV
-                              submitted
-                              <br />
-                            </h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4"
-                            style="height: 60px"
-                            outlined
-                            tile
-                          >
-                            <h5>2 black <br /></h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4"
-                            style="height: 125px"
-                            outlined
-                            tile
-                          >
-                            <h5>
-                              Secured collaboration with parents/ guardians and/
-                              or wider school community to facilitate
-                              involvement in the educative process as evidenced
-                              by one MOV no. 1 or 2
-                              <br />
-                            </h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4"
-                            style="height: 46px"
-                            outlined
-                            tile
-                          >
-                            <h5>
-                              Submitted any 3 of the acceptable MOV*<br />
-                            </h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4"
-                            style="height: 46px"
-                            outlined
-                            tile
-                          >
-                            <h5>#4 1 Timeliness black <br /></h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2"
-                            style="height: 136px"
-                            outlined
-                            tile
-                          >
-                            <h5>
-                              Participated in any professional network/ activity
-                              that requires output* and proof of implementation
-                              ** within the department/grade level to share
-                              knowledge and to enhance practice as evidenced by
-                              the submitted MOV<br />
-                            </h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4"
-                            style="height: 65px"
-                            outlined
-                            tile
-                          >
-                            <h5>
-                              Submitted 3 different kinds of acceptable
-                              MOV***<br />
-                            </h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4"
-                            style="height: 46px"
-                            outlined
-                            tile
-                          >
-                            <h5>#4.2 1 Timeliness black <br /></h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4"
-                            style="height: 86px"
-                            outlined
-                            tile
-                          >
-                            <h5>
-                              Discussed progress on the Development Plan with
-                              the rater to check whether Development Needs were
-                              addressed
-                              <br />
-                            </h5>
-                          </v-card>
-                          <v-card class="pa-2 pt-4" outlined tile>
-                            <h5>
-                              Submitted the IPCRF-DP with any 3 of the
-                              acceptable Supporting MOV* <br />
-                            </h5>
-                          </v-card>
-                          <v-card class="pa-2 pt-4" outlined tile>
-                            <h5>#4.3 1 Timeliness black <br /></h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4"
-                            style="height: 125px"
-                            outlined
-                            tile
-                          >
-                            <h5>
-                              Performed at least 1 related work/activity that
-                              contributed to the teaching-learning process
-                              within the school/ Community Learning Center (CLC)
-                              as evidenced by submitted MOV <br />
-                            </h5>
-                          </v-card>
-                          <v-card class="pa-2 pt-4" outlined tile>
-                            <h5>
-                              Submitted any 3 of the acceptable MOV* <br />
-                            </h5>
-                          </v-card>
-
-                          <v-card class="pa-2 pt-4" outlined tile>
-                            <h5>5.1 Timeliness Black<br /></h5>
-                          </v-card>
-                        </v-col>
-                        <!-- END OF VERY Satisfactory -->
-
-                        <!-- START OF  Satisfactory -->
-                        <v-col
-                          :key="n"
-                          v-else-if="n === 9"
-                          class="ePartCol9"
-                          style="margin-left: -25px"
-                        >
-                          <v-card
-                            class="pa-2 pt-4"
-                            style="width: 290px"
-                            outlined
-                            tile
-                          >
-                            <h5>
-                              Satisfactory <br />
-
-                              3 <br />
-                            </h5>
-                          </v-card>
-                          <v-card class="pa-2 pt-4" outlined tile>
-                            <h5>
-                              Demonstrated Level 5 in Objective 1 as shown in
-                              COT rating sheets/interobserver agreement forms
-                              <br />
-                            </h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4"
-                            style="height: 64px"
-                            outlined
-                            tile
-                          >
-                            <h5>2 blank <br /></h5>
-                          </v-card>
-                          <v-card class="pa-2 pt-4" outlined tile>
-                            <h5>
-                              Ensured that the ICT used modify processes and
-                              improve learning experiences and are documented
-                              properly and consistently using any referencing
-                              style as shown in the submitted learning
-                              material<br />
-                            </h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4"
-                            style="height: 60px"
-                            outlined
-                            tile
-                          >
-                            <h5>2 black <br /></h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4"
-                            style="height: 126px"
-                            outlined
-                            tile
-                          >
-                            <h5>
-                              Applied teaching strategies that require learners
-                              to describe and explain ideas learned as shown in
-                              the submitted learning material
-                              <br />
-                            </h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4"
-                            style="height: 59px"
-                            outlined
-                            tile
-                          >
-                            <h5>2black <br /></h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4"
-                            style="height: 125px"
-                            outlined
-                            tile
-                          >
-                            <h5>
-                              Utilized an effective teaching strategy that is
-                              appropriate in responding to learners’ linguistic,
-                              cultural, socioeconomic, or religious backgrounds
-                              as shown in the submitted learning material<br />
-                            </h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4"
-                            style="height: 60px"
-                            outlined
-                            tile
-                          >
-                            <h5>2 black <br /></h5>
-                          </v-card>
-                          <v-card class="pa-2 pt-4" outlined tile>
-                            <h5>
-                              Demonstrated Level 5 in Objective 5 as shown in
-                              COT rating sheets/interobserver agreement forms<br />
-                            </h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4"
-                            style="height: 60px"
-                            outlined
-                            tile
-                          >
-                            <h5>2black <br /></h5>
-                          </v-card>
-                          <v-card class="pa-2 pt-4" outlined tile>
-                            <h5>
-                              Provided learners with accurate, and general
-                              constructive feedback as shown in the evidence
-                              submitted
-                              <br />
-                            </h5>
-                          </v-card>
-                          <v-card class="pa-1" outlined tile>
-                            <h5>efficiency black <br /></h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2"
-                            style="height: 56px"
-                            outlined
-                            tile
-                          >
-                            <h5>
-                              MOV submitted shows feedback given within 11-20
-                              working days from submission**<br />
-                            </h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4"
-                            style="height: 86px"
-                            outlined
-                            tile
-                          >
-                            <h5>
-                              Demonstrated Level 5 in Objective 7 as shown in
-                              COT rating sheets/interobserver agreement forms
-                              <br />
-                            </h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4"
-                            style="height: 59px"
-                            outlined
-                            tile
-                          >
-                            <h5>2 black <br /></h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4"
-                            style="height: 86px"
-                            outlined
-                            tile
-                          >
-                            <h5>
-                              Half of the learning outcomes set are aligned with
-                              the learning competencies as shown in the MOV
-                              submitted
-                              <br />
-                            </h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4"
-                            style="height: 60px"
-                            outlined
-                            tile
-                          >
-                            <h5>2 black <br /></h5>
-                          </v-card>
-                          <v-card class="pa-2 pt-4" outlined tile>
-                            <h5>
-                              Communicated with and obtained response from
-                              parents/ guardians and/ or wider school community
-                              to facilitate involvement in the educative process
-                              as evidenced by MOV No. 3 <br />
-                            </h5>
-                          </v-card>
-                          <v-card class="pa-2 pt-4" outlined tile>
-                            <h5>
-                              Submitted any 2 of the acceptable MOV*<br />
-                            </h5>
-                          </v-card>
-                          <v-card class="pa-2 pt-4" outlined tile>
-                            <h5>#4 1 Timeliness black <br /></h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4"
-                            style="height: 136px"
-                            outlined
-                            tile
-                          >
-                            <h5>
-                              Participated in any professional network/ activity
-                              that requires output* to share knowledge and to
-                              enhance practice as evidenced by the submitted
-                              MOV<br />
-                            </h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4"
-                            style="height: 65px"
-                            outlined
-                            tile
-                          >
-                            <h5>
-                              Submitted 2 different kinds of acceptable
-                              MOV***<br />
-                            </h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4"
-                            style="height: 46px"
-                            outlined
-                            tile
-                          >
-                            <h5>#4.2 1 Timeliness black <br /></h5>
-                          </v-card>
-                          <v-card
-                            class="pa-1"
-                            style="height: 86px"
-                            outlined
-                            tile
-                          >
-                            <h5>
-                              Accomplished the Development Plan from learning
-                              objectives up to resources needed to address
-                              Development Needs during Phase I of the RPMS
-                              cycle<br />
-                            </h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4"
-                            style="height: 65px"
-                            outlined
-                            tile
-                          >
-                            <h5>
-                              Submitted the IPCRF-DP with any 2 of the
-                              acceptable Supporting MOV* <br />
-                            </h5>
-                          </v-card>
-                          <v-card class="pa-2 pt-4" outlined tile>
-                            <h5>#4.3 1 Timeliness black <br /></h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4"
-                            style="height: 125px"
-                            outlined
-                            tile
-                          >
-                            <h5>
-                              Performed at least 1 related work/activity that
-                              contributed to the teaching-learning process
-                              within the learning area/ department as evidenced
-                              by submitted MOV<br />
-                            </h5>
-                          </v-card>
-                          <v-card class="pa-2 pt-4" outlined tile>
-                            <h5>
-                              Submitted any 2 of the acceptable MOV* <br />
-                            </h5>
-                          </v-card>
-
-                          <v-card class="pa-2 pt-4" outlined tile>
-                            <h5>5.1 Timeliness Black<br /></h5>
-                          </v-card>
-                        </v-col>
-
-                        <!-- END OF Satisfactory  -->
-                        <!-- START OF Unsatisfactory  -->
-                        <v-col
-                          :key="n"
-                          v-else-if="n === 10"
-                          class="ePartCol10"
-                          style="margin-left: -25px"
-                        >
-                          <v-card
-                            class="pa-2 pt-4"
-                            style="width: 290px"
-                            outlined
-                            tile
-                          >
-                            <h5>
-                              Unsatisfactory <br />
-                              2 <br />
-                            </h5>
-                          </v-card>
-
-                          <v-card class="pa-2 pt-4" outlined tile>
-                            <h5>
-                              Demonstrated Level 4 in Objective 1 as shown in
-                              COT rating sheets/interobserver agreement forms<br />
-                            </h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4"
-                            style="height: 64px"
-                            outlined
-                            tile
-                          >
-                            <h5>2 blank <br /></h5>
-                          </v-card>
-                          <v-card class="pa-2 pt-4" outlined tile>
-                            <h5>
-                              Ensured that ICT are used but do not create a new
-                              learning experience and/or are documented but not
-                              consistent with one referencing style as shown in
-                              the submitted learning material<br />
-                            </h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4"
-                            style="height: 60px"
-                            outlined
-                            tile
-                          >
-                            <h5>2 black <br /></h5>
-                          </v-card>
-                          <v-card class="pa-2 pt-4" outlined tile>
-                            <h5>
-                              Applied teaching strategies that lead learners
-                              along a single path of inquiry and/or to simple
-                              recall and rote memorization of concepts as shown
-                              in the submitted learning material
-                              <br />
-                            </h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4"
-                            style="height: 59px"
-                            outlined
-                            tile
-                          >
-                            <h5>2black <br /></h5>
-                          </v-card>
-                          <v-card class="pa-2 pt-4" outlined tile>
-                            <h5>
-                              Utilized a teaching strategy or strategies that
-                              partially respond to learners’ linguistic,
-                              cultural, socioeconomic, or religious backgrounds
-                              as shown in the submitted learning material<br />
-                            </h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4"
-                            style="height: 60px"
-                            outlined
-                            tile
-                          >
-                            <h5>2 black <br /></h5>
-                          </v-card>
-                          <v-card class="pa-2 pt-4" outlined tile>
-                            <h5>
-                              Demonstrated Level 4 in Objective 5 as shown in
-                              COT rating sheets/interobserver agreement forms<br />
-                            </h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4"
-                            style="height: 60px"
-                            outlined
-                            tile
-                          >
-                            <h5>2black <br /></h5>
-                          </v-card>
-                          <v-card class="pa-2 pt-4" outlined tile>
-                            <h5>
-                              Provided learners with inaccurate and/or
-                              destructive feedback as shown in the evidence
-                              submitted
-                              <br />
-                            </h5>
-                          </v-card>
-                          <v-card class="pa-1" outlined tile>
-                            <h5>efficiency black <br /></h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2"
-                            style="height: 56px"
-                            outlined
-                            tile
-                          >
-                            <h5>
-                              MOV submitted shows feedback given beyond 20
-                              working days from submission**<br />
-                            </h5>
-                          </v-card>
-                          <v-card class="pa-2 pt-4" outlined tile>
-                            <h5>
-                              Demonstrated Level 4 in Objective 7 as shown in
-                              COT rating sheets/interobserver agreement forms
-                              <br />
-                            </h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4"
-                            style="height: 59px"
-                            outlined
-                            tile
-                          >
-                            <h5>2 black <br /></h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4"
-                            style="height: 86px"
-                            outlined
-                            tile
-                          >
-                            <h5>
-                              Less than half of the learning outcomes set are
-                              aligned with the learning competencies as shown in
-                              the MOV submitted
-                              <br />
-                            </h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4"
-                            style="height: 60px"
-                            outlined
-                            tile
-                          >
-                            <h5>2 black <br /></h5>
-                          </v-card>
-                          <v-card class="pa-2 pt-4" outlined tile>
-                            <h5>
-                              Communicated with parents/ guardians and/or wider
-                              school community to facilitate involvement in the
-                              educative process but received no response/reply
-                              as evidenced by MOV No. 3 <br />
-                            </h5>
-                          </v-card>
-                          <v-card class="pa-2 pt-4" outlined tile>
-                            <h5>Submitted any 1 of the acceptable MOV<br /></h5>
-                          </v-card>
-                          <v-card class="pa-2 pt-4" outlined tile>
-                            <h5>#4 1 Timeliness black <br /></h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4"
-                            style="height: 136px"
-                            outlined
-                            tile
-                          >
-                            <h5>
-                              Participated in any professional network/ activity
-                              that does not require output to share knowledge
-                              and to enhance practice as evidenced by the
-                              submitted MOV<br />
-                            </h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4"
-                            style="height: 65px"
-                            outlined
-                            tile
-                          >
-                            <h5>Submitted 1 of the acceptable MOV<br /></h5>
-                          </v-card>
-                          <v-card class="pa-2 pt-4" outlined tile>
-                            <h5>#4.2 1 Timeliness black <br /></h5>
-                          </v-card>
-                          <v-card
-                            class="pa-1"
-                            style="height: 86px"
-                            outlined
-                            tile
-                          >
-                            <h5>
-                              Accomplished the Strengths and Development Needs
-                              portion of the Development Plan after
-                              self-assessment at the beginning of the school
-                              year<br />
-                            </h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4"
-                            style="height: 65px"
-                            outlined
-                            tile
-                          >
-                            <h5>
-                              Submitted the IPCRF-DP with any 1 of the
-                              acceptable Supporting MOV <br />
-                            </h5>
-                          </v-card>
-                          <v-card class="pa-2 pt-4" outlined tile>
-                            <h5>#4.3 1 Timeliness black <br /></h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4"
-                            style="height: 125px"
-                            outlined
-                            tile
-                          >
-                            <h5>
-                              Performed at least 1 related work/activity that
-                              contributed to the teaching-learning process
-                              within the class as evidenced by submitted MOV<br />
-                            </h5>
-                          </v-card>
-                          <v-card class="pa-2 pt-4" outlined tile>
-                            <h5>
-                              Submitted any 1 of the acceptable MOV <br />
-                            </h5>
-                          </v-card>
-
-                          <v-card class="pa-2 pt-4" outlined tile>
-                            <h5>5.1 Timeliness Black<br /></h5>
-                          </v-card>
-                        </v-col>
-
-                        <!-- END Unsatisfactory HERE -->
-                        <!-- START POOR STATUS HERE -->
-                        <v-col
-                          :key="n"
-                          v-else-if="n === 11"
-                          class="ePartCol"
-                          style="margin-left: -25px"
-                        >
-                          <v-card
-                            class="pa-2 pt-4"
-                            style="width: 295px"
-                            outlined
-                            tile
-                          >
-                            <h5>
-                              Poor <br />
-
-                              1 <br />
-                            </h5>
-                          </v-card>
-
-                          <v-card class="pa-2 pt-4" outlined tile>
-                            <h5>
-                              Demonstrated Level 3 in Objective 1 as shown in
-                              COT rating sheets/interobserver agreement forms or
-                              No acceptable evidence was shown<br />
-                            </h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4"
-                            style="height: 64px"
-                            outlined
-                            tile
-                          >
-                            <h5>2 blank <br /></h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-10"
-                            style="height: 125px"
-                            outlined
-                            tile
-                          >
-                            <h5>No acceptable evidence was shown<br /></h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4"
-                            style="height: 60px"
-                            outlined
-                            tile
-                          >
-                            <h5>2 black <br /></h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-10"
-                            style="height: 126px"
-                            outlined
-                            tile
-                          >
-                            <h5>
-                              No acceptable evidence was shown
-                              <br />
-                            </h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4"
-                            style="height: 59px"
-                            outlined
-                            tile
-                          >
-                            <h5>2black <br /></h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-10"
-                            style="height: 125px"
-                            outlined
-                            tile
-                          >
-                            <h5>No acceptable evidence was shown<br /></h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4"
-                            style="height: 60px"
-                            outlined
-                            tile
-                          >
-                            <h5>2 black <br /></h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4"
-                            style="height: 86px"
-                            outlined
-                            tile
-                          >
-                            <h5>
-                              Demonstrated Level 3 in Objective 5 as shown in
-                              COT rating sheets/interobserver agreement forms or
-                              No acceptable evidence was shown<br />
-                            </h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4"
-                            style="height: 60px"
-                            outlined
-                            tile
-                          >
-                            <h5>2black <br /></h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4"
-                            style="height: 86px"
-                            outlined
-                            tile
-                          >
-                            <h5>
-                              No acceptable evidence was shown
-                              <br />
-                            </h5>
-                          </v-card>
-                          <v-card class="pa-1" outlined tile>
-                            <h5>efficiency black <br /></h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4"
-                            style="height: 56px"
-                            outlined
-                            tile
-                          >
-                            <h5>No acceptable evidence was shown<br /></h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4"
-                            style="height: 86px"
-                            outlined
-                            tile
-                          >
-                            <h5>
-                              Demonstrated Level 3 in Objective 7 as shown in
-                              COT rating sheets/interobserver agreement forms or
-                              No acceptable evidence was shown <br />
-                            </h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4"
-                            style="height: 59px"
-                            outlined
-                            tile
-                          >
-                            <h5>2 black <br /></h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4"
-                            style="height: 86px"
-                            outlined
-                            tile
-                          >
-                            <h5>
-                              No acceptable evidence was shown
-                              <br />
-                            </h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4"
-                            style="height: 60px"
-                            outlined
-                            tile
-                          >
-                            <h5>2 black <br /></h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4"
-                            style="height: 125px"
-                            outlined
-                            tile
-                          >
-                            <h5>No acceptable evidence was shown <br /></h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4"
-                            style="height: 46px"
-                            outlined
-                            tile
-                          >
-                            <h5>No acceptable evidence was shown<br /></h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4"
-                            style="height: 46px"
-                            outlined
-                            tile
-                          >
-                            <h5>#4 1 Timeliness black <br /></h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-8"
-                            style="height: 136px"
-                            outlined
-                            tile
-                          >
-                            <h5>No acceptable evidence was shown<br /></h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4"
-                            style="height: 65px"
-                            outlined
-                            tile
-                          >
-                            <h5>No acceptable evidence was shown<br /></h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4"
-                            style="height: 46px"
-                            outlined
-                            tile
-                          >
-                            <h5>#4.2 1 Timeliness black <br /></h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4"
-                            style="height: 86px"
-                            outlined
-                            tile
-                          >
-                            <h5>No acceptable evidence was shown<br /></h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4"
-                            style="height: 66px"
-                            outlined
-                            tile
-                          >
-                            <h5>No acceptable evidence was shown <br /></h5>
-                          </v-card>
-                          <v-card class="pa-2 pt-4" outlined tile>
-                            <h5>#4.3 1 Timeliness black <br /></h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4"
-                            style="height: 125px"
-                            outlined
-                            tile
-                          >
-                            <h5>No acceptable evidence was shown<br /></h5>
-                          </v-card>
-                          <v-card class="pa-2 pt-4" outlined tile>
-                            <h5>No acceptable evidence was shown <br /></h5>
-                          </v-card>
-
-                          <v-card class="pa-2 pt-4" outlined tile>
-                            <h5>5.1 Timeliness Black<br /></h5>
-                          </v-card>
-                        </v-col>
-
-                        <!-- END OF POOR HERE -->
-                        <!-- START OF ACTUAL RESULTS HERE -->
-
-                        <v-col
-                          :key="n"
-                          v-else-if="n === 12"
-                          class="ePartCol12"
-                          style="margin-left: -25px"
-                        >
-                          <v-card
-                            class="pa-2 pt-4"
-                            style="width: 200px"
-                            outlined
-                            tile
-                          >
-                            <h5>
-                              Actual Results <br />
-                              <br />
-                            </h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4"
-                            style="height: 86px"
-                            v-model="actual1"
-                            outlined
-                            tile
-                          >
-                            <h5>
-                              <br />
-                            </h5>
-                          </v-card>
-                          <v-card
-                            v-model="actual1_blank"
-                            class="pa-2 pt-4"
-                            style="height: 64px"
-                            outlined
-                            tile
-                          >
-                            <h5><br /></h5>
-                          </v-card>
-                          <v-card
-                            v-model="actual2"
-                            class="pa-2 pt-10"
-                            style="height: 125px"
-                            outlined
-                            tile
-                          >
-                            <h5><br /></h5>
-                          </v-card>
-                          <v-card
-                            v-model="actual2_blank"
-                            class="pa-2 pt-4"
-                            style="height: 60px"
-                            outlined
-                            tile
-                          >
-                            <h5><br /></h5>
-                          </v-card>
-                          <v-card
-                            v-model="actual3"
-                            class="pa-2 pt-10"
-                            style="height: 126px"
-                            outlined
-                            tile
-                          >
-                            <h5>
-                              <br />
-                            </h5>
-                          </v-card>
-                          <v-card
-                            v-model="actual3_blank"
-                            class="pa-2 pt-4"
-                            style="height: 59px"
-                            outlined
-                            tile
-                          >
-                            <h5><br /></h5>
-                          </v-card>
-                          <v-card
-                            v-model="actual4"
-                            class="pa-2 pt-10"
-                            style="height: 125px"
-                            outlined
-                            tile
-                          >
-                            <h5><br /></h5>
-                          </v-card>
-                          <v-card
-                            v-model="actual4_blank"
-                            class="pa-2 pt-4"
-                            style="height: 60px"
-                            outlined
-                            tile
-                          >
-                            <h5><br /></h5>
-                          </v-card>
-                          <v-card
-                            v-model="actual5"
-                            class="pa-2 pt-4"
-                            style="height: 86px"
-                            outlined
-                            tile
-                          >
-                            <h5>
-                              <br />
-                            </h5>
-                          </v-card>
-                          <v-card
-                            v-model="actual5_blank"
-                            class="pa-2 pt-4"
-                            style="height: 60px"
-                            outlined
-                            tile
-                          >
-                            <h5><br /></h5>
-                          </v-card>
-                          <v-card
-                            v-model="actual6"
-                            class="pa-2 pt-4"
-                            style="height: 86px"
-                            outlined
-                            tile
-                          >
-                            <h5>
-                              <br />
-                            </h5>
-                          </v-card>
-                          <v-card
-                            v-model="actual6_blank"
-                            class="pa-1"
-                            outlined
-                            tile
-                          >
-                            <h5><br /></h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4"
-                            style="height: 56px"
-                            outlined
-                            tile
-                          >
-                            <h5><br /></h5>
-                          </v-card>
-                          <v-card
-                            v-model="actual6_timeliness"
-                            class="pa-2 pt-4"
-                            style="height: 86px"
-                            outlined
-                            tile
-                          >
-                            <h5>
-                              <br />
-                            </h5>
-                          </v-card>
-
-                          <v-card
-                            v-model="actual7"
-                            class="pa-2 pt-4"
-                            style="height: 59px"
-                            outlined
-                            tile
-                          >
-                            <h5><br /></h5>
-                          </v-card>
-                          <v-card
-                            v-model="actual7_blank"
-                            class="pa-2 pt-4"
-                            style="height: 86px"
-                            outlined
-                            tile
-                          >
-                            <h5>
-                              <br />
-                            </h5>
-                          </v-card>
-                          <v-card
-                            v-model="actual8"
-                            class="pa-2 pt-4"
-                            style="height: 60px"
-                            outlined
-                            tile
-                          >
-                            <h5><br /></h5>
-                          </v-card>
-                          <v-card
-                            v-model="actual9"
-                            class="pa-2 pt-4"
-                            style="height: 125px"
-                            outlined
-                            tile
-                          >
-                            <h5><br /></h5>
-                          </v-card>
-                          <v-card
-                            v-model="actual9_efficiency"
-                            class="pa-2 pt-4"
-                            style="height: 46px"
-                            outlined
-                            tile
-                          >
-                            <h5><br /></h5>
-                          </v-card>
-                          <v-card
-                            v-model="actual9_blank"
-                            class="pa-2 pt-4"
-                            style="height: 46px"
-                            outlined
-                            tile
-                          >
-                            <h5><br /></h5>
-                          </v-card>
-                          <v-card
-                            v-model="actual10"
-                            class="pa-2 pt-8"
-                            style="height: 136px"
-                            outlined
-                            tile
-                          >
-                            <h5><br /></h5>
-                          </v-card>
-                          <v-card
-                            v-model="actual10_efficiency"
-                            class="pa-2 pt-4"
-                            style="height: 65px"
-                            outlined
-                            tile
-                          >
-                            <h5><br /></h5>
-                          </v-card>
-                          <v-card
-                            v-model="actual10_blank"
-                            class="pa-2 pt-4"
-                            style="height: 46px"
-                            outlined
-                            tile
-                          >
-                            <h5><br /></h5>
-                          </v-card>
-                          <v-card
-                            v-model="actual11"
-                            class="pa-2 pt-4"
-                            style="height: 86px"
-                            outlined
-                            tile
-                          >
-                            <h5><br /></h5>
-                          </v-card>
-                          <v-card
-                            v-model="actual11_efficiency"
-                            class="pa-2 pt-4"
-                            style="height: 66px"
-                            outlined
-                            tile
-                          >
-                            <h5><br /></h5>
-                          </v-card>
-                          <v-card
-                            v-model="actual11_blank"
-                            class="pa-2 pt-4"
-                            outlined
-                            tile
-                          >
-                            <h5><br /></h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4"
-                            style="height: 125px"
-                            outlined
-                            tile
-                          >
-                            <h5><br /></h5>
-                          </v-card>
-                          <v-card class="pa-2 pt-4" outlined tile>
-                            <h5><br /></h5>
-                          </v-card>
-
-                          <v-card class="pa-2 pt-4" outlined tile>
-                            <h5><br /></h5>
-                          </v-card>
-                        </v-col>
-
-                        <v-col
-                          :key="n"
-                          v-else-if="n === 13"
-                          style="margin-left: -25px"
-                        >
-                          <v-card
-                            class="pa-10 pt-4"
-                            style="width: 260px; height: 66px"
-                            outlined
-                            tile
-                          >
-                            <h5>
-                              Rating <br />
-                              <br />
-
-                              <v-row>
-                                <v-spacer class="ml-4 pr-4"><p>Q</p></v-spacer>
-                                <v-divider class="mx-4" vertical></v-divider>
-                                <v-spacer class="ml-4 mr-2"><p>E</p></v-spacer>
-                                <v-divider class="mx-4" vertical></v-divider>
-                                <v-spacer class="ml-4 mr-2"><p>T</p></v-spacer>
-                                <v-divider class="mx-4" vertical></v-divider>
-                                <v-spacer><p>AVE</p></v-spacer>
-                              </v-row>
-                            </h5>
-                          </v-card>
-
-                          <v-card class="pa-2 pt-4" outlined tile>
-                            <v-row>
-                              <v-spacer
-                                ><p>{{ empRater }}</p></v-spacer
-                              >
-                              <v-divider
-                                class="mx-4 pa-0"
-                                style="height: 148px"
-                                vertical
-                              ></v-divider>
-                              <v-spacer
-                                ><p>{{ empRater }}</p></v-spacer
-                              >
-                              <v-divider class="mx-4" vertical></v-divider>
-                              <v-spacer
-                                ><p>{{ empRater }}</p></v-spacer
-                              >
-                              <v-divider class="mx-4" vertical></v-divider>
-                              <v-spacer
-                                ><p>{{ empRater }}</p></v-spacer
-                              >
-                            </v-row>
-                          </v-card>
-                          <v-card class="pa-2 pt-4" outlined tile>
-                            <v-row>
-                              <v-spacer
-                                ><p>{{ empRater }}</p></v-spacer
-                              >
-                              <v-divider
-                                class="mx-4 pa-0"
-                                style="height: 183px"
-                                vertical
-                              ></v-divider>
-                              <v-spacer
-                                ><p>{{ empRater }}</p></v-spacer
-                              >
-                              <v-divider class="mx-4" vertical></v-divider>
-                              <v-spacer
-                                ><p>{{ empRater }}</p></v-spacer
-                              >
-                              <v-divider class="mx-4" vertical></v-divider>
-                              <v-spacer
-                                ><p>{{ empRater }}</p></v-spacer
-                              >
-                            </v-row>
-                          </v-card>
-                          <v-card class="pa-2 pt-4" outlined tile>
-                            <v-row>
-                              <v-spacer
-                                ><p>{{ empRater }}</p></v-spacer
-                              >
-                              <v-divider
-                                class="mx-4 pa-0"
-                                style="height: 183px"
-                                vertical
-                              ></v-divider>
-                              <v-spacer
-                                ><p>{{ empRater }}</p></v-spacer
-                              >
-                              <v-divider class="mx-4" vertical></v-divider>
-                              <v-spacer
-                                ><p>{{ empRater }}</p></v-spacer
-                              >
-                              <v-divider class="mx-4" vertical></v-divider>
-                              <v-spacer
-                                ><p>{{ empRater }}</p></v-spacer
-                              >
-                            </v-row>
-                          </v-card>
-
-                          <v-card class="pa-2 pt-4" outlined tile>
-                            <v-row>
-                              <v-spacer
-                                ><p>{{ empRater }}</p></v-spacer
-                              >
-                              <v-divider
-                                class="mx-4 pa-0"
-                                style="height: 183px"
-                                vertical
-                              ></v-divider>
-                              <v-spacer
-                                ><p>{{ empRater }}</p></v-spacer
-                              >
-                              <v-divider class="mx-4" vertical></v-divider>
-                              <v-spacer
-                                ><p>{{ empRater }}</p></v-spacer
-                              >
-                              <v-divider class="mx-4" vertical></v-divider>
-                              <v-spacer
-                                ><p>{{ empRater }}</p></v-spacer
-                              >
-                            </v-row>
-                          </v-card>
-                          <v-card class="pa-2 pt-4" outlined tile>
-                            <v-row>
-                              <v-spacer
-                                ><p>{{ empRater }}</p></v-spacer
-                              >
-                              <v-divider
-                                class="mx-4"
-                                style="height: 144px"
-                                vertical
-                              ></v-divider>
-                              <v-spacer
-                                ><p>{{ empRater }}</p></v-spacer
-                              >
-                              <v-divider class="mx-4" vertical></v-divider>
-                              <v-spacer
-                                ><p>{{ empRater }}</p></v-spacer
-                              >
-                              <v-divider class="mx-4" vertical></v-divider>
-                              <v-spacer
-                                ><p>{{ empRater }}</p></v-spacer
-                              >
-                            </v-row>
-                          </v-card>
-                          <v-card class="pa-2 pt-4" outlined tile>
-                            <v-row>
-                              <v-spacer
-                                ><p>{{ empRater }}</p></v-spacer
-                              >
-                              <v-divider
-                                class="mx-4"
-                                style="height: 170px"
-                                vertical
-                              ></v-divider>
-                              <v-spacer
-                                ><p>{{ empRater }}</p></v-spacer
-                              >
-                              <v-divider class="mx-4" vertical></v-divider>
-                              <v-spacer
-                                ><p>{{ empRater }}</p></v-spacer
-                              >
-                              <v-divider class="mx-4" vertical></v-divider>
-                              <v-spacer
-                                ><p>{{ empRater }}</p></v-spacer
-                              >
-                            </v-row>
-                          </v-card>
-                          <v-card class="pa-2 pt-4" outlined tile>
-                            <v-row>
-                              <v-spacer
-                                ><p>{{ empRater }}</p></v-spacer
-                              >
-                              <v-divider
-                                class="mx-4"
-                                style="height: 143px"
-                                vertical
-                              ></v-divider>
-                              <v-spacer
-                                ><p>{{ empRater }}</p></v-spacer
-                              >
-                              <v-divider class="mx-4" vertical></v-divider>
-                              <v-spacer
-                                ><p>{{ empRater }}</p></v-spacer
-                              >
-                              <v-divider class="mx-4" vertical></v-divider>
-                              <v-spacer
-                                ><p>{{ empRater }}</p></v-spacer
-                              >
-                            </v-row>
-                          </v-card>
-                          <v-card class="pa-2 pt-4" outlined tile>
-                            <v-row>
-                              <v-spacer
-                                ><p>{{ empRater }}</p></v-spacer
-                              >
-                              <v-divider
-                                class="mx-4"
-                                style="height: 144px"
-                                vertical
-                              ></v-divider>
-                              <v-spacer
-                                ><p>{{ empRater }}</p></v-spacer
-                              >
-                              <v-divider class="mx-4" vertical></v-divider>
-                              <v-spacer
-                                ><p>{{ empRater }}</p></v-spacer
-                              >
-                              <v-divider class="mx-4" vertical></v-divider>
-                              <v-spacer
-                                ><p>{{ empRater }}</p></v-spacer
-                              >
-                            </v-row>
-                          </v-card>
-                          <v-card class="pa-2 pt-4" outlined tile>
-                            <v-row>
-                              <v-spacer
-                                ><p>{{ empRater }}</p></v-spacer
-                              >
-                              <v-divider
-                                class="mx-4"
-                                style="height: 215px"
-                                vertical
-                              ></v-divider>
-                              <v-spacer
-                                ><p>{{ empRater }}</p></v-spacer
-                              >
-                              <v-divider class="mx-4" vertical></v-divider>
-                              <v-spacer
-                                ><p>{{ empRater }}</p></v-spacer
-                              >
-                              <v-divider class="mx-4" vertical></v-divider>
-                              <v-spacer
-                                ><p>{{ empRater }}</p></v-spacer
-                              >
-                            </v-row>
-                          </v-card>
-                          <v-card class="pa-2 pt-4" outlined tile>
-                            <v-row>
-                              <v-spacer
-                                ><p>{{ empRater }}</p></v-spacer
-                              >
-                              <v-divider
-                                class="mx-4"
-                                style="height: 245px"
-                                vertical
-                              ></v-divider>
-                              <v-spacer
-                                ><p>{{ empRater }}</p></v-spacer
-                              >
-                              <v-divider class="mx-4" vertical></v-divider>
-                              <v-spacer
-                                ><p>{{ empRater }}</p></v-spacer
-                              >
-                              <v-divider class="mx-4" vertical></v-divider>
-                              <v-spacer
-                                ><p>{{ empRater }}</p></v-spacer
-                              >
-                            </v-row>
-                          </v-card>
-                          <v-card class="pa-2 pt-4" outlined tile>
-                            <v-row>
-                              <v-spacer
-                                ><p>{{ empRater }}</p></v-spacer
-                              >
-                              <v-divider
-                                class="mx-4"
-                                style="height: 195px"
-                                vertical
-                              ></v-divider>
-                              <v-spacer
-                                ><p>{{ empRater }}</p></v-spacer
-                              >
-                              <v-divider class="mx-4" vertical></v-divider>
-                              <v-spacer
-                                ><p>{{ empRater }}</p></v-spacer
-                              >
-                              <v-divider class="mx-4" vertical></v-divider>
-                              <v-spacer
-                                ><p>{{ empRater }}</p></v-spacer
-                              >
-                            </v-row>
-                          </v-card>
-                          <v-card class="pa-2 pt-4" outlined tile>
-                            <v-row>
-                              <v-spacer
-                                ><p>{{ empRater }}</p></v-spacer
-                              >
-                              <v-divider
-                                class="mx-4"
-                                style="height: 215px"
-                                vertical
-                              ></v-divider>
-                              <v-spacer
-                                ><p>{{ empRater }}</p></v-spacer
-                              >
-                              <v-divider class="mx-4" vertical></v-divider>
-                              <v-spacer
-                                ><p>{{ empRater }}</p></v-spacer
-                              >
-                              <v-divider class="mx-4" vertical></v-divider>
-                              <v-spacer
-                                ><p>{{ empRater }}</p></v-spacer
-                              >
-                            </v-row>
-                          </v-card>
-                        </v-col>
-                        <v-col
-                          :key="n"
-                          v-else-if="n === 14"
-                          style="margin-left: -25px"
-                        >
-                          <v-card
-                            class="pa-2 pt-4"
-                            style="width: 200px; height: 66px"
-                            outlined
-                            tile
-                          >
-                            <h5>
-                              Score <br />
-                              <br />
-                              <br />
-                            </h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4 part1Score"
-                            style="height: 150px"
-                            outlined
-                            tile
-                          >
-                            <h5></h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4 part1Score"
-                            style="height: 185px"
-                            outlined
-                            tile
-                          >
-                            <h5></h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4 part1Score"
-                            style="height: 185px"
-                            outlined
-                            tile
-                          >
-                            <h5></h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4 part1Score"
-                            style="height: 185px"
-                            outlined
-                            tile
-                          >
-                            <h5></h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4 part1Score"
-                            style="height: 146px"
-                            outlined
-                            tile
-                          >
-                            <h5></h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4 part1Score"
-                            style="height: 172px"
-                            outlined
-                            tile
-                          >
-                            <h5></h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4 part1Score"
-                            style="height: 145px"
-                            outlined
-                            tile
-                          >
-                            <h5></h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4 part1Score"
-                            style="height: 146px"
-                            outlined
-                            tile
-                          >
-                            <h5></h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4 part1Score"
-                            style="height: 217px"
-                            outlined
-                            tile
-                          >
-                            <h5></h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4 part1Score"
-                            style="height: 247px"
-                            outlined
-                            tile
-                          >
-                            <h5></h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4 part1Score"
-                            style="height: 197px"
-                            outlined
-                            tile
-                          >
-                            <h5></h5>
-                          </v-card>
-                          <v-card
-                            class="pa-2 pt-4 part1Score"
-                            style="height: 217px"
-                            outlined
-                            tile
-                          >
-                            <h5></h5>
-                          </v-card>
-                        </v-col>
-                      </template>
-                    </div>
-                  </v-row>
-                  <br />
-                  <br />
-
-                  <!-- START OF Adjectival RATING AREA  -->
-                  <div style="width: 600px; margin: auto">
-                    <v-card
-                      class="pa-2 text-center"
-                      color="grey lighten-2"
-                      outlined
-                      tile
-                    >
-                      <b>ADJECTIVAL RATING EQUIVALENCES</b>
-                    </v-card>
-                    <v-row no-gutters class="text-center">
-                      <template v-for="n in 2">
-                        <v-col :key="n" v-if="n === 1">
-                          <v-card class="pa-2 pt-4" outlined tile>
-                            <h5>RANGE</h5>
-                          </v-card>
-                          <v-card class="pa-2 pt-4" outlined tile>
-                            <h5>4.500 – 5.000</h5>
-                          </v-card>
-                          <v-card class="pa-2 pt-4" outlined tile>
-                            <h5>3.500 – 4.499</h5>
-                          </v-card>
-                          <v-card class="pa-2 pt-4" outlined tile>
-                            <h5>2.500 – 3.499</h5>
-                          </v-card>
-                          <v-card class="pa-2 pt-4" outlined tile>
-                            <h5>1.500 – 2.499</h5>
-                          </v-card>
-                          <v-card class="pa-2 pt-4" outlined tile>
-                            <h5>below 1.499</h5>
-                          </v-card>
-                        </v-col>
-
-                        <v-col :key="n" v-else-if="n === 2">
-                          <v-card class="pa-2 pt-4" outlined tile>
-                            <h5>ADJECTIVAL RATING</h5>
-                          </v-card>
-                          <v-card class="pa-2 pt-4" outlined tile>
-                            <h5>Outstanding</h5>
-                          </v-card>
-                          <v-card class="pa-2 pt-4" outlined tile>
-                            <h5>Very Satisfactory</h5>
-                          </v-card>
-                          <v-card class="pa-2 pt-4" outlined tile>
-                            <h5>Satisfactory</h5>
-                          </v-card>
-                          <v-card class="pa-2 pt-4" outlined tile>
-                            <h5>Unsatisfactory</h5>
-                          </v-card>
-                          <v-card class="pa-2 pt-4" outlined tile>
-                            <h5>Poor</h5>
-                          </v-card>
-                        </v-col>
-                      </template>
-                    </v-row>
-                  </div>
-                  <br />
-                  <!-- END OF Adjective RATING CRITERIA -->
-
-                  <!-- START OF PART 1 SIGNATURES -->
-                  <!-- This is the signature part in part 4 -->
-                  <div class="pa-10 ml-9" style="text-align: center">
-                    <v-row>
-                      <v-col>
-                        <v-text-field
-                          v-model="part_ratee"
-                          style="width: 200px; height: 100px; margin-left: 80px"
-                        >
-                        </v-text-field>
-
-                        <h5 class="pa-2" style="margin-left: 80px">Ratee</h5>
-                      </v-col>
-                      <v-col>
-                        <v-text-field
-                          v-model="part_rater"
-                          style="width: 200px; height: 100px; margin-left: 40px"
-                        >
-                        </v-text-field>
-
-                        <h5 class="pa-2" style="margin-right: 10px">Rater</h5>
-                      </v-col>
-
-                      <v-col>
-                        <v-text-field
-                          style="width: 200px; height: 100px; margin-left: 40px"
-                        >
-                          <p class="mt-6">{{ part_approvingAuthority }}</p>
-                        </v-text-field>
-
-                        <h5 class="pa-2" style="margin-left: -20px">
-                          Approving Authority
-                        </h5>
-                      </v-col>
-                    </v-row>
-                  </div>
-                </v-container>
-              </v-app>
-            </div>
-          </v-tab-item>
-          <!-- End of encoding Part 2 -->
-          <!-- Start of Part 2 Content -->
-          <v-tab>Part 2</v-tab>
-
-          <v-tab-item>
-            <div id="app">
-              <v-app>
-                <v-container class="grey lighten-5">
-                  <v-card
-                    class="pa-2 text-center"
-                    color="grey lighten-2"
-                    outlined
-                    tile
-                  >
-                    <b>PART II: COMPETENCIES</b>
-                  </v-card>
-
-                  <v-card class="pa-2" outlined tile>
-                    <h5 class="font-weight-regular">
-                      Instructions: Please indicate the number of competency
-                      indicators that you demonstrated during the performance
-                      cycle.
-                    </h5>
-                  </v-card>
-                  <v-card class="pa-2" outlined tile>
-                    <h5 class="font-weight-regular">
-                      <b> CORE BEHAVIORAL COMPETENCIES</b>
-                    </h5>
-                  </v-card>
-                  <v-row no-gutters>
-                    <v-col v-for="n in 4" :key="n">
-                      <v-card
-                        v-if="n === 1"
-                        class="pa-2 card-1 text-justify"
-                        outlined
-                        tile
-                        style="overflow-y: auto; height: 360px"
-                      >
-                        <h5 class="font-weight-regular">
-                          <b> Self-Management</b> <br />
-                          1. Sets personal goals and directions, needs and
-                          development.<br />
-                          2. Undertakes personal actions and behavior that are
-                          clear and purposive and takes into account personal
-                          goals and values congruent to that of the
-                          organization.<br />
-                          3. Displays emotional maturity and enthusiasm for and
-                          is challenged by higher goals.<br />
-                          4. Prioritizes work tasks and schedules (through Gantt
-                          chants, checklists, etc.) to achieve goals.<br />
-                          5. Sets high quality, challenging, realistic goals for
-                          self and others.<br />
-                        </h5>
-                      </v-card>
-                      <v-card
-                        v-else-if="n === 2"
-                        class="pa-2 text-center card-2"
-                        style="overflow-y: auto; height: 360px"
-                        outlined
-                        tile
-                        label="0"
-                        ><br /><br /><br /><br /><br /><br /><br />
-                        0
-                      </v-card>
-                      <v-card
-                        v-else-if="n === 3"
-                        class="pa-2 card-3 text-justify"
-                        outlined
-                        tile
-                        style="overflow-y: auto; height: 360px"
-                      >
-                        <h5 class="font-weight-regular">
-                          <b>Teamwork</b> <br />
-                          1. Willingly does his/her share of responsibility.
-                          <br />
-                          2. Promotes collaboration and removes barrier to
-                          teamwork and goal accomplishment across the
-                          organization. <br />
-                          3. Applies negotiation principles in arriving at
-                          win-win agreements.
-                          <br />
-                          4. Drives consensus and team ownership of decisions.
-                          <br />
-                          5. Works constructively and collaboratively with
-                          others and across organizations to accomplish
-                          organization goals and objectives.
-                        </h5>
-                      </v-card>
-                      <v-card
-                        v-else-if="n === 4"
-                        class="pa-2 text-center card-4"
-                        style="overflow-y: auto; height: 360px"
-                        outlined
-                        tile
-                        label="0"
-                        ><br /><br /><br /><br /><br /><br /><br />
-                        0
-                      </v-card>
-                    </v-col>
-                  </v-row>
-                  <v-row no-gutters>
-                    <v-col
-                      v-for="n in 4"
-                      :key="n"
-                      :cols="n === 1 || 3 ? 3 : undefined"
-                      class=""
-                    >
-                      <v-card
-                        v-if="n === 1"
-                        class="pa-2 card-5 text-justify"
-                        outlined
-                        tile
-                        style="overflow-y: auto; height: 440px"
-                      >
-                        <h5 class="font-weight-regular">
-                          <b> Professionalism and Ethics</b><br />
-                          1. Demonstrates the values and behavior enshrined in
-                          the Norms and Conduct and Ethical Standards for Public
-                          Officials and Employees (RA 6713).<br />
-                          2. Practices ethical and professional behavior and
-                          conduct taking into account the impact of his/her
-                          actions and decisions.<br />
-                          3. Maintains a professional image: being trustworthy,
-                          regularity of attendance and punctuality, good
-                          grooming and communication.<br />
-                          4. Makes personal sacrifices to meet the
-                          organization’s needs.<br />
-                          5. Acts with a sense of urgency and responsibility to
-                          meet the organization’s needs, improve system and help
-                          others improve their effectiveness.<br />
-                        </h5>
-                      </v-card>
-                      <v-card
-                        v-else-if="n === 2"
-                        class="pa-2 text-center card-6"
-                        style="overflow-y: auto; height: 440px"
-                        outlined
-                        tile
-                        label="0"
-                        ><br /><br /><br /><br /><br /><br /><br />
-                        0
-                      </v-card>
-                      <v-card
-                        v-else-if="n === 3"
-                        class="pa-2 card-7 text-justify"
-                        outlined
-                        tile
-                        style="overflow-y: auto; height: 440px"
-                      >
-                        <h5 class="font-weight-regular">
-                          <b> Service Orientation</b> <br />
-                          1. Can explain and articulate organizational
-                          directions, issues and problems.<br />
-                          2. Takes personal responsibility for dealing with
-                          and/or correcting customer service issues and
-                          concerns.<br />
-                          3. Initiates activities that promote advocacy for men
-                          and women empowerment.<br />
-                          4. Participates in updating office vision, mission,
-                          mandates and strategies based on DepEd strategies and
-                          directions.<br />
-                          5. Develops and adopts service improvement program
-                          through simplified procedures that will further
-                          enhance service delivery.
-                        </h5>
-                      </v-card>
-                      <v-card
-                        v-else-if="n === 4"
-                        class="pa-2 text-center card-8"
-                        height="200"
-                        outlined
-                        tile
-                        label="0"
-                        style="overflow-y: auto; height: 440px"
-                        ><br /><br /><br /><br /><br /><br /><br />
-                        0
-                      </v-card>
-                    </v-col>
-                  </v-row>
-                  <v-row no-gutters>
-                    <v-col v-for="n in 4" :key="n">
-                      <v-card
-                        v-if="n === 1"
-                        class="pa-2 card-9 text-justify"
-                        outlined
-                        tile
-                        style="overflow-y: auto; height: 570px"
-                      >
-                        <h5 class="font-weight-regular">
-                          <b>Results Focus</b> <br />
-                          1. Achieves results with optimal use of time and
-                          resources most of the time.<br />
-                          2. Avoids rework, mistakes and wastage through
-                          effective work methods by placing organizational needs
-                          before personal needs.<br />
-                          3. Delivers error-free outputs most of the time by
-                          conforming to standard operating procedures correctly
-                          and consistently. Able to produce very satisfactory
-                          quality work in terms of usefulness/acceptability and
-                          completeness with no supervision required.<br />
-                          4. Expresses a desire to do better and may express
-                          frustration at waste or inefficiency. May focus on new
-                          or more precise ways of meeting goals set. 5. Makes
-                          specific changes in the system or in own work methods
-                          to improve performance. Examples may include doing
-                          something better, faster, at a lower cost, more
-                          efficiently, or improving quality, customer
-                          satisfaction, morale, without setting any specific
-                          goal.<br />
-                        </h5>
-                      </v-card>
-                      <v-card
-                        v-else-if="n === 2"
-                        class="pa-2 text-center card-10"
-                        style="overflow-y: auto; height: 570px"
-                        outlined
-                        tile
-                        label="0"
-                        ><br /><br /><br /><br /><br /><br /><br />
-                        0
-                      </v-card>
-                      <v-card
-                        v-else-if="n === 3"
-                        class="pa-2 card-11 text-justify"
-                        outlined
-                        tile
-                        style="overflow-y: auto; height: 570px"
-                      >
-                        <h5 class="font-weight-regular">
-                          <b> Service Orientation<br /></b>
-                          1. Can explain and articulate organizational
-                          directions, issues and problems.<br />
-                          2. Takes personal responsibility for dealing with
-                          and/or correcting customer service issues and
-                          concerns.<br />
-                          3. Initiates activities that promote advocacy for men
-                          and women empowerment.<br />
-                          4. Participates in updating office vision, mission,
-                          mandates and strategies based on DepEd strategies and
-                          directions.<br />
-                          5. Develops and adopts service improvement program
-                          through simplified procedures that will further
-                          enhance service delivery.
-                        </h5>
-                      </v-card>
-                      <v-card
-                        v-else-if="n === 4"
-                        class="pa-2 text-center card-12"
-                        style="overflow-y: auto; height: 570px"
-                        outlined
-                        tile
-                        label="0"
-                        ><br /><br /><br /><br /><br /><br /><br />
-                        0
-                      </v-card>
-                    </v-col>
-                  </v-row>
-                  <v-card class="pa-2" outlined tile>
-                    <h5 class="font-weight-regular">
-                      Note: The assessment in the demonstration of competencie s
-                      shall not be reflected in the final rating. These
-                      competencies are monitored to inform professional
-                      development plans (DepEd Order No. 2, s. 2015, p. 9).
-                    </h5>
-                  </v-card>
-                </v-container>
-              </v-app>
-            </div>
-          </v-tab-item>
-
-          <!-- Part 3 content here -->
-          <v-tab ref="#tab5">Part 3</v-tab>
-
-          <v-tab-item>
-            <v-card class="pa-4 text-center" style="width: 100%" tile
-              ><br />
-              <b
-                >INDIVIDUAL PERFORMANCE COMMITMENT AND REVIEW FORM (IPCRF)
-                SUMMARY SHEET</b
-              >
-              <h5 class="text-center font-weight-regular">
-                <b
-                  >Teacher I-III, SPET I-IV, Special Science Teacher I-II
-                  (Proficient Teacher)</b
+                    </p>
+                  </td>
+                </tr>
+                <tr class="row1">
+                  <td id="tdata" style="line-height: 5px">
+                    <p>Name of Employee:</p>
+                  </td>
+                  <td id="tdata" style="width: 20%">
+                    <p>{{ empName }}</p>
+                  </td>
+                  <td id="tdata" style="line-height: 5px">
+                    <p>Name of Rater:</p>
+                  </td>
+                  <td id="tdata" style="width: 20%">
+                    <p>{{ empRater}}</p>
+                  </td>
+                </tr>
+                <tr class="row1">
+                  <td id="tdata" style="line-height: 5px">
+                    <p>Position:</p>
+                  </td>
+                  <td id="tdata" style="line-height: 5px">
+                    <p>{{empPosition}}</p>
+                  </td>
+                  <td id="tdata" style="line-height: 5px">
+                    <p>Position:</p>
+                  </td>
+                  <td id="tdata" style="">
+                    <p>{{ empRaterPosition}}</p>
+                  </td>
+                </tr>
+                <tr class="row1">
+                  <td id="tdata" style="line-height: 5px">
+                    <p>Bureau/Center/Service/Division:</p>
+                  </td>
+                  <td id="tdata" style="line-height: 5px">
+                    <p>{{ empDivision }}</p>
+                  </td>
+                  <td id="tdata" style="line-height: 5px">
+                    <p>Date of Review::</p>
+                  </td>
+                  <td id="tdata" style="line-height: 5px">
+                    <p>{{ empDateReview }}</p>
+                  </td>
+                </tr>
+                <tr class="row1">
+                  <td id="tdata" style="line-height: 5px">
+                    <p>Rating Period:</p>
+                  </td>
+                  <td id="tdata" style="line-height: 5px">
+                    <p>{{ empRatingPeriod }}</p>
+                  </td>
+                  <td id="tdata" colspan="2" style="line-height: 5px"></td>
+                </tr>
+              </table>
+              <br />
+              <div class="ePart2">
+                <table
+                  id="table"
+                  style="width: 100%; text-align: center; font-weight: bold"
                 >
-              </h5>
-            </v-card>
+                  <tr class="row1 mt-2">
+                    <td id="tdata" colspan="6" style="line-height: 5px">
+                      <p>TO BE FILLED OUT DURING PLANNING</p>
+                    </td>
+                    <td id="tdata" colspan="11" style="line-height: 5px">
+                      <p>TO BE FILLED OUT DURING EVALUATION</p>
+                    </td>
+                  </tr>
+                  <tr
+                    class="row1 light-green lighten-2"
+                    style="width: 100%; text-align: center; font-weight: bold"
+                  >
+                    <td id="tdata" rowspan="2" style="line-height: 5px">
+                      <p>MFO's</p>
+                    </td>
+                    <td id="tdata" rowspan="2" style="line-height: 5px">
+                      <p>KRAs</p>
+                    </td>
+                    <td id="tdata" rowspan="2" style="line-height: 5px">
+                      <p>Objectives</p>
+                    </td>
+                    <td id="tdata" rowspan="2" style="line-height: 5px">
+                      <p>Timeline</p>
+                    </td>
+                    <td id="tdata" rowspan="2">
+                      <p>Weight per KRA</p>
+                    </td>
+                    <td
+                      id="tdata"
+                      colspan="6"
+                      rowspan="1"
+                      style="line-height: 5px"
+                    >
+                      <p>Performance Indicator</p>
+                    </td>
+                    <td id="tdata" rowspan="2">
+                      <p>Actual Result</p>
+                    </td>
+                    <td id="tdata" colspan="4" style="line-height: 5px">
+                      <p>Rating</p>
+                    </td>
+                    <td id="tdata" rowspan="2" style="line-height: 5px">
+                      <p>Score</p>
+                    </td>
+                  </tr>
+                  <tr
+                    class="row1 light-green lighten-2"
+                    style="text-align: center; font-weight: bold"
+                  >
+                    <td id="tdata" style="line-height: 5px">
+                      <p>QET</p>
+                    </td>
+                    <td id="tdata" style="line-height: 5px">
+                      <p>
+                        Outstanding <br /><br /><br />
+                        <br />5
+                      </p>
+                    </td>
+                    <td id="tdata" style="line-height: 15px">
+                      <p>
+                        Very Satisfactory
+                        <br />
+                        4
+                      </p>
+                    </td>
+                    <td id="tdata" style="line-height: 5px">
+                      <p>
+                        Satisfactory<br /><br />
+                        <br /><br />
+                        3
+                      </p>
+                    </td>
+                    <td id="tdata" style="line-height: 5px">
+                      <p>
+                        Unsatisfactory <br /><br />
+                        <br /><br />
+                        2
+                      </p>
+                    </td>
+                    <td id="tdata" style="line-height: 5px">
+                      <p>
+                        Poor <br /><br />
+                        <br />
+                        <br />
+                        1
+                      </p>
+                    </td>
+                    <td id="tdata" style="line-height: 5px">
+                      <p>Q</p>
+                    </td>
+                    <td id="tdata" style="line-height: 5px">
+                      <p>E</p>
+                    </td>
+                    <td id="tdata" style="line-height: 5px">
+                      <p>T</p>
+                    </td>
+                    <td id="tdata" style="line-height: 5px">
+                      <p>AVE</p>
+                    </td>
+                  </tr>
+                  <tr class="row1">
+                    <td id="tdata" rowspan="36">
+                      <p>Basic Education Services</p>
+                    </td>
+                    <td id="tdata" rowspan="9">
+                      <p>1. Content Knowledge and Pedagogy</p>
+                    </td>
+                    <td id="tdata" rowspan="3">
+                      <p>
+                        1. Applied knowledge of content within and across
+                        curriculum teaching areas.
+                      </p>
+                    </td>
+                    <td id="tdata" class="timelineObj1" rowspan="3">
+                      <p></p>
+                    </td>
+                    <td id="tdata" class="weightPerKra" rowspan="9">
+                      <p>24%</p>
+                    </td>
+                    <td id="tdata" class="quality1">
+                      <p>Quality</p>
+                    </td>
+                    <td id="tdata" class="outstanding1">
+                      <p>
+                        Demonstrated Level 7 in Objective 1 as shown in COT
+                        rating sheets/interobserver agreement forms
+                      </p>
+                    </td>
+                    <td id="tdata" class="verySatisfactory1">
+                      <p>
+                        Demonstrated Level 6 in Objective 1 as shown in COT
+                        rating sheets/interobserver agreement forms
+                      </p>
+                    </td>
+                    <td id="tdata" class="satisfactory1">
+                      <p>
+                        Demonstrated Level 5 in Objective 1 as shown in COT
+                        rating sheets/interobserver agreement forms
+                      </p>
+                    </td>
+                    <td id="tdata" class="unsatisfactory1">
+                      <p>
+                        Demonstrated Level 4 in Objective 1 as shown in COT
+                        rating sheets/interobserver agreement forms
+                      </p>
+                    </td>
+                    <td id="tdata" class="poor1">
+                      <p>
+                        Demonstrated Level 3 in Objective 1 as shown in COT
+                        rating sheets/interobserver agreement forms or No
+                        acceptable evidence was shown
+                      </p>
+                    </td>
+                    <td id="tdata" rowspan="1" class="actualResult">
+                      <p>
+                        {{
+                          encodingAdjectivalRating1
+                        }}
+                      </p>
+                    </td>
+                    <td id="tdata" rowspan="3" class="q1">
+                      <p>
+                        {{ encodingIpcrfNumericalQ1}}
+                      </p>
+                    </td>
+                    <td id="tdata" rowspan="3" class="e1 blue-grey darken-4">
+                      <p></p>
+                    </td>
+                    <td id="tdata" rowspan="3" class="t1 blue-grey darken-4">
+                      <p></p>
+                    </td>
+                    <td id="tdata" rowspan="3" class="ave1">
+                      <p>
+                        {{
+                          encodingIpcrfRatingAve1
+                        }}
+                      </p>
+                    </td>
+                    <td id="tdata" rowspan="3" class="score1">
+                      <p>
+                        {{
+                          encodingScore1
+                        }}
+                      </p>
+                    </td>
+                  </tr>
 
-            <v-row no-gutters>
-              <v-col v-for="n in 2" :key="n" class="">
-                <v-card
-                  v-if="n === 1"
-                  class="pa-4"
-                  outlined
-                  tile
-                  style="height: 220px"
-                >
                   <tr>
-                    <td colspan="3" style="text-align: left">
-                      <v-subheader> Name of Employee: </v-subheader>
+                    <td id="tdata" class="eff1 pa-1">
+                      <p>Efficiency</p>
+                    </td>
+                    <td id="tdata" class="eff2 pa-1 blue-grey darken-4">
+                      <p></p>
+                    </td>
+                    <td id="tdata" class="eff2 pa-1 blue-grey darken-4">
+                      <p></p>
+                    </td>
+                    <td id="tdata" class="eff4 pa-1 blue-grey darken-4">
+                      <p></p>
+                    </td>
+                    <td id="tdata" class="eff5 pa-1 blue-grey darken-4">
+                      <p></p>
+                    </td>
+                    <td
+                      id="tdata"
+                      colspan="2"
+                      class="eff6 pa-1 blue-grey darken-4"
+                    >
+                      <p></p>
                     </td>
                   </tr>
                   <tr>
-                    <td colspan="3" style="text-align: left">
-                      <v-subheader> Position: </v-subheader>
+                    <td id="tdata" class="timeline1 pa-1">
+                      <p>Timeliness</p>
+                    </td>
+                    <td id="tdata" class="timeline2 pa-1 blue-grey darken-4">
+                      <p></p>
+                    </td>
+                    <td id="tdata" class="timeline2 pa-1 blue-grey darken-4">
+                      <p></p>
+                    </td>
+                    <td id="tdata" class="timeline4 pa-1 blue-grey darken-4">
+                      <p></p>
+                    </td>
+                    <td id="tdata" class="timeline5 pa-1 blue-grey darken-4">
+                      <p></p>
+                    </td>
+                    <td
+                      id="tdata"
+                      colspan="2"
+                      class="timeline6 blue-grey darken-4"
+                    >
+                      <p></p>
+                    </td>
+                  </tr>
+                  <!-- end of row1 -->
+                  <!-- start of row 2 -->
+                  <tr>
+                    <td id="tdata" rowspan="3">
+                      <p>
+                        2. Ensured the positive use of ICT to facilitate the
+                        teaching and learning process
+                      </p>
+                    </td>
+                    <td id="tdata" class="timelineObj1" rowspan="3">
+                      <p></p>
+                    </td>
+
+                    <td id="tdata" class="quality1">
+                      <p>Quality</p>
+                    </td>
+                    <td id="tdata" class="outstanding1">
+                      <p>
+                        Ensured that the ICT used redefine and transform
+                        learning experiences and are documented properly and
+                        consistently using any referencing style as shown in the
+                        submitted learning material
+                      </p>
+                    </td>
+                    <td id="tdata" class="verySatisfactory1">
+                      <p>
+                        Ensured that the ICT used augment and enrich learning
+                        experiences and are documented properly and consistently
+                        using any referencing style as shown in the submitted
+                        learning material
+                      </p>
+                    </td>
+                    <td id="tdata" class="satisfactory1">
+                      <p>
+                        Ensured that the ICT used modify processes and improve
+                        learning experiences and are documented properly and
+                        consistently using any referencing style as shown in the
+                        submitted learning material
+                      </p>
+                    </td>
+                    <td id="tdata" class="unsatisfactory1">
+                      <p>
+                        Ensured that ICT are used but do not create a new
+                        learning experience and/or are documented but not
+                        consistent with one referencing style as shown in the
+                        submitted learning material
+                      </p>
+                    </td>
+                    <td id="tdata" class="poor1">
+                      <p>No acceptable evidence was shown</p>
+                    </td>
+                    <td id="tdata" rowspan="1" class="actualResult">
+                      <p>
+                        {{
+                          encodingAdjectivalRating2
+                        }}
+                      </p>
+                    </td>
+                    <td id="tdata" rowspan="3" class="q2">
+                      <p>
+                        {{ encodingIpcrfNumericalQ2 }}
+                      </p>
+                    </td>
+                    <td id="tdata" rowspan="3" class="e2 blue-grey darken-4">
+                      <p></p>
+                    </td>
+                    <td id="tdata" rowspan="3" class="t2 blue-grey darken-4">
+                      <p></p>
+                    </td>
+                    <td id="tdata" rowspan="3" class="ave2">
+                      <p>
+                        {{
+                          encodingIpcrfRatingAve2
+                        }}
+                      </p>
+                    </td>
+                    <td id="tdata" rowspan="3" class="score2">
+                      <p>
+                        {{
+                          encodingScore2
+                        }}
+                      </p>
                     </td>
                   </tr>
                   <tr>
-                    <td colspan="3" style="text-align: left">
-                      <v-subheader>
-                        Bureau/Center/Service/Division:</v-subheader
-                      >
+                    <td id="tdata" class="eff1 pa-1">
+                      <p>Efficiency</p>
                     </td>
-                    <v-row> </v-row>
-                  </tr>
-                  <tr>
-                    <td colspan="3" style="text-align: left">
-                      <v-subheader> Rating Period: </v-subheader>
+                    <td id="tdata" class="eff2 pa-1 blue-grey darken-4">
+                      <p></p>
                     </td>
-                  </tr>
-                </v-card>
-
-                <v-card
-                  v-else-if="n === 2"
-                  class="pa-4"
-                  outlined
-                  tile
-                  style="height: 220px"
-                >
-                  <tr>
-                    <td colspan="3" style="text-align: left">
-                      <v-subheader>Name of Rater: </v-subheader>
+                    <td id="tdata" class="eff2 pa-1 blue-grey darken-4">
+                      <p></p>
+                    </td>
+                    <td id="tdata" class="eff4 pa-1 blue-grey darken-4">
+                      <p></p>
+                    </td>
+                    <td id="tdata" class="eff5 pa-1 blue-grey darken-4">
+                      <p></p>
+                    </td>
+                    <td
+                      id="tdata"
+                      colspan="2"
+                      class="eff6 pa-1 blue-grey darken-4"
+                    >
+                      <p></p>
                     </td>
                   </tr>
                   <tr>
-                    <td colspan="3" style="text-align: left">
-                      <v-subheader> Position: </v-subheader>
+                    <td id="tdata" class="eff1 pa-1">
+                      <p>Timeliness</p>
+                    </td>
+                    <td id="tdata" class="eff2 pa-1 blue-grey darken-4">
+                      <p></p>
+                    </td>
+                    <td id="tdata" class="eff2 pa-1 blue-grey darken-4">
+                      <p></p>
+                    </td>
+                    <td id="tdata" class="eff4 pa-1 blue-grey darken-4">
+                      <p></p>
+                    </td>
+                    <td id="tdata" class="eff5 pa-1 blue-grey darken-4">
+                      <p></p>
+                    </td>
+                    <td id="tdata" colspan="2" class="eff6 blue-grey darken-4">
+                      <p></p>
+                    </td>
+                  </tr>
+                  <!-- end of row 2 -->
+                  <tr>
+                    <td id="tdata" rowspan="3">
+                      <p>
+                        3. Applied a range of teaching strategies to develop
+                        critical and creative thinking, as well as other
+                        higher-order thinking skills.
+                      </p>
+                    </td>
+                    <td id="tdata" class="timelineObj1" rowspan="3">
+                      <p></p>
+                    </td>
+
+                    <td id="tdata" class="quality1">
+                      <p>Quality</p>
+                    </td>
+                    <td id="tdata" class="outstanding1">
+                      <p>
+                        Ensured that the ICT used redefine and transform
+                        learning experiences and are documented properly and
+                        consistently using any referencing style as shown in the
+                        submitted learning material
+                      </p>
+                    </td>
+                    <td id="tdata" class="verySatisfactory1">
+                      <p>
+                        Ensured that the ICT used augment and enrich learning
+                        experiences and are documented properly and consistently
+                        using any referencing style as shown in the submitted
+                        learning material
+                      </p>
+                    </td>
+                    <td id="tdata" class="satisfactory1">
+                      <p>
+                        Ensured that the ICT used modify processes and improve
+                        learning experiences and are documented properly and
+                        consistently using any referencing style as shown in the
+                        submitted learning material
+                      </p>
+                    </td>
+                    <td id="tdata" class="unsatisfactory1">
+                      <p>
+                        Ensured that ICT are used but do not create a new
+                        learning experience and/or are documented but not
+                        consistent with one referencing style as shown in the
+                        submitted learning material
+                      </p>
+                    </td>
+                    <td id="tdata" class="poor1">
+                      <p>No acceptable evidence was shown</p>
+                    </td>
+                    <td id="tdata" rowspan="1" class="actualResult">
+                      <p>
+                        {{
+                          encodingAdjectivalRating
+                        }}
+                      </p>
+                    </td>
+                    <td id="tdata" rowspan="3" class="q2">
+                      <p>
+                        {{ encodingIpcrfNumericalQ3 }}
+                      </p>
+                    </td>
+                    <td id="tdata" rowspan="3" class="e2 blue-grey darken-4">
+                      <p></p>
+                    </td>
+                    <td id="tdata" rowspan="3" class="t2 blue-grey darken-4">
+                      <p></p>
+                    </td>
+                    <td id="tdata" rowspan="3" class="ave2">
+                      <p>
+                        {{
+                          encodingIpcrfRatingAve3
+                        }}
+                      </p>
+                    </td>
+                    <td id="tdata" rowspan="3" class="score3">
+                      <p>
+                        {{
+                          encodingScore3
+                        }}
+                      </p>
                     </td>
                   </tr>
                   <tr>
-                    <td colspan="3" style="text-align: left">
-                      <v-subheader> Date of Review:</v-subheader>
+                    <td id="tdata" class="eff1 pa-1">
+                      <p>Efficiency</p>
+                    </td>
+                    <td id="tdata" class="eff2 pa-1 blue-grey darken-4">
+                      <p></p>
+                    </td>
+                    <td id="tdata" class="eff2 pa-1 blue-grey darken-4">
+                      <p></p>
+                    </td>
+                    <td id="tdata" class="eff4 pa-1 blue-grey darken-4">
+                      <p></p>
+                    </td>
+                    <td id="tdata" class="eff5 pa-1 blue-grey darken-4">
+                      <p></p>
+                    </td>
+                    <td
+                      id="tdata"
+                      colspan="2"
+                      class="eff6 pa-1 blue-grey darken-4"
+                    >
+                      <p></p>
                     </td>
                   </tr>
-                </v-card>
-              </v-col>
-            </v-row>
+                  <tr>
+                    <td id="tdata" class="eff1 pa-1">
+                      <p>Timeliness</p>
+                    </td>
+                    <td id="tdata" class="eff2 pa-1 blue-grey darken-4">
+                      <p></p>
+                    </td>
+                    <td id="tdata" class="eff2 pa-1 blue-grey darken-4">
+                      <p></p>
+                    </td>
+                    <td id="tdata" class="eff4 pa-1 blue-grey darken-4">
+                      <p></p>
+                    </td>
+                    <td id="tdata" class="eff5 pa-1 blue-grey darken-4">
+                      <p></p>
+                    </td>
+                    <td id="tdata" colspan="2" class="eff6 blue-grey darken-4">
+                      <p></p>
+                    </td>
+                  </tr>
 
-            <v-card
-              class="pa-2 text-center"
-              color="grey lighten-2"
-              outlined
-              tile
-            >
-              <b>PART III. SUMMARY OF RATINGS FOR DISCUSSION</b>
-            </v-card>
-            <!-- START OF Part 3 KRA COLUMN -->
-            <v-row class="text-center">
-              <div class="ePart1">
-                <template v-for="n in 13">
-                  <v-col
-                    :key="n"
-                    v-if="n === 1"
-                    class="ePartCol2"
-                    style="margin-left: -25px"
-                  >
-                    <v-card
-                      class="pa-2 pt-4"
-                      style="width: 140px; height: 120px"
-                      outlined
-                      tile
+                  <!-- Start Number 2 -->
+                  <tr class="row1">
+                    <td id="tdata" rowspan="9">
+                      <p>2. Diversity of Learners & Assessment and Reporting</p>
+                    </td>
+                    <td id="tdata" class="timelineObj1" rowspan="3">
+                      <p>
+                        4. Established a learnercentered culture by using
+                        teaching strategies that respond to their linguistic,
+                        cultural, socioeconomic and religious backgrounds
+                      </p>
+                    </td>
+                    <td id="tdata" class="timelineObj1" rowspan="3">
+                      <p></p>
+                    </td>
+                    <td id="tdata" class="weightPerKra" rowspan="9">
+                      <p>24%</p>
+                    </td>
+                    <td id="tdata" class="quality1">
+                      <p>Quality</p>
+                    </td>
+                    <td id="tdata" class="outstanding1">
+                      <p>
+                        Utilized effective teaching strategies that are
+                        appropriate in responding to learners’ linguistic,
+                        cultural, socioeconomic, or religious backgrounds at an
+                        individual level* as shown in the submitted learning
+                        material
+                      </p>
+                    </td>
+                    <td id="tdata" class="verySatisfactory1">
+                      <p>
+                        Utilized effective teaching strategies that are
+                        appropriate in responding to learners’ linguistic,
+                        cultural, socioeconomic, or religious backgrounds at a
+                        group level* as shown in the submitted learning material
+                      </p>
+                    </td>
+                    <td id="tdata" class="satisfactory1">
+                      <p>
+                        Utilized an effective teaching strategy that is
+                        appropriate in responding to learners’ linguistic,
+                        cultural, socioeconomic, or religious backgrounds as
+                        shown in the submitted learning material
+                      </p>
+                    </td>
+                    <td id="tdata" class="unsatisfactory1">
+                      <p>
+                        Utilized a teaching strategy or strategies that
+                        partially respond to learners’ linguistic, cultural,
+                        socioeconomic, or religious backgrounds as shown in the
+                        submitted learning material
+                      </p>
+                    </td>
+                    <td id="tdata" class="poor1">
+                      <p>No acceptable evidence was shown</p>
+                    </td>
+                    <td id="tdata" rowspan="1" class="actualResult">
+                      <p>
+                        {{
+                          encodingAdjectivalRating4
+                        }}
+                      </p>
+                    </td>
+                    <td id="tdata" rowspan="3" class="q1">
+                      <p>
+                        {{ encodingIpcrfNumericalQ4}}
+                      </p>
+                    </td>
+                    <td id="tdata" rowspan="3" class="e1 blue-grey darken-4">
+                      <p></p>
+                    </td>
+                    <td id="tdata" rowspan="3" class="t1 blue-grey darken-4">
+                      <p></p>
+                    </td>
+                    <td id="tdata" rowspan="3" class="ave1">
+                      <p>
+                        {{
+                          encodingIpcrfRatingAve4
+                        }}
+                      </p>
+                    </td>
+                    <td id="tdata" rowspan="3" class="score4">
+                      <p>
+                        {{
+                         encodingScore4
+                        }}
+                      </p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td id="tdata" class="eff1 pa-1">
+                      <p>Efficiency</p>
+                    </td>
+                    <td id="tdata" class="eff2 pa-1 blue-grey darken-4">
+                      <p></p>
+                    </td>
+                    <td id="tdata" class="eff2 pa-1 blue-grey darken-4">
+                      <p></p>
+                    </td>
+                    <td id="tdata" class="eff4 pa-1 blue-grey darken-4">
+                      <p></p>
+                    </td>
+                    <td id="tdata" class="eff5 pa-1 blue-grey darken-4">
+                      <p></p>
+                    </td>
+                    <td
+                      id="tdata"
+                      colspan="2"
+                      class="eff6 pa-1 blue-grey darken-4"
                     >
-                      <h5>
-                        KRA <br />
-                        <br />
-                      </h5>
-                    </v-card>
-                    <div style="text-align: center">
-                      <v-card
-                        class="pa-2 pt-6"
-                        style="height: 150px"
-                        outlined
-                        tile
-                      >
-                        <h5>KRA 1</h5>
-                      </v-card>
-                      <v-card
-                        class="pa-2 pt-6"
-                        style="height: 150px"
-                        outlined
-                        tile
-                      >
-                        <h5>KRA 2</h5>
-                      </v-card>
-                      <v-card
-                        class="pa-2 pt-6"
-                        style="height: 100px"
-                        outlined
-                        tile
-                      >
-                        <h5>KRA 3</h5>
-                      </v-card>
-                      <v-card
-                        class="pa-2 pt-6"
-                        style="height: 150px"
-                        outlined
-                        tile
-                      >
-                        <h5>KRA 4</h5>
-                      </v-card>
-                      <v-card
-                        class="pa-2 pt-4"
-                        style="height: 51px"
-                        outlined
-                        tile
-                      >
-                        <h5>Plus Factor</h5>
-                      </v-card>
-                      <v-card
-                        class="pa-2 pt-4 pl-4"
-                        style="height: 54px"
-                        outlined
-                        tile
-                      >
-                        <h5>Date Observed</h5>
-                      </v-card>
-                    </div>
-                  </v-col>
-
-                  <!-- END OF BASIC EDUCATION COLUMN -->
-                  <!-- Start of encoding weighted per kra -->
-                  <v-col
-                    :key="n"
-                    v-else-if="n === 2"
-                    class="ePartCol5"
-                    style="margin-left: -25px"
-                  >
-                    <v-card
-                      class="pa-2 pt-4"
-                      style="width: 140px; height: 120px"
-                      outlined
-                      tile
+                      <p></p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td id="tdata" class="timeline1 pa-1">
+                      <p>Timeliness</p>
+                    </td>
+                    <td id="tdata" class="timeline2 pa-1 blue-grey darken-4">
+                      <p></p>
+                    </td>
+                    <td id="tdata" class="timeline2 pa-1 blue-grey darken-4">
+                      <p></p>
+                    </td>
+                    <td id="tdata" class="timeline4 pa-1 blue-grey darken-4">
+                      <p></p>
+                    </td>
+                    <td id="tdata" class="timeline5 pa-1 blue-grey darken-4">
+                      <p></p>
+                    </td>
+                    <td
+                      id="tdata"
+                      colspan="2"
+                      class="timeline6 blue-grey darken-4"
                     >
-                      <h5>
-                        Weight per KRA<br />
-                        <br />
-                      </h5>
-                    </v-card>
-                    <v-card
-                      class="pa-2 pt-4 kra1"
-                      style="height: 150px"
-                      v-model="part3Kra1"
-                      outlined
-                      tile
+                      <p></p>
+                    </td>
+                  </tr>
+                  <tr class="row1">
+                    <td id="tdata" class="timelineObj1" rowspan="3">
+                      <p>
+                        5. Planned and delivered teaching strategies that are
+                        responsive to the special educational needs of learners
+                        in difficult circumstances*, including: geographic
+                        isolation; chronic illness; displacement due to armed
+                        conflict, urban resettlement or disasters; child abuse
+                        and child labor practices
+                      </p>
+                    </td>
+
+                    <td id="tdata" class="weightPerKra" rowspan="3">
+                      <p></p>
+                    </td>
+                    <td id="tdata" class="quality1">
+                      <p>Quality</p>
+                    </td>
+                    <td id="tdata" class="outstanding1">
+                      <p>
+                        Demonstrated Level 7 in Objective 5 as shown in COT
+                        rating sheets/interobserver a greement forms
+                      </p>
+                    </td>
+                    <td id="tdata" class="verySatisfactory1">
+                      <p>
+                        Utilized effective teaching strategies that are
+                        appropriate in responding to learners’ linguistic,
+                        cultural, socioeconomic, or religious backgrounds at a
+                        group level* as shown in the submitted learning material
+                      </p>
+                    </td>
+                    <td id="tdata" class="satisfactory1">
+                      <p>
+                        Utilized an effective teaching strategy that is
+                        appropriate in responding to learners’ linguistic,
+                        cultural, socioeconomic, or religious backgrounds as
+                        shown in the submitted learning material
+                      </p>
+                    </td>
+                    <td id="tdata" class="unsatisfactory1">
+                      <p>
+                        Utilized a teaching strategy or strategies that
+                        partially respond to learners’ linguistic, cultural,
+                        socioeconomic, or religious backgrounds as shown in the
+                        submitted learning material
+                      </p>
+                    </td>
+                    <td id="tdata" class="poor1">
+                      <p>No acceptable evidence was shown</p>
+                    </td>
+                    <td id="tdata" rowspan="1" class="actualResult">
+                      <p>
+                        {{
+                          encodingAdjectivalRating5
+                        }}
+                      </p>
+                    </td>
+                    <td id="tdata" rowspan="3" class="q1">
+                      <p>
+                        {{ encodingIpcrfNumericalQ5 }}
+                      </p>
+                    </td>
+                    <td id="tdata" rowspan="3" class="e1 blue-grey darken-4">
+                      <p></p>
+                    </td>
+                    <td id="tdata" rowspan="3" class="t1 blue-grey darken-4">
+                      <p></p>
+                    </td>
+                    <td id="tdata" rowspan="3" class="ave1">
+                      <p>
+                        {{
+                          encodingIpcrfRatingAve5
+                        }}
+                      </p>
+                    </td>
+                    <td id="tdata" rowspan="3" class="score6">
+                      <p>
+                        {{
+                         encodingScore5
+                        }}
+                      </p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td id="tdata" class="eff1 pa-1">
+                      <p>Efficiency</p>
+                    </td>
+                    <td id="tdata" class="eff2 pa-1 blue-grey darken-4">
+                      <p></p>
+                    </td>
+                    <td id="tdata" class="eff2 pa-1 blue-grey darken-4">
+                      <p></p>
+                    </td>
+                    <td id="tdata" class="eff4 pa-1 blue-grey darken-4">
+                      <p></p>
+                    </td>
+                    <td id="tdata" class="eff5 pa-1 blue-grey darken-4">
+                      <p></p>
+                    </td>
+                    <td
+                      id="tdata"
+                      colspan="2"
+                      class="eff6 pa-1 blue-grey darken-4"
                     >
-                      <h5 class="font-weight-regular">
-                        <br />24.00%<br /><br />
-                      </h5>
-                    </v-card>
-                    <v-card
-                      class="pa-2 pt-4 kra2"
-                      style="height: 150px"
-                      v-model="part3Kra2"
-                      outlined
-                      tile
+                      <p></p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td id="tdata" class="timeline1 pa-1">
+                      <p>Timeliness</p>
+                    </td>
+                    <td id="tdata" class="timeline2 pa-1 blue-grey darken-4">
+                      <p></p>
+                    </td>
+                    <td id="tdata" class="timeline2 pa-1 blue-grey darken-4">
+                      <p></p>
+                    </td>
+                    <td id="tdata" class="timeline4 pa-1 blue-grey darken-4">
+                      <p></p>
+                    </td>
+                    <td id="tdata" class="timeline5 pa-1 blue-grey darken-4">
+                      <p></p>
+                    </td>
+                    <td
+                      id="tdata"
+                      colspan="2"
+                      class="timeline6 blue-grey darken-4"
                     >
-                      <h5 class="font-weight-regular">
-                        <br />24.00%<br /><br /><br />
-                      </h5>
-                    </v-card>
-                    <v-card
-                      class="pa-2 pt-4 kra3"
-                      style="height: 100px"
-                      v-model="part3Kra3"
-                      outlined
-                      tile
+                      <p></p>
+                    </td>
+                  </tr>
+                  <tr class="row1">
+                    <td id="tdata" class="timelineObj1" rowspan="3">
+                      <p>
+                        6. Used strategies for providing timely, accurate and
+                        constructive feedback to improve learner performance
+                      </p>
+                    </td>
+                    <td id="tdata" class="weightPerKra" rowspan="3">
+                      <p></p>
+                    </td>
+                    <td id="tdata" class="quality1">
+                      <p>Quality</p>
+                    </td>
+                    <td id="tdata" class="outstanding1">
+                      <p>
+                        Provided learners with accurate, and specific and
+                        directed constructive feedback* as shown in the evidence
+                        submitted
+                      </p>
+                    </td>
+                    <td id="tdata" class="verySatisfactory1">
+                      <p>
+                        Provided learners with accurate, and specific
+                        constructive feedback as shown in the evidence submitted
+                      </p>
+                    </td>
+                    <td id="tdata" class="satisfactory1">
+                      <p>
+                        Provided learners with accurate, and general
+                        constructive feedback as shown in the evidence submitted
+                      </p>
+                    </td>
+                    <td id="tdata" class="unsatisfactory1">
+                      <p>
+                        Provided learners with inaccurate and/or destructive
+                        feedback as shown in the evidence submitted
+                      </p>
+                    </td>
+                    <td id="tdata" class="poor1">
+                      <p>No evidence was shown</p>
+                    </td>
+                    <td id="tdata" rowspan="1" class="actualResult">
+                      <p>
+                        {{
+                          encodingAdjectivalRating6
+                        }}
+                      </p>
+                    </td>
+                    <td id="tdata" rowspan="3" class="q1">
+                      <p>
+                        {{ encodingIpcrfNumericalQ6}}
+                      </p>
+                    </td>
+                    <td id="tdata" rowspan="3" class="e1 blue-grey darken-4">
+                      <p></p>
+                    </td>
+                    <td id="tdata" rowspan="3" class="t1">
+                      <p>
+                        {{ encodingIpcrfNumericalT6 }}
+                      </p>
+                    </td>
+                    <td id="tdata" rowspan="3" class="ave1">
+                      <p>
+                        {{
+                          encodingIpcrfRatingAve6
+                        }}
+                      </p>
+                    </td>
+                    <td id="tdata" rowspan="3" class="score7">
+                      <p>
+                        {{
+                        encodingScore6
+                        }}
+                      </p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td id="tdata" class="eff1 pa-1">
+                      <p>Efficiency</p>
+                    </td>
+                    <td id="tdata" class="eff2 pa-1 blue-grey darken-4">
+                      <p></p>
+                    </td>
+                    <td id="tdata" class="eff2 pa-1 blue-grey darken-4">
+                      <p></p>
+                    </td>
+                    <td id="tdata" class="eff4 pa-1 blue-grey darken-4">
+                      <p></p>
+                    </td>
+                    <td id="tdata" class="eff5 pa-1 blue-grey darken-4">
+                      <p></p>
+                    </td>
+                    <td
+                      id="tdata"
+                      colspan="2"
+                      class="eff6 pa-1 blue-grey darken-4"
                     >
-                      <h5 class="font-weight-regular">
-                        <br />16.00%<br /><br /><br />
-                      </h5>
-                    </v-card>
-                    <v-card
-                      class="pa-2 pt-4 kra4"
-                      style="height: 150px"
-                      v-model="part3Kra4"
-                      outlined
-                      tile
+                      <p></p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td id="tdata" class="timeline1 pa-1">
+                      <p>Timeliness</p>
+                    </td>
+                    <td id="tdata" class="timeline2 pa-1">
+                      <p>
+                        MOV submitted shows feedback given within 5 working days
+                        from submission**
+                      </p>
+                    </td>
+                    <td id="tdata" class="timeline2 pa-1">
+                      <p>
+                        MOV submitted shows feedback given within 6-10 working
+                        days from submission**
+                      </p>
+                    </td>
+                    <td id="tdata" class="timeline4 pa-1">
+                      <p>
+                        MOV submitted shows feedback given within 11-20 working
+                        days from submission**
+                      </p>
+                    </td>
+                    <td id="tdata" class="timeline5 pa-1">
+                      <p>
+                        MOV submitted shows feedback given beyond 20 working
+                        days from submission**
+                      </p>
+                    </td>
+                    <td id="tdata" class="timeline6">
+                      <p>No evidence was shown</p>
+                    </td>
+                  </tr>
+                  <tr class="row1">
+                    <td id="tdata" rowspan="6">
+                      <p>3. Curriculum and Planning</p>
+                    </td>
+                    <td id="tdata" class="timelineObj1" rowspan="3">
+                      <p>
+                        7. Selected, developed, organized and used appropriate
+                        teaching and learning resources, including ICT, to
+                        address learning goals
+                      </p>
+                    </td>
+
+                    <td id="tdata" class="weightPerKra" rowspan="3">
+                      <p></p>
+                    </td>
+                    <td id="tdata" class="weightPerKra" rowspan="6">
+                      <p>16%</p>
+                    </td>
+                    <td id="tdata" class="quality1">
+                      <p>Quality</p>
+                    </td>
+                    <td id="tdata" class="outstanding1">
+                      <p>
+                        Demonstrated Level 7 in Objective 7 as shown in COT
+                        rating sheets/interobserver agreement forms
+                      </p>
+                    </td>
+                    <td id="tdata" class="verySatisfactory1">
+                      <p>
+                        Demonstrated Level 6 in Objective 7 as shown in COT
+                        rating sheets/interobserver agreement forms
+                      </p>
+                    </td>
+                    <td id="tdata" class="satisfactory1">
+                      <p>
+                        Demonstrated Level 5 in Objective 7 as shown in COT
+                        rating sheets/interobserver agreement forms
+                      </p>
+                    </td>
+                    <td id="tdata" class="unsatisfactory1">
+                      <p>
+                        Demonstrated Level 4 in Objective 7 as shown in COT
+                        rating sheets/interobserver agreement forms
+                      </p>
+                    </td>
+                    <td id="tdata" class="poor1">
+                      <p>
+                        Demonstrated Level 3 in Objective 7 as shown in COT
+                        rating sheets/interobserver agreement forms or No
+                        acceptable evidence was shown
+                      </p>
+                    </td>
+                    <td id="tdata" rowspan="1" class="actualResult">
+                      <p>
+                        {{
+                          encodingAdjectivalRating7
+                        }}
+                      </p>
+                    </td>
+                    <td id="tdata" rowspan="3" class="q1">
+                      <p>
+                        {{ encodingIpcrfNumericalQ7 }}
+                      </p>
+                    </td>
+                    <td id="tdata" rowspan="3" class="e1 blue-grey darken-4">
+                      <p></p>
+                    </td>
+                    <td id="tdata" rowspan="3" class="t1 blue-grey darken-4">
+                      <p></p>
+                    </td>
+                    <td id="tdata" colspan="1" rowspan="3" class="ave1">
+                      <p>
+                        {{
+                          encodingIpcrfRatingAve7
+                        }}
+                      </p>
+                    </td>
+                    <td id="tdata" rowspan="3" class="score8">
+                      <p>
+                        {{
+                         encodingScore7
+                        }}
+                      </p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td id="tdata" class="eff1 pa-1">
+                      <p>Efficiency</p>
+                    </td>
+                    <td id="tdata" class="eff2 pa-1 blue-grey darken-4">
+                      <p></p>
+                    </td>
+                    <td id="tdata" class="eff2 pa-1 blue-grey darken-4">
+                      <p></p>
+                    </td>
+                    <td id="tdata" class="eff4 pa-1 blue-grey darken-4">
+                      <p></p>
+                    </td>
+                    <td id="tdata" class="eff5 pa-1 blue-grey darken-4">
+                      <p></p>
+                    </td>
+                    <td
+                      id="tdata"
+                      colspan="2"
+                      class="eff6 pa-1 blue-grey darken-4"
                     >
-                      <h5 class="font-weight-regular">
-                        <br /><br />24.00%<br /><br /><br />
-                      </h5>
-                    </v-card>
-                    <v-card
-                      class="pa-4 kra5"
-                      style="height: 51px"
-                      v-model="part3Kra5"
-                      outlined
-                      tile
+                      <p></p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td id="tdata" class="timeline1 pa-1">
+                      <p>Timeliness</p>
+                    </td>
+                    <td id="tdata" class="timeline2 pa-1 blue-grey darken-4">
+                      <p></p>
+                    </td>
+                    <td id="tdata" class="timeline2 pa-1 blue-grey darken-4">
+                      <p></p>
+                    </td>
+                    <td id="tdata" class="timeline4 pa-1 blue-grey darken-4">
+                      <p></p>
+                    </td>
+                    <td id="tdata" class="timeline5 pa-1 blue-grey darken-4">
+                      <p></p>
+                    </td>
+                    <td
+                      id="tdata"
+                      colspan="2"
+                      class="timeline6 blue-grey darken-4"
                     >
-                      <h5 class="font-weight-regular">
-                        12.00%<br /><br /><br />
-                      </h5>
-                    </v-card>
-                    <v-card
-                      class="pa-1"
-                      style="height: 54px"
-                      v-model="part3Kra_5"
-                      outlined
-                      tile
+                      <p></p>
+                    </td>
+                  </tr>
+                  <!-- End Number7 -->
+
+                  <!-- Start Number 8 -->
+                  <tr class="row1">
+                    <td id="tdata" class="timelineObj1" rowspan="3">
+                      <p>
+                        8. Set achievable and appropriate learning outcomes that
+                        are aligned with learning competencies
+                      </p>
+                    </td>
+
+                    <td id="tdata" class="weightPerKra" rowspan="3">
+                      <p></p>
+                    </td>
+                    <td id="tdata" class="quality1">
+                      <p>Quality</p>
+                    </td>
+                    <td id="tdata" class="outstanding1">
+                      <p>
+                        All of the learning outcomes set are aligned with the
+                        learning competencies as shown in the MOV submitted
+                      </p>
+                    </td>
+                    <td id="tdata" class="verySatisfactory1">
+                      <p>
+                        Majority of the learning outcomes set are aligned with
+                        the learning competencies as shown in the MOV submitted
+                      </p>
+                    </td>
+                    <td id="tdata" class="satisfactory1">
+                      <p>
+                        Half of the learning outcomes set are aligned with the
+                        learning competencies as shown in the MOV submitted
+                      </p>
+                    </td>
+                    <td id="tdata" class="unsatisfactory1">
+                      <p>
+                        Less than half of the learning outcomes set are aligned
+                        with the learning competencies as shown in the MOV
+                        submitted
+                      </p>
+                    </td>
+                    <td id="tdata" class="poor1">
+                      <p>No acceptable evidence was shown</p>
+                    </td>
+                    <td id="tdata" rowspan="1" class="actualResult">
+                      <p>
+                        {{
+                          encodingAdjectivalRating8
+                        }}
+                      </p>
+                    </td>
+                    <td id="tdata" rowspan="3" class="q1">
+                      <p>
+                        {{ encodingIpcrfNumericalQ8 }}
+                      </p>
+                    </td>
+                    <td id="tdata" rowspan="3" class="e1 blue-grey darken-4">
+                      <p></p>
+                    </td>
+                    <td id="tdata" rowspan="3" class="t1 blue-grey darken-4">
+                      <p></p>
+                    </td>
+                    <td id="tdata" rowspan="3" class="ave1">
+                      <p>
+                        {{
+                         encodingIpcrfRatingAve8
+                        }}
+                      </p>
+                    </td>
+                    <td id="tdata" rowspan="3" class="score10">
+                      <p>
+                        {{
+                          encodingScore8
+                        }}
+                      </p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td id="tdata" class="eff1 pa-1">
+                      <p>Efficiency</p>
+                    </td>
+                    <td id="tdata" class="eff2 pa-1 blue-grey darken-4">
+                      <p></p>
+                    </td>
+                    <td id="tdata" class="eff2 pa-1 blue-grey darken-4">
+                      <p></p>
+                    </td>
+                    <td id="tdata" class="eff4 pa-1 blue-grey darken-4">
+                      <p></p>
+                    </td>
+                    <td id="tdata" class="eff5 pa-1 blue-grey darken-4">
+                      <p></p>
+                    </td>
+                    <td
+                      id="tdata"
+                      colspan="2"
+                      class="eff6 pa-1 blue-grey darken-4"
                     >
-                      <v-text-field style="mb-8"></v-text-field>
-                    </v-card>
-                  </v-col>
-                  <!-- START OF OBJECTIVES COLUMN -->
-
-                  <v-col
-                    :key="n"
-                    v-else-if="n === 3"
-                    class="ePartCol3"
-                    style="margin-left: -25px"
-                  >
-                    <v-card
-                      class="pa-2 pt-4"
-                      outlined
-                      tile
-                      style="width: 120px; height: 120px"
+                      <p></p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td id="tdata" class="timeline1 pa-1">
+                      <p>Timeliness</p>
+                    </td>
+                    <td id="tdata" class="timeline2 pa-1 blue-grey darken-4">
+                      <p></p>
+                    </td>
+                    <td id="tdata" class="timeline2 pa-1 blue-grey darken-4">
+                      <p></p>
+                    </td>
+                    <td id="tdata" class="timeline4 pa-1 blue-grey darken-4">
+                      <p></p>
+                    </td>
+                    <td id="tdata" class="timeline5 pa-1 blue-grey darken-4">
+                      <p></p>
+                    </td>
+                    <td
+                      id="tdata"
+                      colspan="2"
+                      class="timeline6 blue-grey darken-4"
                     >
-                      <h5>
-                        Objectives<br />
-                        <br />
-                      </h5>
-                    </v-card>
-                    <div style="text-align: center">
-                      <v-card
-                        class="pa-2 pt-4"
-                        style="height: 50px"
-                        outlined
-                        tile
-                      >
-                        <h5 class="font-weight-regular">Objective 1</h5>
-                        <br />
-                      </v-card>
+                      <p></p>
+                    </td>
+                  </tr>
+                  <!-- End Number 3 -->
+                  <!-- Start Number 4 -->
 
-                      <v-card
-                        class="pa-2 pt-4"
-                        style="height: 50px"
-                        outlined
-                        tile
-                      >
-                        <h5 class="font-weight-regular">Objective 2</h5>
-                        <br />
-                      </v-card>
-                      <v-card
-                        class="pa-2 pt-4"
-                        style="height: 50px"
-                        outlined
-                        tile
-                      >
-                        <h5 class="font-weight-regular">Objective 3</h5>
-                        <br />
-                      </v-card>
-                      <v-card class="pa-2" style="height: 50px" outlined tile>
-                        <h5 class="font-weight-regular">Objective 4</h5>
-                        <br />
-                      </v-card>
-
-                      <v-card class="pa-2" style="height: 50px" outlined tile>
-                        <h5 class="font-weight-regular">Objective 5</h5>
-                        <br />
-                      </v-card>
-                      <v-card
-                        class="pa-2 pt-4"
-                        style="height: 50px"
-                        outlined
-                        tile
-                      >
-                        <h5 class="font-weight-regular">Objective 6</h5>
-                        <br />
-                      </v-card>
-                      <v-card
-                        class="pa-2 pt-4"
-                        style="height: 50px"
-                        outlined
-                        tile
-                      >
-                        <h5 class="font-weight-regular">Objective 7</h5>
-                        <br />
-                      </v-card>
-                      <v-card
-                        class="pa-2 pt-4"
-                        style="height: 50px"
-                        outlined
-                        tile
-                      >
-                        <h5 class="font-weight-regular">Objective 8</h5>
-                        <br />
-                      </v-card>
-
-                      <v-card
-                        class="pa-2 pt-4"
-                        style="height: 50px"
-                        outlined
-                        tile
-                      >
-                        <h5 class="font-weight-regular">Objective 9</h5>
-                        <br />
-                      </v-card>
-                      <v-card
-                        class="pa-2 pt-4"
-                        style="height: 50px"
-                        outlined
-                        tile
-                      >
-                        <h5 class="font-weight-regular">Objective 10</h5>
-                        <br />
-                      </v-card>
-                      <v-card
-                        class="pa-2 pt-4"
-                        style="height: 50px"
-                        outlined
-                        tile
-                      >
-                        <h5 class="font-weight-regular">Objective 11</h5>
-                        <br />
-                      </v-card>
-                      <v-card
-                        class="pa-2 pt-4"
-                        style="height: 50px"
-                        outlined
-                        tile
-                      >
-                        <h5 class="font-weight-regular">Objective 12</h5>
-                        <br />
-                      </v-card>
-                    </div>
-                  </v-col>
-                  <!-- END OF OBJECTIVES COLUMN -->
-                  <!-- START OF OBJECTIVES COLUMN -->
-
-                  <v-col
-                    :key="n"
-                    v-else-if="n === 4"
-                    class="ePartCol3"
-                    style="margin-left: -25px"
-                  >
-                    <v-card
-                      class="pa-2 pt-4"
-                      outlined
-                      tile
-                      style="width: 120px; height: 120px"
+                  <tr class="row1">
+                    <td id="tdata" rowspan="9">
+                      <p>
+                        4. Community Linkages and Professional Engagement &
+                        Personal Growth and Professional Development
+                      </p>
+                    </td>
+                    <td id="tdata" class="timelineObj1" rowspan="3">
+                      <p>
+                        9. Built relationships with parents/ guardians and the
+                        wider school community to facilitate involvement in the
+                        educative process
+                      </p>
+                    </td>
+                    <td id="tdata" class="timelineObj1" rowspan="3">
+                      <p></p>
+                    </td>
+                    <td id="tdata" class="weightPerKra" rowspan="9">
+                      <p>24%</p>
+                    </td>
+                    <td id="tdata" class="quality1">
+                      <p>Quality</p>
+                    </td>
+                    <td id="tdata" class="outstanding1">
+                      <p>
+                        Sustained engagement with parents/ guardians and/ or
+                        wider school community to facilitate involvement in the
+                        educative process as evidenced by 2 or more of MOV no. 1
+                        or 2
+                      </p>
+                    </td>
+                    <td id="tdata" class="verySatisfactory1">
+                      <p>
+                        Secured collaboration with parents/ guardians and/ or
+                        wider school community to facilitate involvement in the
+                        educative process as evidenced by one MOV no. 1 or 2
+                      </p>
+                    </td>
+                    <td id="tdata" class="satisfactory1">
+                      <p>
+                        Communicated with and obtained response from parents/
+                        guardians and/ or wider school community to facilitate
+                        involvement in the educative process as evidenced by MOV
+                        No. 3
+                      </p>
+                    </td>
+                    <td id="tdata" class="unsatisfactory1">
+                      <p>
+                        Communicated with parents/ guardians and/or wider school
+                        community to facilitate involvement in the educative
+                        process but received no response/reply as evidenced by
+                        MOV No. 3
+                      </p>
+                    </td>
+                    <td id="tdata" class="poor1">
+                      <p>No acceptable evidence was shown</p>
+                    </td>
+                    <td id="tdata" rowspan="1" class="actualResult">
+                      <p>
+                        {{
+                          encodingAdjectivalRating9
+                        }}
+                      </p>
+                    </td>
+                    <td id="tdata" rowspan="3" class="q1">
+                      <p>
+                        {{ encodingIpcrfNumericalQ9 }}
+                      </p>
+                    </td>
+                    <td id="tdata" rowspan="3">
+                      <p>
+                        {{ encodingIpcrfNumericalE9}}
+                      </p>
+                    </td>
+                    <td id="tdata" rowspan="3" class="t1 blue-grey darken-4">
+                      <p></p>
+                    </td>
+                    <td id="tdata" rowspan="3" class="ave1">
+                      <p>{{encodingIpcrfRatingAve9}}</p>
+                    </td>
+                    <td id="tdata" rowspan="3" class="score11">
+                      <p>{{encodingScore9}}</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td id="tdata" class="eff1 pa-1">
+                      <p>Efficiency</p>
+                    </td>
+                    <td id="tdata" class="eff2 pa-1">
+                      <p>Submitted any 4 of the acceptable MOV*</p>
+                    </td>
+                    <td id="tdata" class="eff2 pa-1">
+                      <p>Submitted any 3 of the acceptable MOV*</p>
+                    </td>
+                    <td id="tdata" class="eff4 pa-1">
+                      <p>Submitted any 2 of the acceptable MOV*</p>
+                    </td>
+                    <td id="tdata" class="eff5 pa-1">
+                      <p>Submitted any 1 of the acceptable MOV</p>
+                    </td>
+                    <td id="tdata" class="eff6 pa-1">
+                      <p>No acceptable evidence was shown</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td id="tdata" class="timeline1 pa-1">
+                      <p>Timeliness</p>
+                    </td>
+                    <td id="tdata" class="timeline2 pa-1 blue-grey darken-4">
+                      <p></p>
+                    </td>
+                    <td id="tdata" class="timeline2 pa-1 blue-grey darken-4">
+                      <p></p>
+                    </td>
+                    <td id="tdata" class="timeline4 pa-1 blue-grey darken-4">
+                      <p></p>
+                    </td>
+                    <td id="tdata" class="timeline5 pa-1 blue-grey darken-4">
+                      <p></p>
+                    </td>
+                    <td
+                      id="tdata"
+                      colspan="2"
+                      class="timeline6 blue-grey darken-4"
                     >
-                      <h5>
-                        Weight per <br />
-                        Objectives
-                        <br />
-                      </h5>
-                    </v-card>
-                    <div style="text-align: center">
-                      <v-card
-                        class="pa-2 pt-4"
-                        style="height: 50px"
-                        outlined
-                        tile
-                      >
-                        <h5 class="font-weight-regular">8 %</h5>
-                        <br />
-                      </v-card>
+                      <p></p>
+                    </td>
+                  </tr>
+                  <tr class="row1">
+                    <td id="tdata" class="timelineObj1" rowspan="3">
+                      <p>
+                        10. Participated in professional networks to share
+                        knowledge and to enhance practice
+                      </p>
+                    </td>
 
-                      <v-card
-                        class="pa-2 pt-4"
-                        style="height: 50px"
-                        outlined
-                        tile
-                      >
-                        <h5 class="font-weight-regular">8 %</h5>
-                        <br />
-                      </v-card>
-                      <v-card
-                        class="pa-2 pt-4"
-                        style="height: 50px"
-                        outlined
-                        tile
-                      >
-                        <h5 class="font-weight-regular">8 %</h5>
-                        <br />
-                      </v-card>
-                      <v-card class="pa-2" style="height: 50px" outlined tile>
-                        <h5 class="font-weight-regular">8 %</h5>
-                        <br />
-                      </v-card>
-
-                      <v-card class="pa-2" style="height: 50px" outlined tile>
-                        <h5 class="font-weight-regular">8 %</h5>
-                        <br />
-                      </v-card>
-                      <v-card
-                        class="pa-2 pt-4"
-                        style="height: 50px"
-                        outlined
-                        tile
-                      >
-                        <h5 class="font-weight-regular">8 %</h5>
-                        <br />
-                      </v-card>
-                      <v-card
-                        class="pa-2 pt-4"
-                        style="height: 50px"
-                        outlined
-                        tile
-                      >
-                        <h5 class="font-weight-regular">8 %</h5>
-                        <br />
-                      </v-card>
-                      <v-card
-                        class="pa-2 pt-4"
-                        style="height: 50px"
-                        outlined
-                        tile
-                      >
-                        <h5 class="font-weight-regular">8 %</h5>
-                        <br />
-                      </v-card>
-
-                      <v-card
-                        class="pa-2 pt-4"
-                        style="height: 50px"
-                        outlined
-                        tile
-                      >
-                        <h5 class="font-weight-regular">8 %</h5>
-                        <br />
-                      </v-card>
-                      <v-card
-                        class="pa-2 pt-4"
-                        style="height: 50px"
-                        outlined
-                        tile
-                      >
-                        <h5 class="font-weight-regular">8 %</h5>
-                        <br />
-                      </v-card>
-                      <v-card
-                        class="pa-2 pt-4"
-                        style="height: 50px"
-                        outlined
-                        tile
-                      >
-                        <h5 class="font-weight-regular">8 %</h5>
-                        <br />
-                      </v-card>
-                      <v-card
-                        class="pa-2 pt-4"
-                        style="height: 50px"
-                        outlined
-                        tile
-                      >
-                        <h5 class="font-weight-regular">8 %</h5>
-                        <br />
-                      </v-card>
-                    </div>
-                  </v-col>
-                  <!-- END OF encoding weighted per OBJECTIVE - -->
-                  <!-- Start of IPCRF  NUMERICAL RATING -->
-                  <v-col
-                    :key="n"
-                    v-else-if="n === 5"
-                    class="ePartCol3"
-                    style="margin-left: -25px"
-                  >
-                    <v-card
-                      class="pa-2 pt-4"
-                      outlined
-                      tile
-                      style="width: 260px; height: 120px"
+                    <td id="tdata" class="weightPerKra" rowspan="3">
+                      <p></p>
+                    </td>
+                    <td id="tdata" class="quality1">
+                      <p>Quality</p>
+                    </td>
+                    <td id="tdata" class="outstanding1">
+                      <p>
+                        Participated in any professional network/ activity that
+                        requires output* and proof of implementation ** within
+                        the school to share knowledge and to enhance practice as
+                        evidenced by the submitted MOV
+                      </p>
+                    </td>
+                    <td id="tdata" class="verySatisfactory1">
+                      <p>
+                        Participated in any professional network/ activity that
+                        requires output* and proof of implementation ** within
+                        the department/grade level to share knowledge and to
+                        enhance practice as evidenced by the submitted MOV
+                      </p>
+                    </td>
+                    <td id="tdata" class="satisfactory1">
+                      <p>
+                        Participated in any professional network/ activity that
+                        requires output* to share knowledge and to enhance
+                        practice as evidenced by the submitted MOV
+                      </p>
+                    </td>
+                    <td id="tdata" class="unsatisfactory1">
+                      <p>
+                        Participated in any professional network/ activity that
+                        does not require output to share knowledge and to
+                        enhance practice as evidenced by the submitted MOV
+                      </p>
+                    </td>
+                    <td id="tdata" class="poor1">
+                      <p>No acceptable evidence was shown</p>
+                    </td>
+                    <td id="tdata" rowspan="1" class="actualResult">
+                      <p>
+                        {{
+                         encodingAdjectivalRating10
+                        }}
+                      </p>
+                    </td>
+                    <td id="tdata" rowspan="3" class="q1">
+                      <p>
+                        {{ encodingIpcrfNumericalQ10 }}
+                      </p>
+                    </td>
+                    <td id="tdata" rowspan="3">
+                      <p>
+                        {{ encodingIpcrfNumericalE10}}
+                      </p>
+                    </td>
+                    <td id="tdata" rowspan="3" class="t1 blue-grey darken-4">
+                      <p></p>
+                    </td>
+                    <td id="tdata" rowspan="3" class="ave1">
+                      <p>
+                        {{
+                          encodingIpcrfRatingAve10
+                        }}
+                      </p>
+                    </td>
+                    <td id="tdata" rowspan="3" class="score13">
+                      <p>
+                        {{
+                          encodingScore10
+                        }}
+                      </p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td id="tdata" class="eff1 pa-1">
+                      <p>Efficiency</p>
+                    </td>
+                    <td id="tdata" class="eff2 pa-1">
+                      <p>Submitted 4 different kinds of acceptable MOV***</p>
+                    </td>
+                    <td id="tdata" class="eff2 pa-1">
+                      <p>Submitted 3 different kinds of acceptable MOV***</p>
+                    </td>
+                    <td id="tdata" class="eff4 pa-1">
+                      <p>Submitted 2 different kinds of acceptable MOV***</p>
+                    </td>
+                    <td id="tdata" class="eff5 pa-1">
+                      <p>Submitted 1 of the acceptable MOV</p>
+                    </td>
+                    <td id="tdata" class="eff6 pa-1">
+                      <p>No acceptable evidence was shown</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td id="tdata" class="timeline1 pa-1">
+                      <p>Timeliness</p>
+                    </td>
+                    <td id="tdata" class="timeline2 pa-1 blue-grey darken-4">
+                      <p></p>
+                    </td>
+                    <td id="tdata" class="timeline2 pa-1 blue-grey darken-4">
+                      <p></p>
+                    </td>
+                    <td id="tdata" class="timeline4 pa-1 blue-grey darken-4">
+                      <p></p>
+                    </td>
+                    <td id="tdata" class="timeline5 pa-1 blue-grey darken-4">
+                      <p></p>
+                    </td>
+                    <td
+                      id="tdata"
+                      colspan="2"
+                      class="timeline6 blue-grey darken-4"
                     >
-                      <h5>
-                        IPCRF NUMERICAL RATING
-                        <br />
-                      </h5>
-                      <v-card
-                        no-gutters
-                        style="
-                          width: 57px;
-                          height: 20px;
-                          border-radius: 0;
-                          margin-top: 62px;
-                          margin-left: -7px;
-                        "
-                        >Q
-                      </v-card>
-                      <v-card
-                        no-gutters
-                        style="
-                          width: 57px;
-                          height: 20px;
-                          border-radius: 0;
-                          margin-top: -20px;
-                          margin-left: 57px;
-                        "
-                        >E
-                      </v-card>
-                      <v-card
-                        no-gutters
-                        style="
-                          width: 57px;
-                          height: 20px;
-                          border-radius: 0;
-                          margin-top: -20px;
-                          margin-left: 120px;
-                        "
-                        >T
-                      </v-card>
-                      <v-card
-                        no-gutters
-                        style="
-                          width: 65px;
-                          height: 20px;
-                          border-radius: 0;
-                          margin-top: -20px;
-                          margin-left: 185px;
-                        "
-                      >
-                        AVE
-                      </v-card>
-                    </v-card>
-                    <div style="text-align: center; width: 60px">
-                      <v-card class="pa-1" style="height: 50px" outlined tile>
-                        <h5 class="font-weight-regular">
-                          {{ encoding_ipcrfNumericalQ1 }}
-                        </h5>
-                        <!-- <v-text-field
-                        v-model="encoding_ipcrfNumericalQ1"
-                        placeholder=""
-                        solo
-                        dense
-                        style="width: 100px"
-                        class="text-center"
-                        type="text"
-                      >
-                      </v-text-field> 
-                      <v-text-field
-                        v-model="encoding_ipcrfNumericalQ1"
-                        placeholder=""
-                        solo
-                        dense
-                        style="width: 100px"
-                        class="text-center"
-                        type="text"
-                      >
-                      </v-text-field>-->
-                        <br />
-                      </v-card>
-
-                      <v-card class="pa-1" style="height: 50px" outlined tile>
-                        <h5 class="font-weight-regular">
-                          {{ encoding_ipcrfNumericalQ2 }}
-                        </h5>
-
-                        <br />
-                      </v-card>
-
-                      <v-card class="pa-1" style="height: 50px" outlined tile>
-                        <h5 class="font-weight-regular">
-                          {{ encoding_ipcrfNumericalQ3 }}
-                        </h5>
-
-                        <br />
-                      </v-card>
-
-                      <v-card class="pa-1" style="height: 50px" outlined tile>
-                        <h5 class="font-weight-regular">
-                          {{ encoding_ipcrfNumericalQ4 }}
-                        </h5>
-
-                        <br />
-                      </v-card>
-
-                      <v-card class="pa-1" style="height: 50px" outlined tile>
-                        <h5 class="font-weight-regular">
-                          {{ encoding_ipcrfNumericalQ5 }}
-                        </h5>
-
-                        <br />
-                      </v-card>
-
-                      <v-card class="pa-1" style="height: 50px" outlined tile>
-                        <h5 class="font-weight-regular">
-                          {{ encoding_ipcrfNumericalQ6 }}
-                        </h5>
-
-                        <br />
-                      </v-card>
-
-                      <v-card class="pa-1" style="height: 50px" outlined tile>
-                        <h5 class="font-weight-regular">
-                          {{ encoding_ipcrfNumericalQ7 }}
-                        </h5>
-
-                        <br />
-                      </v-card>
-
-                      <v-card class="pa-1" style="height: 50px" outlined tile>
-                        <h5 class="font-weight-regular">
-                          {{ encoding_ipcrfNumericalQ8 }}
-                        </h5>
-
-                        <br />
-                      </v-card>
-
-                      <v-card class="pa-1" style="height: 50px" outlined tile>
-                        <h5 class="font-weight-regular">
-                          {{ encoding_ipcrfNumericalQ9 }}
-                        </h5>
-
-                        <br />
-                      </v-card>
-                      <v-card class="pa-1" style="height: 50px" outlined tile>
-                        <h5 class="font-weight-regular">
-                          {{ encoding_ipcrfNumericalQ10 }}
-                        </h5>
-
-                        <br />
-                      </v-card>
-
-                      <v-card class="pa-1" style="height: 50px" outlined tile>
-                        <h5 class="font-weight-regular">
-                          {{ encoding_ipcrfNumericalQ11 }}
-                        </h5>
-
-                        <br />
-                      </v-card>
-
-                      <v-card class="pa-1" style="height: 50px" outlined tile>
-                        <h5 class="font-weight-regular">
-                          {{ encoding_ipcrfNumericalQ12 }}
-                        </h5>
-
-                        <br />
-                      </v-card>
-                    </div>
-                  </v-col>
-
-                  <!-- End of cot 3 -->
-                  <!-- Start of IPCRF (E) -->
-
-                  <v-col
-                    :key="n"
-                    v-else-if="n === 6"
-                    class="ePartCol3"
-                    style="margin-left: -220px"
-                  >
-                    <br /><br /><br />
-                    <br /><br />
-
-                    <div style="text-align: center; width: 60px">
-                      <v-card class="pa-1" style="height: 50px" outlined tile>
-                        <h5 class="font-weight-regular">
-                          {{ encoding_ipcrfNumerical_E1 }}
-                        </h5>
-                        <!-- <v-text-field
-                        v-model="encoding_ipcrfNumerical_E1"
-                        placeholder=""
-                        solo
-                        dense
-                        style="width: 100px"
-                        class="text-center"
-                        type="text"
-                      >
-                      </v-text-field> -->
-
-                        <br />
-                      </v-card>
-
-                      <v-card class="pa-1" style="height: 50px" outlined tile>
-                        <h5 class="font-weight-regular">
-                          {{ encoding_ipcrfNumerical_E2 }}
-                        </h5>
-
-                        <br />
-                      </v-card>
-
-                      <v-card class="pa-1" style="height: 50px" outlined tile>
-                        <h5 class="font-weight-regular">
-                          {{ encoding_ipcrfNumerical_E3 }}
-                        </h5>
-
-                        <br />
-                      </v-card>
-
-                      <v-card class="pa-1" style="height: 50px" outlined tile>
-                        <h5 class="font-weight-regular">
-                          {{ encoding_ipcrfNumerical_E4 }}
-                        </h5>
-
-                        <br />
-                      </v-card>
-
-                      <v-card class="pa-1" style="height: 50px" outlined tile>
-                        <h5 class="font-weight-regular">
-                          {{ encoding_ipcrfNumerical_E5 }}
-                        </h5>
-
-                        <br />
-                      </v-card>
-
-                      <v-card class="pa-1" style="height: 50px" outlined tile>
-                        <h5 class="font-weight-regular">
-                          {{ encoding_ipcrfNumerical_E6 }}
-                        </h5>
-
-                        <br />
-                      </v-card>
-
-                      <v-card class="pa-1" style="height: 50px" outlined tile>
-                        <h5 class="font-weight-regular">
-                          {{ encoding_ipcrfNumerical_E7 }}
-                        </h5>
-
-                        <br />
-                      </v-card>
-
-                      <v-card class="pa-1" style="height: 50px" outlined tile>
-                        <h5 class="font-weight-regular">
-                          {{ encoding_ipcrfNumerical_E8 }}
-                        </h5>
-
-                        <br />
-                      </v-card>
-
-                      <v-card class="pa-1" style="height: 50px" outlined tile>
-                        <h5 class="font-weight-regular">
-                          {{ encoding_ipcrfNumerical_E9 }}
-                        </h5>
-
-                        <br />
-                      </v-card>
-                      <v-card class="pa-1" style="height: 50px" outlined tile>
-                        <h5 class="font-weight-regular">
-                          {{ encoding_ipcrfNumerical_E10 }}
-                        </h5>
-
-                        <br />
-                      </v-card>
-
-                      <v-card class="pa-1" style="height: 50px" outlined tile>
-                        <h5 class="font-weight-regular">
-                          {{ encoding_ipcrfNumerical_E11 }}
-                        </h5>
-
-                        <br />
-                      </v-card>
-
-                      <v-card class="pa-1" style="height: 50px" outlined tile>
-                        <h5 class="font-weight-regular">
-                          {{ encoding_ipcrfNumerical_E12 }}
-                        </h5>
-
-                        <br />
-                      </v-card>
-                    </div>
-                  </v-col>
-                  <!-- END OF IPCRF (E) -->
-                  <!-- Start of IPCRF (T) -->
-
-                  <v-col
-                    :key="n"
-                    v-else-if="n === 7"
-                    class="ePartCol3"
-                    style="margin-left: -40px"
-                  >
-                    <br /><br /><br />
-                    <br /><br />
-
-                    <div style="text-align: center; width: 60px">
-                      <v-card class="pa-1" style="height: 50px" outlined tile>
-                        <h5 class="font-weight-regular">
-                          {{ encoding_ipcrfNumerical_T1 }}
-                        </h5>
-
-                        <br />
-                      </v-card>
-
-                      <v-card class="pa-1" style="height: 50px" outlined tile>
-                        <h5 class="font-weight-regular">
-                          {{ encoding_ipcrfNumerical_T2 }}
-                        </h5>
-
-                        <br />
-                      </v-card>
-
-                      <v-card class="pa-1" style="height: 50px" outlined tile>
-                        <h5 class="font-weight-regular">
-                          {{ encoding_ipcrfNumerical_T3 }}
-                        </h5>
-
-                        <br />
-                      </v-card>
-
-                      <v-card class="pa-1" style="height: 50px" outlined tile>
-                        <h5 class="font-weight-regular">
-                          {{ encoding_ipcrfNumerical_T4 }}
-                        </h5>
-
-                        <br />
-                      </v-card>
-
-                      <v-card class="pa-1" style="height: 50px" outlined tile>
-                        <h5 class="font-weight-regular">
-                          {{ encoding_ipcrfNumerical_T5 }}
-                        </h5>
-
-                        <br />
-                      </v-card>
-
-                      <v-card class="pa-1" style="height: 50px" outlined tile>
-                        <h5 class="font-weight-regular">
-                          {{ encoding_ipcrfNumerical_T6 }}
-                        </h5>
-
-                        <br />
-                      </v-card>
-
-                      <v-card class="pa-1" style="height: 50px" outlined tile>
-                        <h5 class="font-weight-regular">
-                          {{ encoding_ipcrfNumerical_T7 }}
-                        </h5>
-
-                        <br />
-                      </v-card>
-
-                      <v-card class="pa-1" style="height: 50px" outlined tile>
-                        <h5 class="font-weight-regular">
-                          {{ encoding_ipcrfNumerical_T8 }}
-                        </h5>
-
-                        <br />
-                      </v-card>
-
-                      <v-card class="pa-1" style="height: 50px" outlined tile>
-                        <h5 class="font-weight-regular">
-                          {{ encoding_ipcrfNumerical_T9 }}
-                        </h5>
-
-                        <br />
-                      </v-card>
-                      <v-card class="pa-1" style="height: 50px" outlined tile>
-                        <h5 class="font-weight-regular">
-                          {{ encoding_ipcrfNumerical_T10 }}
-                        </h5>
-
-                        <br />
-                      </v-card>
-
-                      <v-card class="pa-1" style="height: 50px" outlined tile>
-                        <h5 class="font-weight-regular">
-                          {{ encoding_ipcrfNumerical_T11 }}
-                        </h5>
-
-                        <br />
-                      </v-card>
-
-                      <v-card class="pa-1" style="height: 50px" outlined tile>
-                        <h5 class="font-weight-regular">
-                          {{ encoding_ipcrfNumerical_T12 }}
-                        </h5>
-
-                        <br />
-                      </v-card>
-                    </div>
-                  </v-col>
-                  <!-- END OF IPCRF (T) -->
-                  <!-- Start of IPCRF (RATING AVERAGE) -->
-
-                  <v-col
-                    :key="n"
-                    v-else-if="n === 8"
-                    class="ePartCol3"
-                    style="margin-left: -40px"
-                  >
-                    <br /><br /><br />
-                    <br /><br />
-
-                    <div style="text-align: center; width: 68px">
-                      <v-card class="pa-1" style="height: 50px" outlined tile>
-                        <h5 class="font-weight-regular">
-                          {{ encoding_ipcrfRatingAve1 }}
-                        </h5>
-
-                        <br />
-                      </v-card>
-
-                      <v-card class="pa-1" style="height: 50px" outlined tile>
-                        <h5 class="font-weight-regular">
-                          {{ encoding_ipcrfRatingAve2 }}
-                        </h5>
-
-                        <br />
-                      </v-card>
-
-                      <v-card class="pa-1" style="height: 50px" outlined tile>
-                        <h5 class="font-weight-regular">
-                          {{ encoding_ipcrfRatingAve3 }}
-                        </h5>
-
-                        <br />
-                      </v-card>
-
-                      <v-card class="pa-1" style="height: 50px" outlined tile>
-                        <h5 class="font-weight-regular">
-                          {{ encoding_ipcrfRatingAve4 }}
-                        </h5>
-
-                        <br />
-                      </v-card>
-
-                      <v-card class="pa-1" style="height: 50px" outlined tile>
-                        <h5 class="font-weight-regular">
-                          {{ encoding_ipcrfRatingAve5 }}
-                        </h5>
-
-                        <br />
-                      </v-card>
-
-                      <v-card class="pa-1" style="height: 50px" outlined tile>
-                        <h5 class="font-weight-regular">
-                          {{ encoding_ipcrfRatingAve6 }}
-                        </h5>
-
-                        <br />
-                      </v-card>
-
-                      <v-card class="pa-1" style="height: 50px" outlined tile>
-                        <h5 class="font-weight-regular">
-                          {{ encoding_ipcrfRatingAve7 }}
-                        </h5>
-
-                        <br />
-                      </v-card>
-
-                      <v-card class="pa-1" style="height: 50px" outlined tile>
-                        <h5 class="font-weight-regular">
-                          {{ encoding_ipcrfRatingAve8 }}
-                        </h5>
-
-                        <br />
-                      </v-card>
-
-                      <v-card class="pa-1" style="height: 50px" outlined tile>
-                        <h5 class="font-weight-regular">
-                          {{ encoding_ipcrfRatingAve9 }}
-                        </h5>
-
-                        <br />
-                      </v-card>
-                      <v-card class="pa-1" style="height: 50px" outlined tile
-                        ><h5 class="font-weight-regular">
-                          {{ encoding_ipcrfRatingAve10 }}
-                        </h5>
-
-                        <br />
-                      </v-card>
-
-                      <v-card class="pa-1" style="height: 50px" outlined tile>
-                        <h5 class="font-weight-regular">
-                          {{ encoding_ipcrfRatingAve11 }}
-                        </h5>
-
-                        <br />
-                      </v-card>
-
-                      <v-card class="pa-1" style="height: 50px" outlined tile>
-                        <h5 class="font-weight-regular">
-                          {{ encoding_ipcrfRatingAve12 }}
-                        </h5>
-
-                        <br />
-                      </v-card>
-                    </div>
-                  </v-col>
-                  <!-- END OF IPCRF (average) -->
-                  <!-- Start of encoding SCORE -->
-                  <v-col
-                    :key="n"
-                    v-else-if="n === 9"
-                    class="ePartCol3"
-                    style="margin-left: -35px"
-                  >
-                    <v-card
-                      class="pa-2 pt-4"
-                      outlined
-                      tile
-                      style="width: 120px; height: 120px"
+                      <p></p>
+                    </td>
+                  </tr>
+                  <tr class="row1">
+                    <td id="tdata" class="timelineObj1" rowspan="3">
+                      <p>
+                        11. Developed a personal improvement plan based on
+                        reflection of one’s practice and ongoing professional
+                        learning
+                      </p>
+                    </td>
+                    <td id="tdata" class="weightPerKra" rowspan="3">
+                      <p></p>
+                    </td>
+                    <td id="tdata" class="quality1">
+                      <p>Quality</p>
+                    </td>
+                    <td id="tdata" class="outstanding1">
+                      <p>
+                        Updated the Development Plan and approved by the rater
+                        during Phase II of the RPMS cycle
+                      </p>
+                    </td>
+                    <td id="tdata" class="verySatisfactory1">
+                      <p>
+                        Discussed progress on the Development Plan with the
+                        rater to check whether Development Needs were addressed
+                      </p>
+                    </td>
+                    <td id="tdata" class="satisfactory1">
+                      <p>
+                        Accomplished the Development Plan from learning
+                        objectives up to resources needed to address Development
+                        Needs during Phase I of the RPMS cycle
+                      </p>
+                    </td>
+                    <td id="tdata" class="unsatisfactory1">
+                      <p>
+                        Accomplished the Strengths and Development Needs portion
+                        of the Development Plan after self-assessment at the
+                        beginning of the school year
+                      </p>
+                    </td>
+                    <td id="tdata" class="poor1">
+                      <p>No acceptable evidence was shown</p>
+                    </td>
+                    <td id="tdata" rowspan="1" class="actualResult">
+                      <p>
+                        {{
+                          encodingAdjectivalRating11
+                        }}
+                      </p>
+                    </td>
+                    <td id="tdata" rowspan="3" class="q1">
+                      <p>
+                        {{ encodingIpcrfNumericalQ11 }}
+                      </p>
+                    </td>
+                    <td id="tdata" rowspan="3">
+                      <p>
+                        {{ encodingIpcrfNumericalE11 }}
+                      </p>
+                    </td>
+                    <td id="tdata" rowspan="3" class="t1 blue-grey darken-4">
+                      <p></p>
+                    </td>
+                    <td id="tdata" rowspan="3" class="ave1">
+                      <p>
+                        {{
+                          encodingIpcrfRatingAve11
+                        }}
+                      </p>
+                    </td>
+                    <td id="tdata" rowspan="3" class="score13">
+                      <p>
+                        {{
+                          encodingScore11
+                        }}
+                      </p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td id="tdata" class="eff1 pa-1">
+                      <p>Efficiency</p>
+                    </td>
+                    <td id="tdata" class="eff2 pa-1">
+                      <p>
+                        Submitted the IPCRF-DP with any 4 of the acceptable
+                        Supporting MOV*
+                      </p>
+                    </td>
+                    <td id="tdata" class="eff2 pa-1">
+                      <p>
+                        Submitted the IPCRF-DP with any 3 of the acceptable
+                        Supporting MOV*
+                      </p>
+                    </td>
+                    <td id="tdata" class="eff4 pa-1">
+                      <p>
+                        Submitted the IPCRF-DP with any 2 of the acceptable
+                        Supporting MOV*
+                      </p>
+                    </td>
+                    <td id="tdata" class="eff5 pa-1">
+                      <p>
+                        Submitted the IPCRF-DP with any 1 of the acceptable
+                        Supporting MOV
+                      </p>
+                    </td>
+                    <td id="tdata" class="eff6 pa-1">
+                      <p>No acceptable evidence was shown</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td id="tdata" class="timeline1 pa-1">
+                      <p>Timeliness</p>
+                    </td>
+                    <td id="tdata" class="timeline2 pa-1 blue-grey darken-4">
+                      <p></p>
+                    </td>
+                    <td id="tdata" class="timeline2 pa-1 blue-grey darken-4">
+                      <p></p>
+                    </td>
+                    <td id="tdata" class="timeline4 pa-1 blue-grey darken-4">
+                      <p></p>
+                    </td>
+                    <td id="tdata" class="timeline5 pa-1 blue-grey darken-4">
+                      <p></p>
+                    </td>
+                    <td
+                      id="tdata"
+                      colspan="2"
+                      class="timeline6 blue-grey darken-4"
                     >
-                      <h5>
-                        SCORE
-                        <br />
-                      </h5>
-                    </v-card>
-                    <div style="text-align: center; width: 120px">
-                      <v-card class="pa-4" style="height: 50px" outlined tile>
-                        <h5 class="font-weight-regular">{{ encoding_1 }}</h5>
+                      <p></p>
+                    </td>
+                  </tr>
+                  <!-- End Number 4 -->
 
-                        <br />
-                      </v-card>
+                  <!-- Start Number 5 -->
+                  <tr class="row1">
+                    <td id="tdata" rowspan="3">
+                      <p>5. Plus Factor</p>
+                    </td>
+                    <td id="tdata" class="timelineObj1" rowspan="3">
+                      <p>
+                        12. Performed various related works/ activities that
+                        contribute to the teaching-learning process
+                      </p>
+                    </td>
 
-                      <v-card class="pa-4" style="height: 50px" outlined tile>
-                        <h5 class="font-weight-regular">{{ encoding_2 }}</h5>
-
-                        <br />
-                      </v-card>
-
-                      <v-card class="pa-4" style="height: 50px" outlined tile>
-                        <h5 class="font-weight-regular">{{ encoding_3 }}</h5>
-
-                        <br />
-                      </v-card>
-
-                      <v-card class="pa-4" style="height: 50px" outlined tile>
-                        <h5 class="font-weight-regular">{{ encoding_4 }}</h5>
-
-                        <br />
-                      </v-card>
-
-                      <v-card class="pa-4" style="height: 50px" outlined tile>
-                        <h5 class="font-weight-regular">{{ encoding_5 }}</h5>
-
-                        <br />
-                      </v-card>
-
-                      <v-card class="pa-4" style="height: 50px" outlined tile>
-                        <h5></h5>
-
-                        <br />
-                      </v-card>
-
-                      <v-card
-                        class="pa-4"
-                        style="height: 50px"
-                        v-model="part3Encoding_7"
-                        outlined
-                        tile
-                      >
-                        <h5></h5>
-                        <br />
-                      </v-card>
-
-                      <v-card
-                        class="pa-4"
-                        style="height: 50px"
-                        v-model="part3Encoding_8"
-                        outlined
-                        tile
-                      >
-                        <h5></h5>
-                        <br />
-                      </v-card>
-
-                      <v-card
-                        class="pa-4"
-                        style="height: 50px"
-                        v-model="part3Encoding_9"
-                        outlined
-                        tile
-                      >
-                        <h5></h5>
-                        <br />
-                      </v-card>
-
-                      <v-card
-                        class="pa-4"
-                        style="height: 50px"
-                        v-model="part3Encoding_10"
-                        outlined
-                        tile
-                      >
-                        <h5></h5>
-                        <br />
-                      </v-card>
-
-                      <v-card
-                        class="pa-4"
-                        style="height: 50px"
-                        v-model="part3Encoding_11"
-                        outlined
-                        tile
-                      >
-                        <h5></h5>
-                        <br />
-                      </v-card>
-
-                      <v-card
-                        class="pa-4"
-                        style="height: 50px"
-                        v-model="part3Encoding_12"
-                        outlined
-                        tile
-                      >
-                        <h5></h5>
-                        <br />
-                      </v-card>
-                    </div>
-                  </v-col>
-
-                  <!-- End of encoding SCORE-->
-                  <!-- Start of encoding Adjectival Rating -->
-                  <v-col
-                    :key="n"
-                    v-else-if="n === 10"
-                    class="ePartCol3"
-                    style="margin-left: -25px"
-                  >
-                    <v-card
-                      class="pa-2 pt-4"
-                      outlined
-                      tile
-                      style="width: 150px; height: 120px"
-                    >
-                      <h5>
-                        Adjectival Rating
-                        <br />
-                      </h5>
-                    </v-card>
-                    <div style="text-align: center; width: 150px">
-                      <v-card
-                        class="pa-4"
-                        style="height: 50px"
-                        v-model="part3Encoding_AdjectivalRating1"
-                        outlined
-                        tile
-                      >
-                        <h5></h5>
-
-                        <br />
-                      </v-card>
-
-                      <v-card
-                        class="pa-4"
-                        style="height: 50px"
-                        v-model="part3Encoding_AdjectivalRating2"
-                        outlined
-                        tile
-                      >
-                        <h5></h5>
-                        <br />
-                      </v-card>
-
-                      <v-card
-                        class="pa-4"
-                        style="height: 50px"
-                        v-model="part3Encoding_AdjectivalRating3"
-                        outlined
-                        tile
-                      >
-                        <h5></h5>
-                        <br />
-                      </v-card>
-
-                      <v-card
-                        class="pa-4"
-                        style="height: 50px"
-                        v-model="part3Encoding_AdjectivalRating4"
-                        outlined
-                        tile
-                      >
-                        <h5></h5>
-                        <br />
-                      </v-card>
-
-                      <v-card
-                        class="pa-4"
-                        style="height: 50px"
-                        v-model="part3Encoding_AdjectivalRating5"
-                        outlined
-                        tile
-                      >
-                        <h5></h5>
-                        <br />
-                      </v-card>
-
-                      <v-card
-                        class="pa-4"
-                        style="height: 50px"
-                        v-model="part3Encoding_AdjectivalRating6"
-                        outlined
-                        tile
-                      >
-                        <h5></h5>
-
-                        <br />
-                      </v-card>
-
-                      <v-card
-                        class="pa-4"
-                        style="height: 50px"
-                        v-model="part3Encoding_AdjectivalRating7"
-                        outlined
-                        tile
-                      >
-                        <h5></h5>
-                        <br />
-                      </v-card>
-
-                      <v-card
-                        class="pa-4"
-                        style="height: 50px"
-                        v-model="part3Encoding_AdjectivalRating8"
-                        outlined
-                        tile
-                      >
-                        <h5></h5>
-                        <br />
-                      </v-card>
-
-                      <v-card
-                        class="pa-4"
-                        style="height: 50px"
-                        v-model="part3Encoding_AdjectivalRating9"
-                        outlined
-                        tile
-                      >
-                        <h5></h5>
-                        <br />
-                      </v-card>
-
-                      <v-card
-                        class="pa-4"
-                        style="height: 50px"
-                        v-model="part3Encoding_AdjectivalRating10"
-                        outlined
-                        tile
-                      >
-                        <h5></h5>
-                        <br />
-                      </v-card>
-
-                      <v-card
-                        class="pa-4"
-                        style="height: 50px"
-                        v-model="part3Encoding_AdjectivalRating11"
-                        outlined
-                        tile
-                      >
-                        <h5></h5>
-                        <br />
-                      </v-card>
-
-                      <v-card
-                        class="pa-4"
-                        style="height: 50px"
-                        v-model="part3Encoding_AdjectivalRating12"
-                        outlined
-                        tile
-                      >
-                        <h5></h5>
-                        <br />
-                      </v-card>
-                    </div>
-                  </v-col>
-                  <!-- Start of encoding SCORE -->
-                  <v-col
-                    :key="n"
-                    v-else-if="n === 11"
-                    class="ePartCol3"
-                    style="margin-left: -641px; margin-top: 720px"
-                  >
-                    <v-card
-                      class="pa-2 pt-4"
-                      outlined
-                      tile
-                      v-model="part3EmpAdjRating1"
-                      style="width: 379px; height: 50px"
-                    >
-                      <h5>
-                        Final Rating
-                        <br />
-                      </h5>
-                    </v-card>
-                    <v-card
-                      class="pa-4"
-                      style="height: 50px"
-                      v-model="part3EmpAdjRating2"
-                      outlined
-                      tile
-                    >
-                      <h5>Adjectival Rating</h5>
-                      <br />
-                    </v-card>
-                  </v-col>
-
-                  <!-- End of encoding bottom ADJECTIVAL RATING-->
-                  <!-- Start of encoding SCORE -->
-                  <v-col
-                    :key="n"
-                    v-else-if="n === 12"
-                    class="ePartCol3"
-                    style="margin-left: -25px; margin-top: 720px"
-                  >
-                    <v-card
-                      class="pa-2 pt-4"
-                      outlined
-                      tile
-                      v-model="part3EmpFinalRating"
-                      style="width: 240px; height: 50px"
-                    >
-                      <h5>
-                        <br />
-                      </h5>
-                    </v-card>
-                    <v-card
-                      class="pa-4"
-                      style="height: 50px"
-                      v-model="part3EmpAdjRating"
-                      outlined
-                      tile
-                    >
-                      <h5></h5>
-                      <br />
-                    </v-card>
-                  </v-col>
-
-                  <!-- End of encoding ADJECTIVAL RATING-->
-                </template>
+                    <td id="tdata" class="weightPerKra" rowspan="3">
+                      <p></p>
+                    </td>
+                    <td id="tdata" class="weightPerKra" rowspan="3">
+                      <p>16%</p>
+                    </td>
+                    <td id="tdata" class="quality1">
+                      <p>Quality</p>
+                    </td>
+                    <td id="tdata" class="outstanding1">
+                      <p>
+                        Performed at least 1 related work/activity that
+                        contributed to the teaching-learning process beyond the
+                        school/ Community Learning Center (CLC) as evidenced by
+                        submitted MOV
+                      </p>
+                    </td>
+                    <td id="tdata" class="verySatisfactory1">
+                      <p>
+                        Performed at least 1 related work/activity that
+                        contributed to the teaching-learning process within the
+                        school/ Community Learning Center (CLC) as evidenced by
+                        submitted MOV
+                      </p>
+                    </td>
+                    <td id="tdata" class="satisfactory1">
+                      <p>
+                        Performed at least 1 related work/activity that
+                        contributed to the teaching-learning process within the
+                        learning area/ department as evidenced by submitted MOV
+                      </p>
+                    </td>
+                    <td id="tdata" class="unsatisfactory1">
+                      <p>
+                        Performed at least 1 related work/activity that
+                        contributed to the teaching-learning process within the
+                        class as evidenced by submitted MOV
+                      </p>
+                    </td>
+                    <td id="tdata" class="poor1">
+                      <p>No acceptable evidence was shown</p>
+                    </td>
+                    <td id="tdata" rowspan="1" class="actualResult">
+                      <p>
+                        {{
+                         encodingAdjectivalRating12
+                        }}
+                      </p>
+                    </td>
+                    <td id="tdata" rowspan="3" class="q1">
+                      <p>
+                        {{ encodingIpcrfNumericalQ12 }}
+                      </p>
+                    </td>
+                    <td id="tdata" rowspan="3" class="e1">
+                      <p>
+                        {{ encodingIpcrfNumericalE12 }}
+                      </p>
+                    </td>
+                    <td id="tdata" rowspan="3" class="t1 blue-grey darken-4">
+                      <p></p>
+                    </td>
+                    <td id="tdata" colspan="1" rowspan="3" class="ave1">
+                      <p>
+                        {{
+                          encodingIpcrfRatingAve12
+                        }}
+                      </p>
+                    </td>
+                    <td id="tdata" rowspan="3" class="score8">
+                      <p>
+                        {{
+                          encodingScore12
+                        }}
+                      </p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td id="tdata" class="eff1 pa-1">
+                      <p>Efficiency</p>
+                    </td>
+                    <td id="tdata" class="eff2 pa-1">
+                      <p>Submitted any 4 of the acceptable MOV*</p>
+                    </td>
+                    <td id="tdata" class="eff2 pa-1">
+                      <p>Submitted any 3 of the acceptable MOV*</p>
+                    </td>
+                    <td id="tdata" class="eff4 pa-1">
+                      <p>Submitted any 2 of the acceptable MOV*</p>
+                    </td>
+                    <td id="tdata" class="eff5 pa-1">
+                      <p>Submitted any 1 of the acceptable MOV</p>
+                    </td>
+                    <td id="tdata" class="eff6 pa-1">
+                      <p>No acceptable evidence was shown</p>
+                    </td>
+                    <td id="tdata" colspan="2" class="eff6 pa-1">
+                      <p></p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td id="tdata" class="timeline1 pa-1">
+                      <p>Timeliness</p>
+                    </td>
+                    <td id="tdata" class="timeline2 pa-1 blue-grey darken-4">
+                      <p></p>
+                    </td>
+                    <td id="tdata" class="timeline2 pa-1 blue-grey darken-4">
+                      <p></p>
+                    </td>
+                    <td id="tdata" class="timeline4 pa-1 blue-grey darken-4">
+                      <p></p>
+                    </td>
+                    <td id="tdata" class="timeline5 pa-1 blue-grey darken-4">
+                      <p></p>
+                    </td>
+                    <td id="tdata" class="timeline6 blue-grey darken-4">
+                      <p></p>
+                    </td>
+                    <td id="tdata" class="timeline6">
+                      <p></p>
+                    </td>
+                  </tr>
+                  <!-- End Number 5 Obj -->
+                  <!-- Startof Ratingfor overall accomplishment -->
+                  <tr>
+                    <td class="timeline6" colspan="12">
+                      <p style="float: right" class="mr-2 mt-2">
+                        Rating for Overall Accomplishment
+                      </p>
+                    </td>
+                    <td id="tdata" class="ratingTotal" colspan="4">
+                      <p>{{ empFinalAdjRating }}</p>
+                    </td>
+                    <td id="tdata" class="ratingAverage">
+                      <p>{{ empFinalRating}}</p>
+                    </td>
+                  </tr>
+                  <!-- End of Ratingfor overall accomplishment -->
+                </table>
+                <br />
+                <br />
               </div>
-            </v-row>
-            <!-- first row -->
-          </v-tab-item>
+              <!-- START OF ADJECTIVAL RATING -->
+              <div>
+                <table style="width: 50%; text-align: center">
+                  <tr>
+                    <td id="tdata" colspan="2">
+                      ADJECTIVAL RATING EQUIVALENCES
+                    </td>
+                  </tr>
 
-          <!-- Part 4 -->
+                  <tr>
+                    <td id="tdata">RANGE</td>
+                    <td id="tdata">ADJECTIVAL RATING</td>
+                  </tr>
+                  <tr>
+                    <td id="tdata">4.500-5.000</td>
+                    <td id="tdata">OUTSTANDING</td>
+                  </tr>
+                  <tr>
+                    <td id="tdata">3.500-4.499</td>
+                    <td id="tdata">VERY SATISFACTORY</td>
+                  </tr>
+                  <tr>
+                    <td id="tdata">2.500-3.499</td>
+                    <td id="tdata">SATISFACTORY</td>
+                  </tr>
+                  <tr>
+                    <td id="tdata">1.500-2.499</td>
+                    <td id="tdata">UNSATISFACTORY</td>
+                  </tr>
+                  <tr>
+                    <td id="tdata">below 1.499</td>
+                    <td id="tdata">POOR</td>
+                  </tr>
+                </table>
+              </div>
+
+              <!-- END OF ADJECTIVAL RATING -->
+              <!-- Part 1 Display Signatures -->
+
+              <div class="pa-10 ml-9" style="text-align: center">
+                <v-row>
+                  <v-col>
+                    <v-text-field
+                      v-model="empName"
+                      readonly
+                      class="text-center"
+                      style="width: 200px; height: 100px; margin-left: 80px"
+                    >
+                    </v-text-field>
+
+                    <h5 class="pa-2" style="margin-left: 80px">Ratee</h5>
+                  </v-col>
+                  <v-col>
+                    <v-text-field
+                      readonly
+                      class="text-center"
+                      v-model="empRater"
+                      style="width: 200px; height: 100px; margin-left: 40px"
+                    >
+                    </v-text-field>
+
+                    <h5 class="pa-2" style="margin-right: 10px">Rater</h5>
+                  </v-col>
+
+                  <v-col>
+                    <v-text-field
+                      v-model="part1ApprovingAuthority"
+                      readonly
+                      class="text-center"
+                      style="width: 200px; height: 100px; margin-left: 40px"
+                    >
+                      <!-- <p class="mt-6">{{ part_approvingAuthority }}</p> -->
+                    </v-text-field>
+
+                    <h5 class="pa-2" style="margin-left: -20px">
+                      Approving Authority
+                    </h5>
+                  </v-col>
+                </v-row>
+              </div>
+
+              <br /><br />
+            </v-container>
+          </v-tab-item>
+          <v-tab>Part II</v-tab>
+          <v-tab-item>
+            <!-- End of Display Signatures  -->
+
+            <!-- end of part 1 display -->
+            <!-- start of part 2 display -->
+
+            <table id="table" style="width: 100%">
+              <tr class="row1">
+                <td id="tdata" colspan="6" class="grey lighten-2 pt-4 pb-0">
+                  <p style="text-align: center"><b>PART II: COMPETENCIES</b></p>
+                </td>
+              </tr>
+
+              <tr class="row1">
+                <td id="tdata" colspan="6" style="line-height: 5px">
+                  <p>
+                    Instructions: Please indicate the number of competency
+                    indicators that you demonstrated during the performance
+                    cycle.
+                  </p>
+                </td>
+              </tr>
+              <tr class="row1">
+                <td id="tdata">
+                  <p><b>CORE BEHAVIORAL COMPETENCIES</b></p>
+                </td>
+              </tr>
+              <tr>
+                <td id="tdata">
+                  <b>Self-Management</b> <br />
+                  1. Sets personal goals and directions, needs and development.
+                  <br />
+                  2. Undertakes personal actions and behavior that are clear and
+                  purposive and takes into account personal goals and values
+                  congruent to that of the organization. <br />
+                  3. Displays emotional maturity and enthusiasm for and is
+                  challenged by higher goals. <br />
+                  4. Prioritizes work tasks and schedules (through Gantt chants,
+                  checklists, etc.) to achieve goals.
+                  <br />
+                  5. Sets high quality, challenging, realistic goals for self
+                  and others.
+                </td>
+
+                <td
+                  id="tdata"
+                  colspan="1"
+                  style="width: 5%; text-align: center"
+                >
+                  {{ countSelfManagement }}
+                </td>
+                <td id="tdata" colspan="3">
+                  <b> Teamwork</b> <br />
+                  1. Willingly does his/her share of responsibility. <br />
+                  2. Promotes collaboration and removes barrier to teamwork and
+                  goal accomplishment across the organization.
+                  <br />
+                  3. Applies negotiation principles in arriving at win-win
+                  agreements.
+                  <br />
+                  4. Drives consensus and team ownership of decisions.
+                  <br />
+                  5. Works constructively and collaboratively with others and
+                  across organizations to accomplish organization goals and
+                  objectives.
+                </td>
+                <td
+                  id="tdata"
+                  colspan="1"
+                  style="width: 5%; text-align: center"
+                >
+                  {{ countTeamwork }}
+                </td>
+              </tr>
+              <tr>
+                <td id="tdata">
+                  <b>Professionalism and Ethics</b> <br />
+                  1. Demonstrates the values and behavior enshrined in the Norms
+                  and Conduct and Ethical Standards for Public Officials and
+                  Employees (RA 6713). <br />
+                  2. Practices ethical and professional behavior and conduct
+                  taking into account the impact of his/her actions and
+                  decisions.
+                  <br />
+                  3. Maintains a professional image: being trustworthy,
+                  regularity of attendance and punctuality, good grooming and
+                  communication.
+                  <br />
+                  4. Makes personal sacrifices to meet the organization’s needs.
+                  <br />
+                  5. Acts with a sense of urgency and responsibility to meet the
+                  organization’s needs, improve system and help others improve
+                  their effectiveness.
+                </td>
+
+                <td
+                  id="tdata"
+                  colspan="1"
+                  style="width: 5%; text-align: center"
+                >
+                  {{ countProfessional }}
+                </td>
+                <td id="tdata" colspan="3">
+                  <b> Service Orientation</b> <br />
+                  1. Can explain and articulate organizational directions,
+                  issues and problems.
+                  <br />
+                  2. Takes personal responsibility for dealing with and/or
+                  correcting customer service issues and concerns. <br />3.
+                  Initiates activities that promote advocacy for men and women
+                  empowerment.
+                  <br />
+                  4. Participates in updating office vision, mission, mandates
+                  and strategies based on DepEd strategies and directions.
+                  <br />
+                  5. Develops and adopts service improvement program through
+                  simplified procedures that will further enhance service
+                  delivery.
+                </td>
+                <td
+                  id="tdata"
+                  colspan="1"
+                  style="width: 5%; text-align: center"
+                >
+                  {{ countService }}
+                </td>
+              </tr>
+
+              <tr>
+                <td id="tdata" colspan="1">
+                  <b>Results Focus</b> <br />
+                  1. Achieves results with optimal use of time and resources
+                  most of the time.
+                  <br />
+                  2. Avoids rework, mistakes and wastage through effective work
+                  methods by placing organizational needs before personal needs.
+                  <br />3. Delivers error-free outputs most of the time by
+                  conforming to standard operating procedures correctly and
+                  consistently. Able to produce very satisfactory quality work
+                  in terms of usefulness/acceptability and completeness with no
+                  supervision required. <br />
+                  4. Expresses a desire to do better and may express frustration
+                  at waste or inefficiency. May focus on new or more precise
+                  ways of meeting goals set.
+                  <br />
+                  5. Makes specific changes in the system or in own work methods
+                  to improve performance. Examples may include doing something
+                  better, faster, at a lower cost, more efficiently, or
+                  improving quality, customer satisfaction, morale, without
+                  setting any specific goal.
+                </td>
+
+                <td
+                  id="tdata"
+                  colspan="1"
+                  style="width: 5%; text-align: center"
+                >
+                  {{ countResults }}
+                </td>
+                <td id="tdata" colspan="3">
+                  <b> Innovation</b> <br />
+                  1. Examines the root cause of problems and suggests effective
+                  solutions. Foster new ideas, processes and suggests better
+                  ways to do things (cost and/or operational efficiency). <br />
+                  2. Demonstrates an ability to think “beyond the box”.
+                  Continuously focuses on improving personal productivity to
+                  create higher value and results.
+                  <br />3. Promotes a creative climate and inspires co-workers
+                  to develop original ideas or solutions.
+                  <br />
+                  4. Translates creative thinking into tangible changes and
+                  solutions that improve the work unit and organization.
+                  <br />
+                  5. Uses ingenious methods to accomplish responsibilities.
+                  Demonstrates resourcefulness and the ability to succeed with
+                  minimal resources.
+                </td>
+                <td
+                  id="tdata"
+                  colspan="1"
+                  style="width: 5%; text-align: center"
+                >
+                  {{ countInnovation }}
+                </td>
+              </tr>
+              <tr class="row1">
+                <td id="tdata" colspan="6">
+                  <p>
+                    Note: The assessment in the demonstration of competencies
+                    shall not be reflected in the final rating. These
+                    competencies are monitored to inform professional
+                    development plans (DepEd Order No. 2, s. 2015, p. 9).
+                  </p>
+                </td>
+              </tr>
+            </table>
+          </v-tab-item>
+          <v-tab>Part 3</v-tab>
+          <v-tab-item>
+            <br />
+            <!-- start of part 3 competencies -->
+
+            <table
+              id="table"
+              class="pa-0"
+              style="width: 100%; text-align: left"
+            >
+              <tr class="row1">
+                <td id="tdata" colspan="6" class="grey lighten-2 pt-4 pb-0">
+                  <p style="text-align: center">
+                    <b
+                      >Teacher I-III, SPET I-IV, Special Science Teacher I-II
+                      (Proficient Teacher)</b
+                    >
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td id="tdata" rowspan="2" colspan="1">
+                  <p>
+                    Name of Employee:<span class="ml-4">{{
+                     empName
+                    }}</span>
+                  </p>
+                  <p>
+                    Position:<span class="ml-4">{{
+                      empPosition
+                    }}</span>
+                  </p>
+                  <p>
+                    Bureau/Center/Service/Division:<span class="ml-4">{{
+                      empDivision
+                    }}</span>
+                  </p>
+                  <p>
+                    Rating Period:<span class="ml-4">{{
+                      empRatingPeriod
+                    }}</span>
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td id="tdata" rowspan="2" colspan="2">
+                  <p>
+                    Name of Rater:<span class="ml-4">{{
+                      empRater
+                    }}</span>
+                  </p>
+                  <p>
+                    Position:
+                    <span class="ml-4">{{
+                      empRaterPosition
+                    }}</span>
+                  </p>
+
+                  <p>
+                    Date of Review:
+                    <span class="ml-4">{{
+                     empDateReview
+                    }}</span>
+                  </p>
+                </td>
+              </tr>
+
+              <caption>
+                Part III. SUMMARY OF RATINGS FOR DISCUSSION
+              </caption>
+            </table>
+            <table id="table" class="content" style="width: 100%">
+              <tr class="light-green lighten-2">
+                <td id="tdata" rowspan="2"><p>KRA</p></td>
+                <td id="tdata" rowspan="2">
+                  <p>Weight per KRA</p>
+                </td>
+                <td id="tdata" rowspan="2">
+                  <p>Objectives</p>
+                </td>
+                <td id="tdata" rowspan="2"><p>Weight per Objective</p></td>
+                <td id="tdata" rowspan="1" colspan=" 4">
+                  <p>Numerical Ratings</p>
+                </td>
+                <td id="tdata" rowspan="2">
+                  <p>Score</p>
+                </td>
+                <td id="tdata" rowspan="2">
+                  <p>Adjectival Rating</p>
+                </td>
+              </tr>
+
+              <tr class="light-green lighten-2">
+                <td id="tdata">Q</td>
+                <td id="tdata">E</td>
+                <td id="tdata">T</td>
+                <td id="tdata">AVE</td>
+              </tr>
+
+              <tr class="displayKra1">
+                <td id="tdata" rowspan="3">KRA 1</td>
+                <td id="tdata">24%</td>
+
+                <td id="tdata">Objective 1</td>
+                <td id="tdata">8%</td>
+                <td id="tdata">
+                  <p>{{ encodingIpcrfNumericalQ1}}</p>
+                </td>
+
+                <td id="tdata" class="grey darken-2">
+                  <p></p>
+                </td>
+                <td id="tdata" class="grey darken-2">
+                  <p></p>
+                </td>
+                <td id="tdata">
+                  <p>
+                    {{ encodingIpcrfRatingAve1 }}
+                  </p>
+                </td>
+                <td id="tdata">
+                  <p>
+                    {{ encodingScore1 }}
+                  </p>
+                </td>
+                <td id="tdata">
+                  <p>
+                    {{
+                      encodingAdjectivalRating1
+                    }}
+                  </p>
+                </td>
+              </tr>
+              <tr class="blank2">
+                <td id="tdata">24%</td>
+
+                <td id="tdata">Objective 2</td>
+                <td id="tdata">8%</td>
+
+                <td id="tdata">
+                  <p>{{ encodingIpcrfNumericalQ2 }}</p>
+                </td>
+                <td id="tdata" class="grey darken-2">
+                  <p></p>
+                </td>
+
+                <td id="tdata" class="grey darken-2">
+                  <p></p>
+                </td>
+                <td id="tdata">
+                  <p>
+                    {{ encodingIpcrfRatingAve2 }}
+                  </p>
+                </td>
+                <td id="tdata">
+                  <p>
+                    {{ encodingScore2 }}
+                  </p>
+                </td>
+                <td id="tdata">
+                  <p>
+                    {{
+                      encodingAdjectivalRating2
+                    }}
+                  </p>
+                </td>
+              </tr>
+              <tr class="blank2">
+                <td id="tdata">24%</td>
+
+                <td id="tdata">Objective 2</td>
+                <td id="tdata">8%</td>
+
+                <td id="tdata">
+                  <p>{{ encodingIpcrfNumericalQ3 }}</p>
+                </td>
+                <td id="tdata" class="grey darken-2">
+                  <p></p>
+                </td>
+
+                <td id="tdata" class="grey darken-2">
+                  <p></p>
+                </td>
+                <td id="tdata">
+                  <p>
+                    {{ encodingIpcrfRatingAve3 }}
+                  </p>
+                </td>
+                <td id="tdata">
+                  <p>
+                    {{ encodingScore3 }}
+                  </p>
+                </td>
+                <td id="tdata">
+                  <p>
+                    {{
+                      encodingAdjectivalRating3
+                    }}
+                  </p>
+                </td>
+              </tr>
+              <tr class="displayKra2">
+                <td id="tdata" rowspan="3">KRA 2</td>
+                <td id="tdata">24%</td>
+
+                <td id="tdata">Objective 3</td>
+                <td id="tdata">8%</td>
+                <td id="tdata">
+                  <p>{{ encodingIpcrfNumericalQ4}}</p>
+                </td>
+
+                <td id="tdata" class="grey darken-2">
+                  <p></p>
+                </td>
+                <td id="tdata" class="grey darken-2">
+                  <p></p>
+                </td>
+                <td id="tdata">
+                  <p>
+                    {{ encodingIpcrfRatingAve4 }}
+                  </p>
+                </td>
+                <td id="tdata">
+                  <p>
+                    {{ encodingScore4 }}
+                  </p>
+                </td>
+                <td id="tdata">
+                  <p>
+                    {{
+                      encodingAdjectivalRating4
+                    }}
+                  </p>
+                </td>
+              </tr>
+              <tr class="kra2Blank1">
+                <td id="tdata">24%</td>
+
+                <td id="tdata">Objective 2</td>
+                <td id="tdata">8%</td>
+
+                <td id="tdata">
+                  <p>{{ encodingIpcrfNumericalQ5 }}</p>
+                </td>
+                <td id="tdata" class="grey darken-2">
+                  <p></p>
+                </td>
+
+                <td id="tdata" class="grey darken-2">
+                  <p></p>
+                </td>
+                <td id="tdata">
+                  <p>
+                    {{ encodingIpcrfRatingAve5}}
+                  </p>
+                </td>
+                <td id="tdata">
+                  <p>
+                    {{ encodingScore5 }}
+                  </p>
+                </td>
+                <td id="tdata">
+                  <p>
+                    {{
+                      encodingAdjectivalRating5
+                    }}
+                  </p>
+                </td>
+              </tr>
+              <tr class="kra2Blank2">
+                <td id="tdata">24%</td>
+
+                <td id="tdata">Objective 2</td>
+                <td id="tdata">8%</td>
+
+                <td id="tdata">
+                  <p>{{ encodingIpcrfNumericalQ6 }}</p>
+                </td>
+                <td id="tdata" class="grey darken-2">
+                  <p></p>
+                </td>
+
+                <td id="tdata">
+                  <p>{{ encodingIpcrfNumericalT6 }}</p>
+                </td>
+                <td id="tdata">
+                  <p>
+                    {{ encodingIpcrfRatingAve6 }}
+                  </p>
+                </td>
+                <td id="tdata">
+                  <p>
+                    {{ encodingScore6 }}
+                  </p>
+                </td>
+                <td id="tdata">
+                  <p>
+                    {{
+                      encodingAdjectivalRating6
+                    }}
+                  </p>
+                </td>
+              </tr>
+              <tr class="displayKra2">
+                <td id="tdata" rowspan="2">KRA 3</td>
+                <td id="tdata">24%</td>
+
+                <td id="tdata">Objective 3</td>
+                <td id="tdata">8%</td>
+                <td id="tdata">
+                  <p>{{ encodingIpcrfNumericalQ7}}</p>
+                </td>
+
+                <td id="tdata" class="grey darken-2">
+                  <p></p>
+                </td>
+                <td id="tdata" class="grey darken-2">
+                  <p></p>
+                </td>
+                <td id="tdata">
+                  <p>
+                    {{ encodingIpcrfRatingAve7 }}
+                  </p>
+                </td>
+                <td id="tdata">
+                  <p>
+                    {{ encodingScore7 }}
+                  </p>
+                </td>
+                <td id="tdata">
+                  <p>
+                    {{
+                      encodingAdjectivalRating7
+                    }}
+                  </p>
+                </td>
+              </tr>
+              <tr class="kra3Blank1">
+                <td id="tdata">24%</td>
+
+                <td id="tdata">Objective 2</td>
+                <td id="tdata">8%</td>
+
+                <td id="tdata">
+                  <p>{{ encodingIpcrfNumericalQ8}}</p>
+                </td>
+                <td id="tdata" class="grey darken-2">
+                  <p></p>
+                </td>
+
+                <td id="tdata" class="grey darken-2">
+                  <p></p>
+                </td>
+                <td id="tdata">
+                  <p>
+                    {{encodingIpcrfRatingAve8 }}
+                  </p>
+                </td>
+                <td id="tdata">
+                  <p>
+                    {{ encodingScore8 }}
+                  </p>
+                </td>
+                <td id="tdata">
+                  <p>
+                    {{
+                      encodingAdjectivalRating8
+                    }}
+                  </p>
+                </td>
+              </tr>
+              <tr class="displayKra4">
+                <td id="tdata" rowspan="3">KRA 4</td>
+                <td id="tdata">24%</td>
+
+                <td id="tdata">Objective 3</td>
+                <td id="tdata">8%</td>
+                <td id="tdata">
+                  <p>{{encodingIpcrfNumericalQ9 }}</p>
+                </td>
+
+                <td id="tdata">
+                  <p>{{ encodingIpcrfNumericalE9}}</p>
+                </td>
+                <td id="tdata" class="grey darken-2">
+                  <p></p>
+                </td>
+                <td id="tdata">
+                  <p>
+                    {{ encodingIpcrfRatingAve9 }}
+                  </p>
+                </td>
+                <td id="tdata">
+                  <p>
+                    {{encodingScore9 }}
+                  </p>
+                </td>
+                <td id="tdata">
+                  <p>
+                    {{
+                    encodingAdjectivalRating9
+                    }}
+                  </p>
+                </td>
+              </tr>
+              <tr class="kra4Blank1">
+                <td id="tdata">24%</td>
+
+                <td id="tdata">Objective 2</td>
+                <td id="tdata">8%</td>
+
+                <td id="tdata">
+                  <p>{{ encodingIpcrfNumericalQ10}}</p>
+                </td>
+                <td id="tdata">
+                  <p>{{ encodingIpcrfNumericalE10 }}</p>
+                </td>
+
+                <td id="tdata" class="grey darken-2">
+                  <p></p>
+                </td>
+                <td id="tdata">
+                  <p>
+                    {{ encodingIpcrfRatingAve10 }}
+                  </p>
+                </td>
+                <td id="tdata">
+                  <p>
+                    {{ encodingScore10 }}
+                  </p>
+                </td>
+                <td id="tdata">
+                  <p>
+                    {{
+                      encodingAdjectivalRating10
+                    }}
+                  </p>
+                </td>
+              </tr>
+              <tr class="kra4Blank2">
+                <td id="tdata">24%</td>
+
+                <td id="tdata">Objective 2</td>
+                <td id="tdata">8%</td>
+
+                <td id="tdata">
+                  <p>{{ encodingIpcrfNumericalQ11 }}</p>
+                </td>
+
+                <td id="tdata">
+                  <p>{{ encodingIpcrfNumericalE11 }}</p>
+                </td>
+
+                <td id="tdata" class="grey darken-2"><p></p></td>
+                <td id="tdata">
+                  <p>
+                    {{ encodingIpcrfRatingAve11 }}
+                  </p>
+                </td>
+                <td id="tdata">
+                  <p>
+                    {{ encodingScore11 }}
+                  </p>
+                </td>
+                <td id="tdata">
+                  <p>
+                    {{
+                      encodingAdjectivalRating11
+                    }}
+                  </p>
+                </td>
+              </tr>
+              <tr class="displayKra4">
+                <td id="tdata">Plus Factor</td>
+                <td id="tdata">24%</td>
+
+                <td id="tdata">Objective 3</td>
+                <td id="tdata">8%</td>
+                <td id="tdata">
+                  <p>{{ encodingIpcrfNumericalQ12 }}</p>
+                </td>
+
+                <td id="tdata">
+                  <p>{{ encodingIpcrfNumericalE12 }}</p>
+                </td>
+                <td id="tdata" class="grey darken-2">
+                  <p></p>
+                </td>
+                <td id="tdata">
+                  <p>
+                    {{ encodingIpcrfRatingAve12 }}
+                  </p>
+                </td>
+                <td id="tdata">
+                  <p>
+                    {{ encodingScore12 }}
+                  </p>
+                </td>
+                <td id="tdata">
+                  <p>
+                    {{
+                      encodingAdjectivalRating12
+                    }}
+                  </p>
+                </td>
+              </tr>
+              <!-- Final Rating Area -->
+              <tr class="finalRating light-green lighten-2">
+                <td id="tdata" colspan="2" rowspan="2">
+                  FINAL PERFORMANCE RESULTS
+                </td>
+                <td id="tdata" colspan="4" rowspan="2">
+                  Accomplishments of KRAs and Objectives
+                </td>
+
+                <td id="tdata" colspan="2">Final Rating</td>
+                <td id="tdata" colspan="2">Adjectival Rating</td>
+              </tr>
+              <tr class="finalRating light-green lighten-2">
+                <td id="tdata" colspan="2">
+                  <p>{{ empFinalRating }}</p>
+                </td>
+                <td id="tdata" colspan="2">
+                  <p>{{ empFinalAdjRating }}</p>
+                </td>
+              </tr>
+            </table>
+            <br />
+
+            <!-- Part 3 Display Signatures -->
+
+            <div class="pa-10 ml-9" style="text-align: center">
+              <v-row>
+                <v-col>
+                  <v-text-field
+                    readonly
+                    v-model="empName"
+                    style="width: 200px; height: 100px; margin-left: 80px"
+                  >
+                  </v-text-field>
+
+                  <h5 class="pa-2" style="margin-left: 80px">Ratee</h5>
+                </v-col>
+                <v-col>
+                  <v-text-field
+                    readonly
+                    v-model="empRater"
+                    style="width: 200px; height: 100px; margin-left: 40px"
+                  >
+                  </v-text-field>
+
+                  <h5 class="pa-2" style="margin-right: 10px">Rater</h5>
+                </v-col>
+
+                <v-col>
+                  <v-text-field
+                    readonly
+                    style="width: 200px; height: 100px; margin-left: -20px"
+                    v-model="part1ApprovingAuthority"
+                  >
+                  </v-text-field>
+
+                  <h5 class="pa-2" style="margin-left: -20px">
+                    Approving Authority
+                  </h5>
+                </v-col>
+              </v-row>
+            </div>
+            <br /><br />
+          </v-tab-item>
           <v-tab>Part 4</v-tab>
           <v-tab-item>
             <div id="app">
@@ -10152,11 +8619,11 @@
                       tile
                     >
                       <v-card v-if="n === 1" class="pa-8" outlined tile>
-                        Strengths
+                        Strengths <span class="red--text text--lighten-1">*</span>
                       </v-card>
                       <v-card v-else-if="n === 2" class="pa-2" outlined tile
                         ><br />
-                        Development Needs
+                        Development Needs <span class="red--text text--lighten-1">*</span>
                       </v-card>
                       <v-card
                         v-else-if="n === 3"
@@ -10166,7 +8633,7 @@
                       >
                         Action Plan <br />
                         (Recommended Developmental Intervention) <br />
-                        Learning Objectives | Intervention
+                        Learning Objectives | Intervention <span class="red--text text--lighten-1">*</span>
                         <!-- <v-card class="d-inline pa-2" outlined tile>
                       Learning Objectives
                     </v-card>
@@ -10175,336 +8642,368 @@
                     </v-card> -->
                       </v-card>
                       <v-card v-else-if="n === 4" class="pa-8" outlined tile>
-                        Timeline
+                        Timeline  <span class="red--text text--lighten-1">*</span>
                       </v-card>
                       <v-card v-else-if="n === 5" class="pa-5" outlined tile>
-                        Resources Needed
+                        Resources Needed <span class="red--text text--lighten-1">*</span>
                       </v-card>
                     </v-col>
                   </v-row>
 
                   <div class="d-flex flex-column mb-6">
-                    <v-card class="pa-2" color="grey lighten-2" outlined tile>
-                      A. Functional Competencies
-                    </v-card>
-                    <v-row no-gutters>
-                      <v-col
-                        v-for="n in 5"
-                        :key="n"
-                        :cols="n === 3 ? 6 : undefined"
-                        class="text-center"
-                        outlined
-                        tile
-                      >
-                        <v-card v-if="n === 1" outlined tile>
-                          <v-container>
-                            <v-row>
-                              <v-col>
-                                <v-textarea
-                                  auto-grow
-                                  flat
-                                  solo
-                                  :disabled="ifAdmin"
-                                  v-model="strengthsFunctional"
-                                  class="ma-0 pa-0"
-                                  hide-details
-                                  row-height="15"
-                                ></v-textarea>
-                              </v-col>
-                            </v-row>
-                          </v-container>
-                        </v-card>
-                        <v-card v-else-if="n === 2" outlined tile
-                          ><v-container>
-                            <v-row>
-                              <v-col>
-                                <v-textarea
-                                  auto-grow
-                                  :disabled="ifAdmin"
-                                  flat
-                                  v-model="developmentNeedsFunctional"
-                                  solo
-                                  class="ma-0 pa-0"
-                                  hide-details
-                                  row-height="15"
-                                ></v-textarea>
-                              </v-col>
-                            </v-row>
-                          </v-container>
-                        </v-card>
-                        <v-card
-                          v-else-if="n === 3"
+                    <v-form ref="part4">
+                      <v-card class="pa-2" color="grey lighten-2" outlined tile>
+                        A. Functional Competencies
+                      </v-card>
+                      <v-row no-gutters>
+                        <v-col
+                          v-for="n in 5"
+                          :key="n"
+                          :cols="n === 3 ? 6 : undefined"
                           class="text-center"
                           outlined
                           tile
                         >
-                          <v-container>
-                            <v-row>
-                              <v-col>
-                                <v-textarea
-                                  auto-grow
-                                  :disabled="ifAdmin"
-                                  flat
-                                  v-model="learningObjectivesFunctional"
-                                  solo
-                                  class="ma-0 pa-0"
-                                  hide-details
-                                  row-height="15"
-                                ></v-textarea>
-                              </v-col>
-                              <v-col>
-                                <v-textarea
-                                  auto-grow
-                                  flat
-                                  v-model="interventionFunctional"
-                                  solo
-                                  :disabled="ifAdmin"
-                                  class="ma-0 pa-0"
-                                  hide-details
-                                  row-height="15"
-                                ></v-textarea>
-                              </v-col>
-                            </v-row>
-                          </v-container>
-                        </v-card>
-                        <v-card v-else-if="n === 4" outlined tile>
-                          <v-container>
-                            <v-row>
-                              <v-col>
-                                <v-textarea
-                                  auto-grow
-                                  :disabled="ifAdmin"
-                                  flat
-                                  v-model="timelineFunctional"
-                                  solo
-                                  class="ma-0 pa-0"
-                                  hide-details
-                                  row-height="15"
-                                ></v-textarea>
-                              </v-col>
-                            </v-row>
-                          </v-container>
-                        </v-card>
-                        <v-card v-else-if="n === 5" outlined tile>
-                          <v-container>
-                            <v-row>
-                              <v-col>
-                                <v-textarea
-                                  auto-grow
-                                  flat
-                                  :disabled="ifAdmin"
-                                  v-model="resourcesNeededFunctional"
-                                  solo
-                                  class="ma-0 pa-0"
-                                  hide-details
-                                  row-height="15"
-                                ></v-textarea>
-                              </v-col>
-                            </v-row>
-                          </v-container>
-                        </v-card>
-                      </v-col>
-                    </v-row>
-
-                    <!-- Core Behavioral Text Area -->
-                    <v-card class="pa-2" color="grey lighten-2" outlined tile>
-                      B. Core Behavioral Competencies
-                    </v-card>
-
-                    <v-row no-gutters>
-                      <v-col
-                        v-for="n in 5"
-                        :key="n"
-                        :cols="n === 3 ? 6 : undefined"
-                        class="text-center"
-                        outlined
-                        tile
-                      >
-                        <v-card v-if="n === 1" outlined tile>
-                          <v-container>
-                            <v-row>
-                              <v-col>
-                                <v-textarea
-                                  auto-grow
-                                  v-model="strengthsCore"
-                                  flat
-                                  :disabled="ifAdmin"
-                                  solo
-                                  class="ma-0 pa-0"
-                                  hide-details
-                                  row-height="15"
-                                ></v-textarea>
-                              </v-col>
-                            </v-row>
-                          </v-container>
-                        </v-card>
-                        <v-card v-else-if="n === 2" outlined tile
-                          ><v-container>
-                            <v-row>
-                              <v-col>
-                                <v-textarea
-                                  auto-grow
-                                  flat
-                                  solo
-                                  :disabled="ifAdmin"
-                                  v-model="developmentCore"
-                                  class="ma-0 pa-0"
-                                  hide-details
-                                  row-height="15"
-                                ></v-textarea>
-                              </v-col>
-                            </v-row>
-                          </v-container>
-                        </v-card>
-                        <v-card
-                          v-else-if="n === 3"
-                          class="text-center"
-                          outlined
-                          tile
-                        >
-                          <v-container>
-                            <v-row>
-                              <v-col>
-                                <v-textarea
-                                  auto-grow
-                                  flat
-                                  :disabled="ifAdmin"
-                                  v-model="learningObjectivesCore"
-                                  solo
-                                  class="ma-0 pa-0"
-                                  hide-details
-                                  row-height="15"
-                                ></v-textarea>
-                              </v-col>
-                              <v-col>
-                                <v-textarea
-                                  auto-grow
-                                  flat
-                                  v-model="interventionCore"
-                                  solo
-                                  :disabled="ifAdmin"
-                                  class="ma-0 pa-0"
-                                  hide-details
-                                  row-height="15"
-                                ></v-textarea>
-                              </v-col>
-                            </v-row>
-                          </v-container>
-                        </v-card>
-                        <v-card v-else-if="n === 4" outlined tile>
-                          <v-container>
-                            <v-row>
-                              <v-col>
-                                <v-textarea
-                                  auto-grow
-                                  flat
-                                  solo
-                                  :disabled="ifAdmin"
-                                  v-model="timelineCore"
-                                  class="ma-0 pa-0"
-                                  hide-details
-                                  row-height="15"
-                                ></v-textarea>
-                              </v-col>
-                            </v-row>
-                          </v-container>
-                        </v-card>
-                        <v-card v-else-if="n === 5" outlined tile>
-                          <v-container>
-                            <v-row>
-                              <v-col>
-                                <v-textarea
-                                  auto-grow
-                                  flat
-                                  :disabled="ifAdmin"
-                                  v-model="resourcesNeededCore"
-                                  solo
-                                  class="ma-0 pa-0"
-                                  hide-details
-                                  row-height="15"
-                                ></v-textarea>
-                              </v-col>
-                            </v-row>
-                          </v-container>
-                        </v-card>
-                      </v-col>
-                    </v-row>
-                    <!-- Feedback  -->
-                    <v-card class="pa-2" outlined tile>
-                      Feedback:
-                      <v-container>
-                        <v-row>
-                          <v-col>
-                            <v-textarea
-                              auto-grow
-                              flat
-                              v-model="feedback"
-                              solo
-                              :disabled="ifAdmin"
-                              class="ma-0 pa-0"
-                              hide-details
-                              row-height="15"
-                            ></v-textarea>
-                          </v-col>
-                        </v-row>
-                      </v-container>
-                    </v-card>
-
-                    <!-- This is the signature part in part 4 -->
-                    <div class="pa-10 ml-9" style="text-align: center">
-                      <v-row>
-                        <v-col>
-                          <v-card
-                            class="pa-2"
-                            style="
-                              width: 250px;
-                              height: 100px;
-                              margin-left: 20px;
-                            "
-                          >
-                            <v-text-field dense solo flat v-model="rateePart4">
-                            </v-text-field>
+                          <v-card v-if="n === 1" outlined tile>
+                            <v-container>
+                              <v-row>
+                                <v-col>
+                                  <v-textarea
+                                    auto-grow
+                                    flat
+                                    solo
+                                    :rules="required"
+                                    :readonly="ifAdmin"
+                                    v-model="strengthsFunctional"
+                                    class="ma-0 pa-0"
+                                    hide-details
+                                    row-height="15"
+                                  ></v-textarea>
+                                </v-col>
+                              </v-row>
+                            </v-container>
                           </v-card>
-                          <h5 class="pa-2" style="margin-left: 30px">RATEE</h5>
-                        </v-col>
-
-                        <v-col>
-                          <v-card
-                            v-model="part4_rater"
-                            class="pa-2"
-                            style="
-                              width: 250px;
-                              height: 100px;
-                              margin-left: 15px;
-                            "
-                          >
-                            <v-text-field dense solo flat v-model="raterPart4">
-                            </v-text-field>
+                          <v-card v-else-if="n === 2" outlined tile
+                            ><v-container>
+                              <v-row>
+                                <v-col>
+                                  <v-textarea
+                                    auto-grow
+                                    :readonly="ifAdmin"
+                                    flat
+                                    v-model="developmentNeedsFunctional"
+                                    solo
+                                    :rules="required"
+                                    class="ma-0 pa-0"
+                                    hide-details
+                                    row-height="15"
+                                  ></v-textarea>
+                                </v-col>
+                              </v-row>
+                            </v-container>
                           </v-card>
-                          <h5 class="pa-2" style="margin-right: 10px">RATER</h5>
-                        </v-col>
-
-                        <v-col>
                           <v-card
-                            class="pa-2"
-                            style="width: 250px; height: 100px"
+                            v-else-if="n === 3"
+                            class="text-center"
+                            outlined
+                            tile
                           >
-                            <v-text-field
-                              dense
-                              :disabled="ifAdmin"
-                              solo
-                              flat
-                              v-model="approvingAuthorityPart4"
-                            >
-                            </v-text-field>
+                            <v-container>
+                              <v-row>
+                                <v-col>
+                                  <v-textarea
+                                    auto-grow
+                                    :readonly="ifAdmin"
+                                    flat
+                                    :rules="required"
+                                    v-model="learningObjectivesFunctional"
+                                    solo
+                                    class="ma-0 pa-0"
+                                    hide-details
+                                    row-height="15"
+                                  ></v-textarea>
+                                </v-col>
+                                <v-col>
+                                  <v-textarea
+                                    auto-grow
+                                    flat
+                                    v-model="interventionFunctional"
+                                    solo
+                                    :rules="required"
+                                    :readonly="ifAdmin"
+                                    class="ma-0 pa-0"
+                                    hide-details
+                                    row-height="15"
+                                  ></v-textarea>
+                                </v-col>
+                              </v-row>
+                            </v-container>
                           </v-card>
-                          <h5 class="pa-2" style="margin-left: -70px">
-                            APPROVING AUTHORITY
-                          </h5>
+                          <v-card v-else-if="n === 4" outlined tile>
+                            <v-container>
+                              <v-row>
+                                <v-col>
+                                  <v-textarea
+                                    auto-grow
+                                    :readonly="ifAdmin"
+                                    flat
+                                    :rules="required"
+                                    v-model="timelineFunctional"
+                                    solo
+                                    class="ma-0 pa-0"
+                                    hide-details
+                                    row-height="15"
+                                  ></v-textarea>
+                                </v-col>
+                              </v-row>
+                            </v-container>
+                          </v-card>
+                          <v-card v-else-if="n === 5" outlined tile>
+                            <v-container>
+                              <v-row>
+                                <v-col>
+                                  <v-textarea
+                                    auto-grow
+                                    flat
+                                    :rules="required"
+                                    :readonly="ifAdmin"
+                                    v-model="resourcesNeededFunctional"
+                                    solo
+                                    class="ma-0 pa-0"
+                                    hide-details
+                                    row-height="15"
+                                  ></v-textarea>
+                                </v-col>
+                              </v-row>
+                            </v-container>
+                          </v-card>
                         </v-col>
                       </v-row>
-                    </div>
-                    <div class="ml-9"></div>
+
+                      <!-- Core Behavioral Text Area -->
+                      <v-card class="pa-2" color="grey lighten-2" outlined tile>
+                        B. Core Behavioral Competencies
+                      </v-card>
+
+                      <v-row no-gutters>
+                        <v-col
+                          v-for="n in 5"
+                          :key="n"
+                          :cols="n === 3 ? 6 : undefined"
+                          class="text-center"
+                          outlined
+                          tile
+                        >
+                          <v-card v-if="n === 1" outlined tile>
+                            <v-container>
+                              <v-row>
+                                <v-col>
+                                  <v-textarea
+                                    auto-grow
+                                    v-model="strengthsCore"
+                                    flat
+                                    :rules="required"
+                                    :readonly="ifAdmin"
+                                    solo
+                                    class="ma-0 pa-0"
+                                    hide-details
+                                    row-height="15"
+                                  ></v-textarea>
+                                </v-col>
+                              </v-row>
+                            </v-container>
+                          </v-card>
+                          <v-card v-else-if="n === 2" outlined tile
+                            ><v-container>
+                              <v-row>
+                                <v-col>
+                                  <v-textarea
+                                    auto-grow
+                                    flat
+                                    :rules="required"
+                                    solo
+                                    :readonly="ifAdmin"
+                                    v-model="developmentCore"
+                                    class="ma-0 pa-0"
+                                    hide-details
+                                    row-height="15"
+                                  ></v-textarea>
+                                </v-col>
+                              </v-row>
+                            </v-container>
+                          </v-card>
+                          <v-card
+                            v-else-if="n === 3"
+                            class="text-center"
+                            outlined
+                            tile
+                          >
+                            <v-container>
+                              <v-row>
+                                <v-col>
+                                  <v-textarea
+                                    auto-grow
+                                    flat
+                                    :readonly="ifAdmin"
+                                    v-model="learningObjectivesCore"
+                                    solo
+                                    :rules="required"
+                                    class="ma-0 pa-0"
+                                    hide-details
+                                    row-height="15"
+                                  ></v-textarea>
+                                </v-col>
+                                <v-col>
+                                  <v-textarea
+                                    auto-grow
+                                    flat
+                                    v-model="interventionCore"
+                                    solo
+                                    :rules="required"
+                                    :readonly="ifAdmin"
+                                    class="ma-0 pa-0"
+                                    hide-details
+                                    row-height="15"
+                                  ></v-textarea>
+                                </v-col>
+                              </v-row>
+                            </v-container>
+                          </v-card>
+                          <v-card v-else-if="n === 4" outlined tile>
+                            <v-container>
+                              <v-row>
+                                <v-col>
+                                  <v-textarea
+                                    auto-grow
+                                    flat
+                                    :rules="required"
+                                    solo
+                                    :readonly="ifAdmin"
+                                    v-model="timelineCore"
+                                    class="ma-0 pa-0"
+                                    hide-details
+                                    row-height="15"
+                                  ></v-textarea>
+                                </v-col>
+                              </v-row>
+                            </v-container>
+                          </v-card>
+                          <v-card v-else-if="n === 5" outlined tile>
+                            <v-container>
+                              <v-row>
+                                <v-col>
+                                  <v-textarea
+                                    auto-grow
+                                    flat
+                                    :readonly="ifAdmin"
+                                    v-model="resourcesNeededCore"
+                                    solo
+                                    :rules="required"
+                                    class="ma-0 pa-0"
+                                    hide-details
+                                    row-height="15"
+                                  ></v-textarea>
+                                </v-col>
+                              </v-row>
+                            </v-container>
+                          </v-card>
+                        </v-col>
+                      </v-row>
+                      <!-- Feedback  -->
+                      <v-card class="pa-2" outlined tile>
+                        Feedback: <span class="red--text text--lighten-1">*</span>
+                        <v-container>
+                          <v-row>
+                            <v-col>
+                              <v-textarea
+                                auto-grow
+                                flat
+                                v-model="feedback"
+                                solo
+                                :rules="required"
+                                :readonly="ifAdmin"
+                                class="ma-0 pa-0"
+                                hide-details
+                                row-height="15"
+                              ></v-textarea>
+                            </v-col>
+                          </v-row>
+                        </v-container>
+                      </v-card>
+
+                      <!-- This is the signature part in part 4 -->
+                      <div class="pa-10 ml-9" style="text-align: center">
+                        <v-row>
+                          <v-col>
+                            <v-card
+                              class="pa-2"
+                              style="
+                                width: 250px;
+                                height: 100px;
+                                margin-left: 20px;
+                              "
+                            >
+                              <v-text-field
+                                dense
+                                solo
+                                :rules="required"
+                                flat
+                                v-model="rateePart4"
+                              >
+                              </v-text-field>
+                            </v-card>
+                            <h5 class="pa-2" style="margin-left: 30px">
+                              RATEE <span class="red--text text--lighten-1">*</span>
+                            </h5>
+                          </v-col>
+
+                          <v-col>
+                            <v-card
+                              v-model="part4_rater"
+                              class="pa-2"
+                              style="
+                                width: 250px;
+                                height: 100px;
+                                margin-left: 15px;
+                              "
+                            >
+                              <v-text-field
+                                dense
+                                solo
+                                flat
+                                :rules="required"
+                                v-model="raterPart4"
+                              >
+                              </v-text-field>
+                            </v-card>
+                            <h5 class="pa-2" style="margin-right: 10px">
+                              RATER <span class="red--text text--lighten-1">*</span>
+                            </h5>
+                          </v-col>
+
+                          <v-col>
+                            <v-card
+                              class="pa-2"
+                              style="width: 250px; height: 100px"
+                            >
+                              <v-text-field
+                                dense
+                                :readonly="ifAdmin"
+                                solo
+                                flat
+                                :rules="required"
+                                v-model="approvingAuthorityPart4"
+                              >
+                              </v-text-field>
+                            </v-card>
+                            <h5 class="pa-2" style="margin-left: -70px">
+                              APPROVING AUTHORITY <span class="red--text text--lighten-1">*</span>
+                            </h5>
+                          </v-col>
+                        </v-row>
+                      </div>
+                      <div class="ml-9"></div>
+                    </v-form>
                   </div>
 
                   <v-card class="mx-auto" max-width="800">
@@ -10523,9 +9022,11 @@
                   ><br />
                   <v-btn
                     :loading="loading"
-                    :disabled="loading"
+                    :readonly="loading"
                     @click="finalizePart4"
-                    class="ml-auto mr-auto text-center"
+                    class="ml-auto mr-auto text-center ma-6 ml-auto mr-auto mt-5 text-center d-block"
+              
+              height="50px"
                     >Finalize Part 4</v-btn
                   >
                 </v-container>
@@ -10538,6 +9039,12 @@
   </v-container>
 </template>
 <style>
+input:disabled {
+  color:black;
+  font-weight:bold;
+  text-decoration: none;
+  opacity:1.0
+}
 .nameOfEmployee {
   width: 300px;
 }
@@ -10558,6 +9065,11 @@
 .ePart1 {
   display: flex;
   overflow-x: auto;
+}
+.ePart2 {
+  display: flex;
+  overflow-x: scroll;
+  overflow-y: hidden;
 }
 .encodingDiv {
   display: flex;
@@ -10609,10 +9121,17 @@ caption {
 // import * as excel from 'excel-formula'
 //  var formattedFormula = excelFormulaUtilities.formatFormulaHTML('IF(1+1=2,"true","false")');
 //         alert(formattedFormula)
+import PromptAlert from "@/utils/Prompt";
 export default {
   data() {
     return {
+      mixins: [PromptAlert],
+      ipcrfIdPart1Demographic: "",
+      ipcrfIdPart1EncodingAdmin: "",
+      ipcrfIdPart2: "",
+      ipcrfIdPart4: "",
       alert: false,
+      alert2: false,
       //user:JSON.parse(sessionStorage.getItem('user_session')).role,
       create: false,
       edit: false,
@@ -10905,8 +9424,17 @@ export default {
       cot2DateObserved: "",
       // cot1Subject: "",
       cot1IndicatorObjNo1: "",
+      cot1IndicatorObjNo2: "",
+      cot1IndicatorObjNo3: "",
+       cot1IndicatorObjNo4: "",
       cot1IndicatorObjNo5: "",
-      cot1IndicatorObjNo7: "",
+      cot1IndicatorObjNo6: "",
+       cot1IndicatorObjNo7: "",
+      cot1IndicatorObjNo8: "",
+      cot1IndicatorObjNo9: "",
+       cot1IndicatorObjNo10: "",
+      cot1IndicatorObjNo11: "",
+      cot1IndicatorObjNo12: "",
 
       cot1RatingObjNo1: "",
       cot1RatingObjNo5: "",
@@ -10917,9 +9445,7 @@ export default {
       cot1RpmsObjNo7: "",
 
       //cot 2 part 1 variables
-      cot2IndicatorObjNo1: "",
-      cot2IndicatorObjNo5: "",
-      cot2IndicatorObjNo7: "",
+     
       cot2RatingObjNo1: "",
       cot2RatingObjNo5: "",
       cot2RatingObjNo7: "",
@@ -11055,7 +9581,7 @@ export default {
       ipcrfDemographicProfile: [],
       ipcrfEncodingPart1: [],
       ipcrfEncodingPart2: [],
-      ipcrfDevelopmentlan: [],
+      ipcrfDevelopmentPlan: [],
       countSelfManagement: 0,
       countTeamwork: 0,
       countProfessional: 0,
@@ -11065,10 +9591,24 @@ export default {
       loading: false,
       loader: null,
       required: [(v) => !!v || "Field is required"],
+      requiredField: [(v) => !!v || "*"],
+      empDateReviewMenu: false,
+      printLoading: true,
+      printObjPart1: {
+        id: "printMePart1",
+        // preview: true,
+        // previewTitle: "print Title", // The title of the preview window. The default is 打印预览
+        // popTitle: "good print",
+        extraCss:
+          "https://cdn.bootcdn.net/ajax/libs/animate.css/4.1.1/animate.compat.css, https://cdn.bootcdn.net/ajax/libs/hover.css/2.3.1/css/hover-min.css",
+
+        extraHead:
+          '<meta http-equiv="Content-Language"content="en-us"/>, <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">',
+      },
     };
   },
   created() {
-    console.log(this.user);
+   
     this.retrieveIpcrf();
     // var formattedFormula = excelFormulaUtilities.formula2JavaScript('=ROUND(IFERROR(SUM(B2,D2,F2,H2)/INDEX(FREQUENCY((D3,E3,F3,G3),0),2),0),3)')
     //  console.log(formattedFormula)
@@ -11084,78 +9624,161 @@ export default {
 
       this.loader = null;
     },
+  },
+  computed: {
+    calculateObjectivesAverageNo1() {
+      console.log(typeof this.cot1RpmsObjNo1);
+      return Math.round(
+        (Number(this.cot1RpmsObjNo1) + Number(this.cot2RpmsObjNo1)) / 2
+      );
+    },
     calculateObjectivesAverageNo7() {
-      this.encodingAverageObjNo7 =
-        this.cot1RpmsObjNo1 + this.cot2RpmsObjNo7 / 2;
-      return this.encodingAverageObjNo7;
+      return Math.round(
+        (Number(this.cot1RpmsObjNo7) + Number(this.cot2RpmsObjNo7)) / 2
+      );
     },
     calculateObjectivesAverageNo5() {
-      this.encodingAverageObjNo5 =
-        this.cot1RpmsObjNo1 + this.cot2RpmsObjNo5 / 2;
-      return this.encodingAverageObjNo5;
-    },
-    calculateObjectivesAverageNo1() {
-      this.encodingAverageObjNo1 =
-        this.cot1RpmsObjNo1 + this.cot2RpmsObjNo1 / 2;
-      return this.encodingAverageObjNo5;
+      return Math.round(
+        (Number(this.cot1RpmsObjNo5) + Number(this.cot2RpmsObjNo5)) / 2
+      );
     },
 
     calculateNumericalRatingsAverageNo1() {
-      this.encodingIpcrfRatingAve1 = this.encodingIpcrfNumericalQ1;
-      return this.encodingIpcrfRatingAve1;
+      return this.encodingIpcrfNumericalQ1;
     },
     calculateNumericalRatingsAverageNo2() {
-      this.encodingIpcrfRatingAve2 = this.encodingIpcrfNumericalQ2;
-      return this.encodingIpcrfRatingAve2;
+      return this.encodingIpcrfNumericalQ2;
     },
     calculateNumericalRatingsAverageNo3() {
-      this.encodingIpcrfRatingAve3 = this.encodingIpcrfNumericalQ3;
-      return this.encodingIpcrfRatingAve3;
+      return this.encodingIpcrfNumericalQ3;
     },
     calculateNumericalRatingsAverageNo4() {
-      this.encodingIpcrfRatingAve4 = this.encodingIpcrfNumericalQ4;
-      return this.encodingIpcrfRatingAve4;
+      return this.encodingIpcrfNumericalQ4;
     },
     calculateNumericalRatingsAverageNo5() {
-      this.encodingIpcrfRatingAve5 = this.encodingIpcrfNumericalQ5;
-      return this.encodingIpcrfRatingAve5;
+      return this.encodingIpcrfNumericalQ5;
     },
     calculateNumericalRatingsAverageNo6() {
-      this.encodingIpcrfRatingAve6 =
-        this.encodingIpcrfNumericalQ6 + this.encodingIpcrfNumericalT6 / 2;
-      return this.encodingIpcrfRatingAve6;
+      return Math.round(
+        (Number(this.encodingIpcrfNumericalQ6) +
+          Number(this.encodingIpcrfNumericalT6)) /
+          2
+      );
     },
     calculateNumericalRatingsAverageNo7() {
-      this.encodingIpcrfRatingAve7 = this.encodingIpcrfNumericalQ7;
-      return this.encodingIpcrfRatingAve7;
+      return this.encodingIpcrfNumericalQ7;
     },
     calculateNumericalRatingsAverageNo8() {
-      this.encodingIpcrfRatingAve8 = this.encodingIpcrfNumericalQ8;
-      return this.encodingIpcrfRatingAve8;
+      return this.encodingIpcrfNumericalQ8;
     },
     calculateNumericalRatingsAverageNo9() {
-      this.encodingIpcrfRatingAve9 =
-        this.encodingIpcrfNumericalQ9 + this.encodingIpcrfNumericalE9 / 2;
-      return this.encodingIpcrfRatingAve9;
+      return Math.round(
+        (Number(this.encodingIpcrfNumericalQ9) +
+          Number(this.encodingIpcrfNumericalE9)) /
+          2
+      );
     },
 
     calculateNumericalRatingsAverageNo10() {
-      this.encodingIpcrfRatingAve10 =
-        this.encodingIpcrfNumericalQ10 + this.encodingIpcrfNumericalE10 / 2;
-      return this.encodingIpcrfRatingAve10;
+      return Math.round(
+        (Number(this.encodingIpcrfNumericalQ10) +
+          Number(this.encodingIpcrfNumericalE10)) /
+          2
+      );
     },
     calculateNumericalRatingsAverageNo11() {
-      this.encodingIpcrfRatingAve11 =
-        this.encodingIpcrfNumericalQ11 + this.encodingIpcrfNumericalE11 / 2;
-      return this.encodingIpcrfRatingAve11;
+      return Math.round(
+        (Number(this.encodingIpcrfNumericalQ11) +
+          Number(this.encodingIpcrfNumericalE11)) /
+          2
+      );
     },
     calculateNumericalRatingsAverageNo12() {
-      this.encodingIpcrfRatingAve12 =
-        this.encodingIpcrfNumericalQ12 + this.encodingIpcrfNumericalE12 / 2;
-      return this.encodingIpcrfRatingAve12;
+      return Math.round(
+        (Number(this.encodingIpcrfNumericalQ12) +
+          Number(this.encodingIpcrfNumericalE12)) /
+          2
+      );
     },
-  },
-  computed: {
+
+    calculateScoreNo1() {
+      return Math.floor(
+        Number(this.calculateNumericalRatingsAverageNo1) * 0.08
+      ).toFixed(3);
+    },
+    calculateScoreNo2() {
+      return Math.floor(
+        Number(this.calculateNumericalRatingsAverageNo2) * 0.08
+      ).toFixed(3);
+    },
+    calculateScoreNo3() {
+      return Math.floor(
+        Number(this.calculateNumericalRatingsAverageNo3) * 0.08
+      ).toFixed(3);
+    },
+    calculateScoreNo4() {
+      return Math.floor(
+        Number(this.calculateNumericalRatingsAverageNo4) * 0.08
+      ).toFixed(3);
+    },
+    calculateScoreNo5() {
+      return Math.floor(
+        Number(this.calculateNumericalRatingsAverageNo5) * 0.08
+      ).toFixed(3);
+    },
+    calculateScoreNo6() {
+      return Math.floor(
+        Number(this.calculateNumericalRatingsAverageNo6) * 0.08
+      ).toFixed(3);
+    },
+    calculateScoreNo7() {
+      return Math.floor(
+        Number(this.calculateNumericalRatingsAverageNo7) * 0.08
+      ).toFixed(3);
+    },
+    calculateScoreNo8() {
+      return Math.floor(
+        Number(this.calculateNumericalRatingsAverageNo8) * 0.08
+      ).toFixed(3);
+    },
+    calculateScoreNo9() {
+      return Math.floor(
+        Number(this.calculateNumericalRatingsAverageNo9) * 0.08
+      ).toFixed(3);
+    },
+    calculateScoreNo10() {
+      return Math.floor(
+        Number(this.calculateNumericalRatingsAverageNo10) * 0.08
+      ).toFixed(3);
+    },
+    calculateScoreNo11() {
+      return Math.floor(
+        Number(this.calculateNumericalRatingsAverageNo11) * 0.08
+      ).toFixed(3);
+    },
+    calculateScoreNo12() {
+      return Math.floor(
+        Number(this.calculateNumericalRatingsAverageNo12) * 0.12
+      ).toFixed(3);
+    },
+
+    calculateFinalRating() {
+      return Number(
+        this.calculateScoreNo1 +
+          this.calculateScoreNo2 +
+          this.calculateScoreNo3 +
+          this.calculateScoreNo4 +
+          this.calculateScoreNo5 +
+          this.calculateScpreNo6 +
+          this.calculateScoreNo7 +
+          this.calculateScoreNo8 +
+          this.calculateScoreNo9 +
+          this.calculateScoreNo10 +
+          this.calculateScoreNo11 +
+          this.calculateScoreNo12
+      );
+    },
+
     ifAdmin() {
       return this.user == "Admin";
     },
@@ -11174,96 +9797,804 @@ export default {
   },
 
   methods: {
+    calculateAdjectivalRatingNo1() {
+      if (
+        Math.floor(Number(this.calculateNumericalRatingsAverageNo1)).toFixed(
+          3
+        ) < 1.499
+      ) {
+        this.encodingAdjectivalRating1 = "Poor";
+      } else if (
+        Math.floor(Number(this.calculateNumericalRatingsAverageNo1)).toFixed(
+          3
+        ) <= 2.499
+      ) {
+        this.encodingAdjectivalRating1 = "Unsatisfactory";
+      } else if (
+        Math.floor(Number(this.calculateNumericalRatingsAverageNo1)).toFixed(
+          3
+        ) <= 3.499
+      ) {
+        this.encodingAdjectivalRating1 = "Satisfactory";
+      } else if (
+        Math.floor(Number(this.calculateNumericalRatingsAverageNo1)).toFixed(
+          3
+        ) <= 4.499
+      ) {
+        this.encodingAdjectivalRating1 = "Very Satisfactory";
+      } else if (
+        Math.floor(Number(this.calculateNumericalRatingsAverageNo1)).toFixed(
+          3
+        ) <= 5
+      ) {
+        this.encodingAdjectivalRating1 = "Outstanding";
+      }
+      this.calculateFinalAdjectivalRating();
+    },
+    calculateAdjectivalRatingNo2() {
+      if (
+        Math.floor(Number(this.calculateNumericalRatingsAverageNo2)).toFixed(
+          3
+        ) < 1.499
+      ) {
+        this.encodingAdjectivalRating2 = "Poor";
+      } else if (
+        Math.floor(Number(this.calculateNumericalRatingsAverageNo2)).toFixed(
+          3
+        ) <= 2.499
+      ) {
+        this.encodingAdjectivalRating2 = "Unsatisfactory";
+      } else if (
+        Math.floor(Number(this.calculateNumericalRatingsAverageNo2)).toFixed(
+          3
+        ) <= 3.499
+      ) {
+        this.encodingAdjectivalRating2 = "Satisfactory";
+      } else if (
+        Math.floor(Number(this.calculateNumericalRatingsAverageNo2)).toFixed(
+          3
+        ) <= 4.499
+      ) {
+        this.encodingAdjectivalRating2 = "Very Satisfactory";
+      } else if (
+        Math.floor(Number(this.calculateNumericalRatingsAverageNo2)).toFixed(
+          3
+        ) <= 5
+      ) {
+        this.encodingAdjectivalRating2 = "Outstanding";
+      }
+      this.calculateFinalAdjectivalRating();
+    },
+    calculateAdjectivalRatingNo3() {
+      if (
+        Math.floor(Number(this.calculateNumericalRatingsAverageNo3)).toFixed(
+          3
+        ) < 1.499
+      ) {
+        this.encodingAdjectivalRating3 = "Poor";
+      } else if (
+        Math.floor(Number(this.calculateNumericalRatingsAverageNo3)).toFixed(
+          3
+        ) <= 2.499
+      ) {
+        this.encodingAdjectivalRating3 = "Unsatisfactory";
+      } else if (
+        Math.floor(Number(this.calculateNumericalRatingsAverageNo3)).toFixed(
+          3
+        ) <= 3.499
+      ) {
+        this.encodingAdjectivalRating3 = "Satisfactory";
+      } else if (
+        Math.floor(Number(this.calculateNumericalRatingsAverageNo3)).toFixed(
+          3
+        ) <= 4.499
+      ) {
+        this.encodingAdjectivalRating3 = "Very Satisfactory";
+      } else if (
+        Math.floor(Number(this.calculateNumericalRatingsAverageNo3)).toFixed(
+          3
+        ) <= 5
+      ) {
+        this.encodingAdjectivalRating3 = "Outstanding";
+      }
+      this.calculateFinalAdjectivalRating();
+    },
+    calculateAdjectivalRatingNo4() {
+      if (
+        Math.floor(Number(this.calculateNumericalRatingsAverageNo4)).toFixed(
+          3
+        ) < 1.499
+      ) {
+        this.encodingAdjectivalRating4 = "Poor";
+      } else if (
+        Math.floor(Number(this.calculateNumericalRatingsAverageNo4)).toFixed(
+          3
+        ) <= 2.499
+      ) {
+        this.encodingAdjectivalRating4 = "Unsatisfactory";
+      } else if (
+        Math.floor(Number(this.calculateNumericalRatingsAverageNo4)).toFixed(
+          3
+        ) <= 3.499
+      ) {
+        this.encodingAdjectivalRating4 = "Satisfactory";
+      } else if (
+        Math.floor(Number(this.calculateNumericalRatingsAverageNo4)).toFixed(
+          3
+        ) <= 4.499
+      ) {
+        this.encodingAdjectivalRating4 = "Very Satisfactory";
+      } else if (
+        Math.floor(Number(this.calculateNumericalRatingsAverageNo4)).toFixed(
+          3
+        ) <= 5
+      ) {
+        this.encodingAdjectivalRating4 = "Outstanding";
+      }
+      this.calculateFinalAdjectivalRating();
+    },
+    calculateAdjectivalRatingNo5() {
+      if (
+        Math.floor(Number(this.calculateNumericalRatingsAverageNo5)).toFixed(
+          3
+        ) < 1.499
+      ) {
+        this.encodingAdjectivalRating5 = "Poor";
+      } else if (
+        Math.floor(Number(this.calculateNumericalRatingsAverageNo5)).toFixed(
+          3
+        ) <= 2.499
+      ) {
+        this.encodingAdjectivalRating5 = "Unsatisfactory";
+      } else if (
+        Math.floor(Number(this.calculateNumericalRatingsAverageNo5)).toFixed(
+          3
+        ) <= 3.499
+      ) {
+        this.encodingAdjectivalRating5 = "Satisfactory";
+      } else if (
+        Math.floor(Number(this.calculateNumericalRatingsAverageNo5)).toFixed(
+          3
+        ) <= 4.499
+      ) {
+        this.encodingAdjectivalRating5 = "Very Satisfactory";
+      } else if (
+        Math.floor(Number(this.calculateNumericalRatingsAverageNo5)).toFixed(
+          3
+        ) <= 5
+      ) {
+        this.encodingAdjectivalRating5 = "Outstanding";
+      }
+      this.calculateFinalAdjectivalRating();
+    },
+    calculateAdjectivalRatingNo6() {
+      if (
+        Math.floor(Number(this.calculateNumericalRatingsAverageNo6)).toFixed(
+          3
+        ) < 1.499
+      ) {
+        this.encodingAdjectivalRating6 = "Poor";
+      } else if (
+        Math.floor(Number(this.calculateNumericalRatingsAverageNo6)).toFixed(
+          3
+        ) <= 2.499
+      ) {
+        this.encodingAdjectivalRating6 = "Unsatisfactory";
+      } else if (
+        Math.floor(Number(this.calculateNumericalRatingsAverageNo6)).toFixed(
+          3
+        ) <= 3.499
+      ) {
+        this.encodingAdjectivalRating6 = "Satisfactory";
+      } else if (
+        Math.floor(Number(this.calculateNumericalRatingsAverageNo6)).toFixed(
+          3
+        ) <= 4.499
+      ) {
+        this.encodingAdjectivalRating6 = "Very Satisfactory";
+      } else if (
+        Math.floor(Number(this.calculateNumericalRatingsAverageNo6)).toFixed(
+          3
+        ) <= 5
+      ) {
+        this.encodingAdjectivalRating6 = "Outstanding";
+      }
+      this.calculateFinalAdjectivalRating();
+    },
+    calculateAdjectivalRatingNo7() {
+      if (
+        Math.floor(Number(this.calculateNumericalRatingsAverageNo7)).toFixed(
+          3
+        ) < 1.499
+      ) {
+        this.encodingAdjectivalRating7 = "Poor";
+      } else if (
+        Math.floor(Number(this.calculateNumericalRatingsAverageNo7)).toFixed(
+          3
+        ) <= 2.499
+      ) {
+        this.encodingAdjectivalRating7 = "Unsatisfactory";
+      } else if (
+        Math.floor(Number(this.calculateNumericalRatingsAverageNo7)).toFixed(
+          3
+        ) <= 3.499
+      ) {
+        this.encodingAdjectivalRating7 = "Satisfactory";
+      } else if (
+        Math.floor(Number(this.calculateNumericalRatingsAverageNo7)).toFixed(
+          3
+        ) <= 4.499
+      ) {
+        this.encodingAdjectivalRating7 = "Very Satisfactory";
+      } else if (
+        Math.floor(Number(this.calculateNumericalRatingsAverageNo7)).toFixed(
+          3
+        ) <= 5
+      ) {
+        this.encodingAdjectivalRating7 = "Outstanding";
+      }
+      this.calculateFinalAdjectivalRating();
+    },
+    calculateAdjectivalRatingNo8() {
+      if (
+        Math.floor(Number(this.calculateNumericalRatingsAverageNo8)).toFixed(
+          3
+        ) < 1.499
+      ) {
+        this.encodingAdjectivalRating8 = "Poor";
+      } else if (
+        Math.floor(Number(this.calculateNumericalRatingsAverageNo8)).toFixed(
+          3
+        ) <= 2.499
+      ) {
+        this.encodingAdjectivalRating8 = "Unsatisfactory";
+      } else if (
+        Math.floor(Number(this.calculateNumericalRatingsAverageNo8)).toFixed(
+          3
+        ) <= 3.499
+      ) {
+        this.encodingAdjectivalRating8 = "Satisfactory";
+      } else if (
+        Math.floor(Number(this.calculateNumericalRatingsAverageNo8)).toFixed(
+          3
+        ) <= 4.499
+      ) {
+        this.encodingAdjectivalRating8 = "Very Satisfactory";
+      } else if (
+        Math.floor(Number(this.calculateNumericalRatingsAverageNo8)).toFixed(
+          3
+        ) <= 5
+      ) {
+        this.encodingAdjectivalRating8 = "Outstanding";
+      }
+      this.calculateFinalAdjectivalRating();
+    },
+    calculateAdjectivalRatingNo9() {
+      if (
+        Math.floor(Number(this.calculateNumericalRatingsAverageNo9)).toFixed(
+          3
+        ) < 1.499
+      ) {
+        this.encodingAdjectivalRating9 = "Poor";
+      } else if (
+        Math.floor(Number(this.calculateNumericalRatingsAverageNo9)).toFixed(
+          3
+        ) <= 2.499
+      ) {
+        this.encodingAdjectivalRating9 = "Unsatisfactory";
+      } else if (
+        Math.floor(Number(this.calculateNumericalRatingsAverageNo9)).toFixed(
+          3
+        ) <= 3.499
+      ) {
+        this.encodingAdjectivalRating9 = "Satisfactory";
+      } else if (
+        Math.floor(Number(this.calculateNumericalRatingsAverageNo9)).toFixed(
+          3
+        ) <= 4.499
+      ) {
+        this.encodingAdjectivalRating9 = "Very Satisfactory";
+      } else if (
+        Math.floor(Number(this.calculateNumericalRatingsAverageNo9)).toFixed(
+          3
+        ) <= 5
+      ) {
+        this.encodingAdjectivalRating9 = "Outstanding";
+      }
+      this.calculateFinalAdjectivalRating();
+    },
+    calculateAdjectivalRatingNo10() {
+      if (
+        Math.floor(Number(this.calculateNumericalRatingsAverageNo10)).toFixed(
+          3
+        ) < 1.499
+      ) {
+        this.encodingAdjectivalRating10 = "Poor";
+      } else if (
+        Math.floor(Number(this.calculateNumericalRatingsAverageNo10)).toFixed(
+          3
+        ) <= 2.499
+      ) {
+        this.encodingAdjectivalRating10 = "Unsatisfactory";
+      } else if (
+        Math.floor(Number(this.calculateNumericalRatingsAverageNo10)).toFixed(
+          3
+        ) <= 3.499
+      ) {
+        this.encodingAdjectivalRating10 = "Satisfactory";
+      } else if (
+        Math.floor(Number(this.calculateNumericalRatingsAverageNo10)).toFixed(
+          3
+        ) <= 4.499
+      ) {
+        this.encodingAdjectivalRating10 = "Very Satisfactory";
+      } else if (
+        Math.floor(Number(this.calculateNumericalRatingsAverageNo10)).toFixed(
+          3
+        ) <= 5
+      ) {
+        this.encodingAdjectivalRating10 = "Outstanding";
+      }
+      this.calculateFinalAdjectivalRating();
+    },
+    calculateAdjectivalRatingNo11() {
+      if (
+        Math.floor(Number(this.calculateNumericalRatingsAverageno11)).toFixed(
+          3
+        ) < 1.499
+      ) {
+        this.encodingAdjectivalRating11 = "Poor";
+      } else if (
+        Math.floor(Number(this.calculateNumericalRatingsAverageNo11)).toFixed(
+          3
+        ) <= 2.499
+      ) {
+        this.encodingAdjectivalRating11 = "Unsatisfactory";
+      } else if (
+        Math.floor(Number(this.calculateNumericalRatingsAverageNo11)).toFixed(
+          3
+        ) <= 3.499
+      ) {
+        this.encodingAdjectivalRating11 = "Satisfactory";
+      } else if (
+        Math.floor(Number(this.calculateNumericalRatingsAverageNo11)).toFixed(
+          3
+        ) <= 4.499
+      ) {
+        this.encodingAdjectivalRating11 = "Very Satisfactory";
+      } else if (
+        Math.floor(Number(this.calculateNumericalRatingsAverageNo11)).toFixed(
+          3
+        ) <= 5
+      ) {
+        this.encodingAdjectivalRating11 = "Outstanding";
+      }
+      this.calculateFinalAdjectivalRating();
+    },
+    calculateAdjectivalRatingNo12() {
+      if (
+        Math.floor(Number(this.calculateNumericalRatingsAverageNo12)).toFixed(
+          3
+        ) < 1.499
+      ) {
+        this.encodingAdjectivalRating12 = "Poor";
+      } else if (
+        Math.floor(Number(this.calculateNumericalRatingsAverageNo12)).toFixed(
+          3
+        ) <= 2.499
+      ) {
+        this.encodingAdjectivalRating12 = "Unsatisfactory";
+      } else if (
+        Math.floor(Number(this.calculateNumericalRatingsAverageNo12)).toFixed(
+          3
+        ) <= 3.499
+      ) {
+        this.encodingAdjectivalRating12 = "Satisfactory";
+      } else if (
+        Math.floor(Number(this.calculateNumericalRatingsAverageNo12)).toFixed(
+          3
+        ) <= 4.499
+      ) {
+        this.encodingAdjectivalRating12 = "Very Satisfactory";
+      } else if (
+        Math.floor(Number(this.calculateNumericalRatingsAverageNo12)).toFixed(
+          3
+        ) <= 5
+      ) {
+        this.encodingAdjectivalRating12 = "Outstanding";
+      }
+      this.calculateFinalAdjectivalRating();
+    },
+    calculateFinalAdjectivalRating() {
+      if (this.calculateFinalRating < 1.499) {
+        this.empFinalAdjRating = "Poor";
+      } else if (this.calculateFinalRating <= 2.499) {
+        this.empFinalAdjRating = "Unsatisfactory";
+      } else if (this.calculateFinalRating <= 3.499) {
+        this.empFinalAdjRating = "Satisfactory";
+      } else if (this.calculateFinalRating <= 4.499) {
+        this.empFinalAdjRating = "Very Satisfactory";
+      } else if (this.calculateFinalRating <= 5) {
+        this.empFinalAdjRating = "Outstanding";
+      }
+    },
+    calculateScore(item) {
+      console.log(item, this.calculateNumericalRatingsAverageNo1);
+      console.log(
+        Math.floor((this.calculateNumericalRatingsAverageNo1 * 0.08).toFixed(3))
+      );
+    },
+    showErrorResponse(title, message) {
+      this.$swal.fire({
+        icon: "error",
+        title: title,
+        text: message,
+      });
+    },
+    showWarningResponse(title, message) {
+      this.$swal.fire({
+        icon: "warning",
+        title: title,
+        text: message,
+      });
+    },
     formatDate(date) {
       if (!date) return null;
 
       const [year, month, day] = date.split("-");
       return `${month}/${day}/${year}`;
     },
+
     async retrieveIpcrf() {
+      this.loading = true;
       if (this.user == "Admin") {
         this.ipcrfDemographicProfile = [];
         // this.ipcrfEncodingPart1 = []
         // this.ipcrfEncodingPart2 =[]
         const returnedAllData = await this.$store.dispatch("retrieveIpcrfInfo");
-        console.log(returnedAllData.data.ipcrfDemographicProfile);
+       
         this.ipcrfDemographicProfile =
           returnedAllData.data.ipcrfDemographicProfile;
         //this.ipcrfEncodingPart1 = returnedAllData.data.ipcrfEncodingPart1
+        this.loading = false;
         this.showTable = true;
+        this.show = false;
       } else if (this.user == "Teacher") {
         this.ipcrfDemographicProfile = [];
         const returnedAllData = await this.$store.dispatch(
           "retrieveIpcrfInfoById",
           this.userId
         );
-        console.log(returnedAllData.data.ipcrfDemographicProfile);
-        this.ipcrfDemographicProfile =
+       if(returnedAllData){
+         this.ipcrfDemographicProfile =
           returnedAllData.data.ipcrfDemographicProfile;
 
-        console.log(this.ipcrfDemographicProfile.length);
-        if (this.ipcrfDemographicProfile.length == 0) {
-          this.create = true;
-          this.showTable = false;
-        } else {
+          this.show = false,
+
+          this.loading = false;
           this.showTable = true;
-          this.show = true;
-        }
+          this.show = false;
+        
+       }
+        
       }
+
       // const returnedIpcrfData = await this.$store.dispatch("retrieveIpcrfInfoById");
+    },
+    createIpcrf(){
+      this.showTable = false
+      this.show = false
+      this.edit = false
+      this.create = true
+      
+      
     },
 
     async viewItem(item) {
       this.showTable = false;
-
+      this.edit = false;
       this.show = true;
       console.log(item);
       const user = item.user_id;
-      const schoolYear = item.rating_period;
-      const data = {
-        user,
-        schoolYear,
-      };
-      const returnedData = await this.$store.dispatch(
-        "retrieveIpcrfInfoBySchoolYear",
-        data
-      );
+      //const schoolYear = item.rating_period;
+      // const data = {
+      //   user,
+      //   schoolYear,
+      // };
+      // const returnedData = await this.$store.dispatch(
+      //   "retrieveIpcrfInfoBySchoolYear",
+      //   data
+      // );
 
-      console.log(returnedData);
+      const returnedDataByUser = await this.$store.dispatch(
+        "retrieveIpcrfInfoById",
+        user
+      );
+      this.countSelfManagement = 0;
+      this.countTeamwork = 0;
+      this.countService = 0;
+      this.countProfessional = 0;
+      this.countResults = 0;
+      this.countInnovation = 0;
       this.ipcrfDemographicProfile =
-        returnedData.data.ipcrfDemographicProfile[0];
-      this.ipcrfDevelopmentPlan = returnedData.data.ipcrfDevelopmentPlan[0];
-      this.ipcrfEncodingPart1 = returnedData.data.ipcrfEncodingPart1;
-      this.ipcrfEncodingPart2 = returnedData.data.ipcrfEncodingPart2[0];
-      console.log(this.ipcrfEncodingPart2);
+        returnedDataByUser.data.ipcrfDemographicProfile[0];
+      this.ipcrfDevelopmentPlan =
+        returnedDataByUser.data.ipcrfDevelopmentPlan[0];
+      this.ipcrfEncodingPart1 = returnedDataByUser.data.ipcrfEncodingPart1;
+      this.ipcrfEncodingPart2 = returnedDataByUser.data.ipcrfEncodingPart2[0];
+      console.log(this.ipcrfEncodingPart1);
+
+      //part 3
       let selfManagement = this.ipcrfEncodingPart2.self_management.split(",");
-      selfManagement = selfManagement.splice("", 1);
       let teamwork = this.ipcrfEncodingPart2.teamwork.split(",");
-      this.countSelfManagement = selfManagement.length;
-      this.countSelfTeamwork = teamwork.length;
-      /*innovation: (...)
-professional_and_ethics: (...)
-results_focus: (...)
-school_year: (...)
-self_management: (...)
-service_orientation: (...)
-teamwork: (...)*/
       let professionalAndEthics =
         this.ipcrfEncodingPart2.professional_and_ethics.split(",");
       let innovation = this.ipcrfEncodingPart2.innovation.split(",");
       let service = this.ipcrfEncodingPart2.service_orientation.split(",");
       let results = this.ipcrfEncodingPart2.results_focus.split(",");
-      professionalAndEthics = professionalAndEthics.splice("", 1);
-      innovation = innovation.splice("", 1);
-      service = service.splice("", 1);
-      results = results.splice("", 1);
-      this.countProfessional = professionalAndEthics.length;
-      this.countInnovation = innovation.length;
-      this.countService = service.length;
-      this.countResults = results.length;
+     // console.log(selfManagement + "self Management", selfManagement.length);
+      for (const item of selfManagement) {
+        if (item == "1") {
+          this.countSelfManagement++;
+        }
+      }
+      for (const item of teamwork) {
+        if (item == "1") {
+          this.countTeamwork++;
+        }
+      }
+
+      for (const item of professionalAndEthics) {
+        if (item == "1") {
+          this.countProfessional++;
+        }
+      }
+
+      for (const item of innovation) {
+        if (item == "1") {
+          this.countInnovation++;
+        }
+      }
+
+      for (const item of service) {
+        if (item == "1") {
+          this.countService++;
+        }
+      }
+
+      for (const item of results) {
+        if (item == "1") {
+          this.countResults++;
+        }
+      }
+    },
+    resetFields(){
+      this.ipcrfDemographicProfile = []
+      this.ipcrfEncodingPart1 = []
+      this.ipcrfEncodingPart2 = []
+      this.ipcrfIdPart1EncodingAdmin = []
+      this.ipcrfDevelopmentPlan = []
+        this.alert2 = false
+      this.ipcrfIdPart1Demographic = "";
+      this.empName = "";
+      this.empRater = "";
+      this.empRegion = "";
+      this.empPosition = "";
+      this.empRaterPosition = "";
+      this.empDivision = "";
+      this.empId = "";
+      this.empDateReview = "";
+      this.empDistrict = "";
+      this.empStatus = "";
+      this.empRatingPeriod = "";
+      this.empSchoolId = "";
+      this.empAge = "";
+      this.empSchoolName = "";
+      this.empSex = "";
+      this.empLevelTaught = "";
+      this.empYearsOfTeaching = "";
+      this.empSchoolType = this.ipcrfDemographicProfile.school_type;
+      this.empGradeLevelTaught =
+        this.ipcrfDemographicProfile.grade_level_taught;
+      this.empDegree = this.ipcrfDemographicProfile.highest_degree_obtained;
+      this.empSchoolSize = this.ipcrfDemographicProfile.school_size;
+      this.empSubjectTaught = this.ipcrfDemographicProfile.subject_taught;
+      this.empSpecialization =
+        this.ipcrfDemographicProfile.area_of_specialization;
+      this.empCurricularClassification =
+        this.ipcrfDemographicProfile.curricular_classification;
+      this.ipcrfDemographicProfile.empSchoolYear =
+        this.ipcrfDemographicProfile.rating_period;
+
+      //part1 Admin
+      //part 2 fields to be filled out by admin
+      this.cot1SubjectsTaught = this.ipcrfEncodingPart1[0].subject_cot1
+      this.cot2SubjectsTaught = this.ipcrfEncodingPart1[0].subject_cot2
+      //cot 1 part 1 variables
+      this.cot1DateObserved = this.ipcrfEncodingPart1[0].date_observed_cot1
+      this.cot2DateObserved = this.ipcrfEncodingPart1[0].date_observed_cot2
+      // cot1Subject = this.ipcrfEncodingPart1
+       this.cot1IndicatorObjNo1 = this.ipcrfEncodingPart1[0].cot_indicator_no
+      this.cot1IndicatorObjNo2 = this.ipcrfEncodingPart1[1].cot_indicator_no
+      this.cot1IndicatorObjNo3 = this.ipcrfEncodingPart1[2].cot_indicator_no
+       this.cot1IndicatorObjNo4 = this.ipcrfEncodingPart1[3].cot_indicator_no
+      this.cot1IndicatorObjNo5 = this.ipcrfEncodingPart1[4].cot_indicator_no
+      this.cot1IndicatorObjNo6 = this.ipcrfEncodingPart1[5].cot_indicator_no
+       this.cot1IndicatorObjNo7 = this.ipcrfEncodingPart1[6].cot_indicator_no
+      this.cot1IndicatorObjNo8 = this.ipcrfEncodingPart1[7].cot_indicator_no
+      this.cot1IndicatorObjNo9 = this.ipcrfEncodingPart1[8].cot_indicator_no
+       this.cot1IndicatorObjNo10 = this.ipcrfEncodingPart1[9].cot_indicator_no
+      this.cot1IndicatorObjNo11 = this.ipcrfEncodingPart1[10].cot_indicator_no
+      this.cot1IndicatorObjNo12 = this.ipcrfEncodingPart1[11].cot_indicator_no
+
+      this.cot1RatingObjNo1 = this.ipcrfEncodingPart1[0].rating_cot1
+      this.cot1RatingObjNo5 = this.ipcrfEncodingPart1[4].rating_cot1
+      this.cot1RatingObjNo7 = this.ipcrfEncodingPart1[6].rating_cot1
+
+      this.cot1RpmsObjNo1 = this.ipcrfEncodingPart1[0].rpms_5pt_scale_cot1
+      this.cot1RpmsObjNo5 = this.ipcrfEncodingPart1[4].rpms_5pt_scale_cot1
+      this.cot1RpmsObjNo7 = this.ipcrfEncodingPart1[6].rpms_5pt_scale_cot1
+
+      //cot 2 part 1 variables
+      this.cot2RatingObjNo1 = this.ipcrfEncodingPart1[0].rating_cot2
+      this.cot2RatingObjNo5 = this.ipcrfEncodingPart1[4].rating_cot2
+      this.cot2RatingObjNo7 = this.ipcrfEncodingPart1[6].rating_cot2
+      this.cot2RpmsObjNo1 = this.ipcrfEncodingPart1[0].rpms_5pt_scale_cot1
+      this.cot2RpmsObjNo5 = this.ipcrfEncodingPart1[4].rpms_5pt_scale_cot1
+      this.cot2RpmsObjNo7 = this.ipcrfEncodingPart1[6].rpms_5pt_scale_cot1
+
+      this.encodingAverageObjNo1 = this.ipcrfEncodingPart1[0].average_cot
+      this.encodingAverageObjNo5 = this.ipcrfEncodingPart1[4].average_cot
+      this.encodingAverageObjNo7 = this.ipcrfEncodingPart1[5].average_cot
+
+      this.encodingIpcrfNumericalQ1 = this.ipcrfEncodingPart1[0].ipcrf_numerical_ratings_q
+      this.encodingIpcrfNumericalQ2 = this.ipcrfEncodingPart1[1].ipcrf_numerical_ratings_q
+      this.encodingIpcrfNumericalQ3 = this.ipcrfEncodingPart1[2].ipcrf_numerical_ratings_q
+      this.encodingIpcrfNumericalQ4 = this.ipcrfEncodingPart1[3].ipcrf_numerical_ratings_q
+      this.encodingIpcrfNumericalQ5 = this.ipcrfEncodingPart1[4].ipcrf_numerical_ratings_q
+      this.encodingIpcrfNumericalQ6 = this.ipcrfEncodingPart1[5].ipcrf_numerical_ratings_q
+      this.encodingIpcrfNumericalQ7 = this.ipcrfEncodingPart1[6].ipcrf_numerical_ratings_q
+      this.encodingIpcrfNumericalQ8 = this.ipcrfEncodingPart1[7].ipcrf_numerical_ratings_q
+      this.encodingIpcrfNumericalQ9 = this.ipcrfEncodingPart1[8].ipcrf_numerical_ratings_q
+      this.encodingIpcrfNumericalQ10 = this.ipcrfEncodingPart1[9].ipcrf_numerical_ratings_q
+      this.encodingIpcrfNumericalQ11 = this.ipcrfEncodingPart1[10].ipcrf_numerical_ratings_q
+      this.encodingIpcrfNumericalQ12 = this.ipcrfEncodingPart1[11].ipcrf_numerical_ratings_q
+
+      this.encodingIpcrfNumericalE9 = this.ipcrfEncodingPart1[8].ipcrf_numerical_ratings_e
+      this.encodingIpcrfNumericalE10 = this.ipcrfEncodingPart1[9].ipcrf_numerical_ratings_e
+      this.encodingIpcrfNumericalE11 = this.ipcrfEncodingPart1[10].ipcrf_numerical_ratings_e
+      this.encodingIpcrfNumericalE12 = this.ipcrfEncodingPart1[11].ipcrf_numerical_ratings_e
+
+      this.encodingIpcrfNumericalT6 = this.ipcrfEncodingPart1[5].ipcrf_numerical_ratings_t
+
+      this.encodingIpcrfRatingAve1 = this.ipcrfEncodingPart1[0].ipcrf_numerical_ratings_average
+      this.encodingIpcrfRatingAve2 = this.ipcrfEncodingPart1[1].ipcrf_numerical_ratings_average
+      this.encodingIpcrfRatingAve3 = this.ipcrfEncodingPart1[2].ipcrf_numerical_ratings_average
+      this.encodingIpcrfRatingAve4 = this.ipcrfEncodingPart1[3].ipcrf_numerical_ratings_average
+      this.encodingIpcrfRatingAve5 = this.ipcrfEncodingPart1[4].ipcrf_numerical_ratings_average
+      this.encodingIpcrfRatingAve6 = this.ipcrfEncodingPart1[5].ipcrf_numerical_ratings_average
+      this.encodingIpcrfRatingAve7 = this.ipcrfEncodingPart1[6].ipcrf_numerical_ratings_average
+      this.encodingIpcrfRatingAve8 = this.ipcrfEncodingPart1[7].ipcrf_numerical_ratings_average
+      this.encodingIpcrfRatingAve9 = this.ipcrfEncodingPart1[8].ipcrf_numerical_ratings_average
+      this.encodingIpcrfRatingAve10 = this.ipcrfEncodingPart1[9].ipcrf_numerical_ratings_average
+      this.encodingIpcrfRatingAve11 = this.ipcrfEncodingPart1[10].ipcrf_numerical_ratings_average
+      this.encodingIpcrfRatingAve12 = this.ipcrfEncodingPart1[11].ipcrf_numerical_ratings_average
+
+      this.encodingScore1 = this.ipcrfEncodingPart1[0].ipcrf_numerical_ratings_score
+      this.encodingScore2 = this.ipcrfEncodingPart1[1].ipcrf_numerical_ratings_score
+      this.encodingScore3 = this.ipcrfEncodingPart1[2].ipcrf_numerical_ratings_score
+      this.encodingScore4 = this.ipcrfEncodingPart1[3].ipcrf_numerical_ratings_score
+      this.encodingScore5 = this.ipcrfEncodingPart1[4].ipcrf_numerical_ratings_score
+      this.encodingScore6 = this.ipcrfEncodingPart1[5].ipcrf_numerical_ratings_score
+      this.encodingScore7 = this.ipcrfEncodingPart1[6].ipcrf_numerical_ratings_score
+      this.encodingScore8 = this.ipcrfEncodingPart1[7].ipcrf_numerical_ratings_score
+      this.encodingScore9 = this.ipcrfEncodingPart1[8].ipcrf_numerical_ratings_score
+      this.encodingScore10 = this.ipcrfEncodingPart1[9].ipcrf_numerical_ratings_score
+      this.encodingScore11 = this.ipcrfEncodingPart1[10].ipcrf_numerical_ratings_score
+      this.encodingScore12 = this.ipcrfEncodingPart1[11].ipcrf_numerical_ratings_score
+
+      this.encodingAdjectivalRating1 = this.ipcrfEncodingPart1[0].ipcrf_numerical_ratings_adjectival_rating
+      this.encodingAdjectivalRating2 = this.ipcrfEncodingPart1[1].ipcrf_numerical_ratings_adjectival_rating
+      this.encodingAdjectivalRating3 = this.ipcrfEncodingPart1[2].ipcrf_numerical_ratings_adjectival_rating
+      this.encodingAdjectivalRating4 = this.ipcrfEncodingPart1[3].ipcrf_numerical_ratings_adjectival_rating
+      this.encodingAdjectivalRating5 = this.ipcrfEncodingPart1[4].ipcrf_numerical_ratings_adjectival_rating
+      this.encodingAdjectivalRating6 = this.ipcrfEncodingPart1[5].ipcrf_numerical_ratings_adjectival_rating
+      this.encodingAdjectivalRating7 = this.ipcrfEncodingPart1[6].ipcrf_numerical_ratings_adjectival_rating
+      this.encodingAdjectivalRating8 = this.ipcrfEncodingPart1[7].ipcrf_numerical_ratings_adjectival_rating
+      this.encodingAdjectivalRating9 = this.ipcrfEncodingPart1[8].ipcrf_numerical_ratings_adjectival_rating
+      this.encodingAdjectivalRating10 = this.ipcrfEncodingPart1[9].ipcrf_numerical_ratings_adjectival_rating
+      this.encodingAdjectivalRating11 = this.ipcrfEncodingPart1[10].ipcrf_numerical_ratings_adjectival_rating
+      this.encodingAdjectivalRating12 = this.ipcrfEncodingPart1[11].ipcrf_numerical_ratings_adjectival_rating
+
+      // empAdjRating1 = this.ipcrfEncodingPart1
+      // empAdjRating2 = this.ipcrfEncodingPart1
+
+      this.empFinalRating = this.ipcrfEncodingPart1[0].final_rating
+      this.empFinalAdjRating = this.ipcrfEncodingPart1[0].adjectival_rating
+
+      this.part1ApprovingAuthority = this.ipcrfEncodingPart1[0].approving_authority
+      this.approvingAuthPosition = this.ipcrfEncodingPart1[0].approver_position
+
+      //part 2
+      this.ipcrfIdPart2 = this.ipcrfEncodingPart2.id;
+       let selfManagement = this.ipcrfEncodingPart2.self_management.split(",");
+      let teamwork = this.ipcrfEncodingPart2.teamwork.split(",");
+      let professionalAndEthics =
+        this.ipcrfEncodingPart2.professional_and_ethics.split(",");
+      let innovation = this.ipcrfEncodingPart2.innovation.split(",");
+      let service = this.ipcrfEncodingPart2.service_orientation.split(",");
+      let results = this.ipcrfEncodingPart2.results_focus.split(",");
+
+      this.selfManagement1 = selfManagement[0] == '1' ? true : false
+      this.selfManagement2 = selfManagement[1] == '1' ? true : false
+      this.selfManagement3 = selfManagement[2] == '1' ? true : false
+      this.selfManagement4 = selfManagement[3] == '1' ? true : false
+      this.selfManagement5 = selfManagement[4] == '1' ? true : false
+      this.teamwork1 = teamwork[0] == '1' ? true : false
+      this.teamwork2 = teamwork[1] == '1' ? true : false
+      this.teamwork3 = teamwork[2] == '1' ? true : false
+      this.teamwork4 = teamwork[3] == '1' ? true : false
+      this.teamwork5 = teamwork[4] == '1' ? true : false
+      this.prof1 = professionalAndEthics[0] == '1' ? true : false
+      this.prof2 = professionalAndEthics[1] == '1' ? true : false
+      this.prof3 = professionalAndEthics[2] == '1' ? true : false
+      this.prof4 = professionalAndEthics[3] == '1' ? true : false
+      this.prof5 = professionalAndEthics[4] == '1' ? true : false
+      this.service1 = service[0] == '1' ? true : false
+      this.service2 = service[1] == '1' ? true : false
+      this.service3 = service[2] == '1' ? true : false
+      this.service4 = service[3] == '1' ? true : false
+      this.service5 = service[4] == '1' ? true : false
+      this.innovation1 = innovation[0] == '1' ? true : false
+      this.innovation2 = innovation[1] == '1' ? true : false
+      this.innovation3 = innovation[2] == '1' ? true : false
+      this.innovation4 = innovation[3] == '1' ? true : false
+      this.innovation5 = innovation[4] == '1' ? true : false
+      this.results1 = results[0] == '1' ? true : false
+      this.results2 = results[1] == '1' ? true : false
+      this.results3 = results[2] == '1' ? true : false
+      this.results4 = results[3] == '1' ? true : false
+      this.results5 = results[4] == '1' ? true : false
+      //part 4s
+      // console.log(typeof(this.ipcrfDevelopmentPlan))
+      this.ipcrfIdPart4 =
+        typeof this.ipcrfDevelopmentPlan == "undefined"
+          ? ""
+          : this.ipcrfDevelopmentPlan.id;
+      this.strengthsFunctional = this.ipcrfDevelopmentPlan.strengths_functional;
+      this.developmentNeedsFunctional =
+        this.ipcrfDevelopmentPlan.development_needs_functional;
+      this.learningObjectivesFunctional =
+        this.ipcrfDevelopmentPlan.learning_objectives_functional;
+      this.interventionFunctional =
+        this.ipcrfDevelopmentPlan.intervention_functional;
+      this.timelineFunctional = this.ipcrfDevelopmentPlan.timeline_functional;
+      this.resourcesNeededFunctional =
+        this.ipcrfDevelopmentPlan.resources_needed_functional;
+      this.strengthsCore = this.ipcrfDevelopmentPlan.strengths_core;
+      this.developmentCore = this.ipcrfDevelopmentPlan.development_needs_core;
+      this.learningObjectivesCore =
+        this.ipcrfDevelopmentPlan.learning_objectives_core;
+      this.interventionCore = this.ipcrfDevelopmentPlan.intervention_core;
+      this.timelineCore = this.ipcrfDevelopmentPlan.timeline_core;
+      this.resourcesNeededCore =
+        this.ipcrfDevelopmentPlan.resources_needed_core;
+      this.feedback = this.ipcrfDevelopmentPlan.feedback;
+      this.rateePart4 = this.ipcrfDevelopmentPlan.ratee;
+      this.raterPart4 = this.ipcrfDevelopmentPlan.rater;
+      this.approvingAuthorityPart4 =
+        this.ipcrfDevelopmentPlan.approving_authority;
+
+      this.show = false;
+      this.edit = true;
     },
     editItems() {
-      console.log(this.ipcrfDemographicProfile);
+      console.log(this.ipcrfDemographicProfile.id);
+      this.alert2 = false
+      this.ipcrfIdPart1Demographic =
+        this.ipcrfDemographicProfile.id == "undefined"
+          ? ""
+          : this.ipcrfDemographicProfile.id;
       this.empName = this.ipcrfDemographicProfile.name_of_employee;
       this.empRater = this.ipcrfDemographicProfile.rater;
       this.empRegion = this.ipcrfDemographicProfile.region;
@@ -11294,21 +10625,206 @@ teamwork: (...)*/
         this.ipcrfDemographicProfile.curricular_classification;
       this.ipcrfDemographicProfile.empSchoolYear =
         this.ipcrfDemographicProfile.rating_period;
+
+      //part1 Admin
+      //part 2 fields to be filled out by admin
+      this.cot1SubjectsTaught = this.ipcrfEncodingPart1[0].subject_cot1
+      this.cot2SubjectsTaught = this.ipcrfEncodingPart1[0].subject_cot2
+      //cot 1 part 1 variables
+      this.cot1DateObserved = this.ipcrfEncodingPart1[0].date_observed_cot1
+      this.cot2DateObserved = this.ipcrfEncodingPart1[0].date_observed_cot2
+      // cot1Subject = this.ipcrfEncodingPart1
+       this.cot1IndicatorObjNo1 = this.ipcrfEncodingPart1[0].cot_indicator_no
+      this.cot1IndicatorObjNo2 = this.ipcrfEncodingPart1[1].cot_indicator_no
+      this.cot1IndicatorObjNo3 = this.ipcrfEncodingPart1[2].cot_indicator_no
+       this.cot1IndicatorObjNo4 = this.ipcrfEncodingPart1[3].cot_indicator_no
+      this.cot1IndicatorObjNo5 = this.ipcrfEncodingPart1[4].cot_indicator_no
+      this.cot1IndicatorObjNo6 = this.ipcrfEncodingPart1[5].cot_indicator_no
+       this.cot1IndicatorObjNo7 = this.ipcrfEncodingPart1[6].cot_indicator_no
+      this.cot1IndicatorObjNo8 = this.ipcrfEncodingPart1[7].cot_indicator_no
+      this.cot1IndicatorObjNo9 = this.ipcrfEncodingPart1[8].cot_indicator_no
+       this.cot1IndicatorObjNo10 = this.ipcrfEncodingPart1[9].cot_indicator_no
+      this.cot1IndicatorObjNo11 = this.ipcrfEncodingPart1[10].cot_indicator_no
+      this.cot1IndicatorObjNo12 = this.ipcrfEncodingPart1[11].cot_indicator_no
+
+      this.cot1RatingObjNo1 = this.ipcrfEncodingPart1[0].rating_cot1
+      this.cot1RatingObjNo5 = this.ipcrfEncodingPart1[4].rating_cot1
+      this.cot1RatingObjNo7 = this.ipcrfEncodingPart1[6].rating_cot1
+
+      this.cot1RpmsObjNo1 = this.ipcrfEncodingPart1[0].rpms_5pt_scale_cot1
+      this.cot1RpmsObjNo5 = this.ipcrfEncodingPart1[4].rpms_5pt_scale_cot1
+      this.cot1RpmsObjNo7 = this.ipcrfEncodingPart1[6].rpms_5pt_scale_cot1
+
+      //cot 2 part 1 variables
+      this.cot2RatingObjNo1 = this.ipcrfEncodingPart1[0].rating_cot2
+      this.cot2RatingObjNo5 = this.ipcrfEncodingPart1[4].rating_cot2
+      this.cot2RatingObjNo7 = this.ipcrfEncodingPart1[6].rating_cot2
+      this.cot2RpmsObjNo1 = this.ipcrfEncodingPart1[0].rpms_5pt_scale_cot1
+      this.cot2RpmsObjNo5 = this.ipcrfEncodingPart1[4].rpms_5pt_scale_cot1
+      this.cot2RpmsObjNo7 = this.ipcrfEncodingPart1[6].rpms_5pt_scale_cot1
+
+      this.encodingAverageObjNo1 = this.ipcrfEncodingPart1[0].average_cot
+      this.encodingAverageObjNo5 = this.ipcrfEncodingPart1[4].average_cot
+      this.encodingAverageObjNo7 = this.ipcrfEncodingPart1[5].average_cot
+
+      this.encodingIpcrfNumericalQ1 = this.ipcrfEncodingPart1[0].ipcrf_numerical_ratings_q
+      this.encodingIpcrfNumericalQ2 = this.ipcrfEncodingPart1[1].ipcrf_numerical_ratings_q
+      this.encodingIpcrfNumericalQ3 = this.ipcrfEncodingPart1[2].ipcrf_numerical_ratings_q
+      this.encodingIpcrfNumericalQ4 = this.ipcrfEncodingPart1[3].ipcrf_numerical_ratings_q
+      this.encodingIpcrfNumericalQ5 = this.ipcrfEncodingPart1[4].ipcrf_numerical_ratings_q
+      this.encodingIpcrfNumericalQ6 = this.ipcrfEncodingPart1[5].ipcrf_numerical_ratings_q
+      this.encodingIpcrfNumericalQ7 = this.ipcrfEncodingPart1[6].ipcrf_numerical_ratings_q
+      this.encodingIpcrfNumericalQ8 = this.ipcrfEncodingPart1[7].ipcrf_numerical_ratings_q
+      this.encodingIpcrfNumericalQ9 = this.ipcrfEncodingPart1[8].ipcrf_numerical_ratings_q
+      this.encodingIpcrfNumericalQ10 = this.ipcrfEncodingPart1[9].ipcrf_numerical_ratings_q
+      this.encodingIpcrfNumericalQ11 = this.ipcrfEncodingPart1[10].ipcrf_numerical_ratings_q
+      this.encodingIpcrfNumericalQ12 = this.ipcrfEncodingPart1[11].ipcrf_numerical_ratings_q
+
+      this.encodingIpcrfNumericalE9 = this.ipcrfEncodingPart1[8].ipcrf_numerical_ratings_e
+      this.encodingIpcrfNumericalE10 = this.ipcrfEncodingPart1[9].ipcrf_numerical_ratings_e
+      this.encodingIpcrfNumericalE11 = this.ipcrfEncodingPart1[10].ipcrf_numerical_ratings_e
+      this.encodingIpcrfNumericalE12 = this.ipcrfEncodingPart1[11].ipcrf_numerical_ratings_e
+
+      this.encodingIpcrfNumericalT6 = this.ipcrfEncodingPart1[5].ipcrf_numerical_ratings_t
+
+      this.encodingIpcrfRatingAve1 = this.ipcrfEncodingPart1[0].ipcrf_numerical_ratings_average
+      this.encodingIpcrfRatingAve2 = this.ipcrfEncodingPart1[1].ipcrf_numerical_ratings_average
+      this.encodingIpcrfRatingAve3 = this.ipcrfEncodingPart1[2].ipcrf_numerical_ratings_average
+      this.encodingIpcrfRatingAve4 = this.ipcrfEncodingPart1[3].ipcrf_numerical_ratings_average
+      this.encodingIpcrfRatingAve5 = this.ipcrfEncodingPart1[4].ipcrf_numerical_ratings_average
+      this.encodingIpcrfRatingAve6 = this.ipcrfEncodingPart1[5].ipcrf_numerical_ratings_average
+      this.encodingIpcrfRatingAve7 = this.ipcrfEncodingPart1[6].ipcrf_numerical_ratings_average
+      this.encodingIpcrfRatingAve8 = this.ipcrfEncodingPart1[7].ipcrf_numerical_ratings_average
+      this.encodingIpcrfRatingAve9 = this.ipcrfEncodingPart1[8].ipcrf_numerical_ratings_average
+      this.encodingIpcrfRatingAve10 = this.ipcrfEncodingPart1[9].ipcrf_numerical_ratings_average
+      this.encodingIpcrfRatingAve11 = this.ipcrfEncodingPart1[10].ipcrf_numerical_ratings_average
+      this.encodingIpcrfRatingAve12 = this.ipcrfEncodingPart1[11].ipcrf_numerical_ratings_average
+
+      this.encodingScore1 = this.ipcrfEncodingPart1[0].ipcrf_numerical_ratings_score
+      this.encodingScore2 = this.ipcrfEncodingPart1[1].ipcrf_numerical_ratings_score
+      this.encodingScore3 = this.ipcrfEncodingPart1[2].ipcrf_numerical_ratings_score
+      this.encodingScore4 = this.ipcrfEncodingPart1[3].ipcrf_numerical_ratings_score
+      this.encodingScore5 = this.ipcrfEncodingPart1[4].ipcrf_numerical_ratings_score
+      this.encodingScore6 = this.ipcrfEncodingPart1[5].ipcrf_numerical_ratings_score
+      this.encodingScore7 = this.ipcrfEncodingPart1[6].ipcrf_numerical_ratings_score
+      this.encodingScore8 = this.ipcrfEncodingPart1[7].ipcrf_numerical_ratings_score
+      this.encodingScore9 = this.ipcrfEncodingPart1[8].ipcrf_numerical_ratings_score
+      this.encodingScore10 = this.ipcrfEncodingPart1[9].ipcrf_numerical_ratings_score
+      this.encodingScore11 = this.ipcrfEncodingPart1[10].ipcrf_numerical_ratings_score
+      this.encodingScore12 = this.ipcrfEncodingPart1[11].ipcrf_numerical_ratings_score
+
+      this.encodingAdjectivalRating1 = this.ipcrfEncodingPart1[0].ipcrf_numerical_ratings_adjectival_rating
+      this.encodingAdjectivalRating2 = this.ipcrfEncodingPart1[1].ipcrf_numerical_ratings_adjectival_rating
+      this.encodingAdjectivalRating3 = this.ipcrfEncodingPart1[2].ipcrf_numerical_ratings_adjectival_rating
+      this.encodingAdjectivalRating4 = this.ipcrfEncodingPart1[3].ipcrf_numerical_ratings_adjectival_rating
+      this.encodingAdjectivalRating5 = this.ipcrfEncodingPart1[4].ipcrf_numerical_ratings_adjectival_rating
+      this.encodingAdjectivalRating6 = this.ipcrfEncodingPart1[5].ipcrf_numerical_ratings_adjectival_rating
+      this.encodingAdjectivalRating7 = this.ipcrfEncodingPart1[6].ipcrf_numerical_ratings_adjectival_rating
+      this.encodingAdjectivalRating8 = this.ipcrfEncodingPart1[7].ipcrf_numerical_ratings_adjectival_rating
+      this.encodingAdjectivalRating9 = this.ipcrfEncodingPart1[8].ipcrf_numerical_ratings_adjectival_rating
+      this.encodingAdjectivalRating10 = this.ipcrfEncodingPart1[9].ipcrf_numerical_ratings_adjectival_rating
+      this.encodingAdjectivalRating11 = this.ipcrfEncodingPart1[10].ipcrf_numerical_ratings_adjectival_rating
+      this.encodingAdjectivalRating12 = this.ipcrfEncodingPart1[11].ipcrf_numerical_ratings_adjectival_rating
+
+      // empAdjRating1 = this.ipcrfEncodingPart1
+      // empAdjRating2 = this.ipcrfEncodingPart1
+
+      this.empFinalRating = this.ipcrfEncodingPart1[0].final_rating
+      this.empFinalAdjRating = this.ipcrfEncodingPart1[0].adjectival_rating
+
+      this.part1ApprovingAuthority = this.ipcrfEncodingPart1[0].approving_authority
+      this.approvingAuthPosition = this.ipcrfEncodingPart1[0].approver_position
+
+      //part 2
+      this.ipcrfIdPart2 = this.ipcrfEncodingPart2.id;
+       let selfManagement = this.ipcrfEncodingPart2.self_management.split(",");
+      let teamwork = this.ipcrfEncodingPart2.teamwork.split(",");
+      let professionalAndEthics =
+        this.ipcrfEncodingPart2.professional_and_ethics.split(",");
+      let innovation = this.ipcrfEncodingPart2.innovation.split(",");
+      let service = this.ipcrfEncodingPart2.service_orientation.split(",");
+      let results = this.ipcrfEncodingPart2.results_focus.split(",");
+
+      this.selfManagement1 = selfManagement[0] == '1' ? true : false
+      this.selfManagement2 = selfManagement[1] == '1' ? true : false
+      this.selfManagement3 = selfManagement[2] == '1' ? true : false
+      this.selfManagement4 = selfManagement[3] == '1' ? true : false
+      this.selfManagement5 = selfManagement[4] == '1' ? true : false
+      this.teamwork1 = teamwork[0] == '1' ? true : false
+      this.teamwork2 = teamwork[1] == '1' ? true : false
+      this.teamwork3 = teamwork[2] == '1' ? true : false
+      this.teamwork4 = teamwork[3] == '1' ? true : false
+      this.teamwork5 = teamwork[4] == '1' ? true : false
+      this.prof1 = professionalAndEthics[0] == '1' ? true : false
+      this.prof2 = professionalAndEthics[1] == '1' ? true : false
+      this.prof3 = professionalAndEthics[2] == '1' ? true : false
+      this.prof4 = professionalAndEthics[3] == '1' ? true : false
+      this.prof5 = professionalAndEthics[4] == '1' ? true : false
+      this.service1 = service[0] == '1' ? true : false
+      this.service2 = service[1] == '1' ? true : false
+      this.service3 = service[2] == '1' ? true : false
+      this.service4 = service[3] == '1' ? true : false
+      this.service5 = service[4] == '1' ? true : false
+      this.innovation1 = innovation[0] == '1' ? true : false
+      this.innovation2 = innovation[1] == '1' ? true : false
+      this.innovation3 = innovation[2] == '1' ? true : false
+      this.innovation4 = innovation[3] == '1' ? true : false
+      this.innovation5 = innovation[4] == '1' ? true : false
+      this.results1 = results[0] == '1' ? true : false
+      this.results2 = results[1] == '1' ? true : false
+      this.results3 = results[2] == '1' ? true : false
+      this.results4 = results[3] == '1' ? true : false
+      this.results5 = results[4] == '1' ? true : false
+      //part 4s
+      // console.log(typeof(this.ipcrfDevelopmentPlan))
+      this.ipcrfIdPart4 =
+        typeof this.ipcrfDevelopmentPlan == "undefined"
+          ? ""
+          : this.ipcrfDevelopmentPlan.id;
+      this.strengthsFunctional = this.ipcrfDevelopmentPlan.strengths_functional;
+      this.developmentNeedsFunctional =
+        this.ipcrfDevelopmentPlan.development_needs_functional;
+      this.learningObjectivesFunctional =
+        this.ipcrfDevelopmentPlan.learning_objectives_functional;
+      this.interventionFunctional =
+        this.ipcrfDevelopmentPlan.intervention_functional;
+      this.timelineFunctional = this.ipcrfDevelopmentPlan.timeline_functional;
+      this.resourcesNeededFunctional =
+        this.ipcrfDevelopmentPlan.resources_needed_functional;
+      this.strengthsCore = this.ipcrfDevelopmentPlan.strengths_core;
+      this.developmentCore = this.ipcrfDevelopmentPlan.development_needs_core;
+      this.learningObjectivesCore =
+        this.ipcrfDevelopmentPlan.learning_objectives_core;
+      this.interventionCore = this.ipcrfDevelopmentPlan.intervention_core;
+      this.timelineCore = this.ipcrfDevelopmentPlan.timeline_core;
+      this.resourcesNeededCore =
+        this.ipcrfDevelopmentPlan.resources_needed_core;
+      this.feedback = this.ipcrfDevelopmentPlan.feedback;
+      this.rateePart4 = this.ipcrfDevelopmentPlan.ratee;
+      this.raterPart4 = this.ipcrfDevelopmentPlan.rater;
+      this.approvingAuthorityPart4 =
+        this.ipcrfDevelopmentPlan.approving_authority;
+
       this.show = false;
       this.edit = true;
+
+      //console.log(this.ipcrfEncodingPart1, this.ipcrfEncodingPart2, this.ipcrfDevelopmentPlan)
     },
 
     back() {
+      this.retrieveIpcrf();
+      this.create = false;
+      this.edit = false;
       this.show = false;
       this.showTable = true;
     },
 
     finalizePart1: async function () {
-      console.log(this.$refs);
-      if (this.$refs.part1.validate(true)) {
+      if (this.$refs.part1.validate()) {
         this.loading = true;
         this.loader = true;
-        console.log(this.$refs);
+        const id = this.ipcrfIdPart1Demographic || "";
+        const idAdmin = this.ipcrfIdPart1EncodingAdmin || "";
         const user = JSON.parse(sessionStorage.user_session).id;
         const role = JSON.parse(sessionStorage.user_session).role;
         const empName = this.empName;
@@ -11366,6 +10882,9 @@ teamwork: (...)*/
         const cot2RpmsObjNo5 = this.cot2RpmsObjNo5;
         const cot2RpmsObjNo7 = this.cot2RpmsObjNo7;
 
+        this.encodingAverageObjNo1 = this.calculateObjectivesAverageNo1;
+        this.encodingAverageObjNo5 = this.calculateObjectivesAverageNo5;
+        this.encodingAverageObjNo7 = this.calculateObjectivesAverageNo7;
         const encodingAverageObjNo1 = this.encodingAverageObjNo1;
         const encodingAverageObjNo5 = this.encodingAverageObjNo5;
         const encodingAverageObjNo7 = this.encodingAverageObjNo7;
@@ -11383,12 +10902,28 @@ teamwork: (...)*/
         const encodingIpcrfNumericalQ11 = this.encodingIpcrfNumericalQ11;
         const encodingIpcrfNumericalQ12 = this.encodingIpcrfNumericalQ12;
 
-        //       const encodingIpcrfNumericalE9 = this.encodingIpcrfNumericalE9
-        //       const encodingIpcrfNumericalE10 = this.encodingIpcrfNumericalE10
-        //       const encodingIpcrfNumericalE11 = this.encodingIpcrfNumericalE11
-        //       const encodingIpcrfNumericalE12 = this.encodingIpcrfNumericalE12
+        const encodingIpcrfNumericalE9 = this.encodingIpcrfNumericalE9;
+        const encodingIpcrfNumericalE10 = this.encodingIpcrfNumericalE10;
+        const encodingIpcrfNumericalE11 = this.encodingIpcrfNumericalE11;
+        const encodingIpcrfNumericalE12 = this.encodingIpcrfNumericalE12;
 
-        //       const encodingIpcrfNumericalT6 = this.encodingIpcrfNumericalT6
+        const encodingIpcrfNumericalT6 = this.encodingIpcrfNumericalT6;
+
+        this.encodingIpcrfRatingAve1 = this.calculateNumericalRatingsAverageNo1;
+        this.encodingIpcrfRatingAve2 = this.calculateNumericalRatingsAverageNo2;
+        this.encodingIpcrfRatingAve3 = this.calculateNumericalRatingsAverageNo3;
+        this.encodingIpcrfRatingAve4 = this.calculateNumericalRatingsAverageNo4;
+        this.encodingIpcrfRatingAve5 = this.calculateNumericalRatingsAverageNo5;
+        this.encodingIpcrfRatingAve6 = this.calculateNumericalRatingsAverageNo6;
+        this.encodingIpcrfRatingAve7 = this.calculateNumericalRatingsAverageNo7;
+        this.encodingIpcrfRatingAve8 = this.calculateNumericalRatingsAverageNo8;
+        this.encodingIpcrfRatingAve9 = this.calculateNumericalRatingsAverageNo9;
+        this.encodingIpcrfRatingAve10 =
+          this.calculateNumericalRatingsAverageNo10;
+        this.encodingIpcrfRatingAve11 =
+          this.calculateNumericalRatingsAverageNo11;
+        this.encodingIpcrfRatingAve12 =
+          this.calculateNumericalRatingsAverageNo12;
 
         const encodingIpcrfRatingAve1 = this.encodingIpcrfRatingAve1;
         const encodingIpcrfRatingAve2 = this.encodingIpcrfRatingAve2;
@@ -11403,6 +10938,18 @@ teamwork: (...)*/
         const encodingIpcrfRatingAve11 = this.encodingIpcrfRatingAve11;
         const encodingIpcrfRatingAve12 = this.encodingIpcrfRatingAve12;
 
+        this.encodingScore1 = this.calculateScoreNo1;
+        this.encodingScore2 = this.calculateScoreNo2;
+        this.encodingScore3 = this.calculateScoreNo3;
+        this.encodingScore4 = this.calculateScoreNo4;
+        this.encodingScore5 = this.calculateScoreNo5;
+        this.encodingScore6 = this.calculateScoreNo6;
+        this.encodingScore7 = this.calculateScoreNo7;
+        this.encodingScore8 = this.calculateScoreNo8;
+        this.encodingScore9 = this.calculateScoreNo9;
+        this.encodingScore10 = this.calculateScoreNo10;
+        this.encodingScore11 = this.calculateScoreNo11;
+        this.encodingScore12 = this.calculateScoreNo12;
         const encodingScore1 = this.encodingScore1;
         const encodingScore2 = this.encodingScore2;
         const encodingScore3 = this.encodingScore3;
@@ -11431,13 +10978,15 @@ teamwork: (...)*/
 
         // empAdjRating1 = this.
         // empAdjRating2 = this.
-
+        this.empFinalRating = this.calculateFinalRating;
         const empFinalRating = this.empFinalRating;
         const empFinalAdjRating = this.empFinalAdjRating;
 
         const part1ApprovingAuthority = this.part1ApprovingAuthority;
         const approvingAuthPosition = this.approvingAuthPosition;
-        const data = {
+        let data = {
+          id,
+          idAdmin,
           user,
           role,
           empName,
@@ -11512,12 +11061,12 @@ teamwork: (...)*/
           encodingIpcrfNumericalQ11,
           encodingIpcrfNumericalQ12,
 
-          //       encodingIpcrfNumericalE9,
-          //       encodingIpcrfNumericalE10,
-          //       encodingIpcrfNumericalE11,
-          //       encodingIpcrfNumericalE12,
+          encodingIpcrfNumericalE9,
+          encodingIpcrfNumericalE10,
+          encodingIpcrfNumericalE11,
+          encodingIpcrfNumericalE12,
 
-          //       encodingIpcrfNumericalT6,
+          encodingIpcrfNumericalT6,
 
           encodingIpcrfRatingAve1,
           encodingIpcrfRatingAve2,
@@ -11573,28 +11122,43 @@ teamwork: (...)*/
             data
           );
           console.log(returnedData);
-          // this.create=false
+          if (returnedData) {
+            this.alert = true;
+            setTimeout(() => {
+              this.alert = false;
+            }, 1500);
+          }
         } else {
+          data.user = this.ipcrfDemographicProfile.id;
           const returnedData = await this.$store.dispatch(
             "updateIpcrfPart1",
             data
           );
           console.log(returnedData);
           if (returnedData) {
-            //this.edit = false
+            this.alert = true;
+            setTimeout(() => {
+              this.alert = false;
+            }, 1500);
           }
         }
-        this.retrieveIpcrf();
+        // this.retrieveIpcrf();
         this.loading = false;
         this.loader = null;
-        this.show = false;
-        this.showTable = true;
+        // this.show = false;
+        // this.showTable = true;
       } else {
+        this.showWarningResponse(
+          "Finalizing Part 1 Failed",
+          "Fill up all required fields"
+        );
         console.log(this.$refs.part1.validate());
       }
     },
 
     finalizePart2: async function () {
+      const id = this.ipcrfIdPart2;
+      const schoolYear = this.empRatingPeriod;
       const selfManagement1 = this.selfManagement1;
       const selfManagement2 = this.selfManagement2;
       const selfManagement3 = this.selfManagement3;
@@ -11633,13 +11197,15 @@ teamwork: (...)*/
         teamwork4,
         teamwork5,
       };
-
-      for (const item of teamwork) {
-        if (item != "") {
+      this.countTeamwork = 0;
+      console.log(teamwork);
+      for (const item in teamwork) {
+        console.log(item);
+        if (teamwork[item] != false) {
           this.countTeamwork++;
         }
       }
-
+      console.log(this.countTeamwork);
       const selfManagement = {
         selfManagement1,
         selfManagement2,
@@ -11647,8 +11213,8 @@ teamwork: (...)*/
         selfManagement4,
         selfManagement5,
       };
-      for (const item of selfManagement) {
-        if (item != "") {
+      for (const item in selfManagement) {
+        if (selfManagement[item] != false) {
           this.countSelfManagement++;
         }
       }
@@ -11660,8 +11226,8 @@ teamwork: (...)*/
         prof4,
         prof5,
       };
-      for (const item of professional) {
-        if (item != "") {
+      for (const item in professional) {
+        if (professional[item] != false) {
           this.countProfessional++;
         }
       }
@@ -11674,8 +11240,8 @@ teamwork: (...)*/
         service5,
       };
 
-      for (const item of service) {
-        if (item != "") {
+      for (const item in service) {
+        if (service[item] != false) {
           this.countService++;
         }
       }
@@ -11686,8 +11252,8 @@ teamwork: (...)*/
         results4,
         results5,
       };
-      for (const item of results) {
-        if (item != "") {
+      for (const item in results) {
+        if (results[item] != false) {
           this.countResults++;
         }
       }
@@ -11700,8 +11266,8 @@ teamwork: (...)*/
         innovation5,
       };
 
-      for (const item of innovation) {
-        if (item != "") {
+      for (const item in innovation) {
+        if (innovation[item] != false) {
           this.countInnovation++;
         }
       }
@@ -11722,8 +11288,12 @@ teamwork: (...)*/
         this.countResults > 0 &&
         this.countInnovation > 0
       ) {
+        this.loading = true;
+        this.loader = true;
         const data = {
+          id,
           user,
+          schoolYear,
           selfManagement1,
           selfManagement2,
           selfManagement3,
@@ -11756,89 +11326,189 @@ teamwork: (...)*/
           innovation5,
         };
         console.log(data);
+        if (this.create) {
+          let selfManagement = [selfManagement1,
+          selfManagement2,
+          selfManagement3,
+          selfManagement4,
+          selfManagement5,];
+      let teamwork = [teamwork1,
+          teamwork2,
+          teamwork3,
+          teamwork4,
+          teamwork5,];
+      let professionalAndEthics = [ prof1,
+          prof2,
+          prof3,
+          prof4,
+          prof5];
+      let innovation = [innovation1,
+          innovation2,
+          innovation3,
+          innovation4,
+          innovation5];
+      let service = [ service1,
+          service2,
+          service3,
+          service4,
+          service5];
+      let results = [results1,
+          results2,
+          results3,
+          results4,
+          results5];
+     // console.log(selfManagement + "self Management", selfManagement.length);
+      for (const item of selfManagement) {
+        if (item == "1") {
+          this.countSelfManagement++;
+        }
+      }
+      for (const item of teamwork) {
+        if (item == "1") {
+          this.countTeamwork++;
+        }
+      }
 
-        const returnedData = await this.$store.dispatch(
-          "createIpcrfPart2",
-          data
-        );
-        console.log(returnedData);
-        this.alert = true
-         setTimeout(() => {
-        this.alert = false
-        
-      }, 1500)
+      for (const item of professionalAndEthics) {
+        if (item == "1") {
+          this.countProfessional++;
+        }
+      }
+
+      for (const item of innovation) {
+        if (item == "1") {
+          this.countInnovation++;
+        }
+      }
+
+      for (const item of service) {
+        if (item == "1") {
+          this.countService++;
+        }
+      }
+
+      for (const item of results) {
+        if (item == "1") {
+          this.countResults++;
+        }
+      }
+          const returnedData = await this.$store.dispatch(
+            "createIpcrfPart2",
+            data
+          );
+          console.log(returnedData);
+          this.alert = true;
+          setTimeout(() => {
+            this.alert = false;
+          }, 1500);
+          this.loading = false;
+          this.loader = null;
+        } else {
+          const returnedData = await this.$store.dispatch(
+            "updateIpcrfPart2",
+            data
+          );
+          console.log(returnedData);
+          this.alert = true;
+          setTimeout(() => {
+            this.alert = false;
+          }, 1500);
+          this.loading = false;
+          this.loader = null;
+        }
+      } else {
+        this.alert2 = true;
       }
     },
 
     finalizePart4: async function () {
-      if(this.$refs.part4.validate()){
-        this.loading = true
-        this.loader = true
-      
-      const user = JSON.parse(sessionStorage.user_session).id;
-      const role = JSON.parse(sessionStorage.user_session).role;
-      const strengthsFunctional = this.strengthsFunctional;
-      const developmentNeedsFunctional = this.developmentNeedsFunctional;
-      const learningObjectivesFunctional = this.learningObjectivesFunctional;
-      const interventionFunctional = this.interventionFunctional;
-      const timelineFunctional = this.timelineFunctional;
-      const resourcesNeededFunctional = this.resourcesNeededFunctional;
-      const strengthsCore = this.strengthsCore;
-      const developmentCore = this.developmentCore;
-      const learningObjectivesCore = this.learningObjectivesCore;
-      const interventionCore = this.interventionCore;
-      const timelineCore = this.timelineCore;
-      const resourcesNeededCore = this.resourcesNeededCore;
-      const feedback = this.feedback;
-      const rateePart4 = this.rateePart4;
-      const raterPart4 = this.raterPart4;
-      const approvingAuthorityPart4 = this.approvingAuthorityPart4;
-      const empRatingPeriod = this.empRatingPeriod;
+      if (this.$refs.part4.validate()) {
+        this.loading = true;
+        this.loader = true;
+        const id = this.ipcrfIdPart4;
+        const user = JSON.parse(sessionStorage.user_session).id;
+        const role = JSON.parse(sessionStorage.user_session).role;
+        const strengthsFunctional = this.strengthsFunctional;
+        const developmentNeedsFunctional = this.developmentNeedsFunctional;
+        const learningObjectivesFunctional = this.learningObjectivesFunctional;
+        const interventionFunctional = this.interventionFunctional;
+        const timelineFunctional = this.timelineFunctional;
+        const resourcesNeededFunctional = this.resourcesNeededFunctional;
+        const strengthsCore = this.strengthsCore;
+        const developmentCore = this.developmentCore;
+        const learningObjectivesCore = this.learningObjectivesCore;
+        const interventionCore = this.interventionCore;
+        const timelineCore = this.timelineCore;
+        const resourcesNeededCore = this.resourcesNeededCore;
+        const feedback = this.feedback;
+        const rateePart4 = this.rateePart4;
+        const raterPart4 = this.raterPart4;
+        const approvingAuthorityPart4 = this.approvingAuthorityPart4;
+        const empRatingPeriod = this.empRatingPeriod;
 
-      const data = {
-        user,
-        role,
-        empRatingPeriod,
-        strengthsFunctional,
-        developmentNeedsFunctional,
-        learningObjectivesFunctional,
-        interventionFunctional,
-        timelineFunctional,
-        resourcesNeededFunctional,
-        strengthsCore,
-        developmentCore,
-        learningObjectivesCore,
-        interventionCore,
-        timelineCore,
-        resourcesNeededCore,
-        feedback,
-        rateePart4,
-        raterPart4,
-        approvingAuthorityPart4,
-      };
-      console.log(data);
-      if(this.create){
-        const returnedIpcrfData = await this.$store.dispatch(
-        "createIpcrfPart4",
-        data
-      );
-      console.log(returnedIpcrfData);
-      }else{
-        const returnedIpcrfData = await this.$store.dispatch(
-        "updateIpcrfPart4",
-        data
-      );
-      console.log(returnedIpcrfData);
+        const data = {
+          id,
+          user,
+          role,
+          empRatingPeriod,
+          strengthsFunctional,
+          developmentNeedsFunctional,
+          learningObjectivesFunctional,
+          interventionFunctional,
+          timelineFunctional,
+          resourcesNeededFunctional,
+          strengthsCore,
+          developmentCore,
+          learningObjectivesCore,
+          interventionCore,
+          timelineCore,
+          resourcesNeededCore,
+          feedback,
+          rateePart4,
+          raterPart4,
+          approvingAuthorityPart4,
+        };
+        console.log(data);
+        if (this.create) {
+          const returnedIpcrfData = await this.$store.dispatch(
+            "createIpcrfPart4",
+            data
+          );
+          console.log(returnedIpcrfData);
+          this.loading = false;
+          this.loader = null;
+          this.alert = true;
+          setTimeout(() => {
+            this.alert = false;
+            this.retrieveIpcrf();
+          }, 1500);
+          if (returnedIpcrfData) {
+            this.retrieveIpcrf();
+            this.create = false
+            this.show = false;
+            this.showTable = true;
+          }
+        } else {
+          const returnedIpcrfData = await this.$store.dispatch(
+            "updateIpcrfPart4",
+            data
+          );
+          console.log(returnedIpcrfData);
+
+          if (returnedIpcrfData) {
+            this.loading = false;
+            this.loader = null;
+            this.alert = true;
+            setTimeout(() => {
+              this.alert = false;
+            }, 1500);
+            this.retrieveIpcrf();
+            this.edit = false
+            this.show = false;
+            this.showTable = true;
+          }
+        }
       }
-      this.loading = false
-      this.loader = null
-      this.alert = true
-      setTimeout(() => {
-        this.alert = false
-        this.retrieveIpcrf()
-      }, 1500)
-      
-    }
     },
   },
 };
