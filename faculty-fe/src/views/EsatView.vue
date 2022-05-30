@@ -2276,7 +2276,7 @@
                       </td>
                     </tr>
                     <tr v-for="item in printEsatInfo[0]" :key="item.id">
-                      <td colspan="4">{{ item.personal_comments }}</td>
+                      <td colspan="4"><span class="part2FontSize">{{ item.personal_comments }}</span></td>
                     </tr>
                   </tbody>
                 </template>
