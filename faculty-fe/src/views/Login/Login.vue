@@ -14,7 +14,6 @@
               height="100px"
             />
           </p>
-
           <h3 class="text-center font-weight-bold white--text">LUT-OD NHS FACULTY</h3>
           <h3 class="text-center font-weight-bold white--text">PROFILING SYSTEM</h3><br>
           <br>
@@ -108,6 +107,7 @@ export default {
       
         // this.$router.push("/personalDataSheet");
       }else{
+        console.log(returnedData.data)
          this.showErrorResponse("Log In Failed", returnedData.data[0].message);
       }
     },

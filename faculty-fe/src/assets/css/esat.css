@@ -3,7 +3,6 @@
     height: 100px;
     margin-left: 60%;
     margin-top: 2%;
-    
 }
 
 #esatLogocard {
@@ -20,10 +19,9 @@
     border: rgb(64, 35, 131) 4px solid;
 }
 
-
- #disclose {
+#disclose {
     font-weight: bolder;
-} 
+}
 
 #cardEsat {
     background-color: #e491a3;
@@ -129,9 +127,12 @@ td {
     width: 1%;
 }
 
-
-#noDataTxt {
+#disclosureText {
     font-size: 20px;
+    text-align: center;
+    /* background-color: rgb(211, 238, 158);
+    padding: 10px;
+    border: black solid; */
 }
 
 #alert {
@@ -148,6 +149,7 @@ td {
     left: 0;
     right: 0;
 }
+
 #alertMsg {
     margin-top: 100%;
 }
@@ -159,5 +161,93 @@ td {
     left: 0;
     right: 0;
     font-size: 20px;
+}
 
+.fieldRequire {
+    color: red;
+    font-weight: bolder;
+}
+
+@media print {
+    * {
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+        color: black !important;
+        font-family: 'Arial';
+    }
+    /* #colgroup1 {
+        background-color: red;
+        width: 40px;
+        font-family: 'docs-Arial Narrow';
+        font-style: italic;
+    }
+    #colgroup2 {
+        background-color: green;
+    }
+    #colgroup3 {
+        background-color: blue;
+    }
+    #colgroup4 {
+        background-color: orange;
+        width: 40px;
+        font-family: 'docs-Arial Narrow';
+        font-style: italic;
+    }
+    #colgroup5 {
+        background-color: yellow;
+        width: 80px;
+        font-family: 'docs-Arial Narrow';
+        font-style: italic;
+    } */
+    #emptyCol {
+        width: 2px !important;
+    }
+    .esatPrint {
+        width: 110px !important;
+        height: 1px !important;
+    }
+    .showDataPart1 {
+        width: 130px !important;
+        height: 1px !important;
+    }
+    .tRow {
+        font-size: 8px;
+    }
+    .part1FontSize,
+    .part2FontSize,
+    .part3FontSize {
+        font-size: 8px;
+    }
+    .objNo,
+    .text-center,
+    .objDes,
+    .obsHeadHght,
+    .text-left,
+    .coreHeadHght,
+    .part3TdHght {
+        height: 1px !important;
+    }
+    .text-center,
+    .text-left {
+        width: 40px !important;
+    }
+    .part2TblHead {
+        font-size: 10px;
+    }
+    .objsHead,
+    .coreHead {
+        font-size: 9px;
+    }
+    #part3 {
+        text-align: left;
+        margin-top: 30px;
+    }
+    .heading {
+        font-size: 15px;
+        margin-bottom: 5px;
+    }
+    .printParts {
+        font-size: 13px;
+        margin-bottom: 3px;
+    }
 }
