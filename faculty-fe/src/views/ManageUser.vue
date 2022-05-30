@@ -93,15 +93,31 @@
             <v-btn small class="mr-2 card-purple-blue  white--text" style="border-radius:20px;width:80px" @click="editItem(item)">
               Edit
             </v-btn>
-            <v-btn small class="mr-2 btn card-salmon-pink  white--text" style="border-radius:20px" @click="deleteItem(item)">
+            <!-- <v-btn small class="mr-2 btn card-salmon-pink  white--text" style="border-radius:20px" @click="deleteItem(item)">
+              Delete
+            </v-btn> -->
+             <v-btn small class="mr-2 btn card-salmon-pink  white--text" style="border-radius:20px" @click="showDeleteDialog(item)">
               Delete
             </v-btn>
           </template>
     </v-data-table>
+   <v-dialog v-model="dialogDelete" max-width="500px">
+                    <v-card >
+                  
+                      <v-card-title    class="text-xs-center justify-center red title white--text lighten-2 font-weight-bold">  DELETE AN ITEM</v-card-title>
+                     <br> <v-card-text style="text-align:center">Are you sure you want to delete this item?</v-card-text>
+                      
+                      <v-card-actions class="justify-center">
+                         
+                        <v-btn color="secondary" text @click="dialogDelete = false">Close</v-btn>
+                        <v-btn color="red" text @click="deleteItem(itemToDelete)">Delete</v-btn>
+                      </v-card-actions>
+                    </v-card>
+                </v-dialog>
   </v-card>
 
 
-  <v-row justify="center" v-if="dialog==true">
+  <v-row  v-if="dialog==true">
     <v-dialog
       v-model="dialog"
       persistent
@@ -297,6 +313,7 @@ import PromptAlert from "@/utils/Prompt";
       agree: false,
       dialog: false,
       deleteDialog: false,
+      dialogDelete: false,
       headers: [
         { text: 'Full Name', value: 'name' },
         { text: 'Email Address', value: 'email' },
@@ -387,14 +404,18 @@ import PromptAlert from "@/utils/Prompt";
         const id = data.id
           console.log(data.id)
           const returnedData = await this.$store.dispatch('deleteUser', id)
+          
           console.log(returnedData)
           if(returnedData){
             console.log(returnedData)
             this.initializeData()
           }
-        
+         this.dialogDelete = false
        
-      },
+      }, showDeleteDialog(data) {
+        this.itemToDelete = data
+        this.dialogDelete = !this.dialogDelete
+    },
       
       close () {
         this.dialog = false

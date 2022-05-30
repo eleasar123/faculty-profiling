@@ -1,6 +1,8 @@
-<template style="border:solid 2px black">
-<v-container height="100vh" fluid class="pa-0 ma-0" style="border:solid 2px black">
-  <v-img  style="height:100vh;width:100vw" :src="require('../../assets/landingBg.gif')" class="pa-0 ma-0">
+<template>
+<!-- <template style="border:solid 2px black"> -->
+<!-- <v-container height="100vh" fluid class="pa-0 ma-0" style="border:solid 2px black"> -->
+  <div>
+  <v-img  style="height:100vh;width:100%" :src="require('../../assets/landingBg.gif')">
 
 
       <v-col md="5" style="float:right">
@@ -57,16 +59,10 @@
       </v-col>
    
 </v-img>
-</v-container>
+</div>
+<!-- </v-container> -->
 </template>
-<style scoped>
-/* .imgBg{
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain;
-  
-} */
-</style>
+
 <script>
 import PromptAlert from "@/utils/Prompt";
 export default {
@@ -87,6 +83,11 @@ export default {
                 text: message
             })
         },
+        showSuccessResponse(title ) {
+            this.$swal.fire(
+             { title: title}
+            )
+        },
     async getDetails() {
       const email = this.email
       const password = this.password
@@ -101,7 +102,9 @@ export default {
       if (returnedData.data[0].message === "Credentials matched!") {
         // localStorage.setItem("userData", data);
         // sessionStorage.setItem("userData", data);
+          this.showSuccessResponse("Successfully Signed In!");
         window.location.href = '/personalDataSheet'
+      
         // this.$router.push("/personalDataSheet");
       }else{
         console.log(returnedData.data)
