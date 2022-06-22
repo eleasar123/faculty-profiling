@@ -59,7 +59,8 @@ Route::middleware(['cors'])->group(function () {
     //Route::post('login', 'App\Http\Controllers\LoginController@index');
 
     Route::post('login', 'App\Http\Controllers\LoginController@verify');
-
+    Route::post('forgotPass', 'App\Http\Controllers\LoginController@forgotPassword');
+  
     // Route::apiresource('user', App\Http\Controllers\UserController::class);
     //routes for users
     Route::get('user/', 'App\Http\Controllers\UserController@index');

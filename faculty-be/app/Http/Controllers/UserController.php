@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use App\Models\SecurityQuestion;
 class UserController extends Controller
 {
 
@@ -31,7 +32,7 @@ class UserController extends Controller
         //
         $request->validate([
             'name'=>'required',
-            'email'=>'required',
+            'email'=>'required',    
             'password' =>'required',
             'role' => 'required',
             'photo' => 'required|mimes:jpg,jpeg,png,csv,txt,xlx,xls,pdf',
@@ -50,9 +51,16 @@ class UserController extends Controller
                 'role' => $request -> role,
                 'profile' => $imageName,
             ]);
+            $securityQuestion = new SecurityQuestion([
+                'user_id' => $request->user,
+                'question_one' => $request->securityQ1,
+                'question_two' => $request->securityQ2,
+                'question_three' => $request -> securityQ3,
+            ]);
         }
         try{
             $user->save();
+            $securityQuestion -> save();
             return 'success';
         }catch(Throwable $error){
             return $error;

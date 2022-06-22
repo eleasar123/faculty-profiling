@@ -20,8 +20,8 @@ return new class extends Migration
             $table->string('level')-> nullable();
             $table->string('name_of_school')-> nullable();
             $table->string('basic_education_course')-> nullable();
-            $table->date('period_of_attendance_from')-> nullable();
-            $table->date('period_of_attendance_to')-> nullable();
+            $table->string('period_of_attendance_from')-> nullable();
+            $table->string('period_of_attendance_to')-> nullable();
             $table->string('highest_level_units_earned')-> nullable();
             $table->string('year_graduated')-> nullable();
             $table->string('academic_honors_received');

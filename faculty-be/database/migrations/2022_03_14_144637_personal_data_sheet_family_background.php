@@ -31,7 +31,7 @@ return new class extends Migration
             $table->string('fourth_child') -> nullable();
             $table->string('fifth_child') -> nullable();
             $table->string('sixth_child') -> nullable();
-            $table->date('spouse_date_of_birth') -> nullable();
+            $table->string('spouse_date_of_birth') -> nullable();
             $table->string('father_last_name');
             $table->string('father_first_name');
             $table->string('father_middle_name');

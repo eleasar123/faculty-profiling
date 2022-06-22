@@ -17,8 +17,8 @@ return new class extends Migration
         Schema::create('work_experiences', function (Blueprint $table){
             $table->increments('id');
             $table->string('user_id');
-            $table->date('work_inclusive_dates_from');
-            $table->date('work_inclusive_dates_to');
+            $table->string('work_inclusive_dates_from');
+            $table->string('work_inclusive_dates_to');
             $table->string('position');
             $table->string('department');
             $table->string('monthly_salary');

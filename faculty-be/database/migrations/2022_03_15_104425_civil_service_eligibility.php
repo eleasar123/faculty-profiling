@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('user_id');
             $table->string('career_service')->nullable();
             $table->string('rating')->nullable();
-            $table->date('date_of_examination')->nullable();
+            $table->string('date_of_examination')->nullable();
             $table->string('place_of_examination')->nullable();
             $table->string('license_number')->nullable();
             $table->string('license_date_of_validity')->nullable();

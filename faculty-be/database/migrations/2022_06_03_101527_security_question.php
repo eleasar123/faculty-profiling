@@ -13,19 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        //
-        Schema::create('voluntary_work_involvements', function (Blueprint $table){
+        Schema::create('security_question', function (Blueprint $table) {
             $table->increments('id');
             $table->string('user_id');
-            $table->string('organization_name_and_address');
-            $table->string('voluntary_inclusive_dates_from');
-            $table->string('voluntary_inclusive_dates_to');
-            $table->string('number_of_hours');
-            $table->string('position');
-            $table->timestamp('created_at') ->useCurrent();
+            $table->string('question_one');
+            $table->string('question_two');
+            $table->string('question_three');
+            $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at') -> nullable() -> useCurrentOnUpdate();
-            $table->softDeletesTz();
-        });
+           });
     }
 
     /**
@@ -35,7 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        //
-        Schema::dropIfExists('voluntary_work_involvement');
+        Schema::dropIfExists('security_question');
     }
 };

@@ -169,7 +169,12 @@ class IpcrfController extends Controller
     {
 
         if($request->role == 'Admin'){
-            DB::table('ipcrf_encoding_part1s')->where('user_id', $request->user)->where('rating_period', $request->empRatingPeriod)->delete();
+            $data = IpcrfEncodingPart1::where('user_id', $request->user)->get();
+            // return count($data);
+            if(count($data) > 0){
+                DB::table('ipcrf_encoding_part1s')->where('user_id', $request->user)->where('school_year', $request->empRatingPeriod)->delete();
+            }
+           
             $ipcrfRow1 = new IpcrfEncodingPart1([
                 'user_id' => $request->user,
                 'subject_cot1' => $request->cot1SubjectsTaught,
@@ -195,7 +200,7 @@ class IpcrfController extends Controller
                 'final_rating' => $request->empFinalRating,
                 'adjectival_rating' => $request->empFinalAdjRating,
                 'approving_authority' => $request->part1ApprovingAuthority,
-                'approver_position' => $request->approvingPosition,
+                'approver_position' => $request->approvingAuthPosition,
             ]);
 
             $ipcrfRow2 = new IpcrfEncodingPart1([
@@ -223,7 +228,7 @@ class IpcrfController extends Controller
                 'final_rating' => $request->empFinalRating,
                 'adjectival_rating' => $request->empFinalAdjRating,
                 'approving_authority' => $request->part1ApprovingAuthority,
-                'approver_position' => $request->approvingPosition,
+                'approver_position' => $request->approvingAuthPosition,
             ]);
             $ipcrfRow3 = new IpcrfEncodingPart1([
                 'user_id' => $request->user,
@@ -250,7 +255,7 @@ class IpcrfController extends Controller
                 'final_rating' => $request->empFinalRating,
                 'adjectival_rating' => $request->empFinalAdjRating,
                 'approving_authority' => $request->part1ApprovingAuthority,
-                'approver_position' => $request->approvingPosition,
+                'approver_position' => $request->approvingAuthPosition,
             ]);
             $ipcrfRow4 = new IpcrfEncodingPart1([
                 'user_id' => $request->user,
@@ -277,7 +282,7 @@ class IpcrfController extends Controller
                 'final_rating' => $request->empFinalRating,
                 'adjectival_rating' => $request->empFinalAdjRating,
                 'approving_authority' => $request->part1ApprovingAuthority,
-                'approver_position' => $request->approvingPosition,
+                'approver_position' => $request->approvingAuthPosition,
             ]);
             $ipcrfRow5 = new IpcrfEncodingPart1([
                 'user_id' => $request->user,
@@ -304,7 +309,7 @@ class IpcrfController extends Controller
                 'final_rating' => $request->empFinalRating,
                 'adjectival_rating' => $request->empFinalAdjRating,
                 'approving_authority' => $request->part1ApprovingAuthority,
-                'approver_position' => $request->approvingPosition,
+                'approver_position' => $request->approvingAuthPosition,
             ]);
             $ipcrfRow6 = new IpcrfEncodingPart1([
                 'user_id' => $request->user,
@@ -331,7 +336,7 @@ class IpcrfController extends Controller
                 'final_rating' => $request->empFinalRating,
                 'adjectival_rating' => $request->empFinalAdjRating,
                 'approving_authority' => $request->part1ApprovingAuthority,
-                'approver_position' => $request->approvingPosition,
+                'approver_position' => $request->approvingAuthPosition,
             ]);
             $ipcrfRow7 = new IpcrfEncodingPart1([
                 'user_id' => $request->user,
@@ -358,7 +363,7 @@ class IpcrfController extends Controller
                 'final_rating' => $request->empFinalRating,
                 'adjectival_rating' => $request->empFinalAdjRating,
                 'approving_authority' => $request->part1ApprovingAuthority,
-                'approver_position' => $request->approvingPosition,
+                'approver_position' => $request->approvingAuthPosition,
             ]);
             $ipcrfRow8 = new IpcrfEncodingPart1([
                 'user_id' => $request->user,
@@ -385,7 +390,7 @@ class IpcrfController extends Controller
                 'final_rating' => $request->empFinalRating,
                 'adjectival_rating' => $request->empFinalAdjRating,
                 'approving_authority' => $request->part1ApprovingAuthority,
-                'approver_position' => $request->approvingPosition,
+                'approver_position' => $request->approvingAuthPosition,
             ]);
 
             $ipcrfRow9 = new IpcrfEncodingPart1([
@@ -413,7 +418,7 @@ class IpcrfController extends Controller
                 'final_rating' => $request->empFinalRating,
                 'adjectival_rating' => $request->empFinalAdjRating,
                 'approving_authority' => $request->part1ApprovingAuthority,
-                'approver_position' => $request->approvingPosition,
+                'approver_position' => $request->approvingAuthPosition,
             ]);
             $ipcrfRow10 = new IpcrfEncodingPart1([
                 'user_id' => $request->user,
@@ -440,7 +445,7 @@ class IpcrfController extends Controller
                 'final_rating' => $request->empFinalRating,
                 'adjectival_rating' => $request->empFinalAdjRating,
                 'approving_authority' => $request->part1ApprovingAuthority,
-                'approver_position' => $request->approvingPosition,
+                'approver_position' => $request->approvingAuthPosition,
             ]);
             $ipcrfRow11 = new IpcrfEncodingPart1([
                 'user_id' => $request->user,
@@ -467,7 +472,7 @@ class IpcrfController extends Controller
                 'final_rating' => $request->empFinalRating,
                 'adjectival_rating' => $request->empFinalAdjRating,
                 'approving_authority' => $request->part1ApprovingAuthority,
-                'approver_position' => $request->approvingPosition,
+                'approver_position' => $request->approvingAuthPosition,
             ]);
             $ipcrfRow12 = new IpcrfEncodingPart1([
                 'user_id' => $request->user,
@@ -494,30 +499,10 @@ class IpcrfController extends Controller
                 'final_rating' => $request->empFinalRating,
                 'adjectival_rating' => $request->empFinalAdjRating,
                 'approving_authority' => $request->part1ApprovingAuthority,
-                'approver_position' => $request->approvingPosition,
+                'approver_position' => $request->approvingAuthPosition,
             ]);
-            try {
-                $ipcrfRow1->save();
-                $ipcrfRow2->save();
-                $ipcrfRow3->save();
-                $ipcrfRow4->save();
-                $ipcrfRow5->save();
-                $ipcrfRow6->save();
-                $ipcrfRow7->save();
-                $ipcrfRow8->save();
-                $ipcrfRow9->save();
-                $ipcrfRow10->save();
-                $ipcrfRow11->save();
-                $ipcrfRow12->save();
-
-                return 'success';
-            } catch (Throwable $error) {
-                return $error;
-            }
-
-    }else{
-        $affected = DB::table('ipcrf_demographic_profiles')
-              ->where('user_id', $request->user)
+            $affected = DB::table('ipcrf_demographic_profiles')->where('id', $request->id)
+            
               ->update(['name_of_employee' => $request->empName,
               'position' => $request->empPosition,
               'employee_id' => $request->empId,
@@ -536,7 +521,65 @@ class IpcrfController extends Controller
               'area_of_specialization' => $request->empSpecialization,
               'region' => $request->empRegion,
               'division' => $request->empDivision,
-              'district/municipality' => $request->empDistrict,
+              'district_municipality' => $request->empDistrict,
+              'school_id' => $request->empSchoolId,
+              'school_name' => $request->empSchoolName,
+              'school_type' => $request->empSchoolType,
+              'school_size' => $request->empSchoolSize,
+              'curricular_classification' => $request->empCurricularClassification,
+              'school_year' => $request -> empRatingPeriod]);
+
+            try {
+                
+            //   try{
+            //     if($affected>0){
+            //        return 'success';
+            //     }
+            //   }catch (Throwable $error) {
+            //     return $error;
+            // }
+                $ipcrfRow1->save();
+                $ipcrfRow2->save();
+                $ipcrfRow3->save();
+                $ipcrfRow4->save();
+                $ipcrfRow5->save();
+                $ipcrfRow6->save();
+                $ipcrfRow7->save();
+                $ipcrfRow8->save();
+                $ipcrfRow9->save();
+                $ipcrfRow10->save();
+                $ipcrfRow11->save();
+                $ipcrfRow12->save();
+                if($affected>0){
+                           return 'success';
+                        }
+            } catch (Throwable $error) {
+                return $error;
+            }
+
+    }else{
+        return $request;
+        $affected = DB::table('ipcrf_demographic_profiles')->where('id', $request->id)
+              
+              ->update(['name_of_employee' => $request->empName,
+              'position' => $request->empPosition,
+              'employee_id' => $request->empId,
+              'employment_status' => $request->empStatus,
+              'age' => $request->empAge,
+              'sex' => $request->empSex,
+              'level_taught' => $request->empLevelTaught,
+              'grade_level_taught' => $request->empGradeLevelTaught,
+              'subject_taught' => $request->empSubjectTaught,
+              'rater' => $request->empRater,
+              'rater_position' => $request->empRaterPosition,
+              'date_of_review' => $request->empDateReview,
+              'rating_period' => $request->empRatingPeriod,
+              'number_of_years_teaching' => $request->empYearsOfTeaching,
+              'highest_degree_obtained' => $request->empDegree,
+              'area_of_specialization' => $request->empSpecialization,
+              'region' => $request->empRegion,
+              'division' => $request->empDivision,
+              'district_municipality' => $request->empDistrict,
               'school_id' => $request->empSchoolId,
               'school_name' => $request->empSchoolName,
               'school_type' => $request->empSchoolType,
@@ -567,8 +610,8 @@ class IpcrfController extends Controller
         $request->results4.','.$request->results5;
         $innovation = $request->innnovation1.','. $request->innovation2.','. $request->innovation3.','.
         $request->innovation4.','.$request->innovation5;
-        $ipcrfEncodingPart2 = DB::table('ipcrf_encoding_part2s')
-        ->where('user_id', $request->user)->where('school_year', $request->empRatingPeriod)->update([
+        $ipcrfEncodingPart2 = DB::table('ipcrf_encoding_part2s')->where('id', $request->id)
+        ->update([
             'self_management' => $selfManagement,
             'teamwork' => $teamwork,
             'professional_and_ethics' => $prof,
@@ -588,8 +631,8 @@ class IpcrfController extends Controller
     }
 
     public function updatePart4(Request $request){
-        $ipcrfDevelopmentPlan = DB::table('ipcrf_development_plans')
-        ->where('user_id', $request->user)->where('school_year', $request->empRatingPeriod)->update([
+        $ipcrfDevelopmentPlan = DB::table('ipcrf_development_plans')->where('id', $request->id)
+        ->update([
             'school_year' => $request->empRatingPeriod,
             'ratee' => $request->rateePart4,
             'rater' => $request->raterPart4,
