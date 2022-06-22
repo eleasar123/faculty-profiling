@@ -2,8 +2,8 @@
 <!-- <v-main> -->
 
 <!-- <v-container fluid  height="fit-content"  class="ma-0 pa-0"> -->
-  <v-app v-if="userData!==null">
-    <Navbar></Navbar>
+  <v-app style="background: #F7F9FA;" v-if="userData!==null">
+    <Navbar color="white"></Navbar>
     <v-main>
     <v-content class="ma-6 pa-2 " fluid>
         <router-view></router-view>
@@ -18,6 +18,7 @@
  <!-- </v-container> -->
  <!-- </v-main> -->
 </template>
+
 
 <script>
 

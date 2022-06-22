@@ -11,6 +11,8 @@ import ViewPds from "../views/Profile/ViewPdsAdmin.vue"
 import ProductsInventory from '../views/Test/ProductsInventory'
 import ArticlesPage from '../views/CodingInterview/ArticlesPage'
 import ViewIpcrf from '../views/ViewIpcrf.vue';
+import ForgotPass from '@/views/Login/ForgotPass.vue';
+import UserProfile from '@/views/Profile/UserProfile.vue'
 Vue.use(VueRouter);
 
 const routes = [{
@@ -35,6 +37,16 @@ const routes = [{
     path: "/login",
     name: "login",
     component: Login,
+  },
+  {
+    path: "/forgotPass",
+    name: "forgotPass",
+    component: ForgotPass,
+  },
+  {
+    path: "/userProfile",
+    name: "userProfile",
+    component: UserProfile,
   },
   {
     path: "/manageUser",

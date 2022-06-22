@@ -141,8 +141,8 @@
 
             <v-simple-table class="table part1" dense>
               <tr class="infoDetails">
-                <td>Name of Employee: <span class="fieldRequire">*</span></td>
-                <td>
+                <td id="tdEsat">Name of Employee: <span class="fieldRequire">*</span></td>
+                <td id="tdEsat">
                   <v-text-field
                     class="textField mt-5"
                     solo
@@ -153,10 +153,10 @@
                     v-model="employeeName"
                   ></v-text-field>
                 </td>
-                <td rowspan="8"></td>
+                <td id="tdEsat" rowspan="8"></td>
 
-                <td>School Year: <span class="fieldRequire">*</span></td>
-                <td>
+                <td id="tdEsat">School Year: <span class="fieldRequire">*</span></td>
+                <td id="tdEsat">
                   <v-text-field
                     :rules="demoRequired"
                     required
@@ -166,9 +166,9 @@
                     v-model="schoolYear"
                   ></v-text-field>
                 </td>
-                <td rowspan="8"></td>
-                <td>Region: <span class="fieldRequire">*</span></td>
-                <td>
+                <td id="tdEsat" rowspan="8"></td>
+                <td id="tdEsat">Region: <span class="fieldRequire">*</span></td>
+                <td id="tdEsat">
                   <v-autocomplete
                     :rules="demoRequired"
                     required
@@ -181,8 +181,8 @@
                 </td>
               </tr>
               <tr class="infoDetails">
-                <td>Employee ID: <span class="fieldRequire">*</span></td>
-                <td>
+                <td id="tdEsat">Employee ID: <span class="fieldRequire">*</span></td>
+                <td id="tdEsat">
                   <v-text-field
                     :rules="demoRequired"
                     required
@@ -192,11 +192,11 @@
                     dense
                   ></v-text-field>
                 </td>
-                <td>
+                <td id="tdEsat">
                   Number of Years in Teaching:
                   <span class="fieldRequire">*</span>
                 </td>
-                <td>
+                <td id="tdEsat">
                   <v-autocomplete
                     :rules="demoRequired"
                     required
@@ -208,8 +208,8 @@
                   ></v-autocomplete>
                 </td>
 
-                <td>Division: <span class="fieldRequire">*</span></td>
-                <td>
+                <td id="tdEsat">Division: <span class="fieldRequire">*</span></td>
+                <td id="tdEsat">
                   <v-autocomplete
                     :rules="demoRequired"
                     required
@@ -222,8 +222,8 @@
                 </td>
               </tr>
               <tr class="infoDetails">
-                <td>Position: <span class="fieldRequire">*</span></td>
-                <td>
+                <td id="tdEsat">Position: <span class="fieldRequire">*</span></td>
+                <td id="tdEsat">
                   <v-autocomplete
                     :rules="demoRequired"
                     required
@@ -234,10 +234,10 @@
                     v-model="position"
                   ></v-autocomplete>
                 </td>
-                <td rowspan="2">
+                <td id="tdEsat" rowspan="2">
                   Highest Degree Obtained: <span class="fieldRequire">*</span>
                 </td>
-                <td>
+                <td id="tdEsat">
                   <v-autocomplete
                     :rules="demoRequired"
                     required
@@ -249,10 +249,10 @@
                   ></v-autocomplete>
                 </td>
 
-                <td>
+                <td id="tdEsat">
                   District/Municipality: <span class="fieldRequire">*</span>
                 </td>
-                <td>
+                <td id="tdEsat">
                   <v-text-field
                     :rules="demoRequired"
                     required
@@ -264,8 +264,8 @@
                 </td>
               </tr>
               <tr class="infoDetails">
-                <td>Employment Status: <span class="fieldRequire">*</span></td>
-                <td>
+                <td id="tdEsat">Employment Status: <span class="fieldRequire">*</span></td>
+                <td id="tdEsat">
                   <v-autocomplete
                     :rules="demoRequired"
                     required
@@ -276,7 +276,7 @@
                     :items="statusItems"
                   ></v-autocomplete>
                 </td>
-                <td>
+                <td id="tdEsat">
                   <v-text-field
                     :rules="demoRequired"
                     required
@@ -287,8 +287,8 @@
                   ></v-text-field>
                 </td>
 
-                <td>School ID: <span class="fieldRequire">*</span></td>
-                <td>
+                <td id="tdEsat">School ID: <span class="fieldRequire">*</span></td>
+                <td id="tdEsat">
                   <v-text-field
                     :rules="demoRequired"
                     required
@@ -300,8 +300,8 @@
                 </td>
               </tr>
               <tr class="infoDetails">
-                <td>Age: <span class="fieldRequire">*</span></td>
-                <td>
+                <td id="tdEsat">Age: <span class="fieldRequire">*</span></td>
+                <td id="tdEsat">
                   <v-autocomplete
                     :rules="demoRequired"
                     required
@@ -313,8 +313,8 @@
                   ></v-autocomplete>
                 </td>
 
-                <td>Level Taught: <span class="fieldRequire">*</span></td>
-                <td>
+                <td id="tdEsat">Level Taught: <span class="fieldRequire">*</span></td>
+                <td id="tdEsat">
                   <v-autocomplete
                     :rules="demoRequired"
                     required
@@ -325,8 +325,8 @@
                     :items="levelTaughtItems"
                   ></v-autocomplete>
                 </td>
-                <td>School Name: <span class="fieldRequire">*</span></td>
-                <td>
+                <td id="tdEsat">School Name: <span class="fieldRequire">*</span></td>
+                <td id="tdEsat">
                   <v-text-field
                     :rules="demoRequired"
                     required
@@ -338,8 +338,8 @@
                 </td>
               </tr>
               <tr class="infoDetails">
-                <td>Sex: <span class="fieldRequire">*</span></td>
-                <td>
+                <td id="tdEsat">Sex: <span class="fieldRequire">*</span></td>
+                <td id="tdEsat">
                   <v-autocomplete
                     :rules="demoRequired"
                     required
@@ -351,8 +351,8 @@
                   ></v-autocomplete>
                 </td>
 
-                <td>Grade Level taught: <span class="fieldRequire">*</span></td>
-                <td>
+                <td id="tdEsat">Grade Level taught: <span class="fieldRequire">*</span></td>
+                <td id="tdEsat">
                   <v-autocomplete
                     :rules="demoRequired"
                     required
@@ -363,8 +363,8 @@
                     :items="gLevelTaughtItems"
                   ></v-autocomplete>
                 </td>
-                <td>School Type: <span class="fieldRequire">*</span></td>
-                <td>
+                <td id="tdEsat">School Type: <span class="fieldRequire">*</span></td>
+                <td id="tdEsat">
                   <v-autocomplete
                     :rules="demoRequired"
                     required
@@ -377,9 +377,9 @@
                 </td>
               </tr>
               <tr class="infoDetails">
-                <td colspan="6" rowspan="2"></td>
-                <td>School Size: <span class="fieldRequire">*</span></td>
-                <td>
+                <td id="tdEsat" colspan="6" rowspan="2"></td>
+                <td id="tdEsat">School Size: <span class="fieldRequire">*</span></td>
+                <td id="tdEsat">
                   <v-autocomplete
                     :rules="demoRequired"
                     required
@@ -392,10 +392,10 @@
                 </td>
               </tr>
               <tr class="infoDetails">
-                <td>
+                <td id="tdEsat">
                   Curricular Classification: <span class="fieldRequire">*</span>
                 </td>
-                <td>
+                <td id="tdEsat">
                   <v-autocomplete
                     :rules="demoRequired"
                     required
@@ -695,45 +695,45 @@
 
           <v-simple-table id="objective" class="table text-center">
             <tr>
-              <td rowspan="3">Objectives</td>
-              <td class="radio" colspan="4">Level of Capability</td>
-              <td class="radio" colspan="4">Priority for Development</td>
+              <td id="tdEsat" rowspan="3">Objectives</td>
+              <td id="tdEsat" class="radio" colspan="4">Level of Capability</td>
+              <td id="tdEsat" class="radio" colspan="4">Priority for Development</td>
             </tr>
             <tr>
-              <td>Low</td>
-              <td>Moderate</td>
-              <td>High</td>
-              <td>Very High</td>
-              <td>Low</td>
-              <td>Moderate</td>
-              <td>High</td>
-              <td>Very High</td>
+              <td id="tdEsat">Low</td>
+              <td id="tdEsat">Moderate</td>
+              <td id="tdEsat">High</td>
+              <td id="tdEsat">Very High</td>
+              <td id="tdEsat">Low</td>
+              <td id="tdEsat">Moderate</td>
+              <td id="tdEsat">High</td>
+              <td id="tdEsat">Very High</td>
             </tr>
             <tr>
-              <td>1</td>
-              <td>2</td>
-              <td>3</td>
-              <td>4</td>
-              <td>1</td>
-              <td>2</td>
-              <td>3</td>
-              <td>4</td>
+              <td id="tdEsat">1</td>
+              <td id="tdEsat">2</td>
+              <td id="tdEsat">3</td>
+              <td id="tdEsat">4</td>
+              <td id="tdEsat">1</td>
+              <td id="tdEsat">2</td>
+              <td id="tdEsat">3</td>
+              <td id="tdEsat">4</td>
             </tr>
           </v-simple-table>
 
           <v-form ref="partII">
             <v-simple-table class="table">
               <tr>
-                <td class="head" colspan="3">
+                <td id="tdEsat" class="head" colspan="3">
                   <h2>1.Content Knowledge and Pedagogy (PPST Domain 1)</h2>
                 </td>
               </tr>
               <tr>
-                <td id="description">
+                <td  id="description tdEsat">
                   1.1 Applied knowledge of content within and across curriculum
                   teaching areas. (PPST Indicator 1.1.2)
                 </td>
-                <td class="radio">
+                <td id="tdEsat" class="radio">
                   <v-radio-group
                     id="radioBtn"
                     :rules="required"
@@ -746,7 +746,7 @@
                     <v-radio label="" value="Very High"></v-radio>
                   </v-radio-group>
                 </td>
-                <td class="radio">
+                <td id="tdEsat" class="radio">
                   <v-radio-group
                     id="radioBtn"
                     :rules="required"
@@ -761,11 +761,11 @@
                 </td>
               </tr>
               <tr>
-                <td>
+                <td id="tdEsat">
                   1.2 Ensured the positive use of ICT to facilitate the teaching
                   and learning learning process. (PPST Indicator 1.3.2)
                 </td>
-                <td class="radio">
+                <td id="tdEsat" class="radio">
                   <v-radio-group
                     id="radioBtn"
                     :rules="required"
@@ -778,7 +778,7 @@
                     <v-radio label="" value="Very High"></v-radio>
                   </v-radio-group>
                 </td>
-                <td class="radio">
+                <td id="tdEsat" class="radio">
                   <v-radio-group
                     id="radioBtn"
                     :rules="required"
@@ -793,12 +793,12 @@
                 </td>
               </tr>
               <tr>
-                <td>
+                <td id="tdEsat">
                   1.3 Applied a range of teaching strategies to develop critical
                   and creative thinking, as well as other higher order thinking
                   skills. (PPST Indicator 1.5.2)
                 </td>
-                <td>
+                <td id="tdEsat">
                   <v-radio-group
                     id="radioBtn"
                     :rules="required"
@@ -811,7 +811,7 @@
                     <v-radio label="" value="Very High"></v-radio>
                   </v-radio-group>
                 </td>
-                <td>
+                <td id="tdEsat">
                   <v-radio-group
                     id="radioBtn"
                     :rules="required"
@@ -830,7 +830,7 @@
             <!-- 2 -->
             <v-simple-table class="table">
               <tr>
-                <td colspan="3" class="head">
+                <td id="tdEsat" colspan="3" class="head">
                   <h2>
                     2. Diversity of Learners & Assessment and Reporting (PPST
                     Domain 2 and Domain 5)
@@ -838,12 +838,12 @@
                 </td>
               </tr>
               <tr>
-                <td>
+                <td id="tdEsat">
                   2.1 Established a learner-centered culture by using teaching
                   strategies that respond to their linguistic, cultural,
                   socio-economic and religious backgrounds.
                 </td>
-                <td class="radio">
+                <td id="tdEsat" class="radio">
                   <v-radio-group
                     id="radioBtn"
                     :rules="required"
@@ -856,7 +856,7 @@
                     <v-radio label="" value="Very High"></v-radio>
                   </v-radio-group>
                 </td>
-                <td class="radio">
+                <td id="tdEsat" class="radio">
                   <v-radio-group
                     id="radioBtn"
                     :rules="required"
@@ -871,7 +871,7 @@
                 </td>
               </tr>
               <tr>
-                <td>
+                <td id="tdEsat">
                   2.2 Planned and delivered teaching strategies that are
                   responsive to the special educational needs of learners in
                   difficult circumstances, including: geographic isolation;
@@ -879,7 +879,7 @@
                   resettlement or disasters; child labor practices. (PPST
                   Indicator 3.4.2)
                 </td>
-                <td class="radio">
+                <td id="tdEsat" class="radio">
                   <v-radio-group
                     id="radioBtn"
                     :rules="required"
@@ -892,7 +892,7 @@
                     <v-radio label="" value="Very High"></v-radio>
                   </v-radio-group>
                 </td>
-                <td class="radio">
+                <td id="tdEsat" class="radio">
                   <v-radio-group
                     id="radioBtn"
                     :rules="required"
@@ -907,12 +907,12 @@
                 </td>
               </tr>
               <tr>
-                <td>
+                <td id="tdEsat">
                   2.3 Used strategies for providing timely, accurate and
                   constructive feedback to improve learner performance. (PPST
                   Indicator 5.3.2)
                 </td>
-                <td class="radio">
+                <td id="tdEsat" class="radio">
                   <v-radio-group
                     id="radioBtn"
                     :rules="required"
@@ -925,7 +925,7 @@
                     <v-radio label="" value="Very High"></v-radio>
                   </v-radio-group>
                 </td>
-                <td class="radio">
+                <td id="tdEsat" class="radio">
                   <v-radio-group
                     id="radioBtn"
                     :rules="required"
@@ -944,17 +944,17 @@
 
             <v-simple-table class="table">
               <tr>
-                <td colspan="3" class="head">
+                <td id="tdEsat" colspan="3" class="head">
                   <h2>3. Curriculum and Planning (PPST Domain 4)</h2>
                 </td>
               </tr>
               <tr>
-                <td>
+                <td id="tdEsat">
                   3.1 Selected, developed, organized and used appropriate
                   teaching and learning resources, including ICT, to address
                   learning goals. (PPST Indicator 4.5.2)
                 </td>
-                <td class="radio">
+                <td id="tdEsat" class="radio">
                   <v-radio-group
                     id="radioBtn"
                     :rules="required"
@@ -967,7 +967,7 @@
                     <v-radio label="" value="Very High"></v-radio>
                   </v-radio-group>
                 </td>
-                <td class="radio">
+                <td id="tdEsat" class="radio">
                   <v-radio-group
                     id="radioBtn"
                     :rules="required"
@@ -982,11 +982,11 @@
                 </td>
               </tr>
               <tr>
-                <td>
+                <td id="tdEsat">
                   3.2 Set achievable and appropriate learning outcomes that are
                   aligned with learning competencies. (PPST Indicator 4.2.2)
                 </td>
-                <td class="radio">
+                <td id="tdEsat" class="radio">
                   <v-radio-group
                     id="radioBtn"
                     :rules="required"
@@ -999,7 +999,7 @@
                     <v-radio label="" value="Very High"></v-radio>
                   </v-radio-group>
                 </td>
-                <td class="radio">
+                <td id="tdEsat" class="radio">
                   <v-radio-group
                     id="radioBtn"
                     :rules="required"
@@ -1018,7 +1018,7 @@
             <!-- 4 -->
             <v-simple-table class="table">
               <tr>
-                <td colspan="3" class="head">
+                <td id="tdEsat" colspan="3" class="head">
                   <h2>
                     4. Community Linkages and Professional Engagement & Personal
                     Growth and Professional Development (PPST Domain 6 and 7)
@@ -1026,12 +1026,12 @@
                 </td>
               </tr>
               <tr>
-                <td>
+                <td id="tdEsat">
                   4.1 Built relationships with parents/guardians and the wider
                   school community to facilitate involvement in the educative
                   process. (PPST Indicator 6.2.2)
                 </td>
-                <td class="radio">
+                <td id="tdEsat" class="radio">
                   <v-radio-group
                     id="radioBtn"
                     :rules="required"
@@ -1044,7 +1044,7 @@
                     <v-radio label="" value="Very High"></v-radio>
                   </v-radio-group>
                 </td>
-                <td class="radio">
+                <td id="tdEsat" class="radio">
                   <v-radio-group
                     id="radioBtn"
                     :rules="required"
@@ -1059,11 +1059,11 @@
                 </td>
               </tr>
               <tr>
-                <td>
+                <td id="tdEsat">
                   4.2 Participates in professional networks to share knowledge
                   and to enhance practice. (PPST Indicator 7.3.2)
                 </td>
-                <td class="radio">
+                <td id="tdEsat" class="radio">
                   <v-radio-group
                     id="radioBtn"
                     :rules="required"
@@ -1076,7 +1076,7 @@
                     <v-radio label="" value="Very High"></v-radio>
                   </v-radio-group>
                 </td>
-                <td class="radio">
+                <td id="tdEsat" class="radio">
                   <v-radio-group
                     id="radioBtn"
                     :rules="required"
@@ -1091,12 +1091,12 @@
                 </td>
               </tr>
               <tr>
-                <td>
+                <td id="tdEsat">
                   4.3 Developed a personal improvement plan based on reflection
                   of one’s practice and ongoing professional learning. (PPST
                   Indicator 7.4.2)
                 </td>
-                <td class="radio">
+                <td id="tdEsat" class="radio">
                   <v-radio-group
                     id="radioBtn"
                     :rules="required"
@@ -1109,7 +1109,7 @@
                     <v-radio label="" value="Very High"></v-radio>
                   </v-radio-group>
                 </td>
-                <td class="radio">
+                <td id="tdEsat" class="radio">
                   <v-radio-group
                     id="radioBtn"
                     :rules="required"
@@ -1128,16 +1128,16 @@
             <!-- 5 -->
             <v-simple-table class="table">
               <tr>
-                <td colspan="3" class="head">
+                <td id="tdEsat" colspan="3" class="head">
                   <h2>PLUS FACTOR</h2>
                 </td>
               </tr>
               <tr>
-                <td>
+                <td id="tdEsat">
                   5.1 Performed various related works/activities that contribute
                   to the teaching-learning process.
                 </td>
-                <td class="radio">
+                <td id="tdEsat" class="radio">
                   <v-radio-group
                     id="radioBtn"
                     :rules="required"
@@ -1150,7 +1150,7 @@
                     <v-radio label="" value="Very High"></v-radio>
                   </v-radio-group>
                 </td>
-                <td class="radio">
+                <td id="tdEsat" class="radio">
                   <v-radio-group
                     id="radioBtn"
                     :rules="required"
@@ -1219,7 +1219,7 @@
               <v-form ref="partIII"></v-form>
               <v-simple-table class="table">
                 <tr>
-                  <td class="checkBox">
+                  <td id="tdEsat" class="checkBox">
                     <v-checkbox
                       :rules="required"
                       v-model="selfManagement1"
@@ -1227,13 +1227,13 @@
                       value="true"
                     ></v-checkbox>
                   </td>
-                  <td>1</td>
-                  <td>
+                  <td id="tdEsat">1</td>
+                  <td id="tdEsat">
                     Sets personal goals and directions, needs and development.
                   </td>
                 </tr>
                 <tr>
-                  <td class="checkBox">
+                  <td id="tdEsat" class="checkBox">
                     <v-checkbox
                       :rules="required"
                       v-model="selfManagement2"
@@ -1241,15 +1241,15 @@
                       value="true"
                     ></v-checkbox>
                   </td>
-                  <td>2</td>
-                  <td>
+                  <td id="tdEsat">2</td>
+                  <td id="tdEsat">
                     Undertakes personal actions and behavior that are clear and
                     purposive and takes into account personal goals and values
                     congruent to that of the organization.
                   </td>
                 </tr>
                 <tr>
-                  <td class="checkBox">
+                  <td id="tdEsat" class="checkBox">
                     <v-checkbox
                       :rules="required"
                       v-model="selfManagement3"
@@ -1257,14 +1257,14 @@
                       value="true"
                     ></v-checkbox>
                   </td>
-                  <td>3</td>
-                  <td>
+                  <td id="tdEsat">3</td>
+                  <td id="tdEsat">
                     Displays emotional maturity and enthusiasm for and is
                     challenged by higher goals.
                   </td>
                 </tr>
                 <tr>
-                  <td class="checkBox">
+                  <td id="tdEsat" class="checkBox">
                     <v-checkbox
                       :rules="required"
                       v-model="selfManagement4"
@@ -1272,14 +1272,14 @@
                       value="true"
                     ></v-checkbox>
                   </td>
-                  <td>4</td>
-                  <td>
+                  <td id="tdEsat">4</td>
+                  <td id="tdEsat">
                     Prioritizes work tasks and schedules (through Gantt charts,
                     checklist, etc) achieve goals.
                   </td>
                 </tr>
                 <tr>
-                  <td class="checkBox">
+                  <td id="tdEsat" class="checkBox">
                     <v-checkbox
                       :rules="required"
                       v-model="selfManagement5"
@@ -1287,8 +1287,8 @@
                       value="true"
                     ></v-checkbox>
                   </td>
-                  <td>5</td>
-                  <td>
+                  <td id="tdEsat">5</td>
+                  <td id="tdEsat">
                     Sets high quality, challenging, realistic goals for self and
                     others.
                   </td>
@@ -1300,7 +1300,7 @@
 
               <v-simple-table class="table">
                 <tr>
-                  <td class="checkBox">
+                  <td id="tdEsat" class="checkBox">
                     <v-checkbox
                       :rules="required"
                       v-model="professionalAndEthics1"
@@ -1308,15 +1308,15 @@
                       value="true"
                     ></v-checkbox>
                   </td>
-                  <td>1</td>
-                  <td>
+                  <td id="tdEsat">1</td>
+                  <td id="tdEsat">
                     Demonstrates the values and behavior enshrined in the Norms
                     and Conduct and Ethical Standards for public officials and
                     employees. (RA 6713)
                   </td>
                 </tr>
                 <tr>
-                  <td class="checkBox">
+                  <td id="tdEsat" class="checkBox">
                     <v-checkbox
                       :rules="required"
                       v-model="professionalAndEthics2"
@@ -1324,15 +1324,15 @@
                       value="true"
                     ></v-checkbox>
                   </td>
-                  <td>2</td>
-                  <td>
+                  <td id="tdEsat">2</td>
+                  <td id="tdEsat">
                     Practices ethical and professional behavior and conduct
                     taking into account the impact of his/her actions and
                     decisions.
                   </td>
                 </tr>
                 <tr>
-                  <td class="checkBox">
+                  <td id="tdEsat" class="checkBox">
                     <v-checkbox
                       :rules="required"
                       v-model="professionalAndEthics3"
@@ -1340,15 +1340,15 @@
                       value="true"
                     ></v-checkbox>
                   </td>
-                  <td>3</td>
-                  <td>
+                  <td id="tdEsat">3</td>
+                  <td id="tdEsat">
                     Maintains a professional image: being trustworthy,
                     regularity of attendance and punctuality, good grooming and
                     communication.
                   </td>
                 </tr>
                 <tr>
-                  <td class="checkBox">
+                  <td id="tdEsat" class="checkBox">
                     <v-checkbox
                       :rules="required"
                       v-model="professionalAndEthics4"
@@ -1356,13 +1356,13 @@
                       value="true"
                     ></v-checkbox>
                   </td>
-                  <td>4</td>
-                  <td>
+                  <td id="tdEsat">4</td>
+                  <td id="tdEsat">
                     Makes personal sacrifices to meet the organization’s needs.
                   </td>
                 </tr>
                 <tr>
-                  <td class="checkBox">
+                  <td id="tdEsat" class="checkBox">
                     <v-checkbox
                       :rules="required"
                       v-model="professionalAndEthics5"
@@ -1370,8 +1370,8 @@
                       value="true"
                     ></v-checkbox>
                   </td>
-                  <td>5</td>
-                  <td>
+                  <td id="tdEsat">5</td>
+                  <td id="tdEsat">
                     Act with a sense of urgency and responsibility to meet the
                     organization’s needs, improve system and help others improve
                     their effectiveness.
@@ -1382,7 +1382,7 @@
               <h3>3. RESULTS FOCUS</h3>
               <v-simple-table class="table">
                 <tr>
-                  <td class="checkBox">
+                  <td id="tdEsat" class="checkBox">
                     <v-checkbox
                       :rules="required"
                       v-model="resultsFocus1"
@@ -1390,14 +1390,14 @@
                       value="true"
                     ></v-checkbox>
                   </td>
-                  <td>1</td>
-                  <td>
+                  <td id="tdEsat">1</td>
+                  <td id="tdEsat">
                     Achieves results with optimal use of time and resources most
                     of the time.
                   </td>
                 </tr>
                 <tr>
-                  <td class="checkBox">
+                  <td id="tdEsat" class="checkBox">
                     <v-checkbox
                       :rules="required"
                       v-model="resultsFocus2"
@@ -1405,15 +1405,15 @@
                       value="true"
                     ></v-checkbox>
                   </td>
-                  <td>2</td>
-                  <td>
+                  <td id="tdEsat">2</td>
+                  <td id="tdEsat">
                     Avoids rework, mistakes and wastage through effective work
                     methods by placing organizational needs before personal
                     needs.
                   </td>
                 </tr>
                 <tr>
-                  <td class="checkBox">
+                  <td id="tdEsat" class="checkBox">
                     <v-checkbox
                       :rules="required"
                       v-model="resultsFocus3"
@@ -1421,8 +1421,8 @@
                       value="true"
                     ></v-checkbox>
                   </td>
-                  <td>3</td>
-                  <td>
+                  <td id="tdEsat">3</td>
+                  <td id="tdEsat">
                     Delivers error-free outputs most of the time by conforming
                     to standard operating procedures correctly and consistently.
                     Able to produce very satisfactory quality work in terms of
@@ -1431,7 +1431,7 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="checkBox">
+                  <td id="tdEsat" class="checkBox">
                     <v-checkbox
                       :rules="required"
                       v-model="resultsFocus4"
@@ -1439,15 +1439,15 @@
                       value="true"
                     ></v-checkbox>
                   </td>
-                  <td>4</td>
-                  <td>
+                  <td id="tdEsat">4</td>
+                  <td id="tdEsat">
                     Expresses the desire to do better and may express
                     frustration at waste or efficiency. May focus on new or more
                     precise ways of meeting goals set.
                   </td>
                 </tr>
                 <tr>
-                  <td class="checkBox">
+                  <td id="tdEsat" class="checkBox">
                     <v-checkbox
                       :rules="required"
                       v-model="resultsFocus5"
@@ -1455,8 +1455,8 @@
                       value="true"
                     ></v-checkbox>
                   </td>
-                  <td>5</td>
-                  <td>
+                  <td id="tdEsat">5</td>
+                  <td id="tdEsat">
                     Makes specific changes in the system or in own work methods
                     to improve performance. Examples may include doing something
                     better,faster, at a lower cost, more efficiently, or
@@ -1471,7 +1471,7 @@
               <h3>4. TEAMWORK</h3>
               <v-simple-table class="table">
                 <tr>
-                  <td class="checkBox">
+                  <td id="tdEsat" class="checkBox">
                     <v-checkbox
                       :rules="required"
                       v-model="teamwork1"
@@ -1481,11 +1481,11 @@
                     <!-- <v-checkbox
                     :rules="required" v-model="teamwork1" hide-details value="true"></v-checkbox> -->
                   </td>
-                  <td>1</td>
-                  <td>Willingly does his/her share of responsibility.</td>
+                  <td id="tdEsat">1</td>
+                  <td id="tdEsat">Willingly does his/her share of responsibility.</td>
                 </tr>
                 <tr>
-                  <td class="checkBox">
+                  <td id="tdEsat" class="checkBox">
                     <v-checkbox
                       :rules="required"
                       v-model="teamwork2"
@@ -1493,14 +1493,14 @@
                       value="true"
                     ></v-checkbox>
                   </td>
-                  <td>2</td>
-                  <td>
+                  <td id="tdEsat">2</td>
+                  <td id="tdEsat">
                     Promotes collaboration and removes barriers to teamwork and
                     goal accomplishment across the organization.
                   </td>
                 </tr>
                 <tr>
-                  <td class="checkBox">
+                  <td id="tdEsat" class="checkBox">
                     <v-checkbox
                       :rules="required"
                       v-model="teamwork3"
@@ -1508,14 +1508,14 @@
                       value="true"
                     ></v-checkbox>
                   </td>
-                  <td>3</td>
-                  <td>
+                  <td id="tdEsat">3</td>
+                  <td id="tdEsat">
                     Applies negotiation principles in arriving at win-win
                     agreements.
                   </td>
                 </tr>
                 <tr>
-                  <td class="checkBox">
+                  <td id="tdEsat" class="checkBox">
                     <v-checkbox
                       :rules="required"
                       v-model="teamwork4"
@@ -1523,11 +1523,11 @@
                       value="true"
                     ></v-checkbox>
                   </td>
-                  <td>4</td>
-                  <td>Drives consensus and team ownership of decisions.</td>
+                  <td id="tdEsat">4</td>
+                  <td id="tdEsat">Drives consensus and team ownership of decisions.</td>
                 </tr>
                 <tr>
-                  <td class="checkBox">
+                  <td id="tdEsat" class="checkBox">
                     <v-checkbox
                       :rules="required"
                       v-model="teamwork5"
@@ -1535,8 +1535,8 @@
                       value="true"
                     ></v-checkbox>
                   </td>
-                  <td>5</td>
-                  <td>
+                  <td id="tdEsat">5</td>
+                  <td id="tdEsat">
                     Works constructively and collaboratively with others and
                     across organizations to accomplish organizational goals and
                     objectives.
@@ -1550,7 +1550,7 @@
 
               <v-simple-table class="table">
                 <tr>
-                  <td class="checkBox">
+                  <td id="tdEsat" class="checkBox">
                     <v-checkbox
                       :rules="required"
                       v-model="serviceOrientation1"
@@ -1558,14 +1558,14 @@
                       value="true"
                     ></v-checkbox>
                   </td>
-                  <td>1</td>
-                  <td>
+                  <td id="tdEsat">1</td>
+                  <td id="tdEsat">
                     Can explain and articulate organizational directions, issues
                     and problems.
                   </td>
                 </tr>
                 <tr>
-                  <td class="checkBox">
+                  <td id="tdEsat" class="checkBox">
                     <v-checkbox
                       :rules="required"
                       v-model="serviceOrientation2"
@@ -1573,14 +1573,14 @@
                       value="true"
                     ></v-checkbox>
                   </td>
-                  <td>2</td>
-                  <td>
+                  <td id="tdEsat">2</td>
+                  <td id="tdEsat">
                     Takes personal responsibility for dealing with and/or
                     correcting customer service issues and concerns.
                   </td>
                 </tr>
                 <tr>
-                  <td class="checkBox">
+                  <td id="tdEsat" class="checkBox">
                     <v-checkbox
                       :rules="required"
                       v-model="serviceOrientation3"
@@ -1588,14 +1588,14 @@
                       value="true"
                     ></v-checkbox>
                   </td>
-                  <td>3</td>
-                  <td>
+                  <td id="tdEsat">3</td>
+                  <td id="tdEsat">
                     Initiates activities that promote advocacy for men and women
                     empowerment.
                   </td>
                 </tr>
                 <tr>
-                  <td class="checkBox">
+                  <td id="tdEsat" class="checkBox">
                     <v-checkbox
                       :rules="required"
                       v-model="serviceOrientation4"
@@ -1603,14 +1603,14 @@
                       value="true"
                     ></v-checkbox>
                   </td>
-                  <td>4</td>
-                  <td>
+                  <td id="tdEsat">4</td>
+                  <td id="tdEsat">
                     Participates in updating office vision, mission, mandates
                     and strategies based on DepEd strategies and directions.
                   </td>
                 </tr>
                 <tr>
-                  <td class="checkBox">
+                  <td id="tdEsat" class="checkBox">
                     <v-checkbox
                       :rules="required"
                       v-model="serviceOrientation5"
@@ -1618,8 +1618,8 @@
                       value="true"
                     ></v-checkbox>
                   </td>
-                  <td>5</td>
-                  <td>
+                  <td id="tdEsat">5</td>
+                  <td id="tdEsat">
                     Develops and adopts services improvement program through
                     simplified procedures that will further enhance service
                     delivery.
@@ -1633,7 +1633,7 @@
 
               <v-simple-table class="table">
                 <tr>
-                  <td class="checkBox">
+                  <td id="tdEsat" class="checkBox">
                     <v-checkbox
                       :rules="required"
                       v-model="innovation1"
@@ -1641,15 +1641,15 @@
                       value="true"
                     ></v-checkbox>
                   </td>
-                  <td>1</td>
-                  <td>
+                  <td id="tdEsat">1</td>
+                  <td id="tdEsat">
                     Examines the root cause of problems and suggests effective
                     solutions. Foster new ideas, processes and suggests better
                     ways to do things(cost and/or operaional effeciency).
                   </td>
                 </tr>
                 <tr>
-                  <td class="checkBox">
+                  <td id="tdEsat" class="checkBox">
                     <v-checkbox
                       :rules="required"
                       v-model="innovation2"
@@ -1657,15 +1657,15 @@
                       value="true"
                     ></v-checkbox>
                   </td>
-                  <td>2</td>
-                  <td>
+                  <td id="tdEsat">2</td>
+                  <td id="tdEsat">
                     Demonstrates an ability to think "beyond the box".
                     Continuosly focuses on improving personal productivity to
                     create higher value and results.
                   </td>
                 </tr>
                 <tr>
-                  <td class="checkBox">
+                  <td id="tdEsat" class="checkBox">
                     <v-checkbox
                       :rules="required"
                       v-model="innovation3"
@@ -1673,14 +1673,14 @@
                       value="true"
                     ></v-checkbox>
                   </td>
-                  <td>3</td>
-                  <td>
+                  <td id="tdEsat">3</td>
+                  <td id="tdEsat">
                     Promote a creative climate and inspires co-workers to
                     develop original ideas or solutions.
                   </td>
                 </tr>
                 <tr>
-                  <td class="checkBox">
+                  <td id="tdEsat" class="checkBox">
                     <v-checkbox
                       :rules="required"
                       v-model="innovation4"
@@ -1688,14 +1688,14 @@
                       value="true"
                     ></v-checkbox>
                   </td>
-                  <td>4</td>
-                  <td>
+                  <td id="tdEsat">4</td>
+                  <td id="tdEsat">
                     Translates creative thinking into tangible changes and
                     solutions that improve the work unit and organization.
                   </td>
                 </tr>
                 <tr>
-                  <td class="checkBox">
+                  <td id="tdEsat" class="checkBox">
                     <v-checkbox
                       :rules="required"
                       v-model="innovation5"
@@ -1703,8 +1703,8 @@
                       value="true"
                     ></v-checkbox>
                   </td>
-                  <td>5</td>
-                  <td>
+                  <td id="tdEsat">5</td>
+                  <td id="tdEsat">
                     Uses ingenious methods to accomplish responsibilities.
                     Demonstrates resourcefulness and the ability to succeed with
                     minimal resources.
@@ -1783,126 +1783,126 @@
                     :key="item.id"
                   >
                     <tr class="tRow">
-                      <td class="esatPrint">
+                      <td id="tdEsat" class="esatPrint">
                         <span class="part1FontSize">Name of Employee:</span>
                       </td>
-                      <td class="showDataPart1">
+                      <td id="tdEsat" class="showDataPart1">
                         <span class="part1FontSize">{{
                           item.name_of_employee
                         }}</span>
                       </td>
-                      <td id="emptyCol" rowspan="7"></td>
-                      <td class="esatPrint">
+                      <td id="tdEsat emptyCol" rowspan="7"></td>
+                      <td id="tdEsat" class="esatPrint">
                         <span class="part1FontSize">Region:</span>
                       </td>
-                      <td class="showDataPart1">
+                      <td id="tdEsat" class="showDataPart1">
                         <span class="part1FontSize">{{ item.region }}</span>
                       </td>
                     </tr>
                     <tr class="tRow">
-                      <td class="esatPrint">
+                      <td id="tdEsat" class="esatPrint">
                         <span class="part1FontSize">Position:</span>
                       </td>
-                      <td class="showDataPart1">
+                      <td id="tdEsat" class="showDataPart1">
                         <span class="part1FontSize">{{ item.position }}</span>
                       </td>
-                      <td class="esatPrint">
+                      <td id="tdEsat" class="esatPrint">
                         <span class="part1FontSize">Division:</span>
                       </td>
-                      <td class="showDataPart1">
+                      <td id="tdEsat" class="showDataPart1">
                         <span class="part1FontSize">{{ item.division }}</span>
                       </td>
                     </tr>
                     <tr class="tRow">
-                      <td class="esatPrint">
+                      <td id="tdEsat" class="esatPrint">
                         <span class="part1FontSize">Employment Status:</span>
                       </td>
-                      <td class="showDataPart1">
+                      <td id="tdEsat" class="showDataPart1">
                         <span class="part1FontSize">{{
                           item.employment_status
                         }}</span>
                       </td>
-                      <td class="esatPrint">
+                      <td id="tdEsat" class="esatPrint">
                         <span class="part1FontSize">School:</span>
                       </td>
-                      <td class="showDataPart1">
+                      <td id="tdEsat" class="showDataPart1">
                         <span class="part1FontSize"
                           >{{ item.school_id }} - {{ item.school_name }}</span
                         >
                       </td>
                     </tr>
                     <tr class="tRow">
-                      <td class="esatPrint">
+                      <td id="tdEsat" class="esatPrint">
                         <span class="part1FontSize">Age:</span>
                       </td>
-                      <td class="showDataPart1">
+                      <td id="tdEsat" class="showDataPart1">
                         <span class="part1FontSize">{{ item.age }}</span>
                       </td>
-                      <td class="esatPrint">
+                      <td id="tdEsat" class="esatPrint">
                         <span class="part1FontSize"
                           >Curricular Classification:</span
                         >
                       </td>
-                      <td class="showDataPart1">
+                      <td id="tdEsat" class="showDataPart1">
                         <span class="part1FontSize">{{
                           item.curricular_classification
                         }}</span>
                       </td>
                     </tr>
                     <tr class="tRow">
-                      <td class="esatPrint">
+                      <td id="tdEsat" class="esatPrint">
                         <span class="part1FontSize">Sex:</span>
                       </td>
-                      <td class="showDataPart1">
+                      <td id="tdEsat" class="showDataPart1">
                         <span class="part1FontSize">{{ item.sex }}</span>
                       </td>
-                      <td class="esatPrint">
+                      <td id="tdEsat" class="esatPrint">
                         <span class="part1FontSize">Grade Level Taught:</span>
                       </td>
-                      <td class="showDataPart1">
+                      <td id="tdEsat" class="showDataPart1">
                         <span class="part1FontSize"
                           >{{ item.grade_level_taught }}
                         </span>
                       </td>
                     </tr>
                     <tr class="tRow">
-                      <td class="esatPrint">
+                      <td id="tdEsat" class="esatPrint">
                         <span class="part1FontSize"
                           >Number of Years in Teaching:</span
                         >
                       </td>
-                      <td class="showDataPart1">
+                      <td id="tdEsat" class="showDataPart1">
                         <span class="part1FontSize"
                           >{{ item.years_in_teaching }}
                         </span>
                       </td>
-                      <td class="esatPrint">
+                      <td id="tdEsat" class="esatPrint">
                         <span class="part1FontSize"
                           >Area(s) of Specialization:</span
                         >
                       </td>
-                      <td class="showDataPart1">
+                      <td id="tdEsat" class="showDataPart1">
                         <span class="part1FontSize"
                           >{{ item.area_of_specialization }}
                         </span>
                       </td>
                     </tr>
                     <tr class="tRow">
-                      <td class="esatPrint">
+                      <td id="tdEsat" class="esatPrint">
                         <span class="part1FontSize"
                           >Highest Degree Obtained:</span
                         >
                       </td>
-                      <td class="showDataPart1">
+                      <td id="tdEsat" class="showDataPart1">
                         <span class="part1FontSize">
                           {{ item.highest_degree_obtained }} -
                           {{ item.specified_highest_degree_obtained }}
                         </span>
                       </td>
-                      <td class="esatPrint">
+                      <td id="tdEsat" class="esatPrint">
                         <span class="part1FontSize">Subjects(s) Taught:</span>
                       </td>
-                      <td class="showDataPart1">
+                      <td id="tdEsat" class="showDataPart1">
                         <span class="part1FontSize"
                           >{{ item.subjects_taught }}
                         </span>
@@ -1960,7 +1960,7 @@
                   </thead>
                   <tbody>
                     <tr>
-                      <td class="obsHeadHght" colspan="4">
+                      <td id="tdEsat" class="obsHeadHght" colspan="4">
                         <h3 class="objsHead">
                           1.Content Knowledge and Pedagogy (PPST Domain 1)
                         </h3>
@@ -1968,31 +1968,31 @@
                     </tr>
 
                     <tr>
-                      <td class="objNo">
+                      <td id="tdEsat" class="objNo">
                         <span class="part2FontSize">1.1</span>
                       </td>
-                      <td class="objDes">
+                      <td id="tdEsat" class="objDes">
                         <span class="part2FontSize">
                           Applied knowledge of content within and across
                           curriculum teaching areas (PPST Indicator 1.1.2)</span
                         >
                       </td>
-                      <td class="text-center">
+                      <td id="tdEsat" class="text-center">
                         <span class="part2FontSize">
                           {{ printEsatInfo[2][0].level_of_capability }}
                         </span>
                       </td>
-                      <td class="text-center">
+                      <td id="tdEsat" class="text-center">
                         <span class="part2FontSize">
                           {{ printEsatInfo[2][0].priority_for_development }}
                         </span>
                       </td>
                     </tr>
                     <tr>
-                      <td class="objNo">
+                      <td id="tdEsat" class="objNo">
                         <span class="part2FontSize">1.2</span>
                       </td>
-                      <td class="objDes">
+                      <td id="tdEsat" class="objDes">
                         <span class="part2FontSize">
                           Ensured the positive use of ICT to facilitate the
                           teaching and learning learning process. (PPST
@@ -2000,22 +2000,22 @@
                         >
                       </td>
 
-                      <td class="text-center">
+                      <td id="tdEsat" class="text-center">
                         <span class="part2FontSize">
                           {{ printEsatInfo[2][1].level_of_capability }}
                         </span>
                       </td>
-                      <td class="text-center">
+                      <td id="tdEsat" class="text-center">
                         <span class="part2FontSize">
                           {{ printEsatInfo[2][1].priority_for_development }}
                         </span>
                       </td>
                     </tr>
                     <tr>
-                      <td class="objNo">
+                      <td id="tdEsat" class="objNo">
                         <span class="part2FontSize">1.3</span>
                       </td>
-                      <td class="objDes">
+                      <td id="tdEsat" class="objDes">
                         <span class="part2FontSize">
                           Applied a range of teaching strategies to develop
                           critical and creative thinking, as well as other
@@ -2023,12 +2023,12 @@
                           1.5.2)</span
                         >
                       </td>
-                      <td class="text-center">
+                      <td id="tdEsat" class="text-center">
                         <span class="part2FontSize">
                           {{ printEsatInfo[2][2].level_of_capability }}
                         </span>
                       </td>
-                      <td class="text-center">
+                      <td id="tdEsat" class="text-center">
                         <span class="part2FontSize">
                           {{ printEsatInfo[2][2].priority_for_development }}
                         </span>
@@ -2036,7 +2036,7 @@
                     </tr>
 
                     <tr>
-                      <td class="obsHeadHght" colspan="4">
+                      <td id="tdEsat" class="obsHeadHght" colspan="4">
                         <h3 class="objsHead">
                           2. Diversity of Learners & Assessment and Reporting
                           (PPST Domain 2 and Domain 5)
@@ -2045,10 +2045,10 @@
                     </tr>
 
                     <tr>
-                      <td class="objNo">
+                      <td id="tdEsat" class="objNo">
                         <span class="part2FontSize">2.1</span>
                       </td>
-                      <td class="objDes">
+                      <td id="tdEsat" class="objDes">
                         <span class="part2FontSize">
                           Established a learner-centered culture by using
                           teaching strategies that respond to their linguistic,
@@ -2056,22 +2056,22 @@
                           backgrounds.</span
                         >
                       </td>
-                      <td class="text-center">
+                      <td id="tdEsat" class="text-center">
                         <span class="part2FontSize">
                           {{ printEsatInfo[2][3].level_of_capability }}
                         </span>
                       </td>
-                      <td class="text-center">
+                      <td id="tdEsat" class="text-center">
                         <span class="part2FontSize">
                           {{ printEsatInfo[2][3].priority_for_development }}
                         </span>
                       </td>
                     </tr>
                     <tr>
-                      <td class="objNo">
+                      <td id="tdEsat" class="objNo">
                         <span class="part2FontSize">2.2</span>
                       </td>
-                      <td class="objDes">
+                      <td id="tdEsat" class="objDes">
                         <span class="part2FontSize">
                           Planned and delivered teaching strategies that are
                           responsive to the special educational needs of
@@ -2082,34 +2082,34 @@
                           3.4.2)</span
                         >
                       </td>
-                      <td class="text-center">
+                      <td id="tdEsat" class="text-center">
                         <span class="part2FontSize">
                           {{ printEsatInfo[2][4].level_of_capability }}
                         </span>
                       </td>
-                      <td class="text-center">
+                      <td id="tdEsat" class="text-center">
                         <span class="part2FontSize">
                           {{ printEsatInfo[2][4].priority_for_development }}
                         </span>
                       </td>
                     </tr>
                     <tr>
-                      <td class="objNo">
+                      <td id="tdEsat" class="objNo">
                         <span class="part2FontSize">2.3</span>
                       </td>
-                      <td class="objDes">
+                      <td id="tdEsat" class="objDes">
                         <span class="part2FontSize">
                           Used strategies for providing timely, accurate and
                           constructive feedback to improve learner performance.
                           (PPST Indicator 5.3.2)</span
                         >
                       </td>
-                      <td class="text-center">
+                      <td id="tdEsat" class="text-center">
                         <span class="part2FontSize">
                           {{ printEsatInfo[2][5].level_of_capability }}
                         </span>
                       </td>
-                      <td class="text-center">
+                      <td id="tdEsat" class="text-center">
                         <span class="part2FontSize">
                           {{ printEsatInfo[2][5].priority_for_development }}
                         </span>
@@ -2117,51 +2117,51 @@
                     </tr>
 
                     <tr>
-                      <td class="obsHeadHght" colspan="4">
+                      <td id="tdEsat" class="obsHeadHght" colspan="4">
                         <h3 class="objsHead">
                           3. Curriculum and Planning (PPST Domain 4)
                         </h3>
                       </td>
                     </tr>
                     <tr>
-                      <td class="objNo">
+                      <td id="tdEsat" class="objNo">
                         <span class="part2FontSize">3.1</span>
                       </td>
-                      <td class="objDes">
+                      <td id="tdEsat" class="objDes">
                         <span class="part2FontSize">
                           Selected, developed, organized and used appropriate
                           teaching and learning resources, including ICT, to
                           address learning goals. (PPST Indicator 4.5.2)</span
                         >
                       </td>
-                      <td class="text-center">
+                      <td id="tdEsat" class="text-center">
                         <span class="part2FontSize">
                           {{ printEsatInfo[2][6].level_of_capability }}
                         </span>
                       </td>
-                      <td class="text-center">
+                      <td id="tdEsat" class="text-center">
                         <span class="part2FontSize">
                           {{ printEsatInfo[2][6].priority_for_development }}
                         </span>
                       </td>
                     </tr>
                     <tr>
-                      <td class="objNo">
+                      <td id="tdEsat" class="objNo">
                         <span class="part2FontSize">3.2</span>
                       </td>
-                      <td class="objDes">
+                      <td id="tdEsat" class="objDes">
                         <span class="part2FontSize">
                           Set achievable and appropriate learning outcomes that
                           are aligned with learning competencies. (PPST
                           Indicator 4.2.2)</span
                         >
                       </td>
-                      <td class="text-center">
+                      <td id="tdEsat" class="text-center">
                         <span class="part2FontSize">
                           {{ printEsatInfo[2][7].level_of_capability }}
                         </span>
                       </td>
-                      <td class="text-center">
+                      <td id="tdEsat" class="text-center">
                         <span class="part2FontSize">
                           {{ printEsatInfo[2][7].priority_for_development }}
                         </span>
@@ -2169,7 +2169,7 @@
                     </tr>
 
                     <tr>
-                      <td class="obsHeadHght" colspan="4">
+                      <td id="tdEsat" class="obsHeadHght" colspan="4">
                         <h3 class="objsHead">
                           4. Community Linkages and Professional Engagement &
                           Personal Growth and Professional Development (PPST
@@ -2179,104 +2179,104 @@
                     </tr>
 
                     <tr>
-                      <td class="objNo">
+                      <td id="tdEsat" class="objNo">
                         <span class="part2FontSize">4.1</span>
                       </td>
-                      <td class="objDes">
+                      <td id="tdEsat" class="objDes">
                         <span class="part2FontSize">
                           Built relationships with parents/guardians and the
                           wider school community to facilitate involvement in
                           the educative process. (PPST Indicator 6.2.2)</span
                         >
                       </td>
-                      <td class="text-center">
+                      <td id="tdEsat" class="text-center">
                         <span class="part2FontSize">
                           {{ printEsatInfo[2][8].level_of_capability }}
                         </span>
                       </td>
-                      <td class="text-center">
+                      <td id="tdEsat" class="text-center">
                         <span class="part2FontSize">
                           {{ printEsatInfo[2][8].priority_for_development }}
                         </span>
                       </td>
                     </tr>
                     <tr>
-                      <td class="objNo">
+                      <td id="tdEsat" class="objNo">
                         <span class="part2FontSize">4.2</span>
                       </td>
-                      <td class="objDes">
+                      <td id="tdEsat" class="objDes">
                         <span class="part2FontSize">
                           Participates in professional networks to share
                           knowledge and to enhance practice. (PPST Indicator
                           7.3.2)</span
                         >
                       </td>
-                      <td class="text-center">
+                      <td id="tdEsat" class="text-center">
                         <span class="part2FontSize">
                           {{ printEsatInfo[2][9].level_of_capability }}
                         </span>
                       </td>
-                      <td class="text-center">
+                      <td id="tdEsat" class="text-center">
                         <span class="part2FontSize">
                           {{ printEsatInfo[2][9].priority_for_development }}
                         </span>
                       </td>
                     </tr>
                     <tr>
-                      <td class="objNo">
+                      <td id="tdEsat" class="objNo">
                         <span class="part2FontSize">4.3</span>
                       </td>
-                      <td class="objDes">
+                      <td id="tdEsat" class="objDes">
                         <span class="part2FontSize">
                           Developed a personal improvement plan based on
                           reflection of one’s practice and ongoing professional
                           learning. (PPST Indicator 7.4.2)</span
                         >
                       </td>
-                      <td class="text-center">
+                      <td id="tdEsat" class="text-center">
                         <span class="part2FontSize">
                           {{ printEsatInfo[2][10].level_of_capability }}
                         </span>
                       </td>
-                      <td class="text-center">
+                      <td id="tdEsat" class="text-center">
                         <span class="part2FontSize">
                           {{ printEsatInfo[2][10].priority_for_development }}
                         </span>
                       </td>
                     </tr>
                     <tr>
-                      <td class="obsHeadHght" colspan="4">
+                      <td id="tdEsat" class="obsHeadHght" colspan="4">
                         <h3 class="objsHead">PLUS FACTOR</h3>
                       </td>
                     </tr>
                     <tr>
-                      <td class="objNo">
+                      <td id="tdEsat" class="objNo">
                         <span class="part2FontSize">5.1</span>
                       </td>
-                      <td class="objDes">
+                      <td id="tdEsat" class="objDes">
                         <span class="part2FontSize">
                           Performed various related works/activities that
                           contribute to the teaching-learning process.</span
                         >
                       </td>
-                      <td class="text-center">
+                      <td id="tdEsat" class="text-center">
                         <span class="part2FontSize">
                           {{ printEsatInfo[2][11].level_of_capability }}
                         </span>
                       </td>
-                      <td class="text-center">
+                      <td id="tdEsat" class="text-center">
                         <span class="part2FontSize">
                           {{ printEsatInfo[2][11].priority_for_development }}
                         </span>
                       </td>
                     </tr>
                     <tr>
-                      <td class="obsHeadHght" colspan="4">
+                      <td id="tdEsat" class="obsHeadHght" colspan="4">
                         <h3 class="objsHead">Personal Comments</h3>
                       </td>
                     </tr>
                     <tr v-for="item in printEsatInfo[0]" :key="item.id">
-                      <td colspan="4"><span class="part2FontSize">{{ item.personal_comments }}</span></td>
+                      <td id="tdEsat" colspan="4"><span class="part2FontSize">{{ item.personal_comments }}</span></td>
                     </tr>
                   </tbody>
                 </template>
@@ -2294,14 +2294,14 @@
                 <template v-slot:default>
                   <thead>
                     <tr>
-                      <td class="coreHeadHght" colspan="3">
+                      <td id="tdEsat" class="coreHeadHght" colspan="3">
                         <h3 class="coreHead">1. SELF-MANAGEMENT</h3>
                       </td>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
-                      <td class="part3TdHght">
+                      <td id="tdEsat" class="part3TdHght">
                         <span class="part3FontSize">
                           {{
                             printEsatInfo[1][0].check_status == "true"
@@ -2310,10 +2310,10 @@
                           }}
                         </span>
                       </td>
-                      <td class="part3TdHght">
+                      <td id="tdEsat" class="part3TdHght">
                         <span class="part3FontSize">1</span>
                       </td>
-                      <td class="part3TdHght">
+                      <td id="tdEsat" class="part3TdHght">
                         <span class="part3FontSize">
                           Sets personal goals and directions, needs and
                           development.
@@ -2321,7 +2321,7 @@
                       </td>
                     </tr>
                     <tr>
-                      <td class="part3TdHght">
+                      <td id="tdEsat" class="part3TdHght">
                         <span class="part3FontSize">
                           {{
                             printEsatInfo[1][1].check_status == "true"
@@ -2330,10 +2330,10 @@
                           }}
                         </span>
                       </td>
-                      <td class="part3TdHght">
+                      <td id="tdEsat" class="part3TdHght">
                         <span class="part3FontSize">2</span>
                       </td>
-                      <td class="part3TdHght">
+                      <td id="tdEsat" class="part3TdHght">
                         <span class="part3FontSize">
                           Undertakes personal actions and behavior that are
                           clear and purposive and takes into account personal
@@ -2343,7 +2343,7 @@
                       </td>
                     </tr>
                     <tr>
-                      <td class="part3TdHght">
+                      <td id="tdEsat" class="part3TdHght">
                         <span class="part3FontSize">
                           {{
                             printEsatInfo[1][2].check_status == "true"
@@ -2352,10 +2352,10 @@
                           }}
                         </span>
                       </td>
-                      <td class="part3TdHght">
+                      <td id="tdEsat" class="part3TdHght">
                         <span class="part3FontSize">3</span>
                       </td>
-                      <td class="part3TdHght">
+                      <td id="tdEsat" class="part3TdHght">
                         <span class="part3FontSize">
                           Displays emotional maturity and enthusiasm for and is
                           challenged by higher goals.
@@ -2363,7 +2363,7 @@
                       </td>
                     </tr>
                     <tr>
-                      <td class="part3TdHght">
+                      <td id="tdEsat" class="part3TdHght">
                         <span class="part3FontSize">
                           {{
                             printEsatInfo[1][3].check_status == "true"
@@ -2372,10 +2372,10 @@
                           }}
                         </span>
                       </td>
-                      <td class="part3TdHght">
+                      <td id="tdEsat" class="part3TdHght">
                         <span class="part3FontSize">4</span>
                       </td>
-                      <td class="part3TdHght">
+                      <td id="tdEsat" class="part3TdHght">
                         <span class="part3FontSize">
                           Prioritizes work tasks and schedules (through Gantt
                           charts, checklist, etc) achieve goals.
@@ -2383,7 +2383,7 @@
                       </td>
                     </tr>
                     <tr>
-                      <td class="part3TdHght">
+                      <td id="tdEsat" class="part3TdHght">
                         <span class="part3FontSize">
                           {{
                             printEsatInfo[1][4].check_status == "true"
@@ -2392,10 +2392,10 @@
                           }}
                         </span>
                       </td>
-                      <td class="part3TdHght">
+                      <td id="tdEsat" class="part3TdHght">
                         <span class="part3FontSize">5</span>
                       </td>
-                      <td class="part3TdHght">
+                      <td id="tdEsat" class="part3TdHght">
                         <span class="part3FontSize">
                           Sets high quality, challenging, realistic goals for
                           self and others.
@@ -2404,13 +2404,13 @@
                     </tr>
 
                     <tr>
-                      <td class="coreHeadHght" colspan="3">
+                      <td id="tdEsat" class="coreHeadHght" colspan="3">
                         <h3 class="coreHead">2.PROFESSIONALISM AND ETHICS</h3>
                       </td>
                     </tr>
 
                     <tr>
-                      <td class="part3TdHght">
+                      <td id="tdEsat" class="part3TdHght">
                         <span class="part3FontSize">
                           {{
                             printEsatInfo[1][5].check_status == "true"
@@ -2419,10 +2419,10 @@
                           }}
                         </span>
                       </td>
-                      <td class="part3TdHght">
+                      <td id="tdEsat" class="part3TdHght">
                         <span class="part3FontSize">1</span>
                       </td>
-                      <td class="part3TdHght">
+                      <td id="tdEsat" class="part3TdHght">
                         <span class="part3FontSize">
                           Demonstrates the values and behavior enshrined in the
                           Norms and Conduct and Ethical Standards for public
@@ -2431,7 +2431,7 @@
                       </td>
                     </tr>
                     <tr>
-                      <td class="part3TdHght">
+                      <td id="tdEsat" class="part3TdHght">
                         <span class="part3FontSize">
                           {{
                             printEsatInfo[1][6].check_status == "true"
@@ -2440,10 +2440,10 @@
                           }}
                         </span>
                       </td>
-                      <td class="part3TdHght">
+                      <td id="tdEsat" class="part3TdHght">
                         <span class="part3FontSize">2</span>
                       </td>
-                      <td class="part3TdHght">
+                      <td id="tdEsat" class="part3TdHght">
                         <span class="part3FontSize">
                           Practices ethical and professional behavior and
                           conduct taking into account the impact of his/her
@@ -2452,7 +2452,7 @@
                       </td>
                     </tr>
                     <tr>
-                      <td class="part3TdHght">
+                      <td id="tdEsat" class="part3TdHght">
                         <span class="part3FontSize">
                           {{
                             printEsatInfo[1][7].check_status == "true"
@@ -2461,10 +2461,10 @@
                           }}
                         </span>
                       </td>
-                      <td class="part3TdHght">
+                      <td id="tdEsat" class="part3TdHght">
                         <span class="part3FontSize">3</span>
                       </td>
-                      <td class="part3TdHght">
+                      <td id="tdEsat" class="part3TdHght">
                         <span class="part3FontSize">
                           Maintains a professional image: being trustworthy,
                           regularity of attendance and punctuality, good
@@ -2473,7 +2473,7 @@
                       </td>
                     </tr>
                     <tr>
-                      <td class="part3TdHght">
+                      <td id="tdEsat" class="part3TdHght">
                         <span class="part3FontSize">
                           {{
                             printEsatInfo[1][8].check_status == "true"
@@ -2482,10 +2482,10 @@
                           }}
                         </span>
                       </td>
-                      <td class="part3TdHght">
+                      <td id="tdEsat" class="part3TdHght">
                         <span class="part3FontSize">4</span>
                       </td>
-                      <td class="part3TdHght">
+                      <td id="tdEsat" class="part3TdHght">
                         <span class="part3FontSize">
                           Makes personal sacrifices to meet the organization’s
                           needs.
@@ -2493,7 +2493,7 @@
                       </td>
                     </tr>
                     <tr>
-                      <td class="part3TdHght">
+                      <td id="tdEsat" class="part3TdHght">
                         <span class="part3FontSize">
                           {{
                             printEsatInfo[1][9].check_status == "true"
@@ -2502,10 +2502,10 @@
                           }}
                         </span>
                       </td>
-                      <td class="part3TdHght">
+                      <td id="tdEsat" class="part3TdHght">
                         <span class="part3FontSize">5</span>
                       </td>
-                      <td class="part3TdHght">
+                      <td id="tdEsat" class="part3TdHght">
                         <span class="part3FontSize">
                           Act with a sense of urgency and responsibility to meet
                           the organization’s needs, improve system and help
@@ -2515,13 +2515,13 @@
                     </tr>
 
                     <tr>
-                      <td class="coreHeadHght" colspan="3">
+                      <td id="tdEsat" class="coreHeadHght" colspan="3">
                         <h3 class="coreHead">3. RESULTS FOCUS</h3>
                       </td>
                     </tr>
 
                     <tr>
-                      <td class="part3TdHght">
+                      <td id="tdEsat" class="part3TdHght">
                         <span class="part3FontSize">
                           {{
                             printEsatInfo[1][10].check_status == "true"
@@ -2530,10 +2530,10 @@
                           }}
                         </span>
                       </td>
-                      <td class="part3TdHght">
+                      <td id="tdEsat" class="part3TdHght">
                         <span class="part3FontSize">1</span>
                       </td>
-                      <td class="part3TdHght">
+                      <td id="tdEsat" class="part3TdHght">
                         <span class="part3FontSize">
                           Achieves results with optimal use of time and
                           resources most of the time.
@@ -2541,7 +2541,7 @@
                       </td>
                     </tr>
                     <tr>
-                      <td class="part3TdHght">
+                      <td id="tdEsat" class="part3TdHght">
                         <span class="part3FontSize">
                           {{
                             printEsatInfo[1][11].check_status == "true"
@@ -2550,10 +2550,10 @@
                           }}
                         </span>
                       </td>
-                      <td class="part3TdHght">
+                      <td id="tdEsat" class="part3TdHght">
                         <span class="part3FontSize">2</span>
                       </td>
-                      <td class="part3TdHght">
+                      <td id="tdEsat" class="part3TdHght">
                         <span class="part3FontSize">
                           Avoids rework, mistakes and wastage through effective
                           work methods by placing organizational needs before
@@ -2562,7 +2562,7 @@
                       </td>
                     </tr>
                     <tr>
-                      <td class="part3TdHght">
+                      <td id="tdEsat" class="part3TdHght">
                         <span class="part3FontSize">
                           {{
                             printEsatInfo[1][12].check_status == "true"
@@ -2571,10 +2571,10 @@
                           }}
                         </span>
                       </td>
-                      <td class="part3TdHght">
+                      <td id="tdEsat" class="part3TdHght">
                         <span class="part3FontSize">3</span>
                       </td>
-                      <td class="part3TdHght">
+                      <td id="tdEsat" class="part3TdHght">
                         <span class="part3FontSize">
                           Delivers error-free outputs most of the time by
                           conforming to standard operating procedures correctly
@@ -2585,7 +2585,7 @@
                       </td>
                     </tr>
                     <tr>
-                      <td class="part3TdHght">
+                      <td id="tdEsat" class="part3TdHght">
                         <span class="part3FontSize">
                           {{
                             printEsatInfo[1][13].check_status == "true"
@@ -2594,10 +2594,10 @@
                           }}
                         </span>
                       </td>
-                      <td class="part3TdHght">
+                      <td id="tdEsat" class="part3TdHght">
                         <span class="part3FontSize">4</span>
                       </td>
-                      <td class="part3TdHght">
+                      <td id="tdEsat" class="part3TdHght">
                         <span class="part3FontSize">
                           Expresses the desire to do better and may express
                           frustration at waste or efficiency. May focus on new
@@ -2606,7 +2606,7 @@
                       </td>
                     </tr>
                     <tr>
-                      <td class="part3TdHght">
+                      <td id="tdEsat" class="part3TdHght">
                         <span class="part3FontSize">
                           {{
                             printEsatInfo[1][14].check_status == "true"
@@ -2615,10 +2615,10 @@
                           }}
                         </span>
                       </td>
-                      <td class="part3TdHght">
+                      <td id="tdEsat" class="part3TdHght">
                         <span class="part3FontSize">5</span>
                       </td>
-                      <td class="part3TdHght">
+                      <td id="tdEsat" class="part3TdHght">
                         <span class="part3FontSize">
                           Makes specific changes in the system or in own work
                           methods to improve performance. Examples may include
@@ -2631,13 +2631,13 @@
                     </tr>
 
                     <tr>
-                      <td class="coreHeadHght" colspan="3">
+                      <td id="tdEsat" class="coreHeadHght" colspan="3">
                         <h3 class="coreHead">4. TEAMWORK</h3>
                       </td>
                     </tr>
 
                     <tr>
-                      <td class="part3TdHght">
+                      <td id="tdEsat" class="part3TdHght">
                         <span class="part3FontSize">
                           {{
                             printEsatInfo[1][15].check_status == "true"
@@ -2646,17 +2646,17 @@
                           }}
                         </span>
                       </td>
-                      <td class="part3TdHght">
+                      <td id="tdEsat" class="part3TdHght">
                         <span class="part3FontSize">1</span>
                       </td>
-                      <td class="part3TdHght">
+                      <td id="tdEsat" class="part3TdHght">
                         <span class="part3FontSize"
                           >Willingly does his/her share of responsibility.</span
                         >
                       </td>
                     </tr>
                     <tr>
-                      <td class="part3TdHght">
+                      <td id="tdEsat" class="part3TdHght">
                         <span class="part3FontSize">
                           {{
                             printEsatInfo[1][16].check_status == "true"
@@ -2665,10 +2665,10 @@
                           }}
                         </span>
                       </td>
-                      <td class="part3TdHght">
+                      <td id="tdEsat" class="part3TdHght">
                         <span class="part3FontSize">2</span>
                       </td>
-                      <td class="part3TdHght">
+                      <td id="tdEsat" class="part3TdHght">
                         <span class="part3FontSize">
                           Promotes collaboration and removes barriers to
                           teamwork and goal accomplishment across the
@@ -2677,7 +2677,7 @@
                       </td>
                     </tr>
                     <tr>
-                      <td class="part3TdHght">
+                      <td id="tdEsat" class="part3TdHght">
                         <span class="part3FontSize">
                           {{
                             printEsatInfo[1][17].check_status == "true"
@@ -2686,10 +2686,10 @@
                           }}
                         </span>
                       </td>
-                      <td class="part3TdHght">
+                      <td id="tdEsat" class="part3TdHght">
                         <span class="part3FontSize">3</span>
                       </td>
-                      <td class="part3TdHght">
+                      <td id="tdEsat" class="part3TdHght">
                         <span class="part3FontSize">
                           Applies negotiation principles in arriving at win-win
                           agreements.
@@ -2697,7 +2697,7 @@
                       </td>
                     </tr>
                     <tr>
-                      <td class="part3TdHght">
+                      <td id="tdEsat" class="part3TdHght">
                         <span class="part3FontSize">
                           {{
                             printEsatInfo[1][18].check_status == "true"
@@ -2706,10 +2706,10 @@
                           }}
                         </span>
                       </td>
-                      <td class="part3TdHght">
+                      <td id="tdEsat" class="part3TdHght">
                         <span class="part3FontSize">4</span>
                       </td>
-                      <td class="part3TdHght">
+                      <td id="tdEsat" class="part3TdHght">
                         <span class="part3FontSize"
                           >Drives consensus and team ownership of
                           decisions.</span
@@ -2717,7 +2717,7 @@
                       </td>
                     </tr>
                     <tr>
-                      <td class="part3TdHght">
+                      <td id="tdEsat" class="part3TdHght">
                         <span class="part3FontSize">
                           {{
                             printEsatInfo[1][19].check_status == "true"
@@ -2726,10 +2726,10 @@
                           }}
                         </span>
                       </td>
-                      <td class="part3TdHght">
+                      <td id="tdEsat" class="part3TdHght">
                         <span class="part3FontSize">5</span>
                       </td>
-                      <td class="part3TdHght">
+                      <td id="tdEsat" class="part3TdHght">
                         <span class="part3FontSize">
                           Works constructively and collaboratively with others
                           and across organizations to accomplish organizational
@@ -2739,13 +2739,13 @@
                     </tr>
 
                     <tr>
-                      <td class="coreHeadHght" colspan="3">
+                      <td id="tdEsat" class="coreHeadHght" colspan="3">
                         <h3 class="coreHead">5. SERVICE ORIENTATION</h3>
                       </td>
                     </tr>
 
                     <tr>
-                      <td class="part3TdHght">
+                      <td id="tdEsat" class="part3TdHght">
                         <span class="part3FontSize">
                           {{
                             printEsatInfo[1][20].check_status == "true"
@@ -2754,10 +2754,10 @@
                           }}
                         </span>
                       </td>
-                      <td class="part3TdHght">
+                      <td id="tdEsat" class="part3TdHght">
                         <span class="part3FontSize">1</span>
                       </td>
-                      <td class="part3TdHght">
+                      <td id="tdEsat" class="part3TdHght">
                         <span class="part3FontSize">
                           Can explain and articulate organizational directions,
                           issues and problems.
@@ -2765,7 +2765,7 @@
                       </td>
                     </tr>
                     <tr>
-                      <td class="part3TdHght">
+                      <td id="tdEsat" class="part3TdHght">
                         <span class="part3FontSize">
                           {{
                             printEsatInfo[1][21].check_status == "true"
@@ -2774,10 +2774,10 @@
                           }}
                         </span>
                       </td>
-                      <td class="part3TdHght">
+                      <td id="tdEsat" class="part3TdHght">
                         <span class="part3FontSize">2</span>
                       </td>
-                      <td class="part3TdHght">
+                      <td id="tdEsat" class="part3TdHght">
                         <span class="part3FontSize">
                           Takes personal responsibility for dealing with and/or
                           correcting customer service issues and concerns.
@@ -2785,7 +2785,7 @@
                       </td>
                     </tr>
                     <tr>
-                      <td class="part3TdHght">
+                      <td id="tdEsat" class="part3TdHght">
                         <span class="part3FontSize">
                           {{
                             printEsatInfo[1][22].check_status == "true"
@@ -2794,10 +2794,10 @@
                           }}
                         </span>
                       </td>
-                      <td class="part3TdHght">
+                      <td id="tdEsat" class="part3TdHght">
                         <span class="part3FontSize">3</span>
                       </td>
-                      <td class="part3TdHght">
+                      <td id="tdEsat" class="part3TdHght">
                         <span class="part3FontSize">
                           Initiates activities that promote advocacy for men and
                           women empowerment.
@@ -2805,7 +2805,7 @@
                       </td>
                     </tr>
                     <tr>
-                      <td class="part3TdHght">
+                      <td id="tdEsat" class="part3TdHght">
                         <span class="part3FontSize">
                           {{
                             printEsatInfo[1][23].check_status == "true"
@@ -2814,10 +2814,10 @@
                           }}
                         </span>
                       </td>
-                      <td class="part3TdHght">
+                      <td id="tdEsat" class="part3TdHght">
                         <span class="part3FontSize">4</span>
                       </td>
-                      <td class="part3TdHght">
+                      <td id="tdEsat" class="part3TdHght">
                         <span class="part3FontSize">
                           Participates in updating office vision, mission,
                           mandates and strategies based on DepEd strategies and
@@ -2826,7 +2826,7 @@
                       </td>
                     </tr>
                     <tr>
-                      <td class="part3TdHght">
+                      <td id="tdEsat" class="part3TdHght">
                         <span class="part3FontSize">
                           {{
                             printEsatInfo[1][24].check_status == "true"
@@ -2835,10 +2835,10 @@
                           }}
                         </span>
                       </td>
-                      <td class="part3TdHght">
+                      <td id="tdEsat" class="part3TdHght">
                         <span class="part3FontSize">5</span>
                       </td>
-                      <td class="part3TdHght">
+                      <td id="tdEsat" class="part3TdHght">
                         <span class="part3FontSize">
                           Develops and adopts services improvement program
                           through simplified procedures that will further
@@ -2848,13 +2848,13 @@
                     </tr>
 
                     <tr>
-                      <td class="coreHeadHght" colspan="3">
+                      <td id="tdEsat" class="coreHeadHght" colspan="3">
                         <h3 class="coreHead">6. INNOVATION</h3>
                       </td>
                     </tr>
 
                     <tr>
-                      <td class="part3TdHght">
+                      <td id="tdEsat" class="part3TdHght">
                         <span class="part3FontSize">
                           {{
                             printEsatInfo[1][25].check_status == "true"
@@ -2863,10 +2863,10 @@
                           }}
                         </span>
                       </td>
-                      <td class="part3TdHght">
+                      <td id="tdEsat" class="part3TdHght">
                         <span class="part3FontSize">1</span>
                       </td>
-                      <td class="part3TdHght">
+                      <td id="tdEsat" class="part3TdHght">
                         <span class="part3FontSize">
                           Examines the root cause of problems and suggests
                           effective solutions. Foster new ideas, processes and
@@ -2876,7 +2876,7 @@
                       </td>
                     </tr>
                     <tr>
-                      <td class="part3TdHght">
+                      <td id="tdEsat" class="part3TdHght">
                         <span class="part3FontSize">
                           {{
                             printEsatInfo[1][26].check_status == "true"
@@ -2885,10 +2885,10 @@
                           }}
                         </span>
                       </td>
-                      <td class="part3TdHght">
+                      <td id="tdEsat" class="part3TdHght">
                         <span class="part3FontSize">2</span>
                       </td>
-                      <td class="part3TdHght">
+                      <td id="tdEsat" class="part3TdHght">
                         <span class="part3FontSize">
                           Demonstrates an ability to think "beyond the box".
                           Continuosly focuses on improving personal productivity
@@ -2897,7 +2897,7 @@
                       </td>
                     </tr>
                     <tr>
-                      <td class="part3TdHght">
+                      <td id="tdEsat" class="part3TdHght">
                         <span class="part3FontSize">
                           {{
                             printEsatInfo[1][27].check_status == "true"
@@ -2906,10 +2906,10 @@
                           }}
                         </span>
                       </td>
-                      <td class="part3TdHght">
+                      <td id="tdEsat" class="part3TdHght">
                         <span class="part3FontSize">3</span>
                       </td>
-                      <td class="part3TdHght">
+                      <td id="tdEsat" class="part3TdHght">
                         <span class="part3FontSize">
                           Promote a creative climate and inspires co-workers to
                           develop original ideas or solutions.
@@ -2917,7 +2917,7 @@
                       </td>
                     </tr>
                     <tr>
-                      <td class="part3TdHght">
+                      <td id="tdEsat" class="part3TdHght">
                         <span class="part3FontSize">
                           {{
                             printEsatInfo[1][28].check_status == "true"
@@ -2926,10 +2926,10 @@
                           }}
                         </span>
                       </td>
-                      <td class="part3TdHght">
+                      <td id="tdEsat" class="part3TdHght">
                         <span class="part3FontSize">4</span>
                       </td>
-                      <td class="part3TdHght">
+                      <td id="tdEsat" class="part3TdHght">
                         <span class="part3FontSize">
                           Translates creative thinking into tangible changes and
                           solutions that improve the work unit and organization.
@@ -2937,7 +2937,7 @@
                       </td>
                     </tr>
                     <tr>
-                      <td class="part3TdHght">
+                      <td id="tdEsat" class="part3TdHght">
                         <span class="part3FontSize">
                           {{
                             printEsatInfo[1][29].check_status == "true"
@@ -2946,10 +2946,10 @@
                           }}
                         </span>
                       </td>
-                      <td class="part3TdHght">
+                      <td id="tdEsat" class="part3TdHght">
                         <span class="part3FontSize">5</span>
                       </td>
-                      <td class="part3TdHght">
+                      <td id="tdEsat" class="part3TdHght">
                         <span class="part3FontSize">
                           Uses ingenious methods to accomplish responsibilities.
                           Demonstrates resourcefulness and the ability to
@@ -2982,14 +2982,14 @@
       </v-tab-item>
 
       <v-tab-item :key="6" value="esat_card" v-if="esatCard">
-        <v-container class="p-5" v-if="noData">
-          <v-alert elevation="24" color="info">
-            <h1
+        <v-container style="height:350px" v-if="noData">
+          <v-alert  text dense color="teal" border="left" class="white--text" >
+            <h1 
               style="
-                font-size: 30px;
+                font-size: 20px;
                 text-align: center;
-                padding-top: 10px;
-                padding-bottom: 10px;
+                padding:10px
+
               "
             >
               No Data Yet!
@@ -3037,21 +3037,21 @@
                         <template>
                           <tbody>
                             <tr>
-                              <td class="esatCard">Name:</td>
-                              <td colspan="2">
+                              <td id="tdEsat" class="esatCard">Name:</td>
+                              <td id="tdEsat" colspan="2">
                                 {{ row.name_of_employee }}
                               </td>
                             </tr>
                             <tr>
-                              <td class="esatCard">School:</td>
-                              <td colspan="2">
+                              <td id="tdEsat" class="esatCard">School:</td>
+                              <td id="tdEsat" colspan="2">
                                 {{ row.school_name }}
                               </td>
                             </tr>
                             <tr>
-                              <td class="esatCard">School Year:</td>
-                              <td>{{ row.school_year }}</td>
-                              <td rowspan="2" class="text-center">
+                              <td id="tdEsat" class="esatCard">School Year:</td>
+                              <td id="tdEsat">{{ row.school_year }}</td>
+                              <td id="tdEsat" rowspan="2" class="text-center">
                                 <!-- <v-btn dense @click="viewPrint(esatInfo)"> View </v-btn> -->
                                 <v-btn
                                   dense
@@ -3068,8 +3068,8 @@
                               </td>
                             </tr>
                             <tr>
-                              <td class="esatCard">Date:</td>
-                              <td>{{ dateCreate(row.created_at) }}</td>
+                              <td id="tdEsat" class="esatCard">Date:</td>
+                              <td id="tdEsat">{{ dateCreate(row.created_at) }}</td>
                             </tr>
                           </tbody>
                         </template>
@@ -3115,21 +3115,21 @@
                         <template>
                           <tbody>
                             <tr>
-                              <td class="esatCard">Name:</td>
-                              <td colspan="2">
+                              <td id="tdEsat" class="esatCard">Name:</td>
+                              <td id="tdEsat" colspan="2">
                                 {{ row.name_of_employee }}
                               </td>
                             </tr>
                             <tr>
-                              <td class="esatCard">School:</td>
-                              <td colspan="2">
+                              <td id="tdEsat" class="esatCard">School:</td>
+                              <td id="tdEsat" colspan="2">
                                 {{ row.school_name }}
                               </td>
                             </tr>
                             <tr>
-                              <td class="esatCard">School Year:</td>
-                              <td>{{ row.school_year }}</td>
-                              <td rowspan="2" class="text-center">
+                              <td id="tdEsat" class="esatCard">School Year:</td>
+                              <td id="tdEsat">{{ row.school_year }}</td>
+                              <td id="tdEsat" rowspan="2" class="text-center">
                                 <!-- <v-btn dense @click="viewPrint(esatInfo)"> View </v-btn> -->
                                 <v-btn
                                   dense
@@ -3146,8 +3146,8 @@
                               </td>
                             </tr>
                             <tr>
-                              <td class="esatCard">Date:</td>
-                              <td>{{ dateCreate(row.created_at) }}</td>
+                              <td id="tdEsat" class="esatCard">Date:</td>
+                              <td id="tdEsat">{{ dateCreate(row.created_at) }}</td>
                             </tr>
                           </tbody>
                         </template>

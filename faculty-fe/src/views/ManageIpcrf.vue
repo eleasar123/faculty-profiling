@@ -1,5 +1,6 @@
-<template>
-  <v-container>
+<template >
+  <v-container class="ipcrfContainer ma-0 pa-0" fluid>
+    <!-- Admin ipcrf table -->
     <v-container v-if="showTable == true">
       <v-card>
         <v-card-title>
@@ -31,9 +32,9 @@
         </v-data-table>
       </v-card>
     </v-container>
-    <v-container class="pa-4" v-if="show == true && showTable == false">
+    <v-container class="pa-2 ma-0" v-if="show == true && showTable == false" fluid>
       <!-- START OF ENCODING -->
-      <!--  -->
+
       <!-- END OF ENCODING -->
       <!-- start of part 1 display -->
       <v-tabs>
@@ -58,13 +59,13 @@
                 </td>
               </tr>
               <tr class="row1">
-                <td id="tdata" style="line-height: 5px">
+                <td id="tdata" style="; width: 170px">
                   <p>Name of Employee:</p>
                 </td>
-                <td id="tdata" style="width: 20%">
+                <td id="tdata" style="width: 200px">
                   <p>{{ ipcrfDemographicProfile.name_of_employee }}</p>
                 </td>
-                <td id="tdata" style="line-height: 5px">
+                <td id="tdata" style="; width: 170px">
                   <p>Name of Rater:</p>
                 </td>
                 <td id="tdata" style="width: 20%">
@@ -72,13 +73,13 @@
                 </td>
               </tr>
               <tr class="row1">
-                <td id="tdata" style="line-height: 5px">
+                <td id="tdata" style="">
                   <p>Position:</p>
                 </td>
-                <td id="tdata" style="line-height: 5px">
+                <td id="tdata" style="">
                   <p>{{ ipcrfDemographicProfile.position }}</p>
                 </td>
-                <td id="tdata" style="line-height: 5px">
+                <td id="tdata" style="">
                   <p>Position:</p>
                 </td>
                 <td id="tdata" style="">
@@ -86,57 +87,73 @@
                 </td>
               </tr>
               <tr class="row1">
-                <td id="tdata" style="line-height: 5px">
+                <td id="tdata" style="">
                   <p>Bureau/Center/Service/Division:</p>
                 </td>
-                <td id="tdata" style="line-height: 5px">
+                <td id="tdata" style="">
                   <p>{{ ipcrfDemographicProfile.division }}</p>
                 </td>
-                <td id="tdata" style="line-height: 5px">
+                <td id="tdata" style="">
                   <p>Date of Review::</p>
                 </td>
-                <td id="tdata" style="line-height: 5px">
+                <td id="tdata" style="">
                   <p>{{ ipcrfDemographicProfile.date_of_review }}</p>
                 </td>
               </tr>
               <tr class="row1">
-                <td id="tdata" style="line-height: 5px">
+                <td id="tdata" style="">
                   <p>Rating Period:</p>
                 </td>
-                <td id="tdata" style="line-height: 5px">
+                <td id="tdata" style="">
                   <p>{{ ipcrfDemographicProfile.rating_period }}</p>
                 </td>
-                <td id="tdata" colspan="2" style="line-height: 5px"></td>
+                <td id="tdata" colspan="2" style=""></td>
               </tr>
             </table>
             <br />
-            <div class="ePart2">
+            <!-- admin view ipcrf -->
+            <div class="ePart2 ma-0 pa-0s" fluid >
               <table
                 id="table"
-                style="width: 100%; text-align: center; font-weight: bold"
+                style="width: 100%; text-align: center;  font-size:10px "
               >
-                <tr class="row1 mt-2">
-                  <td id="tdata" colspan="6" style="line-height: 5px">
+               <colgroup>
+                <col id="colsIpcrfOne" />
+                <col id="colsIpcrfTwo" />
+                <!-- <col width="80px" style="background-color:yellow !important;border:solid 2px yellow"/> -->
+                <col id="colsIpcrfThree" />
+                <col id="colsIpcrfFour" />
+                <col id="colsIpcrfFive" />
+                <col id="colsIpcrfSix" />
+                <col id="colsIpcrfSeven" />
+                <col id="colsIpcrfEight" />
+                <col id="colsIpcrfNine" />
+                <col id="colsIpcrfTen" />
+                <col id="colsIpcrfEleven" />
+                <col id="colsIpcrfTwelve" />
+              </colgroup>
+                <tr class="row1 mt-2" style="font-weight: bold">
+                  <td id="tdata" colspan="6" style="">
                     <p>TO BE FILLED OUT DURING PLANNING</p>
                   </td>
-                  <td id="tdata" colspan="11" style="line-height: 5px">
+                  <td id="tdata" colspan="6" style="">
                     <p>TO BE FILLED OUT DURING EVALUATION</p>
                   </td>
                 </tr>
                 <tr
                   class="row1 light-green lighten-2"
-                  style="width: 100%; text-align: center; font-weight: bold"
+                  style="width: 100%; text-align: center; font-weight: bold  "
                 >
-                  <td id="tdata" rowspan="2" style="line-height: 5px">
+                  <td id="tdata" rowspan="2" style="">
                     <p>MFO's</p>
                   </td>
-                  <td id="tdata" rowspan="2" style="line-height: 5px">
+                  <td id="tdata" rowspan="2" style="">
                     <p>KRAs</p>
                   </td>
-                  <td id="tdata" rowspan="2" style="line-height: 5px">
+                  <td id="tdata" rowspan="2" style="">
                     <p>Objectives</p>
                   </td>
-                  <td id="tdata" rowspan="2" style="line-height: 5px">
+                  <td id="tdata" rowspan="2" style="">
                     <p>Timeline</p>
                   </td>
                   <td id="tdata" rowspan="2">
@@ -145,18 +162,18 @@
                   <td
                     id="tdata"
                     colspan="6"
-                    rowspan="1"
-                    style="line-height: 5px"
+                   
+                    style=""
                   >
                     <p>Performance Indicator</p>
                   </td>
                   <td id="tdata" rowspan="2">
                     <p>Actual Result</p>
                   </td>
-                  <td id="tdata" colspan="4" style="line-height: 5px">
+                  <td id="tdata" colspan="4" style="">
                     <p>Rating</p>
                   </td>
-                  <td id="tdata" rowspan="2" style="line-height: 5px">
+                  <td id="tdata" rowspan="2" style="">
                     <p>Score</p>
                   </td>
                 </tr>
@@ -164,10 +181,10 @@
                   class="row1 light-green lighten-2"
                   style="text-align: center; font-weight: bold"
                 >
-                  <td id="tdata" style="line-height: 5px">
+                  <td id="tdata" style="">
                     <p>QET</p>
                   </td>
-                  <td id="tdata" style="line-height: 5px">
+                  <td id="tdata" style="">
                     <p>
                       Outstanding <br /><br /><br />
                       <br />5
@@ -180,21 +197,21 @@
                       4
                     </p>
                   </td>
-                  <td id="tdata" style="line-height: 5px">
+                  <td id="tdata" style="">
                     <p>
                       Satisfactory<br /><br />
                       <br /><br />
                       3
                     </p>
                   </td>
-                  <td id="tdata" style="line-height: 5px">
+                  <td id="tdata" style="">
                     <p>
                       Unsatisfactory <br /><br />
                       <br /><br />
                       2
                     </p>
                   </td>
-                  <td id="tdata" style="line-height: 5px">
+                  <td id="tdata" style="">
                     <p>
                       Poor <br /><br />
                       <br />
@@ -202,16 +219,16 @@
                       1
                     </p>
                   </td>
-                  <td id="tdata" style="line-height: 5px">
+                  <td id="tdata" style="">
                     <p>Q</p>
                   </td>
-                  <td id="tdata" style="line-height: 5px">
+                  <td id="tdata" style="">
                     <p>E</p>
                   </td>
-                  <td id="tdata" style="line-height: 5px">
+                  <td id="tdata" style="">
                     <p>T</p>
                   </td>
-                  <td id="tdata" style="line-height: 5px">
+                  <td id="tdata" style="">
                     <p>AVE</p>
                   </td>
                 </tr>
@@ -268,7 +285,7 @@
                       evidence was shown
                     </p>
                   </td>
-                  <td id="tdata" rowspan="1" class="actualResult">
+                  <td id="tdata" class="actualResult">
                     <p>
                       {{
                         ipcrfEncodingPart1[0]
@@ -398,7 +415,7 @@
                   <td id="tdata" class="poor1">
                     <p>No acceptable evidence was shown</p>
                   </td>
-                  <td id="tdata" rowspan="1" class="actualResult">
+                  <td id="tdata" class="actualResult">
                     <p>
                       {{
                         ipcrfEncodingPart1[1]
@@ -523,7 +540,7 @@
                   <td id="tdata" class="poor1">
                     <p>No acceptable evidence was shown</p>
                   </td>
-                  <td id="tdata" rowspan="1" class="actualResult">
+                  <td id="tdata" class="actualResult">
                     <p>
                       {{
                         ipcrfEncodingPart1[2]
@@ -655,7 +672,7 @@
                   <td id="tdata" class="poor1">
                     <p>No acceptable evidence was shown</p>
                   </td>
-                  <td id="tdata" rowspan="1" class="actualResult">
+                  <td id="tdata" class="actualResult">
                     <p>
                       {{
                         ipcrfEncodingPart1[3]
@@ -784,7 +801,7 @@
                   <td id="tdata" class="poor1">
                     <p>No acceptable evidence was shown</p>
                   </td>
-                  <td id="tdata" rowspan="1" class="actualResult">
+                  <td id="tdata" class="actualResult">
                     <p>
                       {{
                         ipcrfEncodingPart1[4]
@@ -902,7 +919,7 @@
                   <td id="tdata" class="poor1">
                     <p>No evidence was shown</p>
                   </td>
-                  <td id="tdata" rowspan="1" class="actualResult">
+                  <td id="tdata" class="actualResult">
                     <p>
                       {{
                         ipcrfEncodingPart1[5]
@@ -1040,7 +1057,7 @@
                       evidence was shown
                     </p>
                   </td>
-                  <td id="tdata" rowspan="1" class="actualResult">
+                  <td id="tdata" class="actualResult">
                     <p>
                       {{
                         ipcrfEncodingPart1[6]
@@ -1163,7 +1180,7 @@
                   <td id="tdata" class="poor1">
                     <p>No acceptable evidence was shown</p>
                   </td>
-                  <td id="tdata" rowspan="1" class="actualResult">
+                  <td id="tdata" class="actualResult">
                     <p>
                       {{
                         ipcrfEncodingPart1[7]
@@ -1301,7 +1318,7 @@
                   <td id="tdata" class="poor1">
                     <p>No acceptable evidence was shown</p>
                   </td>
-                  <td id="tdata" rowspan="1" class="actualResult">
+                  <td id="tdata" class="actualResult">
                     <p>
                       {{
                         ipcrfEncodingPart1[8]
@@ -1416,7 +1433,7 @@
                   <td id="tdata" class="poor1">
                     <p>No acceptable evidence was shown</p>
                   </td>
-                  <td id="tdata" rowspan="1" class="actualResult">
+                  <td id="tdata" class="actualResult">
                     <p>
                       {{
                         ipcrfEncodingPart1[9]
@@ -1533,7 +1550,7 @@
                   <td id="tdata" class="poor1">
                     <p>No acceptable evidence was shown</p>
                   </td>
-                  <td id="tdata" rowspan="1" class="actualResult">
+                  <td id="tdata" class="actualResult">
                     <p>
                       {{
                         ipcrfEncodingPart1[10]
@@ -1679,7 +1696,7 @@
                   <td id="tdata" class="poor1">
                     <p>No acceptable evidence was shown</p>
                   </td>
-                  <td id="tdata" rowspan="1" class="actualResult">
+                  <td id="tdata" class="actualResult">
                     <p>
                       {{
                         ipcrfEncodingPart1[11]
@@ -1858,13 +1875,269 @@
               </v-row>
             </div>
 
-            <br /><br />
-          </v-container>
-          <v-btn
+            <br />
+               <v-btn
             v-print="printObjPart1"
             style="margin-left: 45%; margin-right: auto"
             >Print</v-btn
-          >
+          ><br />
+          </v-container>
+       
+        </v-tab-item>
+         <v-tab>Part 1</v-tab>
+        <v-tab-item>
+         <v-container fluid id="printMePart1">
+            <table id="table" style="width: 100%">
+              <tr class="row1">
+                <td
+                  id="tdata"
+                  colspan="6"
+                  class="pt-4"
+                  style="background-color: #ddd9c3"
+                >
+                  <p style="text-align: center">
+                    <b
+                      >INDIVIDUAL PERFORMANCE COMMITMENT AND REVIEW FORM (IPCRF)
+                      for Teacher I-III, SPET I-IV, Special Science Teacher
+                      I-II</b
+                    >
+                  </p>
+                </td>
+              </tr>
+              <tr class="row1">
+                <td id="tdata" style="; width: 170px">
+                  <p>Name of Employee:</p>
+                </td>
+                <td id="tdata" style="width: 200px">
+                  <p>{{ ipcrfDemographicProfile.name_of_employee }}</p>
+                </td>
+                <td id="tdata" style="; width: 170px">
+                  <p>Name of Rater:</p>
+                </td>
+                <td id="tdata" style="width: 20%">
+                  <p>{{ ipcrfDemographicProfile.rater }}</p>
+                </td>
+              </tr>
+              <tr class="row1">
+                <td id="tdata" style="">
+                  <p>Position:</p>
+                </td>
+                <td id="tdata" style="">
+                  <p>{{ ipcrfDemographicProfile.position }}</p>
+                </td>
+                <td id="tdata" style="">
+                  <p>Position:</p>
+                </td>
+                <td id="tdata" style="">
+                  <p>{{ ipcrfDemographicProfile.rater_position }}</p>
+                </td>
+              </tr>
+              <tr class="row1">
+                <td id="tdata" style="">
+                  <p>Bureau/Center/Service/Division:</p>
+                </td>
+                <td id="tdata" style="">
+                  <p>{{ ipcrfDemographicProfile.division }}</p>
+                </td>
+                <td id="tdata" style="">
+                  <p>Date of Review::</p>
+                </td>
+                <td id="tdata" style="">
+                  <p>{{ ipcrfDemographicProfile.date_of_review }}</p>
+                </td>
+              </tr>
+              <tr class="row1">
+                <td id="tdata" style="">
+                  <p>Rating Period:</p>
+                </td>
+                <td id="tdata" style="">
+                  <p>{{ ipcrfDemographicProfile.rating_period }}</p>
+                </td>
+                <td id="tdata" colspan="2" style=""></td>
+              </tr>
+            </table>
+            <br>
+             <div class="ePart">
+              <table  id="table" >
+<tr
+                  class="row1 light-green lighten-2"
+                  style="width: 100%;  "
+                >
+                  <td id="tdata" rowspan="2" style="">
+                    <p>MFO's</p>
+                  </td>
+                  <td id="tdata" rowspan="2" style="">
+                    <p>KRAs</p>
+                  </td>
+                  <td id="tdata" rowspan="2" style="">
+                    <p>Objectives</p>
+                  </td>
+                  <td id="tdata" rowspan="2" style="">
+                    <p>Timeline</p>
+                  </td>
+                  <td id="tdata" rowspan="2">
+                    <p>Weight per KRA</p>
+                  </td>
+                  <td
+                    id="tdata"
+                    colspan="6"
+                   
+                    style=""
+                  >
+                    <p>Performance Indicator</p>
+                  </td>
+                  <td id="tdata" rowspan="2">
+                    <p>Actual Result</p>
+                  </td>
+                  <td id="tdata" colspan="4" style="">
+                    <p>Rating</p>
+                  </td>
+                  <td id="tdata" rowspan="2" style="">
+                    <p>Score</p>
+                  </td>
+                </tr>
+                <tr
+                  class="row1 light-green lighten-2"
+                
+                >
+                  <td id="tdata" style="">
+                    <p>QET</p>
+                  </td>
+                  <td id="tdata" style="">
+                    <p>
+                      Outstanding 
+             5
+                    </p>
+                  </td>
+                  <td id="tdata" >
+                    <p>
+                      Very Satisfactory
+               
+                      4
+                    </p>
+                  </td>
+                  <td id="tdata" style="">
+                    <p>
+                      Satisfactory
+             
+                      3
+                    </p>
+                  </td>
+                  <td id="tdata" style="">
+                    <p>
+                      Unsatisfactory
+               
+                      2
+                    </p>
+                  </td>
+                  <td id="tdata" style="">
+                    <p>
+                      Poor <br /><br />
+              
+                      1
+                    </p>
+                  </td>
+                  <td id="tdata" style="">
+                    <p>Q</p>
+                  </td>
+                  <td id="tdata" style="">
+                    <p>E</p>
+                  </td>
+                  <td id="tdata" style="">
+                    <p>T</p>
+                  </td>
+                  <td id="tdata" style="">
+                    <p>AVE</p>
+                  </td>
+                </tr>
+                 <tr class="row_1">
+                  <td id="tdata" rowspan="36">
+                    <p>Basic Education Services</p>
+                  </td>
+                  <td id="tdata" rowspan="9">
+                    <p>1. Content Knowledge and Pedagogy</p>
+                  </td>
+                  <td id="tdata" rowspan="3">
+                    <p>
+                      1. Applied knowledge of content within and across
+                      curriculum teaching areas.
+                    </p>
+                  </td>
+                  <td id="tdata" class="timelineObj1" rowspan="3">
+                    <p></p>
+                  </td>
+                  <td id="tdata" class="weightPerKra" rowspan="9">
+                    <p>24%</p>
+                  </td>
+                  <td id="tdata" class="quality1">
+                    <p>Quality</p>
+                  </td>
+                  <td id="tdata" class="outstanding1">
+                    <p>
+                      Demonstrated Level 7 in Objective 1 as shown in COT rating
+                      sheets/interobserver agreement forms
+                    </p>
+                  </td>
+                  <td id="tdata" class="verySatisfactory1">
+                    <p>
+                      Demonstrated Level 6 in Objective 1 as shown in COT rating
+                      sheets/interobserver agreement forms
+                    </p>
+                  </td>
+                  <td id="tdata" class="satisfactory1">
+                    <p>
+                      Demonstrated Level 5 in Objective 1 as shown in COT rating
+                      sheets/interobserver agreement forms
+                    </p>
+                  </td>
+                  <td id="tdata" class="unsatisfactory1">
+                    <p>
+                      Demonstrated Level 4 in Objective 1 as shown in COT rating
+                      sheets/interobserver agreement forms
+                    </p>
+                  </td>
+                  <td id="tdata" class="poor1">
+                    <p>
+                      Demonstrated Level 3 in Objective 1 as shown in COT rating
+                      sheets/interobserver agreement forms or No acceptable
+                      evidence was shown
+                    </p>
+                  </td>
+                  <td id="tdata" class="actualResult">
+                    <p>
+                      {{
+                        ipcrfEncodingPart1[0]
+                          .ipcrf_numerical_ratings_adjectival_rating
+                      }}
+                    </p>
+                  </td>
+                  <td id="tdata" rowspan="3" class="q1">
+                    <p>{{ ipcrfEncodingPart1[0].ipcrf_numerical_ratings_q }}</p>
+                  </td>
+                  <td id="tdata" rowspan="3" class="e1 blue-grey darken-4">
+                    <p></p>
+                  </td>
+                  <td id="tdata" rowspan="3" class="t1 blue-grey darken-4">
+                    <p></p>
+                  </td>
+                  <td id="tdata" rowspan="3" class="ave1">
+                    <p>
+                      {{
+                        ipcrfEncodingPart1[0].ipcrf_numerical_ratings_average
+                      }}
+                    </p>
+                  </td>
+                  <td id="tdata" rowspan="3" class="score1">
+                    <p>
+                      {{ ipcrfEncodingPart1[0].ipcrf_numerical_ratings_score }}
+                    </p>
+                  </td>
+                </tr>
+              </table>
+                </div>
+      </v-container>
+            <br />
+            
         </v-tab-item>
         <v-tab>Part II</v-tab>
         <v-tab-item>
@@ -1881,7 +2154,7 @@
             </tr>
 
             <tr class="row1">
-              <td id="tdata" colspan="6" style="line-height: 5px">
+              <td id="tdata" colspan="6" style="">
                 <p>
                   Instructions: Please indicate the number of competency
                   indicators that you demonstrated during the performance cycle.
@@ -2119,7 +2392,7 @@
                 <p>Objectives</p>
               </td>
               <td id="tdata" rowspan="2"><p>Weight per Objective</p></td>
-              <td id="tdata" rowspan="1" colspan=" 4">
+              <td id="tdata" colspan=" 4">
                 <p>Numerical Ratings</p>
               </td>
               <td id="tdata" rowspan="2">
@@ -2655,7 +2928,7 @@
                   id="tdata"
                   colspan="6"
                   class="pt-4 grey lighten-2"
-                  style="line-height: 5px"
+                  style=""
                 >
                   <p>A. Core Competencies</p>
                 </td>
@@ -2689,7 +2962,7 @@
                   id="tdata"
                   colspan="6"
                   class="grey lighten-2"
-                  style="line-height: 5px"
+                  style=""
                 >
                   <p>B. Core Behavioral</p>
                 </td>
@@ -2813,7 +3086,10 @@
         Saved Successfully!
       </v-alert>
       <v-btn @click="back" v-if="edit == true">Back</v-btn>
-      <v-card class="pa-0 pa-0 ma-1" width="100vw">
+
+
+      <!-- Input Encoding Part -->
+      <v-card class="pa-0 pa-0 ma-1" width="100%">
         <v-tabs>
           <!-- Encoding Page -->
           <v-tab> Encoding</v-tab>
@@ -2869,9 +3145,9 @@
               <v-card>
                 <v-simple-table
                   height="auto"
-                  class="pa-0 pa-0 ma-5"
-                  width="100vw"
-                  max-width="100vw"
+                  class="pa-0 pa-0 ma-3"
+                  width="100%"
+           
                 >
                   <template v-slot:default>
                     <tbody class="text-center" color="secondary">
@@ -3264,9 +3540,11 @@
               </v-card>
             </v-form>
             <!-- START OF KRA TABLE -->
+           
             <v-form ref="part1Admin">
               <v-container fluid>
-                <v-simple-table width="100vw">
+                 <div class="inputEncoding">
+                <v-simple-table>
                   <colgroup>
                     <col id="col1"><col id="col2"><col id="col3"><col id="col4"><col id="col5"><col id="col1">
                     <col id="col6"><col id="col7"><col id="col8"><col id="col9"><col id="col10">
@@ -3274,36 +3552,36 @@
                   <!-- <v-form ref="part"></v-form> -->
                   <tr class="light-green lighten-2">
                     <td id="tdata" rowspan="3"><p>KRA</p></td>
-                    <td id="tdata" rowspan="3">
+                    <td id="tdata" rowspan="3" colspan="2">
                       <p>Weight per KRA</p>
                     </td>
                     <td id="tdata" rowspan="3">
                       <p>Objectives</p>
                     </td>
                     <td id="tdata" rowspan="3"><p>Weight per Objective</p></td>
-                    <td id="tdata" rowspan="3">
+                    <td id="tdata" rowspan="3" colspan="3">
                       <p>COT Indicator No.</p>
                     </td>
-                    <td id="tdata" colspan="2" rowspan="1"><p>COT 1</p></td>
-                    <td id="tdata" colspan="2" rowspan="1"><p>COT 2</p></td>
-                    <td id="tdata" colspan="2" rowspan="1"><p>COT 3</p></td>
-                    <td id="tdata" colspan="2" rowspan="1"><p>COT 4</p></td>
-                    <td id="tdata" rowspan="3">
+                    <td id="tdata" colspan="8"><p>COT 1</p></td>
+                    <td id="tdata" colspan="8"><p>COT 2</p></td>
+                    <td id="tdata"  class=" pa-4" colspan="2"><p>COT 3</p></td>
+                    <td id="tdata"  class=" pa-4"  colspan="2"><p>COT 4</p></td>
+                    <td id="tdata" rowspan="3" colspan="8" class="pa-10">
                       <p>AVE</p>
                     </td>
 
-                    <td id="tdata" rowspan="2" colspan=" 4">
+                    <td id="tdata"  rowspan="2" colspan="24">
                       <p>IPCRF Numerical Ratings</p>
                     </td>
-                    <td id="tdata" rowspan="3">
+                    <td id="tdata" class="pa-8" rowspan="3" colspan="6">
                       <p>Score</p>
                     </td>
-                    <td id="tdata" rowspan="3">
+                    <td id="tdata" class="pa-6" rowspan="3" colspan="6">
                       <p>Adjectival Rating</p>
                     </td>
                   </tr>
                   <tr>
-                    <td id="tdata" colspan="2" rowspan="1">
+                    <td id="tdata" colspan="8" >
                       <v-select
                         :items="subjectTaughtItems"
                         v-model="cot1SubjectsTaught"
@@ -3315,7 +3593,7 @@
                         class="text-center pt-6"
                       ></v-select>
                     </td>
-                    <td id="tdata" colspan="2" rowspan="1">
+                    <td id="tdata" colspan="8" >
                       <v-select
                         :items="subjectTaughtItems"
                         v-model="cot2SubjectsTaught"
@@ -3329,76 +3607,53 @@
                     </td>
                     <td
                       id="tdata"
-                      colspan="2"
-                      rowspan="1"
+                      colspan="4"
+                      
                       class="grey darken-2"
                     >
                       <p></p>
                     </td>
-                    <td
+                    <!-- <td
                       id="tdata"
-                      colspan="2"
-                      rowspan="1"
+                      colspan="4"
+                      
                       class="grey darken-2"
                     >
                       <p></p>
-                    </td>
+                    </td> -->
                   </tr>
                   <tr>
-                    <td id="tdata" colspan="1" rowspan="1"><p>Rating</p></td>
-                    <td id="tdata" colspan="1" rowspan="1"><p>RPMS 5-pt</p></td>
-                    <td id="tdata" colspan="1" rowspan="1"><p>Rating</p></td>
-                    <td id="tdata" colspan="1" rowspan="1"><p>RPMS 5-pt</p></td>
+                    <td id="tdata"  class=" pa-4" colspan="4" ><p>Rating</p></td>
+                    <td id="tdata"  class=" pa-4"  colspan="4" ><p>RPMS 5-pt</p></td>
+                    <td id="tdata"  class=" pa-4"  colspan="3" ><p>Rating</p></td>
+                    <td id="tdata"  class=" pa-4"  colspan="5" ><p>RPMS 5-pt</p></td>
                     <td
                       id="tdata"
-                      colspan="1"
-                      rowspan="1"
+                      colspan="4"
+                      
                       class="grey darken-2"
                     >
                       <p></p>
                     </td>
-                    <td
-                      id="tdata"
-                      colspan="1"
-                      rowspan="1"
-                      class="grey darken-2"
-                    >
-                      <p></p>
-                    </td>
-                    <td
-                      id="tdata"
-                      colspan="1"
-                      rowspan="1"
-                      class="grey darken-2"
-                    >
-                      <p></p>
-                    </td>
-                    <td
-                      id="tdata"
-                      colspan="1"
-                      rowspan="1"
-                      class="grey darken-2"
-                    >
-                      <p></p>
-                    </td>
-                    <td id="tdata" colspan="1" rowspan="1"><p>Q</p></td>
-                    <td id="tdata" colspan="1" rowspan="1"><p>E</p></td>
-                    <td id="tdata" colspan="1" rowspan="1"><p>T</p></td>
-                    <td id="tdata" colspan="1" rowspan="1"><p>AVE</p></td>
+                  
+                    <td id="tdata"  class="pa-10" colspan="8" ><p>Q</p></td>
+                    <td id="tdata"   class="pa-10" colspan="4"  ><p>E</p></td>
+                    <td id="tdata" class="pa-10"  colspan="4"  ><p>T</p></td>
+                    <td id="tdata"  class="pa-10" colspan="4" ><p>AVE</p></td>
                   </tr>
                   <tr>
-                    <td id="tdata" rowspan="3"><p>KRA</p></td>
-                    <td id="tdata" rowspan="3">
+                    <td id="tdata" rowspan="3"><p>KRA 1  </p></td>
+                    <td id="tdata" rowspan="3" colspan="2">
                       <p>24%</p>
                     </td>
-                    <td id="tdata" colspan="1" rowspan="1">
+                    <td id="tdata" colspan="1" >
                       <p>Objective 1</p>
                     </td>
-                    <td id="tdata" colspan="1" rowspan="1">
+                    <td id="tdata" colspan="1" >
                       <p>8%</p>
                       <p></p>
                     </td>
-                    <td id="tdata" colspan="1" rowspan="1">
+                    <td id="tdata" colspan="3" >
                       <v-text-field
                         v-model="cot1IndicatorObjNo1"
                         :rules="requiredField"
@@ -3413,7 +3668,7 @@
                       >
                       </v-text-field>
                     </td>
-                    <td id="tdata" colspan="1" rowspan="1">
+                    <td id="tdata" colspan="4" >
                       <v-text-field
                         v-model="cot1RatingObjNo1"
                         :rules="requiredField"
@@ -3426,7 +3681,7 @@
                       >
                       </v-text-field>
                     </td>
-                    <td id="tdata" colspan="1" rowspan="1">
+                    <td id="tdata" colspan="4" >
                       <v-text-field
                         v-model="cot1RpmsObjNo1"
                         :rules="requiredField"
@@ -3439,7 +3694,7 @@
                       >
                       </v-text-field>
                     </td>
-                    <td id="tdata" colspan="1" rowspan="1">
+                    <td id="tdata" colspan="3" >
                       <v-text-field
                         v-model="cot2RatingObjNo1"
                         :rules="requiredField"
@@ -3452,7 +3707,7 @@
                       >
                       </v-text-field>
                     </td>
-                    <td id="tdata" colspan="1" rowspan="1">
+                    <td id="tdata" colspan="5" >
                       <v-text-field
                         v-model="cot2RpmsObjNo1"
                         :rules="requiredField"
@@ -3467,8 +3722,16 @@
                     </td>
                     <td
                       id="tdata"
-                      colspan="1"
-                      rowspan="1"
+                      colspan="4"
+                      
+                      class="grey darken-2"
+                    >
+                      <p></p>
+                    </td>
+                   <!--  <td
+                      id="tdata"
+                      colspan="4"
+                      
                       class="grey darken-2"
                     >
                       <p></p>
@@ -3476,7 +3739,7 @@
                     <td
                       id="tdata"
                       colspan="1"
-                      rowspan="1"
+                      
                       class="grey darken-2"
                     >
                       <p></p>
@@ -3484,20 +3747,12 @@
                     <td
                       id="tdata"
                       colspan="1"
-                      rowspan="1"
+                      
                       class="grey darken-2"
                     >
                       <p></p>
-                    </td>
-                    <td
-                      id="tdata"
-                      colspan="1"
-                      rowspan="1"
-                      class="grey darken-2"
-                    >
-                      <p></p>
-                    </td>
-                    <td id="tdata" colspan="1" rowspan="1">
+                    </td> -->
+                    <td id="tdata" colspan="8" >
                       <v-text-field
                         v-model="calculateObjectivesAverageNo1"
                         placeholder=""
@@ -3509,7 +3764,7 @@
                       >
                       </v-text-field>
                     </td>
-                    <td id="tdata" colspan="1" rowspan="1">
+                    <td id="tdata" colspan="8" >
                       <v-text-field
                         v-model="encodingIpcrfNumericalQ1"
                         :rules="requiredField"
@@ -3524,21 +3779,21 @@
                     </td>
                     <td
                       id="tdata"
-                      colspan="1"
-                      rowspan="1"
+                      colspan="8"
+                      
                       class="grey darken-2"
                     >
                       <p></p>
                     </td>
-                    <td
+                    <!-- <td
                       id="tdata"
-                      colspan="1"
-                      rowspan="1"
+                      colspan="6"
+                      
                       class="grey darken-2"
                     >
                       <p></p>
-                    </td>
-                    <td id="tdata" colspan="1" rowspan="1">
+                    </td> -->
+                    <td id="tdata" colspan="6" >
                       <v-text-field
                         v-model="calculateNumericalRatingsAverageNo1"
                         placeholder=""
@@ -3551,7 +3806,7 @@
                       >
                       </v-text-field>
                     </td>
-                    <td id="tdata" colspan="1" rowspan="1">
+                    <td id="tdata" colspan="8" >
                       <v-text-field
                         v-model="calculateScoreNo1"
                         placeholder=""
@@ -3563,7 +3818,7 @@
                       >
                       </v-text-field>
                     </td>
-                    <td id="tdata" colspan="1" rowspan="1">
+                    <td id="tdata" colspan="8" >
                       <v-text-field
                         v-model="encodingAdjectivalRating1"
                         placeholder=""
@@ -3578,94 +3833,39 @@
                   </tr>
                   <!-- OBJ 2 -->
                   <tr>
-                    <td id="tdata" colspan="1" rowspan="1">
+                    <td id="tdata" colspan="1" >
                       <p>Objective 2</p>
                     </td>
-                    <td id="tdata" colspan="1" rowspan="1">
+                    <td id="tdata" colspan="1" >
                       <p>8%</p>
                       <p></p>
                     </td>
                     <td
                       id="tdata"
-                      colspan="1"
-                      rowspan="1"
+                      colspan="10"
+                      
                       class="grey darken-2"
                     >
                       <p></p>
                     </td>
                     <td
                       id="tdata"
-                      colspan="1"
-                      rowspan="1"
+                      colspan="10"
+                      
                       class="grey darken-2"
                     >
                       <p></p>
                     </td>
-                    <td
+                      <td
                       id="tdata"
-                      colspan="1"
-                      rowspan="1"
+                      colspan="4"
+                      
                       class="grey darken-2"
                     >
                       <p></p>
                     </td>
-                    <td
-                      id="tdata"
-                      colspan="1"
-                      rowspan="1"
-                      class="grey darken-2"
-                    >
-                      <p></p>
-                    </td>
-                    <td
-                      id="tdata"
-                      colspan="1"
-                      rowspan="1"
-                      class="grey darken-2"
-                    >
-                      <p></p>
-                    </td>
-                    <td
-                      id="tdata"
-                      colspan="1"
-                      rowspan="1"
-                      class="grey darken-2"
-                    >
-                      <p></p>
-                    </td>
-                    <td
-                      id="tdata"
-                      colspan="1"
-                      rowspan="1"
-                      class="grey darken-2"
-                    >
-                      <p></p>
-                    </td>
-                    <td
-                      id="tdata"
-                      colspan="1"
-                      rowspan="1"
-                      class="grey darken-2"
-                    >
-                      <p></p>
-                    </td>
-                    <td
-                      id="tdata"
-                      colspan="1"
-                      rowspan="1"
-                      class="grey darken-2"
-                    >
-                      <p></p>
-                    </td>
-                    <td
-                      id="tdata"
-                      colspan="1"
-                      rowspan="1"
-                      class="grey darken-2"
-                    >
-                      <p></p>
-                    </td>
-                    <td id="tdata" colspan="1" rowspan="1">
+                
+                    <td id="tdata" colspan="8" >
                       <v-text-field
                         v-model="encodingIpcrfNumericalQ2"
                         :rules="requiredField"
@@ -3680,21 +3880,21 @@
                     </td>
                     <td
                       id="tdata"
-                      colspan="1"
-                      rowspan="1"
+                      colspan="8"
+                     
                       class="grey darken-2"
                     >
                       <p></p>
                     </td>
-                    <td
+               <td
                       id="tdata"
-                      colspan="1"
-                      rowspan="1"
+                      colspan="4"
+                     
                       class="grey darken-2"
                     >
                       <p></p>
-                    </td>
-                    <td id="tdata" colspan="1" rowspan="1">
+                    </td> 
+                    <td id="tdata" colspan="6">
                       <v-text-field
                         v-model="calculateNumericalRatingsAverageNo2"
                         placeholder=""
@@ -3706,7 +3906,7 @@
                       >
                       </v-text-field>
                     </td>
-                    <td id="tdata" colspan="1" rowspan="1">
+                    <td id="tdata" colspan="6">
                       <v-text-field
                         v-model="calculateScoreNo2"
                         disabled
@@ -3718,7 +3918,7 @@
                       >
                       </v-text-field>
                     </td>
-                    <td id="tdata" colspan="1" rowspan="1">
+                    <td id="tdata" colspan="6">
                       <v-text-field
                         v-model="encodingAdjectivalRating2"
                         placeholder=""
@@ -3733,96 +3933,42 @@
                   </tr>
                   <!-- OBJ 3 -->
                   <tr>
-                    <td id="tdata" colspan="1" rowspan="1">
+                    <td id="tdata" colspan="1">
                       <p>Objective 3</p>
                     </td>
-                    <td id="tdata" colspan="1" rowspan="1">
+                    <td id="tdata" colspan="1">
                       <p>8%</p>
                       <p></p>
                     </td>
-                    <td
+                    <!-- start here -->
+                      <td
                       id="tdata"
-                      colspan="1"
-                      rowspan="1"
+                      colspan="10"
+                      
                       class="grey darken-2"
                     >
                       <p></p>
                     </td>
                     <td
                       id="tdata"
-                      colspan="1"
-                      rowspan="1"
+                      colspan="10"
+                      
                       class="grey darken-2"
                     >
                       <p></p>
                     </td>
-                    <td
+                      <td
                       id="tdata"
-                      colspan="1"
-                      rowspan="1"
+                      colspan="4"
+                      
                       class="grey darken-2"
                     >
                       <p></p>
                     </td>
-                    <td
-                      id="tdata"
-                      colspan="1"
-                      rowspan="1"
-                      class="grey darken-2"
-                    >
-                      <p></p>
-                    </td>
-                    <td
-                      id="tdata"
-                      colspan="1"
-                      rowspan="1"
-                      class="grey darken-2"
-                    >
-                      <p></p>
-                    </td>
-                    <td
-                      id="tdata"
-                      colspan="1"
-                      rowspan="1"
-                      class="grey darken-2"
-                    >
-                      <p></p>
-                    </td>
-                    <td
-                      id="tdata"
-                      colspan="1"
-                      rowspan="1"
-                      class="grey darken-2"
-                    >
-                      <p></p>
-                    </td>
-                    <td
-                      id="tdata"
-                      colspan="1"
-                      rowspan="1"
-                      class="grey darken-2"
-                    >
-                      <p></p>
-                    </td>
-                    <td
-                      id="tdata"
-                      colspan="1"
-                      rowspan="1"
-                      class="grey darken-2"
-                    >
-                      <p></p>
-                    </td>
-                    <td
-                      id="tdata"
-                      colspan="1"
-                      rowspan="1"
-                      class="grey darken-2"
-                    >
-                      <p></p>
-                    </td>
-                    <td id="tdata" colspan="1" rowspan="1">
+              
+                    <td id="tdata" colspan="8" >
                       <v-text-field
-                        v-model="encodingIpcrfNumericalQ3"
+                         v-model="encodingIpcrfNumericalQ3"
                         :rules="requiredField"
                         placeholder=""
                         @input="calculateAdjectivalRatingNo3"
@@ -3835,21 +3981,21 @@
                     </td>
                     <td
                       id="tdata"
-                      colspan="1"
-                      rowspan="1"
+                      colspan="8"
+                     
                       class="grey darken-2"
                     >
                       <p></p>
                     </td>
-                    <td
+               <td
                       id="tdata"
-                      colspan="1"
-                      rowspan="1"
+                      colspan="4"
+                     
                       class="grey darken-2"
                     >
                       <p></p>
-                    </td>
-                    <td id="tdata" colspan="1" rowspan="1">
+                    </td> 
+                    <td id="tdata" colspan="6">
                       <v-text-field
                         v-model="calculateNumericalRatingsAverageNo3"
                         placeholder=""
@@ -3861,9 +4007,9 @@
                       >
                       </v-text-field>
                     </td>
-                    <td id="tdata" colspan="1" rowspan="1">
+                    <td id="tdata" colspan="6">
                       <v-text-field
-                        v-model="calculateScoreNo3"
+                      v-model="calculateScoreNo3"
                         placeholder=""
                         solo
                         disabled
@@ -3873,9 +4019,9 @@
                       >
                       </v-text-field>
                     </td>
-                    <td id="tdata" colspan="1" rowspan="1">
+                    <td id="tdata" colspan="6">
                       <v-text-field
-                        v-model="encodingAdjectivalRating3"
+                         v-model="encodingAdjectivalRating3"
                         placeholder=""
                         disabled
                         solo
@@ -3885,101 +4031,49 @@
                       >
                       </v-text-field>
                     </td>
+                    <!-- end here -->
+                   
                   </tr>
                   <!-- OBJ 4 -->
                   <tr>
                     <td id="tdata" rowspan="3"><p>KRA 2</p></td>
-                    <td id="tdata" rowspan="3">
+                    <td id="tdata" rowspan="3" colspan="2">
                       <p>24%</p>
                     </td>
-                    <td id="tdata" colspan="1" rowspan="1">
+                    <td id="tdata" colspan="1">
                       <p>Objective 4</p>
                     </td>
-                    <td id="tdata" colspan="1" rowspan="1">
+                    <td id="tdata" colspan="1">
                       <p>8%</p>
                       <p></p>
                     </td>
-                    <td
+                     <!-- start here -->
+                      <td
                       id="tdata"
-                      colspan="1"
-                      rowspan="1"
+                      colspan="10"
+                      
                       class="grey darken-2"
                     >
                       <p></p>
                     </td>
                     <td
                       id="tdata"
-                      colspan="1"
-                      rowspan="1"
+                      colspan="10"
+                      
                       class="grey darken-2"
                     >
                       <p></p>
                     </td>
-                    <td
+                      <td
                       id="tdata"
-                      colspan="1"
-                      rowspan="1"
+                      colspan="4"
+                      
                       class="grey darken-2"
                     >
                       <p></p>
                     </td>
-                    <td
-                      id="tdata"
-                      colspan="1"
-                      rowspan="1"
-                      class="grey darken-2"
-                    >
-                      <p></p>
-                    </td>
-                    <td
-                      id="tdata"
-                      colspan="1"
-                      rowspan="1"
-                      class="grey darken-2"
-                    >
-                      <p></p>
-                    </td>
-                    <td
-                      id="tdata"
-                      colspan="1"
-                      rowspan="1"
-                      class="grey darken-2"
-                    >
-                      <p></p>
-                    </td>
-                    <td
-                      id="tdata"
-                      colspan="1"
-                      rowspan="1"
-                      class="grey darken-2"
-                    >
-                      <p></p>
-                    </td>
-                    <td
-                      id="tdata"
-                      colspan="1"
-                      rowspan="1"
-                      class="grey darken-2"
-                    >
-                      <p></p>
-                    </td>
-                    <td
-                      id="tdata"
-                      colspan="1"
-                      rowspan="1"
-                      class="grey darken-2"
-                    >
-                      <p></p>
-                    </td>
-                    <td
-                      id="tdata"
-                      colspan="1"
-                      rowspan="1"
-                      class="grey darken-2"
-                    >
-                      <p></p>
-                    </td>
-                    <td id="tdata" colspan="1" rowspan="1">
+              
+                    <td id="tdata" colspan="8" >
                       <v-text-field
                         v-model="encodingIpcrfNumericalQ4"
                         :rules="requiredField"
@@ -3994,23 +4088,23 @@
                     </td>
                     <td
                       id="tdata"
-                      colspan="1"
-                      rowspan="1"
+                      colspan="8"
+                     
                       class="grey darken-2"
                     >
                       <p></p>
                     </td>
-                    <td
+               <td
                       id="tdata"
-                      colspan="1"
-                      rowspan="1"
+                      colspan="4"
+                     
                       class="grey darken-2"
                     >
                       <p></p>
-                    </td>
-                    <td id="tdata" colspan="1" rowspan="1">
+                    </td> 
+                    <td id="tdata" colspan="6">
                       <v-text-field
-                        v-model="calculateNumericalRatingsAverageNo4"
+                         v-model="calculateNumericalRatingsAverageNo4"
                         placeholder=""
                         disabled
                         solo
@@ -4020,9 +4114,9 @@
                       >
                       </v-text-field>
                     </td>
-                    <td id="tdata" colspan="1" rowspan="1">
+                    <td id="tdata" colspan="6">
                       <v-text-field
-                        v-model="calculateScoreNo4"
+                       v-model="calculateScoreNo4"
                         placeholder=""
                         disabled
                         solo
@@ -4032,9 +4126,9 @@
                       >
                       </v-text-field>
                     </td>
-                    <td id="tdata" colspan="1" rowspan="1">
+                    <td id="tdata" colspan="6">
                       <v-text-field
-                        v-model="encodingAdjectivalRating4"
+                         v-model="encodingAdjectivalRating4"
                         placeholder=""
                         solo
                         disabled
@@ -4044,17 +4138,20 @@
                       >
                       </v-text-field>
                     </td>
+                    <!-- end here -->
+        
                   </tr>
                   <!-- OBJ 5 -->
                   <tr>
-                    <td id="tdata" colspan="1" rowspan="1">
+                    <td id="tdata" colspan="1">
                       <p>Objective 5</p>
                     </td>
-                    <td id="tdata" colspan="1" rowspan="1">
+                    <td id="tdata" colspan="1">
                       <p>8%</p>
                       <p></p>
                     </td>
-                    <td id="tdata" colspan="1" rowspan="1">
+                    <!-- start here -->
+                     <td id="tdata" colspan="3" >
                       <v-text-field
                         v-model="cot1IndicatorObjNo5"
                         :rules="requiredField"
@@ -4066,9 +4163,9 @@
                       >
                       </v-text-field>
                     </td>
-                    <td id="tdata" colspan="1" rowspan="1">
+                    <td id="tdata" colspan="4" >
                       <v-text-field
-                        v-model="cot1RatingObjNo5"
+                         v-model="cot1RatingObjNo5"
                         :rules="requiredField"
                         placeholder=""
                         solo
@@ -4078,9 +4175,9 @@
                       >
                       </v-text-field>
                     </td>
-                    <td id="tdata" colspan="1" rowspan="1">
+                    <td id="tdata" colspan="4" >
                       <v-text-field
-                        v-model="cot1RpmsObjNo5"
+                         v-model="cot1RpmsObjNo5"
                         :rules="requiredField"
                         placeholder=""
                         solo
@@ -4090,9 +4187,9 @@
                       >
                       </v-text-field>
                     </td>
-                    <td id="tdata" colspan="1" rowspan="1">
+                    <td id="tdata" colspan="3" >
                       <v-text-field
-                        v-model="cot2RatingObjNo5"
+                      v-model="cot2RatingObjNo5"
                         :rules="requiredField"
                         placeholder=""
                         solo
@@ -4102,7 +4199,7 @@
                       >
                       </v-text-field>
                     </td>
-                    <td id="tdata" colspan="1" rowspan="1">
+                    <td id="tdata" colspan="5" >
                       <v-text-field
                         v-model="cot2RpmsObjNo5"
                         :rules="requiredField"
@@ -4116,39 +4213,16 @@
                     </td>
                     <td
                       id="tdata"
-                      colspan="1"
-                      rowspan="1"
+                      colspan="4"
+                      
                       class="grey darken-2"
                     >
                       <p></p>
                     </td>
-                    <td
-                      id="tdata"
-                      colspan="1"
-                      rowspan="1"
-                      class="grey darken-2"
-                    >
-                      <p></p>
-                    </td>
-                    <td
-                      id="tdata"
-                      colspan="1"
-                      rowspan="1"
-                      class="grey darken-2"
-                    >
-                      <p></p>
-                    </td>
-                    <td
-                      id="tdata"
-                      colspan="1"
-                      rowspan="1"
-                      class="grey darken-2"
-                    >
-                      <p></p>
-                    </td>
-                    <td id="tdata" colspan="1" rowspan="1">
+               
+                    <td id="tdata" colspan="8" >
                       <v-text-field
-                        v-model="calculateObjectivesAverageNo5"
+                         v-model="calculateObjectivesAverageNo5"
                         placeholder=""
                         solo
                         disabled
@@ -4158,7 +4232,7 @@
                       >
                       </v-text-field>
                     </td>
-                    <td id="tdata" colspan="1" rowspan="1">
+                    <td id="tdata" colspan="8" >
                       <v-text-field
                         v-model="encodingIpcrfNumericalQ5"
                         :rules="requiredField"
@@ -4173,23 +4247,23 @@
                     </td>
                     <td
                       id="tdata"
-                      colspan="1"
-                      rowspan="1"
+                      colspan="8"
+                      
                       class="grey darken-2"
                     >
                       <p></p>
                     </td>
-                    <td
+                    <!-- <td
                       id="tdata"
-                      colspan="1"
-                      rowspan="1"
+                      colspan="6"
+                      
                       class="grey darken-2"
                     >
                       <p></p>
-                    </td>
-                    <td id="tdata" colspan="1" rowspan="1">
+                    </td> -->
+                    <td id="tdata" colspan="6" >
                       <v-text-field
-                        v-model="calculateNumericalRatingsAverageNo5"
+                         v-model="calculateNumericalRatingsAverageNo5"
                         placeholder=""
                         solo
                         disabled
@@ -4199,8 +4273,9 @@
                       >
                       </v-text-field>
                     </td>
-                    <td id="tdata" colspan="1" rowspan="1">
+                    <td id="tdata" colspan="8" >
                       <v-text-field
+                   
                         v-model="calculateScoreNo5"
                         placeholder=""
                         solo
@@ -4211,9 +4286,9 @@
                       >
                       </v-text-field>
                     </td>
-                    <td id="tdata" colspan="1" rowspan="1">
+                    <td id="tdata" colspan="8" >
                       <v-text-field
-                        v-model="encodingAdjectivalRating5"
+                         v-model="encodingAdjectivalRating5"
                         placeholder=""
                         solo
                         disabled
@@ -4223,99 +4298,47 @@
                       >
                       </v-text-field>
                     </td>
+                    <!-- end here -->
+                   
                   </tr>
                   <!-- OBJ 6 -->
                   <tr>
-                    <td id="tdata" colspan="1" rowspan="1">
+                    <td id="tdata" colspan="1">
                       <p>Objective 6</p>
                     </td>
-                    <td id="tdata" colspan="1" rowspan="1">
+                    <td id="tdata" colspan="1">
                       <p>8%</p>
                       <p></p>
                     </td>
-                    <td
+                     <!-- start here -->
+                      <td
                       id="tdata"
-                      colspan="1"
-                      rowspan="1"
+                      colspan="10"
+                      
                       class="grey darken-2"
                     >
                       <p></p>
                     </td>
                     <td
                       id="tdata"
-                      colspan="1"
-                      rowspan="1"
+                      colspan="10"
+                      
                       class="grey darken-2"
                     >
                       <p></p>
                     </td>
-                    <td
+                      <td
                       id="tdata"
-                      colspan="1"
-                      rowspan="1"
+                      colspan="4"
+                      
                       class="grey darken-2"
                     >
                       <p></p>
                     </td>
-                    <td
-                      id="tdata"
-                      colspan="1"
-                      rowspan="1"
-                      class="grey darken-2"
-                    >
-                      <p></p>
-                    </td>
-                    <td
-                      id="tdata"
-                      colspan="1"
-                      rowspan="1"
-                      class="grey darken-2"
-                    >
-                      <p></p>
-                    </td>
-                    <td
-                      id="tdata"
-                      colspan="1"
-                      rowspan="1"
-                      class="grey darken-2"
-                    >
-                      <p></p>
-                    </td>
-                    <td
-                      id="tdata"
-                      colspan="1"
-                      rowspan="1"
-                      class="grey darken-2"
-                    >
-                      <p></p>
-                    </td>
-                    <td
-                      id="tdata"
-                      colspan="1"
-                      rowspan="1"
-                      class="grey darken-2"
-                    >
-                      <p></p>
-                    </td>
-                    <td
-                      id="tdata"
-                      colspan="1"
-                      rowspan="1"
-                      class="grey darken-2"
-                    >
-                      <p></p>
-                    </td>
-                    <td
-                      id="tdata"
-                      colspan="1"
-                      rowspan="1"
-                      class="grey darken-2"
-                    >
-                      <p></p>
-                    </td>
-                    <td id="tdata" colspan="1" rowspan="1">
+              
+                    <td id="tdata" colspan="8" >
                       <v-text-field
-                        v-model="encodingIpcrfNumericalQ6"
+                       v-model="encodingIpcrfNumericalQ6"
                         :rules="requiredField"
                         placeholder=""
                         @input="calculateAdjectivalRatingNo6"
@@ -4328,13 +4351,13 @@
                     </td>
                     <td
                       id="tdata"
-                      colspan="1"
-                      rowspan="1"
+                      colspan="8"
+                     
                       class="grey darken-2"
                     >
                       <p></p>
                     </td>
-                    <td id="tdata" colspan="1" rowspan="1">
+                     <td id="tdata" colspan="4">
                       <v-text-field
                         v-model="encodingIpcrfNumericalT6"
                         :rules="requiredField"
@@ -4347,9 +4370,17 @@
                       >
                       </v-text-field>
                     </td>
-                    <td id="tdata" colspan="1" rowspan="1">
+               <!-- <td
+                      id="tdata"
+                      colspan="4"
+                     
+                      class="grey darken-2"
+                    >
+                      <p></p>
+                    </td>  -->
+                    <td id="tdata" colspan="6">
                       <v-text-field
-                        v-model="calculateNumericalRatingsAverageNo6"
+                       v-model="calculateNumericalRatingsAverageNo6"
                         placeholder=""
                         solo
                         dense
@@ -4359,9 +4390,9 @@
                       >
                       </v-text-field>
                     </td>
-                    <td id="tdata" colspan="1" rowspan="1">
+                    <td id="tdata" colspan="6">
                       <v-text-field
-                        v-model="calculateScoreNo6"
+                         v-model="calculateScoreNo6"
                         placeholder=""
                         solo
                         dense
@@ -4372,7 +4403,7 @@
                       >
                       </v-text-field>
                     </td>
-                    <td id="tdata" colspan="1" rowspan="1">
+                    <td id="tdata" colspan="6">
                       <v-text-field
                         v-model="encodingAdjectivalRating6"
                         placeholder=""
@@ -4384,21 +4415,24 @@
                       >
                       </v-text-field>
                     </td>
+                    <!-- end here -->
+                   
                   </tr>
                   <!-- OBJ 7 -->
                   <tr>
                     <td id="tdata" rowspan="2"><p>KRA 3</p></td>
-                    <td id="tdata" rowspan="2">
+                    <td id="tdata" rowspan="2" colspan="2">
                       <p>24%</p>
                     </td>
-                    <td id="tdata" colspan="1" rowspan="1">
+                    <td id="tdata" colspan="1">
                       <p>Objective 7</p>
                     </td>
-                    <td id="tdata" colspan="1" rowspan="1">
+                    <td id="tdata" colspan="1">
                       <p>8%</p>
                       <p></p>
                     </td>
-                    <td id="tdata" colspan="1" rowspan="1">
+                      <!-- start here -->
+                     <td id="tdata" colspan="3" >
                       <v-text-field
                         v-model="cot1IndicatorObjNo7"
                         :rules="requiredField"
@@ -4410,7 +4444,7 @@
                       >
                       </v-text-field>
                     </td>
-                    <td id="tdata" colspan="1" rowspan="1">
+                    <td id="tdata" colspan="4" >
                       <v-text-field
                         v-model="cot1RatingObjNo7"
                         :rules="requiredField"
@@ -4422,7 +4456,7 @@
                       >
                       </v-text-field>
                     </td>
-                    <td id="tdata" colspan="1" rowspan="1">
+                    <td id="tdata" colspan="4" >
                       <v-text-field
                         v-model="cot1RpmsObjNo7"
                         :rules="requiredField"
@@ -4434,9 +4468,9 @@
                       >
                       </v-text-field>
                     </td>
-                    <td id="tdata" colspan="1" rowspan="1">
+                    <td id="tdata" colspan="3" >
                       <v-text-field
-                        v-model="cot2RatingObjNo7"
+                       v-model="cot2RatingObjNo7"
                         :rules="requiredField"
                         placeholder=""
                         solo
@@ -4446,9 +4480,9 @@
                       >
                       </v-text-field>
                     </td>
-                    <td id="tdata" colspan="1" rowspan="1">
+                    <td id="tdata" colspan="5" >
                       <v-text-field
-                        v-model="cot2RpmsObjNo7"
+                         v-model="cot2RpmsObjNo7"
                         :rules="requiredField"
                         placeholder=""
                         solo
@@ -4460,39 +4494,16 @@
                     </td>
                     <td
                       id="tdata"
-                      colspan="1"
-                      rowspan="1"
+                      colspan="4"
+                      
                       class="grey darken-2"
                     >
                       <p></p>
                     </td>
-                    <td
-                      id="tdata"
-                      colspan="1"
-                      rowspan="1"
-                      class="grey darken-2"
-                    >
-                      <p></p>
-                    </td>
-                    <td
-                      id="tdata"
-                      colspan="1"
-                      rowspan="1"
-                      class="grey darken-2"
-                    >
-                      <p></p>
-                    </td>
-                    <td
-                      id="tdata"
-                      colspan="1"
-                      rowspan="1"
-                      class="grey darken-2"
-                    >
-                      <p></p>
-                    </td>
-                    <td id="tdata" colspan="1" rowspan="1">
+               
+                    <td id="tdata" colspan="8" >
                       <v-text-field
-                        v-model="calculateObjectivesAverageNo7"
+                         v-model="calculateObjectivesAverageNo7"
                         placeholder=""
                         solo
                         dense
@@ -4502,9 +4513,9 @@
                       >
                       </v-text-field>
                     </td>
-                    <td id="tdata" colspan="1" rowspan="1">
+                    <td id="tdata" colspan="8" >
                       <v-text-field
-                        v-model="encodingIpcrfNumericalQ7"
+                         v-model="encodingIpcrfNumericalQ7"
                         :rules="requiredField"
                         @input="calculateAdjectivalRatingNo7"
                         placeholder=""
@@ -4517,21 +4528,14 @@
                     </td>
                     <td
                       id="tdata"
-                      colspan="1"
-                      rowspan="1"
+                      colspan="8"
+                      
                       class="grey darken-2"
                     >
                       <p></p>
                     </td>
-                    <td
-                      id="tdata"
-                      colspan="1"
-                      rowspan="1"
-                      class="grey darken-2"
-                    >
-                      <p></p>
-                    </td>
-                    <td id="tdata" colspan="1" rowspan="1">
+           
+                    <td id="tdata" colspan="6" >
                       <v-text-field
                         v-model="calculateNumericalRatingsAverageNo7"
                         placeholder=""
@@ -4543,9 +4547,10 @@
                       >
                       </v-text-field>
                     </td>
-                    <td id="tdata" colspan="1" rowspan="1">
+                    <td id="tdata" colspan="8" >
                       <v-text-field
-                        v-model="calculateScoreNo7"
+                   
+                           v-model="calculateScoreNo7"
                         placeholder=""
                         solo
                         dense
@@ -4555,9 +4560,9 @@
                       >
                       </v-text-field>
                     </td>
-                    <td id="tdata" colspan="1" rowspan="1">
+                    <td id="tdata" colspan="8" >
                       <v-text-field
-                        v-model="encodingAdjectivalRating7"
+                         v-model="encodingAdjectivalRating7"
                         placeholder=""
                         solo
                         dense
@@ -4567,99 +4572,47 @@
                       >
                       </v-text-field>
                     </td>
+                    <!-- end here -->
+                   
                   </tr>
                   <!-- OBJ 8 -->
                   <tr>
-                    <td id="tdata" colspan="1" rowspan="1">
+                    <td id="tdata" colspan="1">
                       <p>Objective 8</p>
                     </td>
-                    <td id="tdata" colspan="1" rowspan="1">
+                    <td id="tdata" colspan="1">
                       <p>8%</p>
                       <p></p>
                     </td>
-                    <td
+                           <!-- start here -->
+                      <td
                       id="tdata"
-                      colspan="1"
-                      rowspan="1"
+                      colspan="10"
+                      
                       class="grey darken-2"
                     >
                       <p></p>
                     </td>
                     <td
                       id="tdata"
-                      colspan="1"
-                      rowspan="1"
+                      colspan="10"
+                      
                       class="grey darken-2"
                     >
                       <p></p>
                     </td>
-                    <td
+                      <td
                       id="tdata"
-                      colspan="1"
-                      rowspan="1"
+                      colspan="4"
+                      
                       class="grey darken-2"
                     >
                       <p></p>
                     </td>
-                    <td
-                      id="tdata"
-                      colspan="1"
-                      rowspan="1"
-                      class="grey darken-2"
-                    >
-                      <p></p>
-                    </td>
-                    <td
-                      id="tdata"
-                      colspan="1"
-                      rowspan="1"
-                      class="grey darken-2"
-                    >
-                      <p></p>
-                    </td>
-                    <td
-                      id="tdata"
-                      colspan="1"
-                      rowspan="1"
-                      class="grey darken-2"
-                    >
-                      <p></p>
-                    </td>
-                    <td
-                      id="tdata"
-                      colspan="1"
-                      rowspan="1"
-                      class="grey darken-2"
-                    >
-                      <p></p>
-                    </td>
-                    <td
-                      id="tdata"
-                      colspan="1"
-                      rowspan="1"
-                      class="grey darken-2"
-                    >
-                      <p></p>
-                    </td>
-                    <td
-                      id="tdata"
-                      colspan="1"
-                      rowspan="1"
-                      class="grey darken-2"
-                    >
-                      <p></p>
-                    </td>
-                    <td
-                      id="tdata"
-                      colspan="1"
-                      rowspan="1"
-                      class="grey darken-2"
-                    >
-                      <p></p>
-                    </td>
-                    <td id="tdata" colspan="1" rowspan="1">
+              
+                    <td id="tdata" colspan="8" >
                       <v-text-field
-                        v-model="encodingIpcrfNumericalQ8"
+                         v-model="encodingIpcrfNumericalQ8"
                         :rules="requiredField"
                         @input="calculateAdjectivalRatingNo8"
                         placeholder=""
@@ -4672,23 +4625,23 @@
                     </td>
                     <td
                       id="tdata"
-                      colspan="1"
-                      rowspan="1"
+                      colspan="8"
+                     
                       class="grey darken-2"
                     >
                       <p></p>
                     </td>
-                    <td
+               <td
                       id="tdata"
-                      colspan="1"
-                      rowspan="1"
+                      colspan="4"
+                     
                       class="grey darken-2"
                     >
                       <p></p>
-                    </td>
-                    <td id="tdata" colspan="1" rowspan="1">
+                    </td> 
+                    <td id="tdata" colspan="6">
                       <v-text-field
-                        v-model="calculateNumericalRatingsAverageNo8"
+                          v-model="calculateNumericalRatingsAverageNo8"
                         placeholder=""
                         solo
                         dense
@@ -4698,9 +4651,9 @@
                       >
                       </v-text-field>
                     </td>
-                    <td id="tdata" colspan="1" rowspan="1">
+                    <td id="tdata" colspan="6">
                       <v-text-field
-                        v-model="calculateScoreNo8"
+                         v-model="calculateScoreNo8"
                         placeholder=""
                         solo
                         dense
@@ -4710,9 +4663,9 @@
                       >
                       </v-text-field>
                     </td>
-                    <td id="tdata" colspan="1" rowspan="1">
+                    <td id="tdata" colspan="6">
                       <v-text-field
-                        v-model="encodingAdjectivalRating8"
+                           v-model="encodingAdjectivalRating8"
                         placeholder=""
                         solo
                         dense
@@ -4722,103 +4675,51 @@
                       >
                       </v-text-field>
                     </td>
+                    <!-- end here -->
+                  
                   </tr>
-                  <!-- OBJ 4 -->
+                  <!-- OBJ 9 -->
                   <tr>
                     <td id="tdata" rowspan="3"><p>KRA 4</p></td>
-                    <td id="tdata" rowspan="3">
+                    <td id="tdata" rowspan="3" colspan="2">
                       <p>24%</p>
                     </td>
-                    <td id="tdata" colspan="1" rowspan="1">
+                    <td id="tdata" colspan="1">
                       <p>Objective 9</p>
                     </td>
-                    <td id="tdata" colspan="1" rowspan="1">
+                    <td id="tdata" colspan="1">
                       <p>8%</p>
                       <p></p>
                     </td>
-                    <td
+                     <!-- start here -->
+                      <td
                       id="tdata"
-                      colspan="1"
-                      rowspan="1"
+                      colspan="10"
+                      
                       class="grey darken-2"
                     >
                       <p></p>
                     </td>
                     <td
                       id="tdata"
-                      colspan="1"
-                      rowspan="1"
+                      colspan="10"
+                      
                       class="grey darken-2"
                     >
                       <p></p>
                     </td>
-                    <td
+                      <td
                       id="tdata"
-                      colspan="1"
-                      rowspan="1"
+                      colspan="4"
+                      
                       class="grey darken-2"
                     >
                       <p></p>
                     </td>
-                    <td
-                      id="tdata"
-                      colspan="1"
-                      rowspan="1"
-                      class="grey darken-2"
-                    >
-                      <p></p>
-                    </td>
-                    <td
-                      id="tdata"
-                      colspan="1"
-                      rowspan="1"
-                      class="grey darken-2"
-                    >
-                      <p></p>
-                    </td>
-                    <td
-                      id="tdata"
-                      colspan="1"
-                      rowspan="1"
-                      class="grey darken-2"
-                    >
-                      <p></p>
-                    </td>
-                    <td
-                      id="tdata"
-                      colspan="1"
-                      rowspan="1"
-                      class="grey darken-2"
-                    >
-                      <p></p>
-                    </td>
-                    <td
-                      id="tdata"
-                      colspan="1"
-                      rowspan="1"
-                      class="grey darken-2"
-                    >
-                      <p></p>
-                    </td>
-                    <td
-                      id="tdata"
-                      colspan="1"
-                      rowspan="1"
-                      class="grey darken-2"
-                    >
-                      <p></p>
-                    </td>
-                    <td
-                      id="tdata"
-                      colspan="1"
-                      rowspan="1"
-                      class="grey darken-2"
-                    >
-                      <p></p>
-                    </td>
-                    <td id="tdata" colspan="1" rowspan="1">
+              
+                    <td id="tdata" colspan="8" >
                       <v-text-field
-                        v-model="encodingIpcrfNumericalQ9"
+                         v-model="encodingIpcrfNumericalQ9"
                         :rules="requiredField"
                         @input="calculateAdjectivalRatingNo9"
                         placeholder=""
@@ -4829,7 +4730,7 @@
                       >
                       </v-text-field>
                     </td>
-                    <td id="tdata" colspan="1" rowspan="1">
+                     <td id="tdata" colspan="8">
                       <v-text-field
                         v-model="encodingIpcrfNumericalE9"
                         :rules="requiredField"
@@ -4842,15 +4743,15 @@
                       >
                       </v-text-field>
                     </td>
-                    <td
+               <td
                       id="tdata"
-                      colspan="1"
-                      rowspan="1"
+                      colspan="4"
+                     
                       class="grey darken-2"
                     >
                       <p></p>
-                    </td>
-                    <td id="tdata" colspan="1" rowspan="1">
+                    </td> 
+                    <td id="tdata" colspan="6">
                       <v-text-field
                         v-model="calculateNumericalRatingsAverageNo9"
                         placeholder=""
@@ -4862,7 +4763,7 @@
                       >
                       </v-text-field>
                     </td>
-                    <td id="tdata" colspan="1" rowspan="1">
+                    <td id="tdata" colspan="6">
                       <v-text-field
                         v-model="calculateScoreNo9"
                         placeholder=""
@@ -4874,9 +4775,9 @@
                       >
                       </v-text-field>
                     </td>
-                    <td id="tdata" colspan="1" rowspan="1">
+                    <td id="tdata" colspan="6">
                       <v-text-field
-                        v-model="encodingAdjectivalRating10"
+                       v-model="encodingAdjectivalRating10"
                         placeholder=""
                         solo
                         dense
@@ -4886,97 +4787,45 @@
                       >
                       </v-text-field>
                     </td>
+                    <!-- end here -->
+                   
                   </tr>
                   <!-- OBJ 10 -->
                   <tr>
-                    <td id="tdata" colspan="1" rowspan="1">
+                    <td id="tdata" colspan="1">
                       <p>Objective 10</p>
                     </td>
-                    <td id="tdata" colspan="1" rowspan="1">
+                    <td id="tdata" colspan="1">
                       <p>8%</p>
                       <p></p>
                     </td>
-                    <td
+                      <!-- start here -->
+                      <td
                       id="tdata"
-                      colspan="1"
-                      rowspan="1"
+                      colspan="10"
+                      
                       class="grey darken-2"
                     >
                       <p></p>
                     </td>
                     <td
                       id="tdata"
-                      colspan="1"
-                      rowspan="1"
+                      colspan="10"
+                      
                       class="grey darken-2"
                     >
                       <p></p>
                     </td>
-                    <td
+                      <td
                       id="tdata"
-                      colspan="1"
-                      rowspan="1"
+                      colspan="4"
+                      
                       class="grey darken-2"
                     >
                       <p></p>
                     </td>
-                    <td
-                      id="tdata"
-                      colspan="1"
-                      rowspan="1"
-                      class="grey darken-2"
-                    >
-                      <p></p>
-                    </td>
-                    <td
-                      id="tdata"
-                      colspan="1"
-                      rowspan="1"
-                      class="grey darken-2"
-                    >
-                      <p></p>
-                    </td>
-                    <td
-                      id="tdata"
-                      colspan="1"
-                      rowspan="1"
-                      class="grey darken-2"
-                    >
-                      <p></p>
-                    </td>
-                    <td
-                      id="tdata"
-                      colspan="1"
-                      rowspan="1"
-                      class="grey darken-2"
-                    >
-                      <p></p>
-                    </td>
-                    <td
-                      id="tdata"
-                      colspan="1"
-                      rowspan="1"
-                      class="grey darken-2"
-                    >
-                      <p></p>
-                    </td>
-                    <td
-                      id="tdata"
-                      colspan="1"
-                      rowspan="1"
-                      class="grey darken-2"
-                    >
-                      <p></p>
-                    </td>
-                    <td
-                      id="tdata"
-                      colspan="1"
-                      rowspan="1"
-                      class="grey darken-2"
-                    >
-                      <p></p>
-                    </td>
-                    <td id="tdata" colspan="1" rowspan="1">
+              
+                    <td id="tdata" colspan="8" >
                       <v-text-field
                         v-model="encodingIpcrfNumericalQ10"
                         :rules="requiredField"
@@ -4989,9 +4838,9 @@
                       >
                       </v-text-field>
                     </td>
-                    <td id="tdata" colspan="1" rowspan="1">
+                     <td id="tdata" colspan="8">
                       <v-text-field
-                        v-model="encodingIpcrfNumericalE10"
+                      v-model="encodingIpcrfNumericalE10"
                         :rules="requiredField"
                         @input="calculateAdjectivalRatingNo10"
                         placeholder=""
@@ -5002,17 +4851,17 @@
                       >
                       </v-text-field>
                     </td>
-                    <td
+               <td
                       id="tdata"
-                      colspan="1"
-                      rowspan="1"
+                      colspan="4"
+                     
                       class="grey darken-2"
                     >
                       <p></p>
-                    </td>
-                    <td id="tdata" colspan="1" rowspan="1">
+                    </td> 
+                    <td id="tdata" colspan="6">
                       <v-text-field
-                        v-model="calculateNumericalRatingsAverageNo10"
+                       v-model="calculateNumericalRatingsAverageNo10"
                         placeholder=""
                         solo
                         dense
@@ -5022,9 +4871,9 @@
                       >
                       </v-text-field>
                     </td>
-                    <td id="tdata" colspan="1" rowspan="1">
+                    <td id="tdata" colspan="6">
                       <v-text-field
-                        v-model="calculateScoreNo10"
+                       v-model="calculateScoreNo10"
                         placeholder=""
                         solo
                         dense
@@ -5034,9 +4883,9 @@
                       >
                       </v-text-field>
                     </td>
-                    <td id="tdata" colspan="1" rowspan="1">
+                    <td id="tdata" colspan="6">
                       <v-text-field
-                        v-model="encodingAdjectivalRating10"
+                       v-model="encodingAdjectivalRating10"
                         placeholder=""
                         solo
                         dense
@@ -5046,99 +4895,47 @@
                       >
                       </v-text-field>
                     </td>
+                    <!-- end here -->
+                   
                   </tr>
                   <!-- OBJ 11 -->
                   <tr>
-                    <td id="tdata" colspan="1" rowspan="1">
+                    <td id="tdata" colspan="1">
                       <p>Objective 11</p>
                     </td>
-                    <td id="tdata" colspan="1" rowspan="1">
+                    <td id="tdata" colspan="1">
                       <p>8%</p>
                       <p></p>
                     </td>
-                    <td
+                     <!-- start here -->
+                      <td
                       id="tdata"
-                      colspan="1"
-                      rowspan="1"
+                      colspan="10"
+                      
                       class="grey darken-2"
                     >
                       <p></p>
                     </td>
                     <td
                       id="tdata"
-                      colspan="1"
-                      rowspan="1"
+                      colspan="10"
+                      
                       class="grey darken-2"
                     >
                       <p></p>
                     </td>
-                    <td
+                      <td
                       id="tdata"
-                      colspan="1"
-                      rowspan="1"
+                      colspan="4"
+                      
                       class="grey darken-2"
                     >
                       <p></p>
                     </td>
-                    <td
-                      id="tdata"
-                      colspan="1"
-                      rowspan="1"
-                      class="grey darken-2"
-                    >
-                      <p></p>
-                    </td>
-                    <td
-                      id="tdata"
-                      colspan="1"
-                      rowspan="1"
-                      class="grey darken-2"
-                    >
-                      <p></p>
-                    </td>
-                    <td
-                      id="tdata"
-                      colspan="1"
-                      rowspan="1"
-                      class="grey darken-2"
-                    >
-                      <p></p>
-                    </td>
-                    <td
-                      id="tdata"
-                      colspan="1"
-                      rowspan="1"
-                      class="grey darken-2"
-                    >
-                      <p></p>
-                    </td>
-                    <td
-                      id="tdata"
-                      colspan="1"
-                      rowspan="1"
-                      class="grey darken-2"
-                    >
-                      <p></p>
-                    </td>
-                    <td
-                      id="tdata"
-                      colspan="1"
-                      rowspan="1"
-                      class="grey darken-2"
-                    >
-                      <p></p>
-                    </td>
-                    <td
-                      id="tdata"
-                      colspan="1"
-                      rowspan="1"
-                      class="grey darken-2"
-                    >
-                      <p></p>
-                    </td>
-                    <td id="tdata" colspan="1" rowspan="1">
+              
+                    <td id="tdata" colspan="8" >
                       <v-text-field
-                        v-model="encodingIpcrfNumericalQ11"
+                             v-model="encodingIpcrfNumericalQ11"
                  
                         @input="calculateAdjectivalRatingNo11"
                         placeholder=""
@@ -5150,9 +4947,9 @@
                       >
                       </v-text-field>
                     </td>
-                    <td id="tdata" colspan="1" rowspan="1">
+                     <td id="tdata" colspan="8">
                       <v-text-field
-                        v-model="encodingIpcrfNumericalE11"
+                      v-model="encodingIpcrfNumericalE11"
                         :rules="requiredField"
                         @input="calculateAdjectivalRatingNo11"
                         placeholder=""
@@ -5163,17 +4960,17 @@
                       >
                       </v-text-field>
                     </td>
-                    <td
+               <td
                       id="tdata"
-                      colspan="1"
-                      rowspan="1"
+                      colspan="4"
+                     
                       class="grey darken-2"
                     >
                       <p></p>
-                    </td>
-                    <td id="tdata" colspan="1" rowspan="1">
+                    </td> 
+                    <td id="tdata" colspan="6">
                       <v-text-field
-                        v-model="calculateNumericalRatingsAverageNo11"
+                      v-model="calculateNumericalRatingsAverageNo11"
                         placeholder=""
                         solo
                         dense
@@ -5183,9 +4980,9 @@
                       >
                       </v-text-field>
                     </td>
-                    <td id="tdata" colspan="1" rowspan="1">
+                    <td id="tdata" colspan="6">
                       <v-text-field
-                        v-model="calculateScoreNo11"
+                       v-model="calculateScoreNo11"
                         placeholder=""
                         solo
                         dense
@@ -5195,9 +4992,9 @@
                       >
                       </v-text-field>
                     </td>
-                    <td id="tdata" colspan="1" rowspan="1">
+                    <td id="tdata" colspan="6">
                       <v-text-field
-                        v-model="encodingAdjectivalRating11"
+                          v-model="encodingAdjectivalRating11"
                         placeholder=""
                         solo
                         dense
@@ -5207,103 +5004,51 @@
                       >
                       </v-text-field>
                     </td>
+                    <!-- end here -->
+                   
                   </tr>
                   <!-- OBJ 12 -->
                   <tr>
-                    <td id="tdata" rowspan="1"><p>PLUS FACTOR</p></td>
-                    <td id="tdata" rowspan="1">
+                    <td id="tdata"><p>PLUS FACTOR</p></td>
+                    <td id="tdata" colspan="2">
                       <p>24%</p>
                     </td>
-                    <td id="tdata" colspan="1" rowspan="1">
+                    <td id="tdata" colspan="1">
                       <p>Objective 12</p>
                     </td>
-                    <td id="tdata" colspan="1" rowspan="1">
+                    <td id="tdata" colspan="1">
                       <p>8%</p>
                       <p></p>
                     </td>
-                    <td
+                          <!-- start here -->
+                      <td
                       id="tdata"
-                      colspan="1"
-                      rowspan="1"
+                      colspan="10"
+                      
                       class="grey darken-2"
                     >
                       <p></p>
                     </td>
                     <td
                       id="tdata"
-                      colspan="1"
-                      rowspan="1"
+                      colspan="10"
+                      
                       class="grey darken-2"
                     >
                       <p></p>
                     </td>
-                    <td
+                      <td
                       id="tdata"
-                      colspan="1"
-                      rowspan="1"
+                      colspan="4"
+                      
                       class="grey darken-2"
                     >
                       <p></p>
                     </td>
-                    <td
-                      id="tdata"
-                      colspan="1"
-                      rowspan="1"
-                      class="grey darken-2"
-                    >
-                      <p></p>
-                    </td>
-                    <td
-                      id="tdata"
-                      colspan="1"
-                      rowspan="1"
-                      class="grey darken-2"
-                    >
-                      <p></p>
-                    </td>
-                    <td
-                      id="tdata"
-                      colspan="1"
-                      rowspan="1"
-                      class="grey darken-2"
-                    >
-                      <p></p>
-                    </td>
-                    <td
-                      id="tdata"
-                      colspan="1"
-                      rowspan="1"
-                      class="grey darken-2"
-                    >
-                      <p></p>
-                    </td>
-                    <td
-                      id="tdata"
-                      colspan="1"
-                      rowspan="1"
-                      class="grey darken-2"
-                    >
-                      <p></p>
-                    </td>
-                    <td
-                      id="tdata"
-                      colspan="1"
-                      rowspan="1"
-                      class="grey darken-2"
-                    >
-                      <p></p>
-                    </td>
-                    <td
-                      id="tdata"
-                      colspan="1"
-                      rowspan="1"
-                      class="grey darken-2"
-                    >
-                      <p></p>
-                    </td>
-                    <td id="tdata" colspan="1" rowspan="1">
+              
+                    <td id="tdata" colspan="8" >
                       <v-text-field
-                        v-model="encodingIpcrfNumericalQ12"
+                    v-model="encodingIpcrfNumericalQ12"
                         :rules="requiredField"
                         @input="calculateAdjectivalRatingNo12"
                         placeholder=""
@@ -5314,9 +5059,9 @@
                       >
                       </v-text-field>
                     </td>
-                    <td id="tdata" colspan="1" rowspan="1">
+                     <td id="tdata" colspan="8">
                       <v-text-field
-                        v-model="encodingIpcrfNumericalE12"
+                      v-model="encodingIpcrfNumericalE12"
                         :rules="requiredField"
                         placeholder=""
                         @input="calculateAdjectivalRatingNo12"
@@ -5327,17 +5072,17 @@
                       >
                       </v-text-field>
                     </td>
-                    <td
+               <td
                       id="tdata"
-                      colspan="1"
-                      rowspan="1"
+                      colspan="4"
+                     
                       class="grey darken-2"
                     >
                       <p></p>
-                    </td>
-                    <td id="tdata" colspan="1" rowspan="1">
+                    </td> 
+                    <td id="tdata" colspan="6">
                       <v-text-field
-                        v-model="calculateNumericalRatingsAverageNo12"
+                      v-model="calculateNumericalRatingsAverageNo12"
                         placeholder=""
                         solo
                         dense
@@ -5347,9 +5092,9 @@
                       >
                       </v-text-field>
                     </td>
-                    <td id="tdata" colspan="1" rowspan="1">
+                    <td id="tdata" colspan="6">
                       <v-text-field
-                        v-model="calculateScoreNo12"
+                         v-model="calculateScoreNo12"
                         placeholder=""
                         solo
                         dense
@@ -5359,7 +5104,7 @@
                       >
                       </v-text-field>
                     </td>
-                    <td id="tdata" colspan="1" rowspan="1">
+                    <td id="tdata" colspan="6">
                       <v-text-field
                         v-model="encodingAdjectivalRating12"
                         placeholder=""
@@ -5371,12 +5116,14 @@
                       >
                       </v-text-field>
                     </td>
+                    <!-- end here -->
+                   
                   </tr>
                   <tr>
-                    <td id="tdata" colspan="5" rowspan="1">
+                    <td id="tdata" colspan="8">
                       <p style="float: right">Date Observed:  <span class="red--text text--lighten-1">*</span></p>
                     </td>
-                    <td id="tdata" colspan="2" rowspan="1">
+                    <td id="tdata"  colspan="6">
                       <v-row>
                         <v-col cols="12" sm="12" md="12" class="text-center">
                           <v-menu
@@ -5408,7 +5155,7 @@
                         </v-col>
                       </v-row>
                     </td>
-                    <td id="tdata" colspan="2" rowspan="1">
+                    <td id="tdata"  class=" pa-4" colspan="8">
                       <v-row>
                         <v-col cols="12" sm="12" md="12" class="text-center">
                           <v-menu
@@ -5440,12 +5187,12 @@
                         </v-col>
                       </v-row>
                     </td>
-                    <td id="tdata" colspan="2" rowspan="1"><p></p></td>
-                    <td id="tdata" colspan="2" rowspan="1"><p></p></td>
-                    <td id="tdata" colspan="5" rowspan="1">
+                    <td id="tdata"  class="pa-6" colspan="3"><p></p></td>
+                    <td id="tdata" class="pa-4" colspan="2"><p></p></td>
+                    <td id="tdata"  class="pl-12 pa-4"  colspan="28">
                       <p style="float: right">Final Rating:</p>
                     </td>
-                    <td id="tdata" colspan="2" rowspan="1">
+                    <td id="tdata"  class=" pa-4" colspan="12">
                       <v-text-field
                         v-model="calculateFinalRating"
                         placeholder=""
@@ -5459,15 +5206,15 @@
                     </td>
                   </tr>
                   <tr>
-                    <td id="tdata" colspan="5" rowspan="1"><p></p></td>
-                    <td id="tdata" colspan="2" rowspan="1"><p></p></td>
-                    <td id="tdata" colspan="2" rowspan="1"><p></p></td>
-                    <td id="tdata" colspan="2" rowspan="1"><p></p></td>
-                    <td id="tdata" colspan="2" rowspan="1"><p></p></td>
-                    <td id="tdata" colspan="5" rowspan="1">
+                    <td id="tdata" colspan="8"><p></p></td>
+                    <td id="tdata" colspan="6"><p></p></td>
+                    <td id="tdata"  class=" pa-4" colspan="8"><p></p></td>
+                    <td id="tdata"  class="pa-6" colspan="3"><p></p></td>
+                    <td id="tdata"  class="pa-4" colspan="2"><p></p></td>
+                    <td id="tdata"  class="pl-12 pa-4"  colspan="28">
                       <p style="float: right">Adjectival Rating:</p>
                     </td>
-                    <td id="tdata" colspan="2" rowspan="1">
+                    <td id="tdata"   class=" pa-4" colspan="12">
                       <v-text-field
                         v-model="empFinalAdjRating"
                         placeholder=""
@@ -5479,9 +5226,9 @@
                       >
                       </v-text-field>
                     </td>
-                  </tr>
+                  </tr> <br>
                 </v-simple-table>
-
+            </div>
                 <br />
                 <div style="margin-left: 350px">
                   <v-col class="pa-0">
@@ -5515,6 +5262,7 @@
                 </div>
               </v-container>
             </v-form>
+
             <v-card class="mx-auto" max-width="600">
               <v-card-text>
                 <div class="text--primary">
@@ -5962,13 +5710,13 @@
                   </td>
                 </tr>
                 <tr class="row1">
-                  <td id="tdata" style="line-height: 5px">
+                  <td id="tdata" style="">
                     <p>Name of Employee:</p>
                   </td>
                   <td id="tdata" style="width: 20%">
                     <p>{{ empName }}</p>
                   </td>
-                  <td id="tdata" style="line-height: 5px">
+                  <td id="tdata" style="">
                     <p>Name of Rater:</p>
                   </td>
                   <td id="tdata" style="width: 20%">
@@ -5976,13 +5724,13 @@
                   </td>
                 </tr>
                 <tr class="row1">
-                  <td id="tdata" style="line-height: 5px">
+                  <td id="tdata" style="">
                     <p>Position:</p>
                   </td>
-                  <td id="tdata" style="line-height: 5px">
+                  <td id="tdata" style="">
                     <p>{{empPosition}}</p>
                   </td>
-                  <td id="tdata" style="line-height: 5px">
+                  <td id="tdata" style="">
                     <p>Position:</p>
                   </td>
                   <td id="tdata" style="">
@@ -5990,27 +5738,27 @@
                   </td>
                 </tr>
                 <tr class="row1">
-                  <td id="tdata" style="line-height: 5px">
+                  <td id="tdata" style="">
                     <p>Bureau/Center/Service/Division:</p>
                   </td>
-                  <td id="tdata" style="line-height: 5px">
+                  <td id="tdata" style="">
                     <p>{{ empDivision }}</p>
                   </td>
-                  <td id="tdata" style="line-height: 5px">
+                  <td id="tdata" style="">
                     <p>Date of Review::</p>
                   </td>
-                  <td id="tdata" style="line-height: 5px">
+                  <td id="tdata" style="">
                     <p>{{ empDateReview }}</p>
                   </td>
                 </tr>
                 <tr class="row1">
-                  <td id="tdata" style="line-height: 5px">
+                  <td id="tdata" style="">
                     <p>Rating Period:</p>
                   </td>
-                  <td id="tdata" style="line-height: 5px">
+                  <td id="tdata" style="">
                     <p>{{ empRatingPeriod }}</p>
                   </td>
-                  <td id="tdata" colspan="2" style="line-height: 5px"></td>
+                  <td id="tdata" colspan="2" style=""></td>
                 </tr>
               </table>
               <br />
@@ -6020,10 +5768,10 @@
                   style="width: 100%; text-align: center; font-weight: bold"
                 >
                   <tr class="row1 mt-2">
-                    <td id="tdata" colspan="6" style="line-height: 5px">
+                    <td id="tdata" colspan="6" style="">
                       <p>TO BE FILLED OUT DURING PLANNING</p>
                     </td>
-                    <td id="tdata" colspan="11" style="line-height: 5px">
+                    <td id="tdata" colspan="11" style="">
                       <p>TO BE FILLED OUT DURING EVALUATION</p>
                     </td>
                   </tr>
@@ -6031,16 +5779,16 @@
                     class="row1 light-green lighten-2"
                     style="width: 100%; text-align: center; font-weight: bold"
                   >
-                    <td id="tdata" rowspan="2" style="line-height: 5px">
+                    <td id="tdata" rowspan="2" style="">
                       <p>MFO's</p>
                     </td>
-                    <td id="tdata" rowspan="2" style="line-height: 5px">
+                    <td id="tdata" rowspan="2" style="">
                       <p>KRAs</p>
                     </td>
-                    <td id="tdata" rowspan="2" style="line-height: 5px">
+                    <td id="tdata" rowspan="2" style="">
                       <p>Objectives</p>
                     </td>
-                    <td id="tdata" rowspan="2" style="line-height: 5px">
+                    <td id="tdata" rowspan="2" style="">
                       <p>Timeline</p>
                     </td>
                     <td id="tdata" rowspan="2">
@@ -6049,18 +5797,18 @@
                     <td
                       id="tdata"
                       colspan="6"
-                      rowspan="1"
-                      style="line-height: 5px"
+                     
+                      style=""
                     >
                       <p>Performance Indicator</p>
                     </td>
                     <td id="tdata" rowspan="2">
                       <p>Actual Result</p>
                     </td>
-                    <td id="tdata" colspan="4" style="line-height: 5px">
+                    <td id="tdata" colspan="4" style="">
                       <p>Rating</p>
                     </td>
-                    <td id="tdata" rowspan="2" style="line-height: 5px">
+                    <td id="tdata" rowspan="2" style="">
                       <p>Score</p>
                     </td>
                   </tr>
@@ -6068,10 +5816,10 @@
                     class="row1 light-green lighten-2"
                     style="text-align: center; font-weight: bold"
                   >
-                    <td id="tdata" style="line-height: 5px">
+                    <td id="tdata" style="">
                       <p>QET</p>
                     </td>
-                    <td id="tdata" style="line-height: 5px">
+                    <td id="tdata" style="">
                       <p>
                         Outstanding <br /><br /><br />
                         <br />5
@@ -6084,21 +5832,21 @@
                         4
                       </p>
                     </td>
-                    <td id="tdata" style="line-height: 5px">
+                    <td id="tdata" style="">
                       <p>
                         Satisfactory<br /><br />
                         <br /><br />
                         3
                       </p>
                     </td>
-                    <td id="tdata" style="line-height: 5px">
+                    <td id="tdata" style="">
                       <p>
                         Unsatisfactory <br /><br />
                         <br /><br />
                         2
                       </p>
                     </td>
-                    <td id="tdata" style="line-height: 5px">
+                    <td id="tdata" style="">
                       <p>
                         Poor <br /><br />
                         <br />
@@ -6106,16 +5854,16 @@
                         1
                       </p>
                     </td>
-                    <td id="tdata" style="line-height: 5px">
+                    <td id="tdata" style="">
                       <p>Q</p>
                     </td>
-                    <td id="tdata" style="line-height: 5px">
+                    <td id="tdata" style="">
                       <p>E</p>
                     </td>
-                    <td id="tdata" style="line-height: 5px">
+                    <td id="tdata" style="">
                       <p>T</p>
                     </td>
-                    <td id="tdata" style="line-height: 5px">
+                    <td id="tdata" style="">
                       <p>AVE</p>
                     </td>
                   </tr>
@@ -6172,7 +5920,7 @@
                         acceptable evidence was shown
                       </p>
                     </td>
-                    <td id="tdata" rowspan="1" class="actualResult">
+                    <td id="tdata" class="actualResult">
                       <p>
                         {{
                           encodingAdjectivalRating1
@@ -6305,7 +6053,7 @@
                     <td id="tdata" class="poor1">
                       <p>No acceptable evidence was shown</p>
                     </td>
-                    <td id="tdata" rowspan="1" class="actualResult">
+                    <td id="tdata" class="actualResult">
                       <p>
                         {{
                           encodingAdjectivalRating2
@@ -6433,10 +6181,10 @@
                     <td id="tdata" class="poor1">
                       <p>No acceptable evidence was shown</p>
                     </td>
-                    <td id="tdata" rowspan="1" class="actualResult">
+                    <td id="tdata" class="actualResult">
                       <p>
                         {{
-                          encodingAdjectivalRating
+                          encodingAdjectivalRating3
                         }}
                       </p>
                     </td>
@@ -6568,7 +6316,7 @@
                     <td id="tdata" class="poor1">
                       <p>No acceptable evidence was shown</p>
                     </td>
-                    <td id="tdata" rowspan="1" class="actualResult">
+                    <td id="tdata" class="actualResult">
                       <p>
                         {{
                           encodingAdjectivalRating4
@@ -6700,7 +6448,7 @@
                     <td id="tdata" class="poor1">
                       <p>No acceptable evidence was shown</p>
                     </td>
-                    <td id="tdata" rowspan="1" class="actualResult">
+                    <td id="tdata" class="actualResult">
                       <p>
                         {{
                           encodingAdjectivalRating5
@@ -6822,7 +6570,7 @@
                     <td id="tdata" class="poor1">
                       <p>No evidence was shown</p>
                     </td>
-                    <td id="tdata" rowspan="1" class="actualResult">
+                    <td id="tdata" class="actualResult">
                       <p>
                         {{
                           encodingAdjectivalRating6
@@ -6965,7 +6713,7 @@
                         acceptable evidence was shown
                       </p>
                     </td>
-                    <td id="tdata" rowspan="1" class="actualResult">
+                    <td id="tdata" class="actualResult">
                       <p>
                         {{
                           encodingAdjectivalRating7
@@ -7091,7 +6839,7 @@
                     <td id="tdata" class="poor1">
                       <p>No acceptable evidence was shown</p>
                     </td>
-                    <td id="tdata" rowspan="1" class="actualResult">
+                    <td id="tdata" class="actualResult">
                       <p>
                         {{
                           encodingAdjectivalRating8
@@ -7232,7 +6980,7 @@
                     <td id="tdata" class="poor1">
                       <p>No acceptable evidence was shown</p>
                     </td>
-                    <td id="tdata" rowspan="1" class="actualResult">
+                    <td id="tdata" class="actualResult">
                       <p>
                         {{
                           encodingAdjectivalRating9
@@ -7350,7 +7098,7 @@
                     <td id="tdata" class="poor1">
                       <p>No acceptable evidence was shown</p>
                     </td>
-                    <td id="tdata" rowspan="1" class="actualResult">
+                    <td id="tdata" class="actualResult">
                       <p>
                         {{
                          encodingAdjectivalRating10
@@ -7472,7 +7220,7 @@
                     <td id="tdata" class="poor1">
                       <p>No acceptable evidence was shown</p>
                     </td>
-                    <td id="tdata" rowspan="1" class="actualResult">
+                    <td id="tdata" class="actualResult">
                       <p>
                         {{
                           encodingAdjectivalRating11
@@ -7619,7 +7367,7 @@
                     <td id="tdata" class="poor1">
                       <p>No acceptable evidence was shown</p>
                     </td>
-                    <td id="tdata" rowspan="1" class="actualResult">
+                    <td id="tdata" class="actualResult">
                       <p>
                         {{
                          encodingAdjectivalRating12
@@ -7819,7 +7567,7 @@
               </tr>
 
               <tr class="row1">
-                <td id="tdata" colspan="6" style="line-height: 5px">
+                <td id="tdata" colspan="6" style="">
                   <p>
                     Instructions: Please indicate the number of competency
                     indicators that you demonstrated during the performance
@@ -8083,7 +7831,7 @@
                   <p>Objectives</p>
                 </td>
                 <td id="tdata" rowspan="2"><p>Weight per Objective</p></td>
-                <td id="tdata" rowspan="1" colspan=" 4">
+                <td id="tdata" colspan=" 4">
                   <p>Numerical Ratings</p>
                 </td>
                 <td id="tdata" rowspan="2">
@@ -8959,7 +8707,7 @@
 
                           <v-col>
                             <v-card
-                              v-model="part4_rater"
+                             
                               class="pa-2"
                               style="
                                 width: 250px;
@@ -9033,12 +8781,30 @@
               </v-app>
             </div>
           </v-tab-item>
+          <br>
         </v-tabs>
       </v-card>
+      
     </v-container>
+     <v-btn
+            v-scroll="onScroll"
+            v-show="fab"
+            fab
+            dark
+            fixed
+            bottom
+            right
+            color="teal"
+            @click="toTop"
+          >
+            <v-icon>keyboard_arrow_up</v-icon>
+          </v-btn>
   </v-container>
 </template>
-<style>
+<style src="../assets/css/ipcrf.css" crossorigin="anonymous">
+/* .ipcrfContainer{
+  width:100%
+}
 input:disabled {
   color:black;
   font-weight:bold;
@@ -9058,11 +8824,15 @@ input:disabled {
   height: 127px;
 }
 /* FOR TIMELINE */
-.timeline {
+/* .timeline {
   height: 127px;
 }
+.inputEncoding{
+   display: flex;
+  overflow-x: auto;
+} */
 /* FOR THE SCROLLABLE */
-.ePart1 {
+/* .ePart1 {
   display: flex;
   overflow-x: auto;
 }
@@ -9074,28 +8844,34 @@ input:disabled {
 .encodingDiv {
   display: flex;
   overflow-x: auto;
-}
+} */
 /* FOR PART 1 QET */
 
 /* FOR PART 1 SCORE */
-.part1Score {
+/* .part1Score {
   height: 127px;
-}
+} */
 /* .body p {
   font-family: Arial, sans-serif;
   font-size: 10px;
   line-height: 15px;
   color: #333333;
 } */
-.content {
+/* .content {
   text-align: center;
 }
 #table,
 #tdata {
-  font-size: 10px;
+  font-size: 8px;
   border: solid 1px #000;
-  padding: 6px;
+  padding: 2px;
 }
+.row_1{
+  height:200px;
+    font-size: 8px;
+    width:100px
+  
+} */
 /* table,
 th,
 td {
@@ -9105,7 +8881,7 @@ td {
   font-family: Arial, Helvetica, sans-serif;
 } */
 
-table {
+/* table {
   border-collapse: collapse;
   caption-side: bottom;
 }
@@ -9114,7 +8890,7 @@ caption {
   font-size: 16px;
   font-weight: bold;
   padding-top: 5px;
-}
+} */ 
 </style>
 
 <script>
@@ -9125,6 +8901,7 @@ import PromptAlert from "@/utils/Prompt";
 export default {
   data() {
     return {
+      fab:false,
       mixins: [PromptAlert],
       ipcrfIdPart1Demographic: "",
       ipcrfIdPart1EncodingAdmin: "",
@@ -9608,7 +9385,9 @@ export default {
     };
   },
   created() {
-   
+    let num = 1.015
+    num = Math.round((num + Number.EPSILON) * 1000) / 1000
+    console.log(num)
     this.retrieveIpcrf();
     // var formattedFormula = excelFormulaUtilities.formula2JavaScript('=ROUND(IFERROR(SUM(B2,D2,F2,H2)/INDEX(FREQUENCY((D3,E3,F3,G3),0),2),0),3)')
     //  console.log(formattedFormula)
@@ -9627,10 +9406,10 @@ export default {
   },
   computed: {
     calculateObjectivesAverageNo1() {
-      console.log(typeof this.cot1RpmsObjNo1);
-      return Math.round(
-        (Number(this.cot1RpmsObjNo1) + Number(this.cot2RpmsObjNo1)) / 2
-      );
+      console.log((parseInt(this.cot1RpmsObjNo1) + parseInt(this.cot2RpmsObjNo1))/2)
+      return (Math.round(((
+       Number (this.cot1RpmsObjNo1) + Number( this.cot2RpmsObjNo1) / 2) + Number.EPSILON * 1000)
+      ) /1000).toFixed(3);
     },
     calculateObjectivesAverageNo7() {
       return Math.round(
@@ -9644,7 +9423,7 @@ export default {
     },
 
     calculateNumericalRatingsAverageNo1() {
-      return this.encodingIpcrfNumericalQ1;
+      return Number(this.encodingIpcrfNumericalQ1).toFixed(3);
     },
     calculateNumericalRatingsAverageNo2() {
       return this.encodingIpcrfNumericalQ2;
@@ -9702,9 +9481,8 @@ export default {
     },
 
     calculateScoreNo1() {
-      return Math.floor(
-        Number(this.calculateNumericalRatingsAverageNo1) * 0.08
-      ).toFixed(3);
+      return Number(this.calculateNumericalRatingsAverageNo1 * 0.08)
+      .toFixed(3);
     },
     calculateScoreNo2() {
       return Math.floor(
@@ -9797,6 +9575,15 @@ export default {
   },
 
   methods: {
+      onScroll (e) {
+      if (typeof window === 'undefined') return
+      const top = window.pageYOffset ||   e.target.scrollTop || 0
+      this.fab = top > 20
+    },
+    toTop () {
+      this.$vuetify.goTo(0)
+    },
+  
     calculateAdjectivalRatingNo1() {
       if (
         Math.floor(Number(this.calculateNumericalRatingsAverageNo1)).toFixed(
@@ -9968,6 +9755,7 @@ export default {
       this.calculateFinalAdjectivalRating();
     },
     calculateAdjectivalRatingNo6() {
+     
       if (
         Math.floor(Number(this.calculateNumericalRatingsAverageNo6)).toFixed(
           3

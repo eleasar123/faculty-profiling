@@ -8,9 +8,10 @@ const state = () => ({
 const mutations = {
     setUserToken(state, data) {
         console.log(data)
-      if(data[2][0].account.length!=0){
+      if(data[0].message == 'Credentials matched!'){
           console.log("reached")
-        sessionStorage.setItem("user_session", JSON.stringify(data[2][0].account));
+        sessionStorage.setItem("user_session", JSON.stringify(data[3][0].account));
+        sessionStorage.setItem("security_question", JSON.stringify(data[2][0].security));
         sessionStorage.setItem("token",  JSON.stringify(data[1][0].token));
       }
        
@@ -46,7 +47,18 @@ const actions = {
                 return err.response;
             });
     },
-
+    changePass({ commit }, data) {
+        return axios
+            .post('forgotPass', data)
+            .then((result) => {
+                console.log(result);
+                commit;
+                return result;
+            })
+            .catch((err) => {
+                return err.response;
+            });
+    },
     // retrieveUserData({ state, commit }) {
     //     return axios.get(`user/profile/${JSON.parse(state.userToken).empId}`).then((result) => {
 

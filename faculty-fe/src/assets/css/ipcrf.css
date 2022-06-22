@@ -1,0 +1,171 @@
+
+@media screen {
+    * {
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+        /* color: black !important; */
+    }
+#colsIpcrfOne {
+    background-color: blueviolet !important;
+    font-size: 6px !important;
+    height:50px !important;
+    word-wrap:break-word !important;
+    color: #000000;
+    font-weight: bold;
+    text-decoration: none;
+    font-family: 'docs-Arial Narrow';
+    font-style: normal;
+    text-decoration-skip-ink: none;
+}
+#colsIpcrfTwo {
+    background-color: blue !important;
+    font-size: 6px !important;
+    height:50px !important;
+    word-wrap:break-word !important;
+    color: #000000;
+    font-weight: bold;
+    text-decoration: none;
+    font-family: 'docs-Arial Narrow';
+    font-style: normal;
+    text-decoration-skip-ink: none;
+}
+#colsIpcrfThree {
+    background-color: violet !important;
+    font-size: 6px !important;
+    height:50px !important;
+    word-wrap:break-word !important;
+    color: #000000;
+    font-weight: bold;
+    text-decoration: none;
+    font-family: 'docs-Arial Narrow';
+    font-style: normal;
+    text-decoration-skip-ink: none;
+}
+#colsIpcrfFour {
+    background-color: red !important;
+    font-size: 6px !important;
+    height:50px !important;
+    word-wrap:break-word !important;
+    color: #000000;
+    font-weight: bold;
+    text-decoration: none;
+    font-family: 'docs-Arial Narrow';
+    font-style: normal;
+    text-decoration-skip-ink: none;
+}
+#colsIpcrfFive {
+    background-color: orangered !important;
+    font-size: 6px !important;
+    height:50px !important;
+    word-wrap:break-word !important;
+    color: #000000;
+    font-weight: bold;
+    text-decoration: none;
+    font-family: 'docs-Arial Narrow';
+    font-style: normal;
+    text-decoration-skip-ink: none;
+}
+#colsIpcrfSix {
+    background-color: orange !important;
+    font-size: 6px !important;
+    height:50px !important;
+    word-wrap:break-word !important;
+    color: #000000;
+    font-weight: bold;
+    text-decoration: none;
+    font-family: 'docs-Arial Narrow';
+    font-style: normal;
+    text-decoration-skip-ink: none;
+}
+#colsIpcrfSix{
+    background-color: yellow !important;
+    font-size: 6px !important;
+    height:50px !important;
+    word-wrap:break-word !important;
+    color: #000000;
+    font-weight: bold;
+    text-decoration: none;
+    font-family: 'docs-Arial Narrow';
+    font-style: normal;
+    text-decoration-skip-ink: none;
+}
+#colsIpcrfSeven {
+    background-color: yellowgreen !important;
+    font-size: 6px !important;
+    height:50px !important;
+    word-wrap:break-word !important;
+    width: 10px !important;
+    color: #000000;
+    font-weight: bold;
+    text-decoration: none;
+    font-family: 'docs-Arial Narrow';
+    font-style: normal;
+    text-decoration-skip-ink: none;
+}
+#colsIpcrfEight {
+    background-color: green !important;
+    font-size: 6px !important;
+    height:50px !important;
+    word-wrap: break-word;
+    color: #000000;
+    width: 10px !important;
+    font-weight: bold;
+    text-decoration: none;
+    font-family: 'docs-Arial Narrow';
+    font-style: normal;
+    text-decoration-skip-ink: none;
+}
+#colsIpcrfNine {
+    background-color: greenyellow !important;
+    font-size: 6px !important;
+    height:50px !important;
+    word-wrap:break-word !important;
+    width: 10px !important;
+    color: #000000;
+    font-weight: bold;
+    text-decoration: none;
+    font-family: 'docs-Arial Narrow';
+    font-style: normal;
+    text-decoration-skip-ink: none;
+}
+#colsIpcrfTen {
+    background-color: yellowgreen !important;
+    font-size: 6px !important;
+    height:50px !important;
+    word-wrap:break-word !important;
+    width: 10px !important;
+    color: #000000;
+    font-weight: bold;
+    text-decoration: none;
+    font-family: 'docs-Arial Narrow';
+    font-style: normal;
+    text-decoration-skip-ink: none;
+}
+
+#colsIpcrfEleven {
+    background-color: brown !important;
+    font-size: 6px !important;
+    height:50px !important;
+    word-wrap:break-word !important;
+    width: 10px !important;
+    color: #000000;
+    font-weight: bold;
+    text-decoration: none;
+    font-family: 'docs-Arial Narrow';
+    font-style: normal;
+    text-decoration-skip-ink: none;
+}
+#colsIpcrfTwelve {
+    background-color: gray !important;
+    font-size: 6px !important;
+    height:50px !important;
+    word-wrap:break-word !important;
+    width: 10px !important;
+    color: #000000;
+    font-weight: bold;
+    text-decoration: none;
+    font-family: 'docs-Arial Narrow';
+    font-style: normal;
+    text-decoration-skip-ink: none;
+}
+}

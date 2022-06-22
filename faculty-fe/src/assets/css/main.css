@@ -780,10 +780,7 @@ table,td, th,tr, thead, tbody{
 
 /*css for screen viewing*/
 @media screen {
-    * {
-        color: black !important;
-
-    }
+    
 
     .tableRow {
 
