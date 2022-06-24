@@ -61,23 +61,23 @@
         <p class="text-center  font-weight-bold">
           <v-btn 
             type="button"
-            class=" signIn"
+            class=" signIn "
             color="info"
             value="log in"
             rounded
             dense
  
             @click.prevent="login"
-            >Sign in</v-btn
-          >
+            >Sign in</v-btn >
           
           <v-spacer></v-spacer>
 
         </p>
       </v-form>
-      <button @click.prevent="forgotPassButton" class="text-center pa-1 white--text" 
-           style="font-size:12px;font-weight:normal;font-style:italic;border:0 ;color:white;margin-left: 24%;background-color:transparent;border-radius:10px
-           position:absolute;right:10px;top:100px;z-index:1">
+      <button @click.prevent="forgotPassButton" class=" text-center white--text" 
+           style="font-size:12px;font-weight:normal;font-style:italic; 
+          margin-left: 24%;background-color:transparent; marging-top:270px;
+        position:relative;margin-left:200px;z-index:1">
             Forgot Password?
             </button>
     </v-col>

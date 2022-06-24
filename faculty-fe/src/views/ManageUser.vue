@@ -134,7 +134,7 @@
       </template>
       <v-card>
         <v-card-title class=justify-center>
-          <span class="text-h5 ml-8 ">Edit User Info</span>
+          <span class="text-h5 ml-8" id="headerLabel">Edit User Info</span>
         </v-card-title>
         <v-card-text>
           <v-container>
@@ -162,6 +162,7 @@
                 <v-text-field
                   v-model="password"
                   :rules="required"
+                  id="passwordField"
                   hint="Input the user password"
                 ></v-text-field>
               </v-col>
@@ -433,10 +434,13 @@ import PromptAlert from "@/utils/Prompt";
         this.role = data.role
         this.photo = data.profile
         this.dialog =true
+         setTimeout(function() {document.getElementById('passwordField').readOnly = true}, 100);
       },
        async createItem(){
         this.create = true
         this.dialog = true
+        setTimeout(function() {document.getElementById('headerLabel').innerHTML = "Create User Info"}, 100);
+        
       },
      async save(){
        this.loader = this.loading

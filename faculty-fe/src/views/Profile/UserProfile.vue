@@ -6,10 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
 
 </head> -->
-  <div id="app" class="d-flex justify-center mb-6">
-    <v-app>
-      <v-main>
-        <v-container fluid>
+  <div id="app" class="d-flex justify-center">
+   
           <v-card max-width="450px" class="mx-auto bg" elevation="2">
             <v-img
               class=""
@@ -29,17 +27,18 @@
                   color="grey"
                   size="164"
                 >
-                  <v-btn @click="onButtonClick" class="upload-btn" x-large icon>
+                  <v-btn @click="updateImage" class="upload-btn" x-large icon>
                     <v-icon> mdi-camera </v-icon>
                   </v-btn>
                   <input
                     ref="uploader"
                     class="d-none"
                     type="file"
+                    :v-model="image"
                     accept="image/*"
                     :change="onFileChanged"
                   />
-                  <v-img :src="user.profile"></v-img>
+                  <v-img :src="profile"></v-img>
                 </v-avatar>
               </v-col> </v-row
             ><br />
@@ -59,21 +58,17 @@
                 </v-btn>
               </v-list-item-action>
             </v-list-item> -->
-            <br /><br /><br /><br />
-            <v-card-subtitle>
-              <v-list-item>
-                <v-list-item-content>
-                  <!-- <v-list-item-title class="text-">
-                Name : {{user.name}}
-                </v-list-item-title> -->
+            <br /><br /><br />  <br />
+             <v-list-item-content>
+                <v-list-item-title class="text-h6 text-center">
+               USER PROFILE 
+                </v-list-item-title>
 
-                  <v-list-item-subtitle>
-                    Name : {{ user.name }} <br />
-                    Email : {{ user.email }} <br />
-                    {{ user.role }}</v-list-item-subtitle
-                  >
-                </v-list-item-content>
-              </v-list-item>
+              
+              </v-list-item-content>
+          
+            <v-card-subtitle>
+            
               <v-btn style="float: right" v-on:click="saveBio" icon>
                 <v-icon small>{{ bioIcon }}</v-icon>
               </v-btn>
@@ -86,27 +81,52 @@
 
             <v-spacer></v-spacer>
             <v-text-field
-              class="pr-6 pl-6"
-              v-model="Name"
+              class=" pl-6"
+              v-model="user.name"
               prepend-icon="person"
               label="Name"
-              :disabled="!editBio"
+              :readonly="!editBio"
+            ></v-text-field>
+
+             <v-text-field
+              class="pr-10 pl-6"
+              v-model="user.email"
+              prepend-icon="mdi-email"
+              label="Email"
+              :readonly="!editBio"
+            ></v-text-field>
+
+            <v-text-field
+              class="pr-10 pl-6"
+              v-model="user.role"
+              prepend-icon="mdi-account-check"
+              label="Role"
+              :readonly="!editBio"
+            ></v-text-field>
+
+            <v-card-title style="text-align:center">Security Questions:</v-card-title>
+            <v-text-field
+              class="pr-10 pl-6"
+              v-model="securityQ1"
+              
+              label="When was the last time you had exercise?"
+              :readonly="!editBio"
             ></v-text-field>
              <v-text-field
-              class="pr-6 pl-6"
-              v-model="Name"
-              prepend-icon="mdi-email"
-              label="Name"
-              :disabled="!editBio"
+              class="pr-10 pl-6"
+              v-model="securityQ2"
+              
+              label="What is your next goal in life?"
+              :readonly="!editBio"
             ></v-text-field>
             <v-text-field
-              class="pr-6 pl-6"
-              v-model="Role"
-              prepend-icon="user"
-              label="Role"
-              :disabled="!editBio"
+              class="pr-10 pl-6"
+              v-model="securityQ3"
+              
+              label="Who is your first love?"
+              :readonly="!editBio"
             ></v-text-field>
-            
+     
             <v-spacer></v-spacer>
 
             <!-- <v-row>
@@ -140,9 +160,7 @@
               </v-col>
             </v-row>-->
           </v-card>
-        </v-container>
-      </v-main>
-    </v-app>
+   
   </div>
 
   <!-- 
@@ -225,8 +243,8 @@
       </v-btn>
     </v-card-actions>
   </v-card>
-  </v-container>
-  <v-container v-else-if="editProfile==true" fluid> 
+  </v-container> -->
+  <!-- <v-container v-else-if="editProfile" fluid> 
   <v-card
     class="mx-auto"
     color="#26c6da"
@@ -279,7 +297,7 @@
     </v-card-actions>
   </v-card>
 
-  </v-container> -->
+  </v-container>  -->
 </template>
 <style>
 .avatar-center-heigth {
@@ -330,43 +348,54 @@
 export default {
   data() {
     return {
-      user: JSON.parse(sessionStorage.getItem("user_session")),
-      securityQuestion: JSON.parse(sessionStorage.getItem("security_question"))
-        .question_one,
-      name: "",
+      user: "",
+      profile: "",
+      name: this,
       role: "",
       email: "",
-      securityQ1: JSON.parse(sessionStorage.getItem("security_question"))[0]
-        .question_one,
-      securityQ2: JSON.parse(sessionStorage.getItem("security_question"))[0]
-        .question_two,
-      securityQ3: JSON.parse(sessionStorage.getItem("security_question"))[0]
-        .question_three,
+      password: '',
+      securityQ1: "",
+      securityQ2: "",
+      securityQ3: "",
       editProfile: false,
       showProfile: true,
       bioIcon: "mdi-pencil",
+      image:"",
     };
   },
+ 
   created() {
-    // for(const item of this.user){
-    //   this.name = item.name
-    //   this.role = item.role
-    //   this.securityQ1 = item.securityQ1
-    //   this.securityQ2 = item.securityQ2
-    //   this.securityQ3 = item.securityQ3
-    // }
+    console.log()
+    this.user = JSON.parse(sessionStorage.getItem("user_session"))
+    this.profile = JSON.parse(sessionStorage.getItem("user_session")).profile
+    this.securityQ1 = JSON.parse(sessionStorage.getItem("security_question"))[0]
+        .question_one
+    this.securityQ2 = JSON.parse(sessionStorage.getItem("security_question"))[0]
+        .question_two
+    this.securityQ3 = JSON.parse(sessionStorage.getItem("security_question"))[0]
+        .question_three
   },
   methods: {
+      editItem(data){
+        console.log(data)
+        this.id = data.id
+        this.name =data.name
+        this.email = data.email
+        this.password = data.password
+        this.role = data.role
+        this.photo = data.profile
+        this.dialog =true
+      },
     saveBio() {
       this.editBio = !this.editBio;
       this.bioIcon = "mdi-content-save";
       if (!this.editBio) {
         this.bioIcon = "mdi-pencil";
 
-        alert("salvo com sucesso!");
+        alert("Successfully Saved!");
       }
     },
-    onButtonClick() {
+    updateImage() {
       this.isSelecting = true;
       window.addEventListener(
         "focus",
@@ -378,9 +407,15 @@ export default {
 
       this.$refs.uploader.click();
     },
-    onFileChanged(e) {
+    async onFileChanged(e) {
       this.selectedFile = e.target.files[0];
-
+      console.log(this.image)
+      let image = new FormData();
+      image.append('image', this.image)
+      const returnedData = await this.$store.dispatch('updateImage');
+      if(returnedData){
+        console.log(true)
+      }
       // do something
     },
   },

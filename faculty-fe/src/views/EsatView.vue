@@ -3688,7 +3688,7 @@ export default {
       }
     },
     async retrieveEsat() {
-      this.employeeName = JSON.parse(sessionStorage.user_session).name;
+      //this.employeeName = JSON.parse(sessionStorage.user_session).name;
       this.role = JSON.parse(sessionStorage.user_session).role;
 
       this.esatInfo = [];
