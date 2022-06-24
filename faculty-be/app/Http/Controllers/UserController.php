@@ -24,9 +24,35 @@ class UserController extends Controller
 
     public function getUser($id){
         $imageNameProfile = DB::table('users')->where('id', $id)->value('profile');
-        return ['profile' => asset('storage/profile/user-profile/' . $imageNameProfile),
-        'user'=>User::find($id)];
+        $user = User::find($id);
+        
+        $user->profile = asset('storage/profile/user-profile/' . $imageNameProfile);
+        
+        return ['user' => $user];
     }
+
+    public function editProfile(Request $request){
+        if ($request->hasFile('image')) {
+            $image           = $request->file('image');
+            $destinationPath = 'public/profile/user-profile/';
+            $imageName       = $image->getClientOriginalName();
+            $path            = $request->file('image')->storeAs($destinationPath, $imageName);
+        }   
+        $affected = DB::table('users')
+                ->where('id', $request->id)
+                ->update([
+                
+                'profile' => $imageName]); 
+
+                try{
+                    if($affected > 0){
+                        return 'success';
+                    }
+                }catch(Throwable $error){
+                    return $error;
+                }
+    }
+
     public function createUser(Request $request)
     {
         //
@@ -35,14 +61,10 @@ class UserController extends Controller
             'email'=>'required',    
             'password' =>'required',
             'role' => 'required',
-            'photo' => 'required|mimes:jpg,jpeg,png,csv,txt,xlx,xls,pdf',
+            //'photo' => 'required|mimes:jpg,jpeg,png,csv,txt,xlx,xls,pdf',
         ]);
         //Storage::putFile('photos', new File('/path/to/photo'), 'public');
-        if ($request->hasFile('photo')) {
-            $image           = $request->file('photo');
-            $destinationPath = 'public/profile/user-profile/';
-            $imageName       = $image->getClientOriginalName();
-            $path            = $request->file('photo')->storeAs($destinationPath, $imageName);
+       
             
             $user = new User([
                 'name' => $request->name,
@@ -53,11 +75,11 @@ class UserController extends Controller
             ]);
             $securityQuestion = new SecurityQuestion([
                 'user_id' => $request->user,
-                'question_one' => $request->securityQ1,
-                'question_two' => $request->securityQ2,
-                'question_three' => $request -> securityQ3,
+                'question_one' => "default answer 1",
+                'question_two' => "default answer 2",
+                'question_three' => "default answer 3",
             ]);
-        }
+        
         try{
             $user->save();
             $securityQuestion -> save();
@@ -79,12 +101,12 @@ class UserController extends Controller
         //     'role' => 'required',
         //     'photo' => 'required|mimes:jpg,jpeg,png,csv,txt,xlx,xls,pdf',
         // ]);
-        if ($request->hasFile('photo')) {
+        // if ($request->hasFile('photo')) {
            
-            $image           = $request->file('photo');
-            $destinationPath = 'public/profile/user-profile/';
-            $imageName       = $image->getClientOriginalName();
-            $path            = $request->file('photo')->storeAs($destinationPath, $imageName);
+        //     $image           = $request->file('photo');
+        //     $destinationPath = 'public/profile/user-profile/';
+        //     $imageName       = $image->getClientOriginalName();
+        //     $path            = $request->file('photo')->storeAs($destinationPath, $imageName);
             
             $affected = DB::table('users')
                 ->where('id', $request->id)
@@ -92,20 +114,21 @@ class UserController extends Controller
                 'name' => $request->name,
                 'email' => $request->email,
                 'password' => $request->password,
-                'role' => $request -> role,
-                'profile' => $imageName]);
+                'role' => $request -> role
+                ]);
+
+            $affected2 = DB::table('security_question')
+                ->where('user_id', $request->id)
+                ->update([
+                'question_one' => $request->securityQ1,
+                'question_two' => $request->securityQ2,
+                'question_three' => $request->securityQ3,
+                ]);
                 
-        }    
+        //}    
         
         try{
-            $affected = DB::table('users')
-            ->where('id', $request->id)
-            ->update([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => $request->password,
-            'role' => $request -> role,
-            ]);
+           
             if($affected>0){
                 return 'success';
             }

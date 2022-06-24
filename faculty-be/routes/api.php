@@ -67,6 +67,7 @@ Route::middleware(['cors'])->group(function () {
     Route::get('user/{id}', 'App\Http\Controllers\UserController@getUser');
     Route::post('user/create', 'App\Http\Controllers\UserController@createUser');
     Route::post('user/edit', 'App\Http\Controllers\UserController@editUser');
+    Route::post('user/editProfile', 'App\Http\Controllers\UserController@editProfile');
     Route::delete('user/delete/{id}', 'App\Http\Controllers\UserController@deleteUser');
 
     // Route::apiResource('pds', App\Http\Controllers\PersonalInfoController::class);
