@@ -824,7 +824,7 @@ class PersonalInfoController extends Controller
                 return $e;
             }
         }
-        DB::table('other_info')->where('user_id', $request->user)->delete();
+        DB::table('other_infos')->where('user_id', $request->user)->delete();
         foreach ($request->otherInfo as $otherInfo) {
             $otherInfo = new OtherInfo([
                 'user_id'                    => $request->user,
@@ -873,7 +873,7 @@ class PersonalInfoController extends Controller
                 'question_forty_c'                      => $request->questionFourtyC,
             ]);
 
-        $pdsQuestions = DB::table('pds_additonal_infos')
+        $pdsQuestions = DB::table('pds_additional_infos')
             ->where('user_id', $request->user)
             ->update([
                 //  'oath'                      => $request->oathSignature,
