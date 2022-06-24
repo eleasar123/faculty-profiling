@@ -6,8 +6,9 @@ const state = () => ({
 
 const mutations = {
     setUser(state, data) {
+        console.log(data)
         state.users = JSON.parse(data);
-        localStorage.setItem('users', data);
+        sessionStorage.setItem('user_session', data);
     }
 };
 
@@ -22,10 +23,9 @@ const actions = {
         });
     },
 
-    retrieveUserProfileById({ state, commit }) {
-        return axios.get(`user/${JSON.parse(state.users).id}`).then((result) => {
-
-            commit('setUser', JSON.stringify(result.data));
+    retrieveUserProfileById( ) {
+        return axios.get(`user/${JSON.parse(sessionStorage.user_session).id}`).then((result) => {
+            //commit('setUser', result.data);
             return result;
         }).catch((err) => {
             return err.response;
@@ -54,6 +54,34 @@ const actions = {
             .then(async (result) => {
                 try {
                   await dispatch("retrieveUserProfile");
+                  commit;
+                  return result;
+                }catch(error){
+                    return error;
+                }
+            })
+            .catch((err) => {
+              return err.response;
+            });
+    },
+
+    updateUserProfile({commit,dispatch}, file) {
+        console.log(file)
+        return axios
+        
+            .post('user/editProfile/', file, {
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                },
+            })
+            .then(async (result) => {
+                try {
+                    console.log(result)
+                    //commit('setUser', JSON.stringify(result.data));
+                  const data = await dispatch("retrieveUserProfileById");
+                    console.log(data.data.user)
+                  sessionStorage.setItem('user_session', JSON.stringify(data.data.user))
+                  //sessionStorage.user_session.profile = "Lorem ipsum";
                   commit;
                   return result;
                 }catch(error){

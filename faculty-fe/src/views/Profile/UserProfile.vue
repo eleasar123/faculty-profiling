@@ -36,7 +36,7 @@
                     type="file"
                     :v-model="image"
                     accept="image/*"
-                    :change="onFileChanged"
+                    @change="onFileChanged"
                   />
                   <v-img :src="profile"></v-img>
                 </v-avatar>
@@ -360,7 +360,7 @@ export default {
       editProfile: false,
       showProfile: true,
       bioIcon: "mdi-pencil",
-      image:"",
+      image:[],
     };
   },
  
@@ -408,13 +408,19 @@ export default {
       this.$refs.uploader.click();
     },
     async onFileChanged(e) {
+      console.log(e)
       this.selectedFile = e.target.files[0];
-      console.log(this.image)
+      console.log(this.image, this.selectedFile)
       let image = new FormData();
-      image.append('image', this.image)
-      const returnedData = await this.$store.dispatch('updateImage');
+      image.append('id', JSON.parse(sessionStorage.user_session).id)
+      image.append('image', this.selectedFile)
+      const returnedData = await this.$store.dispatch('updateUserProfile', image);
       if(returnedData){
-        console.log(true)
+        if(returnedData.data == 'success' || returnedData.data == ''){
+        //  this.user = JSON.parse(sessionStorage.getItem("user_session"))
+        //  this.profile = JSON.parse(sessionStorage.getItem("user_session")).profile
+          location.reload()
+        }
       }
       // do something
     },

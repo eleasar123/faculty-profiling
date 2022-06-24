@@ -46,6 +46,7 @@ export default new Vuex.Store({
     //   },
     // },
     actions: {
+     
 
         getArticles(){
             return axios.get('articles/')
