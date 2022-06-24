@@ -437,6 +437,11 @@ import PromptAlert from "@/utils/Prompt";
          setTimeout(function() {document.getElementById('passwordField').readOnly = true}, 100);
       },
        async createItem(){
+        this.name =''
+        this.email = ''
+        this.password = ''
+        this.role = ''
+        this.photo = ''
         this.create = true
         this.dialog = true
         setTimeout(function() {document.getElementById('headerLabel').innerHTML = "Create User Info"}, 100);

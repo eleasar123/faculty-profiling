@@ -52,16 +52,10 @@
     <v-container
       v-if="create == false && user == 'Teacher' && edit == false"
       id="printMe"
-      class="ma-0 mt-12 text-center"
+      class="ma-0 mt-1 text-center"
       style=""
     >
-      <v-btn
-        @click="editPds"
-        class="ma-4"
-        style="float: right; margin-top: -20px"
-        v-if="user == 'Teacher' && create == false && edit == false"
-        >Edit</v-btn
-      >
+      
       <v-tabs>
         <v-tab>C1</v-tab>
         <v-tab-item
@@ -1153,6 +1147,13 @@
               </tfoot>
             </v-simple-table>
           </v-container>
+          <v-btn
+        @click="editPds"
+        class="mt-4 mr-6"
+        style=""
+        v-if="user == 'Teacher' && create == false && edit == false"
+        >Edit</v-btn
+      >
           <v-btn
             v-if="create == false && edit == false"
             class="mt-5"
