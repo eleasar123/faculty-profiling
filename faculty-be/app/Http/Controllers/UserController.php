@@ -31,6 +31,11 @@ class UserController extends Controller
         return ['user' => $user];
     }
 
+    public function getSecurityQuestion($id){
+   
+        return DB::table('security_question')->where('user_id', $id)->get();
+    }
+
     public function editProfile(Request $request){
         if ($request->hasFile('image')) {
             $image           = $request->file('image');
@@ -59,30 +64,40 @@ class UserController extends Controller
         $request->validate([
             'name'=>'required',
             'email'=>'required',    
-            'password' =>'required',
             'role' => 'required',
             //'photo' => 'required|mimes:jpg,jpeg,png,csv,txt,xlx,xls,pdf',
         ]);
         //Storage::putFile('photos', new File('/path/to/photo'), 'public');
-       
+        if ($request->hasFile('photo')) {
+            $image           = $request->file('photo');
+            $destinationPath = 'public/profile/user-profile/';
+            $imageName       = $image->getClientOriginalName();
+            $path            = $request->file('photo')->storeAs($destinationPath, $imageName);
+        }   
             
             $user = new User([
                 'name' => $request->name,
                 'email' => $request->email,
-                'password' => $request->password,
+                'password' => "newpass123",
                 'role' => $request -> role,
                 'profile' => $imageName,
             ]);
-            $securityQuestion = new SecurityQuestion([
-                'user_id' => $request->user,
+            // $securityQuestion = new SecurityQuestion([
+            //     'user_id' => $request->user,
+            //     'question_one' => "default answer 1",
+            //     'question_two' => "default answer 2",
+            //     'question_three' => "default answer 3",
+            // ]);
+        
+        try{
+            $count = $user->save();
+            return $count;
+            DB::table('security_question')->insert([
+                'user_id' => $request->id,
                 'question_one' => "default answer 1",
                 'question_two' => "default answer 2",
                 'question_three' => "default answer 3",
             ]);
-        
-        try{
-            $user->save();
-            $securityQuestion -> save();
             return 'success';
         }catch(Throwable $error){
             return $error;
@@ -90,24 +105,32 @@ class UserController extends Controller
        
     }
 
+    public function editUserSchoolHead (Request $request) {
 
-    public function editUser(Request $request)
+        $request->validate([
+            'id' => 'required',
+            'name'=>'required',
+            'role' => 'required',
+        ]);
+
+        $affected = DB::table('users')
+        ->where('id', $request->id)
+        ->update([
+        'name' => $request->name,
+        'role' => $request -> role
+        ]);
+    }
+
+    public function editUserTeacher(Request $request)
     {
-        // $request->validate([
-        //     'id' => 'required',
-        //     'name'=>'required',
-        //     'email'=>'required',
-        //     'password' =>'required',
-        //     'role' => 'required',
-        //     'photo' => 'required|mimes:jpg,jpeg,png,csv,txt,xlx,xls,pdf',
-        // ]);
-        // if ($request->hasFile('photo')) {
-           
-        //     $image           = $request->file('photo');
-        //     $destinationPath = 'public/profile/user-profile/';
-        //     $imageName       = $image->getClientOriginalName();
-        //     $path            = $request->file('photo')->storeAs($destinationPath, $imageName);
-            
+        $request->validate([
+            'id' => 'required',
+            'name'=>'required',
+            'email'=>'required',
+            'password' =>'required',
+            'role' => 'required',
+        ]);
+      
             $affected = DB::table('users')
                 ->where('id', $request->id)
                 ->update([
@@ -129,8 +152,9 @@ class UserController extends Controller
         
         try{
            
-            if($affected>0){
-                return 'success';
+            if($affected> 0 && $affected2 > 0){
+                return ['user' => User::find($request->id),
+                        'security_question' => SecurityQuestion::find($request->id)];
             }
             
         }catch(Throwable $error){
