@@ -153,19 +153,20 @@
                  
                 ></v-text-field>
               </v-col>
-              <v-col
+              <!-- <v-col
                 cols="12"
                 sm="6"
                 md="6"
               >
-               <label>Password:<span style='color:red'>*</span></label>
+               <label v-if="create==true">Password:<span style='color:red'>*</span></label>
                 <v-text-field
+                v-if="create==true"
                   v-model="password"
                   :rules="required"
                   id="passwordField"
                   hint="Input the user password"
                 ></v-text-field>
-              </v-col>
+              </v-col> -->
             </v-row>
             <v-row>
               <v-col
@@ -200,9 +201,11 @@
                 cols="12"
                 sm="6"
                 md="6"
+                v-if="create==true"
               >
-              <label>Email:<span style='color:red'>*</span></label>
+              <label >Email:<span style='color:red'>*</span></label>
                 <v-text-field
+                
                   hint="Input the user email"
                   v-model="email"
                   :rules="required"
@@ -318,7 +321,6 @@ import PromptAlert from "@/utils/Prompt";
       headers: [
         { text: 'Full Name', value: 'name' },
         { text: 'Email Address', value: 'email' },
-        { text: 'Password', value: 'password' },
         { text: 'Role', value: 'role' },
          { text: 'Photo', value: 'profile' },
         { text: 'Actions', value: 'actions', sortable: false },
@@ -371,14 +373,25 @@ import PromptAlert from "@/utils/Prompt";
       this.initializeData()
     },
     methods: {
+         showErrorResponse(title, message) {
+      this.$swal.fire({
+        icon: "error",
+        title: title,
+        text: message,
+      });
+    },
+    showSuccessResponse(title) {
+      this.$swal.fire({ title: title });
+    },
+
       async initializeData () {
         this.loading =true
-        const role = JSON.parse(sessionStorage.user_session).role
-        console.log(role)
+        //const role = JSON.parse(sessionStorage.user_session).role
+     
           this.countTeachers = 0
           this.countAdmin = 0
           let userData = await this.$store.dispatch('retrieveUserProfile') 
-          console.log(userData)
+        
           if(userData){
             this.users = []
             for(const user of userData.data){
@@ -388,27 +401,24 @@ import PromptAlert from "@/utils/Prompt";
               }else{
                 this.countTeachers++
               }
-              console.log(user)
+          
             }
             this.loading =false
-            console.log(this.users)
+         
           }
         
       },
       agreeFunc(){
         this.agree = true
         
-        //console.log(this.agree)
-        // this.deleteDialog = false
       },
       async deleteItem(data){
         const id = data.id
-          console.log(data.id)
-          const returnedData = await this.$store.dispatch('deleteUser', id)
           
-          console.log(returnedData)
+          const returnedData = await this.$store.dispatch('deleteUser', id)
+         
           if(returnedData){
-            console.log(returnedData)
+            
             this.initializeData()
           }
          this.dialogDelete = false
@@ -426,7 +436,7 @@ import PromptAlert from "@/utils/Prompt";
         })
       },
       editItem(data){
-        console.log(data)
+       
         this.id = data.id
         this.name =data.name
         this.email = data.email
@@ -451,7 +461,7 @@ import PromptAlert from "@/utils/Prompt";
        this.loader = this.loading
        if(this.$refs.form.validate()){
          
-        console.log("reached")
+      
         let formData = new FormData()
         
         formData.append('id', this.id)  
@@ -462,23 +472,43 @@ import PromptAlert from "@/utils/Prompt";
         formData.append('photo', this.photo)  
 
         if(this.create == true){
-          console.log(this.create)
+         
            const returnedData = await this.$store.dispatch('createUser', formData)
-            console.log(returnedData)
-            this.create = false 
+            
+            if(returnedData.status == 500){
+              this.showErrorResponse("Email is already taken")
+            }else{
+
+              this.create = false 
+              this.showSuccessResponse("New user is created successfully")
+              this.name =''
+              this.email = ''
+              this.password = ''
+              this.role = ''
+              this.photo = ''
+              this.dialog = false 
+              this.initializeData()
+            }
+           
         }else {
-          console.log(formData)
+          
           const returnedData = await this.$store.dispatch('updateUser', formData)
-          console.log(returnedData)
+          if(returnedData.status == 500){
+            this.showErrorResponse('Email address already exists!')
+          }
+          else{
+            this.showSuccessResponse('User account updated successfully!')
+            this.name =''
+            this.email = ''
+            this.password = ''
+            this.role = ''
+            this.photo = ''
+            this.dialog = false 
+            this.initializeData()
+          }
         
         }
-        this.name =''
-        this.email = ''
-        this.password = ''
-        this.role = ''
-        this.photo = ''
-        this.dialog = false 
-        this.initializeData()
+        
         
       }
        },

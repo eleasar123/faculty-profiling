@@ -361,6 +361,8 @@ export default {
       showProfile: true,
       bioIcon: "mdi-pencil",
       image:[],
+      Bio: '',
+      editBio:false,
     };
   },
  
@@ -376,6 +378,16 @@ export default {
         .question_three
   },
   methods: {
+     showErrorResponse(title, message) {
+      this.$swal.fire({
+        icon: "error",
+        title: title,
+        text: message,
+      });
+    },
+    showSuccessResponse(title) {
+      this.$swal.fire({ title: title });
+    },
       editItem(data){
         console.log(data)
         this.id = data.id
@@ -386,12 +398,36 @@ export default {
         this.photo = data.profile
         this.dialog =true
       },
-    saveBio() {
+    async saveBio() {
       this.editBio = !this.editBio;
       this.bioIcon = "mdi-content-save";
       if (!this.editBio) {
         this.bioIcon = "mdi-pencil";
+        const id = this.id
+        const name = this.name
+        const email = this.email
+        const password = this.password
+        const role = this.role
+        const securityQ1 = this.securityQ1
+        const securityQ2 = this.securityQ2
+        const securityQ3 = this.securityQ3
 
+        const data ={
+          id,
+          name,
+          email,
+          password,
+          role,
+          securityQ1,
+          securityQ2,
+          securityQ3
+        }
+
+        const returnedData = await this.$store.dispatch('editUserTeacher', data);
+
+        if(returnedData){
+          location.reload(  )
+        }
         alert("Successfully Saved!");
       }
     },
