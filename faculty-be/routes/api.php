@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Route;
 | Here is where you can register API routes for your application. These
 | routes are loaded by the RouteServiceProvider within a group which
 | is assigned the "api" middleware group. Enjoy building your API!
-|hello
+|helloe
 */
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
@@ -24,7 +24,7 @@ Route::middleware(['cors'])->group(function () {
     Route::post('articles/create', "App\Http\Controllers\ArticlesController@createArticle");
     Route::post('articles/edit', "App\Http\Controllers\ArticlesController@editArticle");
     Route::delete('articles/delete/{id}', "App\Http\Controllers\ArticlesController@deleteArticle");
-    // Route::get('articles/', "App\Http\Controllers\Controller\ArticleController@index");
+    Route::get('articles/', "App\Http\Controllers\Controller\ArticleController@index");
 
 
 
